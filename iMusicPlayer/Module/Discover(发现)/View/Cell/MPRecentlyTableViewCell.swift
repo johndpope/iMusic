@@ -45,7 +45,7 @@ extension MPRecentlyTableViewCell: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width =  SCREEN_HEIGHT * (120/667)
-        let height = SCREEN_WIDTH * (180/375)
+        let height = SCREEN_WIDTH * (220/375)
         return CGSize(width: width, height: height)
     }
 }

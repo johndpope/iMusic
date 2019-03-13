@@ -10,10 +10,16 @@ import UIKit
 
 class MPCategoryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var xib_title: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    func updateCell(model: String)  {
+        xib_title.text = model
+    }
+    
 }
 

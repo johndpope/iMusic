@@ -29,6 +29,7 @@ class MPDiscoverViewController: BaseTableViewController {
         self.identifier = Constant.recentlyIdentifier
         self.identifier = Constant.discoverIdentifier
         self.identifier = Constant.categoryIdentifier
+    
     }
 
 }
@@ -48,7 +49,7 @@ extension MPDiscoverViewController {
              number = 1
             break
         case 2:
-             number = 3
+             number = MPDiscoverModel.categoryDatas.count
             break
         case 3:
              number = 5
@@ -63,6 +64,8 @@ extension MPDiscoverViewController {
         
         var cell = UITableViewCell()
         
+        cell.selectionStyle = .none
+        
         switch indexPath.section {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.recommendIdentifier)!
@@ -72,6 +75,7 @@ extension MPDiscoverViewController {
             break
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.categoryIdentifier)!
+            (cell as! MPCategoryTableViewCell).updateCell(model: MPDiscoverModel.categoryDatas[indexPath.row])
             break
         case 3:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.discoverIdentifier)!
@@ -87,10 +91,10 @@ extension MPDiscoverViewController {
         var height: CGFloat = SCREEN_WIDTH * (117/375)
         switch indexPath.section {
         case 0:
-            height = SCREEN_WIDTH * (220/375)
+            height = SCREEN_WIDTH * (260/375)
             break
         case 1:
-            height = SCREEN_WIDTH * (180/375)
+            height = SCREEN_WIDTH * (220/375)
             break
         case 2:
             height = SCREEN_WIDTH * (60/375)

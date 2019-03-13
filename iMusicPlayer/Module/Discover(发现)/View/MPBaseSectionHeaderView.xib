@@ -45,6 +45,7 @@
             <viewLayoutGuide key="safeArea" id="2G3-rj-Rkc"/>
             <connections>
                 <outlet property="xib_arrowRight" destination="34c-dd-C8m" id="Fh7-Tg-Nt9"/>
+                <outlet property="xib_title" destination="uax-OJ-6TN" id="JT7-xl-ryL"/>
                 <outlet property="xib_top100" destination="0Jp-4c-Kqp" id="0lU-kV-cov"/>
             </connections>
             <point key="canvasLocation" x="446" y="-28"/>

@@ -45,7 +45,7 @@ extension MPRecommendTableViewCell: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width =  SCREEN_HEIGHT * (252/667)
-        let height = SCREEN_WIDTH * (216/375)
+        let height = SCREEN_WIDTH * (260/375)
         return CGSize(width: width, height: height)
     }
     

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,15 +25,28 @@
                         <color key="textColor" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQH-9V-eMR">
+                        <rect key="frame" x="12" y="48.5" width="292" height="0.5"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="5sf-Rk-Gsx"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="HFN-cb-LcF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3RB-dR-ADh"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="XQH-9V-eMR" secondAttribute="trailing" id="7bU-6y-gvL"/>
                     <constraint firstItem="HFN-cb-LcF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="8xV-da-BKY"/>
+                    <constraint firstItem="XQH-9V-eMR" firstAttribute="leading" secondItem="HFN-cb-LcF" secondAttribute="leading" id="jE5-rb-tQN"/>
+                    <constraint firstItem="XQH-9V-eMR" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="mnp-x9-9vw"/>
                     <constraint firstAttribute="trailing" secondItem="HFN-cb-LcF" secondAttribute="trailing" constant="12" id="oQh-Ve-ef5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="45" y="11"/>
+            <connections>
+                <outlet property="xib_title" destination="HFN-cb-LcF" id="SmJ-2a-yV4"/>
+            </connections>
+            <point key="canvasLocation" x="44.799999999999997" y="10.794602698650676"/>
         </tableViewCell>
     </objects>
 </document>

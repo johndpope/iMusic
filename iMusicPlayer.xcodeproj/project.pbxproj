@@ -245,6 +245,7 @@
 		C5035CBE2238D37D003177EC /* MPRecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5035CBC2238D37D003177EC /* MPRecommendCollectionViewCell.xib */; };
 		C5035CC12238D7E3003177EC /* MPRecentlyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5035CBF2238D7E3003177EC /* MPRecentlyCollectionViewCell.swift */; };
 		C5035CC22238D7E3003177EC /* MPRecentlyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5035CC02238D7E3003177EC /* MPRecentlyCollectionViewCell.xib */; };
+		C5035CC52238E0C1003177EC /* MPDiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5035CC42238E0C1003177EC /* MPDiscoverModel.swift */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -611,6 +612,7 @@
 		C5035CBC2238D37D003177EC /* MPRecommendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPRecommendCollectionViewCell.xib; sourceTree = "<group>"; };
 		C5035CBF2238D7E3003177EC /* MPRecentlyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecentlyCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5035CC02238D7E3003177EC /* MPRecentlyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPRecentlyCollectionViewCell.xib; sourceTree = "<group>"; };
+		C5035CC42238E0C1003177EC /* MPDiscoverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPDiscoverModel.swift; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1594,6 +1596,7 @@
 		C5035C842237BE51003177EC /* Discover(发现) */ = {
 			isa = PBXGroup;
 			children = (
+				C5035CC32238E0A6003177EC /* Model */,
 				C5035CA22238AC7A003177EC /* View */,
 				C5035C852237BEE3003177EC /* MPDiscoverViewController.swift */,
 			);
@@ -1671,6 +1674,14 @@
 				C5035CC02238D7E3003177EC /* MPRecentlyCollectionViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C5035CC32238E0A6003177EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C5035CC42238E0C1003177EC /* MPDiscoverModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EC570F91216F50DDD372E37F /* Frameworks */ = {
@@ -2182,6 +2193,7 @@
 				C50358892237A517003177EC /* UINavigationController+Animation.m in Sources */,
 				C50358CD2237A517003177EC /* HXAlbumlistView.m in Sources */,
 				C503585B2237A517003177EC /* QYTools.swift in Sources */,
+				C5035CC52238E0C1003177EC /* MPDiscoverModel.swift in Sources */,
 				C5035CBD2238D37D003177EC /* MPRecommendCollectionViewCell.swift in Sources */,
 				C50358B12237A517003177EC /* HXPhoto3DTouchViewController.m in Sources */,
 				C50358972237A517003177EC /* ZYStarRateView.swift in Sources */,
