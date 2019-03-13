@@ -1,0 +1,137 @@
+PODS:
+  - Alamofire (4.8.1)
+  - CryptoSwift (0.14.0)
+  - FSPagerView (0.8.2)
+  - GoogleSignIn (4.4.0):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.2.0):
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+  - GoogleToolboxForMac/Defines (2.2.0)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.2.0)":
+    - GoogleToolboxForMac/DebugUtils (= 2.2.0)
+    - GoogleToolboxForMac/Defines (= 2.2.0)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.0)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.2.0)"
+  - GTMSessionFetcher/Core (1.2.1)
+  - IQKeyboardManager (6.2.0)
+  - JCore (1.2.6)
+  - JPush (3.1.2):
+    - JCore (~> 1.2.6)
+  - Kingfisher (5.2.0)
+  - KingfisherWebP (0.5.0):
+    - Kingfisher (~> 5.0)
+    - libwebp (>= 0.5.0)
+  - libwebp (1.0.2):
+    - libwebp/core (= 1.0.2)
+    - libwebp/dec (= 1.0.2)
+    - libwebp/demux (= 1.0.2)
+    - libwebp/dsp (= 1.0.2)
+    - libwebp/enc (= 1.0.2)
+    - libwebp/mux (= 1.0.2)
+    - libwebp/utils (= 1.0.2)
+    - libwebp/webp (= 1.0.2)
+  - libwebp/core (1.0.2):
+    - libwebp/webp
+  - libwebp/dec (1.0.2):
+    - libwebp/core
+  - libwebp/demux (1.0.2):
+    - libwebp/core
+  - libwebp/dsp (1.0.2):
+    - libwebp/core
+  - libwebp/enc (1.0.2):
+    - libwebp/core
+  - libwebp/mux (1.0.2):
+    - libwebp/core
+  - libwebp/utils (1.0.2):
+    - libwebp/core
+  - libwebp/webp (1.0.2)
+  - MJRefresh (3.1.15.7)
+  - ObjectMapper (3.4.2)
+  - RxAtomic (4.4.2)
+  - RxCocoa (4.4.2):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.4.2):
+    - RxAtomic (>= 4.4.2, ~> 4.4)
+  - SnapKit (4.2.0)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (4.2.0)
+  - TagListView (1.3.2)
+  - TencentOpenAPI (1.0.0)
+  - WechatOpenSDK (1.8.4)
+
+DEPENDENCIES:
+  - Alamofire
+  - CryptoSwift
+  - FSPagerView
+  - GoogleSignIn
+  - IQKeyboardManager
+  - JPush
+  - Kingfisher
+  - KingfisherWebP
+  - MJRefresh
+  - ObjectMapper
+  - RxCocoa
+  - RxSwift
+  - SnapKit
+  - SVProgressHUD
+  - SwiftyJSON
+  - TagListView
+  - TencentOpenAPI
+  - WechatOpenSDK
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CryptoSwift
+    - FSPagerView
+    - GoogleSignIn
+    - GoogleToolboxForMac
+    - GTMSessionFetcher
+    - IQKeyboardManager
+    - JCore
+    - JPush
+    - Kingfisher
+    - KingfisherWebP
+    - libwebp
+    - MJRefresh
+    - ObjectMapper
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
+    - SnapKit
+    - SVProgressHUD
+    - SwiftyJSON
+    - TagListView
+    - TencentOpenAPI
+    - WechatOpenSDK
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
+  FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
+  GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
+  GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
+  GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
+  JCore: cae516dd2bf1a73b578ce6e1065abd49e709e0f7
+  JPush: d0cead70ba223a6a3b52749899ebda830dfbc49a
+  Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
+  KingfisherWebP: 310f69a932151c526a7649de965f57e56918c8d0
+  libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
+  RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
+  RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  TagListView: 0c7e9c26b9aff858224ee6b155f5fcacd9e27c83
+  TencentOpenAPI: ddc6fb0134b25c9078ccd27fd2259ed0cc30a49a
+  WechatOpenSDK: 9b721089507c895d05f997408c30bb6e6f5f9b60
+
+PODFILE CHECKSUM: 132a0a7b47d483d1997d20a486a14b1673d00f1a
+
+COCOAPODS: 1.6.1

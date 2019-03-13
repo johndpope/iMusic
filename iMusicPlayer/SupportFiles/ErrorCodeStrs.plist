@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>10001</key>
+	<string>原密码错误</string>
+	<key>10002</key>
+	<string>账号或密码错误</string>
+	<key>10004</key>
+	<string>验证码错误</string>
+	<key>10005</key>
+	<string>用户已存在</string>
+	<key>10006</key>
+	<string>用户不存在</string>
+	<key>10008</key>
+	<string>手机号码已被占用</string>
+	<key>10009</key>
+	<string>邮箱已被占用</string>
+	<key>40039</key>
+	<string>物流单号重复</string>
+	<key>40045</key>
+	<string>结算的商品个数不允许超过30个</string>
+</dict>
+</plist>

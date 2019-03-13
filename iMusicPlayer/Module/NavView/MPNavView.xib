@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Hee-PV-2aT" customClass="MPNavView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYZ-iA-VtZ">
+                    <rect key="frame" x="12" y="8" width="307" height="32"/>
+                    <subviews>
+                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="nav_icon_search" translatesAutoresizingMaskIntoConstraints="NO" id="Unt-2A-3eT">
+                            <rect key="frame" x="6" y="4" width="25" height="24"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="米津玄师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGs-JP-qkh">
+                            <rect key="frame" x="39" y="7.5" width="57.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="gGs-JP-qkh" firstAttribute="leading" secondItem="Unt-2A-3eT" secondAttribute="trailing" constant="8" id="EZL-Mq-rpK"/>
+                        <constraint firstItem="Unt-2A-3eT" firstAttribute="leading" secondItem="pYZ-iA-VtZ" secondAttribute="leading" constant="6" id="Eco-ai-5Fd"/>
+                        <constraint firstItem="Unt-2A-3eT" firstAttribute="top" secondItem="pYZ-iA-VtZ" secondAttribute="top" constant="4" id="HNQ-hW-HTK"/>
+                        <constraint firstAttribute="bottom" secondItem="Unt-2A-3eT" secondAttribute="bottom" constant="4" id="TK9-TM-4nq"/>
+                        <constraint firstItem="gGs-JP-qkh" firstAttribute="centerY" secondItem="Unt-2A-3eT" secondAttribute="centerY" id="c95-uf-LmB"/>
+                        <constraint firstItem="Unt-2A-3eT" firstAttribute="centerY" secondItem="pYZ-iA-VtZ" secondAttribute="centerY" id="dDF-XB-D6D"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gGs-JP-qkh" secondAttribute="trailing" constant="8" id="q8z-Og-k5N"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMl-Xg-XxW">
+                    <rect key="frame" x="12" y="8" width="307" height="32"/>
+                    <connections>
+                        <action selector="btn_DidClicked:" destination="Hee-PV-2aT" eventType="touchUpInside" id="PAS-ZW-Bas"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLA-K4-hlS">
+                    <rect key="frame" x="331" y="8" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="sLA-K4-hlS" secondAttribute="height" multiplier="1:1" id="PIr-cK-PpA"/>
+                    </constraints>
+                    <state key="normal" image="icon_profile"/>
+                    <connections>
+                        <action selector="btn_DidClicked:" destination="Hee-PV-2aT" eventType="touchUpInside" id="hYq-iw-WDl"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="TMl-Xg-XxW" firstAttribute="trailing" secondItem="pYZ-iA-VtZ" secondAttribute="trailing" id="2tB-dP-UcK"/>
+                <constraint firstItem="TMl-Xg-XxW" firstAttribute="centerY" secondItem="pYZ-iA-VtZ" secondAttribute="centerY" id="5C3-fa-t6m"/>
+                <constraint firstItem="sRI-hy-GoD" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="sLA-K4-hlS" secondAttribute="bottom" id="60n-H7-VZz"/>
+                <constraint firstAttribute="bottom" secondItem="pYZ-iA-VtZ" secondAttribute="bottom" constant="8" id="8Cx-s4-m5b"/>
+                <constraint firstItem="sLA-K4-hlS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sRI-hy-GoD" secondAttribute="top" id="GLJ-MV-Iqw"/>
+                <constraint firstItem="TMl-Xg-XxW" firstAttribute="height" secondItem="pYZ-iA-VtZ" secondAttribute="height" id="OD8-JZ-XaH"/>
+                <constraint firstItem="pYZ-iA-VtZ" firstAttribute="leading" secondItem="sRI-hy-GoD" secondAttribute="leading" constant="12" id="Tln-cY-3LJ"/>
+                <constraint firstItem="sRI-hy-GoD" firstAttribute="trailing" secondItem="sLA-K4-hlS" secondAttribute="trailing" constant="12" id="bLO-TI-ZX7"/>
+                <constraint firstItem="pYZ-iA-VtZ" firstAttribute="top" secondItem="Hee-PV-2aT" secondAttribute="top" constant="8" id="c6w-He-XEW"/>
+                <constraint firstItem="TMl-Xg-XxW" firstAttribute="leading" secondItem="pYZ-iA-VtZ" secondAttribute="leading" id="ffO-KC-EQd"/>
+                <constraint firstItem="TMl-Xg-XxW" firstAttribute="width" secondItem="pYZ-iA-VtZ" secondAttribute="width" id="nQf-qo-gXz"/>
+                <constraint firstItem="sLA-K4-hlS" firstAttribute="leading" secondItem="pYZ-iA-VtZ" secondAttribute="trailing" constant="12" id="qCo-Pw-gYY"/>
+                <constraint firstItem="sLA-K4-hlS" firstAttribute="centerY" secondItem="Hee-PV-2aT" secondAttribute="centerY" id="u1v-06-Cva"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="sRI-hy-GoD"/>
+            <point key="canvasLocation" x="-508" y="-364"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_profile" width="32" height="32"/>
+        <image name="nav_icon_search" width="25" height="25"/>
+    </resources>
+</document>
