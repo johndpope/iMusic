@@ -249,6 +249,12 @@
 		C5123A612238E87200672914 /* MPMediaLibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A5F2238E87200672914 /* MPMediaLibraryTableViewCell.swift */; };
 		C5123A622238E87200672914 /* MPMediaLibraryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5123A602238E87200672914 /* MPMediaLibraryTableViewCell.xib */; };
 		C5123A652238EB9500672914 /* MPMediaLibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A642238EB9500672914 /* MPMediaLibraryModel.swift */; };
+		C5123A76223903C100672914 /* CardInterpolator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A71223903C100672914 /* CardInterpolator.swift */; };
+		C5123A77223903C100672914 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A72223903C100672914 /* CardViewController.swift */; };
+		C5123A78223903C100672914 /* UIScrollView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A73223903C100672914 /* UIScrollView+Utils.swift */; };
+		C5123A79223903C100672914 /* CATransform3DUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A74223903C100672914 /* CATransform3DUtils.swift */; };
+		C5123A7A223903C100672914 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5123A75223903C100672914 /* CardViewController.xib */; };
+		C5123A7E2239042600672914 /* MPRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5123A7C2239042600672914 /* MPRadioViewController.xib */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -619,6 +625,12 @@
 		C5123A5F2238E87200672914 /* MPMediaLibraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaLibraryTableViewCell.swift; sourceTree = "<group>"; };
 		C5123A602238E87200672914 /* MPMediaLibraryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPMediaLibraryTableViewCell.xib; sourceTree = "<group>"; };
 		C5123A642238EB9500672914 /* MPMediaLibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaLibraryModel.swift; sourceTree = "<group>"; };
+		C5123A71223903C100672914 /* CardInterpolator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardInterpolator.swift; sourceTree = "<group>"; };
+		C5123A72223903C100672914 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		C5123A73223903C100672914 /* UIScrollView+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Utils.swift"; sourceTree = "<group>"; };
+		C5123A74223903C100672914 /* CATransform3DUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CATransform3DUtils.swift; sourceTree = "<group>"; };
+		C5123A75223903C100672914 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
+		C5123A7C2239042600672914 /* MPRadioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPRadioViewController.xib; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1171,6 +1183,7 @@
 		C50357A02237A517003177EC /* MDModifyKit */ = {
 			isa = PBXGroup;
 			children = (
+				C5123A662238F8C700672914 /* CardView */,
 				C50357A12237A517003177EC /* ZXDrawPrize */,
 				C50357A42237A517003177EC /* BRPickerView */,
 				C50357B82237A517003177EC /* PasswordView */,
@@ -1623,6 +1636,7 @@
 			isa = PBXGroup;
 			children = (
 				C5035C8B2237C23A003177EC /* MPRadioViewController.swift */,
+				C5123A7C2239042600672914 /* MPRadioViewController.xib */,
 			);
 			path = "Radio(电台)";
 			sourceTree = "<group>";
@@ -1715,6 +1729,18 @@
 				C5123A642238EB9500672914 /* MPMediaLibraryModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C5123A662238F8C700672914 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				C5123A71223903C100672914 /* CardInterpolator.swift */,
+				C5123A72223903C100672914 /* CardViewController.swift */,
+				C5123A75223903C100672914 /* CardViewController.xib */,
+				C5123A74223903C100672914 /* CATransform3DUtils.swift */,
+				C5123A73223903C100672914 /* UIScrollView+Utils.swift */,
+			);
+			path = CardView;
 			sourceTree = "<group>";
 		};
 		EC570F91216F50DDD372E37F /* Frameworks */ = {
@@ -1857,12 +1883,14 @@
 				C50358E12237A517003177EC /* icon_deleted@3x.png in Resources */,
 				C5035B412237B315003177EC /* MDWebViewController.xib in Resources */,
 				C5035CA12238A286003177EC /* MPNavView.xib in Resources */,
+				C5123A7A223903C100672914 /* CardViewController.xib in Resources */,
 				C5035C9B2237C41C003177EC /* Localizable.strings in Resources */,
 				C50358D32237A517003177EC /* HXPhotoPicker.bundle in Resources */,
 				C50358A72237A517003177EC /* BRPickerView.bundle in Resources */,
 				C50358E02237A517003177EC /* address_select_yes.png in Resources */,
 				C50358EE2237A517003177EC /* MDFlowView.xib in Resources */,
 				C5035CA62238AC9E003177EC /* MPDiscoverTableViewCell.xib in Resources */,
+				C5123A7E2239042600672914 /* MPRadioViewController.xib in Resources */,
 				C5035C962237C350003177EC /* AutoGenStrings.py in Resources */,
 				C503585D2237A517003177EC /* project_intro.css in Resources */,
 				C50358492237A517003177EC /* HFStartViewController.xib in Resources */,
@@ -2089,6 +2117,7 @@
 				C5035B402237B315003177EC /* LTWebViewController.swift in Sources */,
 				C50358B82237A517003177EC /* HXPhotoModel.m in Sources */,
 				C50358BD2237A517003177EC /* HXDatePhotoPreviewViewController.m in Sources */,
+				C5123A76223903C100672914 /* CardInterpolator.swift in Sources */,
 				C5035CC12238D7E3003177EC /* MPRecentlyCollectionViewCell.swift in Sources */,
 				C50358912237A517003177EC /* UIColor+Category.m in Sources */,
 				C50358882237A517003177EC /* UINavigationController+NavManager.m in Sources */,
@@ -2106,6 +2135,7 @@
 				C5035C942237C350003177EC /* DAConfig.m in Sources */,
 				C50358732237A517003177EC /* RequestExtension.swift in Sources */,
 				C50358712237A517003177EC /* HotSearchView.swift in Sources */,
+				C5123A78223903C100672914 /* UIScrollView+Utils.swift in Sources */,
 				C503587A2237A517003177EC /* UIButton+Category.m in Sources */,
 				C50358A52237A517003177EC /* BRBaseView.m in Sources */,
 				C5035B462237B315003177EC /* MKGPX.swift in Sources */,
@@ -2169,6 +2199,7 @@
 				C50358AF2237A517003177EC /* HXPhotoConfiguration.m in Sources */,
 				C503589E2237A517003177EC /* UserDefault+Extension.swift in Sources */,
 				C50358522237A517003177EC /* MDHorizontalCircleMenuView.swift in Sources */,
+				C5123A77223903C100672914 /* CardViewController.swift in Sources */,
 				C503584F2237A517003177EC /* MDSettingTableViewCell.swift in Sources */,
 				C50358F12237A517003177EC /* MDFlowViewCollectionViewCell.swift in Sources */,
 				C50358C72237A517003177EC /* HXFullScreenCameraPlayView.m in Sources */,
@@ -2206,6 +2237,7 @@
 				C503588F2237A517003177EC /* NSDate+Format.m in Sources */,
 				C5035B3D2237B315003177EC /* LTLocationViewController.swift in Sources */,
 				C50358412237A517003177EC /* API.swift in Sources */,
+				C5123A79223903C100672914 /* CATransform3DUtils.swift in Sources */,
 				C50358792237A517003177EC /* MyControl.m in Sources */,
 				C5035C862237BEE3003177EC /* MPDiscoverViewController.swift in Sources */,
 				C50358A62237A517003177EC /* BRAddressModel.m in Sources */,
