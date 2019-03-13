@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MPMediaLibraryTableViewCell" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_album" translatesAutoresizingMaskIntoConstraints="NO" id="4em-Yq-1jb">
+                        <rect key="frame" x="12" y="5" width="41.5" height="41.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="4em-Yq-1jb" secondAttribute="height" id="NpQ-oB-lY7"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星野源のオールナイトニッポン" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxB-QY-NDY">
+                        <rect key="frame" x="61.5" y="5" width="215" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="星野源 · 4:32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDB-a3-B5q">
+                        <rect key="frame" x="61.5" y="33" width="215" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vb8-yh-gh7">
+                        <rect key="frame" x="284.5" y="14" width="23.5" height="23.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="vb8-yh-gh7" secondAttribute="height" id="OLG-EF-Iep"/>
+                        </constraints>
+                        <state key="normal" image="icon_more_1"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lDB-a3-B5q" firstAttribute="leading" secondItem="oxB-QY-NDY" secondAttribute="leading" id="3Y9-lo-fJh"/>
+                    <constraint firstItem="vb8-yh-gh7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8lj-06-Cxs"/>
+                    <constraint firstItem="oxB-QY-NDY" firstAttribute="top" secondItem="4em-Yq-1jb" secondAttribute="top" id="BBf-bU-GhQ"/>
+                    <constraint firstAttribute="bottom" secondItem="vb8-yh-gh7" secondAttribute="bottom" constant="14" id="Glt-Wi-n0a"/>
+                    <constraint firstAttribute="bottom" secondItem="4em-Yq-1jb" secondAttribute="bottom" constant="5" id="HhM-yH-t60"/>
+                    <constraint firstItem="oxB-QY-NDY" firstAttribute="leading" secondItem="4em-Yq-1jb" secondAttribute="trailing" constant="8" id="Psf-ED-l1A"/>
+                    <constraint firstItem="vb8-yh-gh7" firstAttribute="leading" secondItem="oxB-QY-NDY" secondAttribute="trailing" constant="8" id="V2b-uV-WkI"/>
+                    <constraint firstAttribute="trailing" secondItem="vb8-yh-gh7" secondAttribute="trailing" constant="12" id="WFX-y0-KKh"/>
+                    <constraint firstItem="vb8-yh-gh7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="Ww1-XM-Lzd"/>
+                    <constraint firstItem="lDB-a3-B5q" firstAttribute="trailing" secondItem="oxB-QY-NDY" secondAttribute="trailing" id="ogy-VM-phs"/>
+                    <constraint firstItem="lDB-a3-B5q" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4em-Yq-1jb" secondAttribute="bottom" id="pQ9-8m-JCb"/>
+                    <constraint firstItem="lDB-a3-B5q" firstAttribute="top" secondItem="oxB-QY-NDY" secondAttribute="bottom" constant="4" id="pzL-6S-JWF"/>
+                    <constraint firstItem="4em-Yq-1jb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="rcB-Dy-4Io"/>
+                    <constraint firstItem="4em-Yq-1jb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="yfH-ve-LVN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_more_1" width="25" height="25"/>
+        <image name="pic_album" width="100" height="100"/>
+    </resources>
+</document>

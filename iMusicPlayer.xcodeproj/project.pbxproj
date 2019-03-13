@@ -246,6 +246,9 @@
 		C5035CC12238D7E3003177EC /* MPRecentlyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5035CBF2238D7E3003177EC /* MPRecentlyCollectionViewCell.swift */; };
 		C5035CC22238D7E3003177EC /* MPRecentlyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5035CC02238D7E3003177EC /* MPRecentlyCollectionViewCell.xib */; };
 		C5035CC52238E0C1003177EC /* MPDiscoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5035CC42238E0C1003177EC /* MPDiscoverModel.swift */; };
+		C5123A612238E87200672914 /* MPMediaLibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A5F2238E87200672914 /* MPMediaLibraryTableViewCell.swift */; };
+		C5123A622238E87200672914 /* MPMediaLibraryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5123A602238E87200672914 /* MPMediaLibraryTableViewCell.xib */; };
+		C5123A652238EB9500672914 /* MPMediaLibraryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A642238EB9500672914 /* MPMediaLibraryModel.swift */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -613,6 +616,9 @@
 		C5035CBF2238D7E3003177EC /* MPRecentlyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecentlyCollectionViewCell.swift; sourceTree = "<group>"; };
 		C5035CC02238D7E3003177EC /* MPRecentlyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPRecentlyCollectionViewCell.xib; sourceTree = "<group>"; };
 		C5035CC42238E0C1003177EC /* MPDiscoverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPDiscoverModel.swift; sourceTree = "<group>"; };
+		C5123A5F2238E87200672914 /* MPMediaLibraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaLibraryTableViewCell.swift; sourceTree = "<group>"; };
+		C5123A602238E87200672914 /* MPMediaLibraryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPMediaLibraryTableViewCell.xib; sourceTree = "<group>"; };
+		C5123A642238EB9500672914 /* MPMediaLibraryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaLibraryModel.swift; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1606,6 +1612,8 @@
 		C5035C872237C191003177EC /* MediaLibrary(媒体库) */ = {
 			isa = PBXGroup;
 			children = (
+				C5123A632238EB6B00672914 /* Model */,
+				C5035CC62238E816003177EC /* View */,
 				C5035C882237C1E2003177EC /* MPMediaLibraryViewController.swift */,
 			);
 			path = "MediaLibrary(媒体库)";
@@ -1680,6 +1688,31 @@
 			isa = PBXGroup;
 			children = (
 				C5035CC42238E0C1003177EC /* MPDiscoverModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C5035CC62238E816003177EC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5035CC72238E81D003177EC /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5035CC72238E81D003177EC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C5123A5F2238E87200672914 /* MPMediaLibraryTableViewCell.swift */,
+				C5123A602238E87200672914 /* MPMediaLibraryTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C5123A632238EB6B00672914 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C5123A642238EB9500672914 /* MPMediaLibraryModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1819,6 +1852,7 @@
 				C5035B432237B315003177EC /* LTCommentViewController.xib in Resources */,
 				C50358E42237A517003177EC /* icon_deleted@3x copy.png in Resources */,
 				C50356B7223794F2003177EC /* LaunchScreen.storyboard in Resources */,
+				C5123A622238E87200672914 /* MPMediaLibraryTableViewCell.xib in Resources */,
 				C50358532237A517003177EC /* AlipaySDK.bundle in Resources */,
 				C50358E12237A517003177EC /* icon_deleted@3x.png in Resources */,
 				C5035B412237B315003177EC /* MDWebViewController.xib in Resources */,
@@ -2159,6 +2193,7 @@
 				C5035CA02238A286003177EC /* MPNavView.swift in Sources */,
 				C50358462237A517003177EC /* HFMainDataCent.swift in Sources */,
 				C50358AB2237A517003177EC /* UIImage+SLAdd.m in Sources */,
+				C5123A652238EB9500672914 /* MPMediaLibraryModel.swift in Sources */,
 				C5035C952237C350003177EC /* NSBundle+DAUtils.m in Sources */,
 				C50358D82237A517003177EC /* AddressAttribute.swift in Sources */,
 				C50358672237A517003177EC /* BaseModel.swift in Sources */,
@@ -2190,6 +2225,7 @@
 				C50358982237A517003177EC /* JSDropDownMenu.m in Sources */,
 				C50358852237A517003177EC /* UIViewController+DDPopUpViewController.m in Sources */,
 				C503587F2237A517003177EC /* UIView+Frame.m in Sources */,
+				C5123A612238E87200672914 /* MPMediaLibraryTableViewCell.swift in Sources */,
 				C50358892237A517003177EC /* UINavigationController+Animation.m in Sources */,
 				C50358CD2237A517003177EC /* HXAlbumlistView.m in Sources */,
 				C503585B2237A517003177EC /* QYTools.swift in Sources */,

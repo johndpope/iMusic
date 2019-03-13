@@ -44,5 +44,9 @@ class MPBaseSectionHeaderView: BaseView {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func updateView(model: String)  {
+        xib_title.text = model
+    }
 
 }
