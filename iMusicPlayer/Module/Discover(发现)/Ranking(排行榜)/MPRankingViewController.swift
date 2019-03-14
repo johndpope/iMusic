@@ -53,4 +53,9 @@ extension MPRankingViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = MPAlbumListViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

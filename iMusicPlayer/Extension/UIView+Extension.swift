@@ -388,6 +388,24 @@ extension UIView {
         //        self.layer.mask = layer
     }
     
+    // 设置圆角
+    var md_cornerRadius: CGFloat {
+        get {return 0}
+        set {
+            self.layer.cornerRadius = newValue
+            self.layer.masksToBounds = true
+        }
+    }
+    
+    // 设置边框颜色
+    var md_borderColor: UIColor {
+        get {return UIColor.clear}
+        set {
+            self.layer.borderColor = newValue.cgColor
+            self.layer.borderWidth = 1
+        }
+    }
+    
 }
 
 
