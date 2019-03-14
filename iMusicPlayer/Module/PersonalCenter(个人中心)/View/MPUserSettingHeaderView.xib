@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="dlo-Q5-g71" customClass="MPUserSettingHeaderView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_photo_default" translatesAutoresizingMaskIntoConstraints="NO" id="aoK-Oz-J75">
+                    <rect key="frame" x="12" y="26" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="RCZ-A2-a5R"/>
+                        <constraint firstAttribute="width" secondItem="aoK-Oz-J75" secondAttribute="height" id="sW3-vL-fzO"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="将歌单与账号绑定，更换设备后歌单将不会丢失" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q8w-gs-M9U">
+                    <rect key="frame" x="80" y="26" width="283" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROB-cm-4Ub">
+                    <rect key="frame" x="80" y="50" width="162" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ROB-cm-4Ub" secondAttribute="height" multiplier="162:36" id="BFO-MJ-a1A"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="162" id="jWX-Fd-OUJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Google邮箱登录" image="icon_google">
+                        <color key="titleColor" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="aoK-Oz-J75" firstAttribute="leading" secondItem="dlo-Q5-g71" secondAttribute="leading" constant="12" id="Ocu-zG-eIS"/>
+                <constraint firstItem="q8w-gs-M9U" firstAttribute="leading" secondItem="aoK-Oz-J75" secondAttribute="trailing" constant="8" id="Xka-ro-U4O"/>
+                <constraint firstItem="ROB-cm-4Ub" firstAttribute="leading" secondItem="aoK-Oz-J75" secondAttribute="trailing" constant="8" id="cMH-fq-yl0"/>
+                <constraint firstItem="q8w-gs-M9U" firstAttribute="top" secondItem="aoK-Oz-J75" secondAttribute="top" id="fRE-p0-bZW"/>
+                <constraint firstItem="ROB-cm-4Ub" firstAttribute="top" relation="greaterThanOrEqual" secondItem="q8w-gs-M9U" secondAttribute="bottom" constant="8" id="fY8-b3-fiK"/>
+                <constraint firstItem="ho1-Ba-hEL" firstAttribute="trailing" secondItem="q8w-gs-M9U" secondAttribute="trailing" constant="12" id="hYQ-Xd-EvZ"/>
+                <constraint firstItem="ROB-cm-4Ub" firstAttribute="bottom" secondItem="aoK-Oz-J75" secondAttribute="bottom" id="jzT-p8-V0n"/>
+                <constraint firstItem="aoK-Oz-J75" firstAttribute="centerY" secondItem="dlo-Q5-g71" secondAttribute="centerY" id="vd1-8m-Kb4"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="ho1-Ba-hEL"/>
+            <connections>
+                <outlet property="xib_googleLogin" destination="ROB-cm-4Ub" id="BnT-hm-4Tx"/>
+            </connections>
+            <point key="canvasLocation" x="16.800000000000001" y="-196.10194902548727"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_google" width="25" height="25"/>
+        <image name="img_photo_default" width="60" height="60"/>
+    </resources>
+</document>

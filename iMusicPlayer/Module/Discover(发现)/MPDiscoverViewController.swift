@@ -64,8 +64,6 @@ extension MPDiscoverViewController {
         
         var cell = UITableViewCell()
         
-        cell.selectionStyle = .none
-        
         switch indexPath.section {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.recommendIdentifier)!
@@ -83,7 +81,7 @@ extension MPDiscoverViewController {
         default:
             break
         }
-        
+        cell.selectionStyle = .none
         return cell
     }
     

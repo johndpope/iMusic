@@ -110,7 +110,9 @@ class BaseViewController: UIViewController, PlaceholderViewDelegate {
         // 添加左右按钮
         if let vcs = self.navigationController?.viewControllers {
             if vcs.count == 1 {
-                
+                let vc = MPUserSettingViewController()
+                vc.plistName = "usersetting"
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
@@ -120,7 +122,7 @@ class BaseViewController: UIViewController, PlaceholderViewDelegate {
     /// - Parameters:
     ///   - title: 标题
     ///   - imageName: 图片
-    func addLeftItem(title:String,imageName:String,fontColor: UIColor = UIColor.white) {
+    func addLeftItem(title:String,imageName:String,fontColor: UIColor = UIColor.white, fontSize: CGFloat = 12, margin: CGFloat = 5) {
 //        let leftButton = UIBarButtonItem.init(title: title, style: .plain, target: self, action: #selector(clickLeft))
 //        let dic = [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12)]
 //        leftButton.setTitleTextAttributes(dic, for: .normal)
@@ -132,11 +134,17 @@ class BaseViewController: UIViewController, PlaceholderViewDelegate {
 //        leftButton.tintColor = UIColor.black
         
         let btn = UIButton()
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
         btn.setTitle(title, for: UIControl.State.normal)
         btn.setTitleColor(fontColor, for: UIControl.State.normal)
         btn.setImage(UIImage.init(named: imageName), for: UIControl.State.normal)
         btn.addTarget(self, action: #selector(clickLeft), for: .touchUpInside)
+        
+        btn.sizeToFit()
+        btn.titleEdgeInsets = UIEdgeInsets(top: 0, left: margin, bottom: 0, right: 0)
+//        btn.imageEdgeInsets = UIEdgeInsets(top: 0, left: -margin, bottom: 0, right: 0)
+//        btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: margin)
+        btn.frame = CGRect(origin: .zero, size: CGSize(width: btn.width + margin, height: btn.height))
         
         let leftButton = UIBarButtonItem(customView: btn)
         self.navigationItem.leftBarButtonItem = leftButton

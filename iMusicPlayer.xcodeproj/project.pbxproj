@@ -255,6 +255,10 @@
 		C5123A79223903C100672914 /* CATransform3DUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A74223903C100672914 /* CATransform3DUtils.swift */; };
 		C5123A7A223903C100672914 /* CardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5123A75223903C100672914 /* CardViewController.xib */; };
 		C5123A7E2239042600672914 /* MPRadioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5123A7C2239042600672914 /* MPRadioViewController.xib */; };
+		C5123A85223917D700672914 /* usersetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5123A83223917D700672914 /* usersetting.plist */; };
+		C5123A86223917D700672914 /* MPUserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A84223917D700672914 /* MPUserSettingViewController.swift */; };
+		C5123A8A2239EC1300672914 /* MPUserSettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A882239EC1300672914 /* MPUserSettingHeaderView.swift */; };
+		C5123A8B2239EC1300672914 /* MPUserSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5123A892239EC1300672914 /* MPUserSettingHeaderView.xib */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -631,6 +635,10 @@
 		C5123A74223903C100672914 /* CATransform3DUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CATransform3DUtils.swift; sourceTree = "<group>"; };
 		C5123A75223903C100672914 /* CardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardViewController.xib; sourceTree = "<group>"; };
 		C5123A7C2239042600672914 /* MPRadioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPRadioViewController.xib; sourceTree = "<group>"; };
+		C5123A83223917D700672914 /* usersetting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = usersetting.plist; sourceTree = "<group>"; };
+		C5123A84223917D700672914 /* MPUserSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPUserSettingViewController.swift; sourceTree = "<group>"; };
+		C5123A882239EC1300672914 /* MPUserSettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPUserSettingHeaderView.swift; sourceTree = "<group>"; };
+		C5123A892239EC1300672914 /* MPUserSettingHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPUserSettingHeaderView.xib; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1608,6 +1616,9 @@
 		C5035A0F2237B314003177EC /* PersonalCenter(个人中心) */ = {
 			isa = PBXGroup;
 			children = (
+				C5123A872239EBC400672914 /* View */,
+				C5123A84223917D700672914 /* MPUserSettingViewController.swift */,
+				C5123A82223917D700672914 /* Config */,
 			);
 			path = "PersonalCenter(个人中心)";
 			sourceTree = "<group>";
@@ -1741,6 +1752,23 @@
 				C5123A73223903C100672914 /* UIScrollView+Utils.swift */,
 			);
 			path = CardView;
+			sourceTree = "<group>";
+		};
+		C5123A82223917D700672914 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C5123A83223917D700672914 /* usersetting.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		C5123A872239EBC400672914 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5123A882239EC1300672914 /* MPUserSettingHeaderView.swift */,
+				C5123A892239EC1300672914 /* MPUserSettingHeaderView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		EC570F91216F50DDD372E37F /* Frameworks */ = {
@@ -1889,6 +1917,7 @@
 				C50358A72237A517003177EC /* BRPickerView.bundle in Resources */,
 				C50358E02237A517003177EC /* address_select_yes.png in Resources */,
 				C50358EE2237A517003177EC /* MDFlowView.xib in Resources */,
+				C5123A85223917D700672914 /* usersetting.plist in Resources */,
 				C5035CA62238AC9E003177EC /* MPDiscoverTableViewCell.xib in Resources */,
 				C5123A7E2239042600672914 /* MPRadioViewController.xib in Resources */,
 				C5035C962237C350003177EC /* AutoGenStrings.py in Resources */,
@@ -1908,6 +1937,7 @@
 				C503584B2237A517003177EC /* HFWelcomeViewController.xib in Resources */,
 				C5035B422237B315003177EC /* LTWebViewController.xib in Resources */,
 				C5035CBE2238D37D003177EC /* MPRecommendCollectionViewCell.xib in Resources */,
+				C5123A8B2239EC1300672914 /* MPUserSettingHeaderView.xib in Resources */,
 				C5035C832237BBD8003177EC /* MPLoginViewController.xib in Resources */,
 				C503585C2237A517003177EC /* project_intro.html in Resources */,
 				C5035B522237B315003177EC /* MenuData.plist in Resources */,
@@ -2136,6 +2166,7 @@
 				C50358732237A517003177EC /* RequestExtension.swift in Sources */,
 				C50358712237A517003177EC /* HotSearchView.swift in Sources */,
 				C5123A78223903C100672914 /* UIScrollView+Utils.swift in Sources */,
+				C5123A86223917D700672914 /* MPUserSettingViewController.swift in Sources */,
 				C503587A2237A517003177EC /* UIButton+Category.m in Sources */,
 				C50358A52237A517003177EC /* BRBaseView.m in Sources */,
 				C5035B462237B315003177EC /* MKGPX.swift in Sources */,
@@ -2283,6 +2314,7 @@
 				C50358DF2237A517003177EC /* AddressModel.swift in Sources */,
 				C5035B512237B315003177EC /* YDMenuDataSource.swift in Sources */,
 				C503588D2237A517003177EC /* NSDictionary+Category.m in Sources */,
+				C5123A8A2239EC1300672914 /* MPUserSettingHeaderView.swift in Sources */,
 				C5035CA92238B39F003177EC /* MPBaseSectionHeaderView.swift in Sources */,
 				C50358BF2237A517003177EC /* HXDatePhotoViewController.m in Sources */,
 				C50358D62237A517003177EC /* String+Extension.swift in Sources */,
