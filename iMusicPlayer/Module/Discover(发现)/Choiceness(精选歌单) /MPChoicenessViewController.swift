@@ -9,11 +9,11 @@
 import UIKit
 
 private struct Constant {
-    static let identifier = "MPPopularTableViewCell"
-    static let rowHeight = SCREEN_WIDTH * (76/375)
+    static let identifier = "MPChoicenessTableViewCell"
+    static let rowHeight = SCREEN_WIDTH * (117/375)
 }
 
-class MPPopularViewController: BaseTableViewController {
+class MPChoicenessViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ class MPPopularViewController: BaseTableViewController {
     override func setupStyle() {
         super.setupStyle()
         
-        addLeftItem(title: NSLocalizedString("人气歌手", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
+        addLeftItem(title: NSLocalizedString("精选歌单", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
         addRightItem(imageName: "nav_icon_search")
     }
     
@@ -47,21 +47,14 @@ class MPPopularViewController: BaseTableViewController {
         
     }
     
-    override func setupTableHeaderView() {
-        super.setupTableHeaderView()
-        
-        let hv = MPPopularHeaderView.md_viewFromXIB() as! MPPopularHeaderView
-        tableView.tableHeaderView = hv
-    }
-    
 }
-extension MPPopularViewController {
+extension MPChoicenessViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: MPPopularTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPPopularTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPChoicenessTableViewCell
         return cell
     }
     

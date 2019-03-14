@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MPAlbumListHeaderView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="215"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="214.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSe-pF-u0k">
+                        <rect key="frame" x="12" y="166.5" width="162" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="Fbe-un-HmB"/>
+                            <constraint firstAttribute="width" secondItem="oSe-pF-u0k" secondAttribute="height" multiplier="162:36" id="WpD-7K-ZNW"/>
+                        </constraints>
+                        <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="随机播放" image="icon_album_play_random">
+                            <color key="titleColor" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjz-Ht-5I9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="154.5"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="img_ranking_ment" translatesAutoresizingMaskIntoConstraints="NO" id="wq1-HJ-Ju2">
+                                <rect key="frame" x="12" y="12" width="130.5" height="130.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wq1-HJ-Ju2" secondAttribute="height" multiplier="1:1" id="JRx-ac-lTY"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="韩国Ment排行榜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0o-wW-nbV">
+                                <rect key="frame" x="154.5" y="56.5" width="153.5" height="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每周日更新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhJ-mH-2x6">
+                                <rect key="frame" x="154.5" y="90.5" width="153.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="c0o-wW-nbV" firstAttribute="leading" secondItem="wq1-HJ-Ju2" secondAttribute="trailing" constant="12" id="0QY-Zx-PA7"/>
+                            <constraint firstItem="FhJ-mH-2x6" firstAttribute="trailing" secondItem="c0o-wW-nbV" secondAttribute="trailing" id="8On-Bn-NbN"/>
+                            <constraint firstAttribute="bottom" secondItem="wq1-HJ-Ju2" secondAttribute="bottom" constant="12" id="HjU-U7-KEo"/>
+                            <constraint firstItem="c0o-wW-nbV" firstAttribute="centerY" secondItem="wq1-HJ-Ju2" secondAttribute="centerY" constant="-10" id="QFS-oT-aPi"/>
+                            <constraint firstItem="wq1-HJ-Ju2" firstAttribute="leading" secondItem="fjz-Ht-5I9" secondAttribute="leading" constant="12" id="RZt-56-KBH"/>
+                            <constraint firstItem="FhJ-mH-2x6" firstAttribute="leading" secondItem="c0o-wW-nbV" secondAttribute="leading" id="RsD-nc-8Ij"/>
+                            <constraint firstItem="wq1-HJ-Ju2" firstAttribute="top" secondItem="fjz-Ht-5I9" secondAttribute="top" constant="12" id="jK9-ga-JMp"/>
+                            <constraint firstItem="FhJ-mH-2x6" firstAttribute="top" secondItem="c0o-wW-nbV" secondAttribute="bottom" constant="12" id="yz4-Nc-xBf"/>
+                            <constraint firstAttribute="trailing" secondItem="c0o-wW-nbV" secondAttribute="trailing" constant="12" id="zd6-zY-tZ0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oSe-pF-u0k" firstAttribute="top" secondItem="fjz-Ht-5I9" secondAttribute="bottom" constant="12" id="8OK-RC-Iax"/>
+                    <constraint firstAttribute="bottom" secondItem="oSe-pF-u0k" secondAttribute="bottom" constant="12" id="8b3-4t-BZE"/>
+                    <constraint firstItem="oSe-pF-u0k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="NTD-Gf-hNE"/>
+                    <constraint firstItem="fjz-Ht-5I9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Rw6-TU-JzX"/>
+                    <constraint firstItem="fjz-Ht-5I9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="i2n-7N-OZJ"/>
+                    <constraint firstAttribute="trailing" secondItem="fjz-Ht-5I9" secondAttribute="trailing" id="oAU-EL-sR9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="xib_random" destination="oSe-pF-u0k" id="BX4-cc-sAE"/>
+            </connections>
+            <point key="canvasLocation" x="-291" y="57"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_album_play_random" width="25" height="25"/>
+        <image name="img_ranking_ment" width="200" height="200"/>
+    </resources>
+</document>

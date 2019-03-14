@@ -67,9 +67,16 @@ extension MPDiscoverViewController {
         switch indexPath.section {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.recommendIdentifier)!
+            (cell as! MPRecommendTableViewCell).itemClickedBlock = {[weak self] (index) in
+                
+            }
             break
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.recentlyIdentifier)!
+            (cell as! MPRecentlyTableViewCell).itemClickedBlock = {[weak self] (index) in
+                let vc = MPAlbumListViewController()
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
             break
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.categoryIdentifier)!
@@ -115,6 +122,14 @@ extension MPDiscoverViewController {
             ft = .choiceness
         }
         shv.fromType = ft
+        
+        shv.clickBlock = {(sender) in
+            if let btn = sender as? UIButton {
+                let vc = MPChoicenessViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        
         return shv
     }
     
@@ -126,7 +141,16 @@ extension MPDiscoverViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 {
+         // 每日推荐点击
+        if indexPath.section == 0 {
+            
+        }
+        // 最近播放点击
+       else if indexPath.section == 1 {
+            
+        }
+        // 分类列表点击
+        else if indexPath.section == 2 {
             switch indexPath.row {
             case 0:
                 let vc = MPLatestViewController()
@@ -143,6 +167,10 @@ extension MPDiscoverViewController {
             default:
                 break
             }
+        }
+         // 精选歌单点击
+        else if indexPath.section == 3 {
+            
         }
     }
     

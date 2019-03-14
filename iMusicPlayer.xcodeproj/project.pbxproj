@@ -279,6 +279,14 @@
 		C5C8834F223A37B300B1263B /* MPPopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C8834C223A37B300B1263B /* MPPopularTableViewCell.xib */; };
 		C5C88352223A3B6A00B1263B /* MPPopularHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88350223A3B6A00B1263B /* MPPopularHeaderView.swift */; };
 		C5C88353223A3B6A00B1263B /* MPPopularHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C88351223A3B6A00B1263B /* MPPopularHeaderView.xib */; };
+		C5C8835A223A4A7C00B1263B /* MPChoicenessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88355223A4A7C00B1263B /* MPChoicenessViewController.swift */; };
+		C5C8835B223A4A7C00B1263B /* MPChoicenessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88358223A4A7C00B1263B /* MPChoicenessTableViewCell.swift */; };
+		C5C8835C223A4A7C00B1263B /* MPChoicenessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C88359223A4A7C00B1263B /* MPChoicenessTableViewCell.xib */; };
+		C5C88365223A515900B1263B /* MPAlbumListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C8835F223A515900B1263B /* MPAlbumListHeaderView.xib */; };
+		C5C88366223A515900B1263B /* MPAlbumListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C88361223A515900B1263B /* MPAlbumListTableViewCell.xib */; };
+		C5C88367223A515900B1263B /* MPAlbumListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88362223A515900B1263B /* MPAlbumListTableViewCell.swift */; };
+		C5C88368223A515900B1263B /* MPAlbumListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88363223A515900B1263B /* MPAlbumListHeaderView.swift */; };
+		C5C88369223A515900B1263B /* MPAlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88364223A515900B1263B /* MPAlbumListViewController.swift */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -679,6 +687,14 @@
 		C5C8834C223A37B300B1263B /* MPPopularTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPPopularTableViewCell.xib; sourceTree = "<group>"; };
 		C5C88350223A3B6A00B1263B /* MPPopularHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPopularHeaderView.swift; sourceTree = "<group>"; };
 		C5C88351223A3B6A00B1263B /* MPPopularHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPPopularHeaderView.xib; sourceTree = "<group>"; };
+		C5C88355223A4A7C00B1263B /* MPChoicenessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPChoicenessViewController.swift; sourceTree = "<group>"; };
+		C5C88358223A4A7C00B1263B /* MPChoicenessTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPChoicenessTableViewCell.swift; sourceTree = "<group>"; };
+		C5C88359223A4A7C00B1263B /* MPChoicenessTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPChoicenessTableViewCell.xib; sourceTree = "<group>"; };
+		C5C8835F223A515900B1263B /* MPAlbumListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAlbumListHeaderView.xib; sourceTree = "<group>"; };
+		C5C88361223A515900B1263B /* MPAlbumListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAlbumListTableViewCell.xib; sourceTree = "<group>"; };
+		C5C88362223A515900B1263B /* MPAlbumListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPAlbumListTableViewCell.swift; sourceTree = "<group>"; };
+		C5C88363223A515900B1263B /* MPAlbumListHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPAlbumListHeaderView.swift; sourceTree = "<group>"; };
+		C5C88364223A515900B1263B /* MPAlbumListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPAlbumListViewController.swift; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1666,6 +1682,8 @@
 		C5035C842237BE51003177EC /* Discover(发现) */ = {
 			isa = PBXGroup;
 			children = (
+				C5C8835D223A515900B1263B /* AlbumList(专辑列表) */,
+				C5C88354223A4A7C00B1263B /* Choiceness(精选歌单)  */,
 				C5C88347223A37B300B1263B /* Popular(人气歌手)  */,
 				C555F1D0223A328B00606182 /* Ranking(排行榜) */,
 				C555F1C1223A2B0700606182 /* Latest(最新发布) */,
@@ -1927,6 +1945,60 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C5C88354223A4A7C00B1263B /* Choiceness(精选歌单)  */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88356223A4A7C00B1263B /* View */,
+				C5C88355223A4A7C00B1263B /* MPChoicenessViewController.swift */,
+			);
+			path = "Choiceness(精选歌单) ";
+			sourceTree = "<group>";
+		};
+		C5C88356223A4A7C00B1263B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88357223A4A7C00B1263B /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5C88357223A4A7C00B1263B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88358223A4A7C00B1263B /* MPChoicenessTableViewCell.swift */,
+				C5C88359223A4A7C00B1263B /* MPChoicenessTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C5C8835D223A515900B1263B /* AlbumList(专辑列表) */ = {
+			isa = PBXGroup;
+			children = (
+				C5C8835E223A515900B1263B /* View */,
+				C5C88364223A515900B1263B /* MPAlbumListViewController.swift */,
+			);
+			path = "AlbumList(专辑列表)";
+			sourceTree = "<group>";
+		};
+		C5C8835E223A515900B1263B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88360223A515900B1263B /* Cell */,
+				C5C88363223A515900B1263B /* MPAlbumListHeaderView.swift */,
+				C5C8835F223A515900B1263B /* MPAlbumListHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5C88360223A515900B1263B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88362223A515900B1263B /* MPAlbumListTableViewCell.swift */,
+				C5C88361223A515900B1263B /* MPAlbumListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		EC570F91216F50DDD372E37F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2060,6 +2132,7 @@
 				C5035CB62238BE48003177EC /* MPRecommendTableViewCell.xib in Resources */,
 				C50358F02237A517003177EC /* MDFlowViewCollectionViewCell.xib in Resources */,
 				C555F1BC223A043C00606182 /* MPSearchHeaderView.xib in Resources */,
+				C5C88365223A515900B1263B /* MPAlbumListHeaderView.xib in Resources */,
 				C555F1CA223A2BA900606182 /* MPLatestTableViewCell.xib in Resources */,
 				C5123A94223A014E00672914 /* MPSearchTableViewCell.xib in Resources */,
 				C5035B432237B315003177EC /* LTCommentViewController.xib in Resources */,
@@ -2074,6 +2147,7 @@
 				C5123A7A223903C100672914 /* CardViewController.xib in Resources */,
 				C5035C9B2237C41C003177EC /* Localizable.strings in Resources */,
 				C50358D32237A517003177EC /* HXPhotoPicker.bundle in Resources */,
+				C5C88366223A515900B1263B /* MPAlbumListTableViewCell.xib in Resources */,
 				C50358A72237A517003177EC /* BRPickerView.bundle in Resources */,
 				C50358E02237A517003177EC /* address_select_yes.png in Resources */,
 				C50358EE2237A517003177EC /* MDFlowView.xib in Resources */,
@@ -2101,6 +2175,7 @@
 				C5035CBE2238D37D003177EC /* MPRecommendCollectionViewCell.xib in Resources */,
 				C5123A8B2239EC1300672914 /* MPUserSettingHeaderView.xib in Resources */,
 				C5C88353223A3B6A00B1263B /* MPPopularHeaderView.xib in Resources */,
+				C5C8835C223A4A7C00B1263B /* MPChoicenessTableViewCell.xib in Resources */,
 				C5035C832237BBD8003177EC /* MPLoginViewController.xib in Resources */,
 				C503585C2237A517003177EC /* project_intro.html in Resources */,
 				C5035B522237B315003177EC /* MenuData.plist in Resources */,
@@ -2344,8 +2419,10 @@
 				C50356AF223794F1003177EC /* ViewController.swift in Sources */,
 				C50358682237A517003177EC /* AppDefaultStyle.swift in Sources */,
 				C503586A2237A517003177EC /* MDBaseObject.swift in Sources */,
+				C5C88367223A515900B1263B /* MPAlbumListTableViewCell.swift in Sources */,
 				C50358C22237A517003177EC /* HXCustomCameraController.m in Sources */,
 				C50358812237A517003177EC /* UIView+Category.m in Sources */,
+				C5C8835B223A4A7C00B1263B /* MPChoicenessTableViewCell.swift in Sources */,
 				C50358A42237A517003177EC /* BRDatePickerView.m in Sources */,
 				C50358E72237A517003177EC /* DispatchTime+Extension.swift in Sources */,
 				C50358922237A517003177EC /* NSString+MD5.m in Sources */,
@@ -2417,6 +2494,7 @@
 				C5035CB12238BBFB003177EC /* MPCategoryTableViewCell.swift in Sources */,
 				C50358592237A517003177EC /* HFImagePickerManager.swift in Sources */,
 				C50358432237A517003177EC /* HFDataCent.swift in Sources */,
+				C5C88369223A515900B1263B /* MPAlbumListViewController.swift in Sources */,
 				C50358D52237A517003177EC /* HXDatePhotoEditViewController.m in Sources */,
 				C5035C8C2237C23A003177EC /* MPRadioViewController.swift in Sources */,
 				C50358CA2237A517003177EC /* HXDatePhotoViewTransition.m in Sources */,
@@ -2430,6 +2508,7 @@
 				C50358AB2237A517003177EC /* UIImage+SLAdd.m in Sources */,
 				C5123A652238EB9500672914 /* MPMediaLibraryModel.swift in Sources */,
 				C5035C952237C350003177EC /* NSBundle+DAUtils.m in Sources */,
+				C5C88368223A515900B1263B /* MPAlbumListHeaderView.swift in Sources */,
 				C50358D82237A517003177EC /* AddressAttribute.swift in Sources */,
 				C50358672237A517003177EC /* BaseModel.swift in Sources */,
 				C5035B4D2237B315003177EC /* CommonDataCent.swift in Sources */,
@@ -2502,6 +2581,7 @@
 				C50358AA2237A517003177EC /* MDPasswordView.swift in Sources */,
 				C50358442237A517003177EC /* HFUserData.swift in Sources */,
 				C50358D42237A517003177EC /* HXDatePhotoToolManager.m in Sources */,
+				C5C8835A223A4A7C00B1263B /* MPChoicenessViewController.swift in Sources */,
 				C50358652237A517003177EC /* PlaceholderView.swift in Sources */,
 				C50358D92237A517003177EC /* FJAddressModel.swift in Sources */,
 				C503584E2237A517003177EC /* HFAppEngine.swift in Sources */,

@@ -16,6 +16,8 @@ class MPRecommendTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var itemClickedBlock: ((_ index: Int)->Void)? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -47,6 +49,12 @@ extension MPRecommendTableViewCell: UICollectionViewDataSource, UICollectionView
         let width =  SCREEN_HEIGHT * (252/667)
         let height = SCREEN_WIDTH * (260/375)
         return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let b = itemClickedBlock {
+            b(indexPath.row)
+        }
     }
     
 }

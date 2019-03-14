@@ -22,6 +22,8 @@ class MPBaseSectionHeaderView: BaseView {
     
     @IBOutlet weak var xib_title: UILabel!
     
+    @IBOutlet weak var xib_choicenessBtn: UIButton!
+    
     var fromType: MPBaseSectionHeaderViewType = .recently {
         didSet {
             if fromType == .recommend {
@@ -32,7 +34,7 @@ class MPBaseSectionHeaderView: BaseView {
             }else if fromType == .choiceness {
                 xib_top100.isHidden = true
                 xib_arrowRight.isHidden = false
-                
+                xib_choicenessBtn.isUserInteractionEnabled = true
                 xib_title.text = MPDiscoverModel.sectionTitleDatas[3]
             }else if fromType == .recently {
                 xib_title.text = MPDiscoverModel.sectionTitleDatas[1]
@@ -49,4 +51,11 @@ class MPBaseSectionHeaderView: BaseView {
         xib_title.text = model
     }
 
+    @IBAction func btn_DidClicked(_ sender: UIButton) {
+        if let b = clickBlock {
+            b(sender)
+        }
+    }
+    
+    
 }

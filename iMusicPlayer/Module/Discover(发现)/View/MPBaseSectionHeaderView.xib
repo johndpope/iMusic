@@ -31,20 +31,31 @@
                 <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="icon_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="34c-dd-C8m">
                     <rect key="frame" x="117.5" y="30" width="20" height="20"/>
                 </imageView>
+                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmm-QO-pUF">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                    <connections>
+                        <action selector="btn_DidClicked:" destination="Bcw-Wd-WpV" eventType="touchUpInside" id="FdS-lv-qtB"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="Zmm-QO-pUF" firstAttribute="top" secondItem="2G3-rj-Rkc" secondAttribute="top" id="Bi6-2A-9NA"/>
                 <constraint firstItem="uax-OJ-6TN" firstAttribute="top" secondItem="0Jp-4c-Kqp" secondAttribute="bottom" constant="4" id="GrF-Sa-VSC"/>
                 <constraint firstItem="uax-OJ-6TN" firstAttribute="centerY" secondItem="Bcw-Wd-WpV" secondAttribute="centerY" id="SNg-Z4-d3W"/>
                 <constraint firstItem="34c-dd-C8m" firstAttribute="leading" secondItem="uax-OJ-6TN" secondAttribute="trailing" constant="8" id="Sdv-nW-WZu"/>
                 <constraint firstItem="34c-dd-C8m" firstAttribute="centerY" secondItem="uax-OJ-6TN" secondAttribute="centerY" id="ZaF-0d-LXU"/>
+                <constraint firstItem="2G3-rj-Rkc" firstAttribute="bottom" secondItem="Zmm-QO-pUF" secondAttribute="bottom" id="dAz-Ys-C6X"/>
+                <constraint firstItem="2G3-rj-Rkc" firstAttribute="trailing" secondItem="Zmm-QO-pUF" secondAttribute="trailing" id="dkl-34-30J"/>
                 <constraint firstItem="0Jp-4c-Kqp" firstAttribute="leading" secondItem="uax-OJ-6TN" secondAttribute="leading" id="o9h-vO-wWl"/>
                 <constraint firstItem="uax-OJ-6TN" firstAttribute="leading" secondItem="2G3-rj-Rkc" secondAttribute="leading" constant="12" id="pNc-x0-xfX"/>
+                <constraint firstItem="Zmm-QO-pUF" firstAttribute="leading" secondItem="2G3-rj-Rkc" secondAttribute="leading" id="vAn-DS-re2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="2G3-rj-Rkc"/>
             <connections>
                 <outlet property="xib_arrowRight" destination="34c-dd-C8m" id="Fh7-Tg-Nt9"/>
+                <outlet property="xib_choicenessBtn" destination="Zmm-QO-pUF" id="5VU-LI-BqC"/>
                 <outlet property="xib_title" destination="uax-OJ-6TN" id="JT7-xl-ryL"/>
                 <outlet property="xib_top100" destination="0Jp-4c-Kqp" id="0lU-kV-cov"/>
             </connections>
