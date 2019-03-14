@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MPRankingTableViewCell" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="123.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_ranking_oricon" translatesAutoresizingMaskIntoConstraints="NO" id="2JC-ou-zUG">
+                        <rect key="frame" x="12" y="12" width="99.5" height="99.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="2JC-ou-zUG" secondAttribute="height" id="9tk-Ek-YI4"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oricon榜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oh1-du-4ku">
+                        <rect key="frame" x="119.5" y="12" width="192.5" height="22"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日更新" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MY9-5Y-CXt">
+                        <rect key="frame" x="119.5" y="42" width="192.5" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="清水翔太 『Good Life』Music Video …" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F15-vq-y4X">
+                        <rect key="frame" x="119.5" y="75.5" width="192.5" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TWICE「Candy Pop」Music Video " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSn-iO-QRd">
+                        <rect key="frame" x="119.5" y="97.5" width="192.5" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTt-Dp-DUO">
+                        <rect key="frame" x="71.5" y="71.5" width="32" height="32"/>
+                        <state key="normal" image="icon_play_1"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="F15-vq-y4X" firstAttribute="trailing" secondItem="zSn-iO-QRd" secondAttribute="trailing" id="4wf-VO-WDv"/>
+                    <constraint firstItem="zSn-iO-QRd" firstAttribute="top" secondItem="F15-vq-y4X" secondAttribute="bottom" constant="8" id="7xl-aW-RK5"/>
+                    <constraint firstAttribute="bottom" secondItem="2JC-ou-zUG" secondAttribute="bottom" constant="12" id="9LG-Lc-2hS"/>
+                    <constraint firstItem="F15-vq-y4X" firstAttribute="leading" secondItem="zSn-iO-QRd" secondAttribute="leading" id="CLD-F3-r1j"/>
+                    <constraint firstItem="MY9-5Y-CXt" firstAttribute="trailing" secondItem="Oh1-du-4ku" secondAttribute="trailing" id="Dk7-8f-lzt"/>
+                    <constraint firstItem="Oh1-du-4ku" firstAttribute="leading" secondItem="2JC-ou-zUG" secondAttribute="trailing" constant="8" id="ESh-zE-UZi"/>
+                    <constraint firstItem="zSn-iO-QRd" firstAttribute="bottom" secondItem="2JC-ou-zUG" secondAttribute="bottom" id="G7Y-rN-05c"/>
+                    <constraint firstItem="UTt-Dp-DUO" firstAttribute="trailing" secondItem="2JC-ou-zUG" secondAttribute="trailing" constant="-8" id="KKt-ON-dFi"/>
+                    <constraint firstItem="2JC-ou-zUG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="N8l-gc-244"/>
+                    <constraint firstAttribute="trailing" secondItem="zSn-iO-QRd" secondAttribute="trailing" constant="8" id="Pyr-7P-PIB"/>
+                    <constraint firstItem="UTt-Dp-DUO" firstAttribute="bottom" secondItem="2JC-ou-zUG" secondAttribute="bottom" constant="-8" id="QYW-4G-TjW"/>
+                    <constraint firstItem="MY9-5Y-CXt" firstAttribute="top" secondItem="Oh1-du-4ku" secondAttribute="bottom" constant="8" id="ZnE-gC-OQ4"/>
+                    <constraint firstItem="MY9-5Y-CXt" firstAttribute="leading" secondItem="Oh1-du-4ku" secondAttribute="leading" id="a3e-R0-okd"/>
+                    <constraint firstItem="2JC-ou-zUG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="es6-CO-VaJ"/>
+                    <constraint firstItem="2JC-ou-zUG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="sNE-M2-nD7"/>
+                    <constraint firstItem="Oh1-du-4ku" firstAttribute="top" secondItem="2JC-ou-zUG" secondAttribute="top" id="t2X-az-a3s"/>
+                    <constraint firstItem="zSn-iO-QRd" firstAttribute="leading" secondItem="2JC-ou-zUG" secondAttribute="trailing" constant="8" id="vOM-HS-YFD"/>
+                    <constraint firstAttribute="trailing" secondItem="Oh1-du-4ku" secondAttribute="trailing" constant="8" id="yng-Fk-Qhe"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_play_1" width="32" height="32"/>
+        <image name="img_ranking_oricon" width="200" height="200"/>
+    </resources>
+</document>

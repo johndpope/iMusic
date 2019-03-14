@@ -259,6 +259,26 @@
 		C5123A86223917D700672914 /* MPUserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A84223917D700672914 /* MPUserSettingViewController.swift */; };
 		C5123A8A2239EC1300672914 /* MPUserSettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A882239EC1300672914 /* MPUserSettingHeaderView.swift */; };
 		C5123A8B2239EC1300672914 /* MPUserSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5123A892239EC1300672914 /* MPUserSettingHeaderView.xib */; };
+		C5123A8E223A00DD00672914 /* MPSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A8D223A00DD00672914 /* MPSearchViewController.swift */; };
+		C5123A93223A014E00672914 /* MPSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5123A91223A014E00672914 /* MPSearchTableViewCell.swift */; };
+		C5123A94223A014E00672914 /* MPSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5123A92223A014E00672914 /* MPSearchTableViewCell.xib */; };
+		C555F1BB223A043C00606182 /* MPSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C555F1B9223A043C00606182 /* MPSearchHeaderView.swift */; };
+		C555F1BC223A043C00606182 /* MPSearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C555F1BA223A043C00606182 /* MPSearchHeaderView.xib */; };
+		C555F1BF223A101E00606182 /* MPSearchNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C555F1BD223A101E00606182 /* MPSearchNavView.swift */; };
+		C555F1C0223A101E00606182 /* MPSearchNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C555F1BE223A101E00606182 /* MPSearchNavView.xib */; };
+		C555F1C3223A2B5B00606182 /* MPLatestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C555F1C2223A2B5B00606182 /* MPLatestViewController.swift */; };
+		C555F1C9223A2BA900606182 /* MPLatestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C555F1C7223A2BA900606182 /* MPLatestTableViewCell.swift */; };
+		C555F1CA223A2BA900606182 /* MPLatestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C555F1C8223A2BA900606182 /* MPLatestTableViewCell.xib */; };
+		C555F1CE223A2E7800606182 /* MPLatestHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C555F1CC223A2E7800606182 /* MPLatestHeaderView.swift */; };
+		C555F1CF223A2E7800606182 /* MPLatestHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C555F1CD223A2E7800606182 /* MPLatestHeaderView.xib */; };
+		C555F1D2223A32CF00606182 /* MPRankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C555F1D1223A32CF00606182 /* MPRankingViewController.swift */; };
+		C555F1D7223A32F200606182 /* MPRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C555F1D5223A32F200606182 /* MPRankingTableViewCell.swift */; };
+		C555F1D8223A32F200606182 /* MPRankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C555F1D6223A32F200606182 /* MPRankingTableViewCell.xib */; };
+		C5C8834D223A37B300B1263B /* MPPopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88348223A37B300B1263B /* MPPopularViewController.swift */; };
+		C5C8834E223A37B300B1263B /* MPPopularTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8834B223A37B300B1263B /* MPPopularTableViewCell.swift */; };
+		C5C8834F223A37B300B1263B /* MPPopularTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C8834C223A37B300B1263B /* MPPopularTableViewCell.xib */; };
+		C5C88352223A3B6A00B1263B /* MPPopularHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88350223A3B6A00B1263B /* MPPopularHeaderView.swift */; };
+		C5C88353223A3B6A00B1263B /* MPPopularHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C88351223A3B6A00B1263B /* MPPopularHeaderView.xib */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -639,6 +659,26 @@
 		C5123A84223917D700672914 /* MPUserSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPUserSettingViewController.swift; sourceTree = "<group>"; };
 		C5123A882239EC1300672914 /* MPUserSettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPUserSettingHeaderView.swift; sourceTree = "<group>"; };
 		C5123A892239EC1300672914 /* MPUserSettingHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPUserSettingHeaderView.xib; sourceTree = "<group>"; };
+		C5123A8D223A00DD00672914 /* MPSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchViewController.swift; sourceTree = "<group>"; };
+		C5123A91223A014E00672914 /* MPSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchTableViewCell.swift; sourceTree = "<group>"; };
+		C5123A92223A014E00672914 /* MPSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchTableViewCell.xib; sourceTree = "<group>"; };
+		C555F1B9223A043C00606182 /* MPSearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchHeaderView.swift; sourceTree = "<group>"; };
+		C555F1BA223A043C00606182 /* MPSearchHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchHeaderView.xib; sourceTree = "<group>"; };
+		C555F1BD223A101E00606182 /* MPSearchNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchNavView.swift; sourceTree = "<group>"; };
+		C555F1BE223A101E00606182 /* MPSearchNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchNavView.xib; sourceTree = "<group>"; };
+		C555F1C2223A2B5B00606182 /* MPLatestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPLatestViewController.swift; sourceTree = "<group>"; };
+		C555F1C7223A2BA900606182 /* MPLatestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPLatestTableViewCell.swift; sourceTree = "<group>"; };
+		C555F1C8223A2BA900606182 /* MPLatestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPLatestTableViewCell.xib; sourceTree = "<group>"; };
+		C555F1CC223A2E7800606182 /* MPLatestHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPLatestHeaderView.swift; sourceTree = "<group>"; };
+		C555F1CD223A2E7800606182 /* MPLatestHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPLatestHeaderView.xib; sourceTree = "<group>"; };
+		C555F1D1223A32CF00606182 /* MPRankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRankingViewController.swift; sourceTree = "<group>"; };
+		C555F1D5223A32F200606182 /* MPRankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRankingTableViewCell.swift; sourceTree = "<group>"; };
+		C555F1D6223A32F200606182 /* MPRankingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPRankingTableViewCell.xib; sourceTree = "<group>"; };
+		C5C88348223A37B300B1263B /* MPPopularViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPPopularViewController.swift; sourceTree = "<group>"; };
+		C5C8834B223A37B300B1263B /* MPPopularTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPPopularTableViewCell.swift; sourceTree = "<group>"; };
+		C5C8834C223A37B300B1263B /* MPPopularTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPPopularTableViewCell.xib; sourceTree = "<group>"; };
+		C5C88350223A3B6A00B1263B /* MPPopularHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPopularHeaderView.swift; sourceTree = "<group>"; };
+		C5C88351223A3B6A00B1263B /* MPPopularHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPPopularHeaderView.xib; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1626,6 +1666,10 @@
 		C5035C842237BE51003177EC /* Discover(发现) */ = {
 			isa = PBXGroup;
 			children = (
+				C5C88347223A37B300B1263B /* Popular(人气歌手)  */,
+				C555F1D0223A328B00606182 /* Ranking(排行榜) */,
+				C555F1C1223A2B0700606182 /* Latest(最新发布) */,
+				C5123A8C223A00A200672914 /* Search(搜索) */,
 				C5035CC32238E0A6003177EC /* Model */,
 				C5035CA22238AC7A003177EC /* View */,
 				C5035C852237BEE3003177EC /* MPDiscoverViewController.swift */,
@@ -1771,6 +1815,118 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C5123A8C223A00A200672914 /* Search(搜索) */ = {
+			isa = PBXGroup;
+			children = (
+				C5123A8F223A011000672914 /* View */,
+				C5123A8D223A00DD00672914 /* MPSearchViewController.swift */,
+			);
+			path = "Search(搜索)";
+			sourceTree = "<group>";
+		};
+		C5123A8F223A011000672914 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5123A90223A012300672914 /* Cell */,
+				C555F1B9223A043C00606182 /* MPSearchHeaderView.swift */,
+				C555F1BA223A043C00606182 /* MPSearchHeaderView.xib */,
+				C555F1BD223A101E00606182 /* MPSearchNavView.swift */,
+				C555F1BE223A101E00606182 /* MPSearchNavView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5123A90223A012300672914 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C5123A91223A014E00672914 /* MPSearchTableViewCell.swift */,
+				C5123A92223A014E00672914 /* MPSearchTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C555F1C1223A2B0700606182 /* Latest(最新发布) */ = {
+			isa = PBXGroup;
+			children = (
+				C555F1CB223A2E2800606182 /* View */,
+				C555F1C2223A2B5B00606182 /* MPLatestViewController.swift */,
+			);
+			path = "Latest(最新发布)";
+			sourceTree = "<group>";
+		};
+		C555F1C4223A2B6F00606182 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C555F1C7223A2BA900606182 /* MPLatestTableViewCell.swift */,
+				C555F1C8223A2BA900606182 /* MPLatestTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C555F1CB223A2E2800606182 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C555F1C4223A2B6F00606182 /* Cell */,
+				C555F1CC223A2E7800606182 /* MPLatestHeaderView.swift */,
+				C555F1CD223A2E7800606182 /* MPLatestHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C555F1D0223A328B00606182 /* Ranking(排行榜) */ = {
+			isa = PBXGroup;
+			children = (
+				C555F1D3223A32D300606182 /* View */,
+				C555F1D1223A32CF00606182 /* MPRankingViewController.swift */,
+			);
+			path = "Ranking(排行榜)";
+			sourceTree = "<group>";
+		};
+		C555F1D3223A32D300606182 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C555F1D4223A32D800606182 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C555F1D4223A32D800606182 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C555F1D5223A32F200606182 /* MPRankingTableViewCell.swift */,
+				C555F1D6223A32F200606182 /* MPRankingTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C5C88347223A37B300B1263B /* Popular(人气歌手)  */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88349223A37B300B1263B /* View */,
+				C5C88348223A37B300B1263B /* MPPopularViewController.swift */,
+			);
+			path = "Popular(人气歌手) ";
+			sourceTree = "<group>";
+		};
+		C5C88349223A37B300B1263B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5C8834A223A37B300B1263B /* Cell */,
+				C5C88350223A3B6A00B1263B /* MPPopularHeaderView.swift */,
+				C5C88351223A3B6A00B1263B /* MPPopularHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5C8834A223A37B300B1263B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C5C8834B223A37B300B1263B /* MPPopularTableViewCell.swift */,
+				C5C8834C223A37B300B1263B /* MPPopularTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		EC570F91216F50DDD372E37F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1903,6 +2059,9 @@
 				C50358A92237A517003177EC /* MDPasswordView.xib in Resources */,
 				C5035CB62238BE48003177EC /* MPRecommendTableViewCell.xib in Resources */,
 				C50358F02237A517003177EC /* MDFlowViewCollectionViewCell.xib in Resources */,
+				C555F1BC223A043C00606182 /* MPSearchHeaderView.xib in Resources */,
+				C555F1CA223A2BA900606182 /* MPLatestTableViewCell.xib in Resources */,
+				C5123A94223A014E00672914 /* MPSearchTableViewCell.xib in Resources */,
 				C5035B432237B315003177EC /* LTCommentViewController.xib in Resources */,
 				C50358E42237A517003177EC /* icon_deleted@3x copy.png in Resources */,
 				C50356B7223794F2003177EC /* LaunchScreen.storyboard in Resources */,
@@ -1911,6 +2070,7 @@
 				C50358E12237A517003177EC /* icon_deleted@3x.png in Resources */,
 				C5035B412237B315003177EC /* MDWebViewController.xib in Resources */,
 				C5035CA12238A286003177EC /* MPNavView.xib in Resources */,
+				C555F1D8223A32F200606182 /* MPRankingTableViewCell.xib in Resources */,
 				C5123A7A223903C100672914 /* CardViewController.xib in Resources */,
 				C5035C9B2237C41C003177EC /* Localizable.strings in Resources */,
 				C50358D32237A517003177EC /* HXPhotoPicker.bundle in Resources */,
@@ -1927,6 +2087,7 @@
 				C50358DC2237A517003177EC /* FJAddressTVCell.xib in Resources */,
 				C50358E62237A517003177EC /* icon_deleted@2x.png in Resources */,
 				C50358DD2237A517003177EC /* tp_region.sql in Resources */,
+				C5C8834F223A37B300B1263B /* MPPopularTableViewCell.xib in Resources */,
 				C5035CC22238D7E3003177EC /* MPRecentlyCollectionViewCell.xib in Resources */,
 				C5035CBA2238BE5F003177EC /* MPRecentlyTableViewCell.xib in Resources */,
 				C5035B4E2237B315003177EC /* LTLocationBottomView.xib in Resources */,
@@ -1935,13 +2096,16 @@
 				C5035B3E2237B315003177EC /* LTLocationViewController.xib in Resources */,
 				C50356B2223794F1003177EC /* Main.storyboard in Resources */,
 				C503584B2237A517003177EC /* HFWelcomeViewController.xib in Resources */,
+				C555F1CF223A2E7800606182 /* MPLatestHeaderView.xib in Resources */,
 				C5035B422237B315003177EC /* LTWebViewController.xib in Resources */,
 				C5035CBE2238D37D003177EC /* MPRecommendCollectionViewCell.xib in Resources */,
 				C5123A8B2239EC1300672914 /* MPUserSettingHeaderView.xib in Resources */,
+				C5C88353223A3B6A00B1263B /* MPPopularHeaderView.xib in Resources */,
 				C5035C832237BBD8003177EC /* MPLoginViewController.xib in Resources */,
 				C503585C2237A517003177EC /* project_intro.html in Resources */,
 				C5035B522237B315003177EC /* MenuData.plist in Resources */,
 				C50358ED2237A517003177EC /* CYPasswordView.bundle in Resources */,
+				C555F1C0223A101E00606182 /* MPSearchNavView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2133,12 +2297,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C503586E2237A517003177EC /* JYEqualCellSpaceFlowLayout.swift in Sources */,
+				C555F1C3223A2B5B00606182 /* MPLatestViewController.swift in Sources */,
+				C555F1CE223A2E7800606182 /* MPLatestHeaderView.swift in Sources */,
 				C50358CC2237A517003177EC /* HXAlbumModel.m in Sources */,
 				C50358A12237A517003177EC /* ZXDrawPrizeView.swift in Sources */,
 				C50358612237A517003177EC /* MDNavigationController.swift in Sources */,
 				C50358CE2237A517003177EC /* UIButton+HXExtension.m in Sources */,
 				C50358C82237A517003177EC /* NSDate+HXExtension.m in Sources */,
+				C5C88352223A3B6A00B1263B /* MPPopularHeaderView.swift in Sources */,
 				C503583E2237A517003177EC /* AppConfiguration.swift in Sources */,
+				C555F1BF223A101E00606182 /* MPSearchNavView.swift in Sources */,
 				C503588E2237A517003177EC /* NSString+Predicate.m in Sources */,
 				C50358C32237A517003177EC /* UIImage+HXExtension.m in Sources */,
 				C50358D02237A517003177EC /* HXDatePhotoPersentInteractiveTransition.m in Sources */,
@@ -2160,6 +2328,7 @@
 				C50358722237A517003177EC /* MDRightIconButton.swift in Sources */,
 				C50358AE2237A517003177EC /* UIViewController+HXExtension.m in Sources */,
 				C50358AC2237A517003177EC /* SLPasswordInputView.m in Sources */,
+				C5123A93223A014E00672914 /* MPSearchTableViewCell.swift in Sources */,
 				C50358662237A517003177EC /* FYLSegmentView.m in Sources */,
 				C50358CF2237A517003177EC /* HXCustomPreviewView.m in Sources */,
 				C5035C942237C350003177EC /* DAConfig.m in Sources */,
@@ -2180,6 +2349,7 @@
 				C50358A42237A517003177EC /* BRDatePickerView.m in Sources */,
 				C50358E72237A517003177EC /* DispatchTime+Extension.swift in Sources */,
 				C50358922237A517003177EC /* NSString+MD5.m in Sources */,
+				C555F1C9223A2BA900606182 /* MPLatestTableViewCell.swift in Sources */,
 				C50358A32237A517003177EC /* NSDate+BRPickerView.m in Sources */,
 				C503585F2237A517003177EC /* BaseTabBarController.swift in Sources */,
 				C5035B4A2237B315003177EC /* BannerModel.swift in Sources */,
@@ -2189,6 +2359,7 @@
 				C5035B4C2237B315003177EC /* FCSearchHouseModel.swift in Sources */,
 				C503583F2237A517003177EC /* HFEngineConfiguration.swift in Sources */,
 				C50358A22237A517003177EC /* BRStringPickerView.m in Sources */,
+				C555F1D7223A32F200606182 /* MPRankingTableViewCell.swift in Sources */,
 				C50358AD2237A517003177EC /* HXCustomCameraViewController.m in Sources */,
 				C5035CB92238BE5F003177EC /* MPRecentlyTableViewCell.swift in Sources */,
 				C50358E32237A517003177EC /* FJSelectLocationView.swift in Sources */,
@@ -2227,6 +2398,7 @@
 				C5035CB52238BE48003177EC /* MPRecommendTableViewCell.swift in Sources */,
 				C50358502237A517003177EC /* MDSettingController.swift in Sources */,
 				C50358802237A517003177EC /* UIButton+Category.m in Sources */,
+				C5C8834E223A37B300B1263B /* MPPopularTableViewCell.swift in Sources */,
 				C50358AF2237A517003177EC /* HXPhotoConfiguration.m in Sources */,
 				C503589E2237A517003177EC /* UserDefault+Extension.swift in Sources */,
 				C50358522237A517003177EC /* MDHorizontalCircleMenuView.swift in Sources */,
@@ -2253,6 +2425,7 @@
 				C50358452237A517003177EC /* QBImageModel.swift in Sources */,
 				C50358562237A517003177EC /* HFThirdPartyManager.swift in Sources */,
 				C5035CA02238A286003177EC /* MPNavView.swift in Sources */,
+				C5123A8E223A00DD00672914 /* MPSearchViewController.swift in Sources */,
 				C50358462237A517003177EC /* HFMainDataCent.swift in Sources */,
 				C50358AB2237A517003177EC /* UIImage+SLAdd.m in Sources */,
 				C5123A652238EB9500672914 /* MPMediaLibraryModel.swift in Sources */,
@@ -2264,6 +2437,7 @@
 				C50358692237A517003177EC /* BasePageViewController.swift in Sources */,
 				C5035B4F2237B315003177EC /* LTLocationBottomView.swift in Sources */,
 				C50358B02237A517003177EC /* HXDownloadProgressView.m in Sources */,
+				C555F1BB223A043C00606182 /* MPSearchHeaderView.swift in Sources */,
 				C50358C62237A517003177EC /* HXPhotoView.m in Sources */,
 				C503588F2237A517003177EC /* NSDate+Format.m in Sources */,
 				C5035B3D2237B315003177EC /* LTLocationViewController.swift in Sources */,
@@ -2297,6 +2471,7 @@
 				C50358B12237A517003177EC /* HXPhoto3DTouchViewController.m in Sources */,
 				C50358972237A517003177EC /* ZYStarRateView.swift in Sources */,
 				C50358D12237A517003177EC /* HXCircleProgressView.m in Sources */,
+				C555F1D2223A32CF00606182 /* MPRankingViewController.swift in Sources */,
 				C503588B2237A517003177EC /* UIMenuItem+Category.m in Sources */,
 				C50358BA2237A517003177EC /* UIView+HXExtension.m in Sources */,
 				C50358862237A517003177EC /* NSString+Category.m in Sources */,
@@ -2322,6 +2497,7 @@
 				C50358572237A517003177EC /* HFLocationManageer.swift in Sources */,
 				C503586D2237A517003177EC /* MDHotSearchView.swift in Sources */,
 				C50358482237A517003177EC /* AppDelegate+Extension.swift in Sources */,
+				C5C8834D223A37B300B1263B /* MPPopularViewController.swift in Sources */,
 				C50358B52237A517003177EC /* UIImageView+HXExtension.m in Sources */,
 				C50358AA2237A517003177EC /* MDPasswordView.swift in Sources */,
 				C50358442237A517003177EC /* HFUserData.swift in Sources */,

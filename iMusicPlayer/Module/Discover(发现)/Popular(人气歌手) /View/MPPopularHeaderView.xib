@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="JDA-4s-Uku" customClass="MPPopularHeaderView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="118"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="国籍" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tar-3L-rPx">
+                    <rect key="frame" x="12" y="15" width="25" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分类" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9w-Nf-Mln">
+                    <rect key="frame" x="12" y="46.5" width="29" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqI-zF-zwR">
+                    <rect key="frame" x="12" y="82" width="29" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RG8-zg-jJB" customClass="TagListView" customModule="TagListView">
+                    <rect key="frame" x="57" y="12" width="306" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                            <color key="value" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                            <color key="value" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBorderColor">
+                            <color key="value" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="marginX">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="marginY">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JX5-B5-NCs" customClass="TagListView" customModule="TagListView">
+                    <rect key="frame" x="57" y="44" width="306" height="20"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                            <color key="value" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                            <color key="value" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="tagBackgroundColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="selectedBorderColor">
+                            <color key="value" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="marginX">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="marginY">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oxV-we-TWU">
+                    <rect key="frame" x="57" y="76" width="204" height="27"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入歌手名字" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0wr-vW-frL">
+                            <rect key="frame" x="5" y="0.0" width="194" height="27"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="0wr-vW-frL" secondAttribute="trailing" constant="5" id="0pe-3x-PUr"/>
+                        <constraint firstAttribute="bottom" secondItem="0wr-vW-frL" secondAttribute="bottom" id="GTH-dc-IQS"/>
+                        <constraint firstItem="0wr-vW-frL" firstAttribute="top" secondItem="oxV-we-TWU" secondAttribute="top" id="KlY-UX-hC2"/>
+                        <constraint firstItem="0wr-vW-frL" firstAttribute="leading" secondItem="oxV-we-TWU" secondAttribute="leading" constant="5" id="Oel-3w-T8l"/>
+                        <constraint firstAttribute="height" constant="27" id="UCz-bc-Z7f"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="uqI-zF-zwR" firstAttribute="centerY" secondItem="oxV-we-TWU" secondAttribute="centerY" id="0CL-Dv-k8S"/>
+                <constraint firstItem="oxV-we-TWU" firstAttribute="leading" secondItem="uqI-zF-zwR" secondAttribute="trailing" constant="16" id="5Sw-Xg-dlg"/>
+                <constraint firstItem="uqI-zF-zwR" firstAttribute="leading" secondItem="tar-3L-rPx" secondAttribute="leading" id="9US-SZ-iVj"/>
+                <constraint firstItem="RG8-zg-jJB" firstAttribute="top" secondItem="OlU-w3-Yab" secondAttribute="top" constant="12" id="Bg6-io-Q4Z"/>
+                <constraint firstItem="RG8-zg-jJB" firstAttribute="leading" secondItem="tar-3L-rPx" secondAttribute="trailing" constant="20" id="H8I-Ux-ZD1"/>
+                <constraint firstItem="oxV-we-TWU" firstAttribute="width" secondItem="JX5-B5-NCs" secondAttribute="width" multiplier="2/3" id="Jkw-mZ-vYs"/>
+                <constraint firstItem="Y9w-Nf-Mln" firstAttribute="centerY" secondItem="JX5-B5-NCs" secondAttribute="centerY" id="Oo3-m0-Swd"/>
+                <constraint firstItem="OlU-w3-Yab" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="oxV-we-TWU" secondAttribute="bottom" constant="12" id="Q6K-4Z-NlM"/>
+                <constraint firstItem="tar-3L-rPx" firstAttribute="leading" secondItem="OlU-w3-Yab" secondAttribute="leading" constant="12" id="U5L-m0-MEG"/>
+                <constraint firstItem="tar-3L-rPx" firstAttribute="centerY" secondItem="RG8-zg-jJB" secondAttribute="centerY" id="XhS-mv-Xcc"/>
+                <constraint firstItem="JX5-B5-NCs" firstAttribute="leading" secondItem="RG8-zg-jJB" secondAttribute="leading" id="dE9-HK-qyp"/>
+                <constraint firstItem="JX5-B5-NCs" firstAttribute="top" secondItem="RG8-zg-jJB" secondAttribute="bottom" constant="12" id="eu8-OS-eul"/>
+                <constraint firstItem="OlU-w3-Yab" firstAttribute="trailing" secondItem="RG8-zg-jJB" secondAttribute="trailing" constant="12" id="iPr-gF-pib"/>
+                <constraint firstItem="oxV-we-TWU" firstAttribute="leading" secondItem="JX5-B5-NCs" secondAttribute="leading" id="nmi-N6-Pgg"/>
+                <constraint firstItem="oxV-we-TWU" firstAttribute="top" secondItem="JX5-B5-NCs" secondAttribute="bottom" constant="12" id="qeC-gV-pfw"/>
+                <constraint firstItem="JX5-B5-NCs" firstAttribute="trailing" secondItem="RG8-zg-jJB" secondAttribute="trailing" id="qvK-FS-XHl"/>
+                <constraint firstItem="Y9w-Nf-Mln" firstAttribute="leading" secondItem="tar-3L-rPx" secondAttribute="leading" id="wbi-dw-Kwr"/>
+                <constraint firstItem="JX5-B5-NCs" firstAttribute="leading" secondItem="Y9w-Nf-Mln" secondAttribute="trailing" constant="16" id="z81-z7-UPf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="OlU-w3-Yab"/>
+            <connections>
+                <outlet property="xib_categoryTagList" destination="JX5-B5-NCs" id="mi6-GY-hca"/>
+                <outlet property="xib_countryTagList" destination="RG8-zg-jJB" id="BvJ-4O-8lB"/>
+                <outlet property="xib_nameBgView" destination="oxV-we-TWU" id="zDK-fM-rfV"/>
+            </connections>
+            <point key="canvasLocation" x="230" y="-412"/>
+        </view>
+    </objects>
+</document>

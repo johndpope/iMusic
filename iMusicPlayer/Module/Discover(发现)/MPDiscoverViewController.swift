@@ -125,4 +125,25 @@ extension MPDiscoverViewController {
         return 80
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            switch indexPath.row {
+            case 0:
+                let vc = MPLatestViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            case 1:
+                let vc = MPRankingViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            case 2:
+                let vc = MPPopularViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            default:
+                break
+            }
+        }
+    }
+    
 }
