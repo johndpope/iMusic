@@ -17,6 +17,8 @@ class MPAddToSongListView: BaseView {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var createSongListBlock: (()->Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -44,4 +46,15 @@ extension MPAddToSongListView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            if let b = createSongListBlock {
+                b()
+            }
+        }else {
+            
+        }
+    }
+    
 }

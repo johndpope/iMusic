@@ -88,6 +88,24 @@ extension MPSongListViewController {
 extension MPSongListViewController: MPSongToolsViewDelegate {
     func addToSongList() {
         let pv = MPAddToSongListView.md_viewFromXIB() as! MPAddToSongListView
+        // 新建歌单
+        pv.createSongListBlock = {
+            let pv = MPCreateSongListView.md_viewFromXIB(cornerRadius: 4) as! MPCreateSongListView
+            pv.md_btnDidClickedBlock = {(sender) in
+                if sender.tag == 10001 {
+                    if let sv = pv.superview {
+                        sv.removeFromSuperview()
+                    }
+                }else {
+                    // 新建歌单操作
+                    SVProgressHUD.showInfo(withStatus: "正在新建歌单~")
+                    if let sv = pv.superview {
+                        sv.removeFromSuperview()
+                    }
+                }
+            }
+            HFAlertController.showCustomView(view: pv)
+        }
         HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
     }
     
