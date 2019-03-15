@@ -47,6 +47,7 @@ PODS:
   - libwebp/utils (1.0.2):
     - libwebp/core
   - libwebp/webp (1.0.2)
+  - LTScrollView (0.2.1)
   - MJRefresh (3.1.15.7)
   - ObjectMapper (3.4.2)
   - RxAtomic (4.4.2)
@@ -70,6 +71,7 @@ DEPENDENCIES:
   - JPush
   - Kingfisher
   - KingfisherWebP
+  - LTScrollView
   - MJRefresh
   - ObjectMapper
   - RxCocoa
@@ -95,6 +97,7 @@ SPEC REPOS:
     - Kingfisher
     - KingfisherWebP
     - libwebp
+    - LTScrollView
     - MJRefresh
     - ObjectMapper
     - RxAtomic
@@ -120,6 +123,7 @@ SPEC CHECKSUMS:
   Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   KingfisherWebP: 310f69a932151c526a7649de965f57e56918c8d0
   libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
+  LTScrollView: 93fff4aed9f9545f541a99b320b27808f5307c12
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
@@ -132,6 +136,6 @@ SPEC CHECKSUMS:
   TencentOpenAPI: ddc6fb0134b25c9078ccd27fd2259ed0cc30a49a
   WechatOpenSDK: 9b721089507c895d05f997408c30bb6e6f5f9b60
 
-PODFILE CHECKSUM: 132a0a7b47d483d1997d20a486a14b1673d00f1a
+PODFILE CHECKSUM: f298645bf0f61ee14f0b62e972102a2253f9e061
 
 COCOAPODS: 1.6.1

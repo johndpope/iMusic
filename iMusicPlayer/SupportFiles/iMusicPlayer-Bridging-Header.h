@@ -45,7 +45,7 @@
 
 #import "SnailPopupController.h"
 
-#import "SVProgressHUD.h"
+#import "SVProgressHUD/SVProgressHUD.h"
 
 #import "FYLSegmentView.h"
 

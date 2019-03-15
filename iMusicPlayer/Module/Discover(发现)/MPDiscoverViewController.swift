@@ -68,7 +68,8 @@ extension MPDiscoverViewController {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.recommendIdentifier)!
             (cell as! MPRecommendTableViewCell).itemClickedBlock = {[weak self] (index) in
-                
+                let vc = MPSongDetailViewController()
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
             break
         case 1:
@@ -135,7 +136,7 @@ extension MPDiscoverViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 2 {
-            return 0
+            return 0.001
         }
         return 80
     }

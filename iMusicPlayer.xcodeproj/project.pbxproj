@@ -292,6 +292,17 @@
 		C5C88374223A5AB300B1263B /* MPSongListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C8836F223A5AB200B1263B /* MPSongListTableViewCell.xib */; };
 		C5C88375223A5AB300B1263B /* MPSongListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C88370223A5AB200B1263B /* MPSongListHeaderView.xib */; };
 		C5C88376223A5AB300B1263B /* MPSongListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88371223A5AB200B1263B /* MPSongListViewController.swift */; };
+		C5C88379223B414A00B1263B /* MPSongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88378223B414A00B1263B /* MPSongDetailViewController.swift */; };
+		C5C8837D223B424E00B1263B /* MPSongDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8837B223B424E00B1263B /* MPSongDetailHeaderView.swift */; };
+		C5C8837E223B424E00B1263B /* MPSongDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C8837C223B424E00B1263B /* MPSongDetailHeaderView.xib */; };
+		C5C88384223B457F00B1263B /* MPPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88382223B457F00B1263B /* MPPlayingViewController.swift */; };
+		C5C88385223B457F00B1263B /* MPPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C88383223B457F00B1263B /* MPPlayingViewController.xib */; };
+		C5C88387223B459C00B1263B /* MPPlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88386223B459C00B1263B /* MPPlayListViewController.swift */; };
+		C5C88389223B45AF00B1263B /* MPRelatedSongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88388223B45AF00B1263B /* MPRelatedSongsViewController.swift */; };
+		C5C88399223B4C8F00B1263B /* MPPlayListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C88397223B4C8F00B1263B /* MPPlayListTableViewCell.xib */; };
+		C5C8839A223B4C8F00B1263B /* MPPlayListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C88398223B4C8F00B1263B /* MPPlayListTableViewCell.swift */; };
+		C5C8839E223B4C9C00B1263B /* MPRelatedSongsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8839C223B4C9B00B1263B /* MPRelatedSongsTableViewCell.swift */; };
+		C5C8839F223B4C9C00B1263B /* MPRelatedSongsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C8839D223B4C9B00B1263B /* MPRelatedSongsTableViewCell.xib */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -705,6 +716,17 @@
 		C5C8836F223A5AB200B1263B /* MPSongListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPSongListTableViewCell.xib; sourceTree = "<group>"; };
 		C5C88370223A5AB200B1263B /* MPSongListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPSongListHeaderView.xib; sourceTree = "<group>"; };
 		C5C88371223A5AB200B1263B /* MPSongListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPSongListViewController.swift; sourceTree = "<group>"; };
+		C5C88378223B414A00B1263B /* MPSongDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSongDetailViewController.swift; sourceTree = "<group>"; };
+		C5C8837B223B424E00B1263B /* MPSongDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSongDetailHeaderView.swift; sourceTree = "<group>"; };
+		C5C8837C223B424E00B1263B /* MPSongDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSongDetailHeaderView.xib; sourceTree = "<group>"; };
+		C5C88382223B457F00B1263B /* MPPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayingViewController.swift; sourceTree = "<group>"; };
+		C5C88383223B457F00B1263B /* MPPlayingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPPlayingViewController.xib; sourceTree = "<group>"; };
+		C5C88386223B459C00B1263B /* MPPlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayListViewController.swift; sourceTree = "<group>"; };
+		C5C88388223B45AF00B1263B /* MPRelatedSongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRelatedSongsViewController.swift; sourceTree = "<group>"; };
+		C5C88397223B4C8F00B1263B /* MPPlayListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPPlayListTableViewCell.xib; sourceTree = "<group>"; };
+		C5C88398223B4C8F00B1263B /* MPPlayListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPPlayListTableViewCell.swift; sourceTree = "<group>"; };
+		C5C8839C223B4C9B00B1263B /* MPRelatedSongsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPRelatedSongsTableViewCell.swift; sourceTree = "<group>"; };
+		C5C8839D223B4C9B00B1263B /* MPRelatedSongsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPRelatedSongsTableViewCell.xib; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1692,6 +1714,7 @@
 		C5035C842237BE51003177EC /* Discover(发现) */ = {
 			isa = PBXGroup;
 			children = (
+				C5C88377223B411700B1263B /* SongDetail(歌曲详情) */,
 				C5C8835D223A515900B1263B /* AlbumList(专辑列表) */,
 				C5C88354223A4A7C00B1263B /* Choiceness(精选歌单)  */,
 				C5C88347223A37B300B1263B /* Popular(人气歌手)  */,
@@ -2039,6 +2062,88 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C5C88377223B411700B1263B /* SongDetail(歌曲详情) */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88381223B451100B1263B /* RelatedSongs(相关歌曲) */,
+				C5C88380223B44FD00B1263B /* PlayList(播放列表) */,
+				C5C8837F223B44D700B1263B /* Playing(播放中) */,
+				C5C8837A223B422E00B1263B /* View */,
+				C5C88378223B414A00B1263B /* MPSongDetailViewController.swift */,
+			);
+			path = "SongDetail(歌曲详情)";
+			sourceTree = "<group>";
+		};
+		C5C8837A223B422E00B1263B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5C8837B223B424E00B1263B /* MPSongDetailHeaderView.swift */,
+				C5C8837C223B424E00B1263B /* MPSongDetailHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5C8837F223B44D700B1263B /* Playing(播放中) */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88382223B457F00B1263B /* MPPlayingViewController.swift */,
+				C5C88383223B457F00B1263B /* MPPlayingViewController.xib */,
+			);
+			path = "Playing(播放中)";
+			sourceTree = "<group>";
+		};
+		C5C88380223B44FD00B1263B /* PlayList(播放列表) */ = {
+			isa = PBXGroup;
+			children = (
+				C5C8838A223B474000B1263B /* View */,
+				C5C88386223B459C00B1263B /* MPPlayListViewController.swift */,
+			);
+			path = "PlayList(播放列表)";
+			sourceTree = "<group>";
+		};
+		C5C88381223B451100B1263B /* RelatedSongs(相关歌曲) */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88390223B474B00B1263B /* View */,
+				C5C88388223B45AF00B1263B /* MPRelatedSongsViewController.swift */,
+			);
+			path = "RelatedSongs(相关歌曲)";
+			sourceTree = "<group>";
+		};
+		C5C8838A223B474000B1263B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88396223B4C8F00B1263B /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5C88390223B474B00B1263B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5C8839B223B4C9B00B1263B /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5C88396223B4C8F00B1263B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C5C88398223B4C8F00B1263B /* MPPlayListTableViewCell.swift */,
+				C5C88397223B4C8F00B1263B /* MPPlayListTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C5C8839B223B4C9B00B1263B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C5C8839C223B4C9B00B1263B /* MPRelatedSongsTableViewCell.swift */,
+				C5C8839D223B4C9B00B1263B /* MPRelatedSongsTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		EC570F91216F50DDD372E37F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2172,11 +2277,14 @@
 				C5035CB62238BE48003177EC /* MPRecommendTableViewCell.xib in Resources */,
 				C50358F02237A517003177EC /* MDFlowViewCollectionViewCell.xib in Resources */,
 				C555F1BC223A043C00606182 /* MPSearchHeaderView.xib in Resources */,
+				C5C8839F223B4C9C00B1263B /* MPRelatedSongsTableViewCell.xib in Resources */,
 				C5C88365223A515900B1263B /* MPAlbumListHeaderView.xib in Resources */,
 				C555F1CA223A2BA900606182 /* MPLatestTableViewCell.xib in Resources */,
 				C5123A94223A014E00672914 /* MPSearchTableViewCell.xib in Resources */,
+				C5C8837E223B424E00B1263B /* MPSongDetailHeaderView.xib in Resources */,
 				C5C88374223A5AB300B1263B /* MPSongListTableViewCell.xib in Resources */,
 				C5035B432237B315003177EC /* LTCommentViewController.xib in Resources */,
+				C5C88399223B4C8F00B1263B /* MPPlayListTableViewCell.xib in Resources */,
 				C50358E42237A517003177EC /* icon_deleted@3x copy.png in Resources */,
 				C50356B7223794F2003177EC /* LaunchScreen.storyboard in Resources */,
 				C5123A622238E87200672914 /* MPMediaLibraryTableViewCell.xib in Resources */,
@@ -2220,6 +2328,7 @@
 				C5035C832237BBD8003177EC /* MPLoginViewController.xib in Resources */,
 				C503585C2237A517003177EC /* project_intro.html in Resources */,
 				C5035B522237B315003177EC /* MenuData.plist in Resources */,
+				C5C88385223B457F00B1263B /* MPPlayingViewController.xib in Resources */,
 				C5C88375223A5AB300B1263B /* MPSongListHeaderView.xib in Resources */,
 				C50358ED2237A517003177EC /* CYPasswordView.bundle in Resources */,
 				C555F1C0223A101E00606182 /* MPSearchNavView.xib in Resources */,
@@ -2323,6 +2432,7 @@
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/KingfisherWebP/KingfisherWebP.framework",
+				"${BUILT_PRODUCTS_DIR}/LTScrollView/LTScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
@@ -2346,6 +2456,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KingfisherWebP.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -2463,6 +2574,7 @@
 				C50358682237A517003177EC /* AppDefaultStyle.swift in Sources */,
 				C503586A2237A517003177EC /* MDBaseObject.swift in Sources */,
 				C5C88367223A515900B1263B /* MPAlbumListTableViewCell.swift in Sources */,
+				C5C8839A223B4C8F00B1263B /* MPPlayListTableViewCell.swift in Sources */,
 				C50358C22237A517003177EC /* HXCustomCameraController.m in Sources */,
 				C50358812237A517003177EC /* UIView+Category.m in Sources */,
 				C5C8835B223A4A7C00B1263B /* MPChoicenessTableViewCell.swift in Sources */,
@@ -2519,6 +2631,7 @@
 				C50358502237A517003177EC /* MDSettingController.swift in Sources */,
 				C50358802237A517003177EC /* UIButton+Category.m in Sources */,
 				C5C8834E223A37B300B1263B /* MPPopularTableViewCell.swift in Sources */,
+				C5C8837D223B424E00B1263B /* MPSongDetailHeaderView.swift in Sources */,
 				C50358AF2237A517003177EC /* HXPhotoConfiguration.m in Sources */,
 				C503589E2237A517003177EC /* UserDefault+Extension.swift in Sources */,
 				C50358522237A517003177EC /* MDHorizontalCircleMenuView.swift in Sources */,
@@ -2539,6 +2652,7 @@
 				C50358592237A517003177EC /* HFImagePickerManager.swift in Sources */,
 				C50358432237A517003177EC /* HFDataCent.swift in Sources */,
 				C5C88369223A515900B1263B /* MPAlbumListViewController.swift in Sources */,
+				C5C8839E223B4C9C00B1263B /* MPRelatedSongsTableViewCell.swift in Sources */,
 				C50358D52237A517003177EC /* HXDatePhotoEditViewController.m in Sources */,
 				C5035C8C2237C23A003177EC /* MPRadioViewController.swift in Sources */,
 				C50358CA2237A517003177EC /* HXDatePhotoViewTransition.m in Sources */,
@@ -2556,7 +2670,9 @@
 				C50358D82237A517003177EC /* AddressAttribute.swift in Sources */,
 				C50358672237A517003177EC /* BaseModel.swift in Sources */,
 				C5035B4D2237B315003177EC /* CommonDataCent.swift in Sources */,
+				C5C88384223B457F00B1263B /* MPPlayingViewController.swift in Sources */,
 				C503587D2237A517003177EC /* UIImage+Category.m in Sources */,
+				C5C88379223B414A00B1263B /* MPSongDetailViewController.swift in Sources */,
 				C50358692237A517003177EC /* BasePageViewController.swift in Sources */,
 				C5035B4F2237B315003177EC /* LTLocationBottomView.swift in Sources */,
 				C50358B02237A517003177EC /* HXDownloadProgressView.m in Sources */,
@@ -2585,6 +2701,7 @@
 				C50358982237A517003177EC /* JSDropDownMenu.m in Sources */,
 				C50358852237A517003177EC /* UIViewController+DDPopUpViewController.m in Sources */,
 				C503587F2237A517003177EC /* UIView+Frame.m in Sources */,
+				C5C88387223B459C00B1263B /* MPPlayListViewController.swift in Sources */,
 				C5123A612238E87200672914 /* MPMediaLibraryTableViewCell.swift in Sources */,
 				C50358892237A517003177EC /* UINavigationController+Animation.m in Sources */,
 				C50358CD2237A517003177EC /* HXAlbumlistView.m in Sources */,
@@ -2613,6 +2730,7 @@
 				C50358DF2237A517003177EC /* AddressModel.swift in Sources */,
 				C5035B512237B315003177EC /* YDMenuDataSource.swift in Sources */,
 				C503588D2237A517003177EC /* NSDictionary+Category.m in Sources */,
+				C5C88389223B45AF00B1263B /* MPRelatedSongsViewController.swift in Sources */,
 				C5123A8A2239EC1300672914 /* MPUserSettingHeaderView.swift in Sources */,
 				C5035CA92238B39F003177EC /* MPBaseSectionHeaderView.swift in Sources */,
 				C50358BF2237A517003177EC /* HXDatePhotoViewController.m in Sources */,
@@ -2807,22 +2925,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KU3Z84AU8W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMusicPlayer/AppEngine/Tool/AliPay",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/../../gitee/CarConvenient/CarConvenient/SupportFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.groupy.iMusicPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iMusicPlayer/SupportFiles/iMusicPlayer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2832,21 +2954,25 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KU3Z84AU8W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMusicPlayer/AppEngine/Tool/AliPay",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/../../gitee/CarConvenient/CarConvenient/SupportFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.groupy.iMusicPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iMusicPlayer/SupportFiles/iMusicPlayer-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

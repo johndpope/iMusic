@@ -29,6 +29,9 @@ target 'iMusicPlayer' do
   #    刷新
   pod "MJRefresh"
   
+  #   选项卡：Viewpager
+  pod 'LTScrollView'
+  
   #    Google登录
   pod 'GoogleSignIn'
   

@@ -84,7 +84,7 @@ extension MPMediaLibraryViewController {
         if section == 0 {
             return 80
         }
-        return 0
+        return 0.001
     }
     
 }

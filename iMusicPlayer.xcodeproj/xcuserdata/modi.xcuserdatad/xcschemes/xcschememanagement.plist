@@ -6,8 +6,28 @@
 	<dict>
 		<key>iMusicPlayer.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
-			<integer>26</integer>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>C50356A8223794F1003177EC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C50356BC223794F3003177EC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C50356C7223794F3003177EC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
