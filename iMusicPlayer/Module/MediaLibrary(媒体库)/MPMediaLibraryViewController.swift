@@ -87,4 +87,23 @@ extension MPMediaLibraryViewController {
         return 0.001
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let vc = MPMyFavoriteViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+            break
+        case 1:
+            let vc = MPCreateSongListViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+            break
+        case 2:
+            let vc = MPCollectSongListViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+            break
+        default:
+            break
+        }
+    }
+    
 }
