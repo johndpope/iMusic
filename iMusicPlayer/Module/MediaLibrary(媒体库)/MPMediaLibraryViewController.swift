@@ -89,15 +89,23 @@ extension MPMediaLibraryViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0:
+        case 0: // 我的最爱
             let vc = MPMyFavoriteViewController()
             self.navigationController?.pushViewController(vc, animated: true)
             break
-        case 1:
+        case 1: // 我的下载
+            let vc = MPMyFavoriteViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+            break
+        case 2: //离线歌曲
+            let vc = MPMyFavoriteViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+            break
+        case 3: // 创建的歌单
             let vc = MPCreateSongListViewController()
             self.navigationController?.pushViewController(vc, animated: true)
             break
-        case 2:
+        case 4: // 收藏的歌单
             let vc = MPCollectSongListViewController()
             self.navigationController?.pushViewController(vc, animated: true)
             break
