@@ -122,6 +122,8 @@ protocol ViewClickedDelegate {
     var clickBlock: ((_ sender: Any?) -> ())? {get set}
 }
 
+var BtnDidClickedBlock: ((_ sender: UIButton) -> Void)?
+
 /*
  layer.cornerRadius
  layer.masksToBounds

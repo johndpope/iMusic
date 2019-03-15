@@ -62,10 +62,42 @@ extension MPSongListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongListTableViewCell
+        cell.md_btnDidClickedBlock = {[weak self] (sender) in
+            switch sender.tag {
+            case 10001:
+                break
+            case 10002:
+                let pv = MPSongToolsView.md_viewFromXIB() as! MPSongToolsView
+                pv.plistName = "songTools"
+                pv.delegate = self
+                HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
+                break
+            default:
+                break
+            }
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
     }
+    
+}
+
+extension MPSongListViewController: MPSongToolsViewDelegate {
+    func addToSongList() {
+        let pv = MPAddToSongListView.md_viewFromXIB() as! MPAddToSongListView
+        HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
+    }
+    
+    func nextPlay() {
+        
+    }
+    
+    func addToPlayList() {
+        
+    }
+    
+    
 }

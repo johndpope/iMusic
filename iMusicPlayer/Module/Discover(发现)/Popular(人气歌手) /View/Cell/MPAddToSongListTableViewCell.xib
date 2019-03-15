@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MPAddToSongListTableViewCell" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="57.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ir7-zH-LVL">
+                        <rect key="frame" x="12" y="4" width="49.5" height="49.5"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="icon_add" translatesAutoresizingMaskIntoConstraints="NO" id="ljp-Dr-4vv">
+                                <rect key="frame" x="0.0" y="0.0" width="49.5" height="49.5"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ljp-Dr-4vv" secondAttribute="bottom" id="06M-7G-iZg"/>
+                            <constraint firstAttribute="width" secondItem="Ir7-zH-LVL" secondAttribute="height" id="QqM-Lr-mT1"/>
+                            <constraint firstItem="ljp-Dr-4vv" firstAttribute="centerY" secondItem="Ir7-zH-LVL" secondAttribute="centerY" id="VTT-ai-AYm"/>
+                            <constraint firstItem="ljp-Dr-4vv" firstAttribute="centerX" secondItem="Ir7-zH-LVL" secondAttribute="centerX" id="dkT-Dh-Nv0"/>
+                            <constraint firstItem="ljp-Dr-4vv" firstAttribute="leading" secondItem="Ir7-zH-LVL" secondAttribute="leading" id="j9S-B0-E8p"/>
+                            <constraint firstAttribute="trailing" secondItem="ljp-Dr-4vv" secondAttribute="trailing" id="nYt-vk-nt4"/>
+                            <constraint firstItem="ljp-Dr-4vv" firstAttribute="top" secondItem="Ir7-zH-LVL" secondAttribute="top" id="r5R-Wf-oei"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新建歌单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23t-N3-7GZ">
+                        <rect key="frame" x="73.5" y="12" width="234.5" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2首" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uMd-1G-xTF">
+                        <rect key="frame" x="73.5" y="36" width="234.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="23t-N3-7GZ" firstAttribute="centerY" secondItem="ljp-Dr-4vv" secondAttribute="centerY" constant="-7" id="2Tl-hG-oIZ"/>
+                    <constraint firstItem="23t-N3-7GZ" firstAttribute="leading" secondItem="ljp-Dr-4vv" secondAttribute="trailing" constant="12" id="6XK-0k-TVh"/>
+                    <constraint firstItem="Ir7-zH-LVL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Cmg-U1-yLH"/>
+                    <constraint firstItem="uMd-1G-xTF" firstAttribute="leading" secondItem="23t-N3-7GZ" secondAttribute="leading" id="Ni0-QX-X9U"/>
+                    <constraint firstItem="uMd-1G-xTF" firstAttribute="top" secondItem="23t-N3-7GZ" secondAttribute="bottom" constant="4" id="YPu-OG-ChC"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uMd-1G-xTF" secondAttribute="bottom" id="gZU-KF-w3L"/>
+                    <constraint firstAttribute="trailing" secondItem="23t-N3-7GZ" secondAttribute="trailing" constant="12" id="sco-Jq-jG3"/>
+                    <constraint firstAttribute="bottom" secondItem="Ir7-zH-LVL" secondAttribute="bottom" constant="4" id="v1d-Ve-A3M"/>
+                    <constraint firstItem="uMd-1G-xTF" firstAttribute="trailing" secondItem="23t-N3-7GZ" secondAttribute="trailing" id="veG-dw-WA0"/>
+                    <constraint firstItem="Ir7-zH-LVL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="xtP-oI-GgD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="nameCenterConstraints" destination="2Tl-hG-oIZ" id="VQk-dd-QQM"/>
+                <outlet property="xib_songCount" destination="uMd-1G-xTF" id="bdp-Xz-6RI"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_add" width="32" height="32"/>
+    </resources>
+</document>

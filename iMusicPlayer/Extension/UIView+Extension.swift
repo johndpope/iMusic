@@ -131,7 +131,7 @@ extension UIView {
             view.layer.masksToBounds = true
             
             view.autoresizingMask = .flexibleWidth
-//            view.bounds = CGRect(origin: .zero, size: CGSize(width: view.width, height: view.height+SaveAreaHeight))
+            view.bounds = CGRect(origin: .zero, size: CGSize(width: view.width, height: view.height+SaveAreaHeight))
             
             return view
         }
@@ -403,6 +403,15 @@ extension UIView {
         set {
             self.layer.borderColor = newValue.cgColor
             self.layer.borderWidth = 1
+        }
+    }
+    
+    var md_btnDidClickedBlock: ((_ sender: UIButton)->Void)? {
+        get {
+            return BtnDidClickedBlock
+        }
+        set {
+            BtnDidClickedBlock = newValue
         }
     }
     

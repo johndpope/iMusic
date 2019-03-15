@@ -37,14 +37,17 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1q-NG-OUn">
+                    <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1q-NG-OUn">
                         <rect key="frame" x="284.5" y="14" width="23.5" height="23.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="J1q-NG-OUn" secondAttribute="height" id="eBe-Pn-eDo"/>
                         </constraints>
                         <state key="normal" image="icon_more_1"/>
+                        <connections>
+                            <action selector="btn_DidClicked:" destination="chn-Zf-zlt" eventType="touchUpInside" id="ojy-g6-4Km"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v56-uF-PyL">
+                    <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v56-uF-PyL">
                         <rect key="frame" x="251.5" y="13.5" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="v56-uF-PyL" secondAttribute="height" id="ECm-d0-IG8"/>
@@ -73,7 +76,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="Emf-AL-O98"/>
-            <point key="canvasLocation" x="-78.400000000000006" y="153.82308845577214"/>
+            <point key="canvasLocation" x="40" y="88"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -15,4 +15,9 @@ class MPSongListTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    @IBAction func btn_DidClicked(_ sender: UIButton) {
+        if let b = md_btnDidClickedBlock {
+            b(sender)
+        }
+    }
 }
