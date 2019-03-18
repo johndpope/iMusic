@@ -68,7 +68,7 @@ extension MPDiscoverViewController {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.recommendIdentifier)!
             (cell as! MPRecommendTableViewCell).itemClickedBlock = {[weak self] (index) in
-                let vc = MPSongDetailViewController()
+                let vc = MPPlayingViewController()
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
             break

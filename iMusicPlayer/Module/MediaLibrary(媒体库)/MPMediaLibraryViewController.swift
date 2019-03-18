@@ -9,8 +9,9 @@
 import UIKit
 
 private struct Constant {
-    static let mediaLibraryIdentifier = "MPMediaLibraryTableViewCell"
+    static let mediaLibraryIdentifier = "MPMediaLibraryOutTableViewCell"
     static let categoryIdentifier = "MPCategoryTableViewCell"
+    static let sectionOneTitle = "最近播放"
 }
 
 class MPMediaLibraryViewController: BaseTableViewController {
@@ -36,7 +37,7 @@ extension MPMediaLibraryViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var number = 3
+        var number = 1
         if section == 1 {
             number = MPMediaLibraryModel.categoryDatas.count
         }
@@ -60,9 +61,9 @@ extension MPMediaLibraryViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height: CGFloat = SCREEN_WIDTH * (52/375)
+        var height: CGFloat = SCREEN_WIDTH * (172/375)
         if indexPath.section == 0 {
-            height = SCREEN_WIDTH * (52/375)
+            height = SCREEN_WIDTH * (172/375)
         }else {
             height = SCREEN_WIDTH * (60/375)
         }
@@ -75,7 +76,7 @@ extension MPMediaLibraryViewController {
         if section == 0 {
             ft = .choiceness
             shv.fromType = ft
-            shv.updateView(model: NSLocalizedString("最近播放", comment: ""))
+            shv.updateView(model: NSLocalizedString(Constant.sectionOneTitle, comment: ""))
         }
         return shv
     }
