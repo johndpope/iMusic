@@ -328,6 +328,15 @@
 		C5C883F3223BB26900B1263B /* MPMyFavoriteHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C883EE223BB26900B1263B /* MPMyFavoriteHeaderView.swift */; };
 		C5C883F4223BB26900B1263B /* MPMyFavoriteHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C883EF223BB26900B1263B /* MPMyFavoriteHeaderView.xib */; };
 		C5C883F5223BB26900B1263B /* MPMyFavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C883F0223BB26900B1263B /* MPMyFavoriteViewController.swift */; };
+		C5F5EA50223F3D6C006C9F80 /* MPStyleGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA4F223F3D6C006C9F80 /* MPStyleGenreViewController.swift */; };
+		C5F5EA55223F3DA6006C9F80 /* MPStyleGenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA53223F3DA6006C9F80 /* MPStyleGenreCollectionViewCell.swift */; };
+		C5F5EA56223F3DA6006C9F80 /* MPStyleGenreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA54223F3DA6006C9F80 /* MPStyleGenreCollectionViewCell.xib */; };
+		C5F5EA59223F40C2006C9F80 /* MPStyleGenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA58223F40C2006C9F80 /* MPStyleGenreModel.swift */; };
+		C5F5EA5C223F4451006C9F80 /* MPStyleGenreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA5A223F4451006C9F80 /* MPStyleGenreCollectionReusableView.swift */; };
+		C5F5EA5D223F4451006C9F80 /* MPStyleGenreCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA5B223F4451006C9F80 /* MPStyleGenreCollectionReusableView.xib */; };
+		C5F5EA65223F4BDF006C9F80 /* MPStyleGenreDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA62223F4BDE006C9F80 /* MPStyleGenreDetailTableViewCell.xib */; };
+		C5F5EA66223F4BDF006C9F80 /* MPStyleGenreDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA63223F4BDE006C9F80 /* MPStyleGenreDetailTableViewCell.swift */; };
+		C5F5EA67223F4BDF006C9F80 /* MPStyleGenreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA64223F4BDE006C9F80 /* MPStyleGenreDetailViewController.swift */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -777,6 +786,15 @@
 		C5C883EE223BB26900B1263B /* MPMyFavoriteHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPMyFavoriteHeaderView.swift; sourceTree = "<group>"; };
 		C5C883EF223BB26900B1263B /* MPMyFavoriteHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPMyFavoriteHeaderView.xib; sourceTree = "<group>"; };
 		C5C883F0223BB26900B1263B /* MPMyFavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPMyFavoriteViewController.swift; sourceTree = "<group>"; };
+		C5F5EA4F223F3D6C006C9F80 /* MPStyleGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPStyleGenreViewController.swift; sourceTree = "<group>"; };
+		C5F5EA53223F3DA6006C9F80 /* MPStyleGenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPStyleGenreCollectionViewCell.swift; sourceTree = "<group>"; };
+		C5F5EA54223F3DA6006C9F80 /* MPStyleGenreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPStyleGenreCollectionViewCell.xib; sourceTree = "<group>"; };
+		C5F5EA58223F40C2006C9F80 /* MPStyleGenreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPStyleGenreModel.swift; sourceTree = "<group>"; };
+		C5F5EA5A223F4451006C9F80 /* MPStyleGenreCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPStyleGenreCollectionReusableView.swift; sourceTree = "<group>"; };
+		C5F5EA5B223F4451006C9F80 /* MPStyleGenreCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPStyleGenreCollectionReusableView.xib; sourceTree = "<group>"; };
+		C5F5EA62223F4BDE006C9F80 /* MPStyleGenreDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPStyleGenreDetailTableViewCell.xib; sourceTree = "<group>"; };
+		C5F5EA63223F4BDE006C9F80 /* MPStyleGenreDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPStyleGenreDetailTableViewCell.swift; sourceTree = "<group>"; };
+		C5F5EA64223F4BDE006C9F80 /* MPStyleGenreDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPStyleGenreDetailViewController.swift; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1765,6 +1783,7 @@
 		C5035C842237BE51003177EC /* Discover(发现) */ = {
 			isa = PBXGroup;
 			children = (
+				C5F5EA4E223F3C97006C9F80 /* StyleGenre(风格流派) */,
 				C5C88377223B411700B1263B /* SongDetail(歌曲详情) */,
 				C5C8835D223A515900B1263B /* AlbumList(专辑列表) */,
 				C5C88354223A4A7C00B1263B /* Choiceness(精选歌单)  */,
@@ -2307,6 +2326,70 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C5F5EA4E223F3C97006C9F80 /* StyleGenre(风格流派) */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA5F223F4BDE006C9F80 /* Detail */,
+				C5F5EA57223F40A3006C9F80 /* Model */,
+				C5F5EA51223F3D74006C9F80 /* View */,
+				C5F5EA4F223F3D6C006C9F80 /* MPStyleGenreViewController.swift */,
+			);
+			path = "StyleGenre(风格流派)";
+			sourceTree = "<group>";
+		};
+		C5F5EA51223F3D74006C9F80 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA52223F3D81006C9F80 /* Cell */,
+				C5F5EA5A223F4451006C9F80 /* MPStyleGenreCollectionReusableView.swift */,
+				C5F5EA5B223F4451006C9F80 /* MPStyleGenreCollectionReusableView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5F5EA52223F3D81006C9F80 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA53223F3DA6006C9F80 /* MPStyleGenreCollectionViewCell.swift */,
+				C5F5EA54223F3DA6006C9F80 /* MPStyleGenreCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C5F5EA57223F40A3006C9F80 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA58223F40C2006C9F80 /* MPStyleGenreModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C5F5EA5F223F4BDE006C9F80 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA60223F4BDE006C9F80 /* View */,
+				C5F5EA64223F4BDE006C9F80 /* MPStyleGenreDetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C5F5EA60223F4BDE006C9F80 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA61223F4BDE006C9F80 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5F5EA61223F4BDE006C9F80 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA63223F4BDE006C9F80 /* MPStyleGenreDetailTableViewCell.swift */,
+				C5F5EA62223F4BDE006C9F80 /* MPStyleGenreDetailTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		EC570F91216F50DDD372E37F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2434,6 +2517,7 @@
 				C5035CAA2238B39F003177EC /* MPBaseSectionHeaderView.xib in Resources */,
 				C5035CB22238BBFB003177EC /* MPCategoryTableViewCell.xib in Resources */,
 				C50358702237A517003177EC /* 1.plist in Resources */,
+				C5F5EA56223F3DA6006C9F80 /* MPStyleGenreCollectionViewCell.xib in Resources */,
 				C5C883F4223BB26900B1263B /* MPMyFavoriteHeaderView.xib in Resources */,
 				C50358992237A517003177EC /* ico_make.png in Resources */,
 				C50358512237A517003177EC /* setting_example.plist in Resources */,
@@ -2448,6 +2532,7 @@
 				C555F1CA223A2BA900606182 /* MPLatestTableViewCell.xib in Resources */,
 				C5C883F2223BB26900B1263B /* MPMyFavoriteTableViewCell.xib in Resources */,
 				C5C883DA223BA83B00B1263B /* MPCreateSongListTableViewCell.xib in Resources */,
+				C5F5EA5D223F4451006C9F80 /* MPStyleGenreCollectionReusableView.xib in Resources */,
 				C5123A94223A014E00672914 /* MPSearchTableViewCell.xib in Resources */,
 				C5C8837E223B424E00B1263B /* MPSongDetailHeaderView.xib in Resources */,
 				C5C88374223A5AB300B1263B /* MPSongListTableViewCell.xib in Resources */,
@@ -2476,6 +2561,7 @@
 				C5035CA62238AC9E003177EC /* MPDiscoverTableViewCell.xib in Resources */,
 				C5123A7E2239042600672914 /* MPRadioViewController.xib in Resources */,
 				C5035C962237C350003177EC /* AutoGenStrings.py in Resources */,
+				C5F5EA65223F4BDF006C9F80 /* MPStyleGenreDetailTableViewCell.xib in Resources */,
 				C503585D2237A517003177EC /* project_intro.css in Resources */,
 				C50358492237A517003177EC /* HFStartViewController.xib in Resources */,
 				C50356B4223794F2003177EC /* Assets.xcassets in Resources */,
@@ -2793,6 +2879,7 @@
 				C50356AD223794F1003177EC /* AppDelegate.swift in Sources */,
 				C5035B452237B315003177EC /* FCSearchHouseUModel.swift in Sources */,
 				C50358A82237A517003177EC /* BRAddressPickerView.m in Sources */,
+				C5F5EA55223F3DA6006C9F80 /* MPStyleGenreCollectionViewCell.swift in Sources */,
 				C50358BE2237A517003177EC /* HXDatePhotoViewFlowLayout.m in Sources */,
 				C5035B3F2237B315003177EC /* MDWebViewController.swift in Sources */,
 				C50358772237A517003177EC /* Int+Extension.swift in Sources */,
@@ -2801,6 +2888,7 @@
 				C50358762237A517003177EC /* UIColor+Extension.swift in Sources */,
 				C50358D72237A517003177EC /* SnailPopupController.m in Sources */,
 				C503589B2237A517003177EC /* SwiftyTextView.swift in Sources */,
+				C5F5EA67223F4BDF006C9F80 /* MPStyleGenreDetailViewController.swift in Sources */,
 				C5C883F5223BB26900B1263B /* MPMyFavoriteViewController.swift in Sources */,
 				C503586C2237A517003177EC /* MDFlowLayout.swift in Sources */,
 				C50358DE2237A517003177EC /* FJSQLiteUtils.swift in Sources */,
@@ -2846,6 +2934,7 @@
 				C5123A652238EB9500672914 /* MPMediaLibraryModel.swift in Sources */,
 				C5035C952237C350003177EC /* NSBundle+DAUtils.m in Sources */,
 				C5C883DB223BA83B00B1263B /* MPCreateSongListHeaderView.swift in Sources */,
+				C5F5EA5C223F4451006C9F80 /* MPStyleGenreCollectionReusableView.swift in Sources */,
 				C5C88368223A515900B1263B /* MPAlbumListHeaderView.swift in Sources */,
 				C50358D82237A517003177EC /* AddressAttribute.swift in Sources */,
 				C50358672237A517003177EC /* BaseModel.swift in Sources */,
@@ -2869,6 +2958,7 @@
 				C50358A62237A517003177EC /* BRAddressModel.m in Sources */,
 				C5C883AD223B619E00B1263B /* TableBaseView.swift in Sources */,
 				C503586F2237A517003177EC /* HotSearchController.swift in Sources */,
+				C5F5EA59223F40C2006C9F80 /* MPStyleGenreModel.swift in Sources */,
 				C50358D22237A517003177EC /* HXDateVideoEditViewController.m in Sources */,
 				C50358742237A517003177EC /* UIDevice+Extension.swift in Sources */,
 				C5035B442237B315003177EC /* LTCommentViewController.swift in Sources */,
@@ -2896,6 +2986,7 @@
 				C5035CBD2238D37D003177EC /* MPRecommendCollectionViewCell.swift in Sources */,
 				C50358B12237A517003177EC /* HXPhoto3DTouchViewController.m in Sources */,
 				C50358972237A517003177EC /* ZYStarRateView.swift in Sources */,
+				C5F5EA66223F4BDF006C9F80 /* MPStyleGenreDetailTableViewCell.swift in Sources */,
 				C50358D12237A517003177EC /* HXCircleProgressView.m in Sources */,
 				C555F1D2223A32CF00606182 /* MPRankingViewController.swift in Sources */,
 				C503588B2237A517003177EC /* UIMenuItem+Category.m in Sources */,
@@ -2924,6 +3015,7 @@
 				C503588C2237A517003177EC /* NSMutableString+Safe.m in Sources */,
 				C50358572237A517003177EC /* HFLocationManageer.swift in Sources */,
 				C503586D2237A517003177EC /* MDHotSearchView.swift in Sources */,
+				C5F5EA50223F3D6C006C9F80 /* MPStyleGenreViewController.swift in Sources */,
 				C50358482237A517003177EC /* AppDelegate+Extension.swift in Sources */,
 				C5C883C8223BA46100B1263B /* MPCollectSongListTableViewCell.swift in Sources */,
 				C5C8834D223A37B300B1263B /* MPPopularViewController.swift in Sources */,
@@ -3115,13 +3207,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KU3Z84AU8W;
+				DEVELOPMENT_TEAM = VJZKY87UD3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMusicPlayer/AppEngine/Tool/AliPay",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/../../gitee/CarConvenient/CarConvenient/SupportFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3144,13 +3236,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KU3Z84AU8W;
+				DEVELOPMENT_TEAM = VJZKY87UD3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMusicPlayer/AppEngine/Tool/AliPay",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/../../gitee/CarConvenient/CarConvenient/SupportFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

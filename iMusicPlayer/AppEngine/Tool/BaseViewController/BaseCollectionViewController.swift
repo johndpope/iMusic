@@ -107,6 +107,10 @@ extension BaseCollectionViewController: UICollectionViewDataSource, UICollection
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return UICollectionReusableView()
+    }
+    
 }
 extension BaseCollectionViewController: UICollectionViewDelegateFlowLayout {
 

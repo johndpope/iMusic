@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MPStyleGenreCollectionViewCell" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="104" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="104" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_new" translatesAutoresizingMaskIntoConstraints="NO" id="MZH-XR-5Gm">
+                        <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="MZH-XR-5Gm" secondAttribute="height" id="9JU-1c-dAE"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happy Holidays" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qF-41-knG">
+                        <rect key="frame" x="0.0" y="112" width="104" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="0qF-41-knG" firstAttribute="leading" secondItem="MZH-XR-5Gm" secondAttribute="leading" id="0Qg-U2-YzE"/>
+                <constraint firstItem="MZH-XR-5Gm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4OT-am-ROs"/>
+                <constraint firstItem="0qF-41-knG" firstAttribute="top" secondItem="MZH-XR-5Gm" secondAttribute="bottom" constant="8" id="6gh-CZ-uyg"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0qF-41-knG" secondAttribute="bottom" constant="8" id="Esj-ts-KfB"/>
+                <constraint firstAttribute="trailing" secondItem="MZH-XR-5Gm" secondAttribute="trailing" id="S2r-aM-VLT"/>
+                <constraint firstItem="MZH-XR-5Gm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="V4s-l9-gZR"/>
+                <constraint firstItem="0qF-41-knG" firstAttribute="trailing" secondItem="MZH-XR-5Gm" secondAttribute="trailing" id="qSy-gb-NI3"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <point key="canvasLocation" x="129.59999999999999" y="153.82308845577214"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="img_new" width="400" height="400"/>
+    </resources>
+</document>

@@ -165,6 +165,10 @@ extension MPDiscoverViewController {
                 let vc = MPPopularViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
                 break
+            case 3:
+                let vc = MPStyleGenreViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
             default:
                 break
             }
