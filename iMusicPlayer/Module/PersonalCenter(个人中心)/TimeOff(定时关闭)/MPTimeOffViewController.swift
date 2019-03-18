@@ -15,6 +15,8 @@ private struct Constant {
 
 class MPTimeOffViewController: BaseTableViewController {
     
+    var dataSources = MPTimeOffModel().models()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,13 +51,20 @@ class MPTimeOffViewController: BaseTableViewController {
 }
 extension MPTimeOffViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MPTimeOffModel.titleDatas.count
+        var num = 0
+        if let titles = dataSources["titles"] as? [String]{
+            num = titles.count
+        }
+        return num
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPTimeOffTableViewCell
         cell.selectionStyle = .none
-        cell.updateCell(model: MPTimeOffModel.titleDatas[indexPath.row])
+        if let titles = dataSources["titles"] as? [String], let selecteds = dataSources["selected"] as? [Bool] {
+            cell.updateCell(model: titles[indexPath.row])
+            cell.markSelected = selecteds[indexPath.row]
+        }
         return cell
     }
     
@@ -66,8 +75,11 @@ extension MPTimeOffViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // 设置选中状态
-        let cell = tableView.cellForRow(at: indexPath)
-        (cell as! MPTimeOffTableViewCell).markSelected = true
+        var tempSels = MPTimeOffModel.selecteds
+        tempSels[indexPath.row] = true
+        dataSources["selected"] = tempSels
+        tableView.reloadData()
+        
         if indexPath.row ==  MPTimeOffModel.titleDatas.count - 1 {
             let pv = MPTimeOffPopView.md_viewFromXIB(cornerRadius: 4) as! MPTimeOffPopView
             pv.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH-40, height: pv.height))

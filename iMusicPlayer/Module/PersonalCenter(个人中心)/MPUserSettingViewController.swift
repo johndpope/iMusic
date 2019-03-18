@@ -236,6 +236,13 @@ extension MPUserSettingViewController {
     }
     /// 隐私政策
     @objc func policy() {
+        let path = Bundle.main.path(forResource: "policy", ofType: "plist")
+        if let p = path, let policys = NSDictionary(contentsOfFile: p) {
+            let vc = MDWebViewController()
+            vc.title = NSLocalizedString("隐私政策", comment: "")
+            vc.text = policys["policy"] as! String
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
     }
     

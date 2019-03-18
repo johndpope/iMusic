@@ -100,6 +100,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="dTe-cm-0vX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="030-vq-ZmM"/>
                     <constraint firstAttribute="bottom" secondItem="dTe-cm-0vX" secondAttribute="bottom" id="RrE-VH-ItU"/>

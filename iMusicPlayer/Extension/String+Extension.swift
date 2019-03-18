@@ -576,3 +576,10 @@ extension NSAttributedString{
         
     }
 }
+
+// MARK: - 隐私政策
+extension String {
+    var policy: String {
+        return ""
+    }
+}

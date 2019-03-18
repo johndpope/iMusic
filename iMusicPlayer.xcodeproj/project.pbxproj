@@ -354,6 +354,8 @@
 		C5F5EA8F223F9673006C9F80 /* MPTimeOffModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA8E223F9673006C9F80 /* MPTimeOffModel.swift */; };
 		C5F5EA92223F9996006C9F80 /* MPTimeOffPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA90223F9996006C9F80 /* MPTimeOffPopView.swift */; };
 		C5F5EA93223F9996006C9F80 /* MPTimeOffPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA91223F9996006C9F80 /* MPTimeOffPopView.xib */; };
+		C5F5EA95223FA6DB006C9F80 /* policy.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA94223FA6DB006C9F80 /* policy.strings */; };
+		C5F5EA97223FAAAF006C9F80 /* policy.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA96223FAAAF006C9F80 /* policy.plist */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -829,6 +831,8 @@
 		C5F5EA8E223F9673006C9F80 /* MPTimeOffModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTimeOffModel.swift; sourceTree = "<group>"; };
 		C5F5EA90223F9996006C9F80 /* MPTimeOffPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTimeOffPopView.swift; sourceTree = "<group>"; };
 		C5F5EA91223F9996006C9F80 /* MPTimeOffPopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPTimeOffPopView.xib; sourceTree = "<group>"; };
+		C5F5EA94223FA6DB006C9F80 /* policy.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = policy.strings; sourceTree = "<group>"; };
+		C5F5EA96223FAAAF006C9F80 /* policy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = policy.plist; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1965,6 +1969,8 @@
 			isa = PBXGroup;
 			children = (
 				C5123A83223917D700672914 /* usersetting.plist */,
+				C5F5EA94223FA6DB006C9F80 /* policy.strings */,
+				C5F5EA96223FAAAF006C9F80 /* policy.plist */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -2653,6 +2659,7 @@
 				C50356B7223794F2003177EC /* LaunchScreen.storyboard in Resources */,
 				C5123A622238E87200672914 /* MPMediaLibraryTableViewCell.xib in Resources */,
 				C5F5EA7A223F87A9006C9F80 /* extensionTools.plist in Resources */,
+				C5F5EA97223FAAAF006C9F80 /* policy.plist in Resources */,
 				C50358532237A517003177EC /* AlipaySDK.bundle in Resources */,
 				C50358E12237A517003177EC /* icon_deleted@3x.png in Resources */,
 				C5035B412237B315003177EC /* MDWebViewController.xib in Resources */,
@@ -2668,6 +2675,7 @@
 				C50358A72237A517003177EC /* BRPickerView.bundle in Resources */,
 				C50358E02237A517003177EC /* address_select_yes.png in Resources */,
 				C50358EE2237A517003177EC /* MDFlowView.xib in Resources */,
+				C5F5EA95223FA6DB006C9F80 /* policy.strings in Resources */,
 				C5123A85223917D700672914 /* usersetting.plist in Resources */,
 				C5035CA62238AC9E003177EC /* MPDiscoverTableViewCell.xib in Resources */,
 				C5123A7E2239042600672914 /* MPRadioViewController.xib in Resources */,
