@@ -15,7 +15,7 @@
 				<key>accessoryView</key>
 				<string></string>
 				<key>funcKey</key>
-				<string>avatar</string>
+				<string>timeOff</string>
 				<key>cellStyle</key>
 				<string>value1</string>
 				<key>titleColor</key>
@@ -37,7 +37,7 @@
 				<key>accessoryView</key>
 				<string></string>
 				<key>funcKey</key>
-				<string>avatar</string>
+				<string>uploadMusic</string>
 				<key>cellStyle</key>
 				<string>value1</string>
 				<key>titleColor</key>
@@ -59,7 +59,7 @@
 				<key>accessoryView</key>
 				<string></string>
 				<key>funcKey</key>
-				<string>avatar</string>
+				<string>message</string>
 				<key>cellStyle</key>
 				<string>value1</string>
 				<key>titleColor</key>
@@ -81,7 +81,7 @@
 				<key>accessoryView</key>
 				<string></string>
 				<key>funcKey</key>
-				<string>avatar</string>
+				<string>policy</string>
 				<key>cellStyle</key>
 				<string>value1</string>
 				<key>titleColor</key>
@@ -103,7 +103,7 @@
 				<key>accessoryView</key>
 				<string></string>
 				<key>funcKey</key>
-				<string>avatar</string>
+				<string>feedback</string>
 				<key>cellStyle</key>
 				<string>value1</string>
 				<key>titleColor</key>
@@ -125,7 +125,7 @@
 				<key>accessoryView</key>
 				<string></string>
 				<key>funcKey</key>
-				<string>avatar</string>
+				<string>removeAd</string>
 				<key>cellStyle</key>
 				<string>value1</string>
 				<key>titleColor</key>

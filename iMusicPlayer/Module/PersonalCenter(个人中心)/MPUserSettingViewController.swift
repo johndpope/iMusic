@@ -46,7 +46,7 @@ class MPUserSettingViewController: BaseTableViewController {
     
     override func setupTableView() {
         super.setupTableView()
-        
+        tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .singleLine
 //        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
@@ -221,51 +221,30 @@ extension MPUserSettingViewController {
 // MARK: - 点击事件
 extension MPUserSettingViewController {
     
-    /// 头像
-    @objc func avatar() {
+    /// 定时关闭
+    @objc func timeOff() {
+        let vc = MPTimeOffViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    /// 昵称
-    @objc func nickname() {
+    /// 上传音乐
+    @objc func uploadMusic() {
         
     }
-    /// 性别
-    @objc func sex() {
+    /// 我的消息
+    @objc func message() {
         
     }
-    /// 生日信息
-    @objc func birthday() {
+    /// 隐私政策
+    @objc func policy() {
         
     }
     
-    /// QQ
-    @objc func QQ() {
+    /// 意见反馈
+    @objc func feedback() {
         
     }
-    /// 微信
-    @objc func wechat() {
-        
-    }
-    /// 支付宝
-    @objc func alipay() {
-        
-    }
-    /// 微博
-    @objc func weibo() {
-        
-    }
-    /// 收货地址
-    @objc func address() {
-    }
-    /// 支付密码
-    @objc func payPassword() {
-        
-    }
-    /// 登录密码
-    @objc func loginPassword() {
-        
-    }
-    /// 手势密码
-    @objc func gesturesPassword() {
+    /// 去广告
+    @objc func removeAd() {
         
     }
 }

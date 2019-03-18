@@ -346,6 +346,14 @@
 		C5F5EA7A223F87A9006C9F80 /* extensionTools.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA79223F87A9006C9F80 /* extensionTools.plist */; };
 		C5F5EA7E223F88F2006C9F80 /* MPSongExtensionToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA7C223F88F2006C9F80 /* MPSongExtensionToolsView.swift */; };
 		C5F5EA7F223F88F2006C9F80 /* MPSongExtensionToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA7D223F88F2006C9F80 /* MPSongExtensionToolsView.xib */; };
+		C5F5EA82223F91CA006C9F80 /* MPTimeOffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA81223F91CA006C9F80 /* MPTimeOffViewController.swift */; };
+		C5F5EA87223F9210006C9F80 /* MPTimeOffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA85223F9210006C9F80 /* MPTimeOffTableViewCell.swift */; };
+		C5F5EA88223F9210006C9F80 /* MPTimeOffTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA86223F9210006C9F80 /* MPTimeOffTableViewCell.xib */; };
+		C5F5EA8B223F930F006C9F80 /* MPTimeOffHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA89223F930F006C9F80 /* MPTimeOffHeaderView.swift */; };
+		C5F5EA8C223F930F006C9F80 /* MPTimeOffHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA8A223F930F006C9F80 /* MPTimeOffHeaderView.xib */; };
+		C5F5EA8F223F9673006C9F80 /* MPTimeOffModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA8E223F9673006C9F80 /* MPTimeOffModel.swift */; };
+		C5F5EA92223F9996006C9F80 /* MPTimeOffPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA90223F9996006C9F80 /* MPTimeOffPopView.swift */; };
+		C5F5EA93223F9996006C9F80 /* MPTimeOffPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA91223F9996006C9F80 /* MPTimeOffPopView.xib */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -813,6 +821,14 @@
 		C5F5EA79223F87A9006C9F80 /* extensionTools.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = extensionTools.plist; sourceTree = "<group>"; };
 		C5F5EA7C223F88F2006C9F80 /* MPSongExtensionToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSongExtensionToolsView.swift; sourceTree = "<group>"; };
 		C5F5EA7D223F88F2006C9F80 /* MPSongExtensionToolsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSongExtensionToolsView.xib; sourceTree = "<group>"; };
+		C5F5EA81223F91CA006C9F80 /* MPTimeOffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTimeOffViewController.swift; sourceTree = "<group>"; };
+		C5F5EA85223F9210006C9F80 /* MPTimeOffTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTimeOffTableViewCell.swift; sourceTree = "<group>"; };
+		C5F5EA86223F9210006C9F80 /* MPTimeOffTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPTimeOffTableViewCell.xib; sourceTree = "<group>"; };
+		C5F5EA89223F930F006C9F80 /* MPTimeOffHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTimeOffHeaderView.swift; sourceTree = "<group>"; };
+		C5F5EA8A223F930F006C9F80 /* MPTimeOffHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPTimeOffHeaderView.xib; sourceTree = "<group>"; };
+		C5F5EA8E223F9673006C9F80 /* MPTimeOffModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTimeOffModel.swift; sourceTree = "<group>"; };
+		C5F5EA90223F9996006C9F80 /* MPTimeOffPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTimeOffPopView.swift; sourceTree = "<group>"; };
+		C5F5EA91223F9996006C9F80 /* MPTimeOffPopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPTimeOffPopView.xib; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1791,6 +1807,7 @@
 		C5035A0F2237B314003177EC /* PersonalCenter(个人中心) */ = {
 			isa = PBXGroup;
 			children = (
+				C5F5EA80223F91A5006C9F80 /* TimeOff(定时关闭) */,
 				C5123A872239EBC400672914 /* View */,
 				C5123A82223917D700672914 /* Config */,
 				C5123A84223917D700672914 /* MPUserSettingViewController.swift */,
@@ -2441,6 +2458,45 @@
 			path = "ToolsView(工具弹框)";
 			sourceTree = "<group>";
 		};
+		C5F5EA80223F91A5006C9F80 /* TimeOff(定时关闭) */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA8D223F965E006C9F80 /* Model */,
+				C5F5EA83223F91F0006C9F80 /* View */,
+				C5F5EA81223F91CA006C9F80 /* MPTimeOffViewController.swift */,
+			);
+			path = "TimeOff(定时关闭)";
+			sourceTree = "<group>";
+		};
+		C5F5EA83223F91F0006C9F80 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA84223F91F7006C9F80 /* Cell */,
+				C5F5EA89223F930F006C9F80 /* MPTimeOffHeaderView.swift */,
+				C5F5EA8A223F930F006C9F80 /* MPTimeOffHeaderView.xib */,
+				C5F5EA90223F9996006C9F80 /* MPTimeOffPopView.swift */,
+				C5F5EA91223F9996006C9F80 /* MPTimeOffPopView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C5F5EA84223F91F7006C9F80 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA85223F9210006C9F80 /* MPTimeOffTableViewCell.swift */,
+				C5F5EA86223F9210006C9F80 /* MPTimeOffTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C5F5EA8D223F965E006C9F80 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA8E223F9673006C9F80 /* MPTimeOffModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EC570F91216F50DDD372E37F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2582,6 +2638,7 @@
 				C5C88365223A515900B1263B /* MPAlbumListHeaderView.xib in Resources */,
 				C555F1CA223A2BA900606182 /* MPLatestTableViewCell.xib in Resources */,
 				C5C883F2223BB26900B1263B /* MPMyFavoriteTableViewCell.xib in Resources */,
+				C5F5EA8C223F930F006C9F80 /* MPTimeOffHeaderView.xib in Resources */,
 				C5C883DA223BA83B00B1263B /* MPCreateSongListTableViewCell.xib in Resources */,
 				C5F5EA5D223F4451006C9F80 /* MPStyleGenreCollectionReusableView.xib in Resources */,
 				C5123A94223A014E00672914 /* MPSearchTableViewCell.xib in Resources */,
@@ -2600,6 +2657,7 @@
 				C50358E12237A517003177EC /* icon_deleted@3x.png in Resources */,
 				C5035B412237B315003177EC /* MDWebViewController.xib in Resources */,
 				C5035CA12238A286003177EC /* MPNavView.xib in Resources */,
+				C5F5EA93223F9996006C9F80 /* MPTimeOffPopView.xib in Resources */,
 				C555F1D8223A32F200606182 /* MPRankingTableViewCell.xib in Resources */,
 				C5C883B6223B86C500B1263B /* MPAddToSongListTableViewCell.xib in Resources */,
 				C5123A7A223903C100672914 /* CardViewController.xib in Resources */,
@@ -2630,6 +2688,7 @@
 				C5035B4E2237B315003177EC /* LTLocationBottomView.xib in Resources */,
 				C5035C9A2237C41C003177EC /* ErrorCodeStrs.plist in Resources */,
 				C50358E22237A517003177EC /* FJItemCVCell.xib in Resources */,
+				C5F5EA88223F9210006C9F80 /* MPTimeOffTableViewCell.xib in Resources */,
 				C5035B3E2237B315003177EC /* LTLocationViewController.xib in Resources */,
 				C50356B2223794F1003177EC /* Main.storyboard in Resources */,
 				C503584B2237A517003177EC /* HFWelcomeViewController.xib in Resources */,
@@ -2851,6 +2910,7 @@
 				C50358C82237A517003177EC /* NSDate+HXExtension.m in Sources */,
 				C5C88352223A3B6A00B1263B /* MPPopularHeaderView.swift in Sources */,
 				C5C88372223A5AB300B1263B /* MPSongListHeaderView.swift in Sources */,
+				C5F5EA87223F9210006C9F80 /* MPTimeOffTableViewCell.swift in Sources */,
 				C503583E2237A517003177EC /* AppConfiguration.swift in Sources */,
 				C555F1BF223A101E00606182 /* MPSearchNavView.swift in Sources */,
 				C503588E2237A517003177EC /* NSString+Predicate.m in Sources */,
@@ -2864,6 +2924,7 @@
 				C5123A76223903C100672914 /* CardInterpolator.swift in Sources */,
 				C5035CC12238D7E3003177EC /* MPRecentlyCollectionViewCell.swift in Sources */,
 				C50358912237A517003177EC /* UIColor+Category.m in Sources */,
+				C5F5EA8F223F9673006C9F80 /* MPTimeOffModel.swift in Sources */,
 				C50358882237A517003177EC /* UINavigationController+NavManager.m in Sources */,
 				C50358B92237A517003177EC /* HXAlbumListViewController.m in Sources */,
 				C50358B62237A517003177EC /* UIFont+HXExtension.m in Sources */,
@@ -2986,6 +3047,7 @@
 				C5035B4B2237B315003177EC /* TokenModel.swift in Sources */,
 				C50358452237A517003177EC /* QBImageModel.swift in Sources */,
 				C50358562237A517003177EC /* HFThirdPartyManager.swift in Sources */,
+				C5F5EA82223F91CA006C9F80 /* MPTimeOffViewController.swift in Sources */,
 				C5035CA02238A286003177EC /* MPNavView.swift in Sources */,
 				C5123A8E223A00DD00672914 /* MPSearchViewController.swift in Sources */,
 				C50358462237A517003177EC /* HFMainDataCent.swift in Sources */,
@@ -2999,6 +3061,7 @@
 				C50358672237A517003177EC /* BaseModel.swift in Sources */,
 				C5035B4D2237B315003177EC /* CommonDataCent.swift in Sources */,
 				C5C88384223B457F00B1263B /* MPPlayingViewController.swift in Sources */,
+				C5F5EA92223F9996006C9F80 /* MPTimeOffPopView.swift in Sources */,
 				C503587D2237A517003177EC /* UIImage+Category.m in Sources */,
 				C5C88379223B414A00B1263B /* MPSongDetailViewController.swift in Sources */,
 				C50358692237A517003177EC /* BasePageViewController.swift in Sources */,
@@ -3021,6 +3084,7 @@
 				C50358D22237A517003177EC /* HXDateVideoEditViewController.m in Sources */,
 				C50358742237A517003177EC /* UIDevice+Extension.swift in Sources */,
 				C5035B442237B315003177EC /* LTCommentViewController.swift in Sources */,
+				C5F5EA8B223F930F006C9F80 /* MPTimeOffHeaderView.swift in Sources */,
 				C50358E52237A517003177EC /* FJItemCVCell.swift in Sources */,
 				C5F5EA7E223F88F2006C9F80 /* MPSongExtensionToolsView.swift in Sources */,
 				C503585A2237A517003177EC /* HFWebViewController.swift in Sources */,
