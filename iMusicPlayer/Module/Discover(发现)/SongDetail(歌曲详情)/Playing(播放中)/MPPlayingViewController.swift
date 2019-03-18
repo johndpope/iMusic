@@ -42,8 +42,10 @@ class MPPlayingViewController: BaseViewController {
         case 10007: // 收藏
             break
         case 10008: // 添加到歌单
+            addToSongList()
             break
         case 10009: // 附加功能
+            extensionTools()
             break
         case 10010: // 播放列表
             let pv = MPPlayingListsPopView.md_viewFromXIB() as! MPPlayingListsPopView
@@ -52,5 +54,50 @@ class MPPlayingViewController: BaseViewController {
         default:
             break
         }
+    }
+}
+extension MPPlayingViewController {
+    func addToSongList() {
+        let pv = MPAddToSongListView.md_viewFromXIB() as! MPAddToSongListView
+        // 新建歌单
+        pv.createSongListBlock = {
+            let pv = MPCreateSongListView.md_viewFromXIB(cornerRadius: 4) as! MPCreateSongListView
+            pv.md_btnDidClickedBlock = {(sender) in
+                if sender.tag == 10001 {
+                    if let sv = pv.superview {
+                        sv.removeFromSuperview()
+                    }
+                }else {
+                    // 新建歌单操作
+                    SVProgressHUD.showInfo(withStatus: "正在新建歌单~")
+                    if let sv = pv.superview {
+                        sv.removeFromSuperview()
+                    }
+                }
+            }
+            HFAlertController.showCustomView(view: pv)
+        }
+        HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
+    }
+    
+    func extensionTools() {
+        let pv = MPSongExtensionToolsView.md_viewFromXIB() as! MPSongExtensionToolsView
+        pv.plistName = "extensionTools"
+        pv.delegate = self
+        HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
+    }
+}
+extension MPPlayingViewController: MPSongToolsViewDelegate {
+    
+    func timeOff() {
+        QYTools.shared.Log(log: "定时关闭")
+    }
+    
+    func playVideo() {
+        QYTools.shared.Log(log: "播放视频")
+    }
+    
+    func songInfo() {
+        QYTools.shared.Log(log: "歌曲信息")
     }
 }

@@ -343,6 +343,9 @@
 		C5F5EA71223F4F74006C9F80 /* MPMediaLibraryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA6F223F4F74006C9F80 /* MPMediaLibraryCollectionViewCell.xib */; };
 		C5F5EA75223F73E4006C9F80 /* MPPlayingListsPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA73223F73E4006C9F80 /* MPPlayingListsPopView.swift */; };
 		C5F5EA76223F73E4006C9F80 /* MPPlayingListsPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA74223F73E4006C9F80 /* MPPlayingListsPopView.xib */; };
+		C5F5EA7A223F87A9006C9F80 /* extensionTools.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA79223F87A9006C9F80 /* extensionTools.plist */; };
+		C5F5EA7E223F88F2006C9F80 /* MPSongExtensionToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA7C223F88F2006C9F80 /* MPSongExtensionToolsView.swift */; };
+		C5F5EA7F223F88F2006C9F80 /* MPSongExtensionToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA7D223F88F2006C9F80 /* MPSongExtensionToolsView.xib */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -807,6 +810,9 @@
 		C5F5EA6F223F4F74006C9F80 /* MPMediaLibraryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPMediaLibraryCollectionViewCell.xib; sourceTree = "<group>"; };
 		C5F5EA73223F73E4006C9F80 /* MPPlayingListsPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayingListsPopView.swift; sourceTree = "<group>"; };
 		C5F5EA74223F73E4006C9F80 /* MPPlayingListsPopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPPlayingListsPopView.xib; sourceTree = "<group>"; };
+		C5F5EA79223F87A9006C9F80 /* extensionTools.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = extensionTools.plist; sourceTree = "<group>"; };
+		C5F5EA7C223F88F2006C9F80 /* MPSongExtensionToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSongExtensionToolsView.swift; sourceTree = "<group>"; };
+		C5F5EA7D223F88F2006C9F80 /* MPSongExtensionToolsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSongExtensionToolsView.xib; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2184,7 +2190,9 @@
 		C5C8837F223B44D700B1263B /* Playing(播放中) */ = {
 			isa = PBXGroup;
 			children = (
-				C5F5EA72223F73AA006C9F80 /* PlayingLists */,
+				C5F5EA7B223F887B006C9F80 /* ToolsView(工具弹框) */,
+				C5F5EA77223F8466006C9F80 /* Config */,
+				C5F5EA72223F73AA006C9F80 /* PlayingLists(播放列表) */,
 				C5C88382223B457F00B1263B /* MPPlayingViewController.swift */,
 				C5C88383223B457F00B1263B /* MPPlayingViewController.xib */,
 			);
@@ -2407,13 +2415,30 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		C5F5EA72223F73AA006C9F80 /* PlayingLists */ = {
+		C5F5EA72223F73AA006C9F80 /* PlayingLists(播放列表) */ = {
 			isa = PBXGroup;
 			children = (
 				C5F5EA73223F73E4006C9F80 /* MPPlayingListsPopView.swift */,
 				C5F5EA74223F73E4006C9F80 /* MPPlayingListsPopView.xib */,
 			);
-			path = PlayingLists;
+			path = "PlayingLists(播放列表)";
+			sourceTree = "<group>";
+		};
+		C5F5EA77223F8466006C9F80 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA79223F87A9006C9F80 /* extensionTools.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		C5F5EA7B223F887B006C9F80 /* ToolsView(工具弹框) */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA7C223F88F2006C9F80 /* MPSongExtensionToolsView.swift */,
+				C5F5EA7D223F88F2006C9F80 /* MPSongExtensionToolsView.xib */,
+			);
+			path = "ToolsView(工具弹框)";
 			sourceTree = "<group>";
 		};
 		EC570F91216F50DDD372E37F /* Frameworks */ = {
@@ -2570,6 +2595,7 @@
 				C50358E42237A517003177EC /* icon_deleted@3x copy.png in Resources */,
 				C50356B7223794F2003177EC /* LaunchScreen.storyboard in Resources */,
 				C5123A622238E87200672914 /* MPMediaLibraryTableViewCell.xib in Resources */,
+				C5F5EA7A223F87A9006C9F80 /* extensionTools.plist in Resources */,
 				C50358532237A517003177EC /* AlipaySDK.bundle in Resources */,
 				C50358E12237A517003177EC /* icon_deleted@3x.png in Resources */,
 				C5035B412237B315003177EC /* MDWebViewController.xib in Resources */,
@@ -2618,6 +2644,7 @@
 				C503585C2237A517003177EC /* project_intro.html in Resources */,
 				C5035B522237B315003177EC /* MenuData.plist in Resources */,
 				C5C88385223B457F00B1263B /* MPPlayingViewController.xib in Resources */,
+				C5F5EA7F223F88F2006C9F80 /* MPSongExtensionToolsView.xib in Resources */,
 				C5C88375223A5AB300B1263B /* MPSongListHeaderView.xib in Resources */,
 				C50358ED2237A517003177EC /* CYPasswordView.bundle in Resources */,
 				C555F1C0223A101E00606182 /* MPSearchNavView.xib in Resources */,
@@ -2995,6 +3022,7 @@
 				C50358742237A517003177EC /* UIDevice+Extension.swift in Sources */,
 				C5035B442237B315003177EC /* LTCommentViewController.swift in Sources */,
 				C50358E52237A517003177EC /* FJItemCVCell.swift in Sources */,
+				C5F5EA7E223F88F2006C9F80 /* MPSongExtensionToolsView.swift in Sources */,
 				C503585A2237A517003177EC /* HFWebViewController.swift in Sources */,
 				C50358402237A517003177EC /* Macro.swift in Sources */,
 				C50358E82237A517003177EC /* CYConst.m in Sources */,

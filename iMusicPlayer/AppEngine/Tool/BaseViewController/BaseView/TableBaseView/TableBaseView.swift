@@ -28,9 +28,9 @@ class TableBaseView: BaseView {
     
     private func setupTableView() {
         self.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
+//        tableView.snp.makeConstraints { (make) in
+//            make.edges.equalToSuperview()
+//        }
         
         tableView.dataSource = self
         tableView.delegate = self

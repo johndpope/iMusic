@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="223" id="KGk-i7-Jjw" customClass="MPSongExtensionToolsView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="246"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="245.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3T7-nW-GaB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="『Good Life』pop Music Music Video " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewQ-mh-7y8">
+                                <rect key="frame" x="12" y="12" width="351" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ewQ-mh-7y8" firstAttribute="centerY" secondItem="3T7-nW-GaB" secondAttribute="centerY" id="9d4-UM-0ve"/>
+                            <constraint firstItem="ewQ-mh-7y8" firstAttribute="leading" secondItem="3T7-nW-GaB" secondAttribute="leading" constant="12" id="Lpz-wn-pHy"/>
+                            <constraint firstAttribute="trailing" secondItem="ewQ-mh-7y8" secondAttribute="trailing" constant="12" id="sCq-3e-hX1"/>
+                            <constraint firstAttribute="height" constant="41" id="tvg-Mf-ERE"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfJ-Ue-dNi">
+                        <rect key="frame" x="0.0" y="49" width="375" height="1"/>
+                        <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="UhB-5N-IwC"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebp-6v-7Jm">
+                        <rect key="frame" x="0.0" y="195" width="375" height="0.5"/>
+                        <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="BQT-TZ-V4f"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" tag="10003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLC-oj-bps">
+                        <rect key="frame" x="0.0" y="195.5" width="375" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="X4F-Vj-h1p"/>
+                        </constraints>
+                        <state key="normal" title="关闭">
+                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEs-ua-ph9">
+                        <rect key="frame" x="0.0" y="50" width="375" height="145"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="145" id="K9x-ho-5vc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ebp-6v-7Jm" secondAttribute="trailing" id="3Qr-Qk-YWj"/>
+                    <constraint firstItem="ebp-6v-7Jm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4Mo-j6-tb8"/>
+                    <constraint firstItem="iEs-ua-ph9" firstAttribute="top" secondItem="XfJ-Ue-dNi" secondAttribute="bottom" id="6bm-LS-5AS"/>
+                    <constraint firstAttribute="trailing" secondItem="3T7-nW-GaB" secondAttribute="trailing" id="6cR-IF-n4y"/>
+                    <constraint firstItem="XfJ-Ue-dNi" firstAttribute="top" secondItem="3T7-nW-GaB" secondAttribute="bottom" constant="8" id="7iW-DB-B0D"/>
+                    <constraint firstItem="hLC-oj-bps" firstAttribute="top" secondItem="ebp-6v-7Jm" secondAttribute="bottom" id="9UR-7K-0Lo"/>
+                    <constraint firstItem="3T7-nW-GaB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="BQV-Mc-Qqt"/>
+                    <constraint firstItem="XfJ-Ue-dNi" firstAttribute="leading" secondItem="3T7-nW-GaB" secondAttribute="leading" id="ChF-pr-0cc"/>
+                    <constraint firstAttribute="trailing" secondItem="iEs-ua-ph9" secondAttribute="trailing" id="E0J-o5-WDC"/>
+                    <constraint firstItem="iEs-ua-ph9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Fuz-x5-0jZ"/>
+                    <constraint firstAttribute="trailing" secondItem="hLC-oj-bps" secondAttribute="trailing" id="Jn3-4h-Paz"/>
+                    <constraint firstItem="3T7-nW-GaB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="e5O-xx-QC5"/>
+                    <constraint firstItem="ebp-6v-7Jm" firstAttribute="top" secondItem="iEs-ua-ph9" secondAttribute="bottom" id="gD5-d3-pBl"/>
+                    <constraint firstItem="XfJ-Ue-dNi" firstAttribute="trailing" secondItem="3T7-nW-GaB" secondAttribute="trailing" id="inZ-YJ-PDs"/>
+                    <constraint firstItem="hLC-oj-bps" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lfY-VA-SfU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bottomLineView" destination="ebp-6v-7Jm" id="j0O-vy-Wvt"/>
+                <outlet property="topLineView" destination="XfJ-Ue-dNi" id="uQs-AA-P07"/>
+            </connections>
+            <point key="canvasLocation" x="-233" y="-31"/>
+        </tableViewCell>
+    </objects>
+</document>

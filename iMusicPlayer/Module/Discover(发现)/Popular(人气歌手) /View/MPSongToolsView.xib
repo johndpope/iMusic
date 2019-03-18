@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,10 +15,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9mB-CZ-kMI">
-                    <rect key="frame" x="0.0" y="50" width="375" height="137"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkL-6C-zXt">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="41"/>
                     <subviews>
@@ -52,19 +47,15 @@
                 <constraint firstItem="rk2-uc-mbf" firstAttribute="trailing" secondItem="tkL-6C-zXt" secondAttribute="trailing" id="4tj-0H-Z1y"/>
                 <constraint firstItem="rk2-uc-mbf" firstAttribute="top" secondItem="tkL-6C-zXt" secondAttribute="bottom" constant="8" id="QsZ-kO-oK8"/>
                 <constraint firstItem="tkL-6C-zXt" firstAttribute="top" secondItem="Be0-IQ-Fkw" secondAttribute="top" id="U8M-wu-6YV"/>
-                <constraint firstItem="QPj-fr-r1S" firstAttribute="trailing" secondItem="9mB-CZ-kMI" secondAttribute="trailing" id="Vil-EF-dvZ"/>
-                <constraint firstItem="9mB-CZ-kMI" firstAttribute="leading" secondItem="QPj-fr-r1S" secondAttribute="leading" id="W9j-cc-obl"/>
                 <constraint firstItem="rk2-uc-mbf" firstAttribute="leading" secondItem="tkL-6C-zXt" secondAttribute="leading" id="a3W-Fm-vnt"/>
                 <constraint firstItem="QPj-fr-r1S" firstAttribute="trailing" secondItem="tkL-6C-zXt" secondAttribute="trailing" id="bOj-hp-fza"/>
-                <constraint firstItem="9mB-CZ-kMI" firstAttribute="top" secondItem="rk2-uc-mbf" secondAttribute="bottom" id="cS9-6x-bmT"/>
-                <constraint firstItem="QPj-fr-r1S" firstAttribute="bottom" secondItem="9mB-CZ-kMI" secondAttribute="bottom" id="fJc-cA-lrF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="QPj-fr-r1S"/>
             <connections>
-                <outlet property="tableView" destination="9mB-CZ-kMI" id="H9Z-ii-B8Z"/>
+                <outlet property="topLineView" destination="rk2-uc-mbf" id="qMc-pH-3jm"/>
             </connections>
-            <point key="canvasLocation" x="-108" y="-60"/>
+            <point key="canvasLocation" x="63" y="-61"/>
         </view>
     </objects>
 </document>
