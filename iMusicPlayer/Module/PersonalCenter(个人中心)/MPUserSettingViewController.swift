@@ -228,7 +228,8 @@ extension MPUserSettingViewController {
     }
     /// 上传音乐
     @objc func uploadMusic() {
-        
+        let vc = MPUploadMusicViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     /// 我的消息
     @objc func message() {
@@ -240,7 +241,7 @@ extension MPUserSettingViewController {
         if let p = path, let policys = NSDictionary(contentsOfFile: p) {
             let vc = MDWebViewController()
             vc.title = NSLocalizedString("隐私政策", comment: "")
-            vc.text = policys["policy"] as! String
+            vc.text = policys["policy_1"] as! String
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

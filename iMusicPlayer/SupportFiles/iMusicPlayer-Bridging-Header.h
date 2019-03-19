@@ -49,4 +49,6 @@
 
 #import "FYLSegmentView.h"
 
+#import "HXPhotoPicker.h"
+
 #endif /* Bridge_Header_h */

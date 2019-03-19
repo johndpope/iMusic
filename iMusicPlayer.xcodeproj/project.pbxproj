@@ -356,6 +356,8 @@
 		C5F5EA93223F9996006C9F80 /* MPTimeOffPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA91223F9996006C9F80 /* MPTimeOffPopView.xib */; };
 		C5F5EA95223FA6DB006C9F80 /* policy.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA94223FA6DB006C9F80 /* policy.strings */; };
 		C5F5EA97223FAAAF006C9F80 /* policy.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA96223FAAAF006C9F80 /* policy.plist */; };
+		C5F5EA9B22408AC2006C9F80 /* MPUploadMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5EA9922408AC2006C9F80 /* MPUploadMusicViewController.swift */; };
+		C5F5EA9C22408AC2006C9F80 /* MPUploadMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5EA9A22408AC2006C9F80 /* MPUploadMusicViewController.xib */; };
 		DB3A95C0A12867E0580B596F /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 783D4677F5DB28D89B408717 /* Pods_iMusicPlayerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -693,7 +695,6 @@
 		C50359512237B314003177EC /* YDMenuDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDMenuDataSource.swift; sourceTree = "<group>"; };
 		C50359522237B314003177EC /* MenuData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MenuData.plist; sourceTree = "<group>"; };
 		C50359532237B314003177EC /* YDMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YDMenu.swift; sourceTree = "<group>"; };
-		C5035C7E2237B425003177EC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../../gitee/CarConvenient/CarConvenient/SupportFiles/Info.plist; sourceTree = "<group>"; };
 		C5035C802237BBD8003177EC /* MPLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPLoginViewController.swift; sourceTree = "<group>"; };
 		C5035C812237BBD8003177EC /* MPLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPLoginViewController.xib; sourceTree = "<group>"; };
 		C5035C852237BEE3003177EC /* MPDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPDiscoverViewController.swift; sourceTree = "<group>"; };
@@ -739,6 +740,7 @@
 		C5123A8D223A00DD00672914 /* MPSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchViewController.swift; sourceTree = "<group>"; };
 		C5123A91223A014E00672914 /* MPSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchTableViewCell.swift; sourceTree = "<group>"; };
 		C5123A92223A014E00672914 /* MPSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchTableViewCell.xib; sourceTree = "<group>"; };
+		C519A9CA2240CD0900B12D5C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C555F1B9223A043C00606182 /* MPSearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchHeaderView.swift; sourceTree = "<group>"; };
 		C555F1BA223A043C00606182 /* MPSearchHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchHeaderView.xib; sourceTree = "<group>"; };
 		C555F1BD223A101E00606182 /* MPSearchNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchNavView.swift; sourceTree = "<group>"; };
@@ -833,6 +835,8 @@
 		C5F5EA91223F9996006C9F80 /* MPTimeOffPopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPTimeOffPopView.xib; sourceTree = "<group>"; };
 		C5F5EA94223FA6DB006C9F80 /* policy.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = policy.strings; sourceTree = "<group>"; };
 		C5F5EA96223FAAAF006C9F80 /* policy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = policy.plist; sourceTree = "<group>"; };
+		C5F5EA9922408AC2006C9F80 /* MPUploadMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPUploadMusicViewController.swift; sourceTree = "<group>"; };
+		C5F5EA9A22408AC2006C9F80 /* MPUploadMusicViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPUploadMusicViewController.xib; sourceTree = "<group>"; };
 		CDDA42B118A5F61E6CF6FDC7 /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -934,7 +938,7 @@
 		C50356DA22379798003177EC /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				C5035C7E2237B425003177EC /* Info.plist */,
+				C519A9CA2240CD0900B12D5C /* Info.plist */,
 				C50356AC223794F1003177EC /* AppDelegate.swift */,
 				C50356AE223794F1003177EC /* ViewController.swift */,
 				C50356B0223794F1003177EC /* Main.storyboard */,
@@ -1811,6 +1815,7 @@
 		C5035A0F2237B314003177EC /* PersonalCenter(个人中心) */ = {
 			isa = PBXGroup;
 			children = (
+				C5F5EA9822408A9B006C9F80 /* UploadMusic(上传音乐) */,
 				C5F5EA80223F91A5006C9F80 /* TimeOff(定时关闭) */,
 				C5123A872239EBC400672914 /* View */,
 				C5123A82223917D700672914 /* Config */,
@@ -2503,6 +2508,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C5F5EA9822408A9B006C9F80 /* UploadMusic(上传音乐) */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5EA9922408AC2006C9F80 /* MPUploadMusicViewController.swift */,
+				C5F5EA9A22408AC2006C9F80 /* MPUploadMusicViewController.xib */,
+			);
+			path = "UploadMusic(上传音乐)";
+			sourceTree = "<group>";
+		};
 		EC570F91216F50DDD372E37F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2713,6 +2727,7 @@
 				C5C88385223B457F00B1263B /* MPPlayingViewController.xib in Resources */,
 				C5F5EA7F223F88F2006C9F80 /* MPSongExtensionToolsView.xib in Resources */,
 				C5C88375223A5AB300B1263B /* MPSongListHeaderView.xib in Resources */,
+				C5F5EA9C22408AC2006C9F80 /* MPUploadMusicViewController.xib in Resources */,
 				C50358ED2237A517003177EC /* CYPasswordView.bundle in Resources */,
 				C555F1C0223A101E00606182 /* MPSearchNavView.xib in Resources */,
 			);
@@ -2983,6 +2998,7 @@
 				C50358E32237A517003177EC /* FJSelectLocationView.swift in Sources */,
 				C50358B42237A517003177EC /* HXCollectionView.m in Sources */,
 				C5035B482237B315003177EC /* PostInfoModel.swift in Sources */,
+				C5F5EA9B22408AC2006C9F80 /* MPUploadMusicViewController.swift in Sources */,
 				C5035B502237B315003177EC /* YDMenuDelegate.swift in Sources */,
 				C5C883A2223B559600B1263B /* MPSongToolsView.swift in Sources */,
 				C50358632237A517003177EC /* BaseView.swift in Sources */,
@@ -3339,13 +3355,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VJZKY87UD3;
+				DEVELOPMENT_TEAM = KU3Z84AU8W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMusicPlayer/AppEngine/Tool/AliPay",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/../../gitee/CarConvenient/CarConvenient/SupportFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				INFOPLIST_FILE = "$(SRCROOT)/iMusicPlayer/SupportFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3368,13 +3384,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VJZKY87UD3;
+				DEVELOPMENT_TEAM = KU3Z84AU8W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMusicPlayer/AppEngine/Tool/AliPay",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/../../gitee/CarConvenient/CarConvenient/SupportFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				INFOPLIST_FILE = "$(SRCROOT)/iMusicPlayer/SupportFiles/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
