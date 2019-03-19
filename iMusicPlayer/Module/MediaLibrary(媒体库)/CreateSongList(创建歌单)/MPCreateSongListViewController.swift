@@ -72,4 +72,9 @@ extension MPCreateSongListViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = MPEditSongListViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

@@ -14,6 +14,13 @@ import RxSwift
 
 class BaseViewController: UIViewController, PlaceholderViewDelegate {
     
+    /// 是否返回按钮
+    open var hiddenLeftButton:Bool = false {
+        didSet {
+            setupStyle()
+        }
+    }
+    
     /// 是否隐藏导航栏 - 默认不隐藏
     open var hiddenNavBar:Bool = false {
         didSet{
@@ -52,7 +59,11 @@ class BaseViewController: UIViewController, PlaceholderViewDelegate {
         // 添加左右按钮
         if let vcs = self.navigationController?.viewControllers {
             if vcs.count > 1 {
-                self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_nav_back"), style: .plain, target: self, action: #selector(clickBack))
+                if !hiddenLeftButton {
+                    self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_nav_back"), style: .plain, target: self, action: #selector(clickBack))
+                }else {
+                     self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: UIView(frame: .zero))
+                }
             }else {
 //                addLeftItem(title: "", imageName: "btn_my_n1", fontColor: Color.md_NavBarTintColor)
 //                addRightItem(title: "", imageName: "btn_system_n1", fontColor: Color.md_NavBarTintColor)

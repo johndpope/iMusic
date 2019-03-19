@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dWK-1B-etN" customClass="MPEditSongListTableViewCell" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dWK-1B-etN" id="RnA-Kn-53T">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_album" translatesAutoresizingMaskIntoConstraints="NO" id="weI-ld-UTw">
+                        <rect key="frame" x="12" y="5" width="41.5" height="41.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="weI-ld-UTw" secondAttribute="height" id="Tk2-bb-sFe"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星野源のオールナイトニッポン" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHf-cq-GXl">
+                        <rect key="frame" x="61.5" y="5" width="182" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="星野源 · 4:32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYp-yz-jrA">
+                        <rect key="frame" x="61.5" y="33" width="182" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9nu-j7-Qra">
+                        <rect key="frame" x="284.5" y="14" width="23.5" height="23.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="9nu-j7-Qra" secondAttribute="height" id="WiL-Gn-JIz"/>
+                        </constraints>
+                        <state key="normal" image="icon_more_1"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBG-P4-PA4">
+                        <rect key="frame" x="251.5" y="13.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="NBG-P4-PA4" secondAttribute="height" id="EPn-pg-XPG"/>
+                        </constraints>
+                        <state key="normal" image="icon_collect_1"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="aYp-yz-jrA" firstAttribute="trailing" secondItem="QHf-cq-GXl" secondAttribute="trailing" id="1xK-AZ-iyS"/>
+                    <constraint firstItem="aYp-yz-jrA" firstAttribute="top" secondItem="QHf-cq-GXl" secondAttribute="bottom" constant="4" id="3K3-Sr-d5N"/>
+                    <constraint firstItem="QHf-cq-GXl" firstAttribute="leading" secondItem="weI-ld-UTw" secondAttribute="trailing" constant="8" id="4hd-EF-0uj"/>
+                    <constraint firstItem="NBG-P4-PA4" firstAttribute="width" secondItem="NBG-P4-PA4" secondAttribute="height" id="I1q-Gp-xYK"/>
+                    <constraint firstAttribute="bottom" secondItem="weI-ld-UTw" secondAttribute="bottom" constant="5" id="Lhh-dd-bu5"/>
+                    <constraint firstAttribute="bottom" secondItem="9nu-j7-Qra" secondAttribute="bottom" constant="14" id="OGX-1s-xpH"/>
+                    <constraint firstItem="aYp-yz-jrA" firstAttribute="leading" secondItem="QHf-cq-GXl" secondAttribute="leading" id="PRq-ZI-naG"/>
+                    <constraint firstItem="weI-ld-UTw" firstAttribute="leading" secondItem="RnA-Kn-53T" secondAttribute="leading" constant="12" id="TQz-Fo-UgO"/>
+                    <constraint firstItem="weI-ld-UTw" firstAttribute="top" secondItem="RnA-Kn-53T" secondAttribute="top" constant="5" id="WhU-kg-1eo"/>
+                    <constraint firstItem="9nu-j7-Qra" firstAttribute="centerY" secondItem="RnA-Kn-53T" secondAttribute="centerY" id="cJd-hO-rau"/>
+                    <constraint firstAttribute="trailing" secondItem="9nu-j7-Qra" secondAttribute="trailing" constant="12" id="cTq-rb-bCb"/>
+                    <constraint firstItem="NBG-P4-PA4" firstAttribute="leading" secondItem="QHf-cq-GXl" secondAttribute="trailing" constant="8" id="fE4-Cb-WT8"/>
+                    <constraint firstItem="aYp-yz-jrA" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="weI-ld-UTw" secondAttribute="bottom" id="gox-aZ-9JH"/>
+                    <constraint firstItem="9nu-j7-Qra" firstAttribute="top" secondItem="RnA-Kn-53T" secondAttribute="top" constant="14" id="ist-2U-OQo"/>
+                    <constraint firstItem="9nu-j7-Qra" firstAttribute="leading" secondItem="NBG-P4-PA4" secondAttribute="trailing" constant="8" id="j8Y-ob-1cU"/>
+                    <constraint firstItem="NBG-P4-PA4" firstAttribute="centerY" secondItem="9nu-j7-Qra" secondAttribute="centerY" id="kEZ-JT-grX"/>
+                    <constraint firstItem="QHf-cq-GXl" firstAttribute="top" secondItem="weI-ld-UTw" secondAttribute="top" id="qSN-bv-VIc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="EDu-gR-3WL"/>
+            <point key="canvasLocation" x="37" y="129"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_collect_1" width="25" height="25"/>
+        <image name="icon_more_1" width="25" height="25"/>
+        <image name="pic_album" width="100" height="100"/>
+    </resources>
+</document>

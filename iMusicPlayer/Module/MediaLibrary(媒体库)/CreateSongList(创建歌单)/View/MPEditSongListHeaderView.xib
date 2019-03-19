@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MPEditSongListHeaderView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4Z-nA-IDD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                        <subviews>
+                            <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9l-VS-zqw">
+                                <rect key="frame" x="238" y="9.5" width="70" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="NuP-7h-0ca"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="编辑" image="icon_edit">
+                                    <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btn_DidClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PrU-cg-rxU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="H9l-VS-zqw" secondAttribute="trailing" constant="12" id="uxb-f7-PIq"/>
+                            <constraint firstItem="H9l-VS-zqw" firstAttribute="centerY" secondItem="j4Z-nA-IDD" secondAttribute="centerY" id="wux-f9-oIs"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUh-B4-h2e">
+                        <rect key="frame" x="12" y="9.5" width="95" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="95" id="FVD-E4-VxJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="随机播放" image="icon_album_play_random">
+                            <color key="titleColor" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="btn_DidClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5v1-Be-Jq8"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="j4Z-nA-IDD" secondAttribute="trailing" id="0sL-5I-rFE"/>
+                    <constraint firstItem="j4Z-nA-IDD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NdK-NY-3uY"/>
+                    <constraint firstAttribute="bottom" secondItem="j4Z-nA-IDD" secondAttribute="bottom" id="OJ8-Kw-sZb"/>
+                    <constraint firstItem="H9l-VS-zqw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IUh-B4-h2e" secondAttribute="trailing" constant="12" id="OOR-OY-eXb"/>
+                    <constraint firstItem="IUh-B4-h2e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="ZGG-tc-OkW"/>
+                    <constraint firstItem="j4Z-nA-IDD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tV7-GW-kHt"/>
+                    <constraint firstItem="IUh-B4-h2e" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xdU-do-3CY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="-723.20000000000005" y="101.64917541229386"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_album_play_random" width="25" height="25"/>
+        <image name="icon_edit" width="25" height="25"/>
+    </resources>
+</document>
