@@ -56,6 +56,9 @@ class MPSearchResultView: BaseView {
     private func setupHeaderView() {
         let hv = MPSearchResultHeaderView.md_viewFromXIB() as! MPSearchResultHeaderView
         tableView.tableHeaderView = hv
+        hv.segmentChangeBlock = {(index) in
+            self.tableView.reloadData()
+        }
     }
     
 }

@@ -11,11 +11,18 @@ import TagListView
 
 class MPSearchResultHeaderView: UITableViewCell {
     
+    var segmentChangeBlock: ((_ index: Int)->Void)?
+    
     var defaultConditionH: CGFloat = 0
     var defaultTimeTagsH: CGFloat = 0
     var defaultFileter: Bool = false
     
     @IBOutlet weak var segment: UISegmentedControl!
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var selectLabel: UILabel!
+    @IBOutlet weak var sortLabel: UILabel!
+    
     
     @IBOutlet weak var timeTagsH: NSLayoutConstraint! {
         didSet {
@@ -52,19 +59,22 @@ class MPSearchResultHeaderView: UITableViewCell {
         xib_selectTagList.tagViews.first!.isSelected = true
         xib_sortTagList.tagViews.first!.isSelected = true
         
-        conditionViewH.constant = 0
-        conditionView.isHidden = true
+        songStyle()
     }
 
     @IBAction func filterDidClicked(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         defaultFileter = sender.isSelected
         if defaultFileter {
-            conditionViewH.constant = defaultConditionH
-            conditionView.isHidden = false
+            if segment.selectedSegmentIndex == 1 {
+                mvStyle()
+            }else if segment.selectedSegmentIndex == 2 {
+                songListStyle()
+            }else {
+                songStyle()
+            }
         }else {
-            conditionViewH.constant = 0
-            conditionView.isHidden = true
+            songStyle()
         }
     }
 }
@@ -75,25 +85,56 @@ extension MPSearchResultHeaderView {
         if defaultFileter {
             switch seg.selectedSegmentIndex {
             case 0: // 单曲
-                conditionViewH.constant = 0
-                conditionView.isHidden = true
+                songStyle()
                 break
             case 1: // MV
-                conditionViewH.constant = defaultConditionH
-                conditionView.isHidden = false
-                timeTagsH.constant = defaultTimeTagsH
+                mvStyle()
                 break
             case 2: // 歌单
-                conditionViewH.constant = 48
-                conditionView.isHidden = false
-                timeTagsH.constant = 0
+                songListStyle()
                 break
             default:
                 break
             }
         }
         // 回调
-        
+        if let b = segmentChangeBlock {
+            b(segment.selectedSegmentIndex)
+        }
     }
     
+    private func songStyle() {
+        conditionViewH.constant = 0
+        conditionView.isHidden = true
+        
+        self.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: SCREEN_WIDTH*(59/375)))
+    }
+    
+    private func mvStyle() {
+        
+        conditionViewH.constant = defaultConditionH
+        conditionView.isHidden = false
+        timeTagsH.constant = defaultTimeTagsH
+        
+        timeLabel.isHidden = false
+        xib_timeTagList.isHidden = false
+        selectLabel.isHidden = false
+        xib_selectTagList.isHidden = false
+        
+        self.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: SCREEN_WIDTH*(179/375)))
+    }
+    
+    private func songListStyle() {
+        
+        conditionViewH.constant = 48
+        conditionView.isHidden = false
+        timeTagsH.constant = 0
+        
+        timeLabel.isHidden = true
+        xib_timeTagList.isHidden = true
+        selectLabel.isHidden = true
+        xib_selectTagList.isHidden = true
+        
+        self.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: SCREEN_WIDTH*(107/375)))
+    }
 }
