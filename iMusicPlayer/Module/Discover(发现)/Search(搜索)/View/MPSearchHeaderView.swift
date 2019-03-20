@@ -10,6 +10,8 @@ import UIKit
 import TagListView
 
 class MPSearchHeaderView: BaseView {
+    
+    var itemClickedBlock: ((_ title: String) -> Void)?
 
     let tagDataSources = ["AKB48", "三浦大知", "星野源", "西野カナ", "中島愛", "米津玄师", "Winds" ]
     
@@ -36,5 +38,8 @@ class MPSearchHeaderView: BaseView {
 extension MPSearchHeaderView: TagListViewDelegate {
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
         QYTools.shared.Log(log: title)
+        if let b = itemClickedBlock {
+            b(title)
+        }
     }
 }

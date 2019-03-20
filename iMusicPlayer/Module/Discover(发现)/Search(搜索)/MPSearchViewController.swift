@@ -14,14 +14,44 @@ private struct Constant {
 }
 
 class MPSearchViewController: BaseTableViewController {
+    
+    var itemClickedBlock: ((_ title: String) -> Void)?
+    
+    var searchingView: MPSearchingView?
+    var searchResultView: MPSearchResultView?
 
     override func viewDidLoad() {
+        
+        self.itemClickedBlock = {[weak self](title) in
+            
+            if title != "" {
+                if self?.searchResultView != nil {
+                    // 替换数据源
+                    self?.searchResultView?.isHidden = false
+                    QYTools.shared.Log(log: "替换数据源~")
+                }else {
+                    QYTools.shared.Log(log: "新增结果数据View~")
+                    // 新增结果列表
+                    let rv = MPSearchResultView()
+                    self?.searchResultView = rv
+                    self?.view.addSubview(rv)
+                    rv.snp.makeConstraints { (make) in
+                        make.left.right.top.bottom.equalToSuperview()
+                    }
+                }
+            }else {
+                self?.searchResultView?.isHidden = true
+            }
+            
+        }
+        
         super.viewDidLoad()
     }
     
     override func setupStyle() {
         super.setupStyle()
         let nav = MPSearchNavView.md_viewFromXIB() as! MPSearchNavView
+        nav.delegate = self
         self.navigationItem.titleView = nav
     }
     
@@ -29,7 +59,6 @@ class MPSearchViewController: BaseTableViewController {
         super.setupTableView()
         
         self.identifier = Constant.identifier
-        
     }
     
     override func setupTableHeaderView() {
@@ -43,6 +72,8 @@ class MPSearchViewController: BaseTableViewController {
             hv.height = contentH + 17*2 + 13*4
             self.tableView.reloadData()
         }
+    
+        hv.itemClickedBlock = self.itemClickedBlock
     }
     
 }
@@ -58,5 +89,39 @@ extension MPSearchViewController {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 获取当前数据源的标题
+        let text = ""
+        if let b = itemClickedBlock {
+            b(text)
+        }
+    }
+}
+extension MPSearchViewController: MPSearchNavViewDelegate {
+    func beginSearch(_ text: String) {
+        if text != "" {
+            if searchingView != nil {
+                // 替换数据源
+                searchingView?.isHidden = false
+                QYTools.shared.Log(log: "替换数据源~")
+            }else {
+                QYTools.shared.Log(log: "新增关联数据View~")
+                // 新增一个列表
+                let relatev = MPSearchingView()
+                searchingView = relatev
+                self.view.addSubview(relatev)
+                relatev.snp.makeConstraints { (make) in
+                    make.left.right.top.bottom.equalToSuperview()
+                }
+                
+                searchingView?.itemClickedBlock = self.itemClickedBlock
+                
+            }
+        }else {
+            searchingView?.isHidden = true
+        }
+       
     }
 }
