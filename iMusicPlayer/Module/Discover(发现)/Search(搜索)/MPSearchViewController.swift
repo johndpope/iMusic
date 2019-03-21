@@ -19,12 +19,21 @@ class MPSearchViewController: BaseTableViewController {
     
     var searchingView: MPSearchingView?
     var searchResultView: MPSearchResultView?
+    var searchView: MPSearchNavView?
 
     override func viewDidLoad() {
+        // view创建时间冲突：手动调用
+        let nav = MPSearchNavView.md_viewFromXIB() as! MPSearchNavView
+        searchView = nav
+        nav.delegate = self
+        self.navigationItem.titleView = nav
         
         self.itemClickedBlock = {[weak self](title) in
             
             if title != "" {
+                // 数据回填
+                self?.searchView?.setupData(model: title)
+                
                 if self?.searchResultView != nil {
                     // 替换数据源
                     self?.searchResultView?.isHidden = false
@@ -44,15 +53,12 @@ class MPSearchViewController: BaseTableViewController {
             }
             
         }
-        
         super.viewDidLoad()
     }
     
     override func setupStyle() {
         super.setupStyle()
-        let nav = MPSearchNavView.md_viewFromXIB() as! MPSearchNavView
-        nav.delegate = self
-        self.navigationItem.titleView = nav
+       
     }
     
     override func setupTableView() {
@@ -119,8 +125,10 @@ extension MPSearchViewController: MPSearchNavViewDelegate {
                 searchingView?.itemClickedBlock = self.itemClickedBlock
                 
             }
+            
         }else {
             searchingView?.isHidden = true
+            searchResultView?.isHidden = true
         }
        
     }

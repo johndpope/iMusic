@@ -34,20 +34,24 @@
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="icon_play_3(1)" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-uy-dTq">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYF-bv-bDY">
                     <rect key="frame" x="112" y="258" width="151" height="151"/>
-                </imageView>
+                    <state key="normal" image="icon_play_3(1)"/>
+                    <connections>
+                        <action selector="play:" destination="-1" eventType="touchUpInside" id="nhL-ZX-Phe"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ixe-uy-dTq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Eh3-ZW-9Qz"/>
                 <constraint firstItem="YNg-IM-V78" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.5/1" id="Iwx-Ai-QxI"/>
                 <constraint firstItem="YNg-IM-V78" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="MmS-fL-FRU"/>
                 <constraint firstItem="6zR-Qv-uU9" firstAttribute="top" secondItem="YNg-IM-V78" secondAttribute="bottom" constant="13" id="VB3-QE-WpN"/>
+                <constraint firstItem="OYF-bv-bDY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="XJh-Rw-FF5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="YNg-IM-V78" secondAttribute="trailing" constant="12" id="XSx-RZ-oQe"/>
                 <constraint firstItem="6zR-Qv-uU9" firstAttribute="trailing" secondItem="YNg-IM-V78" secondAttribute="trailing" id="bOZ-cY-6vr"/>
                 <constraint firstItem="6zR-Qv-uU9" firstAttribute="leading" secondItem="YNg-IM-V78" secondAttribute="leading" id="bio-Ad-7VX"/>
-                <constraint firstItem="ixe-uy-dTq" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="gc5-vL-1OT"/>
+                <constraint firstItem="OYF-bv-bDY" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="myy-Ob-uGt"/>
                 <constraint firstItem="YNg-IM-V78" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="r2i-9O-tM4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

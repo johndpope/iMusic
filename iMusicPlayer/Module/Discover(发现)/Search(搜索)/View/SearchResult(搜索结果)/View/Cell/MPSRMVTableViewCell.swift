@@ -9,6 +9,12 @@
 import UIKit
 
 class MPSRMVTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var xib_image: UIImageView! {
+        didSet {
+            xib_image.md_cornerRadius = 4
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

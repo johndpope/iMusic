@@ -21,6 +21,12 @@ private struct Constant {
 
 class MPSearchResultView: BaseView {
     
+    var currentIndex: Int = 0 {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     private let tableView = UITableView()
     
     override init(frame: CGRect) {
@@ -57,19 +63,75 @@ class MPSearchResultView: BaseView {
         let hv = MPSearchResultHeaderView.md_viewFromXIB() as! MPSearchResultHeaderView
         tableView.tableHeaderView = hv
         hv.segmentChangeBlock = {(index) in
+            self.currentIndex = index
+        }
+        hv.frameChangeBlock = {
             self.tableView.reloadData()
         }
     }
     
 }
 extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        var num = 1
+        if currentIndex == 1 {
+            num = 2
+        }
+        return num
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        var num = 10
+        if currentIndex == 1, section == 0 {
+            num = 1
+        }
+        return num
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.songIdentifier) as! MPSRSongTableViewCell
+        var cell = UITableViewCell()
+        
+        switch currentIndex {
+        case 0:
+            cell = tableView.dequeueReusableCell(withIdentifier: Constant.songIdentifier) as! MPSRSongTableViewCell
+            break
+        case 1:
+            if indexPath.section == 0 {
+                cell = tableView.dequeueReusableCell(withIdentifier: Constant.collectionIdentifier) as! MPSRCollectionTableViewCell
+            }else {
+                cell = tableView.dequeueReusableCell(withIdentifier: Constant.mvIdentifier) as! MPSRMVTableViewCell
+            }
+            break
+        case 2:
+            cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPSRSongListTableViewCell
+            break
+        default:
+            break
+        }
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height: CGFloat = 0
+        switch currentIndex {
+        case 0:
+            height = Constant.songRowHeight
+            break
+        case 1:
+            if indexPath.section == 0 {
+                height = Constant.collectionRowHeight
+            }else {
+                height = Constant.mvRowHeight
+            }
+            break
+        case 2:
+            height = Constant.songListRowHeight
+            break
+        default:
+            break
+        }
+        return height
     }
     
 }

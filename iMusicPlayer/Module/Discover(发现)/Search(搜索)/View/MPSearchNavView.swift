@@ -16,9 +16,15 @@ class MPSearchNavView: BaseView {
 
     var delegate: MPSearchNavViewDelegate?
     
+    @IBOutlet weak var xib_textField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func setupData(model: String) {
+        xib_textField.text = model
     }
 
 }

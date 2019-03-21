@@ -13,11 +13,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="Kc5-wy-iEs" customClass="MPSearchResultHeaderView" customModule="iMusicPlayer" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xPi-c8-nso">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPi-c8-nso">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="236"/>
                     <subviews>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4UK-oB-yKy">
                             <rect key="frame" x="12" y="12" width="277" height="36"/>
@@ -34,6 +34,7 @@
                         <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhL-F4-qYo">
                             <rect key="frame" x="301" y="12" width="66" height="35"/>
                             <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="66" id="3Lf-7b-xZn"/>
                                 <constraint firstAttribute="width" secondItem="jhL-F4-qYo" secondAttribute="height" multiplier="66:35" id="vGn-Bn-9b3"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -66,7 +67,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zhw-o6-lpa" customClass="TagListView" customModule="TagListView">
-                                    <rect key="frame" x="73.5" y="12" width="265.5" height="24"/>
+                                    <rect key="frame" x="69.5" y="12" width="269.5" height="24"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="iz5-s5-UGd"/>
@@ -94,18 +95,18 @@
                                             <color key="value" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="marginX">
-                                            <real key="value" value="12"/>
+                                            <real key="value" value="8"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="marginY">
                                             <real key="value" value="12"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
-                                            <real key="value" value="4"/>
+                                            <real key="value" value="3"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVg-oE-rUx" customClass="TagListView" customModule="TagListView">
-                                    <rect key="frame" x="73.5" y="48" width="265.5" height="24"/>
+                                    <rect key="frame" x="69.5" y="48" width="269.5" height="24"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="textColor">
@@ -130,18 +131,18 @@
                                             <color key="value" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="marginX">
-                                            <real key="value" value="12"/>
+                                            <real key="value" value="8"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="marginY">
                                             <real key="value" value="12"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
-                                            <real key="value" value="4"/>
+                                            <real key="value" value="3"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ytr-J8-6uO" customClass="TagListView" customModule="TagListView">
-                                    <rect key="frame" x="73.5" y="84" width="265.5" height="24"/>
+                                    <rect key="frame" x="69.5" y="84" width="269.5" height="24"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="csb-A2-w5u"/>
@@ -169,13 +170,13 @@
                                             <color key="value" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="marginX">
-                                            <real key="value" value="12"/>
+                                            <real key="value" value="8"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="marginY">
                                             <real key="value" value="12"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
-                                            <real key="value" value="4"/>
+                                            <real key="value" value="3"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </view>
@@ -186,7 +187,6 @@
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ytr-J8-6uO" secondAttribute="bottom" constant="12" id="1Wb-i1-olW"/>
                                 <constraint firstItem="ytr-J8-6uO" firstAttribute="centerY" secondItem="Osa-HV-cQw" secondAttribute="centerY" id="6zQ-uq-GJy"/>
                                 <constraint firstItem="OVg-oE-rUx" firstAttribute="height" secondItem="yRt-6B-NCU" secondAttribute="height" id="8LW-Va-PIN"/>
-                                <constraint firstItem="Zhw-o6-lpa" firstAttribute="leading" secondItem="dca-16-Znj" secondAttribute="trailing" constant="12" id="9TK-Xx-Bn9"/>
                                 <constraint firstItem="ytr-J8-6uO" firstAttribute="leading" secondItem="OVg-oE-rUx" secondAttribute="leading" id="9Wr-w1-nVn"/>
                                 <constraint firstItem="OVg-oE-rUx" firstAttribute="trailing" secondItem="Zhw-o6-lpa" secondAttribute="trailing" id="BgG-Uq-zD2"/>
                                 <constraint firstItem="Zhw-o6-lpa" firstAttribute="centerY" secondItem="dca-16-Znj" secondAttribute="centerY" id="EwE-IZ-vBR"/>
@@ -194,7 +194,7 @@
                                 <constraint firstItem="dca-16-Znj" firstAttribute="height" secondItem="Zhw-o6-lpa" secondAttribute="height" id="Hug-DJ-byK"/>
                                 <constraint firstItem="yRt-6B-NCU" firstAttribute="trailing" secondItem="dca-16-Znj" secondAttribute="trailing" id="Juz-bg-We8"/>
                                 <constraint firstItem="Osa-HV-cQw" firstAttribute="height" secondItem="ytr-J8-6uO" secondAttribute="height" id="LWC-op-PGC"/>
-                                <constraint firstItem="ytr-J8-6uO" firstAttribute="leading" secondItem="Osa-HV-cQw" secondAttribute="trailing" constant="12" id="Ogj-UK-2K4"/>
+                                <constraint firstItem="ytr-J8-6uO" firstAttribute="leading" secondItem="Osa-HV-cQw" secondAttribute="trailing" constant="8" id="Ogj-UK-2K4"/>
                                 <constraint firstAttribute="trailing" secondItem="Zhw-o6-lpa" secondAttribute="trailing" constant="12" id="SF8-O7-LhQ"/>
                                 <constraint firstItem="OVg-oE-rUx" firstAttribute="top" secondItem="Zhw-o6-lpa" secondAttribute="bottom" constant="12" id="T31-Vt-T1C"/>
                                 <constraint firstItem="OVg-oE-rUx" firstAttribute="leading" secondItem="Zhw-o6-lpa" secondAttribute="leading" id="ZSr-y0-5bk"/>
@@ -216,7 +216,6 @@
                         <constraint firstItem="4UK-oB-yKy" firstAttribute="top" secondItem="xPi-c8-nso" secondAttribute="top" constant="12" id="BTe-3Z-7YG"/>
                         <constraint firstItem="4UK-oB-yKy" firstAttribute="leading" secondItem="xPi-c8-nso" secondAttribute="leading" constant="12" id="Gk7-0I-fpa"/>
                         <constraint firstItem="jhL-F4-qYo" firstAttribute="leading" secondItem="4UK-oB-yKy" secondAttribute="trailing" constant="12" id="Qyt-HJ-fPZ"/>
-                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0MU-ct-43D" secondAttribute="bottom" constant="12" id="YI2-0t-x3g"/>
                         <constraint firstItem="jhL-F4-qYo" firstAttribute="height" secondItem="4UK-oB-yKy" secondAttribute="height" id="aGn-RA-tg9"/>
                         <constraint firstItem="jhL-F4-qYo" firstAttribute="centerY" secondItem="4UK-oB-yKy" secondAttribute="centerY" id="nuK-VR-40j"/>
                         <constraint firstItem="0MU-ct-43D" firstAttribute="top" secondItem="4UK-oB-yKy" secondAttribute="bottom" constant="12" id="skp-9M-8Jn"/>
@@ -227,9 +226,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="xPi-c8-nso" firstAttribute="top" secondItem="Pi3-Cs-FAt" secondAttribute="top" id="0zZ-Wd-tMs"/>
+                <constraint firstItem="xPi-c8-nso" firstAttribute="bottom" secondItem="Pi3-Cs-FAt" secondAttribute="bottom" id="FbH-3V-qJg"/>
                 <constraint firstItem="xPi-c8-nso" firstAttribute="leading" secondItem="Kc5-wy-iEs" secondAttribute="leading" id="Idg-NB-DnE"/>
                 <constraint firstItem="Pi3-Cs-FAt" firstAttribute="trailing" secondItem="xPi-c8-nso" secondAttribute="trailing" id="OCO-G9-SdI"/>
-                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xPi-c8-nso" secondAttribute="bottom" id="U2r-fj-mvW"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="Pi3-Cs-FAt"/>
@@ -245,7 +244,7 @@
                 <outlet property="xib_sortTagList" destination="ytr-J8-6uO" id="99e-kh-aJ1"/>
                 <outlet property="xib_timeTagList" destination="Zhw-o6-lpa" id="BCw-x8-Wcp"/>
             </connections>
-            <point key="canvasLocation" x="353" y="-513"/>
+            <point key="canvasLocation" x="172" y="-513.64317841079469"/>
         </view>
     </objects>
     <resources>

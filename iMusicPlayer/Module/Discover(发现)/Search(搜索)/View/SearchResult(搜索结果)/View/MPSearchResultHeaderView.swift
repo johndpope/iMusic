@@ -12,6 +12,7 @@ import TagListView
 class MPSearchResultHeaderView: UITableViewCell {
     
     var segmentChangeBlock: ((_ index: Int)->Void)?
+    var frameChangeBlock: (()->Void)?
     
     var defaultConditionH: CGFloat = 0
     var defaultTimeTagsH: CGFloat = 0
@@ -76,6 +77,10 @@ class MPSearchResultHeaderView: UITableViewCell {
         }else {
             songStyle()
         }
+        // 回调
+        if let b = frameChangeBlock {
+            b()
+        }
     }
 }
 extension MPSearchResultHeaderView {
@@ -100,6 +105,11 @@ extension MPSearchResultHeaderView {
         // 回调
         if let b = segmentChangeBlock {
             b(segment.selectedSegmentIndex)
+        }
+        
+        // 回调
+        if let b = frameChangeBlock {
+            b()
         }
     }
     

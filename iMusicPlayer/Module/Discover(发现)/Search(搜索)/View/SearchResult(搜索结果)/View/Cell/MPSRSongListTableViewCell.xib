@@ -20,30 +20,33 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_ranking_musicz_collect" translatesAutoresizingMaskIntoConstraints="NO" id="HCb-MQ-FGm">
-                        <rect key="frame" x="0.0" y="0.0" width="99.5" height="99.5"/>
+                        <rect key="frame" x="12" y="12" width="75.5" height="75.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="HCb-MQ-FGm" secondAttribute="height" id="bLR-fr-ns6"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="オネエ達の人生バイブル13曲" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaY-dE-ZYG">
-                        <rect key="frame" x="111.5" y="30.5" width="196.5" height="38.5"/>
+                        <rect key="frame" x="99.5" y="30.5" width="208.5" height="38.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="HCb-MQ-FGm" secondAttribute="bottom" id="Cob-HF-kVu"/>
+                    <constraint firstAttribute="bottom" secondItem="HCb-MQ-FGm" secondAttribute="bottom" constant="12" id="Cob-HF-kVu"/>
                     <constraint firstItem="qaY-dE-ZYG" firstAttribute="centerY" secondItem="HCb-MQ-FGm" secondAttribute="centerY" id="L1I-Cw-cNh"/>
-                    <constraint firstItem="HCb-MQ-FGm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LoN-Ek-g8X"/>
+                    <constraint firstItem="HCb-MQ-FGm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="LoN-Ek-g8X"/>
                     <constraint firstItem="qaY-dE-ZYG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="MHB-AI-Bjs"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qaY-dE-ZYG" secondAttribute="bottom" constant="8" id="RNv-bT-RIt"/>
                     <constraint firstAttribute="trailing" secondItem="qaY-dE-ZYG" secondAttribute="trailing" constant="12" id="Xzs-xZ-E3B"/>
-                    <constraint firstItem="HCb-MQ-FGm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bqR-IH-aPi"/>
+                    <constraint firstItem="HCb-MQ-FGm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="bqR-IH-aPi"/>
                     <constraint firstItem="qaY-dE-ZYG" firstAttribute="leading" secondItem="HCb-MQ-FGm" secondAttribute="trailing" constant="12" id="eqB-lh-rlU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="xib_image" destination="HCb-MQ-FGm" id="7Cs-5J-hgm"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>
