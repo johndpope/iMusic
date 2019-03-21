@@ -16,6 +16,18 @@ class MPPlayingViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.titleView?.backgroundColor = UIColor.red
+        let nv = MPPlayingNavView.md_viewFromXIB() as! MPPlayingNavView
+        nv.md_btnDidClickedBlock = {(sender) in
+            if sender.tag == 10001 {
+                self.dismiss(animated: true, completion: nil)
+            }else {
+                // 全屏播放
+                
+            }
+        }
+        self.navigationItem.titleView = nv
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

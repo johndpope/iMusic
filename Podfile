@@ -44,6 +44,8 @@ target 'iMusicPlayer' do
   #    pod 'ReactiveCocoa'
   
   pod 'TagListView'
+  # 歌词解析/显示
+  pod 'SpotlightLyrics'
   
 
   target 'iMusicPlayerTests' do

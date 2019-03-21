@@ -25,7 +25,8 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell {
             appDelegate.playingView?.isHidden = true
             
             let vc = MPPlayingViewController()
-            HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
+            let nav = UINavigationController(rootViewController: vc)
+            HFAppEngine.shared.currentViewController()?.present(nav, animated: true, completion: nil)
             break
         case 10002:
             sender.isSelected = true

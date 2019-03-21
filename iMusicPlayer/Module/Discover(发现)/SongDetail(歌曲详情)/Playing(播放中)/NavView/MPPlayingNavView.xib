@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="pcO-Gm-Dnj" customClass="MPPlayingNavView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5u-Y9-ytm">
+                    <rect key="frame" x="12" y="9.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="W5u-Y9-ytm" secondAttribute="height" multiplier="1:1" id="L1P-rU-XEZ"/>
+                    </constraints>
+                    <state key="normal" image="icon_mini"/>
+                    <connections>
+                        <action selector="btn_DidClicked:" destination="pcO-Gm-Dnj" eventType="touchUpInside" id="rj6-9r-wQZ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6e-70-4BT">
+                    <rect key="frame" x="338" y="9.5" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="A6e-70-4BT" secondAttribute="height" multiplier="1:1" id="L7H-9U-h29"/>
+                    </constraints>
+                    <state key="normal" image="icon_nav_full_screen"/>
+                    <connections>
+                        <action selector="btn_DidClicked:" destination="pcO-Gm-Dnj" eventType="touchUpInside" id="TDN-Yd-ddv"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="W5u-Y9-ytm" firstAttribute="centerY" secondItem="pcO-Gm-Dnj" secondAttribute="centerY" id="4Hx-ca-dfh"/>
+                <constraint firstItem="A6e-70-4BT" firstAttribute="centerY" secondItem="pcO-Gm-Dnj" secondAttribute="centerY" id="9hq-dW-MWe"/>
+                <constraint firstItem="LEH-N8-e88" firstAttribute="trailing" secondItem="A6e-70-4BT" secondAttribute="trailing" constant="12" id="sQa-fO-JMf"/>
+                <constraint firstItem="W5u-Y9-ytm" firstAttribute="leading" secondItem="LEH-N8-e88" secondAttribute="leading" constant="12" id="yeB-Ho-Ctz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="LEH-N8-e88"/>
+            <point key="canvasLocation" x="-79" y="-80"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_mini" width="25" height="25"/>
+        <image name="icon_nav_full_screen" width="25" height="25"/>
+    </resources>
+</document>
