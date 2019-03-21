@@ -20,17 +20,12 @@ class MPRadioViewController: BaseViewController {
     }
     
     @IBAction func play(_ sender: UIButton) {
-        
-        let height: CGFloat = 50
-        let size = CGSize(width: SCREEN_WIDTH, height: height)
-        var y = SCREEN_HEIGHT - height
-        if let tabbar = tabBarController?.tabBar, !(tabbar.isHidden) {
-            y -= TabBarHeight
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingView, let window = UIApplication.shared.delegate?.window! {
+            pv.isHidden = false
+            window.bringSubviewToFront(pv)
         }
-        let pv = MPPlayingView(frame: CGRect(x: 0, y: y, width: size.width, height: size.height))
-//        pv.frame = CGRect(origin: CGPoint(x: 0, y: y), size: size)
-        let bgv = UIApplication.shared.delegate?.window as! UIView
-        bgv.addSubview(pv)
+        
     }
     
     private func configCardView() {

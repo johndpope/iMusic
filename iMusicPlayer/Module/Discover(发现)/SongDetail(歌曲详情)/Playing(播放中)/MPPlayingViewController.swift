@@ -18,6 +18,16 @@ class MPPlayingViewController: BaseViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        appDelegate.playingView?.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        appDelegate.playingView?.isHidden = false
+    }
+    
     override func setupStyle() {
         super.setupStyle()
         if !IPHONEX {

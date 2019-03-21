@@ -20,6 +20,9 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell {
         case 10001:
             //            let vc = MPSongDetailViewController()
             //            HFAppEngine.shared.currentViewController()?.present(vc, animated: true, completion: nil)
+           
+            // 隐藏播放View
+            appDelegate.playingView?.isHidden = true
             
             let vc = MPPlayingViewController()
             HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)

@@ -47,10 +47,13 @@ class MDNavigationController: UINavigationController {
         
         if viewControllers.count > 0 {
             
-            viewController.hidesBottomBarWhenPushed = true
+//            viewController.hidesBottomBarWhenPushed = true
             self.interactivePopGestureRecognizer?.delegate = self
             self.interactivePopGestureRecognizer?.isEnabled = true
             viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "global_btn_return_n"), style: .plain, target: self, action: #selector(navigationBackClick))
+            
+            // 设置播放View的隐藏显示
+//            appDelegate.playingView?.isHidden = true
         }
         
         super.pushViewController(viewController, animated: true)

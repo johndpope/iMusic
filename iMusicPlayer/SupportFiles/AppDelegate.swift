@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    var playingView: MPPlayingView?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -46,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 支持不同尺寸设备自动xib按比例约束
         //        NSLayoutConstraint().adaptive = true
+        
+        addPlayingView()
         
         return true
     }
@@ -184,6 +187,15 @@ extension AppDelegate: JPUSHRegisterDelegate {
 }
 // 监听后台回到前台
 extension AppDelegate {
-    
+    // 提前添加播放控制View到window上
+    private func addPlayingView() {
+        let height: CGFloat = 50
+        let size = CGSize(width: SCREEN_WIDTH, height: height)
+        let y = SCREEN_HEIGHT - height - TabBarHeight
+        let pv = MPPlayingView(frame: CGRect(x: 0, y: y, width: size.width, height: size.height))
+        playingView = pv
+        pv.isHidden = true
+        window?.addSubview(pv)
+    }
 }
 
