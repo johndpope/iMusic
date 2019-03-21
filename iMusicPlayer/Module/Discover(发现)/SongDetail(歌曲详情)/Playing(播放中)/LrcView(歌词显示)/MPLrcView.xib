@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1Ja-CT-98U" customClass="MPLrcView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="397"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4V-od-kBh">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Is-aq-yRe">
+                            <rect key="frame" x="338" y="9.5" width="25" height="25"/>
+                            <state key="normal" image="nav_icon_delete"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌词" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yb7-OQ-ICc">
+                            <rect key="frame" x="172" y="13" width="31" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="2t7-3B-zsT"/>
+                        <constraint firstItem="Yb7-OQ-ICc" firstAttribute="centerY" secondItem="b4V-od-kBh" secondAttribute="centerY" id="EfS-BB-C1P"/>
+                        <constraint firstAttribute="trailing" secondItem="2Is-aq-yRe" secondAttribute="trailing" constant="12" id="Lit-DW-Yx4"/>
+                        <constraint firstItem="2Is-aq-yRe" firstAttribute="centerY" secondItem="b4V-od-kBh" secondAttribute="centerY" id="b0Q-FE-u2i"/>
+                        <constraint firstItem="2Is-aq-yRe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Yb7-OQ-ICc" secondAttribute="trailing" constant="12" id="r7b-cH-tjg"/>
+                        <constraint firstItem="Yb7-OQ-ICc" firstAttribute="centerX" secondItem="b4V-od-kBh" secondAttribute="centerX" id="ygt-31-oJN"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAp-tu-VpT">
+                    <rect key="frame" x="0.0" y="44" width="375" height="1"/>
+                    <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="V2N-YG-Mlb"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pe-nS-Aum">
+                    <rect key="frame" x="0.0" y="45" width="375" height="352"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="b4V-od-kBh" firstAttribute="leading" secondItem="kMC-k3-ly4" secondAttribute="leading" id="6yi-LY-Leq"/>
+                <constraint firstItem="kMC-k3-ly4" firstAttribute="trailing" secondItem="zAp-tu-VpT" secondAttribute="trailing" id="Jbr-lP-t6B"/>
+                <constraint firstItem="kMC-k3-ly4" firstAttribute="bottom" secondItem="5pe-nS-Aum" secondAttribute="bottom" id="Kp8-FA-bdp"/>
+                <constraint firstItem="zAp-tu-VpT" firstAttribute="leading" secondItem="kMC-k3-ly4" secondAttribute="leading" id="NZX-8L-04r"/>
+                <constraint firstItem="b4V-od-kBh" firstAttribute="top" secondItem="kMC-k3-ly4" secondAttribute="top" id="Ns0-jR-juA"/>
+                <constraint firstItem="5pe-nS-Aum" firstAttribute="top" secondItem="zAp-tu-VpT" secondAttribute="bottom" id="VCH-fz-unV"/>
+                <constraint firstItem="zAp-tu-VpT" firstAttribute="top" secondItem="b4V-od-kBh" secondAttribute="bottom" id="ZA0-Jy-74z"/>
+                <constraint firstItem="5pe-nS-Aum" firstAttribute="leading" secondItem="kMC-k3-ly4" secondAttribute="leading" id="kPW-ye-FJL"/>
+                <constraint firstItem="kMC-k3-ly4" firstAttribute="trailing" secondItem="b4V-od-kBh" secondAttribute="trailing" id="t0I-8n-Wr4"/>
+                <constraint firstItem="kMC-k3-ly4" firstAttribute="trailing" secondItem="5pe-nS-Aum" secondAttribute="trailing" id="vfn-78-QvH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="kMC-k3-ly4"/>
+            <connections>
+                <outlet property="lrcView" destination="5pe-nS-Aum" id="mFg-Y7-XMo"/>
+            </connections>
+            <point key="canvasLocation" x="84" y="-61"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="nav_icon_delete" width="25" height="25"/>
+    </resources>
+</document>

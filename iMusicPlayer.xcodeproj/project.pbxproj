@@ -28,6 +28,8 @@
 		C560341A2243636200F6795F /* MPPlayingViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56034182243636200F6795F /* MPPlayingViewCollectionViewCell.xib */; };
 		C560341E2243881E00F6795F /* MPPlayingNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560341C2243881E00F6795F /* MPPlayingNavView.swift */; };
 		C560341F2243881E00F6795F /* MPPlayingNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C560341D2243881E00F6795F /* MPPlayingNavView.xib */; };
+		C56034252243A24900F6795F /* MPLrcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56034232243A24900F6795F /* MPLrcView.swift */; };
+		C56034262243A24900F6795F /* MPLrcView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56034242243A24900F6795F /* MPLrcView.xib */; };
 		C57FC5722240D9D900218DE7 /* iMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */; };
 		C57FC57D2240D9D900218DE7 /* iMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC57C2240D9D900218DE7 /* iMusicPlayerUITests.swift */; };
 		C57FC7D72240DC2F00218DE7 /* DAConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C57FC58B2240DC2E00218DE7 /* DAConfig.m */; };
@@ -434,6 +436,8 @@
 		C56034182243636200F6795F /* MPPlayingViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPPlayingViewCollectionViewCell.xib; sourceTree = "<group>"; };
 		C560341C2243881E00F6795F /* MPPlayingNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayingNavView.swift; sourceTree = "<group>"; };
 		C560341D2243881E00F6795F /* MPPlayingNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPPlayingNavView.xib; sourceTree = "<group>"; };
+		C56034232243A24900F6795F /* MPLrcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPLrcView.swift; sourceTree = "<group>"; };
+		C56034242243A24900F6795F /* MPLrcView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPLrcView.xib; sourceTree = "<group>"; };
 		C57FC5592240D9D700218DE7 /* iMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC56D2240D9D900218DE7 /* iMusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMusicPlayerTests.swift; sourceTree = "<group>"; };
@@ -1018,6 +1022,15 @@
 			path = NavView;
 			sourceTree = "<group>";
 		};
+		C56034222243A20600F6795F /* LrcView(歌词显示) */ = {
+			isa = PBXGroup;
+			children = (
+				C56034232243A24900F6795F /* MPLrcView.swift */,
+				C56034242243A24900F6795F /* MPLrcView.xib */,
+			);
+			path = "LrcView(歌词显示)";
+			sourceTree = "<group>";
+		};
 		C57FC5502240D9D700218DE7 = {
 			isa = PBXGroup;
 			children = (
@@ -1544,6 +1557,7 @@
 		C57FC6052240DC2E00218DE7 /* Playing(播放中) */ = {
 			isa = PBXGroup;
 			children = (
+				C56034222243A20600F6795F /* LrcView(歌词显示) */,
 				C560341B224387E100F6795F /* NavView */,
 				C57FC6062240DC2E00218DE7 /* MPPlayingViewController.swift */,
 				C57FC6072240DC2E00218DE7 /* MPPlayingViewController.xib */,
@@ -2932,6 +2946,7 @@
 				C57FC8A92240DC2F00218DE7 /* ErrorCodeStrs.plist in Resources */,
 				C57FC7E12240DC2F00218DE7 /* LTWebViewController.xib in Resources */,
 				C57FC8D92240DC2F00218DE7 /* reverse in Resources */,
+				C56034262243A24900F6795F /* MPLrcView.xib in Resources */,
 				C56034002242332900F6795F /* MPSRSongTableViewCell.xib in Resources */,
 				C57FC86C2240DC2F00218DE7 /* MPTimeOffTableViewCell.xib in Resources */,
 				C57FC8222240DC2F00218DE7 /* MPPlayingViewController.xib in Resources */,
@@ -2987,6 +3002,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SpotlightLyrics/SpotlightLyrics.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
@@ -3011,6 +3027,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SpotlightLyrics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
@@ -3389,6 +3406,7 @@
 				C57FC91A2240DC3000218DE7 /* AddressAttribute.swift in Sources */,
 				C57FC8742240DC2F00218DE7 /* API.swift in Sources */,
 				C57FC8732240DC2F00218DE7 /* Macro.swift in Sources */,
+				C56034252243A24900F6795F /* MPLrcView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
