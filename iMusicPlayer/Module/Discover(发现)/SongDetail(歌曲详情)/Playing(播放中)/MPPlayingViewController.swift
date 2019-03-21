@@ -50,6 +50,8 @@ class MPPlayingViewController: BaseViewController {
     @IBAction func btn_DidClicked(_ sender: UIButton) {
         switch sender.tag {
         case 10001: // 歌词
+            let pv = MPLrcView.md_viewFromXIB() as! MPLrcView
+            HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
             break
         case 10002: // 上一曲
             break
