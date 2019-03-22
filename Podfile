@@ -45,8 +45,8 @@ target 'iMusicPlayer' do
   
   pod 'TagListView'
   # 歌词解析/显示
-  pod 'SpotlightLyrics'
-  
+#  pod 'SpotlightLyrics'
+
 
   target 'iMusicPlayerTests' do
     inherit! :search_paths

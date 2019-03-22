@@ -30,6 +30,16 @@
 		C560341F2243881E00F6795F /* MPPlayingNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C560341D2243881E00F6795F /* MPPlayingNavView.xib */; };
 		C56034252243A24900F6795F /* MPLrcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56034232243A24900F6795F /* MPLrcView.swift */; };
 		C56034262243A24900F6795F /* MPLrcView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56034242243A24900F6795F /* MPLrcView.xib */; };
+		C5603437224477EF00F6795F /* LyricsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560342C224477EF00F6795F /* LyricsParser.swift */; };
+		C5603438224477EF00F6795F /* LyricsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560342D224477EF00F6795F /* LyricsItem.swift */; };
+		C5603439224477EF00F6795F /* LyricsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560342E224477EF00F6795F /* LyricsHeader.swift */; };
+		C560343A224477EF00F6795F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560342F224477EF00F6795F /* Extensions.swift */; };
+		C560343B224477EF00F6795F /* LyticsViewTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5603431224477EF00F6795F /* LyticsViewTimer.swift */; };
+		C560343C224477EF00F6795F /* LyricsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5603432224477EF00F6795F /* LyricsCellViewModel.swift */; };
+		C560343D224477EF00F6795F /* LyricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5603433224477EF00F6795F /* LyricsView.swift */; };
+		C560343E224477EF00F6795F /* LyricsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5603434224477EF00F6795F /* LyricsCell.swift */; };
+		C560344222447DA200F6795F /* MPScrollPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560344022447DA200F6795F /* MPScrollPlayView.swift */; };
+		C560344322447DA200F6795F /* MPScrollPlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C560344122447DA200F6795F /* MPScrollPlayView.xib */; };
 		C57FC5722240D9D900218DE7 /* iMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */; };
 		C57FC57D2240D9D900218DE7 /* iMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC57C2240D9D900218DE7 /* iMusicPlayerUITests.swift */; };
 		C57FC7D72240DC2F00218DE7 /* DAConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C57FC58B2240DC2E00218DE7 /* DAConfig.m */; };
@@ -438,6 +448,16 @@
 		C560341D2243881E00F6795F /* MPPlayingNavView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPPlayingNavView.xib; sourceTree = "<group>"; };
 		C56034232243A24900F6795F /* MPLrcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPLrcView.swift; sourceTree = "<group>"; };
 		C56034242243A24900F6795F /* MPLrcView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPLrcView.xib; sourceTree = "<group>"; };
+		C560342C224477EF00F6795F /* LyricsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsParser.swift; sourceTree = "<group>"; };
+		C560342D224477EF00F6795F /* LyricsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsItem.swift; sourceTree = "<group>"; };
+		C560342E224477EF00F6795F /* LyricsHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsHeader.swift; sourceTree = "<group>"; };
+		C560342F224477EF00F6795F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C5603431224477EF00F6795F /* LyticsViewTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyticsViewTimer.swift; sourceTree = "<group>"; };
+		C5603432224477EF00F6795F /* LyricsCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsCellViewModel.swift; sourceTree = "<group>"; };
+		C5603433224477EF00F6795F /* LyricsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsView.swift; sourceTree = "<group>"; };
+		C5603434224477EF00F6795F /* LyricsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsCell.swift; sourceTree = "<group>"; };
+		C560344022447DA200F6795F /* MPScrollPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPScrollPlayView.swift; sourceTree = "<group>"; };
+		C560344122447DA200F6795F /* MPScrollPlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPScrollPlayView.xib; sourceTree = "<group>"; };
 		C57FC5592240D9D700218DE7 /* iMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC56D2240D9D900218DE7 /* iMusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMusicPlayerTests.swift; sourceTree = "<group>"; };
@@ -1029,6 +1049,48 @@
 				C56034242243A24900F6795F /* MPLrcView.xib */,
 			);
 			path = "LrcView(歌词显示)";
+			sourceTree = "<group>";
+		};
+		C560342A224477EF00F6795F /* SpotlightLyrics */ = {
+			isa = PBXGroup;
+			children = (
+				C560342B224477EF00F6795F /* LyricsParser */,
+				C560342F224477EF00F6795F /* Extensions.swift */,
+				C5603430224477EF00F6795F /* LyricsView */,
+			);
+			name = SpotlightLyrics;
+			path = SpotlightLyrics/SpotlightLyrics;
+			sourceTree = "<group>";
+		};
+		C560342B224477EF00F6795F /* LyricsParser */ = {
+			isa = PBXGroup;
+			children = (
+				C560342C224477EF00F6795F /* LyricsParser.swift */,
+				C560342D224477EF00F6795F /* LyricsItem.swift */,
+				C560342E224477EF00F6795F /* LyricsHeader.swift */,
+			);
+			path = LyricsParser;
+			sourceTree = "<group>";
+		};
+		C5603430224477EF00F6795F /* LyricsView */ = {
+			isa = PBXGroup;
+			children = (
+				C560343F22447D5000F6795F /* ScrollPlayView(滑动歌词播放) */,
+				C5603431224477EF00F6795F /* LyticsViewTimer.swift */,
+				C5603432224477EF00F6795F /* LyricsCellViewModel.swift */,
+				C5603433224477EF00F6795F /* LyricsView.swift */,
+				C5603434224477EF00F6795F /* LyricsCell.swift */,
+			);
+			path = LyricsView;
+			sourceTree = "<group>";
+		};
+		C560343F22447D5000F6795F /* ScrollPlayView(滑动歌词播放) */ = {
+			isa = PBXGroup;
+			children = (
+				C560344022447DA200F6795F /* MPScrollPlayView.swift */,
+				C560344122447DA200F6795F /* MPScrollPlayView.xib */,
+			);
+			path = "ScrollPlayView(滑动歌词播放)";
 			sourceTree = "<group>";
 		};
 		C57FC5502240D9D700218DE7 = {
@@ -2396,6 +2458,7 @@
 		C57FC7332240DC2F00218DE7 /* MDModifyKit */ = {
 			isa = PBXGroup;
 			children = (
+				C560342A224477EF00F6795F /* SpotlightLyrics */,
 				C57FC7342240DC2F00218DE7 /* ZXDrawPrize */,
 				C57FC7372240DC2F00218DE7 /* BRPickerView */,
 				C57FC74B2240DC2F00218DE7 /* PasswordView */,
@@ -2874,6 +2937,7 @@
 				C56033F72242258900F6795F /* MPSearchingViewTableViewCell.xib in Resources */,
 				C57FC8EB2240DC2F00218DE7 /* CardViewController.xib in Resources */,
 				C59498DB2240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib in Resources */,
+				C560344322447DA200F6795F /* MPScrollPlayView.xib in Resources */,
 				C57FC8642240DC2F00218DE7 /* policy.strings in Resources */,
 				C57FC8652240DC2F00218DE7 /* policy.plist in Resources */,
 				C57FC85A2240DC2F00218DE7 /* MPSongListTableViewCell.xib in Resources */,
@@ -3002,7 +3066,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SpotlightLyrics/SpotlightLyrics.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
@@ -3027,7 +3090,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SpotlightLyrics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
@@ -3148,6 +3210,7 @@
 				C57FC90E2240DC3000218DE7 /* HXAlbumModel.m in Sources */,
 				C57FC8CD2240DC2F00218DE7 /* NSObject+Category.m in Sources */,
 				C57FC8A22240DC2F00218DE7 /* JYEqualCellSpaceFlowLayout.swift in Sources */,
+				C560343B224477EF00F6795F /* LyticsViewTimer.swift in Sources */,
 				C57FC8932240DC2F00218DE7 /* BaseViewController.swift in Sources */,
 				C57FC9062240DC3000218DE7 /* HXCustomCollectionReusableView.m in Sources */,
 				C57FC8832240DC2F00218DE7 /* MDSettingController.swift in Sources */,
@@ -3222,6 +3285,7 @@
 				C57FC8792240DC2F00218DE7 /* HFMainDataCent.swift in Sources */,
 				C57FC8662240DC2F00218DE7 /* MPUserSettingHeaderView.swift in Sources */,
 				C57FC8BD2240DC2F00218DE7 /* UIButton+Category.m in Sources */,
+				C5603439224477EF00F6795F /* LyricsHeader.swift in Sources */,
 				C57FC7DA2240DC2F00218DE7 /* MPLoginViewController.swift in Sources */,
 				C57FC8F22240DC3000218DE7 /* HXDownloadProgressView.m in Sources */,
 				C57FC8212240DC2F00218DE7 /* MPPlayingViewController.swift in Sources */,
@@ -3241,6 +3305,7 @@
 				C57FC88A2240DC2F00218DE7 /* HFLocationManageer.swift in Sources */,
 				C57FC8452240DC2F00218DE7 /* MPDiscoverTableViewCell.swift in Sources */,
 				C57FC8FC2240DC3000218DE7 /* UIView+HXExtension.m in Sources */,
+				C560343A224477EF00F6795F /* Extensions.swift in Sources */,
 				C57FC7F22240DC2F00218DE7 /* YDMenu.swift in Sources */,
 				C560340F2242379000F6795F /* MPSearchResultHeaderView.swift in Sources */,
 				C57FC8F32240DC3000218DE7 /* HXPhoto3DTouchViewController.m in Sources */,
@@ -3307,10 +3372,12 @@
 				C57FC8C52240DC2F00218DE7 /* UINavigationController+NavManager.m in Sources */,
 				C57FC8042240DC2F00218DE7 /* MPMediaLibraryTableViewCell.swift in Sources */,
 				C57FC7F72240DC2F00218DE7 /* MPCreateSongListHeaderView.swift in Sources */,
+				C560343E224477EF00F6795F /* LyricsCell.swift in Sources */,
 				C57FC8422240DC2F00218DE7 /* MPRecommendTableViewCell.swift in Sources */,
 				C56033F62242258900F6795F /* MPSearchingViewTableViewCell.swift in Sources */,
 				C57FC8752240DC2F00218DE7 /* HFBaseViewModel.swift in Sources */,
 				C56033FA22422DDE00F6795F /* MPSearchResultView.swift in Sources */,
+				C560343D224477EF00F6795F /* LyricsView.swift in Sources */,
 				C57FC82B2240DC2F00218DE7 /* MPSongDetailViewController.swift in Sources */,
 				C57FC85F2240DC2F00218DE7 /* MPNavView.swift in Sources */,
 				C57FC7EA2240DC2F00218DE7 /* TokenModel.swift in Sources */,
@@ -3327,6 +3394,7 @@
 				C57FC8FB2240DC3000218DE7 /* HXAlbumListViewController.m in Sources */,
 				C57FC90B2240DC3000218DE7 /* HXCustomNavigationController.m in Sources */,
 				C57FC8492240DC2F00218DE7 /* MPRecentlyCollectionViewCell.swift in Sources */,
+				C5603438224477EF00F6795F /* LyricsItem.swift in Sources */,
 				C57FC8002240DC2F00218DE7 /* MPMyFavoriteHeaderView.swift in Sources */,
 				C59498C52240E4DB00AC10DD /* MPEditSongListHeaderView.swift in Sources */,
 				C57FC8C62240DC2F00218DE7 /* UINavigationController+Animation.m in Sources */,
@@ -3385,6 +3453,7 @@
 				C57FC8D12240DC2F00218DE7 /* NSAttributedString+Category.m in Sources */,
 				C57FC8182240DC2F00218DE7 /* MPSearchNavView.swift in Sources */,
 				C57FC83C2240DC2F00218DE7 /* MPBaseSectionHeaderView.swift in Sources */,
+				C560343C224477EF00F6795F /* LyricsCellViewModel.swift in Sources */,
 				C57FC8542240DC2F00218DE7 /* MPAddToSongListTableViewCell.swift in Sources */,
 				C57FC8BF2240DC2F00218DE7 /* NSData+CommonCryptor.m in Sources */,
 				C57FC82C2240DC2F00218DE7 /* MPSongDetailHeaderView.swift in Sources */,
@@ -3395,6 +3464,7 @@
 				C57FC8512240DC2F00218DE7 /* MPSongToolsView.swift in Sources */,
 				C57FC7E62240DC2F00218DE7 /* GPX.swift in Sources */,
 				C57FC8B72240DC2F00218DE7 /* UIButton+Category.m in Sources */,
+				C560344222447DA200F6795F /* MPScrollPlayView.swift in Sources */,
 				C57FC8D82240DC2F00218DE7 /* SwiftyTextView.swift in Sources */,
 				C57FC8A52240DC2F00218DE7 /* HotSearchView.swift in Sources */,
 				C57FC7F32240DC2F00218DE7 /* MPCreateSongListViewController.swift in Sources */,
@@ -3404,6 +3474,7 @@
 				C57FC80C2240DC2F00218DE7 /* MPAlbumListTableViewCell.swift in Sources */,
 				C57FC8DA2240DC2F00218DE7 /* FGConverter.swift in Sources */,
 				C57FC91A2240DC3000218DE7 /* AddressAttribute.swift in Sources */,
+				C5603437224477EF00F6795F /* LyricsParser.swift in Sources */,
 				C57FC8742240DC2F00218DE7 /* API.swift in Sources */,
 				C57FC8732240DC2F00218DE7 /* Macro.swift in Sources */,
 				C56034252243A24900F6795F /* MPLrcView.swift in Sources */,

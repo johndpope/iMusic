@@ -56,7 +56,6 @@ PODS:
   - RxSwift (4.4.2):
     - RxAtomic (>= 4.4.2, ~> 4.4)
   - SnapKit (4.2.0)
-  - SpotlightLyrics (0.1.5)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.2.0)
   - TagListView (1.3.2)
@@ -78,7 +77,6 @@ DEPENDENCIES:
   - RxCocoa
   - RxSwift
   - SnapKit
-  - SpotlightLyrics
   - SVProgressHUD
   - SwiftyJSON
   - TagListView
@@ -106,7 +104,6 @@ SPEC REPOS:
     - RxCocoa
     - RxSwift
     - SnapKit
-    - SpotlightLyrics
     - SVProgressHUD
     - SwiftyJSON
     - TagListView
@@ -133,13 +130,12 @@ SPEC CHECKSUMS:
   RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
   RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SpotlightLyrics: dd24e435678db20b476b454447e767f3f88f2b6e
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   TagListView: 0c7e9c26b9aff858224ee6b155f5fcacd9e27c83
   TencentOpenAPI: ddc6fb0134b25c9078ccd27fd2259ed0cc30a49a
   WechatOpenSDK: 9b721089507c895d05f997408c30bb6e6f5f9b60
 
-PODFILE CHECKSUM: d8cea97e573bf4451c0d8c5d31228d81e00e4977
+PODFILE CHECKSUM: e0f06ce8faf4b190a3390266670c2601700c5aba
 
 COCOAPODS: 1.6.1

@@ -10,6 +10,8 @@ import UIKit
 
 
 open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
+    // 滑动时播放View
+    private var scrollPlayView: MPScrollPlayView?
     
     private var parser: LyricsParser? = nil
     
@@ -33,6 +35,8 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
             return lyricsViewModels[lastIndex].lyric
         }
     }
+    
+    public var defaultLyricsHeight: CGFloat = SCREEN_WIDTH * (352/375)
     
     public var lyrics: String? = nil {
         didSet {
@@ -93,6 +97,20 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
         timer.lyricsView = self
     }
     
+    /**
+     * 添加滑动控制条
+     */
+    open func addScrollPlayView() {
+        let pv = MPScrollPlayView.md_viewFromXIB() as! MPScrollPlayView
+        pv.frame = CGRect(x: 0, y: defaultLyricsHeight/2, width: SCREEN_WIDTH, height: 64)
+        pv.isHidden = true
+        self.scrollPlayView = pv
+        if let sv = self.superview {
+            sv.addSubview(pv)
+            sv.bringSubviewToFront(pv)
+        }
+    }
+    
     // MARK: UITableViewDataSource
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,6 +125,7 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = dequeueReusableCell(withIdentifier: "LyricsCell", for: indexPath) as! LyricsCell
         cell.update(with: lyricsViewModels[indexPath.row])
+        tableView.separatorStyle = .none
         return cell
     }
     
@@ -114,6 +133,29 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         return false
+    }
+    
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollPlayView?.isHidden = false
+        DispatchQueue.init(label: "").asyncAfter(deadline: DispatchTime.now() + 5, execute: DispatchWorkItem(block: {
+            DispatchQueue.main.sync(execute: {
+                self.scrollPlayView?.isHidden = true
+            })
+        }))
+    }
+    
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // 获取当前的View的centerY所在的Cell, 滚动tableView到当前的Cell
+        var centerCell = UITableViewCell()
+        if visibleCells.count/2 >= 0 {  // 偶数
+            centerCell = visibleCells[visibleCells.count/2]
+        }else {
+            centerCell = visibleCells[visibleCells.count/2 - 1]
+        }
+        
+        if let indexPath = self.indexPath(for: centerCell) {
+            self.scrollToRow(at: indexPath, at: .middle, animated: true)
+        }
     }
     
     // MARK:
