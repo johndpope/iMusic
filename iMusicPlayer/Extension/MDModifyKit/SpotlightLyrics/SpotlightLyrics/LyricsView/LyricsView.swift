@@ -13,6 +13,8 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
     // 滑动时播放View
     private var scrollPlayView: MPScrollPlayView?
     
+    private var scrollToCell: UITableViewCell?
+    
     private var parser: LyricsParser? = nil
     
     private var lyricsViewModels: [LyricsCellViewModel] = []
@@ -109,6 +111,22 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
             sv.addSubview(pv)
             sv.bringSubviewToFront(pv)
         }
+        
+        pv.md_btnDidClickedBlock = {(sender) in
+            // 播放当前的进度
+            if let cell = self.scrollToCell, let index = self.indexPath(for: cell)?.row {
+                let lyricsModel = self.parser?.lyrics[index + 1]
+                if let time = lyricsModel?.time {
+                    pv.updateTime(model: "\(Int(time))".md_dateDistanceTimeWithBeforeTime(format: "mm:ss"))
+                    self.timer.seek(toTime: time)
+                }
+            }
+            
+        }
+    }
+    
+    open func removeScrollPlayView() {
+        scrollPlayView?.removeFromSuperview()
     }
     
     // MARK: UITableViewDataSource
@@ -137,24 +155,25 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollPlayView?.isHidden = false
-        DispatchQueue.init(label: "").asyncAfter(deadline: DispatchTime.now() + 5, execute: DispatchWorkItem(block: {
-            DispatchQueue.main.sync(execute: {
-                self.scrollPlayView?.isHidden = true
-            })
-        }))
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         // 获取当前的View的centerY所在的Cell, 滚动tableView到当前的Cell
         var centerCell = UITableViewCell()
         if visibleCells.count/2 >= 0 {  // 偶数
-            centerCell = visibleCells[visibleCells.count/2]
+            centerCell = visibleCells[visibleCells.count/2 + 1]
         }else {
-            centerCell = visibleCells[visibleCells.count/2 - 1]
+            centerCell = visibleCells[visibleCells.count/2]
         }
         
         if let indexPath = self.indexPath(for: centerCell) {
             self.scrollToRow(at: indexPath, at: .middle, animated: true)
+            // 设置滑动到的Cell
+            scrollToCell = centerCell
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+            self.scrollPlayView?.isHidden = true
         }
     }
     

@@ -22,6 +22,9 @@
                         <constraint firstAttribute="width" secondItem="v3b-YB-jam" secondAttribute="height" multiplier="10:11" id="gTs-UO-15W"/>
                     </constraints>
                     <state key="normal" image="icon_lyrics_progress"/>
+                    <connections>
+                        <action selector="play:" destination="Qmm-z3-o7G" eventType="touchUpInside" id="rdh-34-bGg"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:43" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZmN-KO-fGM">
                     <rect key="frame" x="335.5" y="16" width="27.5" height="12"/>
@@ -51,6 +54,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="KeT-cz-MTC"/>
+            <connections>
+                <outlet property="xib_time" destination="ZmN-KO-fGM" id="9sl-eM-5zA"/>
+            </connections>
             <point key="canvasLocation" x="121" y="34"/>
         </view>
     </objects>

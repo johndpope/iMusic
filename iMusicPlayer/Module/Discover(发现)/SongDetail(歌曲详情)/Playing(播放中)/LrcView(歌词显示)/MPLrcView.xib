@@ -22,6 +22,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Is-aq-yRe">
                             <rect key="frame" x="338" y="9.5" width="25" height="25"/>
                             <state key="normal" image="nav_icon_delete"/>
+                            <connections>
+                                <action selector="close:" destination="1Ja-CT-98U" eventType="touchUpInside" id="KFZ-id-vwy"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌词" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yb7-OQ-ICc">
                             <rect key="frame" x="172" y="13" width="31" height="18"/>

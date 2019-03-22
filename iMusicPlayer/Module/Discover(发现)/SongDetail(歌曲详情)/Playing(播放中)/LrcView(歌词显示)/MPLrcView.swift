@@ -10,9 +10,12 @@ import UIKit
 
 class MPLrcView: BaseView {
 
+    var lyricsView = LyricsView()
+    
     @IBOutlet weak var lrcView: UIView! {
         didSet {
             let lyricsView = LyricsView()
+            self.lyricsView = lyricsView
             lrcView.addSubview(lyricsView)
             lyricsView.snp.makeConstraints { (make) in
                 make.edges.equalToSuperview()
@@ -48,4 +51,10 @@ class MPLrcView: BaseView {
         // Initialization code
     }
 
+    @IBAction func close(_ sender: UIButton) {
+        if let sv = self.superview {
+            sv.removeFromSuperview()
+            self.lyricsView.removeScrollPlayView()
+        }
+    }
 }
