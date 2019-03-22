@@ -153,10 +153,26 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
         return false
     }
     
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        scrollPlayView?.isHidden = false
+    }
+    
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+            self.scrollPlayView?.isHidden = true
+        }
+    }
+    
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollPlayView?.isHidden = false
     }
     
+//    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+//            self.scrollPlayView?.isHidden = true
+//        }
+//    }
+//
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         // 获取当前的View的centerY所在的Cell, 滚动tableView到当前的Cell
         var centerCell = UITableViewCell()
@@ -176,6 +192,8 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
             self.scrollPlayView?.isHidden = true
         }
     }
+    
+    
     
     // MARK:
     
