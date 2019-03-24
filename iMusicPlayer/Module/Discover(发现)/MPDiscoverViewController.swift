@@ -17,6 +17,8 @@ private struct Constant {
 
 class MPDiscoverViewController: BaseTableViewController {
 
+    var model: MPDiscoverModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +32,13 @@ class MPDiscoverViewController: BaseTableViewController {
         self.identifier = Constant.discoverIdentifier
         self.identifier = Constant.categoryIdentifier
     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        model = MPDiscoverModel.getModel()
+        
     }
 
 }

@@ -46,6 +46,7 @@ target 'iMusicPlayer' do
   pod 'TagListView'
   # 歌词解析/显示
 #  pod 'SpotlightLyrics'
+  pod 'BGFMDB'
 
 
   target 'iMusicPlayerTests' do

@@ -51,6 +51,8 @@ class HFAppEngine: NSObject, UITabBarControllerDelegate, CLLocationManagerDelega
     /// 公共数据
     @objc open let commonDataCent: CommonDataCent = CommonDataCent()
     
+    @objc open let discoverDataCent: MPDiscoverDataCent = MPDiscoverDataCent()
+    
     /// 消息数据
 //    @objc open let messageDataCent: MessageDataCent = MessageDataCent()
     

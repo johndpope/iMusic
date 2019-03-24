@@ -28,7 +28,7 @@ weak var MainCent: HFMainDataCent?                  = AppEngine?.mainDataCent
 weak var CommonCent: CommonDataCent?                = AppEngine?.commonDataCent
 
 /// 主页数据
-//weak var HomeCent: HomeDataCent?                = AppEngine?.homeDataCent
+weak var DiscoverCent: MPDiscoverDataCent?                = AppEngine?.discoverDataCent
 
 /// 消息数据
 //weak var MessageCent: MessageDataCent?                = AppEngine?.messageDataCent

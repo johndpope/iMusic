@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2CE3E0F7EF9B20FC4FBD122F91C64198"
-               BuildableName = "JPush"
+               BlueprintIdentifier = "C3C654A82F67DAD0048A40896367C330"
                BlueprintName = "JPush"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "JPush">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

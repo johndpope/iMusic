@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6E52269004698F62F3D5E5BB5BED0A05"
-               BuildableName = "LTScrollView.framework"
+               BlueprintIdentifier = "D244E55827DB33AF54E7018900D1F7A6"
                BlueprintName = "LTScrollView"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "LTScrollView.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

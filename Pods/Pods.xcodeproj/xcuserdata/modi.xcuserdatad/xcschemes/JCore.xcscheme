@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6DCA67AEEA91E7138CA0A2BC4F993DA6"
-               BuildableName = "JCore"
+               BlueprintIdentifier = "EF766DBD3885D27665C72522D94FBD83"
                BlueprintName = "JCore"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "JCore">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

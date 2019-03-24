@@ -359,7 +359,7 @@ class HFDataCent: NSObject {
         if type != "" {
             url = API.imgUp
         }else {
-            url = API.ModifyPortrait
+//            url = API.ModifyPortrait
         }
         Alamofire.upload(
             multipartFormData: { multipartFormData in

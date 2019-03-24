@@ -51,4 +51,6 @@
 
 #import "HXPhotoPicker.h"
 
+#import "BGFMDB/BGFMDB.h"
+
 #endif /* Bridge_Header_h */

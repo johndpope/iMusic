@@ -1,5 +1,11 @@
 PODS:
   - Alamofire (4.8.1)
+  - BGFMDB (2.0.13):
+    - BGFMDB/BG (= 2.0.13)
+    - BGFMDB/FMDB (= 2.0.13)
+  - BGFMDB/BG (2.0.13):
+    - BGFMDB/FMDB
+  - BGFMDB/FMDB (2.0.13)
   - CryptoSwift (0.14.0)
   - FSPagerView (0.8.2)
   - GoogleSignIn (4.4.0):
@@ -64,6 +70,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - BGFMDB
   - CryptoSwift
   - FSPagerView
   - GoogleSignIn
@@ -86,6 +93,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - BGFMDB
     - CryptoSwift
     - FSPagerView
     - GoogleSignIn
@@ -112,6 +120,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  BGFMDB: 48e6823027232402a678acc7f71484b1fc9171d0
   CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
@@ -136,6 +145,6 @@ SPEC CHECKSUMS:
   TencentOpenAPI: ddc6fb0134b25c9078ccd27fd2259ed0cc30a49a
   WechatOpenSDK: 9b721089507c895d05f997408c30bb6e6f5f9b60
 
-PODFILE CHECKSUM: e0f06ce8faf4b190a3390266670c2601700c5aba
+PODFILE CHECKSUM: 3d809b9c3217516ba7fb0b190a364de409426d70
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.6.0.beta.1

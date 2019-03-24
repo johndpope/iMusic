@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		701D2952618FCCD15AC04295 /* Pods_iMusicPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD689BC83ED3CC9D0F2AD72 /* Pods_iMusicPlayer.framework */; };
 		B00B2C00DE3BDE040160543A /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA33FAF4D6CCF9867C457A9 /* Pods_iMusicPlayerUITests.framework */; };
+		C53616A22247812200CFBD63 /* MPDiscoverDataCent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53616A12247812200CFBD63 /* MPDiscoverDataCent.swift */; };
 		C56033F12242255200F6795F /* MPSearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033EF2242255100F6795F /* MPSearchingView.swift */; };
 		C56033F62242258900F6795F /* MPSearchingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */; };
 		C56033F72242258900F6795F /* MPSearchingViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */; };
@@ -427,6 +428,7 @@
 		7DF82983FCE3DA4A6C1EBD27 /* Pods-iMusicPlayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.release.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.release.xcconfig"; sourceTree = "<group>"; };
 		ACD689BC83ED3CC9D0F2AD72 /* Pods_iMusicPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMusicPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D5A9BC683086CF1A7D230A /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C53616A12247812200CFBD63 /* MPDiscoverDataCent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPDiscoverDataCent.swift; sourceTree = "<group>"; };
 		C56033EF2242255100F6795F /* MPSearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingView.swift; sourceTree = "<group>"; };
 		C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingViewTableViewCell.swift; sourceTree = "<group>"; };
 		C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchingViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -961,6 +963,14 @@
 				3CA33FAF4D6CCF9867C457A9 /* Pods_iMusicPlayerUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C53616A0224780EF00CFBD63 /* DataCent */ = {
+			isa = PBXGroup;
+			children = (
+				C53616A12247812200CFBD63 /* MPDiscoverDataCent.swift */,
+			);
+			path = DataCent;
 			sourceTree = "<group>";
 		};
 		C56033EE2242252300F6795F /* SearchingView(搜索中关联) */ = {
@@ -1784,6 +1794,7 @@
 		C57FC6312240DC2E00218DE7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C53616A0224780EF00CFBD63 /* DataCent */,
 				C57FC6322240DC2E00218DE7 /* MPDiscoverModel.swift */,
 			);
 			path = Model;
@@ -3051,6 +3062,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iMusicPlayer/Pods-iMusicPlayer-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BGFMDB/BGFMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -3075,6 +3087,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGFMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -3417,6 +3430,7 @@
 				C57FC8272240DC2F00218DE7 /* MPSongExtensionToolsView.swift in Sources */,
 				C57FC7EC2240DC2F00218DE7 /* CommonDataCent.swift in Sources */,
 				C57FC8722240DC2F00218DE7 /* HFEngineConfiguration.swift in Sources */,
+				C53616A22247812200CFBD63 /* MPDiscoverDataCent.swift in Sources */,
 				C57FC8962240DC2F00218DE7 /* TableBaseView.swift in Sources */,
 				C56033F12242255200F6795F /* MPSearchingView.swift in Sources */,
 				C57FC8FE2240DC3000218DE7 /* HXPhotoTools.m in Sources */,
