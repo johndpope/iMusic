@@ -15,10 +15,41 @@ private struct Constant {
 
 class MPAlbumListViewController: BaseTableViewController {
 
+    var headerModel: MPRankingTempModel? {
+        didSet {
+            if let m = headerModel, var source = m.data_title {
+                source.removeLast()
+                MPRankingModel.getModel(rankType: source, tableName: source) { (models) in
+                    if let m = models {
+                        self.models = m
+                    }
+                }
+            }
+        }
+    }
+    
+    var models = [MPRankingModel]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    override func refreshData() {
+        super.refreshData()
+        if let m = headerModel, var source = m.data_title {
+            source.removeLast()
+            MPRankingModel.getModel(rankType: source, tableName: source) { (models) in
+                if let m = models {
+                    self.models = m
+                }
+            }
+        }
+        tableView.mj_header.endRefreshing()
     }
     
     override func setupStyle() {
@@ -51,17 +82,19 @@ override func clickRight(sender: UIButton) {
         super.setupTableHeaderView()
         
         let hv = MPAlbumListHeaderView.md_viewFromXIB() as! MPAlbumListHeaderView
+        hv.updateView(model: self.headerModel!)
         tableView.tableHeaderView = hv
     }
     
 }
 extension MPAlbumListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return models.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MPAlbumListTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPAlbumListTableViewCell
+        cell.updateCell(model: models[indexPath.row])
         return cell
     }
     

@@ -21,15 +21,14 @@ class MPRankingTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func updateCell(model: MPRankingModel) {
+    func updateCell(model: MPRankingTempModel) {
         //设置图片
-//        if let img = model.data_artworkBigUrl, img != "" {
-//            let imgUrl = API.baseImageURL + img
-//            xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
-//        }
-//        
-//        xib_title.text = model.data_title
-//        xib_updateTime.text = model.data
+        xib_image.image = UIImage(named: model.data_image!)
+        
+        xib_title.text = model.data_title
+        xib_updateTime.text = model.data_updateTime
+        xib_rank1.text = "1." + model.data_songOne!
+        xib_rank2.text = "2." + model.data_songTwo!
         
     }
     

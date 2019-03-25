@@ -18,10 +18,21 @@ class MPAlbumListHeaderView: UITableViewCell {
             xib_random.layer.borderWidth = 1
         }
     }
+    @IBOutlet weak var xib_image: UIImageView!
+    @IBOutlet weak var xib_title: UILabel!
+    @IBOutlet weak var xib_updateTime: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func updateView(model: MPRankingTempModel) {
+        //设置图片
+        xib_image.image = UIImage(named: model.data_image!)
+        
+        xib_title.text = model.data_title
+        xib_updateTime.text = model.data_updateTime
     }
 
 }

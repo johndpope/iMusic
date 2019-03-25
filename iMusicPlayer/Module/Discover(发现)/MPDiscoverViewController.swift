@@ -190,6 +190,7 @@ extension MPDiscoverViewController {
                 break
             case 1:
                 let vc = MPRankingViewController()
+                vc.tempModels = model?.data_charts
                 self.navigationController?.pushViewController(vc, animated: true)
                 break
             case 2:

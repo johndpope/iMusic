@@ -55,7 +55,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="J1q-NG-OUn" secondAttribute="trailing" constant="12" id="2MC-GQ-aIf"/>
                     <constraint firstItem="J1q-NG-OUn" firstAttribute="top" secondItem="Jul-ew-eqh" secondAttribute="top" constant="14" id="2RS-lL-Dli"/>
-                    <constraint firstItem="v56-uF-PyL" firstAttribute="leading" secondItem="JYp-kT-UA7" secondAttribute="trailing" constant="8" id="3TM-NS-Etu"/>
+                    <constraint firstItem="v56-uF-PyL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JYp-kT-UA7" secondAttribute="trailing" constant="8" id="3TM-NS-Etu"/>
                     <constraint firstItem="xh8-hw-emD" firstAttribute="top" secondItem="Jul-ew-eqh" secondAttribute="top" constant="5" id="3fS-e7-OT1"/>
                     <constraint firstItem="224-Ru-5qG" firstAttribute="top" secondItem="JYp-kT-UA7" secondAttribute="bottom" constant="4" id="7wb-zv-0np"/>
                     <constraint firstItem="224-Ru-5qG" firstAttribute="leading" secondItem="JYp-kT-UA7" secondAttribute="leading" id="8Us-V1-be6"/>
@@ -73,6 +73,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="Emf-AL-O98"/>
+            <connections>
+                <outlet property="xib_collect" destination="v56-uF-PyL" id="Pgz-Wy-nyx"/>
+                <outlet property="xib_desc" destination="224-Ru-5qG" id="k7h-ix-1wE"/>
+                <outlet property="xib_image" destination="xh8-hw-emD" id="Kxe-FL-KAV"/>
+                <outlet property="xib_more" destination="J1q-NG-OUn" id="aLM-S0-juM"/>
+                <outlet property="xib_title" destination="JYp-kT-UA7" id="tRE-W2-uEh"/>
+            </connections>
             <point key="canvasLocation" x="-78.400000000000006" y="153.82308845577214"/>
         </tableViewCell>
     </objects>

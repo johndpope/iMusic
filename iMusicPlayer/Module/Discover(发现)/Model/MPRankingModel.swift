@@ -78,17 +78,25 @@ class MPRankingModel: BaseModel {
         data_songName <- map["songName"]
     }
     
-    class func getModel() -> [MPRankingModel]? {
+    class func getModel(rankType source: String = "", tableName: String,finished: ((_ models: [MPRankingModel]?)->Void)? = nil) -> [MPRankingModel]? {
         var tempM: [MPRankingModel]?
-        if let arr = NSArray.bg_array(withName: NSStringFromClass(MPRankingModel.self).components(separatedBy: ".").last!) as? [MPRankingModel] {
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPRankingModel] {
             QYTools.shared.Log(log: "本地数据库获取数据")
             tempM = arr
+            if let f = finished {
+                f(arr)
+            }
         }else {
-            DiscoverCent?.requestRank(complete: { (isSucceed, model, msg) in
+            DiscoverCent?.requestRank(source: source, complete: { (isSucceed, model, msg) in
                 switch isSucceed {
                 case true:
                     QYTools.shared.Log(log: "在线获取数据")
-                    tempM = model
+                    if let f = finished, model!.count > 0 {
+                        tempM = model
+                        // 缓存
+                        (model! as NSArray).bg_save(withName: tableName)
+                        f(model)
+                    }
                     break
                 case false:
                     SVProgressHUD.showError(withStatus: msg)

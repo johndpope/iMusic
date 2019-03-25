@@ -52,6 +52,8 @@ class MPDiscoverDataCent: HFDataCent {
 //            QYTools.shared.Log(log: model.getPropertiesAndValues().description)
             model.bg_save()
             
+            QYTools.shared.Log(log: (model.data_charts?.description)!)
+            
             // 请求成功时
             complete(true,model,msg)
         }
@@ -67,7 +69,7 @@ class MPDiscoverDataCent: HFDataCent {
 //        let limit = 50 // 分页
 //        let offset = 15 // 分页间隔
         let hl = "ja" // 日文版、en: 英文版
-        let m = 0 // 0: MV 1: MP3
+        let m = 1 // 0: MV 1: MP3
         let s = 0
         let token = "z#master@Music1.4.8"
         
@@ -96,12 +98,10 @@ class MPDiscoverDataCent: HFDataCent {
 //            guard let dataDic = resp?["data"].dictionaryObject else {return}
             
             let model: [MPRankingModel] = Mapper<MPRankingModel>().mapArray(JSONObject: dataArr)!
-            let cacheName = NSStringFromClass(MPRankingModel.self).components(separatedBy: ".").last!
-            (model as NSArray).bg_save(withName: cacheName)
             
             // 请求成功时
             complete(true,model,msg)
         }
     }
-
+    
 }

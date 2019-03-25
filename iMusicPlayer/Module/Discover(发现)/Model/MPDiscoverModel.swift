@@ -107,13 +107,13 @@ class Charts: BaseModel {
     }
     
     override func mapping(map: Map) {
-        data_oricon <- map["oricon"]
-        data_mnet <- map["mnet"]
-        data_billboard <- map["billboard"]
+        data_oricon <- map["Oricon"]
+        data_mnet <- map["Mnet"]
+        data_billboard <- map["Billboard"]
         data_iTunes <- map["iTunes"]
-        data_listen <- map["listen"]
-        data_collection <- map["collection"]
-        data_uK <- map["uK"]
+        data_listen <- map["Listen"]
+        data_collection <- map["Collection"]
+        data_uK <- map["UK"]
     }
 }
 
