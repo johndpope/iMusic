@@ -14,7 +14,7 @@ class API: NSObject {
     static let baseURL         = "http://api2cdn.groupy.cn:8090"
 
     // MARK: 图片拼接地址
-    static let baseImageURL     = "http://api2cdn.groupy.cn:8090"
+    static let baseImageURL     = ""
 
     // MARK: 视频播放地址
     static let ViodeURL         = "http://api2cdn.groupy.cn:8090"
@@ -42,4 +42,6 @@ class API: NSObject {
     
     // MARK: 发现页数据
     static let Discover = "/discovery/getAll"
+    // MARK: - 排行榜
+    static let Rank = "/discovery/getCharts"
 }

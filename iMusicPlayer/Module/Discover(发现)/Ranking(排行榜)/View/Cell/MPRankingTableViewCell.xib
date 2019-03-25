@@ -76,6 +76,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="xib_image" destination="2JC-ou-zUG" id="foY-Aq-Xxi"/>
+                <outlet property="xib_rank1" destination="F15-vq-y4X" id="GYY-vi-3FQ"/>
+                <outlet property="xib_rank2" destination="zSn-iO-QRd" id="XeB-DB-ciL"/>
+                <outlet property="xib_title" destination="Oh1-du-4ku" id="5kG-Tc-krs"/>
+                <outlet property="xib_updateTime" destination="MY9-5Y-CXt" id="Zk4-HK-1eU"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

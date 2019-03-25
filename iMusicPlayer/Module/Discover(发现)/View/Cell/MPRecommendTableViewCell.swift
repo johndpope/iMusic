@@ -18,6 +18,12 @@ class MPRecommendTableViewCell: UITableViewCell {
     
     var itemClickedBlock: ((_ index: Int)->Void)? = nil
     
+    var models = [MPSongModel]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,11 +39,12 @@ class MPRecommendTableViewCell: UITableViewCell {
 
 extension MPRecommendTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return models.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.identifier, for: indexPath) as! MPRecommendCollectionViewCell
+        cell.updateCell(model: models[indexPath.row])
         return cell
     }
     

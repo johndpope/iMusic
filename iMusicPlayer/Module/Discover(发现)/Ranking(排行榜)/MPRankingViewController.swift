@@ -15,6 +15,18 @@ private struct Constant {
 
 class MPRankingViewController: BaseTableViewController {
     
+    var tempModels = Charts? {
+        didSet {
+            
+        }
+    }
+    
+    var models = [MPRankingTempModel]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,10 +51,17 @@ class MPRankingViewController: BaseTableViewController {
         
     }
     
+    override func refreshData() {
+        super.refreshData()
+        
+//        models = MPRankingModel.getModel()
+        tableView.mj_header.endRefreshing()
+    }
+    
 }
 extension MPRankingViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return models.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,5 +76,12 @@ extension MPRankingViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = MPAlbumListViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+extension MPRankingViewController {
+    func mappingToMPRankingTempModel(model: Charts) -> [MPRankingTempModel]  {
+        var temps = [MPRankingTempModel]()
+        
+        return temps
     }
 }

@@ -17,11 +17,15 @@ private struct Constant {
 
 class MPDiscoverViewController: BaseTableViewController {
 
-    var model: MPDiscoverModel?
+    var model: MPDiscoverModel? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 
     override func setupTableView() {
@@ -32,6 +36,7 @@ class MPDiscoverViewController: BaseTableViewController {
         self.identifier = Constant.discoverIdentifier
         self.identifier = Constant.categoryIdentifier
     
+        refreshData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +74,9 @@ extension MPDiscoverViewController {
              number = MPDiscoverModel.categoryDatas.count
             break
         case 3:
-             number = 5
+            if let count = model?.data_generalPlaylists?.count {
+                number = count
+            }
             break
         default:
             break
@@ -84,6 +91,9 @@ extension MPDiscoverViewController {
         switch indexPath.section {
         case 0:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.recommendIdentifier)!
+            if let cellModel = model?.data_recommendations {
+                (cell as! MPRecommendTableViewCell).models = cellModel
+            }
             (cell as! MPRecommendTableViewCell).itemClickedBlock = {[weak self] (index) in
                 let vc = MPPlayingViewController()
                 let nav = UINavigationController(rootViewController: vc)
@@ -103,6 +113,9 @@ extension MPDiscoverViewController {
             break
         case 3:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.discoverIdentifier)!
+            if let models = model?.data_generalPlaylists {
+                (cell as! MPDiscoverTableViewCell).updateCell(model: models[indexPath.row])
+            }
             break
         default:
             break
