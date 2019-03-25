@@ -114,6 +114,7 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 // 当前应用的keyWindow
 let window = appDelegate.window!
 
+let BundleName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
 
 /// 配置TabBar
 let TabBarDataSource: [[String: String]] = {

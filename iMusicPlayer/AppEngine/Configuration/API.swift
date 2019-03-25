@@ -41,5 +41,5 @@ class API: NSObject {
     static let TaoPasswordParse         = "http://api.taokouling.com/tkl/tkljm"
     
     // MARK: 发现页数据
-    static let Discover = "/discovery"
+    static let Discover = "/discovery/getAll"
 }

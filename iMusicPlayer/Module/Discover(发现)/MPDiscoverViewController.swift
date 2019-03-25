@@ -37,10 +37,18 @@ class MPDiscoverViewController: BaseTableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        model = MPDiscoverModel.getModel()
+//        model = MPDiscoverModel.getModel()
         
     }
 
+    override func refreshData() {
+        super.refreshData()
+        // 刷新数据
+//        MPDiscoverModel.bg_drop(NSStringFromClass(MPDiscoverModel.self).components(separatedBy: ".").last!)
+        model = MPDiscoverModel.getModel()
+        tableView.mj_header.endRefreshing()
+    }
+    
 }
 extension MPDiscoverViewController {
     
@@ -188,5 +196,9 @@ extension MPDiscoverViewController {
             
         }
     }
+    
+}
+// MARK: - 获取数据
+extension MPDiscoverViewController {
     
 }

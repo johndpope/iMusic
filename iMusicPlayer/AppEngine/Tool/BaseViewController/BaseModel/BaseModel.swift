@@ -6,13 +6,28 @@
 //  Copyright © 2018年 Modi. All rights reserved.
 //
 
-import UIKit
+import ObjectMapper
 
-class BaseModel: NSObject {
+class BaseModel: MDBaseObject, NSCoding, Mappable {
     
-    //重写description
-    override var description: String {
-        return ""
+    required init?(coder aDecoder: NSCoder) {
+        
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        
+    }
+    
+    override init() {
+        super.init()
+    }
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        
     }
     
 }
