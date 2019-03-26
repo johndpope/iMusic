@@ -114,7 +114,19 @@ let appDelegate = UIApplication.shared.delegate as! AppDelegate
 // 当前应用的keyWindow
 let window = appDelegate.window!
 
+// 包名
 let BundleName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+
+// 当前显示MV还是MP3
+let SourceType = 1
+
+// 当前显示的语言版本：ja: 日版 en: 英文版
+let LanguageType: String = "ja"
+
+// 当前地区
+let LocationCode = 0
+
+let TokenCode = "z#master@Music1.4.8"
 
 /// 配置TabBar
 let TabBarDataSource: [[String: String]] = {

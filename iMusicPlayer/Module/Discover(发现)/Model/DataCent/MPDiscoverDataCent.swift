@@ -15,15 +15,15 @@ class MPDiscoverDataCent: HFDataCent {
     var data_Discover: MPDiscoverModel?
     func requestDiscover(complete:@escaping ((_ isSucceed: Bool, _ data: MPDiscoverModel?, _ message: String) -> Void)) {
 //        app_id=com.musiczplayer.app&hl=ja&m=0&s=0&token=z%23master%40Music1.4.8
-        let app_id = BundleName // 包名
-        let hl = "ja" // 日文版、en: 英文版
-        let m = 1 // 0: MV 1: MP3
-        let s = 0
-        let token = "z#master@Music1.4.8"
+//        let app_id = BundleName // 包名
+//        let hl = LanguageType // 日文版、en: 英文版
+//        let m = SourceType // 0: MV 1: MP3
+//        let s = LocationCode
+//        let token = "z#master@Music1.4.8"
+//
+//        let param: [String:Any] = ["app_id": app_id, "hl": hl, "m": m, "s": s, "token": token]
         
-        let param: [String:Any] = ["app_id": app_id, "hl": hl, "m": m, "s": s, "token": token]
-        
-//        let param: [String:Any] = ["m": m, "s": s]
+        let param: [String:Any] = [:]
         
         HFNetworkManager.request(url: API.Discover, method: .get, parameters:param, description: "发现") { (error, resp) in
             
@@ -48,7 +48,7 @@ class MPDiscoverDataCent: HFDataCent {
             guard let dataDic = resp?["data"].dictionaryObject else {return}
             
             let model: MPDiscoverModel = Mapper<MPDiscoverModel>().map(JSONObject: dataDic)!
-            model.bg_tableName = NSStringFromClass(MPDiscoverModel.self).components(separatedBy: ".").last!
+            model.bg_tableName = MPDiscoverModel.classCode
 //            QYTools.shared.Log(log: model.getPropertiesAndValues().description)
             model.bg_save()
             
@@ -68,12 +68,14 @@ class MPDiscoverDataCent: HFDataCent {
         let app_id = BundleName // 包名
 //        let limit = 50 // 分页
 //        let offset = 15 // 分页间隔
-        let hl = "ja" // 日文版、en: 英文版
-        let m = 1 // 0: MV 1: MP3
-        let s = 0
-        let token = "z#master@Music1.4.8"
+//        let hl = LanguageType // 日文版、en: 英文版
+//        let m = SourceType // 0: MV 1: MP3
+//        let s = 0
+//        let token = "z#master@Music1.4.8"
         
-        let param: [String:Any] = ["app_id": app_id, "limit": limit, "m": m, "offset": offset, "source":  source,"token": token]
+//        let param: [String:Any] = ["app_id": app_id, "limit": limit, "m": m, "offset": offset, "source":  source,"token": token]
+        
+        let param: [String:Any] = ["limit": limit, "offset": offset, "source":  source]
         
         HFNetworkManager.request(url: API.Rank, method: .get, parameters:param, description: "发现") { (error, resp) in
             

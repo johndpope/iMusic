@@ -1267,3 +1267,9 @@ extension UITextView {
         }
     }
 }
+
+extension NSObject {
+    static var classCode: String {
+        return NSStringFromClass(self as! AnyClass).components(separatedBy: ".").last!
+    }
+}

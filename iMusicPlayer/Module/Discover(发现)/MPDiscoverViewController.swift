@@ -19,7 +19,9 @@ class MPDiscoverViewController: BaseTableViewController {
 
     var model: MPDiscoverModel? {
         didSet {
-            tableView.reloadData()
+            if let m = model {
+                tableView.reloadData()
+            }
         }
     }
     
@@ -36,22 +38,23 @@ class MPDiscoverViewController: BaseTableViewController {
         self.identifier = Constant.discoverIdentifier
         self.identifier = Constant.categoryIdentifier
     
-        refreshData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        model = MPDiscoverModel.getModel()
+         refreshData()
         
     }
 
     override func refreshData() {
         super.refreshData()
         // 刷新数据
-//        MPDiscoverModel.bg_drop(NSStringFromClass(MPDiscoverModel.self).components(separatedBy: ".").last!)
-        model = MPDiscoverModel.getModel()
-        tableView.mj_header.endRefreshing()
+        MPDiscoverModel.bg_drop(MPDiscoverModel.classCode)
+        MPDiscoverModel.getModel { (model) in
+            self.model = model
+            self.tableView.mj_header.endRefreshing()
+        }
     }
     
 }

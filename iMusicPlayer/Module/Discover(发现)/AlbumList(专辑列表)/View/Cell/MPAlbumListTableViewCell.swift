@@ -28,9 +28,13 @@ class MPAlbumListTableViewCell: UITableViewCell {
             xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
         }
         
-        xib_title.text = model.data_songName
-        xib_desc.text = model.data_singerName
-        
+        if SourceType == 0 {
+            xib_title.text = model.data_title
+            xib_desc.text = model.data_channelTitle
+        }else {
+            xib_title.text = model.data_songName
+            xib_desc.text = model.data_singerName
+        }
     }
     
 }

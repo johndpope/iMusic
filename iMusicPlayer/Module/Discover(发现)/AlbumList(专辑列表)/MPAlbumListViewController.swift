@@ -19,6 +19,7 @@ class MPAlbumListViewController: BaseTableViewController {
         didSet {
             if let m = headerModel, var source = m.data_title {
                 source.removeLast()
+                NSArray.bg_drop(source)
                 MPRankingModel.getModel(rankType: source, tableName: source) { (models) in
                     if let m = models {
                         self.models = m
@@ -43,6 +44,7 @@ class MPAlbumListViewController: BaseTableViewController {
         super.refreshData()
         if let m = headerModel, var source = m.data_title {
             source.removeLast()
+            NSArray.bg_drop(source)
             MPRankingModel.getModel(rankType: source, tableName: source) { (models) in
                 if let m = models {
                     self.models = m

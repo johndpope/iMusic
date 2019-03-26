@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7d-Eg-w3K">
-                                <rect key="frame" x="254.5" y="33" width="33.5" height="33.5"/>
+                                <rect key="frame" x="256" y="34" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="H7d-Eg-w3K" secondAttribute="height" id="2kg-V3-8dh"/>
                                 </constraints>
@@ -53,7 +53,7 @@
                             <constraint firstItem="OCg-HD-JdE" firstAttribute="leading" secondItem="Y1i-hO-hmN" secondAttribute="leading" id="0TF-mE-1Bd"/>
                             <constraint firstItem="saW-nJ-zER" firstAttribute="top" secondItem="waF-Cm-JS0" secondAttribute="top" id="4kD-iU-zPZ"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OCg-HD-JdE" secondAttribute="bottom" constant="8" id="5tE-x6-3hi"/>
-                            <constraint firstItem="H7d-Eg-w3K" firstAttribute="leading" secondItem="Y1i-hO-hmN" secondAttribute="trailing" constant="12" id="9Vk-xI-12E"/>
+                            <constraint firstItem="H7d-Eg-w3K" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y1i-hO-hmN" secondAttribute="trailing" constant="12" id="9Vk-xI-12E"/>
                             <constraint firstItem="Y1i-hO-hmN" firstAttribute="top" secondItem="saW-nJ-zER" secondAttribute="top" constant="18" id="LAD-Vc-p1G"/>
                             <constraint firstItem="OCg-HD-JdE" firstAttribute="top" secondItem="Y1i-hO-hmN" secondAttribute="bottom" constant="12" id="SbT-D7-cez"/>
                             <constraint firstItem="Y1i-hO-hmN" firstAttribute="leading" secondItem="saW-nJ-zER" secondAttribute="trailing" constant="12" id="Utr-YD-XVZ"/>

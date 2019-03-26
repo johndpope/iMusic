@@ -25,12 +25,12 @@ class MPRecommendCollectionViewCell: UICollectionViewCell {
             let imgUrl = API.baseImageURL + img
             xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
         }
-        if let title = model.data_title {
-            xib_title.text = title
+        if SourceType == 0 {
+            xib_title.text = model.data_title
             xib_user.text = model.data_channelTitle
         }else {
             xib_title.text = model.data_songName
-            xib_user.text = model.data_songName
+            xib_user.text = model.data_singerName
         }
         
         

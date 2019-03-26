@@ -244,20 +244,22 @@ class MPDiscoverModel: BaseModel {
         data_genre <- map["genre"]
     }
     
-    class func getModel() -> MPDiscoverModel? {
-        var tempM: MPDiscoverModel?
-        if let arr: [MPDiscoverModel]  = MPDiscoverModel.bg_findAll(NSStringFromClass(MPDiscoverModel.self).components(separatedBy: ".").last!) as? [MPDiscoverModel], let model = arr.first {
+    class func getModel(finished: ((_ models: MPDiscoverModel?)->Void)? = nil) {
+        if let arr: [MPDiscoverModel]  = MPDiscoverModel.bg_findAll(MPDiscoverModel.classCode) as? [MPDiscoverModel], let model = arr.first {
             QYTools.shared.Log(log: "本地数据库获取数据")
             
             printSQLiteData(arr: arr)
-            
-            tempM = model
+            if let f = finished {
+                f(model)
+            }
         }else {
             DiscoverCent?.requestDiscover(complete: { (isSucceed, model, msg) in
                 switch isSucceed {
                 case true:
                     QYTools.shared.Log(log: "在线获取数据")
-                    tempM = model
+                    if let f = finished {
+                        f(model)
+                    }
                     break
                 case false:
                     SVProgressHUD.showError(withStatus: msg)
@@ -265,11 +267,10 @@ class MPDiscoverModel: BaseModel {
                 }
             })
         }
-        return tempM
     }
     
     class func printSQLiteData<T: BaseModel>(arr: [T]) {
-        let tableName = NSStringFromClass(MPDiscoverModel.self).components(separatedBy: ".").last!
+        let tableName = MPDiscoverModel.classCode
         print("表名称：\(tableName)")
         
         /**

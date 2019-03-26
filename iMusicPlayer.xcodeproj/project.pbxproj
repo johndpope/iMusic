@@ -1494,9 +1494,9 @@
 		C57FC5DF2240DC2E00218DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC5E02240DC2E00218DE7 /* MPAlbumListHeaderView.xib */,
 				C57FC5E12240DC2E00218DE7 /* Cell */,
 				C57FC5E42240DC2E00218DE7 /* MPAlbumListHeaderView.swift */,
+				C57FC5E02240DC2E00218DE7 /* MPAlbumListHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1825,18 +1825,18 @@
 		C57FC6362240DC2E00218DE7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC6372240DC2E00218DE7 /* MPRecommendTableViewCell.xib */,
+				C57FC63D2240DC2E00218DE7 /* MPCategoryTableViewCell.swift */,
+				C57FC63F2240DC2E00218DE7 /* MPCategoryTableViewCell.xib */,
+				C57FC63E2240DC2E00218DE7 /* MPDiscoverTableViewCell.swift */,
+				C57FC63A2240DC2E00218DE7 /* MPDiscoverTableViewCell.xib */,
+				C57FC6422240DC2E00218DE7 /* MPRecentlyCollectionViewCell.swift */,
 				C57FC6382240DC2E00218DE7 /* MPRecentlyCollectionViewCell.xib */,
 				C57FC6392240DC2E00218DE7 /* MPRecentlyTableViewCell.swift */,
-				C57FC63A2240DC2E00218DE7 /* MPDiscoverTableViewCell.xib */,
-				C57FC63B2240DC2E00218DE7 /* MPRecommendTableViewCell.swift */,
 				C57FC63C2240DC2E00218DE7 /* MPRecentlyTableViewCell.xib */,
-				C57FC63D2240DC2E00218DE7 /* MPCategoryTableViewCell.swift */,
-				C57FC63E2240DC2E00218DE7 /* MPDiscoverTableViewCell.swift */,
-				C57FC63F2240DC2E00218DE7 /* MPCategoryTableViewCell.xib */,
-				C57FC6402240DC2E00218DE7 /* MPRecommendCollectionViewCell.xib */,
 				C57FC6412240DC2E00218DE7 /* MPRecommendCollectionViewCell.swift */,
-				C57FC6422240DC2E00218DE7 /* MPRecentlyCollectionViewCell.swift */,
+				C57FC6402240DC2E00218DE7 /* MPRecommendCollectionViewCell.xib */,
+				C57FC63B2240DC2E00218DE7 /* MPRecommendTableViewCell.swift */,
+				C57FC6372240DC2E00218DE7 /* MPRecommendTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

@@ -76,14 +76,16 @@ class HFNetworkManager: NSObject {
         }
         
         let app_id = BundleName // 包名
-        let hl = "ja" // 日文版、en: 英文版
-        let m = 0 // 0: MV 1: MP3
-        let s = 0
-        let token = "z#master@Music1.4.8"
+        let hl = LanguageType // 日文版、en: 英文版
+        let m = SourceType // 0: MV 1: MP3
+        let s = LocationCode
+        let token = TokenCode
         
-        requestHeader["app_id"] = app_id
-        requestHeader["hl"] = hl
-        requestHeader["token"] = token
+        p["app_id"] = app_id
+        p["hl"] = hl
+        p["m"] = m
+        p["s"] = s
+        p["token"] = token
         
         // 设置编码格式
 //        requestHeader["Content-Type"] = "application/json;charset=utf-8"
