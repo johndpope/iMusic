@@ -10,6 +10,37 @@ import UIKit
 
 class MPModelTools: NSObject {
     
+    /// 电台
+    ///
+    /// - Parameters:
+    ///   - type: 风格流派ID
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func getRadioModel(type: Int = 0, tableName: String = MPSongModel.classCode, finished: ((_ models: [MPSongModel]?)->Void)? = nil) {
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+            if let f = finished {
+                f(arr)
+            }
+        }else {
+            DiscoverCent?.requestRadio(type: type, complete: { (isSucceed, model, msg) in
+                switch isSucceed {
+                case true:
+                    QYTools.shared.Log(log: "在线获取数据")
+                    if let f = finished, model!.count > 0 {
+                        // 缓存
+                        (model! as NSArray).bg_save(withName: tableName)
+                        f(model)
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    break
+                }
+            })
+        }
+    }
+    
     /// 歌手列表详细
     ///
     /// - Parameters:

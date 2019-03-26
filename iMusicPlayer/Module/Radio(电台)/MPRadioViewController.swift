@@ -13,10 +13,37 @@ class MPRadioViewController: BaseViewController {
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_user: UILabel!
     
+    var scrollVC: CardViewController?
+    
+    var model = [MPSongModel]() {
+        didSet {
+            cardViews = getImageViews(models: model)
+        }
+    }
+    
+    var cardViews = [UIImageView]() {
+        didSet {
+            scrollVC?.cards = cardViews
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configCardView()
+//        configCardView()
+        requestData()
+    }
+    
+    override func requestData() {
+        super.requestData()
+        
+        MPModelTools.getRadioModel(tableName: MPRadioViewController.classCode) { (model) in
+            if let m = model {
+                self.model = m
+                self.configCardView()
+            }
+        }
+        
     }
     
     @IBAction func play(_ sender: UIButton) {
@@ -28,13 +55,27 @@ class MPRadioViewController: BaseViewController {
         
     }
     
+    private func getImageViews(models: [MPSongModel]) -> [UIImageView] {
+        var temps = [UIImageView]()
+        models.forEach { (model) in
+            //设置图片
+            if let img = model.data_artworkBigUrl, img != "" {
+                let imgUrl = API.baseImageURL + img
+                let iv = UIImageView()
+                iv.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
+                temps.append(iv)
+            }
+        }
+        return temps
+    }
+    
     private func configCardView() {
         //1. Create card views to be presented in the CardViewController:
-        let cardViews: [UIView] = [UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default"))]
+//        let cardViews: [UIView] = [UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default"))]
         
         //2. Create the cardViewController:
         let cardVc = CardViewControllerFactory.make(cards: cardViews)
-        
+        scrollVC = cardVc
 //        let cardVc = CardViewController.init(nibName: "CardViewController", bundle: nil)
 //        let cardVc = CardViewController()
 //        cardVc.cards = cardViews

@@ -64,7 +64,11 @@ public class CardViewController: UIViewController {
     private var hasLaidOutSubviews = false
     fileprivate var currentCardIndex: Int = 0
 //    fileprivate var cards: [UIView] = []
-    var cards: [UIView] = []
+    var cards: [UIView] = [] {
+        didSet {
+            
+        }
+    }
     
     //Spacing between cards
     fileprivate let cardSpacing: CGFloat = 0

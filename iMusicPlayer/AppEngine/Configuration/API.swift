@@ -62,4 +62,7 @@ class API: NSObject {
     
     // MARK: - 歌手列表详细
     static let SongerListByID         = "/playlists/getSongs"
+    
+    // MARK: - 电台
+    static let Radio         = "/music/getFm"
 }
