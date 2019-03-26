@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="crp-CE-Poe" customClass="MPSongTableViewCell" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="crp-CE-Poe" id="OiH-gG-9LG">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="51.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_album" translatesAutoresizingMaskIntoConstraints="NO" id="608-zv-dkv">
+                        <rect key="frame" x="12" y="5" width="41.5" height="41.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="608-zv-dkv" secondAttribute="height" id="OWB-Pz-7xP"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星野源のオールナイトニッポン" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mox-CV-Djf">
+                        <rect key="frame" x="61.5" y="5" width="182" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="星野源 · 4:32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7o-aq-9uW">
+                        <rect key="frame" x="61.5" y="33" width="182" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTz-8U-Zpo">
+                        <rect key="frame" x="284.5" y="14" width="23.5" height="23.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="jTz-8U-Zpo" secondAttribute="height" id="9cc-6A-76h"/>
+                        </constraints>
+                        <state key="normal" image="icon_more_1"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYK-Oy-vWF">
+                        <rect key="frame" x="251.5" y="13.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="BYK-Oy-vWF" secondAttribute="height" id="LHm-6e-MAM"/>
+                        </constraints>
+                        <state key="normal" image="icon_collect_1"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jTz-8U-Zpo" firstAttribute="leading" secondItem="BYK-Oy-vWF" secondAttribute="trailing" constant="8" id="2kM-Zh-O24"/>
+                    <constraint firstAttribute="bottom" secondItem="jTz-8U-Zpo" secondAttribute="bottom" constant="14" id="62b-5X-2i9"/>
+                    <constraint firstItem="X7o-aq-9uW" firstAttribute="leading" secondItem="mox-CV-Djf" secondAttribute="leading" id="6br-ml-0lu"/>
+                    <constraint firstItem="X7o-aq-9uW" firstAttribute="trailing" secondItem="mox-CV-Djf" secondAttribute="trailing" id="6ei-hd-a1o"/>
+                    <constraint firstItem="X7o-aq-9uW" firstAttribute="top" secondItem="mox-CV-Djf" secondAttribute="bottom" constant="4" id="9Ja-S3-AdE"/>
+                    <constraint firstItem="jTz-8U-Zpo" firstAttribute="centerY" secondItem="OiH-gG-9LG" secondAttribute="centerY" id="EIM-Cr-lU1"/>
+                    <constraint firstAttribute="bottom" secondItem="608-zv-dkv" secondAttribute="bottom" constant="5" id="LGL-BV-gJU"/>
+                    <constraint firstItem="mox-CV-Djf" firstAttribute="top" secondItem="608-zv-dkv" secondAttribute="top" id="Nd8-ZQ-LeK"/>
+                    <constraint firstAttribute="trailing" secondItem="jTz-8U-Zpo" secondAttribute="trailing" constant="12" id="Rt7-rR-gnp"/>
+                    <constraint firstItem="BYK-Oy-vWF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mox-CV-Djf" secondAttribute="trailing" constant="8" id="SxJ-C2-etX"/>
+                    <constraint firstItem="608-zv-dkv" firstAttribute="top" secondItem="OiH-gG-9LG" secondAttribute="top" constant="5" id="UzH-3D-3Oa"/>
+                    <constraint firstItem="BYK-Oy-vWF" firstAttribute="width" secondItem="BYK-Oy-vWF" secondAttribute="height" id="WU1-37-Oug"/>
+                    <constraint firstItem="X7o-aq-9uW" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="608-zv-dkv" secondAttribute="bottom" id="Wra-u7-b6L"/>
+                    <constraint firstItem="608-zv-dkv" firstAttribute="leading" secondItem="OiH-gG-9LG" secondAttribute="leading" constant="12" id="hwe-EW-0wz"/>
+                    <constraint firstItem="mox-CV-Djf" firstAttribute="leading" secondItem="608-zv-dkv" secondAttribute="trailing" constant="8" id="oiG-ht-k9m"/>
+                    <constraint firstItem="jTz-8U-Zpo" firstAttribute="top" secondItem="OiH-gG-9LG" secondAttribute="top" constant="14" id="seT-tv-Qcu"/>
+                    <constraint firstItem="BYK-Oy-vWF" firstAttribute="centerY" secondItem="jTz-8U-Zpo" secondAttribute="centerY" id="wgK-Jt-HBt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="V85-c8-Ch5"/>
+            <connections>
+                <outlet property="xib_collect" destination="BYK-Oy-vWF" id="keX-p1-qOY"/>
+                <outlet property="xib_desc" destination="X7o-aq-9uW" id="oHz-WS-3jJ"/>
+                <outlet property="xib_image" destination="608-zv-dkv" id="Xi4-RE-NKc"/>
+                <outlet property="xib_more" destination="jTz-8U-Zpo" id="gi4-pu-3Hv"/>
+                <outlet property="xib_title" destination="mox-CV-Djf" id="bRb-y1-DQ0"/>
+            </connections>
+            <point key="canvasLocation" x="-78.400000000000006" y="153.82308845577214"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_collect_1" width="25" height="25"/>
+        <image name="icon_more_1" width="25" height="25"/>
+        <image name="pic_album" width="100" height="100"/>
+    </resources>
+</document>

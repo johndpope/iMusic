@@ -78,12 +78,14 @@ class HFNetworkManager: NSObject {
         let app_id = BundleName // 包名
         let hl = LanguageType // 日文版、en: 英文版
         let m = SourceType // 0: MV 1: MP3
-        let s = LocationCode
+        let op = LocationCode
         let token = TokenCode
+        let s = StyleImageType
         
         p["app_id"] = app_id
         p["hl"] = hl
         p["m"] = m
+        p["op"] = op
         p["s"] = s
         p["token"] = token
         

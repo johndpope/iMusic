@@ -1,14 +1,14 @@
 //
-//  MPLatestTableViewCell.swift
+//  MPSongTableViewCell.swift
 //  iMusicPlayer
 //
-//  Created by Modi on 2019/3/14.
+//  Created by Modi on 2019/3/26.
 //  Copyright © 2019 Modi. All rights reserved.
 //
 
 import UIKit
 
-class MPAlbumListTableViewCell: UITableViewCell {
+class MPSongTableViewCell: UITableViewCell {
 
     @IBOutlet weak var xib_image: UIImageView!
     @IBOutlet weak var xib_title: UILabel!

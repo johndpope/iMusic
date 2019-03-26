@@ -113,7 +113,10 @@
                             <rect key="frame" x="5" y="0.0" width="194" height="27"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" keyboardType="webSearch"/>
+                            <connections>
+                                <outlet property="delegate" destination="JDA-4s-Uku" id="F9C-7Y-3wS"/>
+                            </connections>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -153,6 +156,7 @@
                 <outlet property="xib_categoryTagList" destination="JX5-B5-NCs" id="mi6-GY-hca"/>
                 <outlet property="xib_countryTagList" destination="RG8-zg-jJB" id="BvJ-4O-8lB"/>
                 <outlet property="xib_nameBgView" destination="oxV-we-TWU" id="zDK-fM-rfV"/>
+                <outlet property="xib_nameTF" destination="0wr-vW-frL" id="ZKN-aY-Udv"/>
             </connections>
             <point key="canvasLocation" x="230" y="-412"/>
         </view>

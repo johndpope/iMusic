@@ -9,7 +9,7 @@
 import UIKit
 
 private struct Constant {
-    static let identifier = "MPAlbumListTableViewCell"
+    static let identifier = "MPSongTableViewCell"
     static let rowHeight = SCREEN_WIDTH * (52/375)
 }
 
@@ -20,7 +20,7 @@ class MPAlbumListViewController: BaseTableViewController {
             if let m = headerModel, var source = m.data_title {
                 source.removeLast()
                 NSArray.bg_drop(source)
-                MPRankingModel.getModel(rankType: source, tableName: source) { (models) in
+                MPModelTools.getRankingModel(rankType: source, tableName: source) { (models) in
                     if let m = models {
                         self.models = m
                     }
@@ -29,7 +29,7 @@ class MPAlbumListViewController: BaseTableViewController {
         }
     }
     
-    var models = [MPRankingModel]() {
+    var models = [MPSongModel]() {
         didSet {
             tableView.reloadData()
         }
@@ -45,7 +45,7 @@ class MPAlbumListViewController: BaseTableViewController {
         if let m = headerModel, var source = m.data_title {
             source.removeLast()
             NSArray.bg_drop(source)
-            MPRankingModel.getModel(rankType: source, tableName: source) { (models) in
+            MPModelTools.getRankingModel(rankType: source, tableName: source) { (models) in
                 if let m = models {
                     self.models = m
                 }
@@ -95,7 +95,7 @@ extension MPAlbumListViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: MPAlbumListTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPAlbumListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
         cell.updateCell(model: models[indexPath.row])
         return cell
     }

@@ -57,13 +57,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/DataCent/MPDiscoverDataCent.swift"
-            timestampString = "575260963.062767"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
+            timestampString = "575280362.402437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "requestDiscover(complete:)"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "getDiscoverModel(finished:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
+            timestampString = "575280369.717714"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "getStyleGenreModel(tableName:finished:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
+            timestampString = "575280385.597872"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "getDiscoverModel(finished:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

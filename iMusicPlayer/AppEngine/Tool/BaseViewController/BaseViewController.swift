@@ -49,6 +49,8 @@ class BaseViewController: UIViewController, PlaceholderViewDelegate {
         }
     }
     
+    open func getModel(){}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

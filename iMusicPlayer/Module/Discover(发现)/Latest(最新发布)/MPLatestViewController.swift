@@ -9,16 +9,36 @@
 import UIKit
 
 private struct Constant {
-    static let identifier = "MPLatestTableViewCell"
+    static let identifier = "MPSongTableViewCell"
     static let rowHeight = SCREEN_WIDTH * (52/375)
 }
 
 class MPLatestViewController: BaseTableViewController {
+    
+    var headView: MPLatestHeaderView?
 
+    var models = [MPSongModel]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        refreshData()
+    }
+    
+    override func refreshData() {
+        super.refreshData()
+        if let hv = self.headView {
+            MPModelTools.getLatestModel(latestType:  hv.currentType, tableName: hv.currentType) { (models) in
+                if let m = models {
+                    self.models = m
+                }
+            }
+        }
+        tableView.mj_header.endRefreshing()
     }
     
     override func setupStyle() {
@@ -43,17 +63,23 @@ class MPLatestViewController: BaseTableViewController {
         super.setupTableHeaderView()
         
         let hv = MPLatestHeaderView.md_viewFromXIB() as! MPLatestHeaderView
+        self.headView = hv
         tableView.tableHeaderView = hv
+        
+        hv.sgmDidChangeBlock = {
+            self.refreshData()
+        }
     }
     
 }
 extension MPLatestViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return models.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: MPLatestTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPLatestTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
+        cell.updateCell(model: models[indexPath.row])
         return cell
     }
     

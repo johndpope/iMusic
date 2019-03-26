@@ -9,16 +9,41 @@
 import UIKit
 
 class MPLatestHeaderView: UITableViewCell {
+    
+    var sgmDidChangeBlock: (()->Void)?
+    
+//    type=Japan。欧美：hl=Europe 韩国：Korea
+    var currentType = "Japan"
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        self.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: SCREEN_WIDTH*(90/375)))
     }
     
+    @IBAction func segmentDidChange(_ sender: UISegmentedControl) {
+
+        switch sender.selectedSegmentIndex {
+        case 0:
+            currentType = "Japan"
+            break
+        case 1:
+            currentType = "Europe"
+            break
+        case 2:
+            currentType = "Korea"
+            break
+        default:
+            break
+        }
+        if let b = sgmDidChangeBlock {
+            b()
+        }
+    }
+    
+    @IBAction func randomPlay(_ sender: UIButton) {
+        if let b = md_btnDidClickedBlock {
+            b(sender)
+        }
+    }
 }

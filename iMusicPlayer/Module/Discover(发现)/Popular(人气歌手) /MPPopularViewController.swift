@@ -15,10 +15,38 @@ private struct Constant {
 
 class MPPopularViewController: BaseTableViewController {
     
+    var headerView: MPPopularHeaderView?
+    var songName: String = "" {
+        didSet {
+            self.refreshData()
+        }
+    }
+    
+    var model = [HotSingerPlaylists]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        refreshData()
+    }
+    
+    override func refreshData() {
+        super.refreshData()
+        
+        if let hv = self.headerView {
+            let tableName = songName + "\(hv.nationality)" + "\(hv.type)"
+            MPModelTools.getPopularModel(songerName: songName, nationality: hv.nationality, type: hv.type, tableName: tableName) { (models) in
+                if let m = models {
+                    self.model = m
+                    self.tableView.mj_header.endRefreshing()
+                }
+            }
+        }
+        
     }
     
     override func setupStyle() {
@@ -51,17 +79,22 @@ class MPPopularViewController: BaseTableViewController {
         super.setupTableHeaderView()
         
         let hv = MPPopularHeaderView.md_viewFromXIB() as! MPPopularHeaderView
+        headerView = hv
         tableView.tableHeaderView = hv
+        hv.sgmDidChangeBlock = {(name) in
+            self.songName = name
+        }
     }
     
 }
 extension MPPopularViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return model.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MPPopularTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPPopularTableViewCell
+        cell.updateCell(model: model[indexPath.row])
         return cell
     }
     

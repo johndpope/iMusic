@@ -118,13 +118,15 @@ let window = appDelegate.window!
 let BundleName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
 
 // 当前显示MV还是MP3
-let SourceType = 1
+let SourceType = 0
 
 // 当前显示的语言版本：ja: 日版 en: 英文版
 let LanguageType: String = "ja"
 
 // 当前地区
-let LocationCode = 0
+let LocationCode = ""
+// 此参数跟风格流派分类图片有关，接口默认是s=0
+let StyleImageType = 0
 
 let TokenCode = "z#master@Music1.4.8"
 

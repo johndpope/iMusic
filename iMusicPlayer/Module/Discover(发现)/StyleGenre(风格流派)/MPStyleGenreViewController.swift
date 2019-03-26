@@ -14,11 +14,28 @@ private struct Constant {
 }
 
 class MPStyleGenreViewController: BaseCollectionViewController {
+    
+    var model: MPStyleGenreModel? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        refreshData()
+    }
+    
+    override func refreshData() {
+        super.refreshData()
+        
+        MPModelTools.getStyleGenreModel(tableName: MPStyleGenreModel.classCode) { (model) in
+            if let m = model {
+                self.model = m
+            }
+        }
+        
     }
     
     override func setupStyle() {
@@ -47,11 +64,42 @@ extension MPStyleGenreViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return [1,2,3,4,5,6,7,8,9].randomElement()!
+        var number = 0
+        switch section {
+        case 0:
+            number = model?.data_recommended?.count ?? 0
+            break
+        case 1:
+            number = model?.data_style?.count ?? 0
+            break
+        case 2:
+            number = model?.data_theme?.count ?? 0
+            break
+        default:
+            break
+        }
+        return number
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.identifier, for: indexPath) as! MPStyleGenreCollectionViewCell
+        var cellModel: Genre?
+        switch indexPath.section {
+        case 0:
+            cellModel = model?.data_recommended?[indexPath.row]
+            break
+        case 1:
+            cellModel = model?.data_style?[indexPath.row]
+            break
+        case 2:
+            cellModel = model?.data_theme?[indexPath.row]
+            break
+        default:
+            break
+        }
+        if let cm = cellModel {
+            cell.updateCell(model: cm)
+        }
         return cell
     }
     

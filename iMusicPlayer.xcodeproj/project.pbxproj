@@ -9,10 +9,13 @@
 /* Begin PBXBuildFile section */
 		701D2952618FCCD15AC04295 /* Pods_iMusicPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD689BC83ED3CC9D0F2AD72 /* Pods_iMusicPlayer.framework */; };
 		B00B2C00DE3BDE040160543A /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA33FAF4D6CCF9867C457A9 /* Pods_iMusicPlayerUITests.framework */; };
-		C52E2A132248D120000075E8 /* MPRankingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A122248D120000075E8 /* MPRankingModel.swift */; };
 		C52E2A152248DFC7000075E8 /* MPRankingTempModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A142248DFC7000075E8 /* MPRankingTempModel.swift */; };
-		C52E2A172248E453000075E8 /* MPDiscoverModel copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A162248E453000075E8 /* MPDiscoverModel copy.swift */; };
 		C52E2A192248E619000075E8 /* MPSongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A182248E619000075E8 /* MPSongModel.swift */; };
+		C52E2A1D2249CD83000075E8 /* MPModelTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A1C2249CD83000075E8 /* MPModelTools.swift */; };
+		C52E2A202249D6FF000075E8 /* MPSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A1E2249D6FF000075E8 /* MPSongTableViewCell.swift */; };
+		C52E2A212249D6FF000075E8 /* MPSongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C52E2A1F2249D6FF000075E8 /* MPSongTableViewCell.xib */; };
+		C52E2A232249DD21000075E8 /* MPPopularModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A222249DD21000075E8 /* MPPopularModel.swift */; };
+		C52E2A25224A099F000075E8 /* MPStyleGenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A24224A099F000075E8 /* MPStyleGenreModel.swift */; };
 		C53616A22247812200CFBD63 /* MPDiscoverDataCent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53616A12247812200CFBD63 /* MPDiscoverDataCent.swift */; };
 		C56033F12242255200F6795F /* MPSearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033EF2242255100F6795F /* MPSearchingView.swift */; };
 		C56033F62242258900F6795F /* MPSearchingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */; };
@@ -142,7 +145,6 @@
 		C57FC8332240DC2F00218DE7 /* MPStyleGenreDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6262240DC2E00218DE7 /* MPStyleGenreDetailTableViewCell.xib */; };
 		C57FC8342240DC2F00218DE7 /* MPStyleGenreDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6272240DC2E00218DE7 /* MPStyleGenreDetailTableViewCell.swift */; };
 		C57FC8352240DC2F00218DE7 /* MPStyleGenreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6282240DC2E00218DE7 /* MPStyleGenreDetailViewController.swift */; };
-		C57FC8362240DC2F00218DE7 /* MPStyleGenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC62A2240DC2E00218DE7 /* MPStyleGenreModel.swift */; };
 		C57FC8372240DC2F00218DE7 /* MPStyleGenreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC62C2240DC2E00218DE7 /* MPStyleGenreCollectionReusableView.swift */; };
 		C57FC8382240DC2F00218DE7 /* MPStyleGenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC62E2240DC2E00218DE7 /* MPStyleGenreCollectionViewCell.swift */; };
 		C57FC8392240DC2F00218DE7 /* MPStyleGenreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC62F2240DC2E00218DE7 /* MPStyleGenreCollectionViewCell.xib */; };
@@ -432,10 +434,13 @@
 		7DF82983FCE3DA4A6C1EBD27 /* Pods-iMusicPlayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.release.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.release.xcconfig"; sourceTree = "<group>"; };
 		ACD689BC83ED3CC9D0F2AD72 /* Pods_iMusicPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMusicPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D5A9BC683086CF1A7D230A /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C52E2A122248D120000075E8 /* MPRankingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRankingModel.swift; sourceTree = "<group>"; };
 		C52E2A142248DFC7000075E8 /* MPRankingTempModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRankingTempModel.swift; sourceTree = "<group>"; };
-		C52E2A162248E453000075E8 /* MPDiscoverModel copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MPDiscoverModel copy.swift"; sourceTree = "<group>"; };
 		C52E2A182248E619000075E8 /* MPSongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSongModel.swift; sourceTree = "<group>"; };
+		C52E2A1C2249CD83000075E8 /* MPModelTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPModelTools.swift; sourceTree = "<group>"; };
+		C52E2A1E2249D6FF000075E8 /* MPSongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSongTableViewCell.swift; sourceTree = "<group>"; };
+		C52E2A1F2249D6FF000075E8 /* MPSongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSongTableViewCell.xib; sourceTree = "<group>"; };
+		C52E2A222249DD21000075E8 /* MPPopularModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPopularModel.swift; sourceTree = "<group>"; };
+		C52E2A24224A099F000075E8 /* MPStyleGenreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPStyleGenreModel.swift; sourceTree = "<group>"; };
 		C53616A12247812200CFBD63 /* MPDiscoverDataCent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPDiscoverDataCent.swift; sourceTree = "<group>"; };
 		C56033EF2242255100F6795F /* MPSearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingView.swift; sourceTree = "<group>"; };
 		C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -572,7 +577,6 @@
 		C57FC6262240DC2E00218DE7 /* MPStyleGenreDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPStyleGenreDetailTableViewCell.xib; sourceTree = "<group>"; };
 		C57FC6272240DC2E00218DE7 /* MPStyleGenreDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPStyleGenreDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C57FC6282240DC2E00218DE7 /* MPStyleGenreDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPStyleGenreDetailViewController.swift; sourceTree = "<group>"; };
-		C57FC62A2240DC2E00218DE7 /* MPStyleGenreModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPStyleGenreModel.swift; sourceTree = "<group>"; };
 		C57FC62C2240DC2E00218DE7 /* MPStyleGenreCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPStyleGenreCollectionReusableView.swift; sourceTree = "<group>"; };
 		C57FC62E2240DC2E00218DE7 /* MPStyleGenreCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPStyleGenreCollectionViewCell.swift; sourceTree = "<group>"; };
 		C57FC62F2240DC2E00218DE7 /* MPStyleGenreCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPStyleGenreCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1548,9 +1552,9 @@
 		C57FC5ED2240DC2E00218DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC5EE2240DC2E00218DE7 /* MPLatestHeaderView.xib */,
 				C57FC5EF2240DC2E00218DE7 /* Cell */,
 				C57FC5F22240DC2E00218DE7 /* MPLatestHeaderView.swift */,
+				C57FC5EE2240DC2E00218DE7 /* MPLatestHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1775,7 +1779,6 @@
 		C57FC6292240DC2E00218DE7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC62A2240DC2E00218DE7 /* MPStyleGenreModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1802,12 +1805,13 @@
 		C57FC6312240DC2E00218DE7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C52E2A162248E453000075E8 /* MPDiscoverModel copy.swift */,
 				C53616A0224780EF00CFBD63 /* DataCent */,
 				C57FC6322240DC2E00218DE7 /* MPDiscoverModel.swift */,
-				C52E2A122248D120000075E8 /* MPRankingModel.swift */,
 				C52E2A142248DFC7000075E8 /* MPRankingTempModel.swift */,
 				C52E2A182248E619000075E8 /* MPSongModel.swift */,
+				C52E2A1C2249CD83000075E8 /* MPModelTools.swift */,
+				C52E2A222249DD21000075E8 /* MPPopularModel.swift */,
+				C52E2A24224A099F000075E8 /* MPStyleGenreModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1815,9 +1819,9 @@
 		C57FC6332240DC2E00218DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C57FC6362240DC2E00218DE7 /* Cell */,
 				C57FC6342240DC2E00218DE7 /* MPBaseSectionHeaderView.swift */,
 				C57FC6352240DC2E00218DE7 /* MPBaseSectionHeaderView.xib */,
-				C57FC6362240DC2E00218DE7 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1837,6 +1841,8 @@
 				C57FC6402240DC2E00218DE7 /* MPRecommendCollectionViewCell.xib */,
 				C57FC63B2240DC2E00218DE7 /* MPRecommendTableViewCell.swift */,
 				C57FC6372240DC2E00218DE7 /* MPRecommendTableViewCell.xib */,
+				C52E2A1E2249D6FF000075E8 /* MPSongTableViewCell.swift */,
+				C52E2A1F2249D6FF000075E8 /* MPSongTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1853,16 +1859,16 @@
 		C57FC6452240DC2E00218DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC6462240DC2E00218DE7 /* MPCreateSongListView.xib */,
-				C57FC6472240DC2E00218DE7 /* MPAddToSongListView.swift */,
-				C57FC6482240DC2E00218DE7 /* Config */,
-				C57FC64A2240DC2E00218DE7 /* MPPopularHeaderView.swift */,
-				C57FC64B2240DC2E00218DE7 /* MPSongToolsView.xib */,
-				C57FC64C2240DC2E00218DE7 /* MPAddToSongListView.xib */,
-				C57FC64D2240DC2E00218DE7 /* MPSongToolsView.swift */,
 				C57FC64E2240DC2E00218DE7 /* Cell */,
+				C57FC6482240DC2E00218DE7 /* Config */,
+				C57FC6472240DC2E00218DE7 /* MPAddToSongListView.swift */,
+				C57FC64C2240DC2E00218DE7 /* MPAddToSongListView.xib */,
 				C57FC6532240DC2E00218DE7 /* MPCreateSongListView.swift */,
+				C57FC6462240DC2E00218DE7 /* MPCreateSongListView.xib */,
+				C57FC64A2240DC2E00218DE7 /* MPPopularHeaderView.swift */,
 				C57FC6542240DC2E00218DE7 /* MPPopularHeaderView.xib */,
+				C57FC64D2240DC2E00218DE7 /* MPSongToolsView.swift */,
+				C57FC64B2240DC2E00218DE7 /* MPSongToolsView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2991,6 +2997,7 @@
 				C57FC8E42240DC2F00218DE7 /* BRPickerView.bundle in Resources */,
 				C57FC8A42240DC2F00218DE7 /* 1.plist in Resources */,
 				C57FC8502240DC2F00218DE7 /* MPAddToSongListView.xib in Resources */,
+				C52E2A212249D6FF000075E8 /* MPSongTableViewCell.xib in Resources */,
 				C57FC8462240DC2F00218DE7 /* MPCategoryTableViewCell.xib in Resources */,
 				C59498CE2240E71C00AC10DD /* MPEditSongListTableViewCell.xib in Resources */,
 				C57FC83E2240DC2F00218DE7 /* MPRecommendTableViewCell.xib in Resources */,
@@ -3221,6 +3228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C52E2A232249DD21000075E8 /* MPPopularModel.swift in Sources */,
 				C57FC90C2240DC3000218DE7 /* HXDatePhotoViewTransition.m in Sources */,
 				C57FC81A2240DC2F00218DE7 /* MPSearchTableViewCell.swift in Sources */,
 				C57FC8022240DC2F00218DE7 /* MPMyFavoriteViewController.swift in Sources */,
@@ -3288,6 +3296,7 @@
 				C57FC8E72240DC2F00218DE7 /* MDPasswordView.swift in Sources */,
 				C57FC8F62240DC3000218DE7 /* HXCollectionView.m in Sources */,
 				C57FC8162240DC2F00218DE7 /* MPLatestViewController.swift in Sources */,
+				C52E2A1D2249CD83000075E8 /* MPModelTools.swift in Sources */,
 				C57FC8DE2240DC2F00218DE7 /* ZXDrawPrizeView.swift in Sources */,
 				C57FC8B82240DC2F00218DE7 /* NSString+DisplayTime.m in Sources */,
 				C57FC81E2240DC2F00218DE7 /* MPRelatedSongsViewController.swift in Sources */,
@@ -3324,11 +3333,13 @@
 				C57FC8EA2240DC2F00218DE7 /* CardInterpolator.swift in Sources */,
 				C57FC8852240DC2F00218DE7 /* MDHorizontalCircleMenuView.swift in Sources */,
 				C57FC8762240DC2F00218DE7 /* HFDataCent.swift in Sources */,
+				C52E2A202249D6FF000075E8 /* MPSongTableViewCell.swift in Sources */,
 				C57FC8E22240DC2F00218DE7 /* BRBaseView.m in Sources */,
 				C57FC9292240DC3000218DE7 /* DispatchTime+Extension.swift in Sources */,
 				C57FC7F92240DC2F00218DE7 /* MPCollectSongListHeaderView.swift in Sources */,
 				C57FC88A2240DC2F00218DE7 /* HFLocationManageer.swift in Sources */,
 				C57FC8452240DC2F00218DE7 /* MPDiscoverTableViewCell.swift in Sources */,
+				C52E2A25224A099F000075E8 /* MPStyleGenreModel.swift in Sources */,
 				C57FC8FC2240DC3000218DE7 /* UIView+HXExtension.m in Sources */,
 				C560343A224477EF00F6795F /* Extensions.swift in Sources */,
 				C57FC7F22240DC2F00218DE7 /* YDMenu.swift in Sources */,
@@ -3417,7 +3428,6 @@
 				C57FC87A2240DC2F00218DE7 /* HFAppEngine+Enum.swift in Sources */,
 				C57FC8812240DC2F00218DE7 /* HFAppEngine.swift in Sources */,
 				C57FC8E52240DC2F00218DE7 /* BRAddressPickerView.m in Sources */,
-				C52E2A172248E453000075E8 /* MPDiscoverModel copy.swift in Sources */,
 				C57FC8FB2240DC3000218DE7 /* HXAlbumListViewController.m in Sources */,
 				C57FC90B2240DC3000218DE7 /* HXCustomNavigationController.m in Sources */,
 				C57FC8492240DC2F00218DE7 /* MPRecentlyCollectionViewCell.swift in Sources */,
@@ -3426,7 +3436,6 @@
 				C59498C52240E4DB00AC10DD /* MPEditSongListHeaderView.swift in Sources */,
 				C57FC8C62240DC2F00218DE7 /* UINavigationController+Animation.m in Sources */,
 				C57FC7EF2240DC2F00218DE7 /* YDMenuDelegate.swift in Sources */,
-				C52E2A132248D120000075E8 /* MPRankingModel.swift in Sources */,
 				C57FC8D42240DC2F00218DE7 /* ZYStarRateView.swift in Sources */,
 				C57FC8B12240DC2F00218DE7 /* UIDevice+Extension.swift in Sources */,
 				C57FC85D2240DC2F00218DE7 /* MPRadioViewController.swift in Sources */,
@@ -3437,7 +3446,6 @@
 				C57FC8FD2240DC3000218DE7 /* HXPhotoCustomNavigationBar.m in Sources */,
 				C57FC8F12240DC3000218DE7 /* HXPhotoConfiguration.m in Sources */,
 				C57FC8CB2240DC2F00218DE7 /* NSString+Predicate.m in Sources */,
-				C57FC8362240DC2F00218DE7 /* MPStyleGenreModel.swift in Sources */,
 				C57FC90A2240DC3000218DE7 /* NSDate+HXExtension.m in Sources */,
 				C57FC8072240DC2F00218DE7 /* MPMediaLibraryCollectionViewCell.swift in Sources */,
 				C57FC8402240DC2F00218DE7 /* MPRecentlyTableViewCell.swift in Sources */,

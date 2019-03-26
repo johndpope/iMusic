@@ -53,7 +53,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="xib_count" destination="zSn-iO-QRd" id="gXk-cH-M23"/>
                 <outlet property="xib_image" destination="2JC-ou-zUG" id="gp3-OA-fym"/>
+                <outlet property="xib_title" destination="Oh1-du-4ku" id="eIZ-aR-YqZ"/>
             </connections>
         </tableViewCell>
     </objects>

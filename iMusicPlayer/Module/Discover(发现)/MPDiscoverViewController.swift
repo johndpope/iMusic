@@ -50,8 +50,8 @@ class MPDiscoverViewController: BaseTableViewController {
     override func refreshData() {
         super.refreshData()
         // 刷新数据
-        MPDiscoverModel.bg_drop(MPDiscoverModel.classCode)
-        MPDiscoverModel.getModel { (model) in
+//        MPDiscoverModel.bg_drop(MPDiscoverModel.classCode)
+        MPModelTools.getDiscoverModel { (model) in
             self.model = model
             self.tableView.mj_header.endRefreshing()
         }

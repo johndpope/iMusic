@@ -44,4 +44,13 @@ class API: NSObject {
     static let Discover = "/discovery/getAll"
     // MARK: - 排行榜
     static let Rank = "/discovery/getCharts"
+    
+    // MARK: - 最新发布
+    static let Latest         = "/discovery/getLatest"
+    
+    // MARK: -
+    static let Popular         = "/playlists/getMusicSinger"
+    
+    // MARK: -
+    static let StyleGenre         = "/playlists/getCategory"
 }
