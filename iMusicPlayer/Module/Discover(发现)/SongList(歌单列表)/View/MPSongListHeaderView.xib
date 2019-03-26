@@ -92,8 +92,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="xib_collect" destination="tQM-of-Bd4" id="b64-IP-FSh"/>
+                <outlet property="xib_count" destination="FhJ-mH-2x6" id="GAS-If-n3H"/>
                 <outlet property="xib_image" destination="wq1-HJ-Ju2" id="Drp-Gx-k8k"/>
                 <outlet property="xib_random" destination="oSe-pF-u0k" id="BX4-cc-sAE"/>
+                <outlet property="xib_title" destination="c0o-wW-nbV" id="lGi-t2-lUc"/>
             </connections>
             <point key="canvasLocation" x="-184" y="-22.488755622188908"/>
         </tableViewCell>

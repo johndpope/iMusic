@@ -10,6 +10,98 @@ import UIKit
 
 class MPModelTools: NSObject {
     
+    /// 歌手列表详细
+    ///
+    /// - Parameters:
+    ///   - singerId: 歌手ID
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func getSongerListByIDModel(singerId: String = "", tableName: String = MPSongModel.classCode, finished: ((_ models: [MPSongModel]?)->Void)? = nil) {
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+            if let f = finished {
+                f(arr)
+            }
+        }else {
+            DiscoverCent?.requestSongerListByID(singerId: singerId, complete: { (isSucceed, model, msg) in
+                switch isSucceed {
+                case true:
+                    QYTools.shared.Log(log: "在线获取数据")
+                    if let f = finished, model!.count > 0 {
+                        // 缓存
+                        (model! as NSArray).bg_save(withName: tableName)
+                        f(model)
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    break
+                }
+            })
+        }
+    }
+    
+    /// 歌单列表详细
+    ///
+    /// - Parameters:
+    ///   - playlistId: 歌单ID
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func getSongListByIDModel(playlistId: Int = 0, tableName: String = MPSongModel.classCode, finished: ((_ models: [MPSongModel]?)->Void)? = nil) {
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+            if let f = finished {
+                f(arr)
+            }
+        }else {
+            DiscoverCent?.requestSongListByID(playlistId: playlistId, complete: { (isSucceed, model, msg) in
+                switch isSucceed {
+                case true:
+                    QYTools.shared.Log(log: "在线获取数据")
+                    if let f = finished, model!.count > 0 {
+                        // 缓存
+                        (model! as NSArray).bg_save(withName: tableName)
+                        f(model)
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    break
+                }
+            })
+        }
+    }
+    
+    /// 歌单列表
+    ///
+    /// - Parameters:
+    ///   - typeID: 歌单ID
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func getSongListModel(typeID: Int = 0, tableName: String = GeneralPlaylists.classCode, finished: ((_ models: [GeneralPlaylists]?)->Void)? = nil) {
+        if let arr = NSArray.bg_array(withName: tableName) as? [GeneralPlaylists] {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+            if let f = finished {
+                f(arr)
+            }
+        }else {
+            DiscoverCent?.requestSongList(type: typeID, complete: { (isSucceed, model, msg) in
+                switch isSucceed {
+                case true:
+                    QYTools.shared.Log(log: "在线获取数据")
+                    if let f = finished, model!.count > 0 {
+                        // 缓存
+                        (model! as NSArray).bg_save(withName: tableName)
+                        f(model)
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    break
+                }
+            })
+        }
+    }
     
     /// 风格流派
     ///
@@ -29,6 +121,7 @@ class MPModelTools: NSObject {
                 case true:
                     QYTools.shared.Log(log: "在线获取数据")
                     if let f = finished {
+                        // 缓存数据库
                         model!.bg_tableName = tableName
                         model!.bg_save()
                         f(model)
@@ -154,10 +247,9 @@ class MPModelTools: NSObject {
                 case true:
                     QYTools.shared.Log(log: "在线获取数据")
                     if let f = finished {
-                        
+                        // 缓存数据库
                         model!.bg_tableName = MPDiscoverModel.classCode
                         model!.bg_save()
-                        
                         f(model)
                     }
                     break

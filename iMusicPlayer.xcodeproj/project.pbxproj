@@ -1904,8 +1904,8 @@
 		C57FC6562240DC2E00218DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC6572240DC2E00218DE7 /* MPSongListHeaderView.swift */,
 				C57FC6582240DC2E00218DE7 /* Cell */,
+				C57FC6572240DC2E00218DE7 /* MPSongListHeaderView.swift */,
 				C57FC65B2240DC2E00218DE7 /* MPSongListHeaderView.xib */,
 			);
 			path = View;

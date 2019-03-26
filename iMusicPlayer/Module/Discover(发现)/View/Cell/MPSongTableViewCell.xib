@@ -37,19 +37,25 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTz-8U-Zpo">
+                    <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTz-8U-Zpo">
                         <rect key="frame" x="284.5" y="14" width="23.5" height="23.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="jTz-8U-Zpo" secondAttribute="height" id="9cc-6A-76h"/>
                         </constraints>
                         <state key="normal" image="icon_more_1"/>
+                        <connections>
+                            <action selector="btn_DidClicked:" destination="crp-CE-Poe" eventType="touchUpInside" id="q3v-FA-zCS"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYK-Oy-vWF">
+                    <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYK-Oy-vWF">
                         <rect key="frame" x="251.5" y="13.5" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="BYK-Oy-vWF" secondAttribute="height" id="LHm-6e-MAM"/>
                         </constraints>
                         <state key="normal" image="icon_collect_1"/>
+                        <connections>
+                            <action selector="btn_DidClicked:" destination="crp-CE-Poe" eventType="touchUpInside" id="qCa-r0-xH7"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

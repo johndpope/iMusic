@@ -15,10 +15,30 @@ private struct Constant {
 
 class MPChoicenessViewController: BaseTableViewController {
     
+    var typeID: Int = 0
+    
+    var model = [GeneralPlaylists]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        refreshData()
+    }
+    
+    override func refreshData() {
+        super.refreshData()
+        
+        MPModelTools.getSongListModel(typeID: typeID, tableName: GeneralPlaylists.classCode + "\(typeID)") { (model) in
+            if let m = model {
+                self.model = m
+                self.tableView.mj_header.endRefreshing()
+            }
+        }
+        
     }
     
     override func setupStyle() {
@@ -50,15 +70,22 @@ class MPChoicenessViewController: BaseTableViewController {
 }
 extension MPChoicenessViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return model.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPChoicenessTableViewCell
+        cell.updateCell(model: model[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = MPSongListViewController()
+        vc.headerSongModel = model[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

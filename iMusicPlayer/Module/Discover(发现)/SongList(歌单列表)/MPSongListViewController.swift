@@ -9,16 +9,57 @@
 import UIKit
 
 private struct Constant {
-    static let identifier = "MPSongListTableViewCell"
+    static let identifier = "MPSongTableViewCell"
     static let rowHeight = SCREEN_WIDTH * (52/375)
 }
 
 class MPSongListViewController: BaseTableViewController {
+    
+    var headerSongerModel: HotSingerPlaylists? {
+        didSet {
+            singerId = headerSongerModel?.data_originalId ?? ""
+        }
+    }
+    
+    var headerSongModel: GeneralPlaylists? {
+        didSet {
+            playlistId = headerSongModel?.data_id ?? 0
+        }
+    }
+    
+    var playlistId: Int = 0
+    var singerId: String = ""
 
+    var model = [MPSongModel]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        refreshData()
+    }
+    
+    override func refreshData() {
+        super.refreshData()
+        if let hm = self.headerSongModel {
+            MPModelTools.getSongListByIDModel(playlistId: playlistId, tableName: "") { (model) in
+                if let m = model {
+                    self.model = m
+                    self.tableView.mj_header.endRefreshing()
+                }
+            }
+        }else {
+            MPModelTools.getSongerListByIDModel(singerId: singerId, tableName: "") { (model) in
+                if let m = model {
+                    self.model = m
+                    self.tableView.mj_header.endRefreshing()
+                }
+            }
+        }
+        
     }
     
     override func setupStyle() {
@@ -51,17 +92,25 @@ override func clickRight(sender: UIButton) {
         super.setupTableHeaderView()
         
         let hv = MPSongListHeaderView.md_viewFromXIB() as! MPSongListHeaderView
+        if let hm = self.headerSongModel {
+            hv.updateView(model: hm)
+        }else {
+            hv.updateView(model: self.headerSongerModel!)
+        }
         tableView.tableHeaderView = hv
     }
     
 }
 extension MPSongListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return model.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
+        
+        cell.updateCell(model: model[indexPath.row])
+        
         cell.md_btnDidClickedBlock = {[weak self] (sender) in
             switch sender.tag {
             case 10001:

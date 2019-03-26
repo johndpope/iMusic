@@ -28,14 +28,14 @@
                                     <constraint firstAttribute="width" secondItem="saW-nJ-zER" secondAttribute="height" id="iG9-tO-yTV"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="オネエ達の人生バイブル13曲" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-hO-hmN">
-                                <rect key="frame" x="111.5" y="18" width="172.5" height="54.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="オネエ達の人生バイブル13曲" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-hO-hmN">
+                                <rect key="frame" x="111.5" y="18" width="172.5" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="26首" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCg-HD-JdE">
-                                <rect key="frame" x="111.5" y="84.5" width="172.5" height="15"/>
+                                <rect key="frame" x="111.5" y="68.5" width="172.5" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -50,9 +50,9 @@
                             <constraint firstItem="Y1i-hO-hmN" firstAttribute="leading" secondItem="saW-nJ-zER" secondAttribute="trailing" constant="12" id="Utr-YD-XVZ"/>
                             <constraint firstItem="OCg-HD-JdE" firstAttribute="trailing" secondItem="Y1i-hO-hmN" secondAttribute="trailing" id="Z8k-dV-GCY"/>
                             <constraint firstItem="saW-nJ-zER" firstAttribute="leading" secondItem="waF-Cm-JS0" secondAttribute="leading" id="arA-3Q-h49"/>
-                            <constraint firstItem="OCg-HD-JdE" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="saW-nJ-zER" secondAttribute="bottom" id="lqp-3a-NOi"/>
                             <constraint firstAttribute="bottom" secondItem="saW-nJ-zER" secondAttribute="bottom" id="rdb-jz-m3b"/>
                             <constraint firstAttribute="trailing" secondItem="Y1i-hO-hmN" secondAttribute="trailing" constant="12" id="wZU-cg-Ay8"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OCg-HD-JdE" secondAttribute="bottom" constant="12" id="zml-7T-To8"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.connerRadius">
@@ -71,7 +71,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="xib_count" destination="OCg-HD-JdE" id="oi5-hk-YlW"/>
                 <outlet property="xib_image" destination="saW-nJ-zER" id="CSF-AC-tI0"/>
+                <outlet property="xib_title" destination="Y1i-hO-hmN" id="5OU-ZS-zb1"/>
             </connections>
             <point key="canvasLocation" x="220.80000000000001" y="140.77961019490255"/>
         </tableViewCell>

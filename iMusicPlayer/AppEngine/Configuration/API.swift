@@ -48,9 +48,18 @@ class API: NSObject {
     // MARK: - 最新发布
     static let Latest         = "/discovery/getLatest"
     
-    // MARK: -
+    // MARK: - 人气歌手
     static let Popular         = "/playlists/getMusicSinger"
     
-    // MARK: -
+    // MARK: - 风格流派
     static let StyleGenre         = "/playlists/getCategory"
+    
+    // MARK: - 歌单列表
+    static let SongList         = "/music/getYoutubeCate"
+    
+    // MARK: - 歌单列表详情数据
+    static let SongListByID         = "/playlists/getPlaylistItems"
+    
+    // MARK: - 歌手列表详细
+    static let SongerListByID         = "/playlists/getSongs"
 }

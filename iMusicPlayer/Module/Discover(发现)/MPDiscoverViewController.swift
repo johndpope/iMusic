@@ -210,7 +210,11 @@ extension MPDiscoverViewController {
         }
          // 精选歌单点击
         else if indexPath.section == 3 {
-            
+            if let models = model?.data_generalPlaylists {
+                let vc = MPSongListViewController()
+                vc.headerSongModel = models[indexPath.row]
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     

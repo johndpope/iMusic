@@ -134,8 +134,26 @@ extension MPStyleGenreViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = MPStyleGenreDetailViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = MPChoicenessViewController()
+        
+        var cellModel: Genre?
+        switch indexPath.section {
+        case 0:
+            cellModel = model?.data_recommended?[indexPath.row]
+            break
+        case 1:
+            cellModel = model?.data_style?[indexPath.row]
+            break
+        case 2:
+            cellModel = model?.data_theme?[indexPath.row]
+            break
+        default:
+            break
+        }
+        if let cm = cellModel {
+            vc.typeID = cm.data_id
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

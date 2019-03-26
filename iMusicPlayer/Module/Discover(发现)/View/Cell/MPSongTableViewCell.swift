@@ -21,6 +21,12 @@ class MPSongTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    @IBAction func btn_DidClicked(_ sender: UIButton) {
+        if let b = md_btnDidClickedBlock {
+            b(sender)
+        }
+    }
+    
     func updateCell(model: MPSongModel) {
         //设置图片
         if let img = model.data_artworkBigUrl, img != "" {

@@ -12,6 +12,140 @@ import ObjectMapper
 
 class MPDiscoverDataCent: HFDataCent {
     
+    //    /playlists/getSongs?m=0&singerId=9932&token=z%23master%40Music1.4.8
+    // MARK: - 歌单列表：精选歌单、风格流派歌单
+    var data_SongerListByID: [MPSongModel]?
+    
+    /// 歌手列表详细
+    ///
+    /// - Parameters:
+    ///   - singerId: 歌手ID
+    ///   - rows: 每页显示条数
+    ///   - page: 页码
+    ///   - complete: 回调
+    func requestSongerListByID(singerId: String = "", rows: Int = 20, page: Int = 0, complete:@escaping ((_ isSucceed: Bool, _ data: [MPSongModel]?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["singerId": singerId, "rows": rows, "page": page]
+        
+        HFNetworkManager.request(url: API.SongerListByID, method: .get, parameters:param, description: "歌手列表详细") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            
+//            guard let dataArr = resp?["data"].arrayObject else {return}
+            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            guard let dataArr = dataDic["songs"] else {return}
+            
+            let model: [MPSongModel] = Mapper<MPSongModel>().mapArray(JSONObject: dataArr)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
+    //    /playlists/getPlaylistItems?m=0&playlistId=2784&rows=10&start=0&token=z%23master%40Music1.4.8
+    // MARK: - 歌单列表：精选歌单、风格流派歌单
+    var data_SongListByID: [MPSongModel]?
+    
+    /// 歌单列表详细
+    ///
+    /// - Parameters:
+    ///   - playlistId: 歌单ID
+    ///   - rows: 每页显示条数
+    ///   - start: 开始位置默认0
+    ///   - complete: 回调
+    func requestSongListByID(playlistId: Int = 0, rows: Int = 20, start: Int = 0, complete:@escaping ((_ isSucceed: Bool, _ data: [MPSongModel]?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["playlistId": playlistId, "rows": rows, "start": start]
+        
+        HFNetworkManager.request(url: API.SongListByID, method: .get, parameters:param, description: "歌单列表详细") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            
+            guard let dataArr = resp?["data"].arrayObject else {return}
+            //            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            let model: [MPSongModel] = Mapper<MPSongModel>().mapArray(JSONObject: dataArr)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
+    //        /music/getYoutubeCate?m=0&rows=20&start=0&token=z%23master%40Music1.4.8&type=0
+    
+    // MARK: - 歌单列表：精选歌单、风格流派歌单
+    var data_SongList: [GeneralPlaylists]?
+    
+    /// 歌单列表：精选歌单、风格流派歌单
+    ///
+    /// - Parameters:
+    ///   - type: 歌单ID：精选歌单可以不传或0
+    ///   - rows: 每页显示条数
+    ///   - start: 开始位置默认0
+    ///   - complete: 回调
+    func requestSongList(type: Int = 0, rows: Int = 20, start: Int = 0, complete:@escaping ((_ isSucceed: Bool, _ data: [GeneralPlaylists]?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["type": type, "rows": rows, "start": start]
+        
+        HFNetworkManager.request(url: API.SongList, method: .get, parameters:param, description: "歌单列表：精选歌单、风格流派歌单") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            
+            guard let dataArr = resp?["data"].arrayObject else {return}
+//            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            let model: [GeneralPlaylists] = Mapper<GeneralPlaylists>().mapArray(JSONObject: dataArr)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
     //        app_id=com.musiczplayer.app&hl=ja&m=0&s=0&token=z%23master%40Music1.4.8
     
     // MARK: - 发现
