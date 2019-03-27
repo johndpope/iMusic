@@ -12,11 +12,50 @@ import ObjectMapper
 
 class MPDiscoverDataCent: HFDataCent {
     
+//    /tracks/getRelated?id=EgmBmk7d8Yc&token=z%23master%40Music1.4.8
+    // MARK: - 相关歌曲
+    var data_RelatedSongs: [MPSongModel]?
+    /// 电台
+    ///
+    /// - Parameters:
+    ///   - type: 风格流派ID
+    ///   - complete: 回调
+    func requestRelatedSongs(id: String = "", complete:@escaping ((_ isSucceed: Bool, _ data: [MPSongModel]?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["id": id]
+        
+        HFNetworkManager.request(url: API.RelatedSongs, method: .get, parameters:param, description: "相关歌曲") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            
+            guard let dataArr = resp?["data"].arrayObject else {return}
+            //            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            let model: [MPSongModel] = Mapper<MPSongModel>().mapArray(JSONObject: dataArr)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
     //    /music/getFm?token=z%23master%40Music1.4.8&type=0
     // MARK: - 歌单列表：精选歌单、风格流派歌单
     var data_Radio: [MPSongModel]?
-    
-    
     /// 电台
     ///
     /// - Parameters:

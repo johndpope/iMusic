@@ -43,6 +43,9 @@
                             <constraint firstAttribute="width" secondItem="vb8-yh-gh7" secondAttribute="height" id="OLG-EF-Iep"/>
                         </constraints>
                         <state key="normal" image="icon_more_1"/>
+                        <connections>
+                            <action selector="btn_DidClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="20l-CQ-PPs"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -63,6 +66,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="xib_desc" destination="lDB-a3-B5q" id="mhG-DV-cDs"/>
+                <outlet property="xib_image" destination="4em-Yq-1jb" id="KBJ-YU-xrk"/>
+                <outlet property="xib_more" destination="vb8-yh-gh7" id="hcW-4e-WAM"/>
+                <outlet property="xib_title" destination="oxB-QY-NDY" id="oii-h7-YmP"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

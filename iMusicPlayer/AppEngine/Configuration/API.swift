@@ -65,4 +65,7 @@ class API: NSObject {
     
     // MARK: - 电台
     static let Radio         = "/music/getFm"
+    
+    // MARK: - 相关歌曲
+    static let RelatedSongs         = "/tracks/getRelated"
 }

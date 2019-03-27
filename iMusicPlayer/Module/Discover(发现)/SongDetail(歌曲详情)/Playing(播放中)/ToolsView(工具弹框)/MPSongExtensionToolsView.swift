@@ -14,6 +14,13 @@ class MPSongExtensionToolsView: TableBaseView {
 
     @IBOutlet weak var topLineView: UIView!
     @IBOutlet weak var bottomLineView: UIView!
+    @IBOutlet weak var xib_title: UILabel!
+    
+    var title: String = "" {
+        didSet {
+            xib_title.text = title
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

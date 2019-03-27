@@ -10,6 +10,37 @@ import UIKit
 
 class MPModelTools: NSObject {
     
+    /// 相关歌曲
+    ///
+    /// - Parameters:
+    ///   - id: 当前歌曲ID
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func getRelatedSongsModel(id: String = "", tableName: String = MPSongModel.classCode, finished: ((_ models: [MPSongModel]?)->Void)? = nil) {
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+            if let f = finished {
+                f(arr)
+            }
+        }else {
+            DiscoverCent?.requestRelatedSongs(id: id, complete: { (isSucceed, model, msg) in
+                switch isSucceed {
+                case true:
+                    QYTools.shared.Log(log: "在线获取数据")
+                    if let f = finished, model!.count > 0 {
+                        // 缓存
+                        (model! as NSArray).bg_save(withName: tableName)
+                        f(model)
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    break
+                }
+            })
+        }
+    }
+    
     /// 电台
     ///
     /// - Parameters:

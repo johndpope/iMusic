@@ -1457,11 +1457,11 @@
 		C57FC5D62240DC2E00218DE7 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC5D72240DC2E00218DE7 /* MPMediaLibraryTableViewCell.swift */,
-				C57FC5D82240DC2E00218DE7 /* MPMediaLibraryOutTableViewCell.xib */,
-				C57FC5D92240DC2E00218DE7 /* MPMediaLibraryCollectionViewCell.xib */,
 				C57FC5DA2240DC2E00218DE7 /* MPMediaLibraryCollectionViewCell.swift */,
+				C57FC5D92240DC2E00218DE7 /* MPMediaLibraryCollectionViewCell.xib */,
 				C57FC5DB2240DC2E00218DE7 /* MPMediaLibraryOutTableViewCell.swift */,
+				C57FC5D82240DC2E00218DE7 /* MPMediaLibraryOutTableViewCell.xib */,
+				C57FC5D72240DC2E00218DE7 /* MPMediaLibraryTableViewCell.swift */,
 				C57FC5DC2240DC2E00218DE7 /* MPMediaLibraryTableViewCell.xib */,
 			);
 			path = Cell;

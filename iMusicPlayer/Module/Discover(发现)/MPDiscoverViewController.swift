@@ -99,6 +99,11 @@ extension MPDiscoverViewController {
             }
             (cell as! MPRecommendTableViewCell).itemClickedBlock = {[weak self] (index) in
                 let vc = MPPlayingViewController()
+                if let m = self?.model?.data_recommendations  {
+                    // 循序不能倒过来
+                    vc.currentSong = m[index]
+                    vc.model = m
+                }
                 let nav = UINavigationController(rootViewController: vc)
                 self?.present(nav, animated: true, completion: nil)
             }

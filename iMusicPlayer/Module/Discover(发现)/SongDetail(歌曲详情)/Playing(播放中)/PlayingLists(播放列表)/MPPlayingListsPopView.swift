@@ -20,6 +20,14 @@ class MPPlayingListsPopView: UITableViewCell {
     @IBOutlet weak var playingBv: UIView!
     @IBOutlet weak var relatedBv: UIView!
     
+    var updateRelateSongsBlock: ((_ type: Int)->Void)?
+    
+    var model = [MPSongModel]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,12 +40,24 @@ class MPPlayingListsPopView: UITableViewCell {
     @IBAction func btn_DidClicked(_ sender: UIButton) {
         switch sender.tag {
         case 10001:
-            playingBv.isHidden = false
-            relatedBv.isHidden = true
+            if playingBv.isHidden {
+                playingBv.isHidden = false
+                relatedBv.isHidden = true
+                // 获取相关歌曲
+                if let b = updateRelateSongsBlock {
+                    b(0)
+                }
+            }
             break
         case 10002:
-            playingBv.isHidden = true
-            relatedBv.isHidden = false
+            if !playingBv.isHidden {
+                playingBv.isHidden = true
+                relatedBv.isHidden = false
+                // 获取相关歌曲
+                if let b = updateRelateSongsBlock {
+                    b(1)
+                }
+            }
             break
         case 10003:
             if let sv = self.superview {
@@ -53,12 +73,13 @@ class MPPlayingListsPopView: UITableViewCell {
 
 extension MPPlayingListsPopView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return [5,8,3].randomElement()!
+        return model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.identifier) as! MPMediaLibraryTableViewCell
         cell.selectionStyle = .none
+        cell.updateCell(model: model[indexPath.row])
         return cell
     }
     

@@ -14,6 +14,10 @@
             <connections>
                 <outlet property="topViewH" destination="6P3-9h-4jP" id="q2B-AN-1kr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="xib_desc" destination="5Rm-EO-tiz" id="Qqx-ja-FbF"/>
+                <outlet property="xib_lrc" destination="vG3-CU-oqA" id="EZr-oo-zfF"/>
+                <outlet property="xib_nextSongName" destination="dvQ-l9-Id1" id="guV-Ye-e9U"/>
+                <outlet property="xib_title" destination="QDf-oy-71c" id="5GX-8i-8aZ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

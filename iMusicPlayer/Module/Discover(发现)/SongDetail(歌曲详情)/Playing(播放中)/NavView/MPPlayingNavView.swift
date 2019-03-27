@@ -9,7 +9,7 @@
 import UIKit
 
 class MPPlayingNavView: BaseView {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,7 +20,7 @@ class MPPlayingNavView: BaseView {
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
-        if let b = md_btnDidClickedBlock {
+        if let b = clickBlock {
             b(sender)
         }
     }

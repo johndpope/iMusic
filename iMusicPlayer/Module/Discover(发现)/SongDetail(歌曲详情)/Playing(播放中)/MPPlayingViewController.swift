@@ -11,6 +11,34 @@ import UIKit
 class MPPlayingViewController: BaseViewController {
 
     @IBOutlet weak var topViewH: NSLayoutConstraint!
+    @IBOutlet weak var xib_nextSongName: UILabel!
+    @IBOutlet weak var xib_title: UILabel!
+    @IBOutlet weak var xib_desc: UILabel!
+    @IBOutlet weak var xib_lrc: UIButton!
+    
+    var songID: String = ""
+    
+    var currentSong: MPSongModel? {
+        didSet {
+            songID = currentSong?.data_originalId ?? ""
+        }
+    }
+    
+    var model = [MPSongModel]() {
+        didSet {
+            if let s = currentSong {
+                var index = (getIndexFromSongs(song: s, songs: model) + 1)
+                index = index > (model.count - 1) ? model.count - 1 : index
+                if SourceType == 0 {
+                    nextSongName = model[index].data_title ?? NSLocalizedString("当前列表已播完", comment: "")
+                }else {
+                    nextSongName = model[index].data_songName ?? NSLocalizedString("当前列表已播完", comment: "")
+                }
+            }
+        }
+    }
+    
+    var nextSongName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,16 +46,19 @@ class MPPlayingViewController: BaseViewController {
         // Do any additional setup after loading the view.
         self.navigationItem.titleView?.backgroundColor = UIColor.red
         let nv = MPPlayingNavView.md_viewFromXIB() as! MPPlayingNavView
-        nv.md_btnDidClickedBlock = {(sender) in
-            if sender.tag == 10001 {
-                self.dismiss(animated: true, completion: nil)
-            }else {
-                // 全屏播放
-                
+        nv.clickBlock = {(sender) in
+            if let btn = sender as? UIButton {
+                if btn.tag == 10001 {
+                    self.dismiss(animated: true, completion: nil)
+                }else {
+                    // 全屏播放
+                    
+                }
             }
         }
         self.navigationItem.titleView = nv
-        
+        // 更新视图
+        updateView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +104,19 @@ class MPPlayingViewController: BaseViewController {
             break
         case 10010: // 播放列表
             let pv = MPPlayingListsPopView.md_viewFromXIB() as! MPPlayingListsPopView
+            pv.model = self.model
             HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
+            pv.updateRelateSongsBlock = {(type) in
+                if type == 0 {
+                    pv.model = self.model
+                }else if type == 1 {
+                    MPModelTools.getRelatedSongsModel(id: self.songID, tableName: "", finished: { (model) in
+                        if let m = model {
+                            pv.model = m
+                        }
+                    })
+                }
+            }
             break
         default:
             break
@@ -108,6 +151,7 @@ extension MPPlayingViewController {
         let pv = MPSongExtensionToolsView.md_viewFromXIB() as! MPSongExtensionToolsView
         pv.plistName = "extensionTools"
         pv.delegate = self
+        pv.title = (SourceType == 0 ? currentSong?.data_title : currentSong?.data_songName) ?? ""
         HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
     }
 }
@@ -123,5 +167,35 @@ extension MPPlayingViewController: MPSongToolsViewDelegate {
     
     func songInfo() {
         QYTools.shared.Log(log: "歌曲信息")
+    }
+}
+
+extension MPPlayingViewController {
+    
+    private func updateView() {
+        if SourceType == 0 {
+            xib_lrc.isSelected = false
+            xib_title.text = currentSong?.data_title
+            xib_desc.text = currentSong?.data_channelTitle
+        }else {
+            xib_lrc.isSelected = true
+            xib_title.text = currentSong?.data_songName
+            xib_desc.text = currentSong?.data_singerName
+        }
+        // 设置下一首播放
+        xib_nextSongName.text = nextSongName
+    }
+    
+    // 获取当前下标
+    private func getIndexFromSongs(song: MPSongModel, songs: [MPSongModel]) -> Int {
+        var index = 0
+        
+        for i in (0..<songs.count) {
+            if song == songs[i] {
+                index = i
+            }
+        }
+        
+        return index
     }
 }
