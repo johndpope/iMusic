@@ -97,7 +97,27 @@ override func clickRight(sender: UIButton) {
         }else {
             hv.updateView(model: self.headerSongerModel!)
         }
+        let isExsist = MPModelTools.checkCollectListExsist(model: self.headerSongModel!, tableName: MPCollectSongListViewController.classCode)
+        if isExsist {
+            hv.xib_collect.isSelected = true
+        }
         tableView.tableHeaderView = hv
+        
+        hv.clickBlock = {(sender) in
+            if let btn = sender as? UIButton {
+                if btn.tag == 10001 {
+                    QYTools.shared.Log(log: "随机播放")
+                }else {
+                    QYTools.shared.Log(log: "收藏歌单")
+                    let isExsist = MPModelTools.checkCollectListExsist(model: self.headerSongModel!, tableName: MPCollectSongListViewController.classCode)
+                    if !isExsist {
+                        btn.isSelected = true
+                        MPModelTools.saveCollectListModel(model: self.headerSongModel!, tableName: MPCollectSongListViewController.classCode)
+                    }
+                }
+            }
+        }
+        
     }
     
 }

@@ -10,6 +10,48 @@ import UIKit
 
 class MPModelTools: NSObject {
     
+    
+    /// 收藏歌单
+    ///
+    /// - Parameters:
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func getCollectListModel(tableName: String = GeneralPlaylists.classCode, finished: ((_ models: [GeneralPlaylists]?)->Void)? = nil) {
+        if let arr = NSArray.bg_array(withName: tableName) as? [GeneralPlaylists] {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+            if let f = finished {
+                f(arr)
+            }
+        }
+    }
+    
+    /// 保存收藏歌单
+    ///
+    /// - Parameters:
+    ///   - model: 需要收藏的歌单
+    ///   - tableName: 表名
+    /// - Returns: 是否已经存在
+    class func saveCollectListModel(model: GeneralPlaylists, tableName: String = GeneralPlaylists.classCode) {
+        if !self.checkCollectListExsist(model: model, tableName: tableName) {
+            // 缓存
+            ([model] as NSArray).bg_save(withName: tableName)
+        }
+    }
+    
+    class func checkCollectListExsist(model: GeneralPlaylists, tableName: String = GeneralPlaylists.classCode) -> Bool {
+        var isExsist = false
+        self.getCollectListModel(tableName: tableName) { (models) in
+            if let m = models {
+                m.forEach({ (item) in
+                    if model.data_id == item.data_id {
+                        isExsist = true
+                    }
+                })
+            }
+        }
+        return isExsist
+    }
+    
     /// 相关歌曲
     ///
     /// - Parameters:

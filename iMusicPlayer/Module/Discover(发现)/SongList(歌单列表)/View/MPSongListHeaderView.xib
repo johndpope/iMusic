@@ -55,7 +55,7 @@
                             <constraint firstAttribute="trailing" secondItem="c0o-wW-nbV" secondAttribute="trailing" constant="12" id="zd6-zY-tZ0"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSe-pF-u0k">
+                    <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSe-pF-u0k">
                         <rect key="frame" x="12" y="166" width="142" height="31.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="oSe-pF-u0k" secondAttribute="height" multiplier="162:36" id="2w5-n0-jOO"/>
@@ -64,14 +64,21 @@
                         <state key="normal" title="随机播放" image="icon_album_play_random">
                             <color key="titleColor" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="btn_DidClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="It2-qX-yMc"/>
+                        </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQM-of-Bd4">
+                    <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQM-of-Bd4">
                         <rect key="frame" x="166" y="166" width="142" height="31.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <state key="normal" title="收藏歌单" image="icon_album_collect">
                             <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <state key="selected" image="icon_album_collecting"/>
+                        <connections>
+                            <action selector="btn_DidClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Eyv-5L-Wxi"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -102,6 +109,7 @@
     </objects>
     <resources>
         <image name="icon_album_collect" width="25" height="25"/>
+        <image name="icon_album_collecting" width="25" height="25"/>
         <image name="icon_album_play_random" width="25" height="25"/>
         <image name="img_ranking_ment" width="200" height="200"/>
     </resources>

@@ -8,8 +8,10 @@
 
 import UIKit
 
-class MPSongListHeaderView: UITableViewCell {
-
+class MPSongListHeaderView: UITableViewCell, ViewClickedDelegate {
+    
+    var clickBlock: ((Any?) -> ())?
+    
     @IBOutlet weak var xib_image: UIImageView! {
         didSet {
             xib_image.md_cornerRadius = xib_image.height/2
@@ -36,6 +38,13 @@ class MPSongListHeaderView: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    @IBAction func btn_DidClicked(_ sender: UIButton) {
+        if let b = clickBlock {
+            b(sender)
+        }
+    }
+    
 
     func updateView(model: GeneralPlaylists) {
         //设置图片
