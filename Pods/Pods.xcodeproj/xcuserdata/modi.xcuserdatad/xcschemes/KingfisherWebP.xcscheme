@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "02C15B319DEBF01691C9D5CC170749C7"
+               BlueprintIdentifier = "C886D410D9C9CCEF4F6F69D636B62BA2"
+               BuildableName = "KingfisherWebP.framework"
                BlueprintName = "KingfisherWebP"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "KingfisherWebP.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

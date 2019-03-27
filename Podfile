@@ -47,7 +47,8 @@ target 'iMusicPlayer' do
   # 歌词解析/显示
 #  pod 'SpotlightLyrics'
   pod 'BGFMDB'
-
+  # YouTube网页播放器交互库
+  pod "youtube-ios-player-helper"
 
   target 'iMusicPlayerTests' do
     inherit! :search_paths

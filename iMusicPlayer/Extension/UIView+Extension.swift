@@ -644,7 +644,7 @@ extension UIImage {
         context.fill(rect)
         var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-        let imageData: NSData = image.jpegData(compressionQuality: 1.0) as! NSData
+        let imageData: NSData = image.jpegData(compressionQuality: 1.0)! as NSData
         image = UIImage(data: imageData as Data)!
         return image
     }
@@ -1270,6 +1270,38 @@ extension UITextView {
 
 extension NSObject {
     static var classCode: String {
-        return NSStringFromClass(self as! AnyClass).components(separatedBy: ".").last!
+        return NSStringFromClass(self as AnyClass).components(separatedBy: ".").last!
+    }
+}
+
+extension NSArray {
+    func randomObjects_ck() -> NSArray {
+        return self.sortedArray(comparator: { (obj1, obj2) -> ComparisonResult in
+            let randomResult = Int(arc4random()) % 3 - 1; // arc4random() 返回值为 UInt32，不能为负数，先转为 Int
+            return ComparisonResult(rawValue: randomResult)!
+        }) as NSArray
+    }
+}
+
+extension NSMutableArray {
+    func randomObjects_mutable_ck() {
+        let sortedArray = self.sortedArray(comparator: { (obj1, obj2) -> ComparisonResult in
+            let randomResult = Int(arc4random()) % 3 - 1; // arc4random() 返回值为 UInt32，不能为负数，先转为 Int
+            let result = ComparisonResult(rawValue: randomResult)!
+            print(result.rawValue)
+            return result
+        })
+        self.removeAllObjects()
+        self.addObjects(from: sortedArray)
+    }
+}
+
+extension Array {
+    mutating func randomObjects_ck() -> Array {
+        self.sort { (obj1, obj2) -> Bool in
+            let randomResult = Int(arc4random()) % 2; // arc4random() 返回值为 UInt32，先转为 Int，方便转为 Bool
+            return  Bool.init(exactly: NSNumber(value: randomResult)) ?? false
+        }
+        return self
     }
 }

@@ -7,6 +7,18 @@
 //
 
 import UIKit
+import youtube_ios_player_helper
+
+private struct Constant {
+    
+    static let playerVars = [
+        "playsinline" : 1,  // 是否全屏
+        "showinfo" : 0, // 是否显示标题和上传者信息
+        "modestbranding" : 1,   //是否显示鼠标
+        "controls" : 0,
+        "autohide" : 1,
+        ] as [String : Any]
+}
 
 class MPPlayingViewController: BaseViewController {
 
@@ -15,6 +27,38 @@ class MPPlayingViewController: BaseViewController {
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
     @IBOutlet weak var xib_lrc: UIButton!
+    @IBOutlet weak var xib_slider: UISlider! {
+        didSet {
+            xib_slider.value = 0
+            xib_slider.addTarget(self, action: #selector(sliderDidChange(sender:)), for: .valueChanged)
+        }
+    }
+    
+    @IBOutlet weak var playView: YTPlayerView! {
+        didSet {
+            playView.delegate = self
+        }
+    }
+    
+    @IBOutlet weak var xib_startTime: UILabel!
+    
+    @IBOutlet weak var xib_endTime: UILabel!
+    
+    @IBOutlet weak var xib_play: UIButton!
+    @IBOutlet weak var xib_cycleMode: UIButton!
+    @IBOutlet weak var xib_orderMode: UIButton!
+    var playerVars: [String : Any] = [
+        "playsinline" : 1,  // 是否全屏
+        "showinfo" : 0, // 是否显示标题和上传者信息
+        "modestbranding" : 1,   //是否显示鼠标
+        "controls" : 0,
+        "iv_load_policy": 3,
+        "autoplay": 1,
+        "autohide" : 1,
+        ]
+    
+    var currentPlayOrderMode: Int = 0 // 0: 顺序播放  1: 随机播放
+    var currentPlayCycleMode: Int = 0 // 0: 列表循环  1: 单曲循环 2: 只播放当前列表
     
     var songID: String = ""
     
@@ -35,6 +79,9 @@ class MPPlayingViewController: BaseViewController {
                     nextSongName = model[index].data_songName ?? NSLocalizedString("当前列表已播完", comment: "")
                 }
             }
+            
+            playerVars["playlist"] = getSongIDs(songs: model)
+            
         }
     }
     
@@ -85,14 +132,37 @@ class MPPlayingViewController: BaseViewController {
             HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
             break
         case 10002: // 上一曲
+            playView.previousVideo()
             break
         case 10003: // 暂停/播放
+            if playView.playerState() == YTPlayerState.playing {
+                playView.pauseVideo()
+                sender.isSelected = false
+            }else {
+                playView.playVideo()
+                sender.isSelected = true
+                
+            }
             break
         case 10004: // 下一曲
+            playView.nextVideo()
             break
         case 10005: // 播放模式：列表循环/单曲循环
+            currentPlayCycleMode = (currentPlayCycleMode + 1) % 2
+            setCycleModeImage()
             break
         case 10006: // 随机播放
+            sender.isSelected = !sender.isSelected
+            currentPlayOrderMode = sender.isSelected ? 1 : 0
+            
+            currentPlayCycleMode = sender.isSelected ? 2 : 0
+            setCycleModeImage()
+            
+            if sender.isSelected {
+                getRandomModel()
+                updateView()
+            }
+            
             break
         case 10007: // 收藏
             break
@@ -172,6 +242,39 @@ extension MPPlayingViewController: MPSongToolsViewDelegate {
 
 extension MPPlayingViewController {
     
+    @objc func sliderDidChange(sender: UISlider) {
+        let value = sender.value
+        let progress = Float(currentSong?.data_durationInSeconds ?? 0) * value
+        playView.seek(toSeconds: progress, allowSeekAhead: true)
+        xib_play.isSelected = true
+    }
+    
+    private func getRandomModel() {
+        self.model = self.model.randomObjects_ck()
+    }
+    
+    private func setCycleModeImage() {
+        switch currentPlayCycleMode {
+        case 0:
+            xib_cycleMode.setImage(UIImage(named: "icon_play_order-1"), for: .normal)
+            xib_orderMode.isSelected = false
+            currentPlayOrderMode = 0
+            break
+        case 1:
+            xib_cycleMode.setImage(UIImage(named: "icon_play_single"), for: .normal)
+            xib_orderMode.isSelected = false
+            currentPlayOrderMode = 0
+            break
+        case 2:
+            xib_cycleMode.setImage(UIImage(named: "icon_play_order_off"), for: .normal)
+            xib_orderMode.isSelected = true
+            currentPlayOrderMode = 1
+            break
+        default:
+            break
+        }
+    }
+    
     private func updateView() {
         if SourceType == 0 {
             xib_lrc.isSelected = false
@@ -184,18 +287,96 @@ extension MPPlayingViewController {
         }
         // 设置下一首播放
         xib_nextSongName.text = nextSongName
+        
+        // 设置时间
+        xib_startTime.text = "0".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
+        xib_endTime.text = "\(currentSong?.data_durationInSeconds ?? 0)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
+        
+        // 播放MV
+//        playView.load(withVideoId: currentSong?.data_originalId ?? "")
+        playView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
     }
     
     // 获取当前下标
     private func getIndexFromSongs(song: MPSongModel, songs: [MPSongModel]) -> Int {
         var index = 0
-        
         for i in (0..<songs.count) {
             if song == songs[i] {
                 index = i
             }
         }
-        
         return index
     }
+    
+    private func getNextSongFromSongs(song: MPSongModel, songs: [MPSongModel]) -> MPSongModel {
+        var index = 0
+        for i in (0..<songs.count) {
+            if song == songs[i] {
+                index = (i+1) % songs.count
+            }
+        }
+        return songs[index]
+    }
+    
+    private func getSongIDs(songs: [MPSongModel]) -> [String] {
+        var ids = [String]()
+        songs.forEach { (song) in
+            ids.append(song.data_originalId ?? "")
+        }
+        return ids
+    }
+}
+extension MPPlayingViewController: YTPlayerViewDelegate {
+    func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
+        xib_slider.value = playTime / Float((currentSong?.data_durationInSeconds ?? 0))
+        xib_startTime.text = "\(playTime)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
+    }
+    
+    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
+        // 判断当前播放模式
+        if currentPlayOrderMode == 1 { // 随机播放
+            if currentPlayCycleMode == 0 {
+                
+            }else if currentPlayCycleMode == 1 {
+                
+            }else {
+                
+            }
+        }else { // 顺序播放
+            
+        }
+        
+        switch state {
+        case .buffering:
+            xib_play.isSelected = false
+            break
+        case .playing:
+            xib_play.isSelected = true
+            break
+        case .paused:
+            xib_play.isSelected = false
+            break
+        case .ended:
+            xib_play.isSelected = false
+            // 获取下一首歌曲继续播放
+//            currentSong = getNextSongFromSongs(song: currentSong!, songs: self.model)
+//            updateView()
+//            playView.playVideo()
+            playView.nextVideo()
+            break
+        case .queued:
+            xib_play.isSelected = false
+            break
+        case .unknown:
+            xib_play.isSelected = false
+            break
+        case .unstarted:
+            xib_play.isSelected = false
+            break
+        default:
+            break
+        }
+    }
+    
+    
 }

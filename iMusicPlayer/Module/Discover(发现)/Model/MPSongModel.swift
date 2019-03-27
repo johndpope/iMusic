@@ -51,7 +51,7 @@ class MPSongModel:BaseModel {
         self.data_channelTitle = aDecoder.decodeObject(forKey: "channelTitle") as? String ?? ""
         self.data_artworkUrl = aDecoder.decodeObject(forKey: "artworkUrl") as? String ?? ""
         self.data_artworkBigUrl = aDecoder.decodeObject(forKey: "artworkBigUrl") as? String ?? ""
-        // self.data_durationInSeconds = aDecoder.decodeInteger(forKey: "durationInSeconds")
+         self.data_durationInSeconds = aDecoder.decodeInteger(forKey: "durationInSeconds")
         self.data_songName = aDecoder.decodeObject(forKey: "songName") as? String ?? ""
     }
     

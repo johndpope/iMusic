@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "56701CB9475932D4FA913C55BCD0A32F"
+               BlueprintIdentifier = "078F226AF9F7BB67756F5481064D6BAD"
+               BuildableName = "TencentOpenAPI"
                BlueprintName = "TencentOpenAPI"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "TencentOpenAPI">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
