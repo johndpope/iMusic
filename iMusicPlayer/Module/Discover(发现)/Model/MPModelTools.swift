@@ -11,7 +11,7 @@ import UIKit
 class MPModelTools: NSObject {
     
     
-    /// 收藏歌单
+    /// 收藏歌单、创建的歌单
     ///
     /// - Parameters:
     ///   - tableName: 表名
@@ -25,26 +25,34 @@ class MPModelTools: NSObject {
         }
     }
     
-    /// 保存收藏歌单
+    /// 保存收藏歌单、创建的歌单
     ///
     /// - Parameters:
     ///   - model: 需要收藏的歌单
     ///   - tableName: 表名
     /// - Returns: 是否已经存在
     class func saveCollectListModel(model: GeneralPlaylists, tableName: String = GeneralPlaylists.classCode) {
-        if !self.checkCollectListExsist(model: model, tableName: tableName) {
-            // 缓存
-            ([model] as NSArray).bg_save(withName: tableName)
-        }
+//        if !self.checkCollectListExsist(model: model, tableName: tableName, condition: condition) {
+//            // 缓存
+//            ([model] as NSArray).bg_save(withName: tableName)
+//        }
+        // 缓存
+        ([model] as NSArray).bg_save(withName: tableName)
     }
     
-    class func checkCollectListExsist(model: GeneralPlaylists, tableName: String = GeneralPlaylists.classCode) -> Bool {
+    class func checkCollectListExsist(model: GeneralPlaylists, tableName: String = GeneralPlaylists.classCode, condition: String = "") -> Bool {
         var isExsist = false
         self.getCollectListModel(tableName: tableName) { (models) in
             if let m = models {
                 m.forEach({ (item) in
-                    if model.data_id == item.data_id {
-                        isExsist = true
+                    if condition != "" {
+                        if item.data_title == condition {
+                            isExsist = true
+                        }
+                    }else {
+                        if model.data_id == item.data_id {
+                            isExsist = true
+                        }
                     }
                 })
             }

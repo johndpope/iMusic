@@ -7,18 +7,35 @@
 //
 
 import UIKit
+import ObjectMapper
 
 private struct Constant {
-    static let identifier = "MPCreateSongListTableViewCell"
-    static let rowHeight = SCREEN_WIDTH * (75/375)
+    static let identifier = "MPCollectSongListTableViewCell"
+    static let rowHeight = SCREEN_WIDTH * (90/375)
 }
 
 class MPCreateSongListViewController: BaseTableViewController {
     
+    var model = [GeneralPlaylists]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        refreshData()
+    }
+    
+    override func refreshData() {
+        super.refreshData()
+        MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
+            if let m = model {
+                self.model = m
+                self.tableView.mj_header.endRefreshing()
+            }
+        }
     }
     
     override func setupStyle() {
@@ -50,9 +67,35 @@ class MPCreateSongListViewController: BaseTableViewController {
     override func setupTableHeaderView() {
         super.setupTableHeaderView()
         let hv = MPCreateSongListHeaderView.md_viewFromXIB() as! MPCreateSongListHeaderView
-        hv.md_btnDidClickedBlock = {(sender) in
-            let pv = MPCreateSongListView.md_viewFromXIB() as! MPCreateSongListView
-            HFAlertController.showCustomView(view: pv)
+        hv.clickBlock = {(sender) in
+            if let _ = sender as? UIButton {
+                let pv = MPCreateSongListView.md_viewFromXIB() as! MPCreateSongListView
+                HFAlertController.showCustomView(view: pv)
+                pv.clickBlock = {(sender) in
+                    if let btn = sender as? UIButton {
+                        if btn.tag == 10001 {
+                            // 取消
+                            if let sv = pv.superview {
+                                sv.removeFromSuperview()
+                            }
+                        }else {
+                            let json: [String : Any] = ["img" : "pic_album_default", "id": 1, "title": pv.xib_songListName.text ?? "", "tracksCount": 0, "originalld": "", "type": ""]
+                            //                        let map = Map(mappingType: MappingType.fromJSON, JSON: ["img" : "pic_album_default", "id": 1, "title": pv.xib_songListName.text ?? "", "tracksCount": 0, "originalld": "", "type": ""])
+                            let model = Mapper<GeneralPlaylists>().map(JSON: json)
+                            let isExsist = MPModelTools.checkCollectListExsist(model: model!, tableName: MPCreateSongListViewController.classCode, condition: pv.xib_songListName.text ?? "")
+                            if !isExsist {
+                                MPModelTools.saveCollectListModel(model: model!, tableName: MPCreateSongListViewController.classCode)
+                                self.refreshData()
+                            }else {
+                                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
+                            }
+                            if let sv = pv.superview {
+                                sv.removeFromSuperview()
+                            }
+                        }
+                    }
+                }
+            }
         }
         tableView.tableHeaderView = hv
     }
@@ -60,12 +103,13 @@ class MPCreateSongListViewController: BaseTableViewController {
 }
 extension MPCreateSongListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return model.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPCreateSongListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPCollectSongListTableViewCell
         cell.selectionStyle = .none
+        cell.updateCell(model: model[indexPath.row])
         return cell
     }
     

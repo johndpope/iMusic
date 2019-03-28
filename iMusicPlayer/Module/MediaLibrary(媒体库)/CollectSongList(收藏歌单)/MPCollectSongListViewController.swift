@@ -10,7 +10,7 @@ import UIKit
 
 private struct Constant {
     static let identifier = "MPCollectSongListTableViewCell"
-    static let rowHeight = SCREEN_WIDTH * (75/375)
+    static let rowHeight = SCREEN_WIDTH * (90/375)
 }
 
 class MPCollectSongListViewController: BaseTableViewController {

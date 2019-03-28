@@ -8,7 +8,10 @@
 
 import UIKit
 
-class MPCreateSongListView: UITableViewCell {
+class MPCreateSongListView: UITableViewCell, ViewClickedDelegate {
+    
+    var clickBlock: ((Any?) -> ())?
+    
 
     @IBOutlet weak var xib_songListName: UITextField!
     @IBOutlet weak var xib_count: UILabel!
@@ -18,7 +21,7 @@ class MPCreateSongListView: UITableViewCell {
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
-        if let b = md_btnDidClickedBlock {
+        if let b = clickBlock {
             b(sender)
         }
     }

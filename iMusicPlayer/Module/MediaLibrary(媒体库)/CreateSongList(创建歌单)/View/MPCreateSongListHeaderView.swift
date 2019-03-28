@@ -8,7 +8,8 @@
 
 import UIKit
 
-class MPCreateSongListHeaderView: UITableViewCell {
+class MPCreateSongListHeaderView: UITableViewCell, ViewClickedDelegate {
+    var clickBlock: ((Any?) -> ())?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -16,7 +17,7 @@ class MPCreateSongListHeaderView: UITableViewCell {
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
-        if let b = md_btnDidClickedBlock {
+        if let b = clickBlock {
             b(sender)
         }
     }

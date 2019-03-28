@@ -27,8 +27,12 @@ class MPCollectSongListTableViewCell: UITableViewCell {
     func updateCell(model: GeneralPlaylists) {
         //设置图片
         if let img = model.data_img, img != "" {
-            let imgUrl = API.baseImageURL + img
-            xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
+            if img.contains("http") {
+                let imgUrl = API.baseImageURL + img
+                xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
+            }else {
+                xib_image.image = UIImage(named: img)
+            }
         }
         xib_title.text = model.data_title
         xib_count.text = "\(model.data_tracksCount)" + NSLocalizedString("首", comment: "")
