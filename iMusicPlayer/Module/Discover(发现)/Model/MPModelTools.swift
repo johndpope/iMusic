@@ -36,6 +36,29 @@ class MPModelTools: NSObject {
         }
     }
     
+    /// 更新表中歌曲信息
+    ///
+    /// - Parameters:
+    ///   - song: 更新歌曲
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func updateSongInTable(song: MPSongModel,tableName: String = "", finished: (()->Void)? = nil) {
+        getSongInTable(tableName: tableName) { (model) in
+            if let m = model {
+                for i in (0..<(m.count)) {
+                    let item = m[i]
+                    if item.data_title == song.data_title {
+                        NSArray.bg_updateObject(withName: tableName, object: song, index: i)
+                        QYTools.shared.Log(log: "歌曲收藏状态更新成功")
+                        if let f = finished {
+                            f()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     /// 更新专辑数量
     ///
     /// - Parameter songList: 当前专辑

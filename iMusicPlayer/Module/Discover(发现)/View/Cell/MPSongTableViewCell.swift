@@ -21,6 +21,8 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     var delegate: MPSongTableViewCellDelegate?
     
     var clickBlock: ((Any?) -> ())?
+    
+    var favoriteBlock: ((_ currenSong: MPSongModel)->Void)?
 
     @IBOutlet weak var xib_image: UIImageView!
     @IBOutlet weak var xib_title: UILabel!
@@ -35,6 +37,12 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
         // Initialization code
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // 清除状态
+        xib_collect.isSelected = false
+    }
+    
     @IBAction func btn_DidClicked(_ sender: UIButton) {
         if sender.tag == 10001 {
             // 添加到我的最爱列表
@@ -45,6 +53,9 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
                 // 设置为收藏状态
                 xib_collect.isSelected = true
                 SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲收藏成功", comment: ""))
+                if let b = favoriteBlock {
+                    b(self.currentSong!)
+                }
             }else {
                 // 取消收藏
                 SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收藏", comment: ""))

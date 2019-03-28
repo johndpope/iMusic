@@ -15,10 +15,13 @@ private struct Constant {
 
 class MPAlbumListViewController: BaseTableViewController {
 
+    var tableName: String = ""
+    
     var headerModel: MPRankingTempModel? {
         didSet {
             if let m = headerModel, var source = m.data_title {
                 source.removeLast()
+                tableName = source
                 NSArray.bg_drop(source)
                 MPModelTools.getRankingModel(rankType: source, tableName: source) { (models) in
                     if let m = models {
@@ -44,6 +47,7 @@ class MPAlbumListViewController: BaseTableViewController {
         super.refreshData()
         if let m = headerModel, var source = m.data_title {
             source.removeLast()
+            tableName = source
             NSArray.bg_drop(source)
             MPModelTools.getRankingModel(rankType: source, tableName: source) { (models) in
                 if let m = models {
@@ -96,7 +100,13 @@ extension MPAlbumListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
-        cell.updateCell(model: models[indexPath.row]) 
+        cell.updateCell(model: models[indexPath.row])
+        cell.favoriteBlock = {(song)in
+            // 更新当前列表状态
+            MPModelTools.updateSongInTable(song: song, tableName: self.tableName, finished: {
+                QYTools.shared.Log(log: "当前列表收藏状态更新成功")
+            })
+        }
         return cell
     }
     
