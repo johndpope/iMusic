@@ -72,7 +72,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="nameCenterConstraints" destination="2Tl-hG-oIZ" id="VQk-dd-QQM"/>
-                <outlet property="xib_songCount" destination="uMd-1G-xTF" id="bdp-Xz-6RI"/>
+                <outlet property="xib_count" destination="uMd-1G-xTF" id="qFP-9B-MxI"/>
+                <outlet property="xib_image" destination="ljp-Dr-4vv" id="EEw-lH-wWk"/>
+                <outlet property="xib_title" destination="23t-N3-7GZ" id="JGw-0l-FRZ"/>
             </connections>
         </tableViewCell>
     </objects>

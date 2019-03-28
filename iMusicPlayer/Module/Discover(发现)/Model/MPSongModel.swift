@@ -23,6 +23,8 @@ class MPSongModel:BaseModel {
     var data_durationInSeconds: Int = 0
     var data_songName: String?
     
+    var data_playingStatus: Int = 0
+    
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(self.data_id, forKey: "id")
         aCoder.encode(self.data_originalId, forKey: "originalId")
@@ -36,6 +38,9 @@ class MPSongModel:BaseModel {
         aCoder.encode(self.data_artworkBigUrl, forKey: "artworkBigUrl")
         aCoder.encode(self.data_durationInSeconds, forKey: "durationInSeconds")
         aCoder.encode(self.data_songName, forKey: "songName")
+        
+        
+//        aCoder.encode(self.data_songName, forKey: "playingStatus")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,6 +58,8 @@ class MPSongModel:BaseModel {
         self.data_artworkBigUrl = aDecoder.decodeObject(forKey: "artworkBigUrl") as? String ?? ""
          self.data_durationInSeconds = aDecoder.decodeInteger(forKey: "durationInSeconds")
         self.data_songName = aDecoder.decodeObject(forKey: "songName") as? String ?? ""
+        
+//        self.data_playingStatus = aDecoder.decodeInteger(forKey: "playingStatus")
     }
     
     override init() {

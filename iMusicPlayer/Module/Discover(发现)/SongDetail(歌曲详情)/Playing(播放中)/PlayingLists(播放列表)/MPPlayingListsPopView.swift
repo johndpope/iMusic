@@ -60,9 +60,7 @@ class MPPlayingListsPopView: UITableViewCell {
             }
             break
         case 10003:
-            if let sv = self.superview {
-                sv.removeFromSuperview()
-            }
+            self.removeFromWindow()
             break
         default:
             break

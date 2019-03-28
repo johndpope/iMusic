@@ -96,7 +96,7 @@ extension MPAlbumListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
-        cell.updateCell(model: models[indexPath.row])
+        cell.updateCell(model: models[indexPath.row]) 
         return cell
     }
     

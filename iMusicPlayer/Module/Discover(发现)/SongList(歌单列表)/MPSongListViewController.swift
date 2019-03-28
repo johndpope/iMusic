@@ -44,7 +44,7 @@ class MPSongListViewController: BaseTableViewController {
     
     override func refreshData() {
         super.refreshData()
-        if let hm = self.headerSongModel {
+        if self.headerSongModel != nil {
             MPModelTools.getSongListByIDModel(playlistId: playlistId, tableName: "") { (model) in
                 if let m = model {
                     self.model = m
@@ -128,23 +128,7 @@ extension MPSongListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
-        
         cell.updateCell(model: model[indexPath.row])
-        
-        cell.md_btnDidClickedBlock = {[weak self] (sender) in
-            switch sender.tag {
-            case 10001:
-                break
-            case 10002:
-                let pv = MPSongToolsView.md_viewFromXIB() as! MPSongToolsView
-                pv.plistName = "songTools"
-                pv.delegate = self
-                HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
-                break
-            default:
-                break
-            }
-        }
         return cell
     }
     
@@ -154,37 +138,3 @@ extension MPSongListViewController {
     
 }
 
-extension MPSongListViewController: MPSongToolsViewDelegate {
-    func addToSongList() {
-        let pv = MPAddToSongListView.md_viewFromXIB() as! MPAddToSongListView
-        // 新建歌单
-        pv.createSongListBlock = {
-            let pv = MPCreateSongListView.md_viewFromXIB(cornerRadius: 4) as! MPCreateSongListView
-            pv.md_btnDidClickedBlock = {(sender) in
-                if sender.tag == 10001 {
-                    if let sv = pv.superview {
-                        sv.removeFromSuperview()
-                    }
-                }else {
-                    // 新建歌单操作
-                    SVProgressHUD.showInfo(withStatus: "正在新建歌单~")
-                    if let sv = pv.superview {
-                        sv.removeFromSuperview()
-                    }
-                }
-            }
-            HFAlertController.showCustomView(view: pv)
-        }
-        HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
-    }
-    
-    func nextPlay() {
-        
-    }
-    
-    func addToPlayList() {
-        
-    }
-    
-    
-}

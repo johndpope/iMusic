@@ -415,6 +415,13 @@ extension UIView {
         }
     }
     
+    /// 从父布局移除
+    func removeFromWindow() {
+        if let sv = self.superview {
+            sv.removeFromSuperview()
+        }
+    }
+    
 }
 
 

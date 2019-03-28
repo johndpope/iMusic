@@ -8,7 +8,19 @@
 
 import UIKit
 
-class MPSongTableViewCell: UITableViewCell {
+protocol MPSongTableViewCellDelegate {
+    func addToSongList(song: MPSongModel?)
+    func nextPlay(song: MPSongModel?)
+    func addToPlayList(song: MPSongModel?)
+    
+    func addToMyFavorite(song: MPSongModel?)
+}
+
+class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
+    
+    var delegate: MPSongTableViewCellDelegate?
+    
+    var clickBlock: ((Any?) -> ())?
 
     @IBOutlet weak var xib_image: UIImageView!
     @IBOutlet weak var xib_title: UILabel!
@@ -16,18 +28,28 @@ class MPSongTableViewCell: UITableViewCell {
     @IBOutlet weak var xib_collect: UIButton!
     @IBOutlet weak var xib_more: UIButton!
     
+    var currentSong: MPSongModel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
-        if let b = md_btnDidClickedBlock {
-            b(sender)
+        if sender.tag == 10001 {
+            // 添加到我的最爱列表
+            
+        }else {
+            let pv = MPSongToolsView.md_viewFromXIB() as! MPSongToolsView
+            pv.plistName = "songTools"
+            pv.delegate = self
+            HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
         }
+        
     }
     
     func updateCell(model: MPSongModel) {
+        currentSong = model
         //设置图片
         if let img = model.data_artworkBigUrl, img != "" {
             let imgUrl = API.baseImageURL + img
@@ -41,6 +63,99 @@ class MPSongTableViewCell: UITableViewCell {
             xib_title.text = model.data_songName
             xib_desc.text = model.data_singerName
         }
+    }
+    
+}
+extension MPSongTableViewCell: MPSongToolsViewDelegate {
+    func addToSongList() {
+        let lv = MPAddToSongListView.md_viewFromXIB() as! MPAddToSongListView
+        MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
+            if let m = model {
+                lv.model = m
+            }
+        }
+        // 新建歌单
+        lv.createSongListBlock = {
+            let pv = MPCreateSongListView.md_viewFromXIB(cornerRadius: 4) as! MPCreateSongListView
+            pv.clickBlock = {(sender) in
+                if let btn = sender as? UIButton {
+                    if btn.tag == 10001 {
+                        pv.removeFromWindow()
+                    }else {
+                        // 新建歌单操作
+                        if MPModelTools.createSongList(songListName: pv.xib_songListName.text ?? "") {
+                            // 刷新数据
+                            MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
+                                if let m = model {
+                                    lv.model = m
+                                }
+                            }
+                        }else {
+                            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
+                        }
+                        pv.removeFromWindow()
+                    }
+                }
+            }
+            HFAlertController.showCustomView(view: pv)
+        }
+        
+        // 加入歌单
+        lv.addSongListBlock = {(songList) in
+            if let song = self.currentSong, let tn = songList.data_title {
+                if !MPModelTools.checkSongExsistInSongList(song: song, songList: songList) {
+                    MPModelTools.saveSongToTable(song: self.currentSong!, tableName: tn)
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲添加成功", comment: ""))
+                    // 更新当前歌单图片及数量：+1
+                    MPModelTools.updateCountForSongList(songList: songList, finished: {
+                        lv.removeFromWindow()
+                    })
+                }else {
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在该歌单中", comment: ""))
+                }
+            }
+        }
+        
+        HFAlertController.showCustomView(view: lv, type: HFAlertType.ActionSheet)
+    }
+    
+    func nextPlay() {
+        // 添加到播放列表的下一首: 判断是否在列表中：在则调换到下一首，不在则添加到下一首
+        if !MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!) {
+            MPModelTools.getCurrentPlayList { (model, currentPlaySong) in
+                if var m = model, let cs = currentPlaySong {
+                    let index = self.getIndexFromSongs(song: cs, songs: m)
+                    let nextIndex = (index+1)%m.count
+                    m.insert(self.currentSong!, at: nextIndex)
+                }
+            }
+        }else {
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在播放列表中", comment: ""))
+        }
+    }
+    
+    func addToPlayList() {
+        // 添加到播放列表: 判断是否在列表中：不在则添加
+        if !MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!) {
+            MPModelTools.getCurrentPlayList { (model, currentPlaySong) in
+                if var m = model {
+                    m.append(self.currentSong!)
+                }
+            }
+        }else {
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在播放列表中", comment: ""))
+        }
+    }
+    
+    // 获取当前下标
+    private func getIndexFromSongs(song: MPSongModel, songs: [MPSongModel]) -> Int {
+        var index = 0
+        for i in (0..<songs.count) {
+            if song == songs[i] {
+                index = i
+            }
+        }
+        return index
     }
     
 }

@@ -75,23 +75,14 @@ class MPCreateSongListViewController: BaseTableViewController {
                     if let btn = sender as? UIButton {
                         if btn.tag == 10001 {
                             // 取消
-                            if let sv = pv.superview {
-                                sv.removeFromSuperview()
-                            }
+                            pv.removeFromWindow()
                         }else {
-                            let json: [String : Any] = ["img" : "pic_album_default", "id": 1, "title": pv.xib_songListName.text ?? "", "tracksCount": 0, "originalld": "", "type": ""]
-                            //                        let map = Map(mappingType: MappingType.fromJSON, JSON: ["img" : "pic_album_default", "id": 1, "title": pv.xib_songListName.text ?? "", "tracksCount": 0, "originalld": "", "type": ""])
-                            let model = Mapper<GeneralPlaylists>().map(JSON: json)
-                            let isExsist = MPModelTools.checkCollectListExsist(model: model!, tableName: MPCreateSongListViewController.classCode, condition: pv.xib_songListName.text ?? "")
-                            if !isExsist {
-                                MPModelTools.saveCollectListModel(model: model!, tableName: MPCreateSongListViewController.classCode)
+                            if MPModelTools.createSongList(songListName: pv.xib_songListName.text ?? "") {
                                 self.refreshData()
                             }else {
                                 SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
                             }
-                            if let sv = pv.superview {
-                                sv.removeFromSuperview()
-                            }
+                            pv.removeFromWindow()
                         }
                     }
                 }
@@ -119,6 +110,7 @@ extension MPCreateSongListViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = MPEditSongListViewController()
+        vc.songListModel = model[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

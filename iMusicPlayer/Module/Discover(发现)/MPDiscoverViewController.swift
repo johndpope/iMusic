@@ -164,7 +164,7 @@ extension MPDiscoverViewController {
         shv.fromType = ft
         
         shv.clickBlock = {(sender) in
-            if let btn = sender as? UIButton {
+            if let _ = sender as? UIButton {
                 let vc = MPChoicenessViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
             }

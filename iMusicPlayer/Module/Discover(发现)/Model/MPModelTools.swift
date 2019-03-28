@@ -7,9 +7,150 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class MPModelTools: NSObject {
     
+    // MARK: - 公共存储歌曲列表：数组
+    /// 保存歌曲到对应的表名中
+    ///
+    /// - Parameters:
+    ///   - song: 歌曲
+    ///   - tableName: 表名
+    class func saveSongToTable(song: MPSongModel, tableName: String = "") {
+        // 缓存
+        ([song] as NSArray).bg_save(withName: tableName)
+    }
+    // MARK: - 公共获取歌曲列表：数组
+    /// 获取对应歌曲列表
+    ///
+    /// - Parameters:
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func getSongInTable(tableName: String = "", finished: ((_ models: [MPSongModel]?)->Void)? = nil) {
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+            if let f = finished {
+                f(arr)
+            }
+        }
+    }
+    
+    /// 更新专辑数量
+    ///
+    /// - Parameter songList: 当前专辑
+    class func updateCountForSongList(songList: GeneralPlaylists, finished: (()->Void)? = nil) {
+        let tableN = songList.data_title ?? "SongList"
+        if let arr = NSArray.bg_array(withName: tableN) as? [MPSongModel] {
+            let count = arr.count
+            getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
+                if let m = model {
+                    for i in (0..<(m.count)) {
+                        let item = m[i]
+                        if item.data_title == tableN {
+                            let tempM = item
+                            tempM.data_tracksCount = count
+                            tempM.data_img = arr.first?.data_artworkUrl
+                            NSArray.bg_updateObject(withName: MPCreateSongListViewController.classCode, object: tempM, index: i)
+                            QYTools.shared.Log(log: "专辑图片及数量更新成功")
+                            if let f = finished {
+                                f()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    /// 检查歌曲是否在该歌单中
+    ///
+    /// - Parameters:
+    ///   - song: 歌曲
+    ///   - tableName: 通过歌单获取的表名
+    /// - Returns: 是否存在
+    class func checkSongExsistInSongList(song: MPSongModel, songList: GeneralPlaylists) -> Bool {
+        let tableName = songList.data_title ?? "SongList"
+        var rs = false
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+            arr.forEach { (item) in
+                if item.data_title == song.data_title {
+                    rs = true
+                }
+            }
+        }
+        return rs
+    }
+    
+    /// 检查当前歌曲是否已经在播放列表中
+    ///
+    /// - Parameter song: 歌曲
+    /// - Returns: 是否存在
+    class func checkSongExsistInPlayingList(song: MPSongModel) -> Bool {
+        var rs = false
+        if let arr = NSArray.bg_array(withName: "CurrentPlayList") as? [MPSongModel] {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+            arr.forEach { (item) in
+                if item.data_id == song.data_id {
+                    rs = true
+                }
+            }
+        }
+        return rs
+    }
+    
+    /// 获取当前播放列表
+    ///
+    /// - Parameters:
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func getCurrentPlayList(tableName: String = "CurrentPlayList", finished: ((_ models: [MPSongModel]?, _ currentPlayingSong: MPSongModel?)->Void)? = nil) {
+        var tempPlaySong: MPSongModel?
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+            
+            arr.forEach { (item) in
+                if item.data_playingStatus == 1 {
+                    tempPlaySong = item
+                }
+            }
+            
+            if let f = finished {
+                f(arr, tempPlaySong)
+            }
+        }
+    }
+    
+    /// 存储当前的播放列表
+    ///
+    /// - Parameters:
+    ///   - currentList: 播放列表
+    ///   - tableName: 表名
+    class func saveCurrentPlayList(currentList: [MPSongModel], tableName: String = "CurrentPlayList") {
+        // 缓存
+        (currentList as NSArray).bg_save(withName: tableName)
+    }
+    
+   /// 创建歌单
+   ///
+   /// - Parameters:
+   ///   - songListName: 歌单名
+   ///   - tableName: 表名
+   /// - Returns: 是否创建成功
+   class func createSongList(songListName: String = "newList", tableName: String = MPCreateSongListViewController.classCode) -> Bool {
+        var rs = false
+        let json: [String : Any] = ["img" : "pic_album_default", "id": 1, "title": songListName, "tracksCount": 0, "originalld": "", "type": ""]
+        let model = Mapper<GeneralPlaylists>().map(JSON: json)
+        let isExsist = MPModelTools.checkCollectListExsist(model: model!, tableName: tableName, condition: songListName)
+        if !isExsist {
+            MPModelTools.saveCollectListModel(model: model!, tableName: tableName)
+            rs = true
+        }else {
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
+        }
+        return rs
+    }
     
     /// 收藏歌单、创建的歌单
     ///
@@ -30,16 +171,18 @@ class MPModelTools: NSObject {
     /// - Parameters:
     ///   - model: 需要收藏的歌单
     ///   - tableName: 表名
-    /// - Returns: 是否已经存在
     class func saveCollectListModel(model: GeneralPlaylists, tableName: String = GeneralPlaylists.classCode) {
-//        if !self.checkCollectListExsist(model: model, tableName: tableName, condition: condition) {
-//            // 缓存
-//            ([model] as NSArray).bg_save(withName: tableName)
-//        }
         // 缓存
         ([model] as NSArray).bg_save(withName: tableName)
     }
     
+    /// 检查当前歌单是否已经创建
+    ///
+    /// - Parameters:
+    ///   - model: 当前歌单模型
+    ///   - tableName: 表名
+    ///   - condition: 查询条件：默认ID查询
+    /// - Returns: 是否存在
     class func checkCollectListExsist(model: GeneralPlaylists, tableName: String = GeneralPlaylists.classCode, condition: String = "") -> Bool {
         var isExsist = false
         self.getCollectListModel(tableName: tableName) { (models) in

@@ -19,6 +19,14 @@ class MPAddToSongListView: BaseView {
     
     var createSongListBlock: (()->Void)?
     
+    var addSongListBlock: ((_ model: GeneralPlaylists)->Void)?
+    
+    var model = [GeneralPlaylists]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,13 +40,15 @@ class MPAddToSongListView: BaseView {
 
 extension MPAddToSongListView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return model.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.identifier) as! MPAddToSongListTableViewCell
         if indexPath.row == 0 {
             cell.type = 1
+        }else {
+            cell.updateCell(model: model[indexPath.row - 1])
         }
         return cell
     }
@@ -53,7 +63,10 @@ extension MPAddToSongListView: UITableViewDataSource, UITableViewDelegate {
                 b()
             }
         }else {
-            
+            if let b = addSongListBlock {
+                let m = model[indexPath.row - 1]
+                b(m)
+            }
         }
     }
     

@@ -65,11 +65,17 @@ class MPPlayingViewController: BaseViewController {
     var currentSong: MPSongModel? {
         didSet {
             songID = currentSong?.data_originalId ?? ""
+            // 设置播放状态
+            currentSong?.data_playingStatus = 1
         }
     }
     
     var model = [MPSongModel]() {
         didSet {
+            
+            // 将当前播放列表保存到数据库
+            MPModelTools.saveCurrentPlayList(currentList: model)
+            
             if let s = currentSong {
                 var index = (getIndexFromSongs(song: s, songs: model) + 1)
                 index = index > (model.count - 1) ? model.count - 1 : index
@@ -195,26 +201,55 @@ class MPPlayingViewController: BaseViewController {
 }
 extension MPPlayingViewController {
     func addToSongList() {
-        let pv = MPAddToSongListView.md_viewFromXIB() as! MPAddToSongListView
+        let lv = MPAddToSongListView.md_viewFromXIB() as! MPAddToSongListView
+        MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
+            if let m = model {
+                lv.model = m
+            }
+        }
         // 新建歌单
-        pv.createSongListBlock = {
+        lv.createSongListBlock = {
             let pv = MPCreateSongListView.md_viewFromXIB(cornerRadius: 4) as! MPCreateSongListView
-            pv.md_btnDidClickedBlock = {(sender) in
-                if sender.tag == 10001 {
-                    if let sv = pv.superview {
-                        sv.removeFromSuperview()
-                    }
-                }else {
-                    // 新建歌单操作
-                    SVProgressHUD.showInfo(withStatus: "正在新建歌单~")
-                    if let sv = pv.superview {
-                        sv.removeFromSuperview()
+            pv.clickBlock = {(sender) in
+                if let btn = sender as? UIButton {
+                    if btn.tag == 10001 {
+                        pv.removeFromWindow()
+                    }else {
+                        // 新建歌单操作
+                        if MPModelTools.createSongList(songListName: pv.xib_songListName.text ?? "") {
+                            // 刷新数据
+                            MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
+                                if let m = model {
+                                    lv.model = m
+                                }
+                            }
+                        }else {
+                            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
+                        }
+                        pv.removeFromWindow()
                     }
                 }
             }
             HFAlertController.showCustomView(view: pv)
         }
-        HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
+        
+        // 加入歌单
+        lv.addSongListBlock = {(songList) in
+            if let song = self.currentSong, let tn = songList.data_title {
+                if !MPModelTools.checkSongExsistInSongList(song: song, songList: songList) {
+                    MPModelTools.saveSongToTable(song: self.currentSong!, tableName: tn)
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲添加成功", comment: ""))
+                    // 更新当前歌单图片及数量：+1
+                    MPModelTools.updateCountForSongList(songList: songList, finished: {
+                        lv.removeFromWindow()
+                    })
+                }else {
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在该歌单中", comment: ""))
+                }
+            }
+        }
+        
+        HFAlertController.showCustomView(view: lv, type: HFAlertType.ActionSheet)
     }
     
     func extensionTools() {

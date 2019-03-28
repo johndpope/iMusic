@@ -15,6 +15,8 @@ private struct Constant {
 
 class MPEditSongListDetailViewController: BaseTableViewController {
     
+    var model = [MPSongModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,11 +56,12 @@ class MPEditSongListDetailViewController: BaseTableViewController {
 }
 extension MPEditSongListDetailViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return model.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPEditSongListDetailTableViewCell
+        cell.updateCell(model: model[indexPath.row])
         return cell
     }
     
