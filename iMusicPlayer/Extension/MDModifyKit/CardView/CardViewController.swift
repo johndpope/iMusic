@@ -28,6 +28,10 @@ public protocol CardViewControllerDelegate {
     func cardViewController(_ cardViewController: CardViewController,
                             didSelect card: UIView,
                             at index: Int)
+    
+    func cardViewController(_ cardViewController: CardViewController,
+                            didScroll card: UIView,
+                            at index: Int)
 }
 
 public typealias TransitionInterpolator = (_ transitionProgress: CGFloat) -> (CGFloat)
@@ -305,6 +309,13 @@ extension CardViewController: UIScrollViewDelegate {
             let degrees = degreesToRotateCard * (isGoingBackwards ? -1 : 1)
             applyViewTransformation(to: previousSourceCard, degrees: degrees, alpha: backgroundCardAlpha, zTranslation: 0, rotateBeforeTranslate: true)
         }
+        
+        // 滚动调用
+        guard let currentCard = card(at: currentCardIndex) else {
+            return
+        }
+        delegate?.cardViewController(self, didScroll: currentCard, at: currentCardIndex)
+        
     }
     
     ///Apply paging by updating the target content offset to the nearest card

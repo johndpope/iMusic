@@ -117,5 +117,7 @@ extension MPRadioViewController: CardViewControllerDelegate {
         print("did select card at index: \(index)")
     }
     
-    
+    func cardViewController(_ cardViewController: CardViewController, didScroll card: UIView, at index: Int) {
+        QYTools.shared.Log(log: "滚动了")
+    }
 }
