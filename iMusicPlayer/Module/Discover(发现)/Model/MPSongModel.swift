@@ -25,6 +25,8 @@ class MPSongModel:BaseModel {
     
     var data_playingStatus: Int = 0
     
+    var data_collectStatus: Int = 0
+    
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(self.data_id, forKey: "id")
         aCoder.encode(self.data_originalId, forKey: "originalId")

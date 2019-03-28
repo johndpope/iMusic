@@ -87,9 +87,9 @@ class MPModelTools: NSObject {
     ///
     /// - Parameter song: 歌曲
     /// - Returns: 是否存在
-    class func checkSongExsistInPlayingList(song: MPSongModel) -> Bool {
+    class func checkSongExsistInPlayingList(song: MPSongModel, tableName: String = "CurrentPlayList") -> Bool {
         var rs = false
-        if let arr = NSArray.bg_array(withName: "CurrentPlayList") as? [MPSongModel] {
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
             QYTools.shared.Log(log: "本地数据库获取数据")
             arr.forEach { (item) in
                 if item.data_id == song.data_id {

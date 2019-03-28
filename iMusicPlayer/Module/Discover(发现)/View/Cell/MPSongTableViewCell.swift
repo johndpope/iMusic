@@ -38,7 +38,17 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     @IBAction func btn_DidClicked(_ sender: UIButton) {
         if sender.tag == 10001 {
             // 添加到我的最爱列表
-            
+            if !MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode) {
+                // 标记为收藏状态：喜爱列表、当前列表
+                self.currentSong?.data_collectStatus = 1
+                MPModelTools.saveSongToTable(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
+                // 设置为收藏状态
+                xib_collect.isSelected = true
+                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲收藏成功", comment: ""))
+            }else {
+                // 取消收藏
+                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收藏", comment: ""))
+            }
         }else {
             let pv = MPSongToolsView.md_viewFromXIB() as! MPSongToolsView
             pv.plistName = "songTools"
@@ -62,6 +72,11 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
         }else {
             xib_title.text = model.data_songName
             xib_desc.text = model.data_singerName
+        }
+        
+        // 是否选中
+        if model.data_collectStatus == 1 {
+            xib_collect.isSelected = true
         }
     }
     
