@@ -310,12 +310,6 @@ extension CardViewController: UIScrollViewDelegate {
             applyViewTransformation(to: previousSourceCard, degrees: degrees, alpha: backgroundCardAlpha, zTranslation: 0, rotateBeforeTranslate: true)
         }
         
-        // 滚动调用
-        guard let currentCard = card(at: currentCardIndex) else {
-            return
-        }
-        delegate?.cardViewController(self, didScroll: currentCard, at: currentCardIndex)
-        
     }
     
     ///Apply paging by updating the target content offset to the nearest card
@@ -349,6 +343,8 @@ extension CardViewController: UIScrollViewDelegate {
         
         //Update target content offset
         targetContentOffset.pointee.x = destCardIndex * (cardSize + cardSpacing)
+        
+        QYTools.shared.Log(log: "scrollViewWillEndDragging")
     }
     
     ///Save the index of the current card when the scroll view has stopped scrolling
@@ -356,11 +352,18 @@ extension CardViewController: UIScrollViewDelegate {
         if !decelerate {
             currentCardIndex = scrollView.currentPage()
         }
+        QYTools.shared.Log(log: "scrollViewDidEndDragging")
     }
     
     ///Save the index of the current card when the scroll view has stopped scrolling
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         currentCardIndex = scrollView.currentPage()
+        QYTools.shared.Log(log: "scrollViewDidEndDecelerating")
+        // 滚动调用
+        guard let currentCard = card(at: currentCardIndex) else {
+            return
+        }
+        delegate?.cardViewController(self, didScroll: currentCard, at: currentCardIndex)
     }
     
     ///Called when the scroll view ends scrolling programatically (e.g. when a user taps on a card)
@@ -369,5 +372,6 @@ extension CardViewController: UIScrollViewDelegate {
         
         //Restore the settings
         scrollViewDidScrollToCard()
+        QYTools.shared.Log(log: "scrollViewDidEndScrollingAnimation")
     }
 }

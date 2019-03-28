@@ -18,6 +18,7 @@ class MPRadioViewController: BaseViewController {
     var model = [MPSongModel]() {
         didSet {
             cardViews = getImageViews(models: model)
+            self.updateView(index: 0)
         }
     }
     
@@ -30,7 +31,7 @@ class MPRadioViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        configCardView()
+        configCardView()
         requestData()
     }
     
@@ -40,7 +41,6 @@ class MPRadioViewController: BaseViewController {
         MPModelTools.getRadioModel(tableName: MPRadioViewController.classCode) { (model) in
             if let m = model {
                 self.model = m
-                self.configCardView()
             }
         }
         
@@ -119,5 +119,20 @@ extension MPRadioViewController: CardViewControllerDelegate {
     
     func cardViewController(_ cardViewController: CardViewController, didScroll card: UIView, at index: Int) {
         QYTools.shared.Log(log: "滚动了")
+        updateView(index: index)
     }
+}
+extension MPRadioViewController {
+    
+    private func updateView(index: Int) {
+        let m = self.model[index]
+        if SourceType == 0 {
+            xib_title.text = m.data_title
+            xib_user.text = m.data_channelTitle
+        }else {
+            xib_title.text = m.data_songName
+            xib_user.text = m.data_singerName
+        }
+    }
+    
 }
