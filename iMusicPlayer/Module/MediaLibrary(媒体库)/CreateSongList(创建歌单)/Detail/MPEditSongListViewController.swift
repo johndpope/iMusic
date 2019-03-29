@@ -83,13 +83,7 @@ extension MPEditSongListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
-        cell.updateCell(model: model[indexPath.row])
-        cell.favoriteBlock = {(song)in
-            // 更新当前列表状态
-            MPModelTools.updateSongInTable(song: song, tableName: self.songListModel?.data_title ?? "", finished: {
-                QYTools.shared.Log(log: "当前列表收藏状态更新成功")
-            })
-        }
+        cell.updateCell(model: model[indexPath.row], models: self.model)
         return cell
     }
     

@@ -13,7 +13,7 @@ private struct Constant {
     
     static let playerVars = [
         "playsinline" : 1,  // 是否全屏
-        "showinfo" : 0, // 是否显示标题和上传者信息
+        "showinfo" : 1, // 是否显示标题和上传者信息
         "modestbranding" : 1,   //是否显示鼠标
         "controls" : 0,
         "autohide" : 1,
@@ -47,15 +47,24 @@ class MPPlayingViewController: BaseViewController {
     @IBOutlet weak var xib_play: UIButton!
     @IBOutlet weak var xib_cycleMode: UIButton!
     @IBOutlet weak var xib_orderMode: UIButton!
-    var playerVars: [String : Any] = [
-        "playsinline" : 1,  // 是否全屏
-        "showinfo" : 0, // 是否显示标题和上传者信息
-        "modestbranding" : 1,   //是否显示鼠标
-        "controls" : 0,
-        "iv_load_policy": 3,
-        "autoplay": 1,
-        "autohide" : 1,
-        ]
+    @IBOutlet weak var xib_collect: UIButton!
+    
+//    var playerVars: [String : Any] = [
+//        "playsinline" : 1,  // 是否全屏
+//        "showinfo" : 0, // 是否显示标题和上传者信息
+//        "modestbranding" : 1,   //是否显示鼠标
+//        "controls" : 0,
+//        "iv_load_policy": 3,
+//        "autoplay": 1,
+//        "autohide" : 1,
+//        ]
+    
+//    var playerVars: [String : Any] = ["playsinline" : 1,
+//                      "autoplay" : 1,
+//                      "rel" : 0,
+//                      "controls" : 0]
+    
+    var playerVars: [String : Any] = [ "showinfo": "0", "modestbranding" : "1"]
     
     var currentPlayOrderMode: Int = 0 // 0: 顺序播放  1: 随机播放
     var currentPlayCycleMode: Int = 0 // 0: 列表循环  1: 单曲循环 2: 只播放当前列表
@@ -75,23 +84,10 @@ class MPPlayingViewController: BaseViewController {
             
             // 将当前播放列表保存到数据库
             MPModelTools.saveCurrentPlayList(currentList: model)
-            
-            if let s = currentSong {
-                var index = (getIndexFromSongs(song: s, songs: model) + 1)
-                index = index > (model.count - 1) ? model.count - 1 : index
-                if SourceType == 0 {
-                    nextSongName = model[index].data_title ?? NSLocalizedString("当前列表已播完", comment: "")
-                }else {
-                    nextSongName = model[index].data_songName ?? NSLocalizedString("当前列表已播完", comment: "")
-                }
-            }
-            
             playerVars["playlist"] = getSongIDs(songs: model)
             
         }
     }
-    
-    var nextSongName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +101,7 @@ class MPPlayingViewController: BaseViewController {
                     self.dismiss(animated: true, completion: nil)
                 }else {
                     // 全屏播放
-                    
+                    self.playerVars["playsinline"] = 0
                 }
             }
         }
@@ -139,6 +135,9 @@ class MPPlayingViewController: BaseViewController {
             break
         case 10002: // 上一曲
             playView.previousVideo()
+            // 刷新当前view
+            self.currentSong = getPreSongFromSongs(song: self.currentSong!, songs: model)
+            self.updateView(type: 1)
             break
         case 10003: // 暂停/播放
             if playView.playerState() == YTPlayerState.playing {
@@ -152,6 +151,9 @@ class MPPlayingViewController: BaseViewController {
             break
         case 10004: // 下一曲
             playView.nextVideo()
+            // 刷新当前view
+            self.currentSong = getNextSongFromSongs(song: self.currentSong!, songs: model)
+            self.updateView(type: 1)
             break
         case 10005: // 播放模式：列表循环/单曲循环
             currentPlayCycleMode = (currentPlayCycleMode + 1) % 2
@@ -171,6 +173,18 @@ class MPPlayingViewController: BaseViewController {
             
             break
         case 10007: // 收藏
+            // 添加到我的最爱列表
+            if !MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode) {
+                // 标记为收藏状态：喜爱列表、当前列表
+                self.currentSong?.data_collectStatus = 1
+                MPModelTools.saveSongToTable(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
+                // 设置为收藏状态
+                xib_collect.isSelected = true
+                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲收藏成功", comment: ""))
+            }else {
+                // 取消收藏
+                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收藏", comment: ""))
+            }
             break
         case 10008: // 添加到歌单
             addToSongList()
@@ -310,7 +324,7 @@ extension MPPlayingViewController {
         }
     }
     
-    private func updateView() {
+    private func updateView(type: Int = -1) {
         if SourceType == 0 {
             xib_lrc.isSelected = false
             xib_title.text = currentSong?.data_title
@@ -321,7 +335,12 @@ extension MPPlayingViewController {
             xib_desc.text = currentSong?.data_singerName
         }
         // 设置下一首播放
-        xib_nextSongName.text = nextSongName
+        let nextSong = getNextSongFromSongs(song: self.currentSong!, songs: model)
+        if SourceType == 0 {
+            xib_nextSongName.text = nextSong.data_title ?? ""
+        }else {
+            xib_nextSongName.text = nextSong.data_songName ?? ""
+        }
         
         // 设置时间
         xib_startTime.text = "0".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
@@ -329,7 +348,17 @@ extension MPPlayingViewController {
         
         // 播放MV
 //        playView.load(withVideoId: currentSong?.data_originalId ?? "")
+//        if type != -1 {
+//            playView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
+//        }
         playView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
+        
+//        playView.subviews.last!.removeFromSuperview()
+        
+        // 异步更新当前列表状态
+        DispatchQueue.main.async {
+             self.xib_collect.isSelected = MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
+        }
     }
     
     // 获取当前下标
@@ -341,6 +370,17 @@ extension MPPlayingViewController {
             }
         }
         return index
+    }
+    
+    private func getPreSongFromSongs(song: MPSongModel, songs: [MPSongModel]) -> MPSongModel {
+        var index = 0
+        for i in (0..<songs.count) {
+            if song == songs[i] {
+                let temp = i == 0 ? songs.count : i
+                index = (temp-1) % songs.count
+            }
+        }
+        return songs[index]
     }
     
     private func getNextSongFromSongs(song: MPSongModel, songs: [MPSongModel]) -> MPSongModel {
@@ -362,6 +402,16 @@ extension MPPlayingViewController {
     }
 }
 extension MPPlayingViewController: YTPlayerViewDelegate {
+    
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        playView.playVideo()
+        if let s = self.currentSong {
+            if !MPModelTools.checkSongExsistInPlayingList(song: s, tableName: "RecentlyPlay") {
+                MPModelTools.saveSongToTable(song: s, tableName: "RecentlyPlay")
+            }
+        }
+    }
+    
     func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
         xib_slider.value = playTime / Float((currentSong?.data_durationInSeconds ?? 0))
         xib_startTime.text = "\(playTime)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")

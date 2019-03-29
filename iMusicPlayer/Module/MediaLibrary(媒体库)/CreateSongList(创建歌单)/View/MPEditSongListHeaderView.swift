@@ -14,7 +14,7 @@ class MPEditSongListHeaderView: UITableViewCell {
     
     var count: Int = 0 {
         didSet {
-            let title = NSLocalizedString("随机播放", comment: "") + "\(count)" + NSLocalizedString("首", comment: "")
+            let title = NSLocalizedString("随机播放", comment: "") + "(\(count)\(NSLocalizedString("首", comment: "")))"
             xib_random.setTitle(title, for: .normal)
         }
     }

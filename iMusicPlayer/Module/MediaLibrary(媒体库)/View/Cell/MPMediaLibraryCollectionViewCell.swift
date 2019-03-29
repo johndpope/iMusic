@@ -10,6 +10,12 @@ import UIKit
 
 class MPMediaLibraryCollectionViewCell: UICollectionViewCell {
     
+    var model = [MPSongModel]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func awakeFromNib() {
@@ -19,22 +25,24 @@ class MPMediaLibraryCollectionViewCell: UICollectionViewCell {
         tableView.delegate = self
         tableView.register(UINib(nibName: Constant.identifier, bundle: nil), forCellReuseIdentifier: Constant.identifier)
         tableView.tableFooterView = UIView()
+        tableView.isScrollEnabled = false
     }
     
 }
 private struct Constant {
-    static let identifier = "MPMediaLibraryTableViewCell"
+    static let identifier = "MPSongTableViewCell"
     static let rowHeight = SCREEN_WIDTH * (52/375)
 }
 
 extension MPMediaLibraryCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.identifier) as! MPMediaLibraryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.identifier) as! MPSongTableViewCell
         cell.selectionStyle = .none
+        cell.updateCell(model: model[indexPath.row], models: self.model)
         return cell
     }
     

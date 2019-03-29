@@ -26,13 +26,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星野源のオールナイトニッポン" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mox-CV-Djf">
-                        <rect key="frame" x="61.5" y="5" width="182" height="24"/>
+                        <rect key="frame" x="61.5" y="5" width="183.5" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="星野源 · 4:32" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X7o-aq-9uW">
-                        <rect key="frame" x="61.5" y="33" width="182" height="13.5"/>
+                        <rect key="frame" x="61.5" y="33" width="183.5" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -48,12 +48,12 @@
                         </connections>
                     </button>
                     <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYK-Oy-vWF">
-                        <rect key="frame" x="251.5" y="13.5" width="25" height="25"/>
+                        <rect key="frame" x="253" y="14" width="23.5" height="23.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="BYK-Oy-vWF" secondAttribute="height" id="LHm-6e-MAM"/>
                         </constraints>
-                        <state key="normal" image="icon_collect_1"/>
-                        <state key="selected" image="icon_collecting_1"/>
+                        <state key="normal" image="icon_collect_normal"/>
+                        <state key="selected" image="icon_collect_selected"/>
                         <connections>
                             <action selector="btn_DidClicked:" destination="crp-CE-Poe" eventType="touchUpInside" id="qCa-r0-xH7"/>
                         </connections>
@@ -67,6 +67,7 @@
                     <constraint firstItem="X7o-aq-9uW" firstAttribute="top" secondItem="mox-CV-Djf" secondAttribute="bottom" constant="4" id="9Ja-S3-AdE"/>
                     <constraint firstItem="jTz-8U-Zpo" firstAttribute="centerY" secondItem="OiH-gG-9LG" secondAttribute="centerY" id="EIM-Cr-lU1"/>
                     <constraint firstAttribute="bottom" secondItem="608-zv-dkv" secondAttribute="bottom" constant="5" id="LGL-BV-gJU"/>
+                    <constraint firstItem="BYK-Oy-vWF" firstAttribute="height" secondItem="jTz-8U-Zpo" secondAttribute="height" id="Meq-lD-XXh"/>
                     <constraint firstItem="mox-CV-Djf" firstAttribute="top" secondItem="608-zv-dkv" secondAttribute="top" id="Nd8-ZQ-LeK"/>
                     <constraint firstAttribute="trailing" secondItem="jTz-8U-Zpo" secondAttribute="trailing" constant="12" id="Rt7-rR-gnp"/>
                     <constraint firstItem="BYK-Oy-vWF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mox-CV-Djf" secondAttribute="trailing" constant="8" id="SxJ-C2-etX"/>
@@ -76,6 +77,7 @@
                     <constraint firstItem="608-zv-dkv" firstAttribute="leading" secondItem="OiH-gG-9LG" secondAttribute="leading" constant="12" id="hwe-EW-0wz"/>
                     <constraint firstItem="mox-CV-Djf" firstAttribute="leading" secondItem="608-zv-dkv" secondAttribute="trailing" constant="8" id="oiG-ht-k9m"/>
                     <constraint firstItem="jTz-8U-Zpo" firstAttribute="top" secondItem="OiH-gG-9LG" secondAttribute="top" constant="14" id="seT-tv-Qcu"/>
+                    <constraint firstItem="BYK-Oy-vWF" firstAttribute="width" secondItem="jTz-8U-Zpo" secondAttribute="width" id="trs-mj-Nw7"/>
                     <constraint firstItem="BYK-Oy-vWF" firstAttribute="centerY" secondItem="jTz-8U-Zpo" secondAttribute="centerY" id="wgK-Jt-HBt"/>
                 </constraints>
             </tableViewCellContentView>
@@ -87,12 +89,12 @@
                 <outlet property="xib_more" destination="jTz-8U-Zpo" id="gi4-pu-3Hv"/>
                 <outlet property="xib_title" destination="mox-CV-Djf" id="bRb-y1-DQ0"/>
             </connections>
-            <point key="canvasLocation" x="-78.400000000000006" y="153.82308845577214"/>
+            <point key="canvasLocation" x="-557" y="65"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_collect_1" width="25" height="25"/>
-        <image name="icon_collecting_1" width="25" height="25"/>
+        <image name="icon_collect_normal" width="32" height="32"/>
+        <image name="icon_collect_selected" width="64" height="64"/>
         <image name="icon_more_1" width="25" height="25"/>
         <image name="pic_album" width="100" height="100"/>
     </resources>

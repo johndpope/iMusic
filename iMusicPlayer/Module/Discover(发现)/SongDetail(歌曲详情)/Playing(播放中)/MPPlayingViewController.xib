@@ -15,6 +15,7 @@
                 <outlet property="playView" destination="hEQ-YL-OUM" id="4M3-mk-pRd"/>
                 <outlet property="topViewH" destination="6P3-9h-4jP" id="q2B-AN-1kr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="xib_collect" destination="YU2-Af-VHv" id="cL5-KS-vWl"/>
                 <outlet property="xib_cycleMode" destination="B7m-69-hRf" id="Z25-31-bYm"/>
                 <outlet property="xib_desc" destination="5Rm-EO-tiz" id="Qqx-ja-FbF"/>
                 <outlet property="xib_endTime" destination="gci-eh-c7g" id="1F8-5p-c8e"/>
@@ -171,7 +172,11 @@
                 </button>
                 <button opaque="NO" tag="10007" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YU2-Af-VHv">
                     <rect key="frame" x="164.5" y="562" width="46" height="32"/>
-                    <state key="normal" image="icon_collect"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="YU2-Af-VHv" secondAttribute="height" multiplier="23:16" id="vx9-WC-qJj"/>
+                    </constraints>
+                    <state key="normal" image="icon_collect_normal"/>
+                    <state key="selected" image="icon_collect_selected"/>
                     <connections>
                         <action selector="btn_DidClicked:" destination="-1" eventType="touchUpInside" id="756-s9-2Rx"/>
                     </connections>
@@ -246,12 +251,13 @@
                 <constraint firstItem="QDf-oy-71c" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="xjf-hK-tWS"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="138" y="10"/>
+            <point key="canvasLocation" x="-97" y="177"/>
         </view>
     </objects>
     <resources>
         <image name="icon_add" width="32" height="32"/>
-        <image name="icon_collect" width="32" height="32"/>
+        <image name="icon_collect_normal" width="32" height="32"/>
+        <image name="icon_collect_selected" width="64" height="64"/>
         <image name="icon_lyrics_default" width="12" height="12"/>
         <image name="icon_lyrics_none" width="12" height="12"/>
         <image name="icon_play_more" width="32" height="32"/>

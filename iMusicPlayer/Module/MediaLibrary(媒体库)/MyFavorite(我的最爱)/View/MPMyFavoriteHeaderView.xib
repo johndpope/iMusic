@@ -36,7 +36,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="-320" y="23"/>
+            <connections>
+                <outlet property="xib_random" destination="oSe-pF-u0k" id="51m-2S-HWm"/>
+            </connections>
+            <point key="canvasLocation" x="50" y="-18"/>
         </tableViewCell>
     </objects>
     <resources>

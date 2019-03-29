@@ -14,6 +14,18 @@ private struct Constant {
 
 class MPMediaLibraryOutTableViewCell: UITableViewCell {
     
+    var model = [MPSongModel]() {
+        didSet {
+            offestModel = getModelsByOffest(model: model)
+        }
+    }
+    
+    var offestModel = [[MPSongModel]]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var itemClickedBlock: ((_ index: Int)->Void)? = nil
@@ -34,11 +46,12 @@ class MPMediaLibraryOutTableViewCell: UITableViewCell {
 
 extension MPMediaLibraryOutTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return offestModel.count > 5 ? 5 : offestModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.identifier, for: indexPath) as! MPMediaLibraryCollectionViewCell
+        cell.model = offestModel[indexPath.row]
         return cell
     }
     
@@ -56,5 +69,24 @@ extension MPMediaLibraryOutTableViewCell: UICollectionViewDataSource, UICollecti
         if let b = itemClickedBlock {
             b(indexPath.row)
         }
+    }
+}
+extension MPMediaLibraryOutTableViewCell {
+    
+    /// 获取分割的数据源
+    ///
+    /// - Parameter model: 数据源
+    /// - Returns: 分割后的数据源
+    private func getModelsByOffest(model: [MPSongModel]) -> [[MPSongModel]] {
+        var temp = [[MPSongModel]]()
+        let total = model.count/3
+        for i in 0...total {
+            if i*3 + 3 < model.count {
+                temp.append((model as NSArray).subarray(with: NSRange(location: i*3, length: 3)) as! [MPSongModel])
+            }else {
+                temp.append((model as NSArray).subarray(with: NSRange(location: i*3, length: model.count -  i*3)) as! [MPSongModel])
+            }
+        }
+        return temp
     }
 }

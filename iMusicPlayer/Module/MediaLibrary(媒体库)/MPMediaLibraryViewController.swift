@@ -16,9 +16,26 @@ private struct Constant {
 
 class MPMediaLibraryViewController: BaseTableViewController {
     
+    var model = [MPSongModel]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshData()
+    }
+    
+    override func refreshData() {
+        super.refreshData()
+        MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
+            if let m = model {
+                self.model = m
+                self.tableView.mj_header.endRefreshing()
+            }
+        }
     }
     
     override func setupTableView() {
@@ -52,6 +69,7 @@ extension MPMediaLibraryViewController {
         
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.mediaLibraryIdentifier)!
+            (cell as! MPMediaLibraryOutTableViewCell).model = self.model
         }else {
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.categoryIdentifier)!
             (cell as! MPCategoryTableViewCell).updateCell(model: MPMediaLibraryModel.categoryDatas[indexPath.row])
@@ -78,6 +96,13 @@ extension MPMediaLibraryViewController {
             shv.fromType = ft
             shv.updateView(model: NSLocalizedString(Constant.sectionOneTitle, comment: ""))
         }
+        shv.clickBlock = {(sender) in
+            if let _ = sender as? UIButton {
+                let vc = MPMyFavoriteViewController()
+                vc.fromType = .Recently
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
         return shv
     }
     
@@ -92,14 +117,17 @@ extension MPMediaLibraryViewController {
         switch indexPath.row {
         case 0: // 我的最爱
             let vc = MPMyFavoriteViewController()
+            vc.fromType = .Favorite
             self.navigationController?.pushViewController(vc, animated: true)
             break
         case 1: // 我的下载
             let vc = MPMyFavoriteViewController()
+            vc.fromType = .Download
             self.navigationController?.pushViewController(vc, animated: true)
             break
         case 2: //离线歌曲
             let vc = MPMyFavoriteViewController()
+            vc.fromType = .Cache
             self.navigationController?.pushViewController(vc, animated: true)
             break
         case 3: // 创建的歌单

@@ -32,9 +32,23 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     
     var currentSong: MPSongModel?
     
+    var currentSongList = [MPSongModel]()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        // 用户点击的时候调用
+        if selected {
+            let vc = MPPlayingViewController()
+            // 循序不能倒过来
+            vc.currentSong = self.currentSong
+            vc.model = self.currentSongList
+            let nav = UINavigationController(rootViewController: vc)
+            HFAppEngine.shared.currentViewController()?.present(nav, animated: true, completion: nil)
+        }
     }
     
     override func prepareForReuse() {
@@ -53,9 +67,6 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
                 // 设置为收藏状态
                 xib_collect.isSelected = true
                 SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲收藏成功", comment: ""))
-                if let b = favoriteBlock {
-                    b(self.currentSong!)
-                }
             }else {
                 // 取消收藏
                 SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收藏", comment: ""))
@@ -69,7 +80,8 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
         
     }
     
-    func updateCell(model: MPSongModel) {
+    func updateCell(model: MPSongModel, models: [MPSongModel]) {
+        currentSongList = models
         currentSong = model
         //设置图片
         if let img = model.data_artworkBigUrl, img != "" {
@@ -86,9 +98,17 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
         }
         
         // 是否选中
-        if model.data_collectStatus == 1 {
-            xib_collect.isSelected = true
+//        if model.data_collectStatus == 1 {
+//            xib_collect.isSelected = true
+//        }
+        
+        // 异步更新当前收藏状态
+        DispatchQueue.main.async {
+            if MPModelTools.checkSongExsistInPlayingList(song: model, tableName: MPMyFavoriteViewController.classCode) {
+                self.xib_collect.isSelected = true
+            }
         }
+        
     }
     
 }

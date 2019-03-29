@@ -154,26 +154,41 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
     }
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        QYTools.shared.Log(log: #function)
         scrollPlayView?.isHidden = false
     }
     
+    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        QYTools.shared.Log(log: #function)
+    }
+    
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        QYTools.shared.Log(log: #function)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
             self.scrollPlayView?.isHidden = true
         }
     }
     
+    
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        QYTools.shared.Log(log: #function)
+    }
+    
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        QYTools.shared.Log(log: #function)
+    }
+    
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        QYTools.shared.Log(log: #function)
+    }
+    
+    public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        QYTools.shared.Log(log: #function)
         scrollPlayView?.isHidden = false
     }
     
-//    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
-//            self.scrollPlayView?.isHidden = true
-//        }
-//    }
-//
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        QYTools.shared.Log(log: #function)
         // 获取当前的View的centerY所在的Cell, 滚动tableView到当前的Cell
         var centerCell = UITableViewCell()
         if visibleCells.count/2 >= 0 {  // 偶数
@@ -192,8 +207,6 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
             self.scrollPlayView?.isHidden = true
         }
     }
-    
-    
     
     // MARK:
     

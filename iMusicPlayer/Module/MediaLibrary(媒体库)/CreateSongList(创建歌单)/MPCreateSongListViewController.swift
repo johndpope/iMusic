@@ -30,7 +30,7 @@ class MPCreateSongListViewController: BaseTableViewController {
     
     override func refreshData() {
         super.refreshData()
-        NSArray.bg_delete(MPCreateSongListViewController.classCode, row: 1)
+//        NSArray.bg_delete(MPCreateSongListViewController.classCode, row: 1)
         MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
             if let m = model {
                 self.model = m
