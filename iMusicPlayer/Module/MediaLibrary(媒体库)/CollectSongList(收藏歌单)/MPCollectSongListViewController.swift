@@ -79,4 +79,12 @@ extension MPCollectSongListViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = MPSongListViewController()
+        vc.headerSongModel = model[indexPath.row]
+        vc.type = 1
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
