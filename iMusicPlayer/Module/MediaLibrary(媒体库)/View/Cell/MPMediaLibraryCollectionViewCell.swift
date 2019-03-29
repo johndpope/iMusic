@@ -16,6 +16,8 @@ class MPMediaLibraryCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var tempModel = [MPSongModel]()
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func awakeFromNib() {
@@ -42,7 +44,7 @@ extension MPMediaLibraryCollectionViewCell: UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.identifier) as! MPSongTableViewCell
         cell.selectionStyle = .none
-        cell.updateCell(model: model[indexPath.row], models: self.model)
+        cell.updateCell(model: model[indexPath.row], models: self.tempModel)
         return cell
     }
     

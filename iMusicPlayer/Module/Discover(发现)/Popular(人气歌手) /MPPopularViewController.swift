@@ -22,7 +22,7 @@ class MPPopularViewController: BaseTableViewController {
         }
     }
     
-    var model = [HotSingerPlaylists]() {
+    var model = [GeneralPlaylists]() {
         didSet {
             tableView.reloadData()
         }
@@ -39,7 +39,7 @@ class MPPopularViewController: BaseTableViewController {
         
         if let hv = self.headerView {
             let tableName = songName + "\(hv.nationality)" + "\(hv.type)"
-            MPModelTools.getPopularModel(songerName: songName, nationality: hv.nationality, type: hv.type, tableName: tableName) { (models) in
+            MPModelTools.getPopularModel(songerName: songName, nationality: hv.nationality, type: hv.type, tableName: "") { (models) in
                 if let m = models {
                     self.model = m
                     self.tableView.mj_header.endRefreshing()
@@ -104,7 +104,8 @@ extension MPPopularViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = MPSongListViewController()
-        vc.headerSongerModel = model[indexPath.row]
+        vc.headerSongModel = model[indexPath.row]
+        vc.type = 2
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

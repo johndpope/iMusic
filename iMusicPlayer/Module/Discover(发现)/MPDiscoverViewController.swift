@@ -218,6 +218,7 @@ extension MPDiscoverViewController {
             if let models = model?.data_generalPlaylists {
                 let vc = MPSongListViewController()
                 vc.headerSongModel = models[indexPath.row]
+                vc.type = 1
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }

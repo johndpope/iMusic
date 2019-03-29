@@ -52,6 +52,7 @@ extension MPMediaLibraryOutTableViewCell: UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.identifier, for: indexPath) as! MPMediaLibraryCollectionViewCell
         cell.model = offestModel[indexPath.row]
+        cell.tempModel = self.model
         return cell
     }
     

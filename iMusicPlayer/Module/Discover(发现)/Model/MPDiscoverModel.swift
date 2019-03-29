@@ -208,7 +208,7 @@ class MPDiscoverModel: BaseModel {
     static let sectionTitleDatas = [NSLocalizedString("每日推荐", comment: ""), NSLocalizedString("最近播放", comment: ""), "", NSLocalizedString("精选歌单", comment: "")]
     
     var data_latest: Latest?
-    var data_hotSingerPlaylists: [HotSingerPlaylists]?
+    var data_hotSingerPlaylists: [GeneralPlaylists]?
     var data_charts: Charts?
     var data_recommendations: [MPSongModel]?
     var data_generalPlaylists: [GeneralPlaylists]?

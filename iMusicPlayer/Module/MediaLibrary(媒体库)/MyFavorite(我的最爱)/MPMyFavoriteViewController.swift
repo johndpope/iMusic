@@ -49,6 +49,8 @@ class MPMyFavoriteViewController: BaseTableViewController {
                 if let m = model {
                     self.model = m
                     self.tableView.mj_header.endRefreshing()
+                    
+                    self.headerView?.count = model?.count ?? 0
                 }
             }
             break

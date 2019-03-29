@@ -349,7 +349,7 @@ class MPDiscoverDataCent: HFDataCent {
     
     //    /playlists/getMusicSinger?m=0&nationality=0&token=z%23master%40Music1.4.8&type=0
     // MARK: - 人气歌手
-    var data_Popular: [HotSingerPlaylists]?
+    var data_Popular: [GeneralPlaylists]?
     
     /// 人气歌手
     ///
@@ -359,7 +359,7 @@ class MPDiscoverDataCent: HFDataCent {
     ///   - page: 第几页
     ///   - row: 每页条数
     ///   - complete: 回调
-    func requestPopular(nationality: Int = 0, type: Int = 0, name: String = "", page: Int = 0, row: Int = 20,complete:@escaping ((_ isSucceed: Bool, _ data: [HotSingerPlaylists]?, _ message: String) -> Void)) {
+    func requestPopular(nationality: Int = 0, type: Int = 0, name: String = "", page: Int = 0, row: Int = 20,complete:@escaping ((_ isSucceed: Bool, _ data: [GeneralPlaylists]?, _ message: String) -> Void)) {
         
         let param: [String:Any] = ["page": page, "row": row, "type":  type, "nationality": nationality, "name": name]
         
@@ -385,7 +385,7 @@ class MPDiscoverDataCent: HFDataCent {
             guard let dataArr = resp?["data"].arrayObject else {return}
             //            guard let dataDic = resp?["data"].dictionaryObject else {return}
             
-            let model: [HotSingerPlaylists] = Mapper<HotSingerPlaylists>().mapArray(JSONObject: dataArr)!
+            let model: [GeneralPlaylists] = Mapper<GeneralPlaylists>().mapArray(JSONObject: dataArr)!
             
             // 请求成功时
             complete(true,model,msg)

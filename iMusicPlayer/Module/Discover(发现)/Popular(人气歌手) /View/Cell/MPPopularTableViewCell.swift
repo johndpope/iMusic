@@ -24,7 +24,7 @@ class MPPopularTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func updateCell(model: HotSingerPlaylists) {
+    func updateCell(model: GeneralPlaylists) {
         //设置图片
         if let img = model.data_img, img != "" {
             let imgUrl = API.baseImageURL + img

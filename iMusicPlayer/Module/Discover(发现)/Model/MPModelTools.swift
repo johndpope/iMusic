@@ -421,8 +421,8 @@ class MPModelTools: NSObject {
     ///   - type: 类型：男、女、组合
     ///   - tableName: 缓存表名
     ///   - finished: 回调
-    class func getPopularModel(songerName name: String = "", nationality: Int = 0, type: Int = 0, tableName: String = "PopularModel", finished: ((_ models: [HotSingerPlaylists]?)->Void)? = nil) {
-        if let arr = NSArray.bg_array(withName: tableName) as? [HotSingerPlaylists] {
+    class func getPopularModel(songerName name: String = "", nationality: Int = 0, type: Int = 0, tableName: String = "PopularModel", finished: ((_ models: [GeneralPlaylists]?)->Void)? = nil) {
+        if let arr = NSArray.bg_array(withName: tableName) as? [GeneralPlaylists] {
             QYTools.shared.Log(log: "本地数据库获取数据")
             if let f = finished {
                 f(arr)

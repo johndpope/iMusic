@@ -15,20 +15,17 @@ private struct Constant {
 
 class MPSongListViewController: BaseTableViewController {
     
-    var headerSongerModel: HotSingerPlaylists? {
-        didSet {
-            singerId = headerSongerModel?.data_originalId ?? ""
-        }
-    }
-    
     var headerSongModel: GeneralPlaylists? {
         didSet {
             playlistId = headerSongModel?.data_id ?? 0
+            singerId = headerSongModel?.data_originalId ?? ""
         }
     }
     
     var playlistId: Int = 0
-    var singerId: String = ""
+    var singerId  = ""
+    
+    var type: Int = 1 // 1: 歌单 2：歌手
 
     var model = [MPSongModel]() {
         didSet {
@@ -45,21 +42,22 @@ class MPSongListViewController: BaseTableViewController {
     override func refreshData() {
         super.refreshData()
         if self.headerSongModel != nil {
-            MPModelTools.getSongListByIDModel(playlistId: playlistId, tableName: "") { (model) in
-                if let m = model {
-                    self.model = m
-                    self.tableView.mj_header.endRefreshing()
+            if type == 1 {
+                MPModelTools.getSongListByIDModel(playlistId: playlistId, tableName: "") { (model) in
+                    if let m = model {
+                        self.model = m
+                        self.tableView.mj_header.endRefreshing()
+                    }
                 }
-            }
-        }else {
-            MPModelTools.getSongerListByIDModel(singerId: singerId, tableName: "") { (model) in
-                if let m = model {
-                    self.model = m
-                    self.tableView.mj_header.endRefreshing()
+            }else if type == 2 {
+                MPModelTools.getSongerListByIDModel(singerId: singerId, tableName: "") { (model) in
+                    if let m = model {
+                        self.model = m
+                        self.tableView.mj_header.endRefreshing()
+                    }
                 }
             }
         }
-        
     }
     
     override func setupStyle() {
@@ -94,8 +92,6 @@ override func clickRight(sender: UIButton) {
         let hv = MPSongListHeaderView.md_viewFromXIB() as! MPSongListHeaderView
         if let hm = self.headerSongModel {
             hv.updateView(model: hm)
-        }else {
-            hv.updateView(model: self.headerSongerModel!)
         }
         let isExsist = MPModelTools.checkCollectListExsist(model: self.headerSongModel!, tableName: MPCollectSongListViewController.classCode)
         if isExsist {
