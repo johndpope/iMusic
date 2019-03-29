@@ -15,6 +15,12 @@ private struct Constant {
 
 class MPPlayingView: BaseView {
     
+    var model = [MPSongModel]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     // MARK: - TableView
     private lazy var collectionView: UICollectionView  = {
         let layout = UICollectionViewFlowLayout()
@@ -54,11 +60,12 @@ class MPPlayingView: BaseView {
 extension MPPlayingView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.identifier, for: indexPath) as! MPPlayingViewCollectionViewCell
+        cell.updateCell(model: model[indexPath.row])
         return cell
     }
     

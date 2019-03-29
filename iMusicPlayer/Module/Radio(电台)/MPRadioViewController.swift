@@ -50,6 +50,7 @@ class MPRadioViewController: BaseViewController {
         // 显示当前的播放View
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingView, let window = UIApplication.shared.delegate?.window! {
             pv.isHidden = false
+            pv.model = model
             window.bringSubviewToFront(pv)
         }
         
@@ -101,7 +102,7 @@ class MPRadioViewController: BaseViewController {
         cardVc.sourceTransitionInterpolator = CardInterpolator.cubicOut
         cardVc.destinationTransitionInterpolator = CardInterpolator.cubicOut
         
-        // 添加自控制器
+        // 添加子控制器
         addChild(cardVc)
         cardVc.view.frame = self.view.frame
         view.addSubview(cardVc.view)

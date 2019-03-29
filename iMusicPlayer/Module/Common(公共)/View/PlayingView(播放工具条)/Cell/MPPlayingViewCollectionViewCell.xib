@@ -22,12 +22,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-8V-K5P" customClass="MPPlayingView" customModule="iMusicPlayer" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="358" height="48"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Zzi-pt-8a4">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9F-ZW-5fp">
                                 <rect key="frame" x="0.0" y="0.0" width="90" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Zzi-pt-8a4" secondAttribute="height" multiplier="90:48" id="MIc-ua-1QN"/>
+                                    <constraint firstAttribute="height" constant="48" id="6Nh-cI-bFK"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mama ft. William Singe " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNd-L0-fmg">
                                 <rect key="frame" x="98" y="5.5" width="151" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -35,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jonas Blue·03:23/03:56" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVb-Nc-Ace">
-                                <rect key="frame" x="98" y="26.5" width="151" height="21.5"/>
+                                <rect key="frame" x="98" y="26.5" width="151" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -69,25 +70,26 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1Rv-kc-RZQ" firstAttribute="leading" secondItem="PG4-WC-O0y" secondAttribute="trailing" id="0WV-YV-KQA"/>
-                            <constraint firstItem="NNd-L0-fmg" firstAttribute="leading" secondItem="Zzi-pt-8a4" secondAttribute="trailing" constant="8" id="5L5-kI-BkE"/>
-                            <constraint firstItem="NVb-Nc-Ace" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Zzi-pt-8a4" secondAttribute="bottom" id="75j-rV-ZP6"/>
+                            <constraint firstItem="Ofx-yA-aLT" firstAttribute="top" secondItem="z9F-ZW-5fp" secondAttribute="top" id="7Aj-9B-Occ"/>
                             <constraint firstItem="BMw-RL-Xus" firstAttribute="width" secondItem="1Rv-kc-RZQ" secondAttribute="width" id="9IZ-Lt-Wj7"/>
+                            <constraint firstItem="z9F-ZW-5fp" firstAttribute="bottom" secondItem="Ofx-yA-aLT" secondAttribute="bottom" id="9gE-Ni-qit"/>
                             <constraint firstItem="Ofx-yA-aLT" firstAttribute="bottom" secondItem="PG4-WC-O0y" secondAttribute="bottom" id="GSk-Hq-hF8"/>
                             <constraint firstItem="BMw-RL-Xus" firstAttribute="leading" secondItem="1Rv-kc-RZQ" secondAttribute="trailing" constant="12" id="Ivz-sG-agW"/>
                             <constraint firstItem="NVb-Nc-Ace" firstAttribute="trailing" secondItem="NNd-L0-fmg" secondAttribute="trailing" id="JGj-jO-qkm"/>
-                            <constraint firstItem="Zzi-pt-8a4" firstAttribute="top" secondItem="j3y-8V-K5P" secondAttribute="top" id="M1u-ic-iwh"/>
+                            <constraint firstItem="z9F-ZW-5fp" firstAttribute="width" secondItem="j3y-8V-K5P" secondAttribute="height" multiplier="90:48" id="LN6-DB-hbZ"/>
                             <constraint firstItem="Ofx-yA-aLT" firstAttribute="trailing" secondItem="BMw-RL-Xus" secondAttribute="trailing" constant="12" id="VVq-EW-2hz"/>
                             <constraint firstItem="NVb-Nc-Ace" firstAttribute="top" secondItem="NNd-L0-fmg" secondAttribute="bottom" constant="4" id="W7u-ep-m2T"/>
                             <constraint firstItem="BMw-RL-Xus" firstAttribute="centerY" secondItem="j3y-8V-K5P" secondAttribute="centerY" id="XYm-B3-NV6"/>
                             <constraint firstItem="1Rv-kc-RZQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NNd-L0-fmg" secondAttribute="trailing" constant="8" id="ZY7-23-K0x"/>
-                            <constraint firstItem="Zzi-pt-8a4" firstAttribute="leading" secondItem="j3y-8V-K5P" secondAttribute="leading" id="Zqx-cF-CuK"/>
                             <constraint firstItem="1Rv-kc-RZQ" firstAttribute="centerY" secondItem="BMw-RL-Xus" secondAttribute="centerY" id="b3t-CM-fwl"/>
-                            <constraint firstAttribute="bottom" secondItem="Zzi-pt-8a4" secondAttribute="bottom" id="gki-WV-Czt"/>
-                            <constraint firstItem="NNd-L0-fmg" firstAttribute="centerY" secondItem="Zzi-pt-8a4" secondAttribute="centerY" constant="-10" id="pNb-OY-aMK"/>
+                            <constraint firstItem="z9F-ZW-5fp" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NVb-Nc-Ace" secondAttribute="bottom" id="gjt-pT-nh8"/>
+                            <constraint firstItem="NNd-L0-fmg" firstAttribute="centerY" secondItem="z9F-ZW-5fp" secondAttribute="centerY" constant="-10" id="pCE-in-J6w"/>
                             <constraint firstItem="BMw-RL-Xus" firstAttribute="height" secondItem="1Rv-kc-RZQ" secondAttribute="height" id="v7r-an-Ls2"/>
                             <constraint firstItem="NVb-Nc-Ace" firstAttribute="leading" secondItem="NNd-L0-fmg" secondAttribute="leading" id="vKC-UF-9gL"/>
                             <constraint firstItem="PG4-WC-O0y" firstAttribute="leading" secondItem="Ofx-yA-aLT" secondAttribute="leading" id="vx8-vv-eth"/>
                             <constraint firstItem="PG4-WC-O0y" firstAttribute="top" secondItem="Ofx-yA-aLT" secondAttribute="top" id="wKw-bx-hBO"/>
+                            <constraint firstItem="NNd-L0-fmg" firstAttribute="leading" secondItem="z9F-ZW-5fp" secondAttribute="trailing" constant="8" id="yAR-qT-5dB"/>
+                            <constraint firstItem="z9F-ZW-5fp" firstAttribute="leading" secondItem="Ofx-yA-aLT" secondAttribute="leading" id="z7q-2W-f8Z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ofx-yA-aLT"/>
                     </view>
@@ -101,6 +103,12 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="358" height="158"/>
+            <connections>
+                <outlet property="playView" destination="z9F-ZW-5fp" id="sKf-AK-f3f"/>
+                <outlet property="xib_desc" destination="NVb-Nc-Ace" id="MmX-EB-9PM"/>
+                <outlet property="xib_play" destination="BMw-RL-Xus" id="n76-tB-Y5d"/>
+                <outlet property="xib_title" destination="NNd-L0-fmg" id="bPx-OM-IEz"/>
+            </connections>
             <point key="canvasLocation" x="216" y="134"/>
         </collectionViewCell>
     </objects>
@@ -109,6 +117,5 @@
         <image name="icon_lock_screen(1)" width="64" height="64"/>
         <image name="icon_play_3" width="18" height="22.5"/>
         <image name="icon_stop_3" width="16" height="20.5"/>
-        <image name="placeholder" width="320" height="150"/>
     </resources>
 </document>
