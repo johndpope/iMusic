@@ -142,10 +142,10 @@ class MPPlayingViewController: BaseViewController {
         case 10003: // 暂停/播放
             if playView.playerState() == YTPlayerState.playing {
                 playView.pauseVideo()
-                sender.isSelected = false
+//                sender.isSelected = false
             }else {
                 playView.playVideo()
-                sender.isSelected = true
+//                sender.isSelected = true
                 
             }
             break

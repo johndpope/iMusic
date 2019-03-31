@@ -14,10 +14,14 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell {
     var ybPlayView: YTPlayerView?
     var imageView: UIImageView?
     
+    var currentSong: MPSongModel?
+    var currentSongList = [MPSongModel]()
+    
     @IBOutlet weak var playView: UIView! {
         didSet {
             if SourceType == 0 {    // MV
                 let pv = YTPlayerView()
+                pv.backgroundColor = UIColor.red
                 ybPlayView = pv
                 pv.delegate = self
                 playView.addSubview(pv)
@@ -53,6 +57,11 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell {
             appDelegate.playingView?.isHidden = true
             
             let vc = MPPlayingViewController()
+            if let s = self.currentSong  {
+                // 循序不能倒过来
+                vc.currentSong = s
+                vc.model = self.currentSongList
+            }
             let nav = UINavigationController(rootViewController: vc)
             HFAppEngine.shared.currentViewController()?.present(nav, animated: true, completion: nil)
             break
@@ -60,18 +69,34 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell {
             sender.isSelected = true
             break
         case 10003:
-            sender.isSelected = !sender.isSelected
+//            sender.isSelected = true
+            if ybPlayView?.playerState() != YTPlayerState.playing {
+                ybPlayView?.playVideo()
+            }else {
+                ybPlayView?.pauseVideo()
+            }
             break
         default:
             break
         }
     }
     
-    func updateCell(model: MPSongModel) {
+    func updateCell(model: MPSongModel, models: [MPSongModel]) {
+        
+        self.currentSong = model
+        self.currentSongList = models
         
         if SourceType == 0 {
             
-            ybPlayView?.load(withVideoId: model.data_originalId!, playerVars: [ "showinfo": "0", "modestbranding" : "1"])
+            ybPlayView?.load(withVideoId: model.data_originalId!, playerVars: [
+                "playsinline" : 1,  // 是否全屏
+                "showinfo" : 0, // 是否显示标题和上传者信息
+                "modestbranding" : 1,   //是否显示鼠标
+                "controls" : 0,
+                "iv_load_policy": 3,
+                "autoplay": 1,
+                "autohide" : 1,
+                ])
             
             xib_title.text = model.data_title
             xib_desc.text = model.data_channelTitle

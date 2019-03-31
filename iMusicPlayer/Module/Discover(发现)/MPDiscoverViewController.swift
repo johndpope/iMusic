@@ -25,6 +25,12 @@ class MPDiscoverViewController: BaseTableViewController {
         }
     }
     
+    var currentAlbum = [GeneralPlaylists]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,6 +56,15 @@ class MPDiscoverViewController: BaseTableViewController {
     override func refreshData() {
         super.refreshData()
         // 刷新数据
+//        NSArray.bg_drop("RecentlyAlbum")
+        // 获取最近播放数据
+        MPModelTools.getCollectListModel(tableName: "RecentlyAlbum") { (models) in
+            if let m = models {
+                // 倒序显示最新的在前面
+                self.currentAlbum = m.reversed()
+            }
+        }
+        
 //        MPDiscoverModel.bg_drop(MPDiscoverModel.classCode)
         MPModelTools.getDiscoverModel { (model) in
             self.model = model
@@ -110,8 +125,11 @@ extension MPDiscoverViewController {
             break
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.recentlyIdentifier)!
+            (cell as! MPRecentlyTableViewCell).model = self.currentAlbum
             (cell as! MPRecentlyTableViewCell).itemClickedBlock = {[weak self] (index) in
-                let vc = MPAlbumListViewController()
+                let vc = MPSongListViewController()
+                vc.headerSongModel = self?.currentAlbum[index]
+                vc.type = 1
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
             break
@@ -139,7 +157,7 @@ extension MPDiscoverViewController {
             height = SCREEN_WIDTH * (260/375)
             break
         case 1:
-            height = SCREEN_WIDTH * (220/375)
+            height = self.currentAlbum.count == 0 ? 0 : SCREEN_WIDTH * (220/375)
             break
         case 2:
             height = SCREEN_WIDTH * (60/375)

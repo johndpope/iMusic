@@ -18,6 +18,12 @@ class MPRecentlyTableViewCell: UITableViewCell {
     
     var itemClickedBlock: ((_ index: Int)->Void)? = nil
     
+    var model = [GeneralPlaylists]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,11 +39,12 @@ class MPRecentlyTableViewCell: UITableViewCell {
 
 extension MPRecentlyTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return model.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.identifier, for: indexPath) as! MPRecentlyCollectionViewCell
+        cell.updateCell(model: model[indexPath.row])
         return cell
     }
     

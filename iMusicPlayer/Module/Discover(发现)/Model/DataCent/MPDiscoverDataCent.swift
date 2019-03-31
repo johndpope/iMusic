@@ -12,6 +12,93 @@ import ObjectMapper
 
 class MPDiscoverDataCent: HFDataCent {
     
+//    /search/getAll?q=MM&size=20&token=z%23master%40Music1.4.8
+    // MARK: - 搜索
+    var data_SearchResult: MPSearchResultModel?
+    
+    /// 搜索
+    ///
+    /// - Parameters:
+    ///   - q: 搜索关键字
+    ///   - duration: 时长
+    ///   - filter: 过滤条件
+    ///   - order: 排序
+    ///   - size: 每页显示条数
+    ///   - y: 是否用 youtube 的 cached mp3 来补充，默认y=0
+    ///   - complete: 回调
+    func requestSearchResult(q: String = "", duration: String = "", filter: String = "", order: String = "", size: Int = 20, y: String = "0", complete:@escaping ((_ isSucceed: Bool, _ data: MPSearchResultModel?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["q": q,"duration": duration, "filter": filter, "order": order, "size": size, "y": y]
+        
+        HFNetworkManager.request(url: API.SearchResult, method: .get, parameters:param, description: "搜索") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            
+            //            guard let dataArr = resp?["data"].arrayObject else {return}
+            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            let model: MPSearchResultModel = Mapper<MPSearchResultModel>().map(JSONObject: dataDic)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
+//    /music/getSearchKeyword?token=z%23master%40Music1.4.8
+    // MARK: - 搜索关键词
+    var data_SearchKeyword: [MPSearchKeywordModel]?
+    /// 搜索关键词
+    ///
+    /// - Parameters:
+    ///   - complete: 回调
+    func requestSearchKeyword(complete:@escaping ((_ isSucceed: Bool, _ data: [MPSearchKeywordModel]?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = [:]
+        
+        HFNetworkManager.request(url: API.SearchKeyword, method: .get, parameters:param, description: "搜索关键词") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            
+            guard let dataArr = resp?["data"].arrayObject else {return}
+            //            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            let model: [MPSearchKeywordModel] = Mapper<MPSearchKeywordModel>().mapArray(JSONObject: dataArr)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
 //    /tracks/getRelated?id=EgmBmk7d8Yc&token=z%23master%40Music1.4.8
     // MARK: - 相关歌曲
     var data_RelatedSongs: [MPSongModel]?

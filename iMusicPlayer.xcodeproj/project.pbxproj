@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		701D2952618FCCD15AC04295 /* Pods_iMusicPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACD689BC83ED3CC9D0F2AD72 /* Pods_iMusicPlayer.framework */; };
 		B00B2C00DE3BDE040160543A /* Pods_iMusicPlayerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA33FAF4D6CCF9867C457A9 /* Pods_iMusicPlayerUITests.framework */; };
+		C5229643224FBCD600ADAD20 /* MPSearchKeywordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5229642224FBCD600ADAD20 /* MPSearchKeywordModel.swift */; };
+		C5229645224FC54100ADAD20 /* MPSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5229644224FC54100ADAD20 /* MPSearchResult.swift */; };
 		C52E2A152248DFC7000075E8 /* MPRankingTempModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A142248DFC7000075E8 /* MPRankingTempModel.swift */; };
 		C52E2A192248E619000075E8 /* MPSongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A182248E619000075E8 /* MPSongModel.swift */; };
 		C52E2A1D2249CD83000075E8 /* MPModelTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A1C2249CD83000075E8 /* MPModelTools.swift */; };
@@ -434,6 +436,8 @@
 		7DF82983FCE3DA4A6C1EBD27 /* Pods-iMusicPlayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.release.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.release.xcconfig"; sourceTree = "<group>"; };
 		ACD689BC83ED3CC9D0F2AD72 /* Pods_iMusicPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMusicPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D5A9BC683086CF1A7D230A /* Pods-iMusicPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerTests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerTests/Pods-iMusicPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C5229642224FBCD600ADAD20 /* MPSearchKeywordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchKeywordModel.swift; sourceTree = "<group>"; };
+		C5229644224FC54100ADAD20 /* MPSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchResult.swift; sourceTree = "<group>"; };
 		C52E2A142248DFC7000075E8 /* MPRankingTempModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRankingTempModel.swift; sourceTree = "<group>"; };
 		C52E2A182248E619000075E8 /* MPSongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSongModel.swift; sourceTree = "<group>"; };
 		C52E2A1C2249CD83000075E8 /* MPModelTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPModelTools.swift; sourceTree = "<group>"; };
@@ -1812,6 +1816,8 @@
 				C52E2A1C2249CD83000075E8 /* MPModelTools.swift */,
 				C52E2A222249DD21000075E8 /* MPPopularModel.swift */,
 				C52E2A24224A099F000075E8 /* MPStyleGenreModel.swift */,
+				C5229642224FBCD600ADAD20 /* MPSearchKeywordModel.swift */,
+				C5229644224FC54100ADAD20 /* MPSearchResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3262,6 +3268,7 @@
 				C57FC8AF2240DC2F00218DE7 /* AppDelegate.swift in Sources */,
 				C56033FF2242332900F6795F /* MPSRSongTableViewCell.swift in Sources */,
 				C57FC90F2240DC3000218DE7 /* HXAlbumlistView.m in Sources */,
+				C5229643224FBCD600ADAD20 /* MPSearchKeywordModel.swift in Sources */,
 				C57FC8302240DC2F00218DE7 /* MPRankingViewController.swift in Sources */,
 				C57FC8342240DC2F00218DE7 /* MPStyleGenreDetailTableViewCell.swift in Sources */,
 				C57FC81F2240DC2F00218DE7 /* MPRelatedSongsTableViewCell.swift in Sources */,
@@ -3446,6 +3453,7 @@
 				C57FC92A2240DC3000218DE7 /* CYConst.m in Sources */,
 				C57FC7D82240DC2F00218DE7 /* NSBundle+DAUtils.m in Sources */,
 				C57FC8FD2240DC3000218DE7 /* HXPhotoCustomNavigationBar.m in Sources */,
+				C5229645224FC54100ADAD20 /* MPSearchResult.swift in Sources */,
 				C57FC8F12240DC3000218DE7 /* HXPhotoConfiguration.m in Sources */,
 				C57FC8CB2240DC2F00218DE7 /* NSString+Predicate.m in Sources */,
 				C57FC90A2240DC3000218DE7 /* NSDate+HXExtension.m in Sources */,

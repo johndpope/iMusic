@@ -65,6 +65,10 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="50" height="90"/>
+            <connections>
+                <outlet property="xib_image" destination="fHf-Gh-Ghq" id="jEH-j6-Wce"/>
+                <outlet property="xib_title" destination="ime-ex-9yy" id="OGr-mp-npM"/>
+            </connections>
             <point key="canvasLocation" x="129.59999999999999" y="135.832083958021"/>
         </collectionViewCell>
     </objects>

@@ -25,7 +25,8 @@ class MPSongListViewController: BaseTableViewController {
     var playlistId: Int = 0
     var singerId  = ""
     
-    var type: Int = 1 // 1: 歌单 2：歌手
+    /// 1: 歌单 2：歌手
+    var type: Int = 1
 
     var model = [MPSongModel]() {
         didSet {
@@ -124,7 +125,7 @@ extension MPSongListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
-        cell.updateCell(model: model[indexPath.row], models: self.model)
+        cell.updateCell(model: model[indexPath.row], models: self.model, album: self.headerSongModel)
         return cell
     }
     

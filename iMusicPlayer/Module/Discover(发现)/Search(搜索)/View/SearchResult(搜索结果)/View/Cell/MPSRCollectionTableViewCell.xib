@@ -62,12 +62,13 @@
             <viewLayoutGuide key="safeArea" id="zxD-2D-Wzk"/>
             <connections>
                 <outlet property="xib_image" destination="iQT-UJ-P5s" id="9K9-LU-Kpv"/>
+                <outlet property="xib_title" destination="lFN-V7-oyg" id="tIY-6A-kgm"/>
             </connections>
             <point key="canvasLocation" x="40" y="46.776611694152926"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_popula" width="12.5" height="10.5"/>
+        <image name="icon_popula" width="12" height="10"/>
         <image name="img_ranking_oricon" width="200" height="200"/>
     </resources>
 </document>

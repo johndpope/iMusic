@@ -65,7 +65,7 @@ extension MPPlayingView: UICollectionViewDataSource, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.identifier, for: indexPath) as! MPPlayingViewCollectionViewCell
-        cell.updateCell(model: model[indexPath.row])
+        cell.updateCell(model: model[indexPath.row], models: self.model)
         return cell
     }
     

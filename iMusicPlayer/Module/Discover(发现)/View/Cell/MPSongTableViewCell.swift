@@ -34,6 +34,8 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     
     var currentSongList = [MPSongModel]()
     
+    var currentAlbum: GeneralPlaylists?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -46,6 +48,21 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
             // 循序不能倒过来
             vc.currentSong = self.currentSong
             vc.model = self.currentSongList
+            
+            // 把当前的专辑添加到最近播放
+            if let a = currentAlbum {
+                if !MPModelTools.checkCollectListExsist(model: a, tableName: "RecentlyAlbum") {
+                    MPModelTools.saveCollectListModel(model: a, tableName: "RecentlyAlbum")
+                }else {
+                    // 删除原来的并将当前的插入到第一位
+                    let sql = String(format: "where %@=%@",bg_sqlKey("BG_data_title"),bg_sqlValue(a.data_title))
+                    if NSArray.bg_delete("RecentlyAlbum", where: sql) {
+                        // 添加到最后一项：获取的时候倒序即可
+                        NSArray.bg_addObject(withName: "RecentlyAlbum", object: a)
+                    }
+                }
+            }
+            
             let nav = UINavigationController(rootViewController: vc)
             HFAppEngine.shared.currentViewController()?.present(nav, animated: true, completion: nil)
         }
@@ -80,9 +97,10 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
         
     }
     
-    func updateCell(model: MPSongModel, models: [MPSongModel]) {
+    func updateCell(model: MPSongModel, models: [MPSongModel], album: GeneralPlaylists? = nil) {
         currentSongList = models
         currentSong = model
+        currentAlbum = album
         //设置图片
         if let img = model.data_artworkBigUrl, img != "" {
             let imgUrl = API.baseImageURL + img

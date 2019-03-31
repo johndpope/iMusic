@@ -83,7 +83,7 @@ extension MPEditSongListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
-        cell.updateCell(model: model[indexPath.row], models: self.model)
+        cell.updateCell(model: model[indexPath.row], models: self.model, album: self.songListModel)
         return cell
     }
     

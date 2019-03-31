@@ -21,6 +21,12 @@ private struct Constant {
 
 class MPSearchResultView: BaseView {
     
+    var model: MPSearchResultModel? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     var currentIndex: Int = 0 {
         didSet {
             tableView.reloadData()
@@ -49,10 +55,10 @@ class MPSearchResultView: BaseView {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: Constant.songIdentifier, bundle: nil), forCellReuseIdentifier: Constant.songIdentifier)
-        tableView.register(UINib(nibName: Constant.mvIdentifier, bundle: nil), forCellReuseIdentifier: Constant.mvIdentifier)
+        tableView.register(UINib(nibName: "MPSongTableViewCell", bundle: nil), forCellReuseIdentifier: Constant.songIdentifier)
+        tableView.register(UINib(nibName: "MPSongTableViewCell", bundle: nil), forCellReuseIdentifier: Constant.mvIdentifier)
         tableView.register(UINib(nibName: Constant.collectionIdentifier, bundle: nil), forCellReuseIdentifier: Constant.collectionIdentifier)
-        tableView.register(UINib(nibName: Constant.songListIdentifier, bundle: nil), forCellReuseIdentifier: Constant.songListIdentifier)
+        tableView.register(UINib(nibName: "MPDiscoverTableViewCell", bundle: nil), forCellReuseIdentifier: Constant.songListIdentifier)
         
         tableView.tableFooterView = UIView()
         
@@ -81,9 +87,19 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var num = 10
+        var num = 0
         if currentIndex == 1, section == 0 {
-            num = 1
+            if let m = model?.data_collection, m.count > 0 {
+                num = 1
+            }
+        }else {
+            if currentIndex == 0 {
+                num = model?.data_songs?.count ?? 0
+            }else if currentIndex == 1 {
+                num = model?.data_videos?.count ?? 0
+            }else if currentIndex == 2 {
+                num = model?.data_playlists?.count ?? 0
+            }
         }
         return num
     }
@@ -93,17 +109,33 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
         
         switch currentIndex {
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: Constant.songIdentifier) as! MPSRSongTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: Constant.songIdentifier) as! MPSongTableViewCell
+            if let models = model?.data_songs {
+                (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models)
+            }
             break
         case 1:
             if indexPath.section == 0 {
                 cell = tableView.dequeueReusableCell(withIdentifier: Constant.collectionIdentifier) as! MPSRCollectionTableViewCell
+                if let models = model?.data_collection {
+                    (cell as! MPSRCollectionTableViewCell).updateCell(model: models[indexPath.row])
+                }
             }else {
-                cell = tableView.dequeueReusableCell(withIdentifier: Constant.mvIdentifier) as! MPSRMVTableViewCell
+                cell = tableView.dequeueReusableCell(withIdentifier: Constant.mvIdentifier) as! MPSongTableViewCell
+                if let models = model?.data_videos {
+                    if let amodels = model?.data_collection, amodels.count > 0 {
+                        (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, album: amodels[0])
+                    }else {
+                        (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models)
+                    }
+                }
             }
             break
         case 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPSRSongListTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPDiscoverTableViewCell
+            if let models = model?.data_playlists {
+                (cell as! MPDiscoverTableViewCell).updateCell(model: models[indexPath.row])
+            }
             break
         default:
             break

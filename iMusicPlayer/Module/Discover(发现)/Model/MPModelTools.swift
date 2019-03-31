@@ -226,6 +226,66 @@ class MPModelTools: NSObject {
         return isExsist
     }
     
+    /// 获取搜索结果模块数据
+    ///
+    /// - Parameter finished: 数据获取完成回调
+    class func getSearchResult(q: String = "", duration: String = "", filter: String = "", order: String = "", size: Int = 20, y: String = "0", tableName: String = MPSearchResultModel.classCode, finished: ((_ models: MPSearchResultModel?)->Void)? = nil) {
+        if let arr: [MPSearchResultModel]  = MPSearchResultModel.bg_findAll(tableName) as? [MPSearchResultModel], let model = arr.first {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+//            printSQLiteData(arr: arr)
+            if let f = finished {
+                f(model)
+            }
+        }else {
+            DiscoverCent?.requestSearchResult(q: q, duration: duration, filter: filter, order: order, size: size, y: y, complete: { (isSucceed, model, msg) in
+                switch isSucceed {
+                case true:
+                    QYTools.shared.Log(log: "在线获取数据")
+                    if let f = finished {
+                        // 缓存数据库
+                        model!.bg_tableName = tableName
+                        model!.bg_save()
+                        f(model)
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    break
+                }
+            })
+        }
+    }
+    
+    /// 搜索关键词
+    ///
+    /// - Parameters:
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func getSearchKeywordModel(tableName: String = MPSearchKeywordModel.classCode, finished: ((_ models: [MPSearchKeywordModel]?)->Void)? = nil) {
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPSearchKeywordModel] {
+            QYTools.shared.Log(log: "本地数据库获取数据")
+            if let f = finished {
+                f(arr)
+            }
+        }else {
+            DiscoverCent?.requestSearchKeyword(complete: { (isSucceed, model, msg) in
+                switch isSucceed {
+                case true:
+                    QYTools.shared.Log(log: "在线获取数据")
+                    if let f = finished, model!.count > 0 {
+                        // 缓存
+                        (model! as NSArray).bg_save(withName: tableName)
+                        f(model)
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    break
+                }
+            })
+        }
+    }
+    
     /// 相关歌曲
     ///
     /// - Parameters:

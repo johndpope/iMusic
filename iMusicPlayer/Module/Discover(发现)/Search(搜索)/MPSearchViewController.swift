@@ -20,7 +20,22 @@ class MPSearchViewController: BaseTableViewController {
     var searchingView: MPSearchingView?
     var searchResultView: MPSearchResultView?
     var searchView: MPSearchNavView?
+    
+    var headerView: MPSearchHeaderView?
 
+    var keywordModel = [MPSearchKeywordModel]() {
+        didSet {
+            if let hv = self.headerView {
+                let temps = getSearchKeys(models: keywordModel)
+                hv.updateTags(tags: temps) { (tagv) in
+                    let contentH = tagv.intrinsicContentSize.height
+                    hv.height = contentH + 17*2 + 13*4
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         // view创建时间冲突：手动调用
         let nav = MPSearchNavView.md_viewFromXIB() as! MPSearchNavView
@@ -47,6 +62,14 @@ class MPSearchViewController: BaseTableViewController {
                     rv.snp.makeConstraints { (make) in
                         make.left.right.top.bottom.equalToSuperview()
                     }
+                    
+                    // 获取搜索结果数据
+                    MPModelTools.getSearchResult(q: title, tableName: title, finished: { (model) in
+                        if let m = model {
+                            rv.model = m
+                        }
+                    })
+                    
                 }
             }else {
                 self?.searchResultView?.isHidden = true
@@ -54,6 +77,19 @@ class MPSearchViewController: BaseTableViewController {
             
         }
         super.viewDidLoad()
+        
+        refreshData()
+    }
+    
+    override func refreshData() {
+        super.refreshData()
+        
+        MPModelTools.getSearchKeywordModel(tableName: MPSearchKeywordModel.classCode) { (models) in
+            if let m = models {
+                self.keywordModel = m
+                self.tableView.mj_header.endRefreshing()
+            }
+        }
     }
     
     override func setupStyle() {
@@ -71,6 +107,7 @@ class MPSearchViewController: BaseTableViewController {
         super.setupTableHeaderView()
         
         let hv = MPSearchHeaderView.md_viewFromXIB() as! MPSearchHeaderView
+        headerView = hv
         tableView.tableHeaderView = hv
         let temps = ["AKB48", "三浦大知", "星野源", "西野カナ", "中島愛", "米津玄师", "Winds" , "星野源", "杨超越", "星野源", "西野カナ", "中島愛", "米津玄师", "Winds" , "星野源", "杨超越"]
         hv.updateTags(tags: temps) { (tagv) in
@@ -131,5 +168,19 @@ extension MPSearchViewController: MPSearchNavViewDelegate {
             searchResultView?.isHidden = true
         }
        
+    }
+}
+extension MPSearchViewController {
+    
+    /// 获取搜索关键字
+    ///
+    /// - Parameter models: 模型数组
+    /// - Returns: 关键字数组
+    private func getSearchKeys(models: [MPSearchKeywordModel]) -> [String] {
+        var keys = [String]()
+        models.forEach { (model) in
+            keys.append(model.data_keyword ?? "")
+        }
+        return keys
     }
 }

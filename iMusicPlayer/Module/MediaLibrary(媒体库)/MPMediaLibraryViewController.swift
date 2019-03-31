@@ -81,7 +81,7 @@ extension MPMediaLibraryViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height: CGFloat = SCREEN_WIDTH * (172/375)
         if indexPath.section == 0 {
-            height = SCREEN_WIDTH * (172/375)
+            height = self.model.count == 0 ? 0 : SCREEN_WIDTH * (172/375)
         }else {
             height = SCREEN_WIDTH * (60/375)
         }

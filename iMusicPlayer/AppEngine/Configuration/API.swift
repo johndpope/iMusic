@@ -68,4 +68,10 @@ class API: NSObject {
     
     // MARK: - 相关歌曲
     static let RelatedSongs         = "/tracks/getRelated"
+    
+    // MARK: - 搜索关键词
+    static let SearchKeyword         = "/music/getSearchKeyword"
+    
+    // MARK: - 搜索
+    static let SearchResult         = "/search/getAll"
 }
