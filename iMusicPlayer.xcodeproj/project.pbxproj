@@ -21,6 +21,8 @@
 		C53616A22247812200CFBD63 /* MPDiscoverDataCent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53616A12247812200CFBD63 /* MPDiscoverDataCent.swift */; };
 		C53E97662251A3FF007F3920 /* MPRecentlyPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E97652251A3FF007F3920 /* MPRecentlyPlayModel.swift */; };
 		C53E976822520910007F3920 /* MPYoutubeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E976722520910007F3920 /* MPYoutubeModel.swift */; };
+		C53E976C22521FDD007F3920 /* MPPlayingBigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E976A22521FDD007F3920 /* MPPlayingBigView.swift */; };
+		C53E976D22521FDD007F3920 /* MPPlayingBigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53E976B22521FDD007F3920 /* MPPlayingBigView.xib */; };
 		C56033F12242255200F6795F /* MPSearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033EF2242255100F6795F /* MPSearchingView.swift */; };
 		C56033F62242258900F6795F /* MPSearchingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */; };
 		C56033F72242258900F6795F /* MPSearchingViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */; };
@@ -450,6 +452,8 @@
 		C53616A12247812200CFBD63 /* MPDiscoverDataCent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPDiscoverDataCent.swift; sourceTree = "<group>"; };
 		C53E97652251A3FF007F3920 /* MPRecentlyPlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecentlyPlayModel.swift; sourceTree = "<group>"; };
 		C53E976722520910007F3920 /* MPYoutubeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPYoutubeModel.swift; sourceTree = "<group>"; };
+		C53E976A22521FDD007F3920 /* MPPlayingBigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayingBigView.swift; sourceTree = "<group>"; };
+		C53E976B22521FDD007F3920 /* MPPlayingBigView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPPlayingBigView.xib; sourceTree = "<group>"; };
 		C56033EF2242255100F6795F /* MPSearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingView.swift; sourceTree = "<group>"; };
 		C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingViewTableViewCell.swift; sourceTree = "<group>"; };
 		C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchingViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -991,6 +995,15 @@
 				C53616A12247812200CFBD63 /* MPDiscoverDataCent.swift */,
 			);
 			path = DataCent;
+			sourceTree = "<group>";
+		};
+		C53E976922521F6C007F3920 /* PlayingView(播放详情展开) */ = {
+			isa = PBXGroup;
+			children = (
+				C53E976A22521FDD007F3920 /* MPPlayingBigView.swift */,
+				C53E976B22521FDD007F3920 /* MPPlayingBigView.xib */,
+			);
+			path = "PlayingView(播放详情展开)";
 			sourceTree = "<group>";
 		};
 		C56033EE2242252300F6795F /* SearchingView(搜索中关联) */ = {
@@ -1649,6 +1662,7 @@
 		C57FC6052240DC2E00218DE7 /* Playing(播放中) */ = {
 			isa = PBXGroup;
 			children = (
+				C53E976922521F6C007F3920 /* PlayingView(播放详情展开) */,
 				C56034222243A20600F6795F /* LrcView(歌词显示) */,
 				C560341B224387E100F6795F /* NavView */,
 				C57FC6062240DC2E00218DE7 /* MPPlayingViewController.swift */,
@@ -3047,6 +3061,7 @@
 				C560341F2243881E00F6795F /* MPPlayingNavView.xib in Resources */,
 				C560341A2243636200F6795F /* MPPlayingViewCollectionViewCell.xib in Resources */,
 				C57FC8AD2240DC2F00218DE7 /* Localizable.strings in Resources */,
+				C53E976D22521FDD007F3920 /* MPPlayingBigView.xib in Resources */,
 				C57FC81C2240DC2F00218DE7 /* MPSearchNavView.xib in Resources */,
 				C57FC80B2240DC2F00218DE7 /* MPAlbumListTableViewCell.xib in Resources */,
 				C57FC8A92240DC2F00218DE7 /* ErrorCodeStrs.plist in Resources */,
@@ -3410,6 +3425,7 @@
 				C57FC86F2240DC2F00218DE7 /* MPTimeOffHeaderView.swift in Sources */,
 				C57FC9162240DC3000218DE7 /* HXDatePhotoToolManager.m in Sources */,
 				C57FC8E82240DC2F00218DE7 /* CATransform3DUtils.swift in Sources */,
+				C53E976C22521FDD007F3920 /* MPPlayingBigView.swift in Sources */,
 				C57FC88E2240DC2F00218DE7 /* QYTools.swift in Sources */,
 				C57FC81D2240DC2F00218DE7 /* MPSearchViewController.swift in Sources */,
 				C57FC8352240DC2F00218DE7 /* MPStyleGenreDetailViewController.swift in Sources */,

@@ -52,6 +52,10 @@ class MPRadioViewController: BaseViewController {
             pv.isHidden = false
             pv.model = model
             window.bringSubviewToFront(pv)
+            
+            // 同时初始化一个播放详情页同时隐藏
+            
+            
         }
         
     }
