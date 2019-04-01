@@ -22,6 +22,7 @@ private struct Constant {
 
 class MPPlayingBigView: BaseView {
     
+    @IBOutlet weak var xib_topView: MPPlayingNavView!
     @IBOutlet weak var topViewH: NSLayoutConstraint!
     @IBOutlet weak var xib_nextSongName: UILabel!
     @IBOutlet weak var xib_title: UILabel!
@@ -86,42 +87,26 @@ class MPPlayingBigView: BaseView {
             MPModelTools.saveCurrentPlayList(currentList: model)
             playerVars["playlist"] = getSongIDs(songs: model)
             
+            updateView()
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        self.navigationItem.titleView?.backgroundColor = UIColor.red
-        let nv = MPPlayingNavView.md_viewFromXIB() as! MPPlayingNavView
-        nv.clickBlock = {(sender) in
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupStyle()
+        xib_topView.clickBlock = {(sender) in
             if let btn = sender as? UIButton {
                 if btn.tag == 10001 {
-                    self.dismiss(animated: true, completion: nil)
+                    
                 }else {
                     // 全屏播放
                     self.playerVars["playsinline"] = 0
                 }
             }
         }
-        self.navigationItem.titleView = nv
-        // 更新视图
-        updateView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        appDelegate.playingView?.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        appDelegate.playingView?.isHidden = false
-    }
-    
-    override func setupStyle() {
-        super.setupStyle()
+    func setupStyle() {
         if !IPHONEX {
             topViewH.constant -= 58*2
         }
