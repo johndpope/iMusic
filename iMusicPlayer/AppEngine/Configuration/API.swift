@@ -74,4 +74,10 @@ class API: NSObject {
     
     // MARK: - 搜索
     static let SearchResult         = "/search/getAll"
+    
+    // MARK: - 联想关键词
+    static let RelatedKeyword         = "http://suggestqueries.google.com/complete/search"
+    
+    // MARK: - Yotube搜索歌单
+    static let SearchSongList         = "https://www.googleapis.com/youtube/v3/playlistItems"
 }

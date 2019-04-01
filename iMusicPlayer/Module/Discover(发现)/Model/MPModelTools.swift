@@ -228,7 +228,15 @@ class MPModelTools: NSObject {
     
     /// 获取搜索结果模块数据
     ///
-    /// - Parameter finished: 数据获取完成回调
+    /// - Parameters:
+    ///   - q: 搜索关键词
+    ///   - duration: 时长：any, short, medium, long
+    ///   - filter: 选择：official，preview
+    ///   - order: relevance, date, videoCount
+    ///   - size: 查询数目，默认size=20条
+    ///   - y: 是否用 youtube 的 cached mp3 来补充，默认y=0
+    ///   - tableName: 缓存必须传表名：空代表不缓存
+    ///   - finished: 数据获取完成回调
     class func getSearchResult(q: String = "", duration: String = "", filter: String = "", order: String = "", size: Int = 20, y: String = "0", tableName: String = MPSearchResultModel.classCode, finished: ((_ models: MPSearchResultModel?)->Void)? = nil) {
         if let arr: [MPSearchResultModel]  = MPSearchResultModel.bg_findAll(tableName) as? [MPSearchResultModel], let model = arr.first {
             QYTools.shared.Log(log: "本地数据库获取数据")
@@ -254,6 +262,21 @@ class MPModelTools: NSObject {
                 }
             })
         }
+    }
+    
+    class func getRelatedKeyword(q: String = "", client: String = "firefox", finished: ((_ models: [String])->Void)? = nil) {
+        DiscoverCent?.requestRelatedKeyword(q: q, client: client, complete: { (isSucceed, model, msg) in
+            switch isSucceed {
+            case true:
+                if let f = finished {
+                    f(model!)
+                }
+                break
+            case false:
+                SVProgressHUD.showError(withStatus: msg)
+                break
+            }
+        })
     }
     
     /// 搜索关键词

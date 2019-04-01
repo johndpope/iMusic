@@ -22,6 +22,16 @@ class MPSearchViewController: BaseTableViewController {
     var searchView: MPSearchNavView?
     
     var headerView: MPSearchHeaderView?
+    
+    var duration: String = "any"  // 时长：any, short, medium, long
+    var filter: String = ""  // 选择："", official, preview, 可多选： "official, preview"
+    var order: String = "relevance"  // 排序：relevance, date, videoCount
+    
+    var keyword: String = "" {
+        didSet {
+            self.refreshData()
+        }
+    }
 
     var keywordModel = [MPSearchKeywordModel]() {
         didSet {
@@ -52,7 +62,16 @@ class MPSearchViewController: BaseTableViewController {
                 if self?.searchResultView != nil {
                     // 替换数据源
                     self?.searchResultView?.isHidden = false
+                    self?.searchingView?.isHidden = true
                     QYTools.shared.Log(log: "替换数据源~")
+                    
+//                    MPModelTools.getRelatedKeyword(q: title, finished: { (model) in
+//                        self?.searchingView?.model = model
+//                    })
+                    
+                    // 获取搜索结果数据
+                    self?.keyword = title
+                    
                 }else {
                     QYTools.shared.Log(log: "新增结果数据View~")
                     // 新增结果列表
@@ -63,12 +82,22 @@ class MPSearchViewController: BaseTableViewController {
                         make.left.right.top.bottom.equalToSuperview()
                     }
                     
-                    // 获取搜索结果数据
-                    MPModelTools.getSearchResult(q: title, tableName: title, finished: { (model) in
-                        if let m = model {
-                            rv.model = m
+                    // 设置筛选条件的代理
+                    self?.searchResultView?.itemClickedBlock = {(duration, filter, order, sgmIndex) in
+                         self?.duration = duration
+                         self?.filter = filter
+                         self?.order = order
+                        
+                        // 判断是否需要时长和选择
+                        if sgmIndex == 2 {
+                            self?.duration = "any"
+                            self?.filter = ""
                         }
-                    })
+                         self?.refreshData()
+                    }
+                    
+                    // 获取搜索结果数据
+                    self?.keyword = title
                     
                 }
             }else {
@@ -76,6 +105,7 @@ class MPSearchViewController: BaseTableViewController {
             }
             
         }
+        
         super.viewDidLoad()
         
         refreshData()
@@ -90,6 +120,12 @@ class MPSearchViewController: BaseTableViewController {
                 self.tableView.mj_header.endRefreshing()
             }
         }
+        
+        MPModelTools.getSearchResult(q: self.keyword, duration: self.duration, filter: self.filter, order: self.order, tableName: "", finished: { (model) in
+            if let m = model {
+                self.searchResultView?.model = m
+            }
+        })
     }
     
     override func setupStyle() {
@@ -147,8 +183,12 @@ extension MPSearchViewController: MPSearchNavViewDelegate {
         if text != "" {
             if searchingView != nil {
                 // 替换数据源
+                searchResultView?.isHidden = true
                 searchingView?.isHidden = false
                 QYTools.shared.Log(log: "替换数据源~")
+                MPModelTools.getRelatedKeyword(q: text, finished: { (model) in
+                    self.searchingView?.model = model
+                })
             }else {
                 QYTools.shared.Log(log: "新增关联数据View~")
                 // 新增一个列表
@@ -184,3 +224,5 @@ extension MPSearchViewController {
         return keys
     }
 }
+
+

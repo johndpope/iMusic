@@ -9,8 +9,94 @@
 
 import Foundation
 import ObjectMapper
+import SwiftyJSON
+import Alamofire
 
 class MPDiscoverDataCent: HFDataCent {
+    
+    // MARK: - 从Youtube获取播放列表
+    var data_SearchSongList: [MPSongModel]?
+    /// 联想关键词
+    ///
+    /// - Parameters:
+    ///   - q: 搜索关键词
+    ///   - client: 客户端
+    ///   - complete: 回调
+    func requestSearchSongList(playlistId: String = "", size: Int = 20, pageToken: String = "", complete:@escaping ((_ isSucceed: Bool, _ data: [MPSongModel]?, _ message: String) -> Void)) {
+        
+//        part: snippet,contentDetails
+//        order: date
+//        type: playlist
+//        maxResults: 20
+//        playlistId: PLZu8GBv1kr1Gs8-fRP07YQsBrKhZbC4Yv
+//        pageToken:
+//        key: AIzaSyCx-gblQbbkQaFbBhqgu17HYKWZ01SVUQk
+        
+        let param: [String:Any] = ["part": "snippet,contentDetails", "order": "date","type": "playlist", "maxResults": size,"playlistId": playlistId, "pageToken": pageToken,"key": "AIzaSyCx-gblQbbkQaFbBhqgu17HYKWZ01SVUQk"]
+        
+        Alamofire.SessionManager.default.request(API.SearchSongList, method: HTTPMethod.get, parameters: param).responseJSON { (resp) in
+//            QYTools.shared.Log(log: resp.result.value as! String)
+            let rs = resp.result
+            // 连接失败时
+            if rs.error != nil {
+                complete(false, nil, rs.error!.localizedDescription)
+                return
+            }
+            
+            // 请求失败时
+            if !rs.isSuccess {
+                complete(false,nil, "获取数据失败")
+                return
+            }
+            
+            guard let dataDic = rs.value else {return}
+            
+            let model: MPYoutubeModel = Mapper<MPYoutubeModel>().map(JSONObject: dataDic)!
+            
+            let temps = self.mappingToMPSongModel(models: model)
+            
+            // 请求成功时
+            complete(true,temps,"成功")
+        }
+    }
+
+    private func mappingToMPSongModel(models: MPYoutubeModel?) -> [MPSongModel] {
+        var temps = [MPSongModel]()
+        guard let model = models else { return temps }
+        
+        if let songs = model.data_items {
+            songs.forEach { (song) in
+                let dict: [String : Any] = ["id": song.data_snippet?.data_position,"originalId": song.data_contentDetails?.data_videoId,"songId": song.data_snippet?.data_resourceId,"heatIndex": 0.0,"singerName": song.data_snippet?.data_channelTitle,"title": song.data_snippet?.data_title,"cache": "","channelTitle": song.data_snippet?.data_channelTitle,"artworkUrl": song.data_snippet?.data_thumbnails?.data_default,"artworkBigUrl": song.data_snippet?.data_thumbnails?.data_high,"durationInSeconds": 0,"songName": song.data_snippet?.data_title]
+                let tempM = Mapper<MPSongModel>().map(JSON: dict)
+                temps.append(tempM!)
+            }
+        }
+        
+        return temps
+    }
+    
+    
+    // MARK: - 联想关键词
+    var data_RelatedKeyword: [String]?
+    /// 联想关键词
+    ///
+    /// - Parameters:
+    ///   - q: 搜索关键词
+    ///   - client: 客户端
+    ///   - complete: 回调
+    func requestRelatedKeyword(q: String = "", client: String = "firefox", complete:@escaping ((_ isSucceed: Bool, _ data: [String]?, _ message: String) -> Void)) {
+        
+//        let urlQ = q.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        let param: [String:Any] = ["q": q, "client": client]
+        
+        Alamofire.SessionManager.default.request(API.RelatedKeyword, method: HTTPMethod.get, parameters: param).responseString { (resp) in
+            if let temps = JSON(parseJSON: resp.result.value ?? "").arrayObject, temps.count > 0, let rs = temps[1] as? [String] {
+                // 请求成功时
+                complete(true, rs, "Succeed")
+            }
+        }
+    }
     
 //    /search/getAll?q=MM&size=20&token=z%23master%40Music1.4.8
     // MARK: - 搜索

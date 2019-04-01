@@ -17,6 +17,12 @@ class MPSearchingView: BaseView {
 
     var itemClickedBlock: ((_ title: String) -> Void)?
     
+    var model = [String]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     private let tableView = UITableView()
 
     override init(frame: CGRect) {
@@ -46,17 +52,18 @@ class MPSearchingView: BaseView {
 }
 extension MPSearchingView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return model.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.identifier) as! MPSearchingViewTableViewCell
+        cell.title = model[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 获取当前数据源的标题
-        let text = ""
+        let text = model[indexPath.row]
         if let b = itemClickedBlock {
             b(text)
         }

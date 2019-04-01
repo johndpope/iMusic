@@ -33,7 +33,7 @@ extension MPSearchNavView: UITextFieldDelegate {
         if var text = textField.text, let d = delegate {
             var txt = ""
            
-            if string == "" {
+            if string == "", text != "" {
                 text.removeLast()
                 txt = text
             }else {

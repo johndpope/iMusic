@@ -21,6 +21,8 @@ private struct Constant {
 
 class MPSearchResultView: BaseView {
     
+    var itemClickedBlock: ((_ duration: String, _ filter: String, _ order: String, _ segIndex: Int) -> Void)?
+    
     var model: MPSearchResultModel? {
         didSet {
             tableView.reloadData()
@@ -74,6 +76,12 @@ class MPSearchResultView: BaseView {
         hv.frameChangeBlock = {
             self.tableView.reloadData()
         }
+        
+        hv.itemClickedBlock = {(duration, filter, order) in
+            if let b = self.itemClickedBlock {
+                b(duration, filter, order, self.currentIndex)
+            }
+        }
     }
     
 }
@@ -124,9 +132,9 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
                 cell = tableView.dequeueReusableCell(withIdentifier: Constant.mvIdentifier) as! MPSongTableViewCell
                 if let models = model?.data_videos {
                     if let amodels = model?.data_collection, amodels.count > 0 {
-                        (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, album: amodels[0])
+                        (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, album: amodels[0], sourceType: 1)
                     }else {
-                        (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models)
+                        (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, sourceType: 1)
                     }
                 }
             }
@@ -164,6 +172,15 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
             break
         }
         return height
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let models = model?.data_playlists {
+            let vc = MPSongListViewController()
+            vc.headerSongModel = models[indexPath.row]
+            vc.type = 3
+            HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
 }

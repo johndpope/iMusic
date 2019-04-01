@@ -82,12 +82,16 @@ class HFNetworkManager: NSObject {
         let token = TokenCode
         let s = StyleImageType
         
-        p["app_id"] = app_id
-        p["hl"] = hl
-        p["m"] = m
-        p["op"] = op
-        p["s"] = s
-        p["token"] = token
+        if (p["addcommon"] == nil) {
+            p["app_id"] = app_id
+            p["hl"] = hl
+            p["m"] = m
+            p["op"] = op
+            p["s"] = s
+            p["token"] = token
+        }else {
+            p.removeValue(forKey: "addcommon")
+        }
         
         // 设置编码格式
 //        requestHeader["Content-Type"] = "application/json;charset=utf-8"

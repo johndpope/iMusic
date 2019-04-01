@@ -19,6 +19,8 @@
 		C52E2A232249DD21000075E8 /* MPPopularModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A222249DD21000075E8 /* MPPopularModel.swift */; };
 		C52E2A25224A099F000075E8 /* MPStyleGenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A24224A099F000075E8 /* MPStyleGenreModel.swift */; };
 		C53616A22247812200CFBD63 /* MPDiscoverDataCent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53616A12247812200CFBD63 /* MPDiscoverDataCent.swift */; };
+		C53E97662251A3FF007F3920 /* MPRecentlyPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E97652251A3FF007F3920 /* MPRecentlyPlayModel.swift */; };
+		C53E976822520910007F3920 /* MPYoutubeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E976722520910007F3920 /* MPYoutubeModel.swift */; };
 		C56033F12242255200F6795F /* MPSearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033EF2242255100F6795F /* MPSearchingView.swift */; };
 		C56033F62242258900F6795F /* MPSearchingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */; };
 		C56033F72242258900F6795F /* MPSearchingViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */; };
@@ -446,6 +448,8 @@
 		C52E2A222249DD21000075E8 /* MPPopularModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPopularModel.swift; sourceTree = "<group>"; };
 		C52E2A24224A099F000075E8 /* MPStyleGenreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPStyleGenreModel.swift; sourceTree = "<group>"; };
 		C53616A12247812200CFBD63 /* MPDiscoverDataCent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPDiscoverDataCent.swift; sourceTree = "<group>"; };
+		C53E97652251A3FF007F3920 /* MPRecentlyPlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecentlyPlayModel.swift; sourceTree = "<group>"; };
+		C53E976722520910007F3920 /* MPYoutubeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPYoutubeModel.swift; sourceTree = "<group>"; };
 		C56033EF2242255100F6795F /* MPSearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingView.swift; sourceTree = "<group>"; };
 		C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingViewTableViewCell.swift; sourceTree = "<group>"; };
 		C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchingViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -1818,6 +1822,8 @@
 				C52E2A24224A099F000075E8 /* MPStyleGenreModel.swift */,
 				C5229642224FBCD600ADAD20 /* MPSearchKeywordModel.swift */,
 				C5229644224FC54100ADAD20 /* MPSearchResult.swift */,
+				C53E97652251A3FF007F3920 /* MPRecentlyPlayModel.swift */,
+				C53E976722520910007F3920 /* MPYoutubeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3410,6 +3416,7 @@
 				C57FC7E42240DC2F00218DE7 /* FCSearchHouseUModel.swift in Sources */,
 				C57FC8A72240DC2F00218DE7 /* RequestExtension.swift in Sources */,
 				C57FC8822240DC2F00218DE7 /* MDSettingTableViewCell.swift in Sources */,
+				C53E976822520910007F3920 /* MPYoutubeModel.swift in Sources */,
 				C57FC89D2240DC2F00218DE7 /* BasePageViewController.swift in Sources */,
 				C57FC8522240DC2F00218DE7 /* MPPopularTableViewCell.swift in Sources */,
 				C57FC7F82240DC2F00218DE7 /* MPCollectSongListViewController.swift in Sources */,
@@ -3477,6 +3484,7 @@
 				C57FC8A32240DC2F00218DE7 /* HotSearchController.swift in Sources */,
 				C57FC8592240DC2F00218DE7 /* MPSongListTableViewCell.swift in Sources */,
 				C57FC8102240DC2F00218DE7 /* MPChoicenessTableViewCell.swift in Sources */,
+				C53E97662251A3FF007F3920 /* MPRecentlyPlayModel.swift in Sources */,
 				C57FC92D2240DC3000218DE7 /* NSBundle+CYPasswordView.m in Sources */,
 				C57FC8A02240DC2F00218DE7 /* MDFlowLayout.swift in Sources */,
 				C57FC8A12240DC2F00218DE7 /* MDHotSearchView.swift in Sources */,

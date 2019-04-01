@@ -97,7 +97,7 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
         
     }
     
-    func updateCell(model: MPSongModel, models: [MPSongModel], album: GeneralPlaylists? = nil) {
+    func updateCell(model: MPSongModel, models: [MPSongModel], album: GeneralPlaylists? = nil, sourceType: Int = -1) {
         currentSongList = models
         currentSong = model
         currentAlbum = album
@@ -106,13 +106,17 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
             let imgUrl = API.baseImageURL + img
             xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
         }
-        
-        if SourceType == 0 {
+        if sourceType != -1 {
             xib_title.text = model.data_title
             xib_desc.text = model.data_channelTitle
         }else {
-            xib_title.text = model.data_songName
-            xib_desc.text = model.data_singerName
+            if SourceType == 0 {
+                xib_title.text = model.data_title
+                xib_desc.text = model.data_channelTitle
+            }else {
+                xib_title.text = model.data_songName
+                xib_desc.text = model.data_singerName
+            }
         }
         
         // 是否选中

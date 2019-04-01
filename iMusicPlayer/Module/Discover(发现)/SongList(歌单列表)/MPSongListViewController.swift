@@ -25,7 +25,7 @@ class MPSongListViewController: BaseTableViewController {
     var playlistId: Int = 0
     var singerId  = ""
     
-    /// 1: 歌单 2：歌手
+    /// 1: 歌单 2：歌手 3: youtube获取
     var type: Int = 1
 
     var model = [MPSongModel]() {
@@ -57,6 +57,20 @@ class MPSongListViewController: BaseTableViewController {
                         self.tableView.mj_header.endRefreshing()
                     }
                 }
+            }else if type == 3 {
+                DiscoverCent?.requestSearchSongList(playlistId: singerId, pageToken: "", complete: { (isSucceed, model, msg) in
+                    switch isSucceed {
+                    case true:
+                        if let m = model {
+                            self.model = m
+                            self.tableView.mj_header.endRefreshing()
+                        }
+                        break
+                    case false:
+                        SVProgressHUD.showError(withStatus: msg)
+                        break
+                    }
+                })
             }
         }
     }
