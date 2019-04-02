@@ -142,7 +142,7 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
         case 2:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPDiscoverTableViewCell
             if let models = model?.data_playlists {
-                (cell as! MPDiscoverTableViewCell).updateCell(model: models[indexPath.row])
+                (cell as! MPDiscoverTableViewCell).updateCell(model: models[indexPath.row], type: 1)
             }
             break
         default:

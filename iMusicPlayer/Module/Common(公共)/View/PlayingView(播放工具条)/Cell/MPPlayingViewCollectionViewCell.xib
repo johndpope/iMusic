@@ -24,7 +24,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9F-ZW-5fp">
                                 <rect key="frame" x="0.0" y="0.0" width="90" height="48"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="6Nh-cI-bFK"/>
                                 </constraints>
@@ -67,7 +66,6 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1Rv-kc-RZQ" firstAttribute="leading" secondItem="PG4-WC-O0y" secondAttribute="trailing" id="0WV-YV-KQA"/>
                             <constraint firstItem="Ofx-yA-aLT" firstAttribute="top" secondItem="z9F-ZW-5fp" secondAttribute="top" id="7Aj-9B-Occ"/>
@@ -109,7 +107,7 @@
                 <outlet property="xib_play" destination="BMw-RL-Xus" id="n76-tB-Y5d"/>
                 <outlet property="xib_title" destination="NNd-L0-fmg" id="bPx-OM-IEz"/>
             </connections>
-            <point key="canvasLocation" x="216" y="134"/>
+            <point key="canvasLocation" x="-237" y="-36"/>
         </collectionViewCell>
     </objects>
     <resources>

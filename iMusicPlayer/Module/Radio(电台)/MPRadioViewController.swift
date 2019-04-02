@@ -15,6 +15,8 @@ class MPRadioViewController: BaseViewController {
     
     var scrollVC: CardViewController?
     
+    var currentIndex = 0
+    
     var model = [MPSongModel]() {
         didSet {
             cardViews = getImageViews(models: model)
@@ -50,12 +52,9 @@ class MPRadioViewController: BaseViewController {
         // 显示当前的播放View
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingView, let window = UIApplication.shared.delegate?.window! {
             pv.isHidden = false
+            pv.currentSong = model[currentIndex]
             pv.model = model
             window.bringSubviewToFront(pv)
-            
-            // 同时初始化一个播放详情页同时隐藏
-            
-            
         }
         
     }
@@ -120,10 +119,12 @@ class MPRadioViewController: BaseViewController {
 extension MPRadioViewController: CardViewControllerDelegate {
     func cardViewController(_ cardViewController: CardViewController, didSelect card: UIView, at index: Int) {
         print("did select card at index: \(index)")
+        currentIndex = index
     }
     
     func cardViewController(_ cardViewController: CardViewController, didScroll card: UIView, at index: Int) {
         QYTools.shared.Log(log: "滚动了")
+        currentIndex = index
         updateView(index: index)
     }
 }

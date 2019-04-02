@@ -23,7 +23,7 @@ class MPDiscoverTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func updateCell(model: GeneralPlaylists) {
+    func updateCell(model: GeneralPlaylists, type: Int = -1) {
         //设置图片
         if let img = model.data_img, img != "" {
             let imgUrl = API.baseImageURL + img
@@ -31,6 +31,12 @@ class MPDiscoverTableViewCell: UITableViewCell {
         }
         xib_title.text = model.data_title
         xib_count.text = "\(model.data_tracksCount)" + NSLocalizedString("首", comment: "")
+        
+        if type != -1 {
+            xib_count.isHidden = true
+        }else {
+            xib_count.isHidden = false
+        }
     }
 
     

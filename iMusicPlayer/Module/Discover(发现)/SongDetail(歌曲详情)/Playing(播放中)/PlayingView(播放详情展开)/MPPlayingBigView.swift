@@ -9,17 +9,6 @@
 import UIKit
 import youtube_ios_player_helper
 
-private struct Constant {
-    
-    static let playerVars = [
-        "playsinline" : 1,  // 是否全屏
-        "showinfo" : 1, // 是否显示标题和上传者信息
-        "modestbranding" : 1,   //是否显示鼠标
-        "controls" : 0,
-        "autohide" : 1,
-        ] as [String : Any]
-}
-
 class MPPlayingBigView: BaseView {
     
     @IBOutlet weak var xib_topView: MPPlayingNavView!
@@ -56,22 +45,15 @@ class MPPlayingBigView: BaseView {
     @IBOutlet weak var xib_orderMode: UIButton!
     @IBOutlet weak var xib_collect: UIButton!
     
-    //    var playerVars: [String : Any] = [
-    //        "playsinline" : 1,  // 是否全屏
-    //        "showinfo" : 0, // 是否显示标题和上传者信息
-    //        "modestbranding" : 1,   //是否显示鼠标
-    //        "controls" : 0,
-    //        "iv_load_policy": 3,
-    //        "autoplay": 1,
-    //        "autohide" : 1,
-    //        ]
-    
-    //    var playerVars: [String : Any] = ["playsinline" : 1,
-    //                      "autoplay" : 1,
-    //                      "rel" : 0,
-    //                      "controls" : 0]
-    
-    var playerVars: [String : Any] = [ "showinfo": "0", "modestbranding" : "1"]
+    var playerVars: [String : Any] = [
+        "playsinline" : 1,  // 是否全屏
+        "showinfo" : 0, // 是否显示标题和上传者信息
+        "modestbranding" : 1,   //是否显示鼠标
+        "controls" : 0,
+        "iv_load_policy": 3,
+        "autoplay": 1,
+        "autohide" : 1,
+        ]
     
     var currentPlayOrderMode: Int = 0 // 0: 顺序播放  1: 随机播放
     var currentPlayCycleMode: Int = 0 // 0: 列表循环  1: 单曲循环 2: 只播放当前列表
@@ -103,7 +85,8 @@ class MPPlayingBigView: BaseView {
         xib_topView.clickBlock = {(sender) in
             if let btn = sender as? UIButton {
                 if btn.tag == 10001 {
-                    
+                    appDelegate.playingBigView?.isHidden = true
+                    appDelegate.playingView?.isHidden = false
                 }else {
                     // 全屏播放
                     self.playerVars["playsinline"] = 0
@@ -342,7 +325,7 @@ extension MPPlayingBigView {
         //        if type != -1 {
         //            playView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
         //        }
-        playView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
+//        playView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
         
         //        playView.subviews.last!.removeFromSuperview()
         

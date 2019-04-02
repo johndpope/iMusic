@@ -10,6 +10,7 @@ import UIKit
 import IQKeyboardManager
 import Kingfisher
 import KingfisherWebP
+import youtube_ios_player_helper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -191,19 +192,21 @@ extension AppDelegate: JPUSHRegisterDelegate {
 extension AppDelegate {
     // 提前添加播放控制View到window上
     private func addPlayingView() {
+        
         let height: CGFloat = 50
         let size = CGSize(width: SCREEN_WIDTH, height: height)
         let y = SCREEN_HEIGHT - height - TabBarHeight
         let pv = MPPlayingView(frame: CGRect(x: 0, y: y, width: size.width, height: size.height))
         playingView = pv
-        pv.isHidden = true
+        pv.isHidden = false
         window?.addSubview(pv)
         
         // 添加播放详情View
         let pbv = MPPlayingBigView.md_viewFromXIB() as! MPPlayingBigView
         pbv.frame = window!.frame
+        pbv.top = StatusBarHeight
         playingBigView = pbv
-        pbv.isHidden = true
+        pbv.isHidden = false
         window?.addSubview(pbv)
     }
 }

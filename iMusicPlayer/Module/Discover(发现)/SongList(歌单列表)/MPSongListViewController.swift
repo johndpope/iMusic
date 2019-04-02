@@ -63,6 +63,8 @@ class MPSongListViewController: BaseTableViewController {
                     case true:
                         if let m = model?.data_songs {
                             self.model = m
+                            self.headerSongModel?.data_tracksCount = model?.data_num ?? 0
+                            (self.tableView.tableHeaderView as? MPSongListHeaderView)?.updateView(model: self.headerSongModel!)
                             self.tableView.mj_header.endRefreshing()
                         }
                         break
