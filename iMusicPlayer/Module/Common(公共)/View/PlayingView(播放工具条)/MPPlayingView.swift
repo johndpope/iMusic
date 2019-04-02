@@ -17,17 +17,17 @@ private struct Constant {
 class MPPlayingView: BaseView {
     
     var playerVars: [String : Any] = [
-        "playsinline" : 1,  // 是否全屏
-        "showinfo" : 0, // 是否显示标题和上传者信息
-        "modestbranding" : 1,   //是否显示鼠标
+        "playsinline" : 1,
+        "showinfo" : 0,
+        "rel" : 1,
+        "modestbranding" : 1,
         "controls" : 0,
-        "iv_load_policy": 3,
-        "autoplay": 1,
-        "autohide" : 1,
-        ]
+    ]
     
     private lazy var ybPlayView: YTPlayerView = {
         let pv = YTPlayerView()
+        pv.frame = CGRect(origin: .zero, size: CGSize(width: 90, height: 48))
+        pv.backgroundColor = UIColor.red
         pv.delegate = self
         return pv
     }()
@@ -63,13 +63,7 @@ class MPPlayingView: BaseView {
         cv.bounces = true
         cv.isPagingEnabled = true
         
-        cv.insertSubview(ybPlayView, at: 0)
-        ybPlayView.snp.makeConstraints({ (make) in
-            make.top.left.bottom.equalToSuperview()
-            let height = cv.height
-            let width = height * (48/90)
-            make.size.equalTo(CGSize(width: 90, height: 48))
-        })
+        cv.addSubview(ybPlayView)
         return cv
     }()
     
@@ -84,6 +78,13 @@ class MPPlayingView: BaseView {
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+//        ybPlayView.snp.makeConstraints({ (make) in
+//            make.top.left.equalToSuperview()
+//            let height = collectionView.height
+//            let width = height * (48/90)
+//            make.size.equalTo(CGSize(width: 90, height: 48))
+//        })
         
     }
     

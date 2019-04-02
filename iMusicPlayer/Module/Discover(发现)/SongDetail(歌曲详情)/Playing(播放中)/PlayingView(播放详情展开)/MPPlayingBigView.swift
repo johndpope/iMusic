@@ -24,17 +24,21 @@ class MPPlayingBigView: BaseView {
         }
     }
     
-    @IBOutlet weak var playBgView: UIView!
-    
-    var playView: YTPlayerView! {
+    @IBOutlet weak var playBgView: UIView! {
         didSet {
-            playBgView.addSubview(playView)
-            playView.snp.makeConstraints { (make) in
+            playBgView.addSubview(ybPlayView)
+            ybPlayView.snp.makeConstraints { (make) in
                 make.edges.equalToSuperview()
             }
-            playView.delegate = self
         }
     }
+    
+    private lazy var ybPlayView: YTPlayerView = {
+        let pv = YTPlayerView()
+        pv.backgroundColor = UIColor.red
+        pv.delegate = self
+        return pv
+    }()
     
     @IBOutlet weak var xib_startTime: UILabel!
     
@@ -47,12 +51,12 @@ class MPPlayingBigView: BaseView {
     
     var playerVars: [String : Any] = [
         "playsinline" : 1,  // 是否全屏
-        "showinfo" : 0, // 是否显示标题和上传者信息
-        "modestbranding" : 1,   //是否显示鼠标
-        "controls" : 0,
-        "iv_load_policy": 3,
-        "autoplay": 1,
-        "autohide" : 1,
+//        "showinfo" : 0, // 是否显示标题和上传者信息
+//        "modestbranding" : 1,   //是否显示鼠标
+//        "controls" : 0,
+//        "iv_load_policy": 3,
+//        "autoplay": 1,
+//        "autohide" : 1,
         ]
     
     var currentPlayOrderMode: Int = 0 // 0: 顺序播放  1: 随机播放
@@ -108,23 +112,23 @@ class MPPlayingBigView: BaseView {
             HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
             break
         case 10002: // 上一曲
-            playView.previousVideo()
+            ybPlayView.previousVideo()
             // 刷新当前view
             self.currentSong = getPreSongFromSongs(song: self.currentSong!, songs: model)
             self.updateView(type: 1)
             break
         case 10003: // 暂停/播放
-            if playView.playerState() == YTPlayerState.playing {
-                playView.pauseVideo()
+            if ybPlayView.playerState() == YTPlayerState.playing {
+                ybPlayView.pauseVideo()
                 //                sender.isSelected = false
             }else {
-                playView.playVideo()
+                ybPlayView.playVideo()
                 //                sender.isSelected = true
                 
             }
             break
         case 10004: // 下一曲
-            playView.nextVideo()
+            ybPlayView.nextVideo()
             // 刷新当前view
             self.currentSong = getNextSongFromSongs(song: self.currentSong!, songs: model)
             self.updateView(type: 1)
@@ -268,7 +272,7 @@ extension MPPlayingBigView {
     @objc func sliderDidChange(sender: UISlider) {
         let value = sender.value
         let progress = Float(currentSong?.data_durationInSeconds ?? 0) * value
-        playView.seek(toSeconds: progress, allowSeekAhead: true)
+        ybPlayView.seek(toSeconds: progress, allowSeekAhead: true)
         xib_play.isSelected = true
     }
     
@@ -321,13 +325,13 @@ extension MPPlayingBigView {
         xib_endTime.text = "\(currentSong?.data_durationInSeconds ?? 0)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
         
         // 播放MV
-        //        playView.load(withVideoId: currentSong?.data_originalId ?? "")
+        //        ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "")
         //        if type != -1 {
-        //            playView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
+        //            ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
         //        }
-//        playView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
+        ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
         
-        //        playView.subviews.last!.removeFromSuperview()
+        //        ybPlayView.subviews.last!.removeFromSuperview()
         
         // 异步更新当前列表状态
         DispatchQueue.main.async {
@@ -378,7 +382,7 @@ extension MPPlayingBigView {
 extension MPPlayingBigView: YTPlayerViewDelegate {
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-        playView.playVideo()
+        ybPlayView.playVideo()
         if let s = self.currentSong {
             if !MPModelTools.checkSongExsistInPlayingList(song: s, tableName: "RecentlyPlay") {
                 MPModelTools.saveSongToTable(song: s, tableName: "RecentlyPlay")
@@ -420,8 +424,8 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
             // 获取下一首歌曲继续播放
             //            currentSong = getNextSongFromSongs(song: currentSong!, songs: self.model)
             //            updateView()
-            //            playView.playVideo()
-            playView.nextVideo()
+            //            ybPlayView.playVideo()
+            ybPlayView.nextVideo()
             break
         case .queued:
             xib_play.isSelected = false
