@@ -49,7 +49,7 @@
                         <constraint firstItem="Q31-0A-PJ1" firstAttribute="leading" secondItem="EIM-nG-wYo" secondAttribute="leading" constant="12" id="yS8-pB-lD1"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZX-8K-Exd" customClass="YTPlayerView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZX-8K-Exd">
                     <rect key="frame" x="0.0" y="64" width="375" height="280"/>
                     <color key="backgroundColor" red="0.8862745098" green="0.69411764710000001" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -271,7 +271,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="4Ka-VQ-XY3"/>
             <connections>
-                <outlet property="playView" destination="rZX-8K-Exd" id="eT4-GJ-spX"/>
+                <outlet property="playBgView" destination="rZX-8K-Exd" id="zsq-DN-g15"/>
                 <outlet property="topViewH" destination="cHc-gX-3UU" id="935-cg-3Sf"/>
                 <outlet property="xib_collect" destination="tej-Uh-iU5" id="HR9-eT-28M"/>
                 <outlet property="xib_cycleMode" destination="8Zc-rA-hvB" id="Tjk-Eg-IyH"/>
@@ -292,7 +292,7 @@
     <resources>
         <image name="icon_add" width="32" height="32"/>
         <image name="icon_collect_normal" width="32" height="32"/>
-        <image name="icon_collect_selected" width="32" height="32"/>
+        <image name="icon_collect_selected" width="64" height="64"/>
         <image name="icon_lyrics_default" width="12" height="12"/>
         <image name="icon_lyrics_none" width="12" height="12"/>
         <image name="icon_mini" width="25" height="25"/>
@@ -302,9 +302,9 @@
         <image name="icon_play_random-1" width="32" height="32"/>
         <image name="icon_play_random_off" width="32" height="32"/>
         <image name="icon_up" width="64" height="64"/>
-        <image name="playlist_icon_play" width="75" height="75"/>
-        <image name="playlist_icon_play_next" width="17" height="21"/>
-        <image name="playlist_icon_play_pre" width="17" height="21"/>
+        <image name="playlist_icon_play" width="75" height="75.5"/>
+        <image name="playlist_icon_play_next" width="17.5" height="21"/>
+        <image name="playlist_icon_play_pre" width="17.5" height="21"/>
         <image name="playlist_icon_stop" width="75" height="75"/>
     </resources>
 </document>

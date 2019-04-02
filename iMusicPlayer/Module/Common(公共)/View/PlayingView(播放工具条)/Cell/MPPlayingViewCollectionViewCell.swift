@@ -11,13 +11,7 @@ import youtube_ios_player_helper
 
 class MPPlayingViewCollectionViewCell: UICollectionViewCell {
 
-    var ybPlayView: YTPlayerView?
-    var imageView: UIImageView?
-    
-    var currentSong: MPSongModel?
-    var currentSongList = [MPSongModel]()
-    
-    @IBOutlet weak var playView: UIView! {
+    var ybPlayView: YTPlayerView? {
         didSet {
             if SourceType == 0 {    // MV
                 let pv = YTPlayerView()
@@ -38,6 +32,12 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell {
             }
         }
     }
+    var imageView: UIImageView?
+    
+    var currentSong: MPSongModel?
+    var currentSongList = [MPSongModel]()
+    
+    @IBOutlet weak var playView: UIView!
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
     @IBOutlet weak var xib_play: UIButton!

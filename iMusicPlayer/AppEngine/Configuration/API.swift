@@ -80,4 +80,7 @@ class API: NSObject {
     
     // MARK: - Yotube搜索歌单
     static let SearchSongList         = "https://www.googleapis.com/youtube/v3/playlistItems"
+    
+    // MARK: - Yotube搜索歌单
+    static let SearchSongListByYoutube         = "/playlists/getYoutubePlaylistItems"
 }

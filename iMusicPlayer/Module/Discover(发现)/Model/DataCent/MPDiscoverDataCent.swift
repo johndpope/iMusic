@@ -14,13 +14,57 @@ import Alamofire
 
 class MPDiscoverDataCent: HFDataCent {
     
+//    /playlists/getYoutubePlaylistItems?playlistId=PL5DkbtlaY8IyLg3AOjWcheija4y2N7vIr&token=z%23master%40Music1.4.8
+    // MARK: - 通过后台搜索YouTube歌单
+    var data_SongListByYoutube: MPYoutubeMVModel?
+    
+    /// 通过后台搜索YouTube歌单
+    ///
+    /// - Parameters:
+    ///   - playlistId: 歌单ID
+    ///   - pageToken: 下一页token
+    ///   - complete: 回调
+    func requestSearchSongListByYoutube(playlistId: String = "", pageToken: String = "", complete:@escaping ((_ isSucceed: Bool, _ data: MPYoutubeMVModel?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["playlistId": playlistId,"pageToken": pageToken]
+        
+        HFNetworkManager.request(url: API.SearchSongListByYoutube, method: .get, parameters:param, description: "通过后台搜索YouTube歌单") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            
+            //            guard let dataArr = resp?["data"].arrayObject else {return}
+            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            let model: MPYoutubeMVModel = Mapper<MPYoutubeMVModel>().map(JSONObject: dataDic)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
     // MARK: - 从Youtube获取播放列表
     var data_SearchSongList: [MPSongModel]?
     /// 联想关键词
     ///
     /// - Parameters:
-    ///   - q: 搜索关键词
-    ///   - client: 客户端
+    ///   - playlistId: 歌单ID
+    ///   - size: 条数
+    ///   - pageToken: 下一页token
     ///   - complete: 回调
     func requestSearchSongList(playlistId: String = "", size: Int = 20, pageToken: String = "", complete:@escaping ((_ isSucceed: Bool, _ data: [MPSongModel]?, _ message: String) -> Void)) {
         
@@ -60,6 +104,11 @@ class MPDiscoverDataCent: HFDataCent {
         }
     }
 
+    
+    /// 将YouTube模型映射到本地模型
+    ///
+    /// - Parameter models: YouTube模型
+    /// - Returns: 本地模型
     private func mappingToMPSongModel(models: MPYoutubeModel?) -> [MPSongModel] {
         var temps = [MPSongModel]()
         guard let model = models else { return temps }
@@ -114,7 +163,7 @@ class MPDiscoverDataCent: HFDataCent {
     ///   - complete: 回调
     func requestSearchResult(q: String = "", duration: String = "", filter: String = "", order: String = "", size: Int = 20, y: String = "0", complete:@escaping ((_ isSucceed: Bool, _ data: MPSearchResultModel?, _ message: String) -> Void)) {
         
-        let param: [String:Any] = ["q": q,"duration": duration, "filter": filter, "order": order, "size": size, "y": y]
+        let param: [String:Any] = ["q": q,"duration": duration, "filter": filter, "order": order, "size": size, "y": y, "m": 1]
         
         HFNetworkManager.request(url: API.SearchResult, method: .get, parameters:param, description: "搜索") { (error, resp) in
             

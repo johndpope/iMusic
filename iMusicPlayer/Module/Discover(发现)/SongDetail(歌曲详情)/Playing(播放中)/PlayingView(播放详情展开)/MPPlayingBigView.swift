@@ -35,8 +35,14 @@ class MPPlayingBigView: BaseView {
         }
     }
     
-    @IBOutlet weak var playView: YTPlayerView! {
+    @IBOutlet weak var playBgView: UIView!
+    
+    var playView: YTPlayerView! {
         didSet {
+            playBgView.addSubview(playView)
+            playView.snp.makeConstraints { (make) in
+                make.edges.equalToSuperview()
+            }
             playView.delegate = self
         }
     }

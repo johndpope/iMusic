@@ -58,10 +58,10 @@ class MPSongListViewController: BaseTableViewController {
                     }
                 }
             }else if type == 3 {
-                DiscoverCent?.requestSearchSongList(playlistId: singerId, pageToken: "", complete: { (isSucceed, model, msg) in
+                DiscoverCent?.requestSearchSongListByYoutube(playlistId: singerId, pageToken: "", complete: { (isSucceed, model, msg) in
                     switch isSucceed {
                     case true:
-                        if let m = model {
+                        if let m = model?.data_songs {
                             self.model = m
                             self.tableView.mj_header.endRefreshing()
                         }
@@ -139,7 +139,7 @@ extension MPSongListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
-        cell.updateCell(model: model[indexPath.row], models: self.model, album: self.headerSongModel)
+        cell.updateCell(model: model[indexPath.row], models: self.model, album: self.headerSongModel, sourceType: type)
         return cell
     }
     
