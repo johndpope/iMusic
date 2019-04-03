@@ -183,7 +183,7 @@ class HFAppEngine: NSObject, UITabBarControllerDelegate, CLLocationManagerDelega
 //        }
         self.mainViewController?.selectedIndex = 0
         
-        self.addPlayingView(tabVc: obj)
+//        self.addPlayingView(tabVc: obj)
         
         return mainViewController!
         

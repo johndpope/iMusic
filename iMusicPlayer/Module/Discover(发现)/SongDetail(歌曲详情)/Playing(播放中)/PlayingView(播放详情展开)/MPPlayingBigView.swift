@@ -90,7 +90,6 @@ class MPPlayingBigView: BaseView {
         xib_topView.clickBlock = {(sender) in
             if let btn = sender as? UIButton {
                 if btn.tag == 10001 {
-                    self.top = SCREEN_HEIGHT - TabBarHeight - 48
                     self.smallStyle()
                 }else {
                     // 全屏播放
@@ -456,11 +455,6 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
         QYTools.shared.Log(log: "跳转")
        
         self.bigStyle()
-        
-        // 显示当前的播放View
-        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView, let _ = UIApplication.shared.delegate?.window! {
-            pv.top = -48 + StatusBarHeight
-        }
     }
     
     func playingView(download view: MPPlayingView) {
@@ -478,6 +472,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
 // MARK: - 扩展大小窗口切换时样式切换
 extension MPPlayingBigView {
     private func smallStyle() {
+        self.top = SCREEN_HEIGHT - TabBarHeight - 48
         xib_playingView.insertSubview(ybPlayView, at: 0)
         ybPlayView.snp.makeConstraints { (make) in
             make.left.top.bottom.equalToSuperview()
@@ -490,5 +485,11 @@ extension MPPlayingBigView {
         ybPlayView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        self.top = -(48 + StatusBarHeight)
+        // 显示当前的播放View
+//        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+//            pv.top = -48 + StatusBarHeight
+//        }
     }
 }

@@ -160,7 +160,7 @@ class MDNavigationController: UINavigationController {
             // 暂时不采用这种方式播放
 //            window.addSubview(self.playerView)
             
-//            addPlayingView()
+            addPlayingView()
         }
     }
 
@@ -234,10 +234,13 @@ extension MDNavigationController: PlayerVCDelegate {
 extension MDNavigationController {
     
     private func addPlayingView() {
-        // 添加播放详情View
-        let pbv = MPPlayingBigView.md_viewFromXIB() as! MPPlayingBigView
-        pbv.top = window.frame.height - 300
-        self.view.addSubview(pbv)
-        
+        let appdelegate = (UIApplication.shared.delegate as? AppDelegate)
+        if appdelegate?.playingBigView == nil {
+            // 添加播放详情View
+            let pbv = MPPlayingBigView.md_viewFromXIB() as! MPPlayingBigView
+            pbv.top = window.frame.height
+            self.view.addSubview(pbv)
+            appdelegate?.playingBigView = pbv
+        }
     }
 }
