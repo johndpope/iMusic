@@ -28,7 +28,7 @@ class MPPlayingView: BaseView {
         let pv = YTPlayerView()
         pv.frame = CGRect(origin: .zero, size: CGSize(width: 90, height: 48))
         pv.backgroundColor = UIColor.red
-        pv.delegate = self
+//        pv.delegate = self
         return pv
     }()
     
@@ -38,10 +38,10 @@ class MPPlayingView: BaseView {
         didSet {
             collectionView.reloadData()
             // 将当前播放列表保存到数据库
-            MPModelTools.saveCurrentPlayList(currentList: model)
-            playerVars["playlist"] = getSongIDs(songs: model)
+//            MPModelTools.saveCurrentPlayList(currentList: model)
+//            playerVars["playlist"] = getSongIDs(songs: model)
             
-            ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
+//            ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
 
         }
     }
@@ -54,6 +54,7 @@ class MPPlayingView: BaseView {
         layout.scrollDirection = .horizontal
         self.layout = layout
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.backgroundColor = UIColor.clear
         cv.delegate = self
         cv.dataSource = self
         cv.register(UINib(nibName: Constant.identifier, bundle: nil), forCellWithReuseIdentifier: Constant.identifier)
@@ -63,7 +64,7 @@ class MPPlayingView: BaseView {
         cv.bounces = true
         cv.isPagingEnabled = true
         
-        cv.addSubview(ybPlayView)
+//        cv.addSubview(ybPlayView)
         return cv
     }()
     
@@ -75,6 +76,8 @@ class MPPlayingView: BaseView {
         
         addSubview(collectionView)
         
+        collectionView.backgroundView = nil
+        collectionView.backgroundColor = UIColor.clear
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -110,21 +113,22 @@ extension MPPlayingView: UICollectionViewDataSource, UICollectionViewDelegate, U
                     //            appDelegate.playingView?.isHidden = true
                     // 显示当前的播放View
                     if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView, let window = UIApplication.shared.delegate?.window! {
-                        pv.isHidden = false
-                        pv.currentSong = self.currentSong
-                        pv.model =  self.model
-                        window.bringSubviewToFront(pv)
+//                        pv.isHidden = false
+//                        pv.currentSong = self.currentSong
+//                        pv.model =  self.model
+//                        window.bringSubviewToFront(pv)
+                        pv.top = -48 + StatusBarHeight
                     }
                     break
                 case 10002: // 下载、收藏
                     
                     break
                 case 10003: // 暂停、播放
-                    if self.ybPlayView.playerState() == YTPlayerState.playing {
-                        self.ybPlayView.pauseVideo()
-                    }else {
-                        self.ybPlayView.playVideo()
-                    }
+//                    if self.ybPlayView.playerState() == YTPlayerState.playing {
+//                        self.ybPlayView.pauseVideo()
+//                    }else {
+//                        self.ybPlayView.playVideo()
+//                    }
                     break
                 default:
                     break
@@ -147,6 +151,7 @@ extension MPPlayingView: UICollectionViewDataSource, UICollectionViewDelegate, U
         return 0
     }
 }
+/*
 extension MPPlayingView: YTPlayerViewDelegate {
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
@@ -197,3 +202,4 @@ extension MPPlayingView {
         return ids
     }
 }
+*/

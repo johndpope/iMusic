@@ -11,6 +11,25 @@ import youtube_ios_player_helper
 
 class MPPlayingBigView: BaseView {
     
+    var playingView: MPPlayingView!
+
+    @IBOutlet weak var xib_playingView: UIView! {
+        didSet {
+            let pv = MPPlayingView()
+            playingView = pv
+            xib_playingView.addSubview(pv)
+            pv.snp.makeConstraints { (make) in
+                make.edges.equalToSuperview()
+            }
+            
+            xib_playingView.insertSubview(ybPlayView, at: 0)
+            ybPlayView.snp.makeConstraints { (make) in
+                make.left.top.bottom.equalToSuperview()
+                make.width.equalTo(90)
+            }
+        }
+    }
+    
     @IBOutlet weak var xib_topView: MPPlayingNavView!
     @IBOutlet weak var topViewH: NSLayoutConstraint!
     @IBOutlet weak var xib_nextSongName: UILabel!
@@ -89,8 +108,9 @@ class MPPlayingBigView: BaseView {
         xib_topView.clickBlock = {(sender) in
             if let btn = sender as? UIButton {
                 if btn.tag == 10001 {
-                    appDelegate.playingBigView?.isHidden = true
-                    appDelegate.playingView?.isHidden = false
+//                    appDelegate.playingBigView?.isHidden = true
+//                    appDelegate.playingView?.isHidden = false
+                    self.top += 500
                 }else {
                     // 全屏播放
                     self.playerVars["playsinline"] = 0
@@ -337,6 +357,10 @@ extension MPPlayingBigView {
         DispatchQueue.main.async {
             self.xib_collect.isSelected = MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
         }
+        
+        //
+//        playingView.currentSong = self.currentSong
+        playingView.model = self.model
     }
     
     // 获取当前下标

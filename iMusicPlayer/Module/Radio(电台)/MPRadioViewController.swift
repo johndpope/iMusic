@@ -50,13 +50,18 @@ class MPRadioViewController: BaseViewController {
     
     @IBAction func play(_ sender: UIButton) {
         // 显示当前的播放View
-//        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingView, let window = UIApplication.shared.delegate?.window! {
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView, let window = UIApplication.shared.delegate?.window! {
 //            pv.isHidden = false
-//            pv.currentSong = model[currentIndex]
-//            pv.model = model
-//            window.bringSubviewToFront(pv)
-//        }
-        NotificationCenter.default.post(name: NSNotification.Name("open"), object: nil)
+            pv.currentSong = model[currentIndex]
+            pv.model = model
+            window.bringSubviewToFront(pv)
+            if let tabbar = self.tabBarController?.tabBar {
+                window.bringSubviewToFront(tabbar)
+            }
+            pv.top -= TabBarHeight + 48
+            sender.isHidden = true
+        }
+//        NotificationCenter.default.post(name: NSNotification.Name("open"), object: nil)
     }
     
     private func getImageViews(models: [MPSongModel]) -> [UIImageView] {

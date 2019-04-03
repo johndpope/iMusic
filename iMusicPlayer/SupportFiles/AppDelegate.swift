@@ -193,20 +193,20 @@ extension AppDelegate {
     // 提前添加播放控制View到window上
     private func addPlayingView() {
         
-        let height: CGFloat = 50
-        let size = CGSize(width: SCREEN_WIDTH, height: height)
-        let y = SCREEN_HEIGHT - height - TabBarHeight
-        let pv = MPPlayingView(frame: CGRect(x: 0, y: y, width: size.width, height: size.height))
-        playingView = pv
-        pv.isHidden = false
-        window?.addSubview(pv)
+//        let height: CGFloat = 50
+//        let size = CGSize(width: SCREEN_WIDTH, height: height)
+//        let y = SCREEN_HEIGHT - height - TabBarHeight
+//        let pv = MPPlayingView(frame: CGRect(x: 0, y: y, width: size.width, height: size.height))
+//        playingView = pv
+//        pv.isHidden = false
+//        window?.addSubview(pv)
         
         // 添加播放详情View
         let pbv = MPPlayingBigView.md_viewFromXIB() as! MPPlayingBigView
-        pbv.frame = window!.frame
-        pbv.top = StatusBarHeight
+//        pbv.frame = window!.frame
+        pbv.top = window?.frame.height ?? 0
         playingBigView = pbv
-        pbv.isHidden = false
+//        pbv.isHidden = true
         window?.addSubview(pbv)
     }
 }
