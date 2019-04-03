@@ -414,6 +414,10 @@
 		C59498DA2240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59498D82240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift */; };
 		C59498DB2240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59498D92240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib */; };
 		C59498DD2240EE8400AC10DD /* MPEditSongListDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59498DC2240EE8400AC10DD /* MPEditSongListDetailViewController.xib */; };
+		C5F5378522544EB8006D228B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378222544EB7006D228B /* PlayerView.swift */; };
+		C5F5378622544EB8006D228B /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378322544EB7006D228B /* Video.swift */; };
+		C5F5378722544EB8006D228B /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378422544EB8006D228B /* extensions.swift */; };
+		C5F5378922544F37006D228B /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5378822544F37006D228B /* PlayerView.xib */; };
 		F86EC193BD09551C66112494 /* Pods_iMusicPlayerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49514270D5DAB5BEDB29592 /* Pods_iMusicPlayerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -947,6 +951,10 @@
 		C59498D82240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPEditSongListDetailHeaderView.swift; sourceTree = "<group>"; };
 		C59498D92240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPEditSongListDetailHeaderView.xib; sourceTree = "<group>"; };
 		C59498DC2240EE8400AC10DD /* MPEditSongListDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPEditSongListDetailViewController.xib; sourceTree = "<group>"; };
+		C5F5378222544EB7006D228B /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		C5F5378322544EB7006D228B /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		C5F5378422544EB8006D228B /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		C5F5378822544F37006D228B /* PlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
 		E892D2310892C3D7A5C9146C /* Pods-iMusicPlayerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerUITests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerUITests/Pods-iMusicPlayerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		ECA0552153A5BC3414DCD1EB /* Pods-iMusicPlayerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerUITests.release.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerUITests/Pods-iMusicPlayerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F49514270D5DAB5BEDB29592 /* Pods_iMusicPlayerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMusicPlayerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1342,9 +1350,10 @@
 		C57FC5B12240DC2E00218DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C56034112243439C00F6795F /* PlayingView(播放工具条) */,
-				C57FC5B22240DC2E00218DE7 /* LTLocationBottomView.xib */,
+				C5F5378122544E66006D228B /* PlayerView(播放悬浮窗) */,
 				C57FC5B32240DC2E00218DE7 /* LTLocationBottomView.swift */,
+				C57FC5B22240DC2E00218DE7 /* LTLocationBottomView.xib */,
+				C56034112243439C00F6795F /* PlayingView(播放工具条) */,
 				C57FC5B42240DC2E00218DE7 /* YDMenu */,
 			);
 			path = View;
@@ -2850,6 +2859,17 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C5F5378122544E66006D228B /* PlayerView(播放悬浮窗) */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5378422544EB8006D228B /* extensions.swift */,
+				C5F5378222544EB7006D228B /* PlayerView.swift */,
+				C5F5378822544F37006D228B /* PlayerView.xib */,
+				C5F5378322544EB7006D228B /* Video.swift */,
+			);
+			path = "PlayerView(播放悬浮窗)";
+			sourceTree = "<group>";
+		};
 		C884A3425C5D09FB3FCECA06 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3066,6 +3086,7 @@
 				C57FC8AD2240DC2F00218DE7 /* Localizable.strings in Resources */,
 				C53E976D22521FDD007F3920 /* MPPlayingBigView.xib in Resources */,
 				C57FC81C2240DC2F00218DE7 /* MPSearchNavView.xib in Resources */,
+				C5F5378922544F37006D228B /* PlayerView.xib in Resources */,
 				C57FC80B2240DC2F00218DE7 /* MPAlbumListTableViewCell.xib in Resources */,
 				C57FC8A92240DC2F00218DE7 /* ErrorCodeStrs.plist in Resources */,
 				C57FC7E12240DC2F00218DE7 /* LTWebViewController.xib in Resources */,
@@ -3274,6 +3295,7 @@
 				C5603414224343CE00F6795F /* MPPlayingView.swift in Sources */,
 				C57FC90E2240DC3000218DE7 /* HXAlbumModel.m in Sources */,
 				C57FC8CD2240DC2F00218DE7 /* NSObject+Category.m in Sources */,
+				C5F5378722544EB8006D228B /* extensions.swift in Sources */,
 				C57FC8A22240DC2F00218DE7 /* JYEqualCellSpaceFlowLayout.swift in Sources */,
 				C560343B224477EF00F6795F /* LyticsViewTimer.swift in Sources */,
 				C57FC8932240DC2F00218DE7 /* BaseViewController.swift in Sources */,
@@ -3288,6 +3310,7 @@
 				C57FC8D72240DC2F00218DE7 /* UIView+Extension.swift in Sources */,
 				C57FC8152240DC2F00218DE7 /* MPLatestHeaderView.swift in Sources */,
 				C57FC8942240DC2F00218DE7 /* MDNavigationController.swift in Sources */,
+				C5F5378522544EB8006D228B /* PlayerView.swift in Sources */,
 				C57FC9172240DC3000218DE7 /* HXDatePhotoEditViewController.m in Sources */,
 				C57FC8AF2240DC2F00218DE7 /* AppDelegate.swift in Sources */,
 				C56033FF2242332900F6795F /* MPSRSongTableViewCell.swift in Sources */,
@@ -3520,6 +3543,7 @@
 				C57FC8CF2240DC2F00218DE7 /* NSString+MD5.m in Sources */,
 				C57FC88C2240DC2F00218DE7 /* HFImagePickerManager.swift in Sources */,
 				C57FC9122240DC3000218DE7 /* HXDatePhotoPersentInteractiveTransition.m in Sources */,
+				C5F5378622544EB8006D228B /* Video.swift in Sources */,
 				C57FC9112240DC3000218DE7 /* HXCustomPreviewView.m in Sources */,
 				C57FC8032240DC2F00218DE7 /* MPMediaLibraryModel.swift in Sources */,
 				C57FC8BE2240DC2F00218DE7 /* UIView+Category.m in Sources */,
