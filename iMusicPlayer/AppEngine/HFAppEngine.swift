@@ -182,8 +182,19 @@ class HFAppEngine: NSObject, UITabBarControllerDelegate, CLLocationManagerDelega
 //            self.mainViewController?.selectedIndex = 2
 //        }
         self.mainViewController?.selectedIndex = 0
+        
+        self.addPlayingView(tabVc: obj)
+        
         return mainViewController!
         
+    }
+    
+    private func addPlayingView(tabVc: UITabBarController) {
+        // 添加播放详情View
+        let pbv = MPPlayingBigView.md_viewFromXIB() as! MPPlayingBigView
+        pbv.top = window!.frame.height - 300
+        tabVc.view.addSubview(pbv)
+        tabVc.view.sendSubviewToBack(pbv)
     }
     
     /// 设置伪启动视图控制器

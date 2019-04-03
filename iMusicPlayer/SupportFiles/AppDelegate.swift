@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 支持不同尺寸设备自动xib按比例约束
         //        NSLayoutConstraint().adaptive = true
         
-        addPlayingView()
+//        addPlayingView()
         
         return true
     }

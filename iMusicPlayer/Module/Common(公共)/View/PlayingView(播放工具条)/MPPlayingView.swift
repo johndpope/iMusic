@@ -14,35 +14,21 @@ private struct Constant {
     static let rowHeight = SCREEN_WIDTH * (48/375)
 }
 
+protocol MPPlayingViewDelegate {
+    func playingView(toDetail view: MPPlayingView)
+    func playingView(download view: MPPlayingView)
+    func playingView(play view: MPPlayingView, status: Bool)
+}
+
 class MPPlayingView: BaseView {
     
-    var playerVars: [String : Any] = [
-        "playsinline" : 1,
-        "showinfo" : 0,
-        "rel" : 1,
-        "modestbranding" : 1,
-        "controls" : 0,
-    ]
-    
-    private lazy var ybPlayView: YTPlayerView = {
-        let pv = YTPlayerView()
-        pv.frame = CGRect(origin: .zero, size: CGSize(width: 90, height: 48))
-        pv.backgroundColor = UIColor.red
-//        pv.delegate = self
-        return pv
-    }()
+    var delegate: MPPlayingViewDelegate?
     
     var currentSong: MPSongModel?
 
     var model = [MPSongModel]() {
         didSet {
             collectionView.reloadData()
-            // 将当前播放列表保存到数据库
-//            MPModelTools.saveCurrentPlayList(currentList: model)
-//            playerVars["playlist"] = getSongIDs(songs: model)
-            
-//            ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
-
         }
     }
     
@@ -63,8 +49,6 @@ class MPPlayingView: BaseView {
         cv.backgroundColor = UIColor.white
         cv.bounces = true
         cv.isPagingEnabled = true
-        
-//        cv.addSubview(ybPlayView)
         return cv
     }()
     
@@ -81,13 +65,6 @@ class MPPlayingView: BaseView {
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        
-//        ybPlayView.snp.makeConstraints({ (make) in
-//            make.top.left.equalToSuperview()
-//            let height = collectionView.height
-//            let width = height * (48/90)
-//            make.size.equalTo(CGSize(width: 90, height: 48))
-//        })
         
     }
     
@@ -109,26 +86,19 @@ extension MPPlayingView: UICollectionViewDataSource, UICollectionViewDelegate, U
             if let btn = sender as? UIButton {
                 switch btn.tag {
                 case 10001: // 播放详情
-                    // 隐藏播放View
-                    //            appDelegate.playingView?.isHidden = true
-                    // 显示当前的播放View
-                    if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView, let window = UIApplication.shared.delegate?.window! {
-//                        pv.isHidden = false
-//                        pv.currentSong = self.currentSong
-//                        pv.model =  self.model
-//                        window.bringSubviewToFront(pv)
-                        pv.top = -48 + StatusBarHeight
+                    if let d = self.delegate {
+                        d.playingView(toDetail: self)
                     }
                     break
                 case 10002: // 下载、收藏
-                    
+                    if let d = self.delegate {
+                        d.playingView(download: self)
+                    }
                     break
                 case 10003: // 暂停、播放
-//                    if self.ybPlayView.playerState() == YTPlayerState.playing {
-//                        self.ybPlayView.pauseVideo()
-//                    }else {
-//                        self.ybPlayView.playVideo()
-//                    }
+                    if let d = self.delegate {
+                        d.playingView(play: self, status: self.currentStatus)
+                    }
                     break
                 default:
                     break
@@ -151,55 +121,3 @@ extension MPPlayingView: UICollectionViewDataSource, UICollectionViewDelegate, U
         return 0
     }
 }
-/*
-extension MPPlayingView: YTPlayerViewDelegate {
-    
-    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-        ybPlayView.playVideo()
-    }
-    
-    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
-        // 判断当前播放模式
-        switch state {
-        case .buffering:
-            currentStatus = false
-            break
-        case .playing:
-            currentStatus = true
-            break
-        case .paused:
-            currentStatus = false
-            break
-        case .ended:
-            currentStatus = false
-            // 获取下一首歌曲继续播放
-            //            currentSong = getNextSongFromSongs(song: currentSong!, songs: self.model)
-            //            updateView()
-            //            playView.playVideo()
-            ybPlayView.nextVideo()
-            break
-        case .queued:
-            currentStatus = false
-            break
-        case .unknown:
-            currentStatus = false
-            break
-        case .unstarted:
-            currentStatus = false
-            break
-        default:
-            break
-        }
-    }
-    
-}
-extension MPPlayingView {
-    private func getSongIDs(songs: [MPSongModel]) -> [String] {
-        var ids = [String]()
-        songs.forEach { (song) in
-            ids.append(song.data_originalId ?? "")
-        }
-        return ids
-    }
-}
-*/

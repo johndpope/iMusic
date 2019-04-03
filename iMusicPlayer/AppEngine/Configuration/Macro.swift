@@ -112,7 +112,7 @@ let StatusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.height
 // 当前应用的AppDelegate
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 // 当前应用的keyWindow
-let window = appDelegate.window!
+let window = UIApplication.shared.keyWindow!
 
 // 包名
 let BundleName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""

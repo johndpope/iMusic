@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="gHk-8x-esf" customClass="MPYBWebPlayerView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgR-kk-JxE">
+                    <rect key="frame" x="0.0" y="20" width="375" height="211"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="pgR-kk-JxE" secondAttribute="height" multiplier="16:9" id="0Ow-ip-bXU"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="pgR-kk-JxE" firstAttribute="top" secondItem="Eho-Aw-U9W" secondAttribute="top" id="Mp4-BO-O3u"/>
+                <constraint firstItem="pgR-kk-JxE" firstAttribute="leading" secondItem="Eho-Aw-U9W" secondAttribute="leading" id="Qf7-86-i1E"/>
+                <constraint firstItem="Eho-Aw-U9W" firstAttribute="trailing" secondItem="pgR-kk-JxE" secondAttribute="trailing" id="rRa-C7-m2G"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Eho-Aw-U9W"/>
+            <connections>
+                <outlet property="xib_webBgView" destination="pgR-kk-JxE" id="4Qg-wb-KxS"/>
+            </connections>
+            <point key="canvasLocation" x="82" y="160"/>
+        </view>
+    </objects>
+</document>

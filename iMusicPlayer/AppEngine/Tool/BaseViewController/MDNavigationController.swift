@@ -154,13 +154,15 @@ class MDNavigationController: UINavigationController {
         NotificationCenter.default.removeObserver(self)
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewWillAppear(true)
-//        if let window = UIApplication.shared.keyWindow {
-//            // 暂时不采用这种方式播放
-////            window.addSubview(self.playerView)
-//        }
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if let window = UIApplication.shared.keyWindow {
+            // 暂时不采用这种方式播放
+//            window.addSubview(self.playerView)
+            
+//            addPlayingView()
+        }
+    }
 
 }
 
@@ -227,4 +229,15 @@ extension MDNavigationController: PlayerVCDelegate {
         }
     }
     
+}
+
+extension MDNavigationController {
+    
+    private func addPlayingView() {
+        // 添加播放详情View
+        let pbv = MPPlayingBigView.md_viewFromXIB() as! MPPlayingBigView
+        pbv.top = window.frame.height - 300
+        self.view.addSubview(pbv)
+        
+    }
 }

@@ -62,6 +62,17 @@ class MPRadioViewController: BaseViewController {
             sender.isHidden = true
         }
 //        NotificationCenter.default.post(name: NSNotification.Name("open"), object: nil)
+        
+//        let path = Bundle.main.path(forResource: "YBPlayer.html", ofType: "")
+//        let pv = MPYBWebPlayerView.md_viewFromXIB() as! MPYBWebPlayerView
+//        pv.autoresizingMask = .flexibleWidth
+//        do {
+//            pv.text = try String(contentsOfFile: path!)
+//        }catch {
+//
+//        }
+//        pv.id = model[currentIndex].data_originalId ?? ""
+//        HFAlertController.showCustomView(view: pv)
     }
     
     private func getImageViews(models: [MPSongModel]) -> [UIImageView] {

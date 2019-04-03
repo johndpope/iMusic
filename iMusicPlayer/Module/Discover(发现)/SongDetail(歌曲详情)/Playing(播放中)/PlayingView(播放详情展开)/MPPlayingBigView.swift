@@ -17,16 +17,13 @@ class MPPlayingBigView: BaseView {
         didSet {
             let pv = MPPlayingView()
             playingView = pv
+            playingView.delegate = self
             xib_playingView.addSubview(pv)
             pv.snp.makeConstraints { (make) in
                 make.edges.equalToSuperview()
             }
             
-            xib_playingView.insertSubview(ybPlayView, at: 0)
-            ybPlayView.snp.makeConstraints { (make) in
-                make.left.top.bottom.equalToSuperview()
-                make.width.equalTo(90)
-            }
+            self.smallStyle()
         }
     }
     
@@ -43,14 +40,7 @@ class MPPlayingBigView: BaseView {
         }
     }
     
-    @IBOutlet weak var playBgView: UIView! {
-        didSet {
-            playBgView.addSubview(ybPlayView)
-            ybPlayView.snp.makeConstraints { (make) in
-                make.edges.equalToSuperview()
-            }
-        }
-    }
+    @IBOutlet weak var playBgView: UIView!
     
     private lazy var ybPlayView: YTPlayerView = {
         let pv = YTPlayerView()
@@ -67,16 +57,8 @@ class MPPlayingBigView: BaseView {
     @IBOutlet weak var xib_cycleMode: UIButton!
     @IBOutlet weak var xib_orderMode: UIButton!
     @IBOutlet weak var xib_collect: UIButton!
-    
-    var playerVars: [String : Any] = [
-        "playsinline" : 1,  // 是否全屏
-//        "showinfo" : 0, // 是否显示标题和上传者信息
-//        "modestbranding" : 1,   //是否显示鼠标
-//        "controls" : 0,
-//        "iv_load_policy": 3,
-//        "autoplay": 1,
-//        "autohide" : 1,
-        ]
+//    , "autoplay": "0"
+    var playerVars: [String : Any] = [ "showinfo": "0", "modestbranding" : "1", "playsinline": "1"]
     
     var currentPlayOrderMode: Int = 0 // 0: 顺序播放  1: 随机播放
     var currentPlayCycleMode: Int = 0 // 0: 列表循环  1: 单曲循环 2: 只播放当前列表
@@ -93,10 +75,10 @@ class MPPlayingBigView: BaseView {
     
     var model = [MPSongModel]() {
         didSet {
-            
             // 将当前播放列表保存到数据库
             MPModelTools.saveCurrentPlayList(currentList: model)
-            playerVars["playlist"] = getSongIDs(songs: model)
+            // *** 这里是要','拼接的字符串不是数组：参数错误导致播放失败
+            playerVars["playlist"] = getSongIDs(songs: model).joined(separator: ",")
             
             updateView()
         }
@@ -108,12 +90,12 @@ class MPPlayingBigView: BaseView {
         xib_topView.clickBlock = {(sender) in
             if let btn = sender as? UIButton {
                 if btn.tag == 10001 {
-//                    appDelegate.playingBigView?.isHidden = true
-//                    appDelegate.playingView?.isHidden = false
-                    self.top += 500
+                    self.top = SCREEN_HEIGHT - TabBarHeight - 48
+                    self.smallStyle()
                 }else {
                     // 全屏播放
                     self.playerVars["playsinline"] = 0
+                    self.ybPlayView.playVideo()
                 }
             }
         }
@@ -211,6 +193,7 @@ class MPPlayingBigView: BaseView {
         }
     }
 }
+// MARK: - 歌曲控制相关操作
 extension MPPlayingBigView {
     func addToSongList() {
         let lv = MPAddToSongListView.md_viewFromXIB() as! MPAddToSongListView
@@ -272,6 +255,7 @@ extension MPPlayingBigView {
         HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
     }
 }
+// MARK: - MPSongToolsViewDelegate
 extension MPPlayingBigView: MPSongToolsViewDelegate {
     
     func timeOff() {
@@ -286,7 +270,7 @@ extension MPPlayingBigView: MPSongToolsViewDelegate {
         QYTools.shared.Log(log: "歌曲信息")
     }
 }
-
+// MARK: - 歌曲控制相关操作
 extension MPPlayingBigView {
     
     @objc func sliderDidChange(sender: UISlider) {
@@ -345,13 +329,8 @@ extension MPPlayingBigView {
         xib_endTime.text = "\(currentSong?.data_durationInSeconds ?? 0)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
         
         // 播放MV
-        //        ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "")
-        //        if type != -1 {
-        //            ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
-        //        }
         ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
-        
-        //        ybPlayView.subviews.last!.removeFromSuperview()
+//        ybPlayView1.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
         
         // 异步更新当前列表状态
         DispatchQueue.main.async {
@@ -359,7 +338,7 @@ extension MPPlayingBigView {
         }
         
         //
-//        playingView.currentSong = self.currentSong
+        playingView.currentSong = self.currentSong
         playingView.model = self.model
     }
     
@@ -403,10 +382,13 @@ extension MPPlayingBigView {
         return ids
     }
 }
+
+// MARK: - YTPlayerViewDelegate
 extension MPPlayingBigView: YTPlayerViewDelegate {
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         ybPlayView.playVideo()
+//        ybPlayView1.playVideo()
         if let s = self.currentSong {
             if !MPModelTools.checkSongExsistInPlayingList(song: s, tableName: "RecentlyPlay") {
                 MPModelTools.saveSongToTable(song: s, tableName: "RecentlyPlay")
@@ -450,6 +432,7 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
             //            updateView()
             //            ybPlayView.playVideo()
             ybPlayView.nextVideo()
+//            ybPlayView1.nextVideo()
             break
         case .queued:
             xib_play.isSelected = false
@@ -466,4 +449,46 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
     }
     
     
+}
+// MARK: - MPPlayingViewDelegate
+extension MPPlayingBigView: MPPlayingViewDelegate {
+    func playingView(toDetail view: MPPlayingView) {
+        QYTools.shared.Log(log: "跳转")
+       
+        self.bigStyle()
+        
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView, let _ = UIApplication.shared.delegate?.window! {
+            pv.top = -48 + StatusBarHeight
+        }
+    }
+    
+    func playingView(download view: MPPlayingView) {
+        QYTools.shared.Log(log: "下载")
+    }
+    
+    func playingView(play view: MPPlayingView, status: Bool) {
+        QYTools.shared.Log(log: "播放")
+//        self.ybPlayView1.playVideo()
+        self.ybPlayView.playVideo()
+    }
+    
+}
+
+// MARK: - 扩展大小窗口切换时样式切换
+extension MPPlayingBigView {
+    private func smallStyle() {
+        xib_playingView.insertSubview(ybPlayView, at: 0)
+        ybPlayView.snp.makeConstraints { (make) in
+            make.left.top.bottom.equalToSuperview()
+            make.width.equalTo(90)
+        }
+    }
+    
+    private func bigStyle() {
+        playBgView.addSubview(ybPlayView)
+        ybPlayView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
 }

@@ -418,6 +418,9 @@
 		C5F5378622544EB8006D228B /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378322544EB7006D228B /* Video.swift */; };
 		C5F5378722544EB8006D228B /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378422544EB8006D228B /* extensions.swift */; };
 		C5F5378922544F37006D228B /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5378822544F37006D228B /* PlayerView.xib */; };
+		C5F537902254964D006D228B /* MPYBWebPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378E2254964D006D228B /* MPYBWebPlayerView.swift */; };
+		C5F537912254964D006D228B /* MPYBWebPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5F5378F2254964D006D228B /* MPYBWebPlayerView.xib */; };
+		C5F5379322549D4A006D228B /* YBPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = C5F5379222549D4A006D228B /* YBPlayer.html */; };
 		F86EC193BD09551C66112494 /* Pods_iMusicPlayerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F49514270D5DAB5BEDB29592 /* Pods_iMusicPlayerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -955,6 +958,9 @@
 		C5F5378322544EB7006D228B /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		C5F5378422544EB8006D228B /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		C5F5378822544F37006D228B /* PlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
+		C5F5378E2254964D006D228B /* MPYBWebPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPYBWebPlayerView.swift; sourceTree = "<group>"; };
+		C5F5378F2254964D006D228B /* MPYBWebPlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPYBWebPlayerView.xib; sourceTree = "<group>"; };
+		C5F5379222549D4A006D228B /* YBPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YBPlayer.html; sourceTree = "<group>"; };
 		E892D2310892C3D7A5C9146C /* Pods-iMusicPlayerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerUITests.debug.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerUITests/Pods-iMusicPlayerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		ECA0552153A5BC3414DCD1EB /* Pods-iMusicPlayerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMusicPlayerUITests.release.xcconfig"; path = "Target Support Files/Pods-iMusicPlayerUITests/Pods-iMusicPlayerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F49514270D5DAB5BEDB29592 /* Pods_iMusicPlayerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iMusicPlayerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1010,6 +1016,7 @@
 		C53E976922521F6C007F3920 /* PlayingView(播放详情展开) */ = {
 			isa = PBXGroup;
 			children = (
+				C5F5378D22549608006D228B /* YBWebPlayer */,
 				C53E976A22521FDD007F3920 /* MPPlayingBigView.swift */,
 				C53E976B22521FDD007F3920 /* MPPlayingBigView.xib */,
 			);
@@ -2870,6 +2877,16 @@
 			path = "PlayerView(播放悬浮窗)";
 			sourceTree = "<group>";
 		};
+		C5F5378D22549608006D228B /* YBWebPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				C5F5379222549D4A006D228B /* YBPlayer.html */,
+				C5F5378E2254964D006D228B /* MPYBWebPlayerView.swift */,
+				C5F5378F2254964D006D228B /* MPYBWebPlayerView.xib */,
+			);
+			path = YBWebPlayer;
+			sourceTree = "<group>";
+		};
 		C884A3425C5D09FB3FCECA06 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2995,6 +3012,7 @@
 			files = (
 				C57FC8192240DC2F00218DE7 /* MPSearchTableViewCell.xib in Resources */,
 				C57FC8122240DC2F00218DE7 /* MPLatestHeaderView.xib in Resources */,
+				C5F537912254964D006D228B /* MPYBWebPlayerView.xib in Resources */,
 				C57FC8E62240DC2F00218DE7 /* MDPasswordView.xib in Resources */,
 				C57FC7DD2240DC2F00218DE7 /* LTLocationViewController.xib in Resources */,
 				C57FC86D2240DC2F00218DE7 /* MPTimeOffHeaderView.xib in Resources */,
@@ -3071,6 +3089,7 @@
 				C57FC9262240DC3000218DE7 /* icon_deleted@3x copy.png in Resources */,
 				C57FC9282240DC3000218DE7 /* icon_deleted@2x.png in Resources */,
 				C57FC83A2240DC2F00218DE7 /* MPStyleGenreCollectionReusableView.xib in Resources */,
+				C5F5379322549D4A006D228B /* YBPlayer.html in Resources */,
 				C57FC8412240DC2F00218DE7 /* MPDiscoverTableViewCell.xib in Resources */,
 				C57FC85B2240DC2F00218DE7 /* MPSongListHeaderView.xib in Resources */,
 				C57FC8572240DC2F00218DE7 /* MPPopularHeaderView.xib in Resources */,
@@ -3525,6 +3544,7 @@
 				C57FC8C42240DC2F00218DE7 /* NSLayoutConstraint+Category.m in Sources */,
 				C57FC7EB2240DC2F00218DE7 /* FCSearchHouseModel.swift in Sources */,
 				C57FC8A32240DC2F00218DE7 /* HotSearchController.swift in Sources */,
+				C5F537902254964D006D228B /* MPYBWebPlayerView.swift in Sources */,
 				C57FC8592240DC2F00218DE7 /* MPSongListTableViewCell.swift in Sources */,
 				C57FC8102240DC2F00218DE7 /* MPChoicenessTableViewCell.swift in Sources */,
 				C53E97662251A3FF007F3920 /* MPRecentlyPlayModel.swift in Sources */,
