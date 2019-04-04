@@ -183,7 +183,7 @@ class HFAppEngine: NSObject, UITabBarControllerDelegate, CLLocationManagerDelega
 //        }
         self.mainViewController?.selectedIndex = 0
         
-//        self.addPlayingView(tabVc: obj)
+        self.addPlayingView(tabVc: obj)
         
         return mainViewController!
         
@@ -192,9 +192,16 @@ class HFAppEngine: NSObject, UITabBarControllerDelegate, CLLocationManagerDelega
     private func addPlayingView(tabVc: UITabBarController) {
         // 添加播放详情View
         let pbv = MPPlayingBigView.md_viewFromXIB() as! MPPlayingBigView
-        pbv.top = window!.frame.height - 300
+        pbv.top = window!.frame.height
         tabVc.view.addSubview(pbv)
-        tabVc.view.sendSubviewToBack(pbv)
+        // 将播放控制器View添加到tabbarController上
+        if let sv = tabVc.view, sv.subviews.count > 0 {
+            let tabbar = sv.subviews[1]
+            sv.bringSubviewToFront(tabbar)
+            
+            (UIApplication.shared.delegate as? AppDelegate)?.playingBigView = pbv
+        }
+        
     }
     
     /// 设置伪启动视图控制器

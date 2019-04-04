@@ -155,12 +155,13 @@ class MDNavigationController: UINavigationController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+//        super.viewWillAppear(true)
+        super.viewDidAppear(animated)
         if let window = UIApplication.shared.keyWindow {
             // 暂时不采用这种方式播放
 //            window.addSubview(self.playerView)
             
-            addPlayingView()
+//            addPlayingView()
         }
     }
 
