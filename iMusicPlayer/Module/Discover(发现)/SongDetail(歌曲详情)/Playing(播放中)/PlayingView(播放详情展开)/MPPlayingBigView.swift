@@ -72,7 +72,7 @@ class MPPlayingBigView: BaseView {
     @IBOutlet weak var xib_orderMode: UIButton!
     @IBOutlet weak var xib_collect: UIButton!
 //    , "autoplay": "0"
-    var playerVars: [String : Any] = [ "showinfo": "0", "modestbranding" : "1", "playsinline": "1"]
+    var playerVars: [String : Any] = [ "showinfo": "0", "modestbranding" : "1", "playsinline": "1", "controls": "0", "autohide": "1"]
     
     var currentPlayOrderMode: Int = 0 // 0: 顺序播放  1: 随机播放
     var currentPlayCycleMode: Int = 0 // 0: 列表循环  1: 单曲循环 2: 只播放当前列表
@@ -131,14 +131,7 @@ class MPPlayingBigView: BaseView {
             self.updateView(type: 1)
             break
         case 10003: // 暂停/播放
-            if ybPlayView.playerState() == YTPlayerState.playing {
-                ybPlayView.pauseVideo()
-                //                sender.isSelected = false
-            }else {
-                ybPlayView.playVideo()
-                //                sender.isSelected = true
-                
-            }
+            playDidClicked()
             break
         case 10004: // 下一曲
             ybPlayView.nextVideo()
@@ -349,7 +342,7 @@ extension MPPlayingBigView {
         }
         
         //
-        playingView.currentSong = self.currentSong
+        playingView.currentIndex = model.getIndexFromArray(song: self.currentSong!, songs: model)
         playingView.model = self.model
     }
     
@@ -399,7 +392,6 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         ybPlayView.playVideo()
-//        ybPlayView1.playVideo()
         if let s = self.currentSong {
             if !MPModelTools.checkSongExsistInPlayingList(song: s, tableName: "RecentlyPlay") {
                 MPModelTools.saveSongToTable(song: s, tableName: "RecentlyPlay")
@@ -443,7 +435,6 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
             //            updateView()
             //            ybPlayView.playVideo()
             ybPlayView.nextVideo()
-//            ybPlayView1.nextVideo()
             break
         case .queued:
             xib_play.isSelected = false
@@ -457,12 +448,31 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
         default:
             break
         }
+        
+        // 更新小窗播放按钮状态
+        playingView.currentStatus = xib_play.isSelected
+        
     }
     
     
 }
 // MARK: - MPPlayingViewDelegate
 extension MPPlayingBigView: MPPlayingViewDelegate {
+    
+    func playingView(pre view: MPPlayingView, index: Int) {
+        ybPlayView.previousVideo()
+        // 刷新当前view
+        self.currentSong = model[index]
+        self.updateView(type: 1)
+    }
+    
+    func playingView(next view: MPPlayingView, index: Int) {
+        ybPlayView.nextVideo()
+        // 刷新当前view
+        self.currentSong = model[index]
+        self.updateView(type: 1)
+    }
+    
     func playingView(toDetail view: MPPlayingView) {
         QYTools.shared.Log(log: "跳转")
        
@@ -475,10 +485,21 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
     
     func playingView(play view: MPPlayingView, status: Bool) {
         QYTools.shared.Log(log: "播放")
-//        self.ybPlayView1.playVideo()
-        self.ybPlayView.playVideo()
+        playDidClicked()
     }
     
+    private func playDidClicked() {
+        if ybPlayView.playerState() == YTPlayerState.playing {
+            ybPlayView.pauseVideo()
+        }else {
+            ybPlayView.playVideo()
+        }
+    }
+    
+    private func playByIndex(index: Int) {
+        currentSong = model[index]
+        updateView()
+    }
 }
 
 // MARK: - 扩展大小窗口切换时样式切换

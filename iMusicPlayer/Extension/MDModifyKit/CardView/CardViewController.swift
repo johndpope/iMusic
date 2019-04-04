@@ -70,7 +70,7 @@ public class CardViewController: UIViewController {
 //    fileprivate var cards: [UIView] = []
     var cards: [UIView] = [] {
         didSet {
-            
+//            add(cards: cards)
         }
     }
     

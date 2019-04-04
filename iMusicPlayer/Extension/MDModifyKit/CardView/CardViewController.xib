@@ -59,7 +59,7 @@
                 <outlet property="scrollView" destination="yIf-Mh-bFq" id="0Iu-B3-udo"/>
                 <outlet property="trailingConstraint" destination="Jdi-yS-8Aj" id="CrO-mU-YjO"/>
             </connections>
-            <point key="canvasLocation" x="1" y="-37"/>
+            <point key="canvasLocation" x="154" y="116"/>
         </viewController>
         <tapGestureRecognizer cancelsTouchesInView="NO" id="rW2-Qf-cmL">
             <connections>

@@ -12,40 +12,44 @@ class MPRadioViewController: BaseViewController {
     
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_user: UILabel!
+    @IBOutlet weak var xib_play: UIButton!
     
     var scrollVC: CardViewController?
+    
+    var pageView: UIView?
     
     var currentIndex = 0
     
     var model = [MPSongModel]() {
         didSet {
-            cardViews = getImageViews(models: model)
-            self.updateView(index: 0)
+            DispatchQueue.main.async {
+                self.cardViews = self.getImageViews(models: self.model)
+                self.updateView(index: 0)
+            }
         }
     }
     
     var cardViews = [UIImageView]() {
         didSet {
-            scrollVC?.cards = cardViews
+            configCardView()
+//            scrollVC?.cards = cardViews
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configCardView()
         requestData()
     }
     
     override func requestData() {
         super.requestData()
-        
-        MPModelTools.getRadioModel(tableName: MPRadioViewController.classCode) { (model) in
-            if let m = model {
-                self.model = m
+        DispatchQueue.main.async {
+            MPModelTools.getRadioModel(tableName: MPRadioViewController.classCode) { (model) in
+                if let m = model {
+                    self.model = m
+                }
             }
         }
-        
     }
     
     @IBAction func play(_ sender: UIButton) {
@@ -122,12 +126,12 @@ class MPRadioViewController: BaseViewController {
         
         // 添加子控制器
         addChild(cardVc)
-        cardVc.view.frame = self.view.frame
-        view.addSubview(cardVc.view)
+        pageView = cardVc.view
+        pageView?.height = SCREEN_HEIGHT - NavBarHeight - TabBarHeight
+        view.addSubview(pageView!)
         cardVc.didMove(toParent: self)
-        
         // 将歌曲名称和歌手移到最上层
-        self.view.sendSubviewToBack(cardVc.view)
+        self.view.sendSubviewToBack(pageView!)
     }
 
 }
@@ -135,12 +139,16 @@ extension MPRadioViewController: CardViewControllerDelegate {
     func cardViewController(_ cardViewController: CardViewController, didSelect card: UIView, at index: Int) {
         print("did select card at index: \(index)")
         currentIndex = index
+        // 播放
+        self.play(xib_play)
     }
     
     func cardViewController(_ cardViewController: CardViewController, didScroll card: UIView, at index: Int) {
         QYTools.shared.Log(log: "滚动了")
         currentIndex = index
         updateView(index: index)
+        // 播放
+        self.play(xib_play)
     }
 }
 extension MPRadioViewController {

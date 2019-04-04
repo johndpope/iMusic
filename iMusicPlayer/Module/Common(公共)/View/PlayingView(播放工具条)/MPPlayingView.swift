@@ -18,21 +18,30 @@ protocol MPPlayingViewDelegate {
     func playingView(toDetail view: MPPlayingView)
     func playingView(download view: MPPlayingView)
     func playingView(play view: MPPlayingView, status: Bool)
+    func playingView(pre view: MPPlayingView, index: Int)
+    func playingView(next view: MPPlayingView, index: Int)
 }
 
 class MPPlayingView: BaseView {
     
     var delegate: MPPlayingViewDelegate?
     
-    var currentSong: MPSongModel?
+    var currentIndex: Int = 0
 
     var model = [MPSongModel]() {
         didSet {
             collectionView.reloadData()
+            
+            collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
         }
     }
     
-    var currentStatus: Bool = false
+    var currentStatus: Bool = false {
+        didSet {
+            let cell = collectionView.cellForItem(at: IndexPath(item: currentIndex, section: 0))
+            (cell as? MPPlayingViewCollectionViewCell)?.xib_play.isSelected = currentStatus
+        }
+    }
     
     // MARK: - TableView
     private lazy var collectionView: UICollectionView  = {
@@ -120,4 +129,25 @@ extension MPPlayingView: UICollectionViewDataSource, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+    // MARK: - 滚动时切换歌曲
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        QYTools.shared.Log(log: #function)
+        
+        if let cell = collectionView.visibleCells.first as? MPPlayingViewCollectionViewCell {
+            let tempIndex = collectionView.indexPath(for: cell)?.item ?? 0
+            if tempIndex > currentIndex {
+                if let d = self.delegate {
+                    d.playingView(next: self, index: tempIndex)
+                }
+            }else {
+                if let d = self.delegate {
+                    d.playingView(pre: self, index: tempIndex)
+                }
+            }
+            currentIndex = tempIndex
+        }
+        
+    }
+    
 }

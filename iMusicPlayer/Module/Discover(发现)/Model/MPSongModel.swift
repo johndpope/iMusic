@@ -88,3 +88,16 @@ class MPSongModel:BaseModel {
         data_songName <- map["songName"]
     }
 }
+
+extension Array {
+    // 获取当前下标
+    func getIndexFromArray<T: BaseModel> (song: T, songs: [T]) -> Int {
+        var index = 0
+        for i in (0..<songs.count) {
+            if song == songs[i] {
+                index = i
+            }
+        }
+        return index
+    }
+}
