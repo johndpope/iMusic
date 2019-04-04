@@ -100,7 +100,10 @@ extension MPAlbumListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
-        cell.updateCell(model: models[indexPath.row], models: self.models)
+        // 构造当前播放专辑列表模型
+        let json: [String : Any] = ["data_id": 0, "data_title": headerModel?.data_title ?? "", "data_description": "", "data_originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "data_type": "YouTube", "data_img": headerModel?.data_image ?? "pic_album_default", "data_tracksCount": models.count, "data_recentlyType": 6]
+        let album = GeneralPlaylists(JSON: json)
+        cell.updateCell(model: models[indexPath.row], models: self.models, album: album)
         return cell
     }
     

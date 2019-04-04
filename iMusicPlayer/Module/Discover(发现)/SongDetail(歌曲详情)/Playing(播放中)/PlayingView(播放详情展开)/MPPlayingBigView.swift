@@ -98,6 +98,8 @@ class MPPlayingBigView: BaseView {
         }
     }
     
+    var currentAlbum: GeneralPlaylists?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupStyle()
@@ -115,7 +117,13 @@ class MPPlayingBigView: BaseView {
     }
     
     func setupStyle() {
+        if !IPHONEX {
+            topViewH.constant = defaultTopViewH - Constant.sbReduceHeight
+        }
         
+        playerViewTop.constant = StatusBarHeight
+        self.height = SCREEN_HEIGHT - TabBarHeight + Constant.smallPlayerHeight + StatusBarHeight
+        contentViewH.constant = SCREEN_HEIGHT  - TabBarHeight - StatusBarHeight
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
@@ -400,7 +408,8 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
     }
     
     func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
-        xib_slider.value = playTime / Float((currentSong?.data_durationInSeconds ?? 0))
+        
+        xib_slider.value = playTime / Float(ybPlayView.duration())
         xib_startTime.text = "\(playTime)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
     }
     
@@ -424,6 +433,21 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
             break
         case .playing:
             xib_play.isSelected = true
+            
+            // 把当前的专辑添加到最近播放
+            if let a = currentAlbum {
+                if !MPModelTools.checkCollectListExsist(model: a, tableName: "RecentlyAlbum") {
+                    MPModelTools.saveCollectListModel(model: a, tableName: "RecentlyAlbum")
+                }else {
+                    // 删除原来的并将当前的插入到第一位
+                    let sql = String(format: "where %@=%@",bg_sqlKey("BG_data_title"),bg_sqlValue(a.data_title))
+                    if NSArray.bg_delete("RecentlyAlbum", where: sql) {
+                        // 添加到最后一项：获取的时候倒序即可
+                        NSArray.bg_addObject(withName: "RecentlyAlbum", object: a)
+                    }
+                }
+            }
+            
             break
         case .paused:
             xib_play.isSelected = false
@@ -435,6 +459,9 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
             //            updateView()
             //            ybPlayView.playVideo()
             ybPlayView.nextVideo()
+            // 刷新当前view
+            self.currentSong = getNextSongFromSongs(song: self.currentSong!, songs: model)
+            self.updateView(type: 1)
             break
         case .queued:
             xib_play.isSelected = false
@@ -511,23 +538,25 @@ extension MPPlayingBigView {
             make.left.top.bottom.equalToSuperview()
             make.width.equalTo(Constant.smallPlayerWidth)
         }
+        
+        // 显示当前的tabbar
+        if let rvc = window?.rootViewController as? UITabBarController {
+            let tabbar = rvc.tabBar
+            tabbar.top = SCREEN_HEIGHT - TabBarHeight
+        }
     }
     
-    private func bigStyle() {
+    func bigStyle() {
         playBgView.addSubview(ybPlayView)
         ybPlayView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        
-        if !IPHONEX {
-            topViewH.constant = defaultTopViewH - Constant.sbReduceHeight
-        }
-        
-        playerViewTop.constant = StatusBarHeight
-        self.height = SCREEN_HEIGHT - TabBarHeight + Constant.smallPlayerHeight + StatusBarHeight
-        contentViewH.constant = SCREEN_HEIGHT  - TabBarHeight - StatusBarHeight
-        
         self.top = -(Constant.smallPlayerHeight+StatusBarHeight)
         
+        // 隐藏当前的tabbar
+        if let rvc = window?.rootViewController as? UITabBarController {
+            let tabbar = rvc.tabBar
+            tabbar.top = SCREEN_HEIGHT
+        }
     }
 }

@@ -113,24 +113,67 @@ extension MPDiscoverViewController {
                 (cell as! MPRecommendTableViewCell).models = cellModel
             }
             (cell as! MPRecommendTableViewCell).itemClickedBlock = {[weak self] (index) in
-                let vc = MPPlayingViewController()
-                if let m = self?.model?.data_recommendations  {
-                    // 循序不能倒过来
-                    vc.currentSong = m[index]
-                    vc.model = m
-                }
-                let nav = UINavigationController(rootViewController: vc)
-                self?.present(nav, animated: true, completion: nil)
+//                let vc = MPPlayingViewController()
+//                if let m = self?.model?.data_recommendations  {
+//                    // 循序不能倒过来
+//                    vc.currentSong = m[index]
+//                    vc.model = m
+//                }
+//                let nav = UINavigationController(rootViewController: vc)
+//                self?.present(nav, animated: true, completion: nil)
+                
+                // 显示当前的播放View
+                self?.play(index: 1)
+                
             }
             break
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.recentlyIdentifier)!
             (cell as! MPRecentlyTableViewCell).model = self.currentAlbum
             (cell as! MPRecentlyTableViewCell).itemClickedBlock = {[weak self] (index) in
-                let vc = MPSongListViewController()
-                vc.headerSongModel = self?.currentAlbum[index]
-                vc.type = 1
-                self?.navigationController?.pushViewController(vc, animated: true)
+                
+                if let album = self?.currentAlbum[index].data_recentlyType {
+                    switch album {
+                    case 1: // 最近播放
+                        let vc = MPMyFavoriteViewController()
+                        vc.fromType = .Recently
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                        break
+                    case 2: // 最新发布
+                        let vc = MPLatestViewController()
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                        break
+                    case 3: // 我的最爱
+                        let vc = MPMyFavoriteViewController()
+                        vc.fromType = .Favorite
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                        break
+                    case 4: // 歌手
+                        let vc = MPSongListViewController()
+                        vc.headerSongModel = self?.currentAlbum[index]
+                        // 判断是歌手还是歌单
+                        vc.type = 2
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                        break
+                    case 5: // 歌单
+                        let vc = MPSongListViewController()
+                        vc.headerSongModel = self?.currentAlbum[index]
+                        // 判断是歌手还是歌单
+                        vc.type = 1
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                        break
+                    case 6: // 排行榜
+                        let vc = MPRankingViewController()
+                        vc.tempModels = self?.model?.data_charts
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                        break
+                    case 7: // Top 100
+                        self?.play()
+                        break
+                    default:
+                        break
+                    }
+                }
             }
             break
         case 2:
@@ -245,5 +288,23 @@ extension MPDiscoverViewController {
 }
 // MARK: - 获取数据
 extension MPDiscoverViewController {
-    
+    private func play(index: Int = -1) {
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+            if let m = self.model?.data_recommendations  {
+                // 循序不能倒过来
+                if index != -1 {
+                    pv.currentSong = m[index]
+                }else {
+                    pv.currentSong = m.first
+                }
+                pv.model = m
+                // 构造当前播放专辑列表模型
+                let json: [String : Any] = ["data_id": 0, "data_title": "Top 100", "data_description": "", "data_originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "data_type": "YouTube", "data_img": m.first?.data_artworkBigUrl ?? "pic_album_default", "data_tracksCount": m.count, "data_recentlyType": 7]
+                let album = GeneralPlaylists(JSON: json)
+                pv.currentAlbum = album
+                pv.bigStyle()
+            }
+        }
+    }
 }

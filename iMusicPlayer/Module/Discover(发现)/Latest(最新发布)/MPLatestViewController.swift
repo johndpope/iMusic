@@ -79,7 +79,10 @@ extension MPLatestViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
-        cell.updateCell(model: models[indexPath.row], models: self.models)
+        // 构造当前播放专辑列表模型
+        let json: [String : Any] = ["data_id": 0, "data_title": NSLocalizedString("新歌首发", comment: ""), "data_description": "", "data_originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "data_type": "YouTube", "data_img": models.first?.data_artworkBigUrl ?? "pic_album_default", "data_tracksCount": models.count, "data_recentlyType": 2]
+        let album = GeneralPlaylists(JSON: json)
+        cell.updateCell(model: models[indexPath.row], models: self.models, album: album)
         return cell
     }
     

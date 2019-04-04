@@ -55,12 +55,10 @@ class MPRadioViewController: BaseViewController {
     @IBAction func play(_ sender: UIButton) {
         // 显示当前的播放View
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
-//            pv.isHidden = false
             pv.currentSong = model[currentIndex]
             pv.model = model
             pv.top = SCREEN_HEIGHT - TabBarHeight - 48
             sender.isHidden = true
-            
             // 隐藏状态栏
             
         }

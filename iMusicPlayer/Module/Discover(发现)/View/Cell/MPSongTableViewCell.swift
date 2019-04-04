@@ -8,6 +8,12 @@
 
 import UIKit
 
+private struct Constant {
+    static let smallPlayerWidth = SCREEN_HEIGHT * (90/667)
+    static let sbReduceHeight = SCREEN_WIDTH * (58/375)
+    static let smallPlayerHeight = SCREEN_WIDTH * (48/375)
+}
+
 protocol MPSongTableViewCellDelegate {
     func addToSongList(song: MPSongModel?)
     func nextPlay(song: MPSongModel?)
@@ -44,27 +50,20 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     override func setSelected(_ selected: Bool, animated: Bool) {
         // 用户点击的时候调用
         if selected {
-            let vc = MPPlayingViewController()
-            // 循序不能倒过来
-            vc.currentSong = self.currentSong
-            vc.model = self.currentSongList
+//            let vc = MPPlayingViewController()
+//            // 循序不能倒过来
+//            vc.currentSong = self.currentSong
+//            vc.model = self.currentSongList
+//            let nav = UINavigationController(rootViewController: vc)
+//            HFAppEngine.shared.currentViewController()?.present(nav, animated: true, completion: nil)
             
-            // 把当前的专辑添加到最近播放
-            if let a = currentAlbum {
-                if !MPModelTools.checkCollectListExsist(model: a, tableName: "RecentlyAlbum") {
-                    MPModelTools.saveCollectListModel(model: a, tableName: "RecentlyAlbum")
-                }else {
-                    // 删除原来的并将当前的插入到第一位
-                    let sql = String(format: "where %@=%@",bg_sqlKey("BG_data_title"),bg_sqlValue(a.data_title))
-                    if NSArray.bg_delete("RecentlyAlbum", where: sql) {
-                        // 添加到最后一项：获取的时候倒序即可
-                        NSArray.bg_addObject(withName: "RecentlyAlbum", object: a)
-                    }
-                }
+            // 显示当前的播放View
+            if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+                pv.currentSong = self.currentSong
+                pv.model = currentSongList
+                pv.currentAlbum = currentAlbum
+                pv.bigStyle()
             }
-            
-            let nav = UINavigationController(rootViewController: vc)
-            HFAppEngine.shared.currentViewController()?.present(nav, animated: true, completion: nil)
         }
     }
     

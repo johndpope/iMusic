@@ -141,6 +141,11 @@ extension MPSongListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
+        if self.type == 1 {
+            self.headerSongModel?.data_recentlyType = 5
+        }else if type == 2 {
+            self.headerSongModel?.data_recentlyType = 4
+        }
         cell.updateCell(model: model[indexPath.row], models: self.model, album: self.headerSongModel, sourceType: type)
         return cell
     }

@@ -10,8 +10,9 @@ import UIKit
 
 class API: NSObject {
     
-    // MARK: 服务器地址
+    // MARK: 服务器地址: https://api.musicz.co
     static let baseURL         = "http://api2cdn.groupy.cn:8090"
+//    static let baseURL         = "https://api.musicz.co"
 
     // MARK: 图片拼接地址
     static let baseImageURL     = ""

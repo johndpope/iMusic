@@ -126,6 +126,9 @@ class GeneralPlaylists: BaseModel {
     var data_originalId: String?
     var data_type: String?
     
+    /// 最近播放类型：1：最近播放单曲 2：最新歌曲列表 3：我的最爱  4：歌手  5：专辑 6: 排行榜 7:Top 100
+    var data_recentlyType: Int = 1
+    
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(self.data_img, forKey: "img")
         aCoder.encode(self.data_id, forKey: "id")
