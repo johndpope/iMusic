@@ -9,6 +9,12 @@
 import UIKit
 import youtube_ios_player_helper
 
+private struct Constant {
+    static let smallPlayerWidth = SCREEN_HEIGHT * (90/667)
+    static let sbReduceHeight = SCREEN_WIDTH * (58/375)
+    static let smallPlayerHeight = SCREEN_WIDTH * (48/375)
+}
+
 class MPPlayingBigView: BaseView {
     
     var playingView: MPPlayingView!
@@ -27,8 +33,16 @@ class MPPlayingBigView: BaseView {
         }
     }
     
+    @IBOutlet weak var contentViewH: NSLayoutConstraint!
+    @IBOutlet weak var playerViewTop: NSLayoutConstraint!
     @IBOutlet weak var xib_topView: MPPlayingNavView!
-    @IBOutlet weak var topViewH: NSLayoutConstraint!
+    
+    var defaultTopViewH: CGFloat = 0
+    @IBOutlet weak var topViewH: NSLayoutConstraint! {
+        didSet {
+            defaultTopViewH = topViewH.constant
+        }
+    }
     @IBOutlet weak var xib_nextSongName: UILabel!
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
@@ -101,9 +115,7 @@ class MPPlayingBigView: BaseView {
     }
     
     func setupStyle() {
-        if !IPHONEX {
-            topViewH.constant -= 58*2
-        }
+        
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
@@ -472,11 +484,11 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
 // MARK: - 扩展大小窗口切换时样式切换
 extension MPPlayingBigView {
     private func smallStyle() {
-        self.top = SCREEN_HEIGHT - TabBarHeight - 48
+        self.top = SCREEN_HEIGHT - TabBarHeight - Constant.smallPlayerHeight
         xib_playingView.insertSubview(ybPlayView, at: 0)
         ybPlayView.snp.makeConstraints { (make) in
             make.left.top.bottom.equalToSuperview()
-            make.width.equalTo(90)
+            make.width.equalTo(Constant.smallPlayerWidth)
         }
     }
     
@@ -486,10 +498,15 @@ extension MPPlayingBigView {
             make.edges.equalToSuperview()
         }
         
-        self.top = -(48 + StatusBarHeight)
-        // 显示当前的播放View
-//        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
-//            pv.top = -48 + StatusBarHeight
-//        }
+        if !IPHONEX {
+            topViewH.constant = defaultTopViewH - Constant.sbReduceHeight
+        }
+        
+        playerViewTop.constant = StatusBarHeight
+        self.height = SCREEN_HEIGHT - TabBarHeight + Constant.smallPlayerHeight + StatusBarHeight
+        contentViewH.constant = SCREEN_HEIGHT  - TabBarHeight - StatusBarHeight
+        
+        self.top = -(Constant.smallPlayerHeight+StatusBarHeight)
+        
     }
 }
