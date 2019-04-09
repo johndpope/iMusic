@@ -126,7 +126,7 @@ class GeneralPlaylists: BaseModel {
     var data_originalId: String?
     var data_type: String?
     
-    /// 最近播放类型：1：最近播放单曲 2：最新歌曲列表 3：我的最爱  4：歌手  5：专辑 6: 排行榜 7:Top 100
+    /// 最近播放类型：1：最近播放单曲 2：最新歌曲列表 3：我的最爱  4：歌手  5：专辑 6: 排行榜 7: Top 100  8：创建的歌单
     var data_recentlyType: Int = 1
     
     override func encode(with aCoder: NSCoder) {
@@ -167,6 +167,8 @@ class GeneralPlaylists: BaseModel {
         data_description <- map["description"]
         data_originalId <- map["originalId"]
         data_type <- map["type"]
+        
+        data_recentlyType <- map["recentlyType"]
     }
 }
 

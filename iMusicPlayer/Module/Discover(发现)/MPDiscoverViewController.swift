@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 private struct Constant {
     static let discoverIdentifier = "MPDiscoverTableViewCell"
@@ -170,6 +171,11 @@ extension MPDiscoverViewController {
                     case 7: // Top 100
                         self?.play()
                         break
+                    case 8: // 自己创建的歌单
+                        let vc = MPEditSongListViewController()
+                        vc.songListModel = self?.currentAlbum[index]
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                        break
                     default:
                         break
                     }
@@ -292,16 +298,21 @@ extension MPDiscoverViewController {
         // 显示当前的播放View
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
             if let m = self.model?.data_recommendations  {
+                var cs: MPSongModel?
                 // 循序不能倒过来
                 if index != -1 {
-                    pv.currentSong = m[index]
+                    cs = m[index]
                 }else {
-                    pv.currentSong = m.first
+                    cs = m.first
                 }
+                pv.currentSong = cs
                 pv.model = m
                 // 构造当前播放专辑列表模型
-                let json: [String : Any] = ["data_id": 0, "data_title": "Top 100", "data_description": "", "data_originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "data_type": "YouTube", "data_img": m.first?.data_artworkBigUrl ?? "pic_album_default", "data_tracksCount": m.count, "data_recentlyType": 7]
-                let album = GeneralPlaylists(JSON: json)
+                let tempImg = cs?.data_artworkBigUrl ?? ""
+                let img = (tempImg == "" ? (cs?.data_artworkUrl ?? "") : tempImg) == "" ? "pic_album_default" : (tempImg == "" ? (cs?.data_artworkUrl ?? "") : tempImg)
+                let json: [String : Any] = ["id": 0, "title": "Top 100", "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": img, "tracksCount": m.count, "recentlyType": 7]
+//                let album = GeneralPlaylists(JSON: json)
+                let album = Mapper<GeneralPlaylists>().map(JSON: json)
                 pv.currentAlbum = album
                 pv.bigStyle()
             }

@@ -18,6 +18,10 @@ class MPEditSongListViewController: BaseTableViewController {
     
     var songListModel: GeneralPlaylists? {
         didSet {
+            
+            // 标记当前歌单类型：8：创建的歌单
+            songListModel?.data_recentlyType = 8
+            
             MPModelTools.getSongInTable(tableName: songListModel?.data_title ?? "") { (model) in
                 if let m = model {
                     self.model = m

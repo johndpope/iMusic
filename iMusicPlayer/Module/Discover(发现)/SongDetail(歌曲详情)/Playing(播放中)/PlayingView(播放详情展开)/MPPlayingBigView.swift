@@ -436,11 +436,12 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
             
             // 把当前的专辑添加到最近播放
             if let a = currentAlbum {
-                if !MPModelTools.checkCollectListExsist(model: a, tableName: "RecentlyAlbum") {
+                let index = MPModelTools.getCollectListExsistIndex(model: a, tableName: "RecentlyAlbum", condition: a.data_title ?? "")
+                if index == -1 {
                     MPModelTools.saveCollectListModel(model: a, tableName: "RecentlyAlbum")
                 }else {
                     // 删除原来的并将当前的插入到第一位
-                    let sql = String(format: "where %@=%@",bg_sqlKey("BG_data_title"),bg_sqlValue(a.data_title))
+                    let sql = String(format: "where %@=%@",bg_sqlKey("index"),bg_sqlValue("\(index)"))
                     if NSArray.bg_delete("RecentlyAlbum", where: sql) {
                         // 添加到最后一项：获取的时候倒序即可
                         NSArray.bg_addObject(withName: "RecentlyAlbum", object: a)

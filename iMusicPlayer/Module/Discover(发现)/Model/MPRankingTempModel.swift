@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import ObjectMapper
 
-class MPRankingTempModel: NSObject {
+class MPRankingTempModel: NSObject, Mappable {
+    
+    required init?(map: Map) {
+    }
+    
     var data_image: String?
     var data_title: String?
     var data_updateTime: String?
@@ -21,6 +26,14 @@ class MPRankingTempModel: NSObject {
         data_updateTime = updateTime
         data_songOne = songOne
         data_songTwo = songTwo
+    }
+    
+    func mapping(map: Map) {
+        data_image <- map["image"]
+        data_title <- map["title"]
+        data_updateTime <- map["updateTime"]
+        data_songOne <- map["songOne"]
+        data_songTwo <- map["songTwo"]
     }
 }
 

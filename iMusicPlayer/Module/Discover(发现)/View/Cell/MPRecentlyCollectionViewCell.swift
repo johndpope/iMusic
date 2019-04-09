@@ -20,9 +20,11 @@ class MPRecentlyCollectionViewCell: UICollectionViewCell {
     
     func updateCell(model: GeneralPlaylists) {
         //设置图片
-        if let img = model.data_img, img != "" {
+        if let img = model.data_img, img != "", img.contains("http") {
             let imgUrl = API.baseImageURL + img
             xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "pic_album_default"))
+        }else {
+            xib_image.image = UIImage(named: model.data_img ?? "pic_album_default")
         }
         xib_title.text = model.data_title
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 private struct Constant {
     static let identifier = "MPSongTableViewCell"
@@ -110,8 +111,9 @@ extension MPMyFavoriteViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
         // 构造当前播放专辑列表模型
-        let json: [String : Any] = ["data_id": 0, "data_title": NSLocalizedString("我的最爱", comment: ""), "data_description": "", "data_originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "data_type": "YouTube", "data_img": model.first?.data_artworkBigUrl ?? "pic_album_default", "data_tracksCount": model.count, "data_recentlyType": 3]
-        let album = GeneralPlaylists(JSON: json)
+        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的最爱", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
+//        let album = GeneralPlaylists(JSON: json)
+        let album = Mapper<GeneralPlaylists>().map(JSON: json)
         cell.updateCell(model: model[indexPath.row], models: self.model, album: album)
         cell.selectionStyle = .none
         return cell

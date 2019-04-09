@@ -226,6 +226,34 @@ class MPModelTools: NSObject {
         return isExsist
     }
     
+    /// 检查当前歌单是否已经创建
+    ///
+    /// - Parameters:
+    ///   - model: 当前歌单模型
+    ///   - tableName: 表名
+    ///   - condition: 查询条件：默认ID查询
+    /// - Returns: 是否存在
+    class func getCollectListExsistIndex(model: GeneralPlaylists, tableName: String = GeneralPlaylists.classCode, condition: String = "") -> Int {
+        var index = -1
+        self.getCollectListModel(tableName: tableName) { (models) in
+            if let m = models {
+                for i in (0..<m.count) {
+                    let item = m[i]
+                    if condition != "" {
+                        if item.data_title == condition {
+                            index = i
+                        }
+                    }else {
+                        if model.data_id == item.data_id {
+                            index = i
+                        }
+                    }
+                }
+            }
+        }
+        return index
+    }
+    
     /// 获取搜索结果模块数据
     ///
     /// - Parameters:
