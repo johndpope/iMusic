@@ -100,6 +100,16 @@ class MPMyFavoriteViewController: BaseTableViewController {
         let hv = MPMyFavoriteHeaderView.md_viewFromXIB() as! MPMyFavoriteHeaderView
         headerView = hv
         tableView.tableHeaderView = hv
+        
+        hv.clickBlock = {(sender) in
+            if let _ = sender as? UIButton {
+                if self.model.count > 0 {
+                    self.randomPlay()
+                }else {
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("没有可播放的歌曲", comment: ""))
+                }
+            }
+        }
     }
     
 }
@@ -121,5 +131,30 @@ extension MPMyFavoriteViewController {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
+    }
+}
+// MARK: - 随机播放
+extension MPMyFavoriteViewController {
+    private func randomPlay(index: Int = -1) {
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+            var cs: MPSongModel?
+            // 循序不能倒过来
+            if index != -1 {
+                cs = model[index]
+            }else {
+                cs = model.first
+            }
+            // 随机播放
+            pv.currentPlayOrderMode = 1
+            pv.currentSong = cs
+            pv.model = model
+            // 构造当前播放专辑列表模型
+            let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的最爱", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
+            //        let album = GeneralPlaylists(JSON: json)
+            let album = Mapper<GeneralPlaylists>().map(JSON: json)
+            pv.currentAlbum = album
+            pv.bigStyle()
+        }
     }
 }

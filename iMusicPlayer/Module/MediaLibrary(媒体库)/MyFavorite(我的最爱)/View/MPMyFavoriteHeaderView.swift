@@ -8,8 +8,10 @@
 
 import UIKit
 
-class MPMyFavoriteHeaderView: UITableViewCell {
-
+class MPMyFavoriteHeaderView: UITableViewCell, ViewClickedDelegate {
+    
+    var clickBlock: ((Any?) -> ())?
+    
     @IBOutlet weak var xib_random: UIButton!
     
     var count: Int = 0 {
@@ -24,4 +26,9 @@ class MPMyFavoriteHeaderView: UITableViewCell {
         // Initialization code
     }
     
+    @IBAction func randomPlay(_ sender: UIButton) {
+        if let b = clickBlock {
+            b(sender)
+        }
+    }
 }

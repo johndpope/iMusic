@@ -8,7 +8,9 @@
 
 import UIKit
 
-class MPAlbumListHeaderView: UITableViewCell {
+class MPAlbumListHeaderView: UITableViewCell, ViewClickedDelegate {
+    
+    var clickBlock: ((Any?) -> ())?
 
     @IBOutlet weak var xib_random: UIButton! {
         didSet {
@@ -35,4 +37,9 @@ class MPAlbumListHeaderView: UITableViewCell {
         xib_updateTime.text = model.data_updateTime
     }
 
+    @IBAction func randomPlay(_ sender: UIButton) {
+        if let b = clickBlock {
+            b(sender)
+        }
+    }
 }

@@ -74,7 +74,8 @@ class MPPlayingBigView: BaseView {
 //    , "autoplay": "0"
     var playerVars: [String : Any] = [ "showinfo": "0", "modestbranding" : "1", "playsinline": "1", "controls": "0", "autohide": "1"]
     
-    var currentPlayOrderMode: Int = 0 // 0: 顺序播放  1: 随机播放
+    var currentPlayOrderMode: Int = 0  // 0: 顺序播放  1: 随机播放
+    
     var currentPlayCycleMode: Int = 0 // 0: 列表循环  1: 单曲循环 2: 只播放当前列表
     
     var songID: String = ""
@@ -87,13 +88,20 @@ class MPPlayingBigView: BaseView {
         }
     }
     
+    var randomModel = [MPSongModel]()
+    
     var model = [MPSongModel]() {
         didSet {
             // 将当前播放列表保存到数据库
             MPModelTools.saveCurrentPlayList(currentList: model)
-            // *** 这里是要','拼接的字符串不是数组：参数错误导致播放失败
-            playerVars["playlist"] = getSongIDs(songs: model).joined(separator: ",")
             
+            if currentPlayOrderMode == 1 {  // 随机播放
+                var t = self.model
+                randomModel = t.randomObjects_ck()
+            }
+            
+            // *** 这里是要','拼接的字符串不是数组：参数错误导致播放失败
+            playerVars["playlist"] = getSongIDs(songs: currentPlayOrderMode == 1 ? randomModel : model).joined(separator: ",")
             updateView()
         }
     }
@@ -135,7 +143,7 @@ class MPPlayingBigView: BaseView {
         case 10002: // 上一曲
             ybPlayView.previousVideo()
             // 刷新当前view
-            self.currentSong = getPreSongFromSongs(song: self.currentSong!, songs: model)
+            self.currentSong = getPreSongFromSongs(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
             self.updateView(type: 1)
             break
         case 10003: // 暂停/播放
@@ -144,7 +152,7 @@ class MPPlayingBigView: BaseView {
         case 10004: // 下一曲
             ybPlayView.nextVideo()
             // 刷新当前view
-            self.currentSong = getNextSongFromSongs(song: self.currentSong!, songs: model)
+            self.currentSong = getNextSongFromSongs(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
             self.updateView(type: 1)
             break
         case 10005: // 播放模式：列表循环/单曲循环
@@ -329,7 +337,7 @@ extension MPPlayingBigView {
             xib_desc.text = currentSong?.data_singerName
         }
         // 设置下一首播放
-        let nextSong = getNextSongFromSongs(song: self.currentSong!, songs: model)
+        let nextSong = getNextSongFromSongs(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
         if SourceType == 0 {
             xib_nextSongName.text = nextSong.data_title ?? ""
         }else {
@@ -349,9 +357,9 @@ extension MPPlayingBigView {
             self.xib_collect.isSelected = MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
         }
         
-        //
-        playingView.currentIndex = model.getIndexFromArray(song: self.currentSong!, songs: model)
-        playingView.model = self.model
+        // 小窗口播放数据源
+        playingView.currentIndex = model.getIndexFromArray(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
+        playingView.model = currentPlayOrderMode == 1 ? randomModel : model
     }
     
     // 获取当前下标
@@ -461,7 +469,7 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
             //            ybPlayView.playVideo()
             ybPlayView.nextVideo()
             // 刷新当前view
-            self.currentSong = getNextSongFromSongs(song: self.currentSong!, songs: model)
+            self.currentSong = getNextSongFromSongs(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
             self.updateView(type: 1)
             break
         case .queued:
@@ -490,14 +498,14 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
     func playingView(pre view: MPPlayingView, index: Int) {
         ybPlayView.previousVideo()
         // 刷新当前view
-        self.currentSong = model[index]
+        self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
         self.updateView(type: 1)
     }
     
     func playingView(next view: MPPlayingView, index: Int) {
         ybPlayView.nextVideo()
         // 刷新当前view
-        self.currentSong = model[index]
+        self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
         self.updateView(type: 1)
     }
     
@@ -525,7 +533,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
     }
     
     private func playByIndex(index: Int) {
-        currentSong = model[index]
+        currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
         updateView()
     }
 }

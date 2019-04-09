@@ -91,6 +91,16 @@ override func clickRight(sender: UIButton) {
         let hv = MPAlbumListHeaderView.md_viewFromXIB() as! MPAlbumListHeaderView
         hv.updateView(model: self.headerModel!)
         tableView.tableHeaderView = hv
+        
+        hv.clickBlock = {(sender) in
+            if let _ = sender as? UIButton {
+                if self.models.count > 0 {
+                    self.randomPlay()
+                }else {
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("没有可播放的歌曲", comment: ""))
+                }
+            }
+        }
     }
     
 }
@@ -111,5 +121,30 @@ extension MPAlbumListViewController {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
+    }
+}
+// MARK: - 随机播放
+extension MPAlbumListViewController {
+    private func randomPlay(index: Int = -1) {
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+            var cs: MPSongModel?
+            // 循序不能倒过来
+            if index != -1 {
+                cs = models[index]
+            }else {
+                cs = models.first
+            }
+            // 随机播放
+            pv.currentPlayOrderMode = 1
+            pv.currentSong = cs
+            pv.model = models
+            // 构造当前播放专辑列表模型
+            let json: [String : Any] = ["id": 0, "title": headerModel?.data_title ?? "", "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": headerModel?.data_image ?? "pic_album_default", "tracksCount": models.count, "recentlyType": 6]
+            //        let album = GeneralPlaylists(JSON: json)
+            let album = Mapper<GeneralPlaylists>().map(JSON: json)
+            pv.currentAlbum = album
+            pv.bigStyle()
+        }
     }
 }

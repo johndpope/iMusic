@@ -67,7 +67,11 @@ class MPEditSongListViewController: BaseTableViewController {
         hv.count = songListModel?.data_tracksCount ?? 0
         hv.md_btnDidClickedBlock = {[weak self] (sender) in
             if sender.tag == 10001 {
-                
+                if self?.model.count ?? 0 > 0 {
+                    self?.randomPlay()
+                }else {
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("没有可播放的歌曲", comment: ""))
+                }
             }else {
                 let vc = MPEditSongListDetailViewController.init(nibName: Constant.detailVcName, bundle: nil)
                 if let m = self?.model {
@@ -93,5 +97,26 @@ extension MPEditSongListViewController {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
+    }
+}
+// MARK: - 随机播放
+extension MPEditSongListViewController {
+    private func randomPlay(index: Int = -1) {
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+            var cs: MPSongModel?
+            // 循序不能倒过来
+            if index != -1 {
+                cs = model[index]
+            }else {
+                cs = model.first
+            }
+            // 随机播放
+            pv.currentPlayOrderMode = 1
+            pv.currentSong = cs
+            pv.model = model
+            pv.currentAlbum = songListModel
+            pv.bigStyle()
+        }
     }
 }

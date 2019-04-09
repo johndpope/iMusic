@@ -1304,6 +1304,10 @@ extension NSMutableArray {
 }
 
 extension Array {
+    
+    /// 随机打乱数组
+    ///
+    /// - Returns: 打乱后数组
     mutating func randomObjects_ck() -> Array {
         self.sort { (obj1, obj2) -> Bool in
             let randomResult = Int(arc4random()) % 2; // arc4random() 返回值为 UInt32，先转为 Int，方便转为 Bool

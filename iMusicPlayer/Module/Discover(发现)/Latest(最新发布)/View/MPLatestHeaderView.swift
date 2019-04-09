@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MPLatestHeaderView: UITableViewCell {
+class MPLatestHeaderView: BaseView {
     
     var sgmDidChangeBlock: (()->Void)?
     
@@ -42,7 +42,7 @@ class MPLatestHeaderView: UITableViewCell {
     }
     
     @IBAction func randomPlay(_ sender: UIButton) {
-        if let b = md_btnDidClickedBlock {
+        if let b = clickBlock {
             b(sender)
         }
     }

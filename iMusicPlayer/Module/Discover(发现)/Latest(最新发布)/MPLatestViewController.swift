@@ -12,6 +12,7 @@ import ObjectMapper
 private struct Constant {
     static let identifier = "MPSongTableViewCell"
     static let rowHeight = SCREEN_WIDTH * (52/375)
+    static let headerHeight = SCREEN_WIDTH * (95/375)
 }
 
 class MPLatestViewController: BaseTableViewController {
@@ -65,10 +66,22 @@ class MPLatestViewController: BaseTableViewController {
         
         let hv = MPLatestHeaderView.md_viewFromXIB() as! MPLatestHeaderView
         self.headView = hv
+        self.headView?.height = Constant.headerHeight
         tableView.tableHeaderView = hv
         
         hv.sgmDidChangeBlock = {
             self.refreshData()
+        }
+        
+        // 随机播放
+        hv.clickBlock = {(sender) in
+            if let _ = sender as? UIButton {
+                if self.models.count > 0 {
+                    self.randomPlay()
+                }else {
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("没有可播放的歌曲", comment: ""))
+                }
+            }
         }
     }
     
@@ -90,5 +103,33 @@ extension MPLatestViewController {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
+    }
+}
+// MARK: - 随机播放
+extension MPLatestViewController {
+    private func randomPlay(index: Int = -1) {
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+            var cs: MPSongModel?
+            // 循序不能倒过来
+            if index != -1 {
+                cs = models[index]
+            }else {
+                cs = models.first
+            }
+            // 随机播放
+            pv.currentPlayOrderMode = 1
+            pv.currentSong = cs
+            pv.model = models
+            // 构造当前播放专辑列表模型
+            let tempImg = cs?.data_artworkBigUrl ?? ""
+            let img = (tempImg == "" ? (cs?.data_artworkUrl ?? "") : tempImg) == "" ? "pic_album_default" : (tempImg == "" ? (cs?.data_artworkUrl ?? "") : tempImg)
+            // 构造当前播放专辑列表模型
+            let json: [String : Any] = ["id": 0, "title": NSLocalizedString("新歌首发", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": img, "tracksCount": models.count, "recentlyType": 2]
+            //        let album = GeneralPlaylists(JSON: json)
+            let album = Mapper<GeneralPlaylists>().map(JSON: json)
+            pv.currentAlbum = album
+            pv.bigStyle()
+        }
     }
 }

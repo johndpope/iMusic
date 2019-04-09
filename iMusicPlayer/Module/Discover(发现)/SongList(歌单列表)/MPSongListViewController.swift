@@ -120,6 +120,11 @@ override func clickRight(sender: UIButton) {
             if let btn = sender as? UIButton {
                 if btn.tag == 10001 {
                     QYTools.shared.Log(log: "随机播放")
+                    if self.model.count > 0 {
+                        self.randomPlay()
+                    }else {
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("没有可播放的歌曲", comment: ""))
+                    }
                 }else {
                     QYTools.shared.Log(log: "收藏歌单")
                     let isExsist = MPModelTools.checkCollectListExsist(model: self.headerSongModel!, tableName: MPCollectSongListViewController.classCode)
@@ -156,3 +161,24 @@ extension MPSongListViewController {
     
 }
 
+// MARK: - 随机播放
+extension MPSongListViewController {
+    private func randomPlay(index: Int = -1) {
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+            var cs: MPSongModel?
+            // 循序不能倒过来
+            if index != -1 {
+                cs = model[index]
+            }else {
+                cs = model.first
+            }
+            // 随机播放
+            pv.currentPlayOrderMode = 1
+            pv.currentSong = cs
+            pv.model = model
+            pv.currentAlbum = headerSongModel
+            pv.bigStyle()
+        }
+    }
+}
