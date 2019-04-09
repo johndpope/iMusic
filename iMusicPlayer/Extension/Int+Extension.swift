@@ -56,6 +56,29 @@ extension Int {
         let temp = to - from + 1
         return from + (Int(arc4random()) % temp)
     }
+    
+    //前+
+    static prefix func ++(num:inout Int) -> Int  {
+        num += 1
+        return num
+    }
+    //后+
+    static postfix func ++(num:inout Int) -> Int  {
+        let temp = num
+        num += 1
+        return temp
+    }
+    //前-
+    static prefix func --(num:inout Int) -> Int  {
+        num -= 1
+        return num
+    }
+    //后-
+    static postfix func --(num:inout Int) -> Int  {
+        let temp = num
+        num -= 1
+        return temp
+    }
 }
 extension Array {
     static func strWithString(str: String) {

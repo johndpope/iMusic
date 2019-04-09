@@ -63,7 +63,7 @@
                     <constraint firstItem="0lY-zg-f8S" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bPE-tn-TPB" secondAttribute="bottom" id="Ltc-Id-TTo"/>
                     <constraint firstItem="bPE-tn-TPB" firstAttribute="leading" secondItem="Qfo-UA-u5l" secondAttribute="trailing" constant="12" id="QxL-VB-4HV"/>
                     <constraint firstItem="bPE-tn-TPB" firstAttribute="top" secondItem="4FQ-52-DQA" secondAttribute="top" constant="5" id="SDR-7K-jCM"/>
-                    <constraint firstItem="faI-l9-Eqy" firstAttribute="leading" secondItem="IM9-To-IGM" secondAttribute="trailing" constant="12" id="aF1-qP-a00"/>
+                    <constraint firstItem="faI-l9-Eqy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IM9-To-IGM" secondAttribute="trailing" constant="12" id="aF1-qP-a00"/>
                     <constraint firstItem="faI-l9-Eqy" firstAttribute="top" secondItem="4FQ-52-DQA" secondAttribute="top" constant="14" id="ajC-vA-qL3"/>
                     <constraint firstAttribute="bottom" secondItem="faI-l9-Eqy" secondAttribute="bottom" constant="14" id="glK-Xm-buq"/>
                     <constraint firstAttribute="bottom" secondItem="bPE-tn-TPB" secondAttribute="bottom" constant="5" id="iRl-9J-PZM"/>
@@ -76,9 +76,10 @@
             <connections>
                 <outlet property="xib_desc" destination="0lY-zg-f8S" id="9Jb-pz-asI"/>
                 <outlet property="xib_image" destination="bPE-tn-TPB" id="kuD-72-432"/>
+                <outlet property="xib_select" destination="Qfo-UA-u5l" id="kui-lP-K19"/>
                 <outlet property="xib_title" destination="IM9-To-IGM" id="gqI-me-KuT"/>
             </connections>
-            <point key="canvasLocation" x="36.799999999999997" y="128.63568215892056"/>
+            <point key="canvasLocation" x="253" y="36"/>
         </tableViewCell>
     </objects>
     <resources>

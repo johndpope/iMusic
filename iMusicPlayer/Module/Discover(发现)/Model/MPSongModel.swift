@@ -27,6 +27,8 @@ class MPSongModel:BaseModel {
     
     var data_collectStatus: Int = 0
     
+    var data_isSelected: Int = 0
+    
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(self.data_id, forKey: "id")
         aCoder.encode(self.data_originalId, forKey: "originalId")

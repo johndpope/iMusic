@@ -13,12 +13,18 @@ class MPEditSongListDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var xib_image: UIImageView!
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
+    @IBOutlet weak var xib_select: UIButton!
     
     var currentSong: MPSongModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        xib_select.isSelected = false
     }
     
     func updateCell(model: MPSongModel) {
@@ -35,6 +41,10 @@ class MPEditSongListDetailTableViewCell: UITableViewCell {
         }else {
             xib_title.text = model.data_songName
             xib_desc.text = model.data_singerName
+        }
+        
+        if model.data_isSelected == 1 {
+            xib_select.isSelected = true
         }
     }
     

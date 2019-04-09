@@ -77,7 +77,8 @@ class MPEditSongListViewController: BaseTableViewController {
                 if let m = self?.model {
                     vc.model = m
                 }
-                self?.navigationController?.pushViewController(vc, animated: true)
+//                self?.navigationController?.pushViewController(vc, animated: true)
+                self?.navigationController?.present(vc, animated: true, completion: nil)
             }
         }
         tableView.tableHeaderView = hv
