@@ -16,17 +16,13 @@ private struct Constant {
 
 class MPEditSongListViewController: BaseTableViewController {
     
+    var headerView: MPEditSongListHeaderView?
+    
     var songListModel: GeneralPlaylists? {
         didSet {
-            
             // 标记当前歌单类型：8：创建的歌单
             songListModel?.data_recentlyType = 8
-            
-            MPModelTools.getSongInTable(tableName: songListModel?.data_title ?? "") { (model) in
-                if let m = model {
-                    self.model = m
-                }
-            }
+            headerView?.count = songListModel?.data_tracksCount ?? 0
         }
     }
     
@@ -39,7 +35,22 @@ class MPEditSongListViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshData()
+    }
+    
+    override func refreshData() {
+        super.refreshData()
+        // 刷新数据
+        MPModelTools.getSongInTable(tableName: songListModel?.data_title ?? "") { (model) in
+            if let m = model {
+                self.model = m
+                self.tableView.mj_header.endRefreshing()
+            }
+        }
     }
     
     override func setupStyle() {
@@ -64,6 +75,7 @@ class MPEditSongListViewController: BaseTableViewController {
         super.setupTableHeaderView()
         
         let hv = MPEditSongListHeaderView.md_viewFromXIB() as! MPEditSongListHeaderView
+        headerView = hv
         hv.count = songListModel?.data_tracksCount ?? 0
         hv.md_btnDidClickedBlock = {[weak self] (sender) in
             if sender.tag == 10001 {
@@ -76,6 +88,11 @@ class MPEditSongListViewController: BaseTableViewController {
                 let vc = MPEditSongListDetailViewController.init(nibName: Constant.detailVcName, bundle: nil)
                 if let m = self?.model {
                     vc.model = m
+                    vc.songListModel = self?.songListModel
+                    // 刷新专辑信息
+                    vc.updateAlbumBlock = {(album) in
+                        self?.songListModel = album
+                    }
                 }
 //                self?.navigationController?.pushViewController(vc, animated: true)
                 self?.navigationController?.present(vc, animated: true, completion: nil)

@@ -28,6 +28,11 @@ class MPCreateSongListViewController: BaseTableViewController {
         refreshData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshData()
+    }
+    
     override func refreshData() {
         super.refreshData()
 //        NSArray.bg_delete(MPCreateSongListViewController.classCode, row: 1)

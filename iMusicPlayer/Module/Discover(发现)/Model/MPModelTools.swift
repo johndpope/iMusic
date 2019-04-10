@@ -36,6 +36,35 @@ class MPModelTools: NSObject {
         }
     }
     
+    // MARK: - 删除表中歌曲
+    
+    /// 删除表中歌曲
+    ///
+    /// - Parameters:
+    ///   - tableName: 表名
+    ///   - songs: 要删除的歌曲数组
+    ///   - finished: 完成回调
+    class func deleteSongInTable(tableName: String = "", songs: [MPSongModel], finished: (()->Void)? = nil) {
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
+            for i in 0..<arr.count {
+                var isExsist = false
+                for j in 0..<songs.count {
+                    if arr[i].data_title == songs[j].data_title {
+                        isExsist = true
+                    }
+                }
+                if isExsist {
+                    NSArray.bg_deleteObject(withName: tableName, index: i)
+                    QYTools.shared.Log(log: "歌曲\(i)删除成功")
+                }
+            }
+//            QYTools.shared.Log(log: "本地数据库获取数据")
+            if let f = finished {
+                f()
+            }
+        }
+    }
+    
     /// 更新表中歌曲信息
     ///
     /// - Parameters:

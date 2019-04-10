@@ -24,6 +24,13 @@ class MPEditSongListDetailViewController: BaseTableViewController {
     }
     @IBOutlet weak var xib_selectAll: UIButton!
     
+    /// 刷新专辑信息回调
+    var updateAlbumBlock: ((_ album: GeneralPlaylists)->Void)?
+    
+    var songListModel: GeneralPlaylists?
+    
+    var selectModel = [MPSongModel]()
+    
     var model = [MPSongModel]()
     
     override func viewDidLoad() {
@@ -61,15 +68,29 @@ class MPEditSongListDetailViewController: BaseTableViewController {
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
-        if sender.tag == 10001 {    // 全选
+        switch sender.tag {
+        case 10001:   // 全选
             sender.isSelected = !sender.isSelected
             if sender.isSelected {
                 self.selectAll()
             }else {
                 self.normalAll()
             }
-        }else { // 完成
+            break
+        case 10002:   // 完成
             self.dismiss(animated: true, completion: nil)
+            break
+        case 10003: // 下一首播放
+            nextPlay()
+            break
+        case 10004: // 添加到歌单
+            addToSongList()
+            break
+        case 10005: // 删除
+            deleteSelModels()
+            break
+        default:
+            break
         }
     }
     
@@ -92,13 +113,80 @@ extension MPEditSongListDetailViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.model[indexPath.row].data_isSelected = self.model[indexPath.row].data_isSelected == 1 ? 0 : 1
-//        tableView.reloadData()
         tableView.reloadRows(at: [indexPath], with: .automatic)
+        // 添加到选中模型中
+        self.addToSelectModels(model: model[indexPath.row])
         checkSelectAll()
     }
 }
 // MARK: - 操作是否选中
 extension MPEditSongListDetailViewController {
+    
+    /// // 删除当前模型和本地模型：刷新数据
+    private func deleteSelModels() {
+        if selectModel.count == 0 {
+            SVProgressHUD.showInfo(withStatus: "请选择歌曲")
+            return
+        }else {
+            var alert: HFAlertController?
+            let config = MDAlertConfig()
+            config.title = NSLocalizedString("删除歌曲\n", comment: "")
+            config.desc = NSLocalizedString("确定要删除已选择的歌曲吗？", comment: "")
+            config.negativeTitle = NSLocalizedString("取消", comment: "")
+            config.positiveTitle = NSLocalizedString("OK", comment: "")
+            config.negativeTitleColor = Color.ThemeColor
+            config.positiveTitleColor = Color.ThemeColor
+            alert = HFAlertController.alertController(config: config, ConfirmCallBack: {
+                // 确定
+                // 本地删除
+                MPModelTools.deleteSongInTable(tableName: self.songListModel?.data_title ?? "", songs: self.selectModel, finished: {
+                    // 当前列表删除
+                    let temps: NSMutableArray = NSMutableArray(array: self.model)
+                    temps.removeObjects(in: self.selectModel)
+                    self.model = temps as! [MPSongModel]
+                    self.tableView.reloadData()
+                    alert?.dismiss(animated: true, completion: nil)
+                    
+                    // 更新当前专辑信息：数量图片等
+                    let tempM = self.songListModel
+                    tempM?.data_tracksCount = (self.songListModel?.data_tracksCount ?? 0) - self.selectModel.count
+                    tempM?.data_img = self.model.first?.data_artworkUrl ?? "pic_album_default"
+                    MPModelTools.updateCountForSongList(songList: tempM!, finished: {
+                        QYTools.shared.Log(log: "专辑信息更新成功")
+                        if let b = self.updateAlbumBlock {
+                            b(tempM!)
+                        }
+                    })
+                })
+            }) {
+                // 取消
+                alert?.dismiss(animated: true, completion: nil)
+            }
+            HFAppEngine.shared.currentViewController()?.present(alert!, animated: true, completion: nil)
+        }
+        
+    }
+    
+    /// 添加到选中模型
+    ///
+    /// - Parameter model: 待添加的模型
+    private func addToSelectModels(model: MPSongModel) {
+        var isExsist = false
+        self.selectModel.forEach { (item) in
+            if model.data_title == item.data_title {
+                isExsist = true
+            }
+        }
+        if !isExsist, model.data_isSelected == 1 {
+            self.selectModel.append(model)
+        }else {
+            if model.data_isSelected == 0 {
+                let temps: NSMutableArray = NSMutableArray(array: selectModel)
+                temps.remove(model)
+                selectModel = temps as! [MPSongModel]
+            }
+        }
+    }
     
     /// 是否需要全选
     private func checkSelectAll() {
@@ -120,6 +208,7 @@ extension MPEditSongListDetailViewController {
         model.forEach { (item) in
             item.data_isSelected = 1
         }
+        selectModel = model
         xib_selectAll.isSelected = true
         tableView.reloadData()
     }
@@ -129,13 +218,21 @@ extension MPEditSongListDetailViewController {
         model.forEach { (item) in
             item.data_isSelected = 0
         }
+        selectModel.removeAll()
         xib_selectAll.isSelected = false
         tableView.reloadData()
     }
 }
 
 extension MPEditSongListDetailViewController {
-    func addToSongList(song: MPSongModel) {
+    
+    /// 添加到歌单列表
+    func addToSongList() {
+        if selectModel.count == 0 {
+            SVProgressHUD.showInfo(withStatus: "请选择歌曲")
+            return
+        }
+        
         let lv = MPAddToSongListView.md_viewFromXIB() as! MPAddToSongListView
         MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
             if let m = model {
@@ -167,41 +264,63 @@ extension MPEditSongListDetailViewController {
             }
             HFAlertController.showCustomView(view: pv)
         }
-        
         // 加入歌单
         lv.addSongListBlock = {(songList) in
             if let tn = songList.data_title {
-                if !MPModelTools.checkSongExsistInSongList(song: song, songList: songList) {
-                    MPModelTools.saveSongToTable(song: song, tableName: tn)
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲添加成功", comment: ""))
-                    // 更新当前歌单图片及数量：+1
-                    MPModelTools.updateCountForSongList(songList: songList, finished: {
-                        lv.removeFromWindow()
-                    })
-                }else {
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在该歌单中", comment: ""))
-                }
+                self.selectModel.forEach({ (song) in    // 循环添加歌曲
+                    if !MPModelTools.checkSongExsistInSongList(song: song, songList: songList) {
+                        MPModelTools.saveSongToTable(song: song, tableName: tn)
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲添加成功", comment: ""))
+                        // 更新当前歌单图片及数量：+1
+                        MPModelTools.updateCountForSongList(songList: songList, finished: {
+                            lv.removeFromWindow()
+                        })
+                    }else {
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在该歌单中", comment: ""))
+                    }
+                })
             }
         }
         
         HFAlertController.showCustomView(view: lv, type: HFAlertType.ActionSheet)
     }
     
-    func nextPlay(song: MPSongModel) {
-        // 添加到播放列表的下一首: 判断是否在列表中：在则调换到下一首，不在则添加到下一首
-        if !MPModelTools.checkSongExsistInPlayingList(song: song) {
-            MPModelTools.getCurrentPlayList { (model, currentPlaySong) in
-                if var m = model, let cs = currentPlaySong {
-                    let index = self.getIndexFromSongs(song: cs, songs: m)
-                    let nextIndex = (index+1)%m.count
-                    m.insert(song, at: nextIndex)
-                }
+    /// 下一首播放
+    func nextPlay() {
+        if selectModel.count == 0 {
+            SVProgressHUD.showInfo(withStatus: "请选择歌曲")
+            return
+        }
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+            if pv.model.count > 0, let cs = pv.currentSong {
+                let currentPlayingList = pv.model
+                self.selectModel.forEach({ (song) in // 循环添加到下一首播放
+                    var exsist = false
+                    // 添加到播放列表的下一首: 判断是否在列表中：在则调换到下一首，不在则添加到下一首
+                    currentPlayingList.forEach({ (item) in
+                        if song.data_title == item.data_title {
+                            exsist = true
+                        }
+                    })
+                    if !exsist {
+                        let index = self.getIndexFromSongs(song: cs, songs: currentPlayingList)
+                        let nextIndex = (index + 1) % currentPlayingList.count
+                        pv.model.insert(song, at: nextIndex)
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲插入成功", comment: ""))
+                    }else {
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在播放列表中", comment: ""))
+                    }
+                })
+            }else {
+                // 直接添加选中歌曲到播放列表并开始播放
+                self.play()
             }
-        }else {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在播放列表中", comment: ""))
         }
     }
     
+    /// 添加到播放列表
+    ///
+    /// - Parameter song: -
     func addToPlayList(song: MPSongModel) {
         // 添加到播放列表: 判断是否在列表中：不在则添加
         if !MPModelTools.checkSongExsistInPlayingList(song: song) {
@@ -226,4 +345,23 @@ extension MPEditSongListDetailViewController {
         return index
     }
     
+}
+// MARK: - 播放歌曲
+extension MPEditSongListDetailViewController {
+    private func play(index: Int = -1) {
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+            var cs: MPSongModel?
+            // 循序不能倒过来
+            if index != -1 {
+                cs = selectModel[index]
+            }else {
+                cs = selectModel.first
+            }
+            pv.currentSong = cs
+            pv.model = selectModel
+            pv.currentAlbum = songListModel
+            pv.smallStyle()
+        }
+    }
 }

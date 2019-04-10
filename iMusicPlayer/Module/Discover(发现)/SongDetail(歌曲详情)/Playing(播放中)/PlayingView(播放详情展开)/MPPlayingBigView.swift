@@ -540,7 +540,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
 
 // MARK: - 扩展大小窗口切换时样式切换
 extension MPPlayingBigView {
-    private func smallStyle() {
+    func smallStyle() {
         self.top = SCREEN_HEIGHT - TabBarHeight - Constant.smallPlayerHeight
         xib_playingView.insertSubview(ybPlayView, at: 0)
         ybPlayView.snp.makeConstraints { (make) in
