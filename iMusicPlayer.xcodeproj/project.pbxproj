@@ -414,6 +414,11 @@
 		C59498DA2240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59498D82240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift */; };
 		C59498DB2240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59498D92240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib */; };
 		C59498DD2240EE8400AC10DD /* MPEditSongListDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59498DC2240EE8400AC10DD /* MPEditSongListDetailViewController.xib */; };
+		C5C86541225DD3E000E54DE2 /* TableViewDragger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653B225DD3E000E54DE2 /* TableViewDragger.swift */; };
+		C5C86542225DD3E000E54DE2 /* ScrollRects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653D225DD3E000E54DE2 /* ScrollRects.swift */; };
+		C5C86543225DD3E000E54DE2 /* TableViewDraggerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653E225DD3E000E54DE2 /* TableViewDraggerCell.swift */; };
+		C5C86544225DD3E000E54DE2 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653F225DD3E000E54DE2 /* UIScrollViewExtension.swift */; };
+		C5C86545225DD3E000E54DE2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5C86540225DD3E000E54DE2 /* Info.plist */; };
 		C5F5378522544EB8006D228B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378222544EB7006D228B /* PlayerView.swift */; };
 		C5F5378622544EB8006D228B /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378322544EB7006D228B /* Video.swift */; };
 		C5F5378722544EB8006D228B /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378422544EB8006D228B /* extensions.swift */; };
@@ -954,6 +959,12 @@
 		C59498D82240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPEditSongListDetailHeaderView.swift; sourceTree = "<group>"; };
 		C59498D92240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPEditSongListDetailHeaderView.xib; sourceTree = "<group>"; };
 		C59498DC2240EE8400AC10DD /* MPEditSongListDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPEditSongListDetailViewController.xib; sourceTree = "<group>"; };
+		C5C8653B225DD3E000E54DE2 /* TableViewDragger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDragger.swift; sourceTree = "<group>"; };
+		C5C8653C225DD3E000E54DE2 /* TableViewDragger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewDragger.h; sourceTree = "<group>"; };
+		C5C8653D225DD3E000E54DE2 /* ScrollRects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollRects.swift; sourceTree = "<group>"; };
+		C5C8653E225DD3E000E54DE2 /* TableViewDraggerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDraggerCell.swift; sourceTree = "<group>"; };
+		C5C8653F225DD3E000E54DE2 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
+		C5C86540225DD3E000E54DE2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5F5378222544EB7006D228B /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		C5F5378322544EB7006D228B /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		C5F5378422544EB8006D228B /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
@@ -2352,27 +2363,27 @@
 		C57FC6DB2240DC2F00218DE7 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C57FC7C52240DC2F00218DE7 /* DispatchTime+Extension.swift */,
+				C57FC6DF2240DC2F00218DE7 /* Int+Extension.swift */,
+				C57FC7B02240DC2F00218DE7 /* String+Extension.swift */,
+				C57FC7322240DC2F00218DE7 /* Temp.swift */,
+				C57FC6DE2240DC2F00218DE7 /* UIColor+Extension.swift */,
 				C57FC6DC2240DC2F00218DE7 /* UIDevice+Extension.swift */,
 				C57FC6DD2240DC2F00218DE7 /* UIFont+Extension.swift */,
-				C57FC6DE2240DC2F00218DE7 /* UIColor+Extension.swift */,
-				C57FC6DF2240DC2F00218DE7 /* Int+Extension.swift */,
-				C57FC6E02240DC2F00218DE7 /* Category */,
-				C57FC7242240DC2F00218DE7 /* StarView */,
-				C57FC7272240DC2F00218DE7 /* JSDropDownMenu */,
 				C57FC72B2240DC2F00218DE7 /* UIView+Extension.swift */,
-				C57FC72C2240DC2F00218DE7 /* LimitCountTextView */,
-				C57FC72E2240DC2F00218DE7 /* FGConverter */,
 				C57FC7312240DC2F00218DE7 /* UserDefault+Extension.swift */,
-				C57FC7322240DC2F00218DE7 /* Temp.swift */,
-				C57FC7332240DC2F00218DE7 /* MDModifyKit */,
-				C57FC7562240DC2F00218DE7 /* SLPasswordInputView */,
-				C57FC75B2240DC2F00218DE7 /* SelectImage */,
-				C57FC7B02240DC2F00218DE7 /* String+Extension.swift */,
-				C57FC7B12240DC2F00218DE7 /* SnailPopupController */,
-				C57FC7B42240DC2F00218DE7 /* FJAddressPicker */,
-				C57FC7C52240DC2F00218DE7 /* DispatchTime+Extension.swift */,
+				C57FC6E02240DC2F00218DE7 /* Category */,
 				C57FC7C62240DC2F00218DE7 /* CYPasswordView */,
+				C57FC72E2240DC2F00218DE7 /* FGConverter */,
+				C57FC7B42240DC2F00218DE7 /* FJAddressPicker */,
+				C57FC7272240DC2F00218DE7 /* JSDropDownMenu */,
+				C57FC72C2240DC2F00218DE7 /* LimitCountTextView */,
 				C57FC7D22240DC2F00218DE7 /* MDFlowView */,
+				C57FC7332240DC2F00218DE7 /* MDModifyKit */,
+				C57FC75B2240DC2F00218DE7 /* SelectImage */,
+				C57FC7562240DC2F00218DE7 /* SLPasswordInputView */,
+				C57FC7B12240DC2F00218DE7 /* SnailPopupController */,
+				C57FC7242240DC2F00218DE7 /* StarView */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2532,6 +2543,7 @@
 		C57FC7332240DC2F00218DE7 /* MDModifyKit */ = {
 			isa = PBXGroup;
 			children = (
+				C5C8653A225DD3E000E54DE2 /* TableViewDragger */,
 				C560342A224477EF00F6795F /* SpotlightLyrics */,
 				C57FC7342240DC2F00218DE7 /* ZXDrawPrize */,
 				C57FC7372240DC2F00218DE7 /* BRPickerView */,
@@ -2866,6 +2878,19 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C5C8653A225DD3E000E54DE2 /* TableViewDragger */ = {
+			isa = PBXGroup;
+			children = (
+				C5C8653B225DD3E000E54DE2 /* TableViewDragger.swift */,
+				C5C8653C225DD3E000E54DE2 /* TableViewDragger.h */,
+				C5C8653D225DD3E000E54DE2 /* ScrollRects.swift */,
+				C5C8653E225DD3E000E54DE2 /* TableViewDraggerCell.swift */,
+				C5C8653F225DD3E000E54DE2 /* UIScrollViewExtension.swift */,
+				C5C86540225DD3E000E54DE2 /* Info.plist */,
+			);
+			path = TableViewDragger;
+			sourceTree = "<group>";
+		};
 		C5F5378122544E66006D228B /* PlayerView(播放悬浮窗) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3058,6 +3083,7 @@
 				C57FC7FC2240DC2F00218DE7 /* MPCollectSongListHeaderView.xib in Resources */,
 				C57FC7FF2240DC2F00218DE7 /* MPMyFavoriteTableViewCell.xib in Resources */,
 				C57FC9242240DC3000218DE7 /* FJItemCVCell.xib in Resources */,
+				C5C86545225DD3E000E54DE2 /* Info.plist in Resources */,
 				C57FC7ED2240DC2F00218DE7 /* LTLocationBottomView.xib in Resources */,
 				C59498C62240E4DB00AC10DD /* MPEditSongListHeaderView.xib in Resources */,
 				C57FC84F2240DC2F00218DE7 /* MPSongToolsView.xib in Resources */,
@@ -3352,6 +3378,7 @@
 				C57FC88D2240DC2F00218DE7 /* HFWebViewController.swift in Sources */,
 				C57FC8C22240DC2F00218DE7 /* UIViewController+DDPopUpViewController.m in Sources */,
 				C57FC82F2240DC2F00218DE7 /* MPRankingTableViewCell.swift in Sources */,
+				C5C86542225DD3E000E54DE2 /* ScrollRects.swift in Sources */,
 				C57FC88B2240DC2F00218DE7 /* HFAlertController.swift in Sources */,
 				C57FC8562240DC2F00218DE7 /* MPCreateSongListView.swift in Sources */,
 				C59498D72240E93E00AC10DD /* MPEditSongListDetailViewController.swift in Sources */,
@@ -3374,6 +3401,7 @@
 				C52E2A1D2249CD83000075E8 /* MPModelTools.swift in Sources */,
 				C57FC8DE2240DC2F00218DE7 /* ZXDrawPrizeView.swift in Sources */,
 				C57FC8B82240DC2F00218DE7 /* NSString+DisplayTime.m in Sources */,
+				C5C86541225DD3E000E54DE2 /* TableViewDragger.swift in Sources */,
 				C57FC81E2240DC2F00218DE7 /* MPRelatedSongsViewController.swift in Sources */,
 				C57FC7FD2240DC2F00218DE7 /* MPMediaLibraryViewController.swift in Sources */,
 				C57FC9002240DC3000218DE7 /* HXDatePhotoViewFlowLayout.m in Sources */,
@@ -3593,11 +3621,13 @@
 				C57FC8A62240DC2F00218DE7 /* MDRightIconButton.swift in Sources */,
 				C57FC80C2240DC2F00218DE7 /* MPAlbumListTableViewCell.swift in Sources */,
 				C57FC8DA2240DC2F00218DE7 /* FGConverter.swift in Sources */,
+				C5C86544225DD3E000E54DE2 /* UIScrollViewExtension.swift in Sources */,
 				C57FC91A2240DC3000218DE7 /* AddressAttribute.swift in Sources */,
 				C5603437224477EF00F6795F /* LyricsParser.swift in Sources */,
 				C57FC8742240DC2F00218DE7 /* API.swift in Sources */,
 				C57FC8732240DC2F00218DE7 /* Macro.swift in Sources */,
 				C56034252243A24900F6795F /* MPLrcView.swift in Sources */,
+				C5C86543225DD3E000E54DE2 /* TableViewDraggerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

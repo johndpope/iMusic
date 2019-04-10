@@ -49,6 +49,8 @@ target 'iMusicPlayer' do
   pod 'BGFMDB'
   # YouTube网页播放器交互库
   pod "youtube-ios-player-helper"
+  # tableView拖动单行交换位置
+  # pod "TableViewDragger"
 
   target 'iMusicPlayerTests' do
     inherit! :search_paths

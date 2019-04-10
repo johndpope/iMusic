@@ -33,10 +33,12 @@ class MPEditSongListDetailViewController: BaseTableViewController {
     
     var model = [MPSongModel]()
     
+    var dragger: TableViewDragger!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        self.configDragger()
     }
     
     override func setupStyle() {
@@ -148,15 +150,7 @@ extension MPEditSongListDetailViewController {
                     alert?.dismiss(animated: true, completion: nil)
                     
                     // 更新当前专辑信息：数量图片等
-                    let tempM = self.songListModel
-                    tempM?.data_tracksCount = (self.songListModel?.data_tracksCount ?? 0) - self.selectModel.count
-                    tempM?.data_img = self.model.first?.data_artworkUrl ?? "pic_album_default"
-                    MPModelTools.updateCountForSongList(songList: tempM!, finished: {
-                        QYTools.shared.Log(log: "专辑信息更新成功")
-                        if let b = self.updateAlbumBlock {
-                            b(tempM!)
-                        }
-                    })
+                    self.updateAlbumModel(count: (self.songListModel?.data_tracksCount ?? 0) - self.selectModel.count)
                 })
             }) {
                 // 取消
@@ -348,6 +342,10 @@ extension MPEditSongListDetailViewController {
 }
 // MARK: - 播放歌曲
 extension MPEditSongListDetailViewController {
+    
+    /// 播放选中歌曲列表
+    ///
+    /// - Parameter index: -
     private func play(index: Int = -1) {
         // 显示当前的播放View
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
@@ -364,4 +362,69 @@ extension MPEditSongListDetailViewController {
             pv.smallStyle()
         }
     }
+    
+    /// 更新专辑信息
+    ///
+    /// - Parameter count: 专辑单曲数量
+    private func updateAlbumModel(count: Int = -1) {
+        // 更新当前专辑信息：数量图片等
+        let tempM = self.songListModel
+        if count != -1 {
+            tempM?.data_tracksCount = count
+        }
+        tempM?.data_img = self.model.first?.data_artworkUrl ?? "pic_album_default"
+        MPModelTools.updateCountForSongList(songList: tempM!, finished: {
+            QYTools.shared.Log(log: "专辑信息更新成功")
+            if let b = self.updateAlbumBlock {
+                b(tempM!)
+            }
+        })
+    }
+}
+// MARK: - 拖动效果实现
+extension MPEditSongListDetailViewController: TableViewDraggerDataSource, TableViewDraggerDelegate {
+    
+    /// 配置拖动控制器
+    private func configDragger() {
+        dragger = TableViewDragger(tableView: tableView)
+        dragger.availableHorizontalScroll = true
+        dragger.dataSource = self
+        dragger.delegate = self
+        dragger.alphaForCell = 0.7
+    }
+    
+    func dragger(_ dragger: TableViewDragger, moveDraggingAt indexPath: IndexPath, newIndexPath: IndexPath) -> Bool {
+        let item = model[indexPath.row]
+        model.remove(at: indexPath.row)
+        model.insert(item, at: newIndexPath.row)
+        tableView.moveRow(at: indexPath, to: newIndexPath)
+        // 数据库更新本地数据：
+        updateModels(at: indexPath, to: newIndexPath)
+        return true
+    }
+    
+    /// 更新本地模型
+    ///
+    /// - Parameters:
+    ///   - at: 当前位置
+    ///   - to: 移动后位置
+    private func updateModels(at: IndexPath, to: IndexPath) {
+        // 删除当前位置元素
+//        if NSArray.bg_deleteObject(withName: songListModel?.data_title ?? "", index: at.row) {
+//            // 插入数据没有提供方法
+//        }
+        
+        // 删除原来的数据并重新保存到数据表中
+        let tbn = songListModel?.data_title ?? ""
+        NSArray.bg_dropAsync(tbn) { (finished) in
+            if finished {
+                if (self.model as NSArray).bg_save(withName: tbn) {
+                    QYTools.shared.Log(log: "本地模型更新成功")
+                    self.updateAlbumModel()
+                }
+            }
+        }
+        
+    }
+    
 }
