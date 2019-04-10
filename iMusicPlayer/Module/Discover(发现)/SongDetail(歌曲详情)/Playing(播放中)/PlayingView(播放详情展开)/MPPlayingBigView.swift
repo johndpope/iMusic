@@ -10,7 +10,7 @@ import UIKit
 import youtube_ios_player_helper
 
 private struct Constant {
-    static let smallPlayerWidth = SCREEN_HEIGHT * (90/667)
+    static let smallPlayerWidth = SCREEN_HEIGHT * (90/(IPHONEX ? 812 : 667)) 
     static let sbReduceHeight = SCREEN_WIDTH * (58/375)
     static let smallPlayerHeight = SCREEN_WIDTH * (48/375)
 }
