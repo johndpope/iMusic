@@ -55,6 +55,7 @@
 		C560343E224477EF00F6795F /* LyricsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5603434224477EF00F6795F /* LyricsCell.swift */; };
 		C560344222447DA200F6795F /* MPScrollPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560344022447DA200F6795F /* MPScrollPlayView.swift */; };
 		C560344322447DA200F6795F /* MPScrollPlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C560344122447DA200F6795F /* MPScrollPlayView.xib */; };
+		C56BDB6A225DE942008AE913 /* createSLExtensionTools.plist in Resources */ = {isa = PBXBuildFile; fileRef = C56BDB69225DE942008AE913 /* createSLExtensionTools.plist */; };
 		C57FC5722240D9D900218DE7 /* iMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */; };
 		C57FC57D2240D9D900218DE7 /* iMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC57C2240D9D900218DE7 /* iMusicPlayerUITests.swift */; };
 		C57FC7D72240DC2F00218DE7 /* DAConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C57FC58B2240DC2E00218DE7 /* DAConfig.m */; };
@@ -418,7 +419,6 @@
 		C5C86542225DD3E000E54DE2 /* ScrollRects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653D225DD3E000E54DE2 /* ScrollRects.swift */; };
 		C5C86543225DD3E000E54DE2 /* TableViewDraggerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653E225DD3E000E54DE2 /* TableViewDraggerCell.swift */; };
 		C5C86544225DD3E000E54DE2 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653F225DD3E000E54DE2 /* UIScrollViewExtension.swift */; };
-		C5C86545225DD3E000E54DE2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5C86540225DD3E000E54DE2 /* Info.plist */; };
 		C5F5378522544EB8006D228B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378222544EB7006D228B /* PlayerView.swift */; };
 		C5F5378622544EB8006D228B /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378322544EB7006D228B /* Video.swift */; };
 		C5F5378722544EB8006D228B /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378422544EB8006D228B /* extensions.swift */; };
@@ -499,6 +499,7 @@
 		C5603434224477EF00F6795F /* LyricsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsCell.swift; sourceTree = "<group>"; };
 		C560344022447DA200F6795F /* MPScrollPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPScrollPlayView.swift; sourceTree = "<group>"; };
 		C560344122447DA200F6795F /* MPScrollPlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPScrollPlayView.xib; sourceTree = "<group>"; };
+		C56BDB69225DE942008AE913 /* createSLExtensionTools.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = createSLExtensionTools.plist; sourceTree = "<group>"; };
 		C57FC5592240D9D700218DE7 /* iMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC56D2240D9D900218DE7 /* iMusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMusicPlayerTests.swift; sourceTree = "<group>"; };
@@ -1404,6 +1405,7 @@
 		C57FC5BA2240DC2E00218DE7 /* CreateSongList(创建歌单) */ = {
 			isa = PBXGroup;
 			children = (
+				C5C86546225DE49B00E54DE2 /* Config */,
 				C59498C72240E66700AC10DD /* Detail */,
 				C57FC5BC2240DC2E00218DE7 /* View */,
 				C57FC5BB2240DC2E00218DE7 /* MPCreateSongListViewController.swift */,
@@ -2891,6 +2893,14 @@
 			path = TableViewDragger;
 			sourceTree = "<group>";
 		};
+		C5C86546225DE49B00E54DE2 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C56BDB69225DE942008AE913 /* createSLExtensionTools.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		C5F5378122544E66006D228B /* PlayerView(播放悬浮窗) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3058,6 +3068,7 @@
 				C56033F72242258900F6795F /* MPSearchingViewTableViewCell.xib in Resources */,
 				C57FC8EB2240DC2F00218DE7 /* CardViewController.xib in Resources */,
 				C59498DB2240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib in Resources */,
+				C56BDB6A225DE942008AE913 /* createSLExtensionTools.plist in Resources */,
 				C560344322447DA200F6795F /* MPScrollPlayView.xib in Resources */,
 				C57FC8642240DC2F00218DE7 /* policy.strings in Resources */,
 				C57FC8652240DC2F00218DE7 /* policy.plist in Resources */,
@@ -3083,7 +3094,6 @@
 				C57FC7FC2240DC2F00218DE7 /* MPCollectSongListHeaderView.xib in Resources */,
 				C57FC7FF2240DC2F00218DE7 /* MPMyFavoriteTableViewCell.xib in Resources */,
 				C57FC9242240DC3000218DE7 /* FJItemCVCell.xib in Resources */,
-				C5C86545225DD3E000E54DE2 /* Info.plist in Resources */,
 				C57FC7ED2240DC2F00218DE7 /* LTLocationBottomView.xib in Resources */,
 				C59498C62240E4DB00AC10DD /* MPEditSongListHeaderView.xib in Resources */,
 				C57FC84F2240DC2F00218DE7 /* MPSongToolsView.xib in Resources */,

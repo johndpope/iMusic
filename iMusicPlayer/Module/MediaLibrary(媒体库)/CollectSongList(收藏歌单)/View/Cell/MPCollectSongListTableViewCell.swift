@@ -8,7 +8,9 @@
 
 import UIKit
 
-class MPCollectSongListTableViewCell: UITableViewCell {
+class MPCollectSongListTableViewCell: UITableViewCell, ViewClickedDelegate {
+    
+    var clickBlock: ((Any?) -> ())?
 
     @IBOutlet weak var xib_image: UIImageView! {
         didSet {
@@ -19,12 +21,15 @@ class MPCollectSongListTableViewCell: UITableViewCell {
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_count: UILabel!
     
+    var type: Int = 0 // 0: 创建  1：收藏
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func updateCell(model: GeneralPlaylists) {
+    func updateCell(model: GeneralPlaylists, type: Int) {
+        self.type = type
         //设置图片
         if let img = model.data_img, img != "" {
             if img.contains("http") {
@@ -38,5 +43,10 @@ class MPCollectSongListTableViewCell: UITableViewCell {
         xib_count.text = "\(model.data_tracksCount)" + NSLocalizedString("首", comment: "")
     }
 
+    @IBAction func btn_DidClicked(_ sender: UIButton) {
+        if let b = clickBlock {
+            b(sender)
+        }
+    }
 }
 

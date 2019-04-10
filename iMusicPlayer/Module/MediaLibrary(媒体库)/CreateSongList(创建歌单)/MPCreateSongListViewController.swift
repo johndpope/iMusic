@@ -22,6 +22,10 @@ class MPCreateSongListViewController: BaseTableViewController {
         }
     }
     
+    var currentIndex: Int = 0
+    
+    var extensionView: MPSongExtensionToolsView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -106,7 +110,12 @@ extension MPCreateSongListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPCollectSongListTableViewCell
         cell.selectionStyle = .none
-        cell.updateCell(model: model[indexPath.row])
+        cell.updateCell(model: model[indexPath.row], type: 0)
+        cell.clickBlock = {(sender) in
+            self.currentIndex = indexPath.row
+            // 弹出菜单
+            self.extensionTools(title: self.model[indexPath.row].data_title ?? "")
+        }
         return cell
     }
     
@@ -119,4 +128,79 @@ extension MPCreateSongListViewController {
         vc.songListModel = model[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
+}
+// MARK: - MPSongToolsViewDelegate
+extension MPCreateSongListViewController: MPSongToolsViewDelegate {
+    
+    /// 扩展功能
+    ///
+    /// - Parameter title: 弹出标题
+    private func extensionTools(title: String) {
+        let pv = MPSongExtensionToolsView.md_viewFromXIB() as! MPSongExtensionToolsView
+        extensionView = pv
+        pv.plistName = "createSLExtensionTools"
+        pv.delegate = self
+        pv.title = title
+        HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
+    }
+    
+    /// 修改名称
+    func modifyAlbumName() {
+        
+        extensionView?.removeFromWindow()
+        
+        let tempM = model[currentIndex]
+        let tableName = tempM.data_title ?? ""
+        
+        let pv = MPCreateSongListView.md_viewFromXIB() as! MPCreateSongListView
+        
+        pv.xib_title.text = NSLocalizedString("修改名称", comment: "")
+        pv.xib_songListName.placeholder = NSLocalizedString("请输入名称", comment: "")
+        pv.xib_songListName.text = tempM.data_title
+        
+        HFAlertController.showCustomView(view: pv)
+        pv.clickBlock = {(sender) in
+            if let btn = sender as? UIButton {
+                if btn.tag == 10001 {
+                    // 取消
+                    pv.removeFromWindow()
+                }else {
+                    tempM.data_title = pv.xib_songListName.text
+                    MPModelTools.updateCountForSongList(songList: tempM, tableName: tableName, finished: {
+                        QYTools.shared.Log(log: "修改名称成功")
+                        self.refreshData()
+                    })
+                    pv.removeFromWindow()
+                }
+            }
+        }
+    }
+    
+    /// 删除歌单
+    func deleteSongList() {
+        
+        extensionView?.removeFromWindow()
+        
+        let tempM = model[currentIndex]
+        QYTools.shared.Log(log: "删除歌单")
+        var alert: HFAlertController?
+        let config = MDAlertConfig()
+        config.title = NSLocalizedString("删除歌单\n", comment: "")
+        config.desc = NSLocalizedString("确定要删除歌单\(tempM.data_title ?? "")吗？", comment: "")
+        config.negativeTitle = NSLocalizedString("取消", comment: "")
+        config.positiveTitle = NSLocalizedString("OK", comment: "")
+        config.negativeTitleColor = Color.ThemeColor
+        config.positiveTitleColor = Color.ThemeColor
+        alert = HFAlertController.alertController(config: config, ConfirmCallBack: {
+            // 删除本地模型数据并刷新
+            MPModelTools.deleteCollectListModel(songList: tempM, tableName: MPCreateSongListViewController.classCode, finished: {
+                self.refreshData()
+            })
+        }) {
+            // 取消
+            alert?.dismiss(animated: true, completion: nil)
+        }
+        HFAppEngine.shared.currentViewController()?.present(alert!, animated: true, completion: nil)
+    }
+    
 }

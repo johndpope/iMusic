@@ -72,7 +72,10 @@ extension MPCollectSongListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPCollectSongListTableViewCell
         cell.selectionStyle = .none
-        cell.updateCell(model: model[indexPath.row])
+        cell.updateCell(model: model[indexPath.row], type: 1)
+        cell.clickBlock = {(sender) in
+            self.deleteSongList(index: indexPath.row)
+        }
         return cell
     }
     
@@ -87,4 +90,29 @@ extension MPCollectSongListViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+}
+extension MPCollectSongListViewController {
+    /// 删除歌单
+    func deleteSongList(index: Int) {
+        let tempM = model[index]
+        QYTools.shared.Log(log: "删除歌单")
+        var alert: HFAlertController?
+        let config = MDAlertConfig()
+        config.title = NSLocalizedString("删除歌单\n", comment: "")
+        config.desc = NSLocalizedString("确定要删除歌单\(tempM.data_title ?? "")吗？", comment: "")
+        config.negativeTitle = NSLocalizedString("取消", comment: "")
+        config.positiveTitle = NSLocalizedString("OK", comment: "")
+        config.negativeTitleColor = Color.ThemeColor
+        config.positiveTitleColor = Color.ThemeColor
+        alert = HFAlertController.alertController(config: config, ConfirmCallBack: {
+            // 删除本地模型数据并刷新
+            MPModelTools.deleteCollectListModel(songList: tempM, tableName: MPCollectSongListViewController.classCode, finished: {
+                self.refreshData()
+            })
+        }) {
+            // 取消
+            alert?.dismiss(animated: true, completion: nil)
+        }
+        HFAppEngine.shared.currentViewController()?.present(alert!, animated: true, completion: nil)
+    }
 }

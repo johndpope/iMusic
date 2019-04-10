@@ -36,6 +36,9 @@ class MPSongToolsView: TableBaseView {
     @objc optional func timeOff ()
     @objc optional func playVideo()
     @objc optional func songInfo()
+    
+    @objc optional func modifyAlbumName()
+    @objc optional func deleteSongList()
 }
 
 // MARK: - 点击事件
@@ -76,6 +79,19 @@ extension MPSongToolsView {
     @objc func songInfo() {
         if let d = self.delegate {
             d.songInfo!()
+        }
+    }
+    
+    /// 修改名称
+    @objc func modifyAlbumName() {
+        if let d = self.delegate {
+            d.modifyAlbumName!()
+        }
+    }
+    /// 删除歌单
+    @objc func deleteSongList() {
+        if let d = self.delegate {
+            d.deleteSongList!()
         }
     }
 }

@@ -102,6 +102,7 @@
             <connections>
                 <outlet property="xib_count" destination="Tkw-6m-GxF" id="51t-B2-mKi"/>
                 <outlet property="xib_songListName" destination="6kk-Jk-Dwh" id="dwk-zh-cY1"/>
+                <outlet property="xib_title" destination="h9M-Cp-qLs" id="Zyh-sl-bC9"/>
             </connections>
             <point key="canvasLocation" x="69" y="-24"/>
         </tableViewCell>

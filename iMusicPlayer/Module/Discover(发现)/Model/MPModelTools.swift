@@ -91,8 +91,8 @@ class MPModelTools: NSObject {
     /// 更新专辑数量
     ///
     /// - Parameter songList: 当前专辑
-    class func updateCountForSongList(songList: GeneralPlaylists, finished: (()->Void)? = nil) {
-        let tableN = songList.data_title ?? "SongList"
+    class func updateCountForSongList(songList: GeneralPlaylists, tableName: String = "", finished: (()->Void)? = nil) {
+        let tableN = (tableName == "" ? (songList.data_title ?? "SongList") : tableName)
         if let arr = NSArray.bg_array(withName: tableN) as? [MPSongModel] {
             let count = arr.count
             getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
@@ -101,6 +101,7 @@ class MPModelTools: NSObject {
                         let item = m[i]
                         if item.data_title == tableN {
                             let tempM = item
+                            tempM.data_title = songList.data_title
                             tempM.data_tracksCount = count
                             tempM.data_img = arr.first?.data_artworkUrl
                             NSArray.bg_updateObject(withName: MPCreateSongListViewController.classCode, object: tempM, index: i)
@@ -214,6 +215,29 @@ class MPModelTools: NSObject {
             QYTools.shared.Log(log: "本地数据库获取数据")
             if let f = finished {
                 f(arr)
+            }
+        }
+    }
+    
+    /// 删除收藏的歌单、创建的歌单
+    ///
+    /// - Parameters:
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func deleteCollectListModel(songList: GeneralPlaylists, tableName: String = GeneralPlaylists.classCode, finished: (()->Void)? = nil) {
+        if let arr = NSArray.bg_array(withName: tableName) as? [GeneralPlaylists] {
+            var index = -1
+            for i in 0..<arr.count {
+                if songList.data_title == arr[i].data_title {
+                    index = i
+                }
+            }
+            if index != -1 {
+                if NSArray.bg_deleteObject(withName: tableName, index: index) {
+                    if let f = finished {
+                        f()
+                    }
+                }
             }
         }
     }

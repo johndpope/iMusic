@@ -13,6 +13,7 @@ class MPCreateSongListView: UITableViewCell, ViewClickedDelegate {
     var clickBlock: ((Any?) -> ())?
     
 
+    @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_songListName: UITextField!
     @IBOutlet weak var xib_count: UILabel!
     override func awakeFromNib() {

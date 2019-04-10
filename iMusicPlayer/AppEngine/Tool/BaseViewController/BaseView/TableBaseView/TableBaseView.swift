@@ -31,6 +31,7 @@ class TableBaseView: BaseView {
 //        tableView.snp.makeConstraints { (make) in
 //            make.edges.equalToSuperview()
 //        }
+        tableView.tableFooterView = UIView()
         
         tableView.dataSource = self
         tableView.delegate = self

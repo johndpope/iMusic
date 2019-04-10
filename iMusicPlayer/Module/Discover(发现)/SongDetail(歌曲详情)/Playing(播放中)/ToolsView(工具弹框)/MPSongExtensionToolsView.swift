@@ -57,4 +57,17 @@ extension MPSongExtensionToolsView {
             d.songInfo!()
         }
     }
+    
+    /// 修改名称
+    @objc func modifyAlbumName() {
+        if let d = self.delegate {
+            d.modifyAlbumName!()
+        }
+    }
+    /// 删除歌单
+    @objc func deleteSongList() {
+        if let d = self.delegate {
+            d.deleteSongList!()
+        }
+    }
 }
