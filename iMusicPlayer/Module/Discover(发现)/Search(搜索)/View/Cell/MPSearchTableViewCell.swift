@@ -10,6 +10,8 @@ import UIKit
 
 class MPSearchTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var xib_title: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -10,6 +10,7 @@ import UIKit
 
 private struct Constant {
     static let identifier = "MPSearchTableViewCell"
+    static let tableName = "MPSearchViewController"
     static let rowHeight: CGFloat = SCREEN_WIDTH * (45/375)
 }
 
@@ -46,6 +47,18 @@ class MPSearchViewController: BaseTableViewController {
         }
     }
     
+    var models = [String]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 获取数据
+        
+    }
+    
     override func viewDidLoad() {
         // view创建时间冲突：手动调用
         let nav = MPSearchNavView.md_viewFromXIB() as! MPSearchNavView
@@ -56,6 +69,15 @@ class MPSearchViewController: BaseTableViewController {
         self.itemClickedBlock = {[weak self](title) in
             
             if title != "" {
+                
+                // 添加到历史搜索
+                if !(self?.models.contains(title))! {
+                    self?.models.append(title)
+                    self?.tableView.reloadData()
+                    // 保存到数据库
+                    (self?.models as! NSArray).bg_save(withName: Constant.tableName)
+                }
+                
                 // 数据回填
                 self?.searchView?.setupData(model: title)
                 
@@ -114,6 +136,10 @@ class MPSearchViewController: BaseTableViewController {
     override func refreshData() {
         super.refreshData()
         
+        if let arr = NSArray.bg_array(withName: Constant.tableName) as? [String] {
+            self.models = arr
+        }
+        
         MPModelTools.getSearchKeywordModel(tableName: MPSearchKeywordModel.classCode) { (models) in
             if let m = models {
                 self.keywordModel = m
@@ -158,11 +184,12 @@ class MPSearchViewController: BaseTableViewController {
 }
 extension MPSearchViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return models.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MPSearchTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSearchTableViewCell
+        cell.xib_title.text = models[indexPath.row]
         return cell
     }
     
