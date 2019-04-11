@@ -67,71 +67,7 @@ class MPSearchViewController: BaseTableViewController {
         self.navigationItem.titleView = nav
         
         self.itemClickedBlock = {[weak self](title) in
-            
-            if title != "" {
-                
-                // 添加到历史搜索
-                guard let ws = self else {return }
-                if ws.models.contains(title) {
-                    let marr = NSMutableArray(array: ws.models)
-                    marr.remove(title)
-                    marr.add(title)
-                    MPModelTools.saveHistoryModel(model: marr as! [String])
-                    self?.refreshData()
-                }else {
-                    ws.models.append(title)
-                    MPModelTools.saveHistoryModel(model: ws.models)
-                    self?.refreshData()
-                }
-                
-                // 数据回填
-                self?.searchView?.setupData(model: title)
-                
-                if self?.searchResultView != nil {
-                    // 替换数据源
-                    self?.searchResultView?.isHidden = false
-                    self?.searchingView?.isHidden = true
-                    QYTools.shared.Log(log: "替换数据源~")
-                    
-//                    MPModelTools.getRelatedKeyword(q: title, finished: { (model) in
-//                        self?.searchingView?.model = model
-//                    })
-                    
-                    // 获取搜索结果数据
-                    self?.keyword = title
-                    
-                }else {
-                    QYTools.shared.Log(log: "新增结果数据View~")
-                    // 新增结果列表
-                    let rv = MPSearchResultView()
-                    self?.searchResultView = rv
-                    self?.view.addSubview(rv)
-                    rv.snp.makeConstraints { (make) in
-                        make.left.right.top.bottom.equalToSuperview()
-                    }
-                    
-                    // 设置筛选条件的代理
-                    self?.searchResultView?.itemClickedBlock = {(duration, filter, order, sgmIndex) in
-                         self?.duration = duration
-                         self?.filter = filter
-                         self?.order = order
-                        
-                        // 判断是否需要时长和选择
-                        if sgmIndex == 2 {
-                            self?.duration = "any"
-                            self?.filter = ""
-                        }
-                         self?.refreshData()
-                    }
-                    
-                    // 获取搜索结果数据
-                    self?.keyword = title
-                    
-                }
-            }else {
-                self?.searchResultView?.isHidden = true
-            }
-            
+            self?.search(title: title)
         }
         
         super.viewDidLoad()
@@ -217,6 +153,14 @@ extension MPSearchViewController {
     }
 }
 extension MPSearchViewController: MPSearchNavViewDelegate {
+    
+    /// 键盘点击搜索
+    ///
+    /// - Parameter text: 搜索关键词
+    func keyboardSearch(_ text: String) {
+        self.search(title: text)
+    }
+    
     func beginSearch(_ text: String) {
         if text != "" {
             if searchingView != nil {
@@ -249,6 +193,63 @@ extension MPSearchViewController: MPSearchNavViewDelegate {
     }
 }
 extension MPSearchViewController {
+    
+    private func search(title: String) {
+        if title != "" {
+            // 添加到历史搜索
+            if models.contains(title) {
+                let marr = NSMutableArray(array: models)
+                marr.remove(title)
+                marr.add(title)
+                MPModelTools.saveHistoryModel(model: marr as! [String])
+                self.refreshData()
+            }else {
+                models.append(title)
+                MPModelTools.saveHistoryModel(model: models)
+                self.refreshData()
+            }
+            // 数据回填
+            self.searchView?.setupData(model: title)
+            if self.searchResultView != nil {
+                // 替换数据源
+                self.searchResultView?.isHidden = false
+                self.searchingView?.isHidden = true
+                QYTools.shared.Log(log: "替换数据源~")
+                
+                //                    MPModelTools.getRelatedKeyword(q: title, finished: { (model) in
+                //                        self?.searchingView?.model = model
+                //                    })
+                
+                // 获取搜索结果数据
+                self.keyword = title
+            }else {
+                QYTools.shared.Log(log: "新增结果数据View~")
+                // 新增结果列表
+                let rv = MPSearchResultView()
+                self.searchResultView = rv
+                self.view.addSubview(rv)
+                rv.snp.makeConstraints { (make) in
+                    make.left.right.top.bottom.equalToSuperview()
+                }
+                // 设置筛选条件的代理
+                self.searchResultView?.itemClickedBlock = {(duration, filter, order, sgmIndex) in
+                    self.duration = duration
+                    self.filter = filter
+                    self.order = order
+                    // 判断是否需要时长和选择
+                    if sgmIndex == 2 {
+                        self.duration = "any"
+                        self.filter = ""
+                    }
+                    self.refreshData()
+                }
+                // 获取搜索结果数据
+                self.keyword = title
+            }
+        }else {
+            self.searchResultView?.isHidden = true
+        }
+    }
     
     /// 获取搜索关键字
     ///

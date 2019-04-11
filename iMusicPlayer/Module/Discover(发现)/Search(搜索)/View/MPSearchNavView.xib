@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="10" width="308" height="23.5"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
                         <connections>
                             <outlet property="delegate" destination="KGk-i7-Jjw" id="fid-1f-ig7"/>
                         </connections>

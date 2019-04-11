@@ -10,6 +10,7 @@ import UIKit
 
 protocol MPSearchNavViewDelegate {
     func beginSearch(_ text: String)
+    func keyboardSearch(_ text: String)
 }
 
 class MPSearchNavView: BaseView {
@@ -41,6 +42,14 @@ extension MPSearchNavView: UITextFieldDelegate {
             }
             
             d.beginSearch(txt)
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        QYTools.shared.Log(log: "回调")
+        if let d = delegate {
+            d.keyboardSearch(textField.text ?? "")
         }
         return true
     }
