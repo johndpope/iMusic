@@ -76,6 +76,9 @@ class MPSearchResultHeaderView: UITableViewCell {
 
     @IBAction func filterDidClicked(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        
+//        sender.imageView?.trans180DegreeAnimation()
+        
         defaultFileter = sender.isSelected
         if defaultFileter {
             if segment.selectedSegmentIndex == 1 {

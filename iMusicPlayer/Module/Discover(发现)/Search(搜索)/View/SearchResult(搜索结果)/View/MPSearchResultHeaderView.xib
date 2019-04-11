@@ -41,6 +41,7 @@
                             <state key="normal" title="筛选" image="list_icon_fliter_down">
                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
+                            <state key="selected" image="icon_arrow_up"/>
                             <connections>
                                 <action selector="filterDidClicked:" destination="Kc5-wy-iEs" eventType="touchUpInside" id="D79-Qs-fur"/>
                             </connections>
@@ -244,10 +245,11 @@
                 <outlet property="xib_sortTagList" destination="ytr-J8-6uO" id="99e-kh-aJ1"/>
                 <outlet property="xib_timeTagList" destination="Zhw-o6-lpa" id="BCw-x8-Wcp"/>
             </connections>
-            <point key="canvasLocation" x="172" y="-513.64317841079469"/>
+            <point key="canvasLocation" x="-18" y="-826"/>
         </view>
     </objects>
     <resources>
+        <image name="icon_arrow_up" width="25" height="25"/>
         <image name="list_icon_fliter_down" width="25" height="25"/>
     </resources>
 </document>
