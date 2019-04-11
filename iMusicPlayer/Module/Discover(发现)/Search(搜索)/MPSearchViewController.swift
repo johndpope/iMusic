@@ -210,7 +210,7 @@ extension MPSearchViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 获取当前数据源的标题
-        let text = ""
+        let text = models[indexPath.row]
         if let b = itemClickedBlock {
             b(text)
         }
