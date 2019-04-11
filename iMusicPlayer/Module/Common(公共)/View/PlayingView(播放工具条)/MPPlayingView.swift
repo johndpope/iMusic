@@ -147,7 +147,15 @@ extension MPPlayingView: UICollectionViewDataSource, UICollectionViewDelegate, U
             }
             currentIndex = tempIndex
         }
-        
+    }
+    // MARK: - 控制小窗播放View跟着滑动
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        QYTools.shared.Log(log: "X:    \(scrollView.contentOffset.x.truncatingRemainder(dividingBy: 375))")
+        let x = scrollView.contentOffset.x.truncatingRemainder(dividingBy: 375)
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+            pv.playView?.left = -x
+        }
     }
     
 }

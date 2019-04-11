@@ -17,6 +17,8 @@ private struct Constant {
 
 class MPPlayingBigView: BaseView {
     
+    var playView: YTPlayerView?
+    
     var playingView: MPPlayingView!
 
     @IBOutlet weak var xib_playingView: UIView! {
@@ -58,6 +60,7 @@ class MPPlayingBigView: BaseView {
     
     private lazy var ybPlayView: YTPlayerView = {
         let pv = YTPlayerView()
+        playView = pv
         pv.backgroundColor = UIColor.red
         pv.delegate = self
         return pv
