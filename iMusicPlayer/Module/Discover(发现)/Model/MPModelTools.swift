@@ -307,6 +307,41 @@ class MPModelTools: NSObject {
         return index
     }
     
+    /// 删除搜索词
+    ///
+    /// - Parameters:
+    ///   - tableName: 表名
+    ///   - model: 搜索关键字
+    class func deleteHistoryModel(model: String) {
+        let arr = getHistoryModels()
+        let marr = NSMutableArray(array: arr)
+        marr.remove(model)
+        UserDefaults.standard.setValue((marr as! [String]), forKey: "HistoryKeys")
+    }
+    
+    /// 保存最近搜索词
+    ///
+    /// - Parameters:
+    ///   - tableName: 表名
+    ///   - model: 搜索关键字
+    class func saveHistoryModel(model: [String], finished: (()->Void)? = nil) {
+        UserDefaults.standard.setValue(model, forKey: "HistoryKeys")
+        UserDefaults.standard.synchronize()
+    }
+    
+    /// 获取最近搜索数据
+    ///
+    /// - Parameters:
+    ///   - tableName: 表名
+    ///   - finished: 回调
+    class func getHistoryModels() -> [String] {
+        var temps = [String]()
+        if let arr = UserDefaults.standard.value(forKey: "HistoryKeys") as? [String] {
+            temps = arr
+        }
+        return temps
+    }
+    
     /// 获取搜索结果模块数据
     ///
     /// - Parameters:

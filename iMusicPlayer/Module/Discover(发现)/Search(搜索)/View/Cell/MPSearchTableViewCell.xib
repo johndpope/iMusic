@@ -28,6 +28,9 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bya-G4-wIU">
                         <rect key="frame" x="283" y="10" width="25" height="25"/>
                         <state key="normal" image="list_icon_delete_1"/>
+                        <connections>
+                            <action selector="btn_DidClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Rtp-ui-wJ9"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

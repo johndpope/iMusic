@@ -71,11 +71,17 @@ class MPSearchViewController: BaseTableViewController {
             if title != "" {
                 
                 // 添加到历史搜索
-                if !(self?.models.contains(title))! {
-                    self?.models.append(title)
-                    self?.tableView.reloadData()
-                    // 保存到数据库
-                    (self?.models as! NSArray).bg_save(withName: Constant.tableName)
+                guard let ws = self else {return }
+                if ws.models.contains(title) {
+                    let marr = NSMutableArray(array: ws.models)
+                    marr.remove(title)
+                    marr.add(title)
+                    MPModelTools.saveHistoryModel(model: marr as! [String])
+                    self?.refreshData()
+                }else {
+                    ws.models.append(title)
+                    MPModelTools.saveHistoryModel(model: ws.models)
+                    self?.refreshData()
                 }
                 
                 // 数据回填
@@ -135,10 +141,8 @@ class MPSearchViewController: BaseTableViewController {
     
     override func refreshData() {
         super.refreshData()
-        
-        if let arr = NSArray.bg_array(withName: Constant.tableName) as? [String] {
-            self.models = arr
-        }
+//        NSArray.bg_drop(Constant.tableName)
+        self.models = MPModelTools.getHistoryModels().reversed()
         
         MPModelTools.getSearchKeywordModel(tableName: MPSearchKeywordModel.classCode) { (models) in
             if let m = models {
@@ -190,6 +194,13 @@ extension MPSearchViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MPSearchTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSearchTableViewCell
         cell.xib_title.text = models[indexPath.row]
+        cell.clickBlock = {(sender) in
+            if let _ = sender as? UIButton { // 删除当前本地模型并刷新
+                // 更新本地模型
+                MPModelTools.deleteHistoryModel(model: self.models[indexPath.row])
+                self.refreshData()
+            }
+        }
         return cell
     }
     
