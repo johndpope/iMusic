@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="XlC-YR-1v0" customClass="MPTimeOffEndView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lI-a0-N3E">
+                    <rect key="frame" x="129" y="87.5" width="117" height="25"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <state key="normal" title="倒计时结束" image="icon_profile_time-1">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWR-au-VyE">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <connections>
+                        <action selector="close:" destination="XlC-YR-1v0" eventType="touchUpInside" id="vby-63-GTO"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="音乐已暂停播放" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXu-YN-kPn">
+                    <rect key="frame" x="123.5" y="127.5" width="128.5" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="0lI-a0-N3E" firstAttribute="centerX" secondItem="XlC-YR-1v0" secondAttribute="centerX" id="RDL-3d-eYs"/>
+                <constraint firstItem="lWR-au-VyE" firstAttribute="top" secondItem="4iB-cl-cYM" secondAttribute="top" id="V6I-gX-YW5"/>
+                <constraint firstItem="4iB-cl-cYM" firstAttribute="bottom" secondItem="lWR-au-VyE" secondAttribute="bottom" id="VMq-fa-CFt"/>
+                <constraint firstItem="nXu-YN-kPn" firstAttribute="centerX" secondItem="XlC-YR-1v0" secondAttribute="centerX" id="fTS-V6-ItX"/>
+                <constraint firstItem="0lI-a0-N3E" firstAttribute="centerY" secondItem="XlC-YR-1v0" secondAttribute="centerY" multiplier="0.3" id="h6V-jB-2c1"/>
+                <constraint firstItem="lWR-au-VyE" firstAttribute="leading" secondItem="4iB-cl-cYM" secondAttribute="leading" id="hML-ba-RNY"/>
+                <constraint firstItem="4iB-cl-cYM" firstAttribute="trailing" secondItem="lWR-au-VyE" secondAttribute="trailing" id="o0D-EN-62F"/>
+                <constraint firstItem="nXu-YN-kPn" firstAttribute="top" secondItem="0lI-a0-N3E" secondAttribute="bottom" constant="15" id="tgb-l6-hgZ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="4iB-cl-cYM"/>
+            <point key="canvasLocation" x="169" y="-358"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_profile_time-1" width="25" height="25"/>
+    </resources>
+</document>

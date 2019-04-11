@@ -42,14 +42,14 @@ enum TimeType {
 extension String {
     
     //时间转字符串
-    func md_timeToString(type: TimeType) -> String {
+    func md_timeToString(type: TimeType, format: String = "") -> String {
         let df = DateFormatter()
         switch type {
         case .TimeYearType:
-            df.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            df.dateFormat = (format == "" ? "yyyy-MM-dd HH:mm:ss" : format)
             break
         case .TimeDayType:
-            df.dateFormat = "dd天HH小时mm分ss秒"
+            df.dateFormat = (format == "" ? "dd天HH小时mm分ss秒" : format)
             
             let time = (self as NSString).doubleValue
             

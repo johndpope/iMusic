@@ -56,6 +56,8 @@
 		C560344222447DA200F6795F /* MPScrollPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560344022447DA200F6795F /* MPScrollPlayView.swift */; };
 		C560344322447DA200F6795F /* MPScrollPlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C560344122447DA200F6795F /* MPScrollPlayView.xib */; };
 		C56BDB6A225DE942008AE913 /* createSLExtensionTools.plist in Resources */ = {isa = PBXBuildFile; fileRef = C56BDB69225DE942008AE913 /* createSLExtensionTools.plist */; };
+		C56BDB6E225F35DA008AE913 /* MPTimeOffEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB6C225F35DA008AE913 /* MPTimeOffEndView.swift */; };
+		C56BDB6F225F35DA008AE913 /* MPTimeOffEndView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56BDB6D225F35DA008AE913 /* MPTimeOffEndView.xib */; };
 		C57FC5722240D9D900218DE7 /* iMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */; };
 		C57FC57D2240D9D900218DE7 /* iMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC57C2240D9D900218DE7 /* iMusicPlayerUITests.swift */; };
 		C57FC7D72240DC2F00218DE7 /* DAConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C57FC58B2240DC2E00218DE7 /* DAConfig.m */; };
@@ -500,6 +502,8 @@
 		C560344022447DA200F6795F /* MPScrollPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPScrollPlayView.swift; sourceTree = "<group>"; };
 		C560344122447DA200F6795F /* MPScrollPlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPScrollPlayView.xib; sourceTree = "<group>"; };
 		C56BDB69225DE942008AE913 /* createSLExtensionTools.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = createSLExtensionTools.plist; sourceTree = "<group>"; };
+		C56BDB6C225F35DA008AE913 /* MPTimeOffEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTimeOffEndView.swift; sourceTree = "<group>"; };
+		C56BDB6D225F35DA008AE913 /* MPTimeOffEndView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPTimeOffEndView.xib; sourceTree = "<group>"; };
 		C57FC5592240D9D700218DE7 /* iMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC56D2240D9D900218DE7 /* iMusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMusicPlayerTests.swift; sourceTree = "<group>"; };
@@ -1163,6 +1167,15 @@
 				C560344122447DA200F6795F /* MPScrollPlayView.xib */,
 			);
 			path = "ScrollPlayView(滑动歌词播放)";
+			sourceTree = "<group>";
+		};
+		C56BDB6B225F35A3008AE913 /* TimeOffEnd(倒计时结束) */ = {
+			isa = PBXGroup;
+			children = (
+				C56BDB6C225F35DA008AE913 /* MPTimeOffEndView.swift */,
+				C56BDB6D225F35DA008AE913 /* MPTimeOffEndView.xib */,
+			);
+			path = "TimeOffEnd(倒计时结束)";
 			sourceTree = "<group>";
 		};
 		C57FC5502240D9D700218DE7 = {
@@ -2057,11 +2070,12 @@
 		C57FC6722240DC2E00218DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC6732240DC2E00218DE7 /* MPTimeOffPopView.xib */,
+				C56BDB6B225F35A3008AE913 /* TimeOffEnd(倒计时结束) */,
 				C57FC6742240DC2E00218DE7 /* Cell */,
-				C57FC6772240DC2E00218DE7 /* MPTimeOffHeaderView.xib */,
 				C57FC6782240DC2E00218DE7 /* MPTimeOffPopView.swift */,
+				C57FC6732240DC2E00218DE7 /* MPTimeOffPopView.xib */,
 				C57FC6792240DC2E00218DE7 /* MPTimeOffHeaderView.swift */,
+				C57FC6772240DC2E00218DE7 /* MPTimeOffHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3102,6 +3116,7 @@
 				C57FC8502240DC2F00218DE7 /* MPAddToSongListView.xib in Resources */,
 				C52E2A212249D6FF000075E8 /* MPSongTableViewCell.xib in Resources */,
 				C57FC8462240DC2F00218DE7 /* MPCategoryTableViewCell.xib in Resources */,
+				C56BDB6F225F35DA008AE913 /* MPTimeOffEndView.xib in Resources */,
 				C59498CE2240E71C00AC10DD /* MPEditSongListTableViewCell.xib in Resources */,
 				C57FC83E2240DC2F00218DE7 /* MPRecommendTableViewCell.xib in Resources */,
 				C57FC86A2240DC2F00218DE7 /* MPTimeOffPopView.xib in Resources */,
@@ -3484,6 +3499,7 @@
 				C57FC8232240DC2F00218DE7 /* MPPlayingListsPopView.swift in Sources */,
 				C57FC7E72240DC2F00218DE7 /* PostInfoModel.swift in Sources */,
 				C57FC9082240DC3000218DE7 /* HXPhotoView.m in Sources */,
+				C56BDB6E225F35DA008AE913 /* MPTimeOffEndView.swift in Sources */,
 				C57FC8582240DC2F00218DE7 /* MPSongListHeaderView.swift in Sources */,
 				C57FC7EE2240DC2F00218DE7 /* LTLocationBottomView.swift in Sources */,
 				C57FC8B52240DC2F00218DE7 /* NSObject+Swizzle.m in Sources */,

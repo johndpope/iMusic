@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +33,7 @@
                                 <color key="tintColor" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bqh-mR-MkO">
                                 <rect key="frame" x="20" y="100" width="335" height="2"/>
@@ -53,7 +54,7 @@
                                 <color key="textColor" red="0.97254901960784312" green="0.17254901960784313" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDs-dY-vj5">
+                            <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MDs-dY-vj5">
                                 <rect key="frame" x="289" y="161.5" width="66" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="MDs-dY-vj5" secondAttribute="height" multiplier="72:35" id="1j4-jc-Le9"/>
@@ -62,8 +63,11 @@
                                 <state key="normal" title="确定">
                                     <color key="titleColor" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_DidClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UEY-uL-dPA"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6k4-Py-lzh">
+                            <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6k4-Py-lzh">
                                 <rect key="frame" x="221.5" y="161.5" width="65.5" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6k4-Py-lzh" secondAttribute="height" multiplier="72:35" id="J1y-rK-dgC"/>
@@ -72,6 +76,9 @@
                                 <state key="normal" title="取消">
                                     <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_DidClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="elj-BD-etY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,6 +116,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="xib_time" destination="4Qa-Pe-f25" id="ADh-yV-Tpu"/>
+            </connections>
             <point key="canvasLocation" x="130.40000000000001" y="153.82308845577214"/>
         </tableViewCell>
     </objects>
