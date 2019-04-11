@@ -17,6 +17,8 @@ private struct Constant {
 
 class MPPlayingBigView: BaseView {
     
+    var moreView: MPSongExtensionToolsView?
+    
     var playView: YTPlayerView?
     
     var playingView: MPPlayingView!
@@ -272,6 +274,7 @@ extension MPPlayingBigView {
     
     func extensionTools() {
         let pv = MPSongExtensionToolsView.md_viewFromXIB() as! MPSongExtensionToolsView
+        self.moreView = pv
         pv.plistName = "extensionTools"
         pv.delegate = self
         pv.title = (SourceType == 0 ? currentSong?.data_title : currentSong?.data_songName) ?? ""
@@ -283,6 +286,12 @@ extension MPPlayingBigView: MPSongToolsViewDelegate {
     
     func timeOff() {
         QYTools.shared.Log(log: "定时关闭")
+        // 关闭弹框
+        self.moreView?.removeFromWindow()
+        // 缩小当前的View
+        self.smallStyle()
+        let vc = MPTimeOffViewController()
+        HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
     }
     
     func playVideo() {
@@ -291,6 +300,35 @@ extension MPPlayingBigView: MPSongToolsViewDelegate {
     
     func songInfo() {
         QYTools.shared.Log(log: "歌曲信息")
+        // 关闭弹框
+        self.moreView?.removeFromWindow()
+        let pv = MPSongInfoView.md_viewFromXIB() as! MPSongInfoView
+        pv.updateView(model: self.currentSong!)
+        HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
+        
+        pv.clickBlock = {(sender) in
+            if let btn = sender as? UIButton {
+                
+                // 关闭弹框
+                self.moreView?.removeFromWindow()
+                // 缩小当前的View
+                self.smallStyle()
+                
+                pv.removeFromWindow()
+                
+                if btn.tag == 10001 {    // 协议
+                    let path = Bundle.main.path(forResource: "policy", ofType: "plist")
+                    if let p = path, let policys = NSDictionary(contentsOfFile: p) {
+                        let vc = MDWebViewController()
+                        vc.title = NSLocalizedString("隐私政策", comment: "")
+                        vc.text = policys["policy_1"] as! String
+                        HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }else {     // 投诉
+                    
+                }
+            }
+        }
     }
 }
 // MARK: - 歌曲控制相关操作

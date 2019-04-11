@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ifr-wU-8LS" customClass="MPSongInfoView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Logic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgb-5u-DPP">
+                    <rect key="frame" x="12" y="12" width="351" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQd-v8-ecV">
+                    <rect key="frame" x="12" y="33" width="351" height="0.5"/>
+                    <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="jjs-vp-Nz6"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上传者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXg-8t-VBl">
+                    <rect key="frame" x="12" y="41.5" width="46" height="18"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あなたの好きなところ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajZ-hg-B29">
+                    <rect key="frame" x="210" y="41.5" width="153" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbp-LQ-sQh">
+                    <rect key="frame" x="12" y="71.5" width="351" height="0.5"/>
+                    <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="8WW-7W-HS8"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" tag="10001" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCC-Go-hNi" customClass="MDRightIconButton" customModule="iMusicPlayer" customModuleProvider="target">
+                    <rect key="frame" x="12" y="84" width="351" height="20"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="《著作权许可协议》" image="icon_arrow_right">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="alignment">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="btn_DidClicked:" destination="ifr-wU-8LS" eventType="touchUpInside" id="s94-4P-4lv"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIi-YG-AFg">
+                    <rect key="frame" x="12" y="116" width="351" height="0.5"/>
+                    <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="8Ea-1K-QiL"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NaF-O0-gHj" customClass="MDRightIconButton" customModule="iMusicPlayer" customModuleProvider="target">
+                    <rect key="frame" x="12" y="128.5" width="351" height="20"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="投诉" image="icon_arrow_right">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="alignment">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="btn_DidClicked:" destination="ifr-wU-8LS" eventType="touchUpInside" id="QUt-M3-zwU"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="ajZ-hg-B29" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YXg-8t-VBl" secondAttribute="trailing" constant="12" id="0fE-FN-PbN"/>
+                <constraint firstItem="jQd-v8-ecV" firstAttribute="leading" secondItem="bgb-5u-DPP" secondAttribute="leading" id="1gk-T6-N0q"/>
+                <constraint firstItem="NaF-O0-gHj" firstAttribute="leading" secondItem="bgb-5u-DPP" secondAttribute="leading" id="4C1-6F-uuo"/>
+                <constraint firstItem="KCC-Go-hNi" firstAttribute="leading" secondItem="bgb-5u-DPP" secondAttribute="leading" id="4V4-tg-Mrq"/>
+                <constraint firstItem="S9X-hV-pzM" firstAttribute="trailing" secondItem="bgb-5u-DPP" secondAttribute="trailing" constant="12" id="4rr-bs-fVH"/>
+                <constraint firstItem="ajZ-hg-B29" firstAttribute="centerY" secondItem="YXg-8t-VBl" secondAttribute="centerY" id="CCW-in-Y5l"/>
+                <constraint firstItem="KCC-Go-hNi" firstAttribute="top" secondItem="fbp-LQ-sQh" secondAttribute="bottom" constant="12" id="D97-13-Q5z"/>
+                <constraint firstItem="KCC-Go-hNi" firstAttribute="trailing" secondItem="bgb-5u-DPP" secondAttribute="trailing" id="DFQ-mM-xj2"/>
+                <constraint firstItem="S9X-hV-pzM" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NaF-O0-gHj" secondAttribute="bottom" constant="12" id="DKb-3S-wqp"/>
+                <constraint firstItem="bgb-5u-DPP" firstAttribute="leading" secondItem="S9X-hV-pzM" secondAttribute="leading" constant="12" id="GTj-Vw-ooX"/>
+                <constraint firstItem="bgb-5u-DPP" firstAttribute="top" secondItem="S9X-hV-pzM" secondAttribute="top" constant="12" id="LMX-2b-eJC"/>
+                <constraint firstItem="YXg-8t-VBl" firstAttribute="top" secondItem="jQd-v8-ecV" secondAttribute="bottom" constant="8" id="Mlm-Ad-2pu"/>
+                <constraint firstItem="fbp-LQ-sQh" firstAttribute="leading" secondItem="bgb-5u-DPP" secondAttribute="leading" id="PUC-rJ-UX6"/>
+                <constraint firstItem="ajZ-hg-B29" firstAttribute="trailing" secondItem="jQd-v8-ecV" secondAttribute="trailing" id="RPA-Wm-lvV"/>
+                <constraint firstItem="NaF-O0-gHj" firstAttribute="trailing" secondItem="bgb-5u-DPP" secondAttribute="trailing" id="SPY-2X-dio"/>
+                <constraint firstItem="NaF-O0-gHj" firstAttribute="top" secondItem="AIi-YG-AFg" secondAttribute="bottom" constant="12" id="VKC-eu-SF1"/>
+                <constraint firstItem="fbp-LQ-sQh" firstAttribute="top" secondItem="YXg-8t-VBl" secondAttribute="bottom" constant="12" id="Yfc-CN-nGF"/>
+                <constraint firstItem="fbp-LQ-sQh" firstAttribute="trailing" secondItem="bgb-5u-DPP" secondAttribute="trailing" id="cPz-3A-1sE"/>
+                <constraint firstItem="YXg-8t-VBl" firstAttribute="leading" secondItem="jQd-v8-ecV" secondAttribute="leading" id="e8k-Rs-Oc5"/>
+                <constraint firstItem="jQd-v8-ecV" firstAttribute="trailing" secondItem="bgb-5u-DPP" secondAttribute="trailing" id="jSP-Z1-QqO"/>
+                <constraint firstItem="AIi-YG-AFg" firstAttribute="top" secondItem="KCC-Go-hNi" secondAttribute="bottom" constant="12" id="klT-Fa-0no"/>
+                <constraint firstItem="jQd-v8-ecV" firstAttribute="top" secondItem="bgb-5u-DPP" secondAttribute="bottom" constant="4" id="qLv-fZ-84r"/>
+                <constraint firstItem="AIi-YG-AFg" firstAttribute="leading" secondItem="bgb-5u-DPP" secondAttribute="leading" id="sx8-pQ-und"/>
+                <constraint firstItem="AIi-YG-AFg" firstAttribute="trailing" secondItem="bgb-5u-DPP" secondAttribute="trailing" id="yYE-aO-LwV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="S9X-hV-pzM"/>
+            <connections>
+                <outlet property="xib_desc" destination="ajZ-hg-B29" id="DSV-YL-7Xg"/>
+                <outlet property="xib_title" destination="bgb-5u-DPP" id="0h8-cy-ldu"/>
+            </connections>
+            <point key="canvasLocation" x="288.80000000000001" y="-130.43478260869566"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_arrow_right" width="20" height="20"/>
+    </resources>
+</document>
