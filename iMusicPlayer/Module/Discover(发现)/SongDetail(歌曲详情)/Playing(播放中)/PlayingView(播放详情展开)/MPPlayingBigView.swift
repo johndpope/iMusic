@@ -317,15 +317,15 @@ extension MPPlayingBigView: MPSongToolsViewDelegate {
                 pv.removeFromWindow()
                 
                 if btn.tag == 10001 {    // 协议
-                    let path = Bundle.main.path(forResource: "policy", ofType: "plist")
-                    if let p = path, let policys = NSDictionary(contentsOfFile: p) {
-                        let vc = MDWebViewController()
-                        vc.title = NSLocalizedString("隐私政策", comment: "")
-                        vc.text = policys["policy_1"] as! String
-                        HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
-                    }
-                }else {     // 投诉
-                    
+                    let vc = MDWebViewController()
+                    vc.title = NSLocalizedString("《著作权许可协议》", comment: "")
+                    vc.url = API.Copyright
+                    HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
+                }else {     // 投诉：跳转到一个H5界面
+                    let vc = MDWebViewController()
+                    vc.title = NSLocalizedString("投诉", comment: "")
+                    vc.url = API.Complaint
+                    HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         }
