@@ -51,6 +51,8 @@ target 'iMusicPlayer' do
   pod "youtube-ios-player-helper"
   # tableView拖动单行交换位置
   # pod "TableViewDragger"
+  # 音频（流媒体）播放
+   pod "StreamingKit"
 
   target 'iMusicPlayerTests' do
     inherit! :search_paths
