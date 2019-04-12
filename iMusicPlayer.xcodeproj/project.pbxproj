@@ -3858,7 +3858,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.groupy.iMusicPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = fm.music.musicbox.musicfm.download.freemusic.offline.free.online.song.jpop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iMusicPlayer/SupportFiles/iMusicPlayer-Bridging-Header.h";
@@ -3885,7 +3885,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.groupy.iMusicPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = fm.music.musicbox.musicfm.download.freemusic.offline.free.online.song.jpop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iMusicPlayer/SupportFiles/iMusicPlayer-Bridging-Header.h";
