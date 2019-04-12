@@ -24,8 +24,17 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9F-ZW-5fp">
                                 <rect key="frame" x="0.0" y="0.0" width="90" height="48"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wYb-RA-qKD">
+                                        <rect key="frame" x="0.0" y="0.0" width="90" height="48"/>
+                                    </imageView>
+                                </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="6Nh-cI-bFK"/>
+                                    <constraint firstItem="wYb-RA-qKD" firstAttribute="leading" secondItem="z9F-ZW-5fp" secondAttribute="leading" id="FOh-hi-JMf"/>
+                                    <constraint firstItem="wYb-RA-qKD" firstAttribute="top" secondItem="z9F-ZW-5fp" secondAttribute="top" id="TsK-ch-5di"/>
+                                    <constraint firstAttribute="trailing" secondItem="wYb-RA-qKD" secondAttribute="trailing" id="Uln-jz-re2"/>
+                                    <constraint firstAttribute="bottom" secondItem="wYb-RA-qKD" secondAttribute="bottom" id="WCV-hG-s7m"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mama ft. William Singe " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNd-L0-fmg">
@@ -102,6 +111,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="358" height="158"/>
             <connections>
+                <outlet property="imageView" destination="wYb-RA-qKD" id="sGu-Hh-Q28"/>
                 <outlet property="playView" destination="z9F-ZW-5fp" id="sKf-AK-f3f"/>
                 <outlet property="xib_desc" destination="NVb-Nc-Ace" id="MmX-EB-9PM"/>
                 <outlet property="xib_play" destination="BMw-RL-Xus" id="n76-tB-Y5d"/>

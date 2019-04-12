@@ -13,7 +13,7 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
     
     var clickBlock: ((Any?) -> ())?
     
-    var imageView: UIImageView?
+    @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var playView: UIView!
     @IBOutlet weak var xib_title: UILabel!
@@ -36,7 +36,11 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
         if SourceType == 0 {
             xib_title.text = model.data_title
             xib_desc.text = model.data_channelTitle
+            
+            imageView.isHidden = true
         }else {
+            
+            imageView.isHidden = false
             //设置图片
             if let img = model.data_artworkBigUrl, img != "" {
                 let imgUrl = API.baseImageURL + img
