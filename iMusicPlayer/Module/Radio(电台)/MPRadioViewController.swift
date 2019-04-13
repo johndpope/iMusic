@@ -1,44 +1,83 @@
 //
-//  MPRadioViewController.swift
-//  iMusicPlayer
+//  ViewController.swift
+//  Card_hjw
 //
-//  Created by Modi on 2019/3/12.
-//  Copyright © 2019 Modi. All rights reserved.
+//  Created by hejianwu on 16/10/26.
+//  Copyright © 2016年 ShopNC. All rights reserved.
 //
 
 import UIKit
 
+//屏幕的高
+let APP_FRAME_HEIGHT : CGFloat! = UIScreen.main.bounds.height
+//屏幕的宽
+let APP_FRAME_WIDTH : CGFloat = UIScreen.main.bounds.width
+//layout上下距离
+let LAYOUT_LEFTORRIGHT_WIDTH : CGFloat = (APP_FRAME_WIDTH-40)/5 + 20
+let CELL_WIDTH : CGFloat = (APP_FRAME_WIDTH-40)*3/5
+let CELL_HEIGHT : CGFloat = APP_FRAME_HEIGHT*3/7
+
+var desLabel : UILabel!
+
+private struct Constant {
+    static let identifier = "MPRadioCollectionViewCell"
+}
+
 class MPRadioViewController: BaseViewController {
     
-    @IBOutlet weak var xib_title: UILabel!
-    @IBOutlet weak var xib_user: UILabel!
-    @IBOutlet weak var xib_play: UIButton!
-    
-    var scrollVC: CardViewController?
-    
-    var pageView: UIView?
+    var data = [String]()
+    var collectionView : UICollectionView!
     
     var currentIndex = 0
     
     var model = [MPSongModel]() {
         didSet {
-            DispatchQueue.main.async {
-                self.cardViews = self.getImageViews(models: self.model)
-                self.updateView(index: 0)
-            }
-        }
-    }
-    
-    var cardViews = [UIImageView]() {
-        didSet {
-            configCardView()
-//            scrollVC?.cards = cardViews
+            collectionView.reloadData()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+        
+        data = ["test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg"]
+        
+        let str = "我的足迹（1 / \(data.count)）"
+        desLabel = UILabel(frame: CGRect(x: 0, y: 25, width: APP_FRAME_WIDTH, height: 14))
+        desLabel.textAlignment = .center
+        desLabel.font = UIFont.systemFont(ofSize: 14)
+        let attributeString = NSMutableAttributedString(string: str)
+        attributeString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 10),
+                                     range: NSMakeRange(4, attributeString.length-4))
+        attributeString.addAttributes([NSAttributedString.Key.baselineOffset : 0.36*(14-10)], range: NSMakeRange(4, attributeString.length-4))
+        desLabel.attributedText = attributeString
+//        self.view.addSubview(desLabel)
+        
+        setupCollectionView()
+        
         requestData()
+    }
+    
+    private func setupCollectionView() {
+        let layout = CDFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 20.0
+        layout.sectionInset = UIEdgeInsets(top: 0, left: LAYOUT_LEFTORRIGHT_WIDTH, bottom: 0, right: LAYOUT_LEFTORRIGHT_WIDTH)
+        layout.itemSize = CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.clear
+        collectionView.collectionViewLayout = layout
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        //        collectionView.register(CDViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(CDViewCell.self))
+        collectionView.register(UINib(nibName: Constant.identifier, bundle: nil), forCellWithReuseIdentifier: Constant.identifier)
+        collectionView.reloadData()
+        view.addSubview(self.collectionView)
+        
+        collectionView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     
     override func requestData() {
@@ -52,114 +91,60 @@ class MPRadioViewController: BaseViewController {
         }
     }
     
-    @IBAction func play(_ sender: UIButton) {
+    private func play() {
         // 显示当前的播放View
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
             pv.currentSong = model[currentIndex]
             pv.model = model
             pv.top = SCREEN_HEIGHT - TabBarHeight - 48
-            sender.isHidden = true
+//            sender.isHidden = true
             // 隐藏状态栏
             
         }
-//        NotificationCenter.default.post(name: NSNotification.Name("open"), object: nil)
-        
-//        let path = Bundle.main.path(forResource: "YBPlayer.html", ofType: "")
-//        let pv = MPYBWebPlayerView.md_viewFromXIB() as! MPYBWebPlayerView
-//        pv.autoresizingMask = .flexibleWidth
-//        do {
-//            pv.text = try String(contentsOfFile: path!)
-//        }catch {
-//
-//        }
-//        pv.id = model[currentIndex].data_originalId ?? ""
-//        HFAlertController.showCustomView(view: pv)
-    }
-    
-    private func getImageViews(models: [MPSongModel]) -> [UIImageView] {
-        var temps = [UIImageView]()
-        models.forEach { (model) in
-            //设置图片
-            if let img = model.data_artworkBigUrl, img != "" {
-                let imgUrl = API.baseImageURL + img
-                let iv = UIImageView()
-                iv.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
-                temps.append(iv)
-            }
-        }
-        return temps
-    }
-    
-    private func configCardView() {
-        //1. Create card views to be presented in the CardViewController:
-//        let cardViews: [UIView] = [UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default")), UIImageView(image: #imageLiteral(resourceName: "pic_album_default"))]
-        
-        //2. Create the cardViewController:
-        let cardVc = CardViewControllerFactory.make(cards: cardViews)
-        scrollVC = cardVc
-//        let cardVc = CardViewController.init(nibName: "CardViewController", bundle: nil)
-//        let cardVc = CardViewController()
-//        cardVc.cards = cardViews
-        
-        //3. *Optional* Configure the card view controller:
-        
-        cardVc.delegate = self
-        
-        //The number of degrees to rotate the background cards
-        cardVc.degreesToRotateCard = 45
-        
-        //The alpha of the background cards
-        cardVc.backgroundCardAlpha = 0.65
-        
-        //The z translation factor applied to the cards during transition
-        cardVc.cardZTranslationFactor = 1/3
-        
-        //If paging between the cards should be enabled
-        cardVc.isPagingEnabled = true
-        
-        //The transition interpolation applied to the source and destination card during transition
-        //The CardInterpolator contains some predefined functions, but feel free to provide your own.
-        cardVc.sourceTransitionInterpolator = CardInterpolator.cubicOut
-        cardVc.destinationTransitionInterpolator = CardInterpolator.cubicOut
-        
-        // 添加子控制器
-        addChild(cardVc)
-        pageView = cardVc.view
-        pageView?.height = SCREEN_HEIGHT - NavBarHeight - TabBarHeight
-        view.addSubview(pageView!)
-        cardVc.didMove(toParent: self)
-        // 将歌曲名称和歌手移到最上层
-        self.view.sendSubviewToBack(pageView!)
     }
 
 }
-extension MPRadioViewController: CardViewControllerDelegate {
-    func cardViewController(_ cardViewController: CardViewController, didSelect card: UIView, at index: Int) {
-        print("did select card at index: \(index)")
-        currentIndex = index
-        // 播放
-        self.play(xib_play)
+
+extension MPRadioViewController : UICollectionViewDelegate , UICollectionViewDataSource{
+    //UICollectionView代理方法
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return model.count
     }
-    
-    func cardViewController(_ cardViewController: CardViewController, didScroll card: UIView, at index: Int) {
-        QYTools.shared.Log(log: "滚动了")
-        currentIndex = index
-        updateView(index: index)
-        // 播放
-        self.play(xib_play)
-    }
-}
-extension MPRadioViewController {
-    
-    private func updateView(index: Int) {
-        let m = self.model[index]
-        if SourceType == 0 {
-            xib_title.text = m.data_title
-            xib_user.text = m.data_channelTitle
-        }else {
-            xib_title.text = m.data_songName
-            xib_user.text = m.data_singerName
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: Constant.identifier, for: indexPath) as! MPRadioCollectionViewCell
+        let row = indexPath.row
+        cell.updateCell(model: model[row])
+        
+        cell.playBtnShow = row == 0 ? true : false
+        
+        cell.clickBlock = {(sender) in
+            if let btn = sender as? UIButton {
+                self.play()
+                cell.playBtnShow = false
+            }
         }
+        
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("点击图片\(indexPath.row)")
+        currentIndex = indexPath.row
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        //center是collectionView的frame的中心点 pInView是中心点对应到collectionVIew的contentView的坐标
+        let pInView = self.view.convert(self.collectionView.center, to: self.collectionView)
+        let indexPathNow = self.collectionView.indexPathForItem(at: pInView)!
+        let rowNum = indexPathNow.row + 1
+        
+        currentIndex = indexPathNow.row
+        
+        let str = "我的足迹（\(rowNum) / \(data.count)）"
+        let attributeString = NSMutableAttributedString(string: str)
+        attributeString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 10),
+                                     range: NSMakeRange(4, attributeString.length-4))
+        attributeString.addAttributes([NSAttributedString.Key.baselineOffset : 0.36*(14-10)], range: NSMakeRange(4, attributeString.length-4))
+        desLabel.attributedText = attributeString
     }
     
 }
+
