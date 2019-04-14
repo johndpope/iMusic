@@ -61,9 +61,18 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZX-8K-Exd">
                             <rect key="frame" x="0.0" y="44" width="375" height="280"/>
+                            <subviews>
+                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HjF-D5-D2g">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                                </imageView>
+                            </subviews>
                             <color key="backgroundColor" red="0.8862745098" green="0.69411764710000001" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="HjF-D5-D2g" secondAttribute="trailing" id="97M-V1-6hW"/>
+                                <constraint firstItem="HjF-D5-D2g" firstAttribute="leading" secondItem="rZX-8K-Exd" secondAttribute="leading" id="Xdc-6m-Pjb"/>
+                                <constraint firstAttribute="bottom" secondItem="HjF-D5-D2g" secondAttribute="bottom" id="bJ4-LX-ex1"/>
                                 <constraint firstAttribute="height" constant="280" id="cHc-gX-3UU"/>
+                                <constraint firstItem="HjF-D5-D2g" firstAttribute="top" secondItem="rZX-8K-Exd" secondAttribute="top" id="mBt-h5-eRb"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZw-ZE-3yH">
@@ -302,6 +311,7 @@
                 <outlet property="playerViewTop" destination="hho-wK-Fik" id="brh-oB-6Sq"/>
                 <outlet property="topViewH" destination="cHc-gX-3UU" id="gIn-fN-bg0"/>
                 <outlet property="xib_collect" destination="tej-Uh-iU5" id="2Cn-5K-vn5"/>
+                <outlet property="xib_coverImage" destination="HjF-D5-D2g" id="xF5-wd-JgA"/>
                 <outlet property="xib_cycleMode" destination="8Zc-rA-hvB" id="QN4-Ee-KL3"/>
                 <outlet property="xib_desc" destination="8VB-EI-KFX" id="fax-mu-036"/>
                 <outlet property="xib_endTime" destination="zRP-YE-hBp" id="Ozw-zy-SKK"/>

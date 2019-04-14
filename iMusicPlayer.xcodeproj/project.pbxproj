@@ -67,6 +67,7 @@
 		C56BDB6F225F35DA008AE913 /* MPTimeOffEndView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56BDB6D225F35DA008AE913 /* MPTimeOffEndView.xib */; };
 		C56BDB73225F462B008AE913 /* MPSongInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB71225F462B008AE913 /* MPSongInfoView.swift */; };
 		C56BDB74225F462B008AE913 /* MPSongInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56BDB72225F462B008AE913 /* MPSongInfoView.xib */; };
+		C56BDB7922606B1F008AE913 /* MPPlayQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB7822606B1F008AE913 /* MPPlayQueue.swift */; };
 		C57FC5722240D9D900218DE7 /* iMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */; };
 		C57FC57D2240D9D900218DE7 /* iMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC57C2240D9D900218DE7 /* iMusicPlayerUITests.swift */; };
 		C57FC7D72240DC2F00218DE7 /* DAConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C57FC58B2240DC2E00218DE7 /* DAConfig.m */; };
@@ -522,6 +523,7 @@
 		C56BDB6D225F35DA008AE913 /* MPTimeOffEndView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPTimeOffEndView.xib; sourceTree = "<group>"; };
 		C56BDB71225F462B008AE913 /* MPSongInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSongInfoView.swift; sourceTree = "<group>"; };
 		C56BDB72225F462B008AE913 /* MPSongInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSongInfoView.xib; sourceTree = "<group>"; };
+		C56BDB7822606B1F008AE913 /* MPPlayQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayQueue.swift; sourceTree = "<group>"; };
 		C57FC5592240D9D700218DE7 /* iMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC56D2240D9D900218DE7 /* iMusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMusicPlayerTests.swift; sourceTree = "<group>"; };
@@ -1050,6 +1052,7 @@
 		C53E976922521F6C007F3920 /* PlayingView(播放详情展开) */ = {
 			isa = PBXGroup;
 			children = (
+				C56BDB7722606AE0008AE913 /* PlayQueue(播放队列) */,
 				C56BDB70225F4601008AE913 /* SongInfoView(歌曲信息) */,
 				C5F5378D22549608006D228B /* YBWebPlayer */,
 				C53E976A22521FDD007F3920 /* MPPlayingBigView.swift */,
@@ -1234,6 +1237,14 @@
 				C56BDB72225F462B008AE913 /* MPSongInfoView.xib */,
 			);
 			path = "SongInfoView(歌曲信息)";
+			sourceTree = "<group>";
+		};
+		C56BDB7722606AE0008AE913 /* PlayQueue(播放队列) */ = {
+			isa = PBXGroup;
+			children = (
+				C56BDB7822606B1F008AE913 /* MPPlayQueue.swift */,
+			);
+			path = "PlayQueue(播放队列)";
 			sourceTree = "<group>";
 		};
 		C57FC5502240D9D700218DE7 = {
@@ -3281,6 +3292,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/StreamingKit/StreamingKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
@@ -3307,6 +3319,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StreamingKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
@@ -3468,6 +3481,7 @@
 				C57FC8C22240DC2F00218DE7 /* UIViewController+DDPopUpViewController.m in Sources */,
 				C57FC82F2240DC2F00218DE7 /* MPRankingTableViewCell.swift in Sources */,
 				C5C86542225DD3E000E54DE2 /* ScrollRects.swift in Sources */,
+				C56BDB7922606B1F008AE913 /* MPPlayQueue.swift in Sources */,
 				C57FC88B2240DC2F00218DE7 /* HFAlertController.swift in Sources */,
 				C57FC8562240DC2F00218DE7 /* MPCreateSongListView.swift in Sources */,
 				C59498D72240E93E00AC10DD /* MPEditSongListDetailViewController.swift in Sources */,
@@ -3910,7 +3924,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.groupy.iMusicPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = fm.music.musicbox.musicfm.download.freemusic.offline.free.online.song.jpop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iMusicPlayer/SupportFiles/iMusicPlayer-Bridging-Header.h";
@@ -3937,7 +3951,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.groupy.iMusicPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = fm.music.musicbox.musicfm.download.freemusic.offline.free.online.song.jpop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "iMusicPlayer/SupportFiles/iMusicPlayer-Bridging-Header.h";

@@ -84,4 +84,13 @@ class API: NSObject {
     
     // MARK: - Yotube搜索歌单
     static let SearchSongListByYoutube         = "/playlists/getYoutubePlaylistItems"
+    
+    // MARK: - 投诉
+    static let Complaint         = "https://en.wikipedia.org/wiki/Complaint"
+    
+    // MARK: - 版权许可协议
+    static let Copyright         = "https://en.wikipedia.org/wiki/Copyright"
+    
+    // MARK: - 播放来源
+    static let MVSource        = "https://www.youtube.com/watch?v="
 }

@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>我们需要访问您的媒体库来获取上传的音乐数据</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -141,6 +139,8 @@ weixin</string>
 			</dict>
 		</dict>
 	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>我们需要访问您的媒体库来获取上传的音乐数据</string>
 	<key>NSCameraUsageDescription</key>
 	<string>我们需要访问您的相机来拍照上传房屋详细信息</string>
 	<key>NSLocationAlwaysUsageDescription</key>

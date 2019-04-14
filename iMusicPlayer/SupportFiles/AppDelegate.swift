@@ -53,6 +53,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        addPlayingView()
         
+        if #available(iOS 11.0, *) {
+            registerBackgroundPlay()
+        } else {
+            // Fallback on earlier versions
+        }
+        
         return true
     }
     
@@ -192,22 +198,31 @@ extension AppDelegate: JPUSHRegisterDelegate {
 extension AppDelegate {
     // 提前添加播放控制View到window上
     private func addPlayingView() {
-        
-//        let height: CGFloat = 50
-//        let size = CGSize(width: SCREEN_WIDTH, height: height)
-//        let y = SCREEN_HEIGHT - height - TabBarHeight
-//        let pv = MPPlayingView(frame: CGRect(x: 0, y: y, width: size.width, height: size.height))
-//        playingView = pv
-//        pv.isHidden = false
-//        window?.addSubview(pv)
-        
         // 添加播放详情View
         let pbv = MPPlayingBigView.md_viewFromXIB() as! MPPlayingBigView
-//        pbv.frame = window!.frame
         pbv.top = window?.frame.height ?? 0
         playingBigView = pbv
-//        pbv.isHidden = true
         window?.addSubview(pbv)
+    }
+    
+    @available(iOS 11.0, *)
+    private func registerBackgroundPlay() {
+//        NSError* error;
+//
+//        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+//        [[AVAudioSession sharedInstance] setActive:YES error:&error];
+//
+//        Float32 bufferLength = 0.1;
+//        AudioSessionSetProperty(kAudioSessionProperty_PreferredHardwareIOBufferDuration, sizeof(bufferLength), &bufferLength);
+        
+        // 注册后台播放
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setActive(true)
+            try session.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, policy: AVAudioSession.RouteSharingPolicy.default, options: [.mixWithOthers, .duckOthers])
+        } catch {
+            print(error)
+        }
     }
 }
 
