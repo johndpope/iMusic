@@ -29,13 +29,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mama ft. William Singe " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kQ-eH-Eo4">
-                                <rect key="frame" x="12" y="271" width="247" height="21"/>
+                                <rect key="frame" x="12" y="281" width="247" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jonas Blue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uv8-iY-iqj">
-                                <rect key="frame" x="12" y="305" width="247" height="14.5"/>
+                                <rect key="frame" x="12" y="314" width="247" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -60,9 +60,9 @@
                             <constraint firstItem="Uv8-iY-iqj" firstAttribute="leading" secondItem="2kQ-eH-Eo4" secondAttribute="leading" id="MxM-dE-xnV"/>
                             <constraint firstItem="2kQ-eH-Eo4" firstAttribute="leading" secondItem="cxu-hI-sfK" secondAttribute="leading" id="WNp-QW-sgA"/>
                             <constraint firstItem="2kQ-eH-Eo4" firstAttribute="trailing" secondItem="cxu-hI-sfK" secondAttribute="trailing" id="WU5-WZ-jvH"/>
-                            <constraint firstItem="Uv8-iY-iqj" firstAttribute="top" secondItem="2kQ-eH-Eo4" secondAttribute="bottom" constant="13" id="aho-5K-XHU"/>
+                            <constraint firstItem="Uv8-iY-iqj" firstAttribute="top" secondItem="2kQ-eH-Eo4" secondAttribute="bottom" constant="12" id="aho-5K-XHU"/>
                             <constraint firstItem="cxu-hI-sfK" firstAttribute="width" secondItem="cxu-hI-sfK" secondAttribute="height" multiplier="1:1" id="cLs-Yq-mPF"/>
-                            <constraint firstItem="2kQ-eH-Eo4" firstAttribute="top" secondItem="cxu-hI-sfK" secondAttribute="bottom" constant="12" id="e5W-5q-Ka6"/>
+                            <constraint firstItem="2kQ-eH-Eo4" firstAttribute="top" secondItem="cxu-hI-sfK" secondAttribute="bottom" constant="22" id="e5W-5q-Ka6"/>
                             <constraint firstItem="cxu-hI-sfK" firstAttribute="leading" secondItem="AvZ-NH-7P8" secondAttribute="leading" constant="12" id="eNO-np-Xoy"/>
                             <constraint firstItem="Uv8-iY-iqj" firstAttribute="trailing" secondItem="2kQ-eH-Eo4" secondAttribute="trailing" id="fNB-P7-1K1"/>
                             <constraint firstAttribute="trailing" secondItem="cxu-hI-sfK" secondAttribute="trailing" constant="12" id="iFp-ui-DvR"/>

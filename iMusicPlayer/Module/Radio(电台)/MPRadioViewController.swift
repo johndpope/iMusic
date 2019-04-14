@@ -17,18 +17,19 @@ let LAYOUT_LEFTORRIGHT_WIDTH : CGFloat = (APP_FRAME_WIDTH-40)/5 + 20
 let CELL_WIDTH : CGFloat = (APP_FRAME_WIDTH-40)*3/5
 let CELL_HEIGHT : CGFloat = APP_FRAME_HEIGHT*3/7
 
-var desLabel : UILabel!
-
 private struct Constant {
     static let identifier = "MPRadioCollectionViewCell"
 }
 
 class MPRadioViewController: BaseViewController {
     
-    var data = [String]()
     var collectionView : UICollectionView!
     
-    var currentIndex = 0
+    var currentIndex = 0 {
+        didSet {
+            self.play()
+        }
+    }
     
     var model = [MPSongModel]() {
         didSet {
@@ -40,19 +41,6 @@ class MPRadioViewController: BaseViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         
-        data = ["test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg","test.jpg"]
-        
-        let str = "我的足迹（1 / \(data.count)）"
-        desLabel = UILabel(frame: CGRect(x: 0, y: 25, width: APP_FRAME_WIDTH, height: 14))
-        desLabel.textAlignment = .center
-        desLabel.font = UIFont.systemFont(ofSize: 14)
-        let attributeString = NSMutableAttributedString(string: str)
-        attributeString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 10),
-                                     range: NSMakeRange(4, attributeString.length-4))
-        attributeString.addAttributes([NSAttributedString.Key.baselineOffset : 0.36*(14-10)], range: NSMakeRange(4, attributeString.length-4))
-        desLabel.attributedText = attributeString
-//        self.view.addSubview(desLabel)
-        
         setupCollectionView()
         
         requestData()
@@ -62,8 +50,10 @@ class MPRadioViewController: BaseViewController {
         let layout = CDFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 20.0
+        // 将cell挤成一行
+        layout.minimumInteritemSpacing = 100
         layout.sectionInset = UIEdgeInsets(top: 0, left: LAYOUT_LEFTORRIGHT_WIDTH, bottom: 0, right: LAYOUT_LEFTORRIGHT_WIDTH)
-        layout.itemSize = CGSize(width: CELL_WIDTH, height: CELL_HEIGHT)
+        layout.itemSize = CGSize(width: CELL_WIDTH, height: CELL_WIDTH + 80)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.clear
         collectionView.collectionViewLayout = layout
@@ -77,6 +67,9 @@ class MPRadioViewController: BaseViewController {
         
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
+//            make.left.right.equalToSuperview()
+//            make.height.equalTo((view.height-(CELL_WIDTH + 80))/2)
+//            make.top.equalToSuperview().offset(view.height*2/7)
         }
     }
     
@@ -138,12 +131,6 @@ extension MPRadioViewController : UICollectionViewDelegate , UICollectionViewDat
         
         currentIndex = indexPathNow.row
         
-        let str = "我的足迹（\(rowNum) / \(data.count)）"
-        let attributeString = NSMutableAttributedString(string: str)
-        attributeString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 10),
-                                     range: NSMakeRange(4, attributeString.length-4))
-        attributeString.addAttributes([NSAttributedString.Key.baselineOffset : 0.36*(14-10)], range: NSMakeRange(4, attributeString.length-4))
-        desLabel.attributedText = attributeString
     }
     
 }
