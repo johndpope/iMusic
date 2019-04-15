@@ -14,6 +14,10 @@ private struct Constant {
     static let smallPlayerWidth = SCREEN_HEIGHT * (90/(IPHONEX ? 812 : 667))
     static let sbReduceHeight = SCREEN_WIDTH * (58/375)
     static let smallPlayerHeight = SCREEN_WIDTH * (48/375)
+    
+    static let MP3Test = "http://cache.musicfm.co/music/mp3/99024167248247705390676698909371.mp3"
+    
+    static let MP3URL: URL = URL(string: MP3Test)!
 }
 
 class MPPlayingBigView: BaseView {
@@ -30,7 +34,11 @@ class MPPlayingBigView: BaseView {
     var queue = [MPSongModel]()
     
     //当前播放音乐索引
-    var currentIndex:Int = -1
+    var currentIndex:Int = -1 {
+        didSet {
+            
+        }
+    }
     
     //是否循环播放
     var loop:Bool = false
@@ -45,12 +53,16 @@ class MPPlayingBigView: BaseView {
     // MARK: - MP3属性结束
     
     
+    /// 扩展功能
     var moreView: MPSongExtensionToolsView?
     
+    /// YouTube播放View
     var playView: YTPlayerView?
     
+    /// 小窗播放View
     var playingView: MPPlayingView!
 
+    /// 小窗播放背景View
     @IBOutlet weak var xib_playingView: UIView! {
         didSet {
             let pv = MPPlayingView()
@@ -65,11 +77,17 @@ class MPPlayingBigView: BaseView {
         }
     }
     
+    /// 大窗高度
     @IBOutlet weak var contentViewH: NSLayoutConstraint!
+    
+    /// 大窗口与小窗的距离
     @IBOutlet weak var playerViewTop: NSLayoutConstraint!
+    
+    /// 是否全屏顶部View
     @IBOutlet weak var xib_topView: MPPlayingNavView!
     
     var defaultTopViewH: CGFloat = 0
+    /// 当前播放区域高度：根据不同屏幕跳转高度
     @IBOutlet weak var topViewH: NSLayoutConstraint! {
         didSet {
             defaultTopViewH = topViewH.constant
@@ -86,9 +104,11 @@ class MPPlayingBigView: BaseView {
         }
     }
     
+    /// 播放区域背景View
     @IBOutlet weak var playBgView: UIView!
     @IBOutlet weak var xib_coverImage: UIImageView!
     
+    /// YouTube播放控件
     private lazy var ybPlayView: YTPlayerView = {
         let pv = YTPlayerView()
         playView = pv
@@ -105,13 +125,17 @@ class MPPlayingBigView: BaseView {
     @IBOutlet weak var xib_cycleMode: UIButton!
     @IBOutlet weak var xib_orderMode: UIButton!
     @IBOutlet weak var xib_collect: UIButton!
-//    , "autoplay": "0"
+    
+    /// YouTube播放器配置
     var playerVars: [String : Any] = [ "showinfo": "0", "modestbranding" : "1", "playsinline": "1", "controls": "0", "autohide": "1"]
     
-    var currentPlayOrderMode: Int = 0  // 0: 顺序播放  1: 随机播放
+    /// 0: 顺序播放  1: 随机播放
+    var currentPlayOrderMode: Int = 0
     
-    var currentPlayCycleMode: Int = 0 // 0: 列表循环  1: 单曲循环 2: 只播放当前列表
+    /// 0: 列表循环  1: 单曲循环 2: 只播放当前列表
+    var currentPlayCycleMode: Int = 0
     
+    /// 当前播放MV的ID
     var songID: String = ""
     
     var currentSong: MPSongModel? {
@@ -119,10 +143,18 @@ class MPPlayingBigView: BaseView {
             songID = currentSong?.data_originalId ?? ""
             // 设置播放状态
             currentSong?.data_playingStatus = 1
+            
+            if model.count > 0 {
+                self.updateView()
+            }
         }
     }
     
+    /// 随机播放列表
     var randomModel = [MPSongModel]()
+    
+    /// 当前播放歌曲所属专辑列表
+    var currentAlbum: GeneralPlaylists?
     
     var model = [MPSongModel]() {
         didSet {
@@ -134,17 +166,90 @@ class MPPlayingBigView: BaseView {
                 randomModel = t.randomObjects_ck()
             }
             
-            if SourceType == 1 {
+            if SourceType == 1 {    // mp3播放队列
                 queue = model
+                currentIndex = getIndexFromSongs(song: currentSong!, songs: model)
             }
             
             configPlayer()
-            
-            updateView()
         }
     }
     
-    var currentAlbum: GeneralPlaylists?
+    private func configPlayer() {
+        if SourceType == 0 {
+            // *** 这里是要','拼接的字符串不是数组：参数错误导致播放失败
+            playerVars["playlist"] = getSongIDs(songs: currentPlayOrderMode == 1 ? randomModel : model).joined(separator: ",")
+            
+            // 播放MV
+            ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
+            
+        }else {
+            // 添加队列到音频播放器
+            //重置播放器
+//            if audioPlayer != nil {
+//                stop()
+//            }
+            resetAudioPlayer()
+            
+            playWithQueue(queue: queue, index: currentIndex)
+            
+            //设置一个定时器，每三秒钟滚动一次
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,
+                                         selector: #selector(tick), userInfo: nil, repeats: true)
+        }
+        
+        // 设置时间
+        xib_startTime.text = "0".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
+        xib_endTime.text = "\(currentSong?.data_durationInSeconds ?? 0)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
+    }
+    
+    private func updateView(type: Int = -1) {
+        // 设置下一首播放
+        let nextSong = getNextSongFromSongs(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
+        if SourceType == 0 {
+            
+            // 播放MV
+            ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
+            
+            xib_nextSongName.text = nextSong.data_title ?? ""
+            
+            xib_lrc.isSelected = false
+            xib_title.text = currentSong?.data_title
+            xib_desc.text = currentSong?.data_channelTitle
+            
+            xib_coverImage.isHidden = true
+        }else {
+            //先重置当前播放器：在继续播放不然会报错（死循环）
+            if audioPlayer == nil {
+                return
+            }
+            stop()
+            resetAudioPlayer()
+            playWithQueue(queue: queue, index: currentIndex)
+            
+            xib_nextSongName.text = nextSong.data_songName ?? ""
+            
+            xib_lrc.isSelected = true
+            xib_title.text = currentSong?.data_songName
+            xib_desc.text = currentSong?.data_singerName
+            
+            //设置图片
+            xib_coverImage.isHidden = false
+            if let img = currentSong?.data_artworkBigUrl, img != "" {
+                let imgUrl = API.baseImageURL + img
+                xib_coverImage.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "placeholder"))
+            }
+        }
+        
+        // 异步更新当前列表状态
+        DispatchQueue.main.async {
+            self.xib_collect.isSelected = MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
+        }
+        
+        // 小窗口播放数据源
+        playingView.currentIndex = model.getIndexFromArray(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
+        playingView.model = currentPlayOrderMode == 1 ? randomModel : model
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -173,7 +278,6 @@ class MPPlayingBigView: BaseView {
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
-        
         switch sender.tag {
         case 10005: // 播放模式：列表循环/单曲循环
             currentPlayCycleMode = (currentPlayCycleMode + 1) % 2
@@ -188,9 +292,7 @@ class MPPlayingBigView: BaseView {
             
             if sender.isSelected {
                 getRandomModel()
-                updateView()
             }
-            
             break
         case 10007: // 收藏
             // 添加到我的最爱列表
@@ -241,15 +343,10 @@ class MPPlayingBigView: BaseView {
     
     private func mvBtnDidClicked(sender: UIButton) {
         switch sender.tag {
-        case 10001: // 歌词
-            let pv = MPLrcView.md_viewFromXIB() as! MPLrcView
-            HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
-            break
         case 10002: // 上一曲
             ybPlayView.previousVideo()
             // 刷新当前view
             self.currentSong = getPreSongFromSongs(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
-            self.updateView(type: 1)
             break
         case 10003: // 暂停/播放
             playDidClicked()
@@ -258,7 +355,6 @@ class MPPlayingBigView: BaseView {
             ybPlayView.nextVideo()
             // 刷新当前view
             self.currentSong = getNextSongFromSongs(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
-            self.updateView(type: 1)
             break
         default:
             break
@@ -287,6 +383,7 @@ class MPPlayingBigView: BaseView {
 }
 // MARK: - 歌曲控制相关操作
 extension MPPlayingBigView {
+    /// 添加歌曲到歌单
     func addToSongList() {
         let lv = MPAddToSongListView.md_viewFromXIB() as! MPAddToSongListView
         MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
@@ -339,6 +436,7 @@ extension MPPlayingBigView {
         HFAlertController.showCustomView(view: lv, type: HFAlertType.ActionSheet)
     }
     
+    /// 扩展功能列表
     func extensionTools() {
         let pv = MPSongExtensionToolsView.md_viewFromXIB() as! MPSongExtensionToolsView
         self.moreView = pv
@@ -348,6 +446,122 @@ extension MPPlayingBigView {
         HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
     }
 }
+// MARK: - 歌曲控制相关操作
+extension MPPlayingBigView {
+    
+    /// 滑动滑竿控制播放
+    ///
+    /// - Parameter sender: 滑竿
+    @objc func sliderDidChange(sender: UISlider) {
+        if SourceType == 0 {
+            let value = sender.value
+            let progress = Float(ybPlayView.duration()) * value
+            ybPlayView.seek(toSeconds: progress, allowSeekAhead: true)
+            //如果当前时暂停状态，则继续播放
+            if ybPlayView.playerState() == .paused {
+                ybPlayView.playVideo()
+            }
+        }else {
+            //播放器定位到对应的位置
+            let value = sender.value
+            let progress = Float(audioPlayer.duration) * value
+            audioPlayer.seek(toTime: Double(progress))
+            //如果当前时暂停状态，则继续播放
+            if state == .paused {
+                audioPlayer.resume()
+            }
+        }
+    }
+    
+    /// 获取随机播放列表
+    private func getRandomModel() {
+        self.model = self.model.randomObjects_ck()
+    }
+    
+    /// 设置当前播放模式
+    private func setCycleModeImage() {
+        switch currentPlayCycleMode {
+        case 0:
+            xib_cycleMode.setImage(UIImage(named: "icon_play_order-1"), for: .normal)
+            xib_orderMode.isSelected = false
+            currentPlayOrderMode = 0
+            break
+        case 1:
+            xib_cycleMode.setImage(UIImage(named: "icon_play_single"), for: .normal)
+            xib_orderMode.isSelected = false
+            currentPlayOrderMode = 0
+            break
+        case 2:
+            xib_cycleMode.setImage(UIImage(named: "icon_play_order_off"), for: .normal)
+            xib_orderMode.isSelected = true
+            currentPlayOrderMode = 1
+            break
+        default:
+            break
+        }
+    }
+    
+    /// 获取当前歌曲下标
+    ///
+    /// - Parameters:
+    ///   - song: 歌曲
+    ///   - songs: 列表
+    /// - Returns: 下标
+    private func getIndexFromSongs(song: MPSongModel, songs: [MPSongModel]) -> Int {
+        var index = 0
+        for i in (0..<songs.count) {
+            if song == songs[i] {
+                index = i
+            }
+        }
+        return index
+    }
+    
+    /// 获取上一首歌曲
+    ///
+    /// - Parameters:
+    ///   - song: 当前播放歌曲
+    ///   - songs: 列表
+    /// - Returns: 上一首歌曲
+    private func getPreSongFromSongs(song: MPSongModel, songs: [MPSongModel]) -> MPSongModel {
+        var index = 0
+        for i in (0..<songs.count) {
+            if song == songs[i] {
+                let temp = i == 0 ? songs.count : i
+                index = (temp-1) % songs.count
+            }
+        }
+        return songs[index]
+    }
+    /// 获取下一首歌曲
+    ///
+    /// - Parameters:
+    ///   - song: 当前播放歌曲
+    ///   - songs: 列表
+    /// - Returns: 下一首歌曲
+    private func getNextSongFromSongs(song: MPSongModel, songs: [MPSongModel]) -> MPSongModel {
+        var index = 0
+        for i in (0..<songs.count) {
+            if song == songs[i] {
+                index = (i+1) % songs.count
+            }
+        }
+        return songs[index]
+    }
+    
+    /// 获取当前列表的歌曲ID集合
+    ///
+    /// - Parameter songs: 列表
+    /// - Returns: ID集合
+    private func getSongIDs(songs: [MPSongModel]) -> [String] {
+        var ids = [String]()
+        songs.forEach { (song) in
+            ids.append(song.data_originalId ?? "")
+        }
+        return ids
+    }
+}
+
 // MARK: - MPSongToolsViewDelegate
 extension MPPlayingBigView: MPSongToolsViewDelegate {
     
@@ -398,172 +612,13 @@ extension MPPlayingBigView: MPSongToolsViewDelegate {
         }
     }
 }
-// MARK: - 歌曲控制相关操作
-extension MPPlayingBigView {
-    
-    @objc func sliderDidChange(sender: UISlider) {
-        
-        if SourceType == 0 {
-            let value = sender.value
-            let progress = Float(ybPlayView.duration()) * value
-            ybPlayView.seek(toSeconds: progress, allowSeekAhead: true)
-            //如果当前时暂停状态，则继续播放
-            if ybPlayView.playerState() == .paused {
-                ybPlayView.playVideo()
-            }
-        }else {
-            //播放器定位到对应的位置
-            let value = sender.value
-            let progress = Float(audioPlayer.duration) * value
-            audioPlayer.seek(toTime: Double(progress))
-            //如果当前时暂停状态，则继续播放
-            if state == .paused {
-                audioPlayer.resume()
-            }
-        }
-        
-    }
-    
-    private func getRandomModel() {
-        self.model = self.model.randomObjects_ck()
-    }
-    
-    private func setCycleModeImage() {
-        switch currentPlayCycleMode {
-        case 0:
-            xib_cycleMode.setImage(UIImage(named: "icon_play_order-1"), for: .normal)
-            xib_orderMode.isSelected = false
-            currentPlayOrderMode = 0
-            break
-        case 1:
-            xib_cycleMode.setImage(UIImage(named: "icon_play_single"), for: .normal)
-            xib_orderMode.isSelected = false
-            currentPlayOrderMode = 0
-            break
-        case 2:
-            xib_cycleMode.setImage(UIImage(named: "icon_play_order_off"), for: .normal)
-            xib_orderMode.isSelected = true
-            currentPlayOrderMode = 1
-            break
-        default:
-            break
-        }
-    }
-    
-    private func configPlayer() {
-        if SourceType == 0 {
-            
-            // *** 这里是要','拼接的字符串不是数组：参数错误导致播放失败
-            playerVars["playlist"] = getSongIDs(songs: currentPlayOrderMode == 1 ? randomModel : model).joined(separator: ",")
-            
-            // 播放MV
-            ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
-        }else {
-            
-            // 添加队列到音频播放器
-            //重置播放器
-            resetAudioPlayer()
-            
-            //开始播放歌曲列表
-            playWithQueue(queue: queue)
-            
-            //设置一个定时器，每三秒钟滚动一次
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,
-                                         selector: #selector(tick), userInfo: nil, repeats: true)
-        }
-        
-        // 设置时间
-        xib_startTime.text = "0".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
-        xib_endTime.text = "\(currentSong?.data_durationInSeconds ?? 0)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
-    }
-    
-    private func updateView(type: Int = -1) {
-        
-        // 设置下一首播放
-        let nextSong = getNextSongFromSongs(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
-        if SourceType == 0 {
-            xib_nextSongName.text = nextSong.data_title ?? ""
-            
-            xib_lrc.isSelected = false
-            xib_title.text = currentSong?.data_title
-            xib_desc.text = currentSong?.data_channelTitle
-            
-            xib_coverImage.isHidden = true
-        }else {
-            xib_nextSongName.text = nextSong.data_songName ?? ""
-            
-            xib_lrc.isSelected = true
-            xib_title.text = currentSong?.data_songName
-            xib_desc.text = currentSong?.data_singerName
-            
-            //设置图片
-            xib_coverImage.isHidden = false
-            if let img = currentSong?.data_artworkBigUrl, img != "" {
-                let imgUrl = API.baseImageURL + img
-                xib_coverImage.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "placeholder"))
-            }
-            
-            xib_play.isSelected = (self.state == .playing ? true : false)
-            
-            xib_endTime.text = "\(audioPlayer.duration)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
-        }
-        
-        // 异步更新当前列表状态
-        DispatchQueue.main.async {
-            self.xib_collect.isSelected = MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
-        }
-        
-        // 小窗口播放数据源
-        playingView.currentIndex = model.getIndexFromArray(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
-        playingView.model = currentPlayOrderMode == 1 ? randomModel : model
-    }
-    
-    // 获取当前下标
-    private func getIndexFromSongs(song: MPSongModel, songs: [MPSongModel]) -> Int {
-        var index = 0
-        for i in (0..<songs.count) {
-            if song == songs[i] {
-                index = i
-            }
-        }
-        return index
-    }
-    
-    private func getPreSongFromSongs(song: MPSongModel, songs: [MPSongModel]) -> MPSongModel {
-        var index = 0
-        for i in (0..<songs.count) {
-            if song == songs[i] {
-                let temp = i == 0 ? songs.count : i
-                index = (temp-1) % songs.count
-            }
-        }
-        return songs[index]
-    }
-    
-    private func getNextSongFromSongs(song: MPSongModel, songs: [MPSongModel]) -> MPSongModel {
-        var index = 0
-        for i in (0..<songs.count) {
-            if song == songs[i] {
-                index = (i+1) % songs.count
-            }
-        }
-        return songs[index]
-    }
-    
-    private func getSongIDs(songs: [MPSongModel]) -> [String] {
-        var ids = [String]()
-        songs.forEach { (song) in
-            ids.append(song.data_originalId ?? "")
-        }
-        return ids
-    }
-}
 
 // MARK: - YTPlayerViewDelegate
 extension MPPlayingBigView: YTPlayerViewDelegate {
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         ybPlayView.playVideo()
+        // 添加到最近播放列表
         if let s = self.currentSong {
             if !MPModelTools.checkSongExsistInPlayingList(song: s, tableName: "RecentlyPlay") {
                 MPModelTools.saveSongToTable(song: s, tableName: "RecentlyPlay")
@@ -572,7 +627,7 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
     }
     
     func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
-        
+        // 更新播放进度
         xib_slider.value = playTime / Float(ybPlayView.duration())
         xib_startTime.text = "\(playTime)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
     }
@@ -590,12 +645,10 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
         }else { // 顺序播放
             
         }
-        
         switch state {
         case .playing:
             xib_play.isSelected = true
             xib_endTime.text = "\(ybPlayView.duration())".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
-            
             // 把当前的专辑添加到最近播放
             if let a = currentAlbum {
                 let index = MPModelTools.getCollectListExsistIndex(model: a, tableName: "RecentlyAlbum", condition: a.data_title ?? "")
@@ -613,14 +666,9 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
             break
         case .ended:
             xib_play.isSelected = false
-            // 获取下一首歌曲继续播放
-            //            currentSong = getNextSongFromSongs(song: currentSong!, songs: self.model)
-            //            updateView()
-            //            ybPlayView.playVideo()
             ybPlayView.nextVideo()
             // 刷新当前view
             self.currentSong = getNextSongFromSongs(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
-            self.updateView(type: 1)
             break
         default:
             xib_play.isSelected = false
@@ -632,23 +680,35 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
         
     }
     
-    
 }
 // MARK: - MPPlayingViewDelegate
 extension MPPlayingBigView: MPPlayingViewDelegate {
     
+    /// 下一首
+    ///
+    /// - Parameters:
+    ///   - view: -
+    ///   - index: 下标
     func playingView(pre view: MPPlayingView, index: Int) {
-        ybPlayView.previousVideo()
-        // 刷新当前view
-        self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
-        self.updateView(type: 1)
+        if SourceType == 0 {
+            ybPlayView.previousVideo()
+            // 刷新当前view
+            self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
+        }else {
+            currentIndex = index
+            playWithQueue(queue: queue, index: currentIndex)
+        }
     }
     
     func playingView(next view: MPPlayingView, index: Int) {
-        ybPlayView.nextVideo()
-        // 刷新当前view
-        self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
-        self.updateView(type: 1)
+        if SourceType == 0 {
+            ybPlayView.nextVideo()
+            // 刷新当前view
+            self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
+        }else {
+            currentIndex = index
+            playWithQueue(queue: queue, index: currentIndex)
+        }
     }
     
     func playingView(toDetail view: MPPlayingView) {
@@ -685,7 +745,6 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
     
     private func playByIndex(index: Int) {
         currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
-        updateView()
     }
 }
 
@@ -731,6 +790,11 @@ extension MPPlayingBigView {
 
     //重置播放器
     func resetAudioPlayer() {
+        
+//        if audioPlayer != nil {
+//            self.stop()
+//        }
+        
         var options = STKAudioPlayerOptions()
         options.flushQueueOnSeek = true
         options.enableVolumeMixer = true
@@ -748,11 +812,12 @@ extension MPPlayingBigView {
         }
         self.queue = queue
         audioPlayer.clearQueue()
-        let url = queue[index].data_cache
-        audioPlayer.play(url!)
+        
+        let url = URL(string: queue[index].data_cache ?? "")
+        audioPlayer.play(url ?? Constant.MP3URL)
         
         for i in 1 ..< queue.count {
-            audioPlayer.queue(queue[Int((index + i) % queue.count)].data_cache!)
+            audioPlayer.queue(URL(string: queue[Int((index + i) % queue.count)].data_cache ?? "") ?? Constant.MP3URL)
         }
         currentIndex = index
         loop = false
@@ -767,7 +832,7 @@ extension MPPlayingBigView {
     
     //单独播放某个歌曲
     func play(file: MPSongModel) {
-        audioPlayer.play(file.data_cache!)
+        audioPlayer.play(URL(string: file.data_cache ?? "") ?? Constant.MP3URL)
     }
     
     //下一曲
@@ -819,7 +884,7 @@ extension MPPlayingBigView: STKAudioPlayerDelegate {
     //开始播放歌曲
     func audioPlayer(_ audioPlayer: STKAudioPlayer,
                      didStartPlayingQueueItemId queueItemId: NSObject) {
-        if let index = (queue.index { $0.data_cache == queueItemId as! String }) {
+        if let index = (queue.index { URL(string: $0.data_cache ?? "") == queueItemId as? URL }) {
             currentIndex = index
         }
     }
@@ -846,7 +911,7 @@ extension MPPlayingBigView: STKAudioPlayerDelegate {
                      with stopReason: STKAudioPlayerStopReason,
                      andProgress progress: Double, andDuration duration: Double) {
         if let index = (queue.index {
-            $0.data_cache == audioPlayer.currentlyPlayingQueueItemId() as! String
+            URL(string: $0.data_cache ?? Constant.MP3Test) == audioPlayer.currentlyPlayingQueueItemId() as? URL
         }) {
             currentIndex = index
         }
@@ -864,33 +929,32 @@ extension MPPlayingBigView: STKAudioPlayerDelegate {
     func audioPlayer(_ audioPlayer: STKAudioPlayer,
                      unexpectedError errorCode: STKAudioPlayerErrorCode) {
         print("Error when playing music \(errorCode)")
+        stop()
         resetAudioPlayer()
         playWithQueue(queue: queue, index: currentIndex)
     }
     
     //更新当前播放信息
     func updateNowPlayingInfoCenter() {
-//        if currentIndex >= 0 {
+        if currentIndex >= 0 {
 //            let music = queue[currentIndex]
-//            //更新标题
-//            titleLabel.text = "当前播放：\(music.name)"
+//            let nextSong = getNextSongFromSongs(song: music, songs: model)
+//            xib_nextSongName.text = nextSong.data_songName ?? ""
 //
-//            //更新暂停按钮名字
-//            let pauseBtnTitle = self.state == .playing ? "暂停" : "继续"
-//            pauseBtn.setTitle(pauseBtnTitle, for: .normal)
+//            xib_lrc.isSelected = true
+//            xib_title.text = music.data_songName
+//            xib_desc.text = music.data_singerName
 //
-//            //设置进度条相关属性
-//            playbackSlider!.maximumValue = Float(audioPlayer.duration)
-//        }else{
-//            //停止播放
-//            titleLabel.text = "播放停止!"
-//            //更新进度条和时间标签
-//            playbackSlider.value = 0
-//            playTime.text = "--:--"
-//        }
-        
-        currentSong = model[currentIndex]
-        self.updateView()
+//            //设置图片
+//            xib_coverImage.isHidden = false
+//            if let img = music.data_artworkBigUrl, img != "" {
+//                let imgUrl = API.baseImageURL + img
+//                xib_coverImage.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "placeholder"))
+//            }
+            
+            currentSong = queue[currentIndex]
+            
+        }
     }
 }
 

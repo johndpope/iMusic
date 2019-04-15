@@ -134,7 +134,10 @@ class HFAppEngine: NSObject, UITabBarControllerDelegate, CLLocationManagerDelega
             // 第一次开启
             case .FirstRun:
                 
-                let VC = HFWelcomeViewController(nibName: "HFWelcomeViewController", bundle: nil)
+//                let VC = HFWelcomeViewController(nibName: "HFWelcomeViewController", bundle: nil)
+//                self.execute!(VC)
+                
+                let VC = self.setupMainViewController()
                 self.execute!(VC)
                 
                 self.resetAppStatus()

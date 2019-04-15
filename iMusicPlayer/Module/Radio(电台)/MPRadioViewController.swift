@@ -56,27 +56,21 @@ class MPRadioViewController: BaseViewController {
         layout.itemSize = CGSize(width: CELL_WIDTH, height: CELL_WIDTH + 80)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.clear
-        collectionView.collectionViewLayout = layout
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        //        collectionView.register(CDViewCell.self, forCellWithReuseIdentifier: NSStringFromClass(CDViewCell.self))
         collectionView.register(UINib(nibName: Constant.identifier, bundle: nil), forCellWithReuseIdentifier: Constant.identifier)
-        collectionView.reloadData()
         view.addSubview(self.collectionView)
         
         collectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
-//            make.left.right.equalToSuperview()
-//            make.height.equalTo((view.height-(CELL_WIDTH + 80))/2)
-//            make.top.equalToSuperview().offset(view.height*2/7)
         }
     }
     
     override func requestData() {
         super.requestData()
         DispatchQueue.main.async {
-            MPModelTools.getRadioModel(tableName: MPRadioViewController.classCode) { (model) in
+            MPModelTools.getRadioModel(tableName: MPRadioViewController.classCode + "\(SourceType)") { (model) in
                 if let m = model {
                     self.model = m
                 }
@@ -85,14 +79,17 @@ class MPRadioViewController: BaseViewController {
     }
     
     private func play() {
+        
+        let cell = collectionView.cellForItem(at: IndexPath(row: currentIndex, section: 0)) as? MPRadioCollectionViewCell
         // 显示当前的播放View
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
             pv.currentSong = model[currentIndex]
             pv.model = model
-            pv.top = SCREEN_HEIGHT - TabBarHeight - 48
-//            sender.isHidden = true
-            // 隐藏状态栏
-            
+//            pv.top = SCREEN_HEIGHT - TabBarHeight - 48
+            pv.smallStyle()
+            cell?.playBtnShow = false
+        }else {
+            cell?.playBtnShow = true
         }
     }
 
@@ -112,8 +109,7 @@ extension MPRadioViewController : UICollectionViewDelegate , UICollectionViewDat
         
         cell.clickBlock = {(sender) in
             if let btn = sender as? UIButton {
-                self.play()
-                cell.playBtnShow = false
+                self.currentIndex = indexPath.row
             }
         }
         
