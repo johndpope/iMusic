@@ -34,9 +34,13 @@ class MPPlayingBigView: BaseView {
     var queue = [MPSongModel]()
     
     //当前播放音乐索引
-    var currentIndex:Int = -1 {
+    var currentIndex: Int = -1 {
         didSet {
-            
+            if audioPlayer != nil, currentIndex >= 0 {
+//                resetAudioPlayer()
+//                playWithQueue(queue: queue, index: currentIndex)
+                updateMp3View()
+            }
         }
     }
     
@@ -143,9 +147,8 @@ class MPPlayingBigView: BaseView {
             songID = currentSong?.data_originalId ?? ""
             // 设置播放状态
             currentSong?.data_playingStatus = 1
-            
-            if model.count > 0 {
-                self.updateView()
+            if SourceType == 0, model.count > 0 {
+                updateMVView()
             }
         }
     }
@@ -166,32 +169,45 @@ class MPPlayingBigView: BaseView {
                 randomModel = t.randomObjects_ck()
             }
             
-            if SourceType == 1 {    // mp3播放队列
-                queue = model
-                currentIndex = getIndexFromSongs(song: currentSong!, songs: model)
-            }
-            
             configPlayer()
         }
     }
     
     private func configPlayer() {
         if SourceType == 0 {
-            // *** 这里是要','拼接的字符串不是数组：参数错误导致播放失败
-            playerVars["playlist"] = getSongIDs(songs: currentPlayOrderMode == 1 ? randomModel : model).joined(separator: ",")
-            
-            // 播放MV
-            ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
-            
+            playMV()
         }else {
             // 添加队列到音频播放器
-            //重置播放器
-//            if audioPlayer != nil {
-//                stop()
-//            }
+            if audioPlayer != nil {
+                stop()
+            }
             resetAudioPlayer()
+            queue = model
+            currentIndex = getIndexFromSongs(song: currentSong!, songs: model)
             
-            playWithQueue(queue: queue, index: currentIndex)
+//            play(file: queue[currentIndex])
+//            playWithQueue(queue: queue, index: currentIndex)
+            
+//            audioPlayer.play
+//            NSURL* url = [NSURL URLWithString:@"http://www.abstractpath.com/files/audiosamples/sample.mp3"];
+//
+//            STKDataSource* dataSource = [STKAudioPlayer dataSourceFromURL:url];
+//
+//            [audioPlayer setDataSource:dataSource withQueueItemId:[[SampleQueueId alloc] initWithUrl:url andCount:0]];
+            
+            let url: URL = URL(string: queue[currentIndex].data_cache ?? Constant.MP3Test)!
+            let ds = STKAudioPlayer.dataSource(from: url)
+            
+            
+            //            [audioPlayer appendFrameFilterWithName:@"MyCustomFilter" block:^(UInt32 channelsPerFrame, UInt32 bytesPerFrame, UInt32 frameCount, void* frames)
+            //                {
+            //                ...
+            //                }];
+            audioPlayer.addFrameFilter(withName: "", afterFilterWithName: "") { (channelsPerFrame, bytesPerFrame, frameCount, frames) in
+                QYTools.shared.Log(log: "\(channelsPerFrame)")
+            }
+            
+            audioPlayer.setDataSource(ds, withQueueItemId: queue[currentIndex])
             
             //设置一个定时器，每三秒钟滚动一次
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,
@@ -203,44 +219,58 @@ class MPPlayingBigView: BaseView {
         xib_endTime.text = "\(currentSong?.data_durationInSeconds ?? 0)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
     }
     
-    private func updateView(type: Int = -1) {
+    private func playMV() {
+        // 播放MV
+        // *** 这里是要','拼接的字符串不是数组：参数错误导致播放失败
+        playerVars["playlist"] = getSongIDs(songs: currentPlayOrderMode == 1 ? randomModel : model).joined(separator: ",")
+        
+        // 播放MV
+        ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
+        
+        updateMVView()
+    }
+    
+    private func playMp3() {
+        //先重置当前播放器：在继续播放不然会报错（死循环）
+        resetAudioPlayer()
+//        playWithQueue(queue: queue, index: currentIndex)
+    }
+    
+    private func updateMVView() {
         // 设置下一首播放
         let nextSong = getNextSongFromSongs(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
-        if SourceType == 0 {
-            
-            // 播放MV
-            ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
-            
-            xib_nextSongName.text = nextSong.data_title ?? ""
-            
-            xib_lrc.isSelected = false
-            xib_title.text = currentSong?.data_title
-            xib_desc.text = currentSong?.data_channelTitle
-            
-            xib_coverImage.isHidden = true
-        }else {
-            //先重置当前播放器：在继续播放不然会报错（死循环）
-            if audioPlayer == nil {
-                return
-            }
-            stop()
-            resetAudioPlayer()
-            playWithQueue(queue: queue, index: currentIndex)
-            
-            xib_nextSongName.text = nextSong.data_songName ?? ""
-            
-            xib_lrc.isSelected = true
-            xib_title.text = currentSong?.data_songName
-            xib_desc.text = currentSong?.data_singerName
-            
-            //设置图片
-            xib_coverImage.isHidden = false
-            if let img = currentSong?.data_artworkBigUrl, img != "" {
-                let imgUrl = API.baseImageURL + img
-                xib_coverImage.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "placeholder"))
-            }
+        xib_nextSongName.text = nextSong.data_title ?? ""
+        
+        xib_lrc.isSelected = false
+        xib_title.text = currentSong?.data_title
+        xib_desc.text = currentSong?.data_channelTitle
+        
+        xib_coverImage.isHidden = true
+        
+        updateSmallPlayView()
+    }
+    
+    private func updateMp3View() {
+        // 设置下一首播放
+        let song = queue[currentIndex]
+        let nextSong = getNextSongFromSongs(song: song, songs: currentPlayOrderMode == 1 ? randomModel : model)
+        xib_nextSongName.text = nextSong.data_songName ?? ""
+        
+        xib_lrc.isSelected = true
+        xib_title.text = currentSong?.data_songName
+        xib_desc.text = currentSong?.data_singerName
+        
+        //设置图片
+        xib_coverImage.isHidden = false
+        if let img = currentSong?.data_artworkBigUrl, img != "" {
+            let imgUrl = API.baseImageURL + img
+            xib_coverImage.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "placeholder"))
         }
         
+        updateSmallPlayView()
+    }
+    
+    private func updateSmallPlayView() {
         // 异步更新当前列表状态
         DispatchQueue.main.async {
             self.xib_collect.isSelected = MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
@@ -696,7 +726,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
             self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
         }else {
             currentIndex = index
-            playWithQueue(queue: queue, index: currentIndex)
+//            playWithQueue(queue: queue, index: currentIndex)
         }
     }
     
@@ -707,7 +737,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
             self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
         }else {
             currentIndex = index
-            playWithQueue(queue: queue, index: currentIndex)
+//            playWithQueue(queue: queue, index: currentIndex)
         }
     }
     
@@ -790,17 +820,13 @@ extension MPPlayingBigView {
 
     //重置播放器
     func resetAudioPlayer() {
-        
-//        if audioPlayer != nil {
-//            self.stop()
-//        }
-        
         var options = STKAudioPlayerOptions()
         options.flushQueueOnSeek = true
         options.enableVolumeMixer = true
         audioPlayer = STKAudioPlayer(options: options)
         
         audioPlayer.meteringEnabled = true
+        audioPlayer.equalizerEnabled = true
         audioPlayer.volume = 1
         audioPlayer.delegate = self
     }
@@ -826,6 +852,8 @@ extension MPPlayingBigView {
     //停止播放
     func stop() {
         audioPlayer.stop()
+        audioPlayer.clearQueue()
+        audioPlayer.dispose()
         queue = []
         currentIndex = -1
     }
@@ -841,13 +869,13 @@ extension MPPlayingBigView {
             return
         }
         currentIndex = (currentIndex + 1) % queue.count
-        playWithQueue(queue: queue, index: currentIndex)
+//        playWithQueue(queue: queue, index: currentIndex)
     }
     
     //上一曲
     func prev() {
         currentIndex = max(0, currentIndex - 1)
-        playWithQueue(queue: queue, index: currentIndex)
+//        playWithQueue(queue: queue, index: currentIndex)
     }
     
     //定时器响应，更新进度条和时间
@@ -882,79 +910,76 @@ extension MPPlayingBigView {
 extension MPPlayingBigView: STKAudioPlayerDelegate {
     
     //开始播放歌曲
-    func audioPlayer(_ audioPlayer: STKAudioPlayer,
-                     didStartPlayingQueueItemId queueItemId: NSObject) {
-        if let index = (queue.index { URL(string: $0.data_cache ?? "") == queueItemId as? URL }) {
-            currentIndex = index
-        }
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, didStartPlayingQueueItemId queueItemId: NSObject) {
+        QYTools.shared.Log(log: #function)
+        
+        QYTools.shared.Log(log: "更新界面")
+//        if let index = (queue.index { URL(string: $0.data_cache ?? "") == queueItemId as? URL }) {
+//            currentIndex = index
+//        }
+    }
+    
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, logInfo line: String) {
+        QYTools.shared.Log(log: #function)
+    }
+    
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, didCancelQueuedItems queuedItems: [Any]) {
+        QYTools.shared.Log(log: #function)
     }
     
     //缓冲完毕
-    func audioPlayer(_ audioPlayer: STKAudioPlayer,
-                     didFinishBufferingSourceWithQueueItemId queueItemId: NSObject) {
-        updateNowPlayingInfoCenter()
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, didFinishBufferingSourceWithQueueItemId queueItemId: NSObject) {
+        QYTools.shared.Log(log: #function)
+        
+        let music: MPSongModel = queueItemId as! MPSongModel
+//        audioPlayer.queue(STKAudioPlayer.dataSource(from: URL(string: music.data_cache ?? Constant.MP3Test)!), withQueueItemId: queueItemId)
+        
+        QYTools.shared.Log(log: "更新界面：是否循环播放当前歌曲")
+        
+//        [self->audioPlayer queueDataSource:[STKAudioPlayer dataSourceFromURL:queueId.url] withQueueItemId:[[SampleQueueId alloc] initWithUrl:queueId.url andCount:queueId.count + 1]];
+        // 开始播放音乐：更新界面
     }
     
     //播放状态变化
-    func audioPlayer(_ audioPlayer: STKAudioPlayer,
-                     stateChanged state: STKAudioPlayerState,
-                     previousState: STKAudioPlayerState) {
-        self.state = state
-        if state != .stopped && state != .error && state != .disposed {
-        }
-        updateNowPlayingInfoCenter()
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, stateChanged state: STKAudioPlayerState, previousState: STKAudioPlayerState) {
+        QYTools.shared.Log(log: #function)
+        
+        QYTools.shared.Log(log: "更新界面")
+//        self.state = state
+//        if state != .stopped && state != .error && state != .disposed {
+//        }
     }
     
     //播放结束
-    func audioPlayer(_ audioPlayer: STKAudioPlayer,
-                     didFinishPlayingQueueItemId queueItemId: NSObject,
-                     with stopReason: STKAudioPlayerStopReason,
-                     andProgress progress: Double, andDuration duration: Double) {
-        if let index = (queue.index {
-            URL(string: $0.data_cache ?? Constant.MP3Test) == audioPlayer.currentlyPlayingQueueItemId() as? URL
-        }) {
-            currentIndex = index
-        }
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, didFinishPlayingQueueItemId queueItemId: NSObject, with stopReason: STKAudioPlayerStopReason, andProgress progress: Double, andDuration duration: Double) {
+        QYTools.shared.Log(log: #function)
         
-        //自动播放下一曲
-        if stopReason == .eof {
-            next()
-        } else if stopReason == .error {
-            stop()
-            resetAudioPlayer()
-        }
+        QYTools.shared.Log(log: "更新界面")
+//        if let index = (queue.index {
+//            URL(string: $0.data_cache ?? Constant.MP3Test) == audioPlayer.currentlyPlayingQueueItemId() as? URL
+//        }) {
+//            currentIndex = index
+//        }
+//
+//        //自动播放下一曲
+//        if stopReason == .eof {
+//            next()
+//        } else if stopReason == .error {
+//            stop()
+//            resetAudioPlayer()
+//        }
     }
     
     //发生错误
-    func audioPlayer(_ audioPlayer: STKAudioPlayer,
-                     unexpectedError errorCode: STKAudioPlayerErrorCode) {
-        print("Error when playing music \(errorCode)")
-        stop()
-        resetAudioPlayer()
-        playWithQueue(queue: queue, index: currentIndex)
+    func audioPlayer(_ audioPlayer: STKAudioPlayer, unexpectedError errorCode: STKAudioPlayerErrorCode) {
+        QYTools.shared.Log(log: #function)
+        
+        QYTools.shared.Log(log: "更新界面")
+//        print("Error when playing music \(errorCode)")
+//        resetAudioPlayer()
     }
     
-    //更新当前播放信息
-    func updateNowPlayingInfoCenter() {
-        if currentIndex >= 0 {
-//            let music = queue[currentIndex]
-//            let nextSong = getNextSongFromSongs(song: music, songs: model)
-//            xib_nextSongName.text = nextSong.data_songName ?? ""
-//
-//            xib_lrc.isSelected = true
-//            xib_title.text = music.data_songName
-//            xib_desc.text = music.data_singerName
-//
-//            //设置图片
-//            xib_coverImage.isHidden = false
-//            if let img = music.data_artworkBigUrl, img != "" {
-//                let imgUrl = API.baseImageURL + img
-//                xib_coverImage.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "placeholder"))
-//            }
-            
-            currentSong = queue[currentIndex]
-            
-        }
-    }
+    
+    
 }
 
