@@ -53,8 +53,6 @@
 
 #import "BGFMDB/BGFMDB.h"
 
-#import "Track.h"
-#import "PlayerViewController.h"
 #import "Track+Provider.h"
 
 #endif /* Bridge_Header_h */

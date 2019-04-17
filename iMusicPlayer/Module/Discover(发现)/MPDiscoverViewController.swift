@@ -124,7 +124,7 @@ extension MPDiscoverViewController {
 //                self?.present(nav, animated: true, completion: nil)
                 
                 // 显示当前的播放View
-                self?.play(index: 1)
+                self?.play(index: index)
                 
             }
             break
