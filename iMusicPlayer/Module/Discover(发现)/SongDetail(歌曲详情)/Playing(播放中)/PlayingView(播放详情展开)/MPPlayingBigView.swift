@@ -130,7 +130,7 @@ class MPPlayingBigView: BaseView {
     
     var currentSong: MPSongModel? {
         didSet {
-            songID = currentSong?.data_originalId ?? ""
+            songID = (SourceType == 0 ? currentSong?.data_originalId ?? "" : currentSong?.data_songId ?? "")
             // 设置播放状态
             currentSong?.data_playingStatus = 1
             if SourceType == 0, model.count > 0 {
@@ -173,13 +173,13 @@ class MPPlayingBigView: BaseView {
         // *** 这里是要','拼接的字符串不是数组：参数错误导致播放失败
         playerVars["playlist"] = getSongIDs(songs: currentPlayOrderMode == 1 ? randomModel : model).joined(separator: ",")
         
-        // 播放MV
-        ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
-        
         updateMVView()
     }
     
     private func updateMVView() {
+        // 播放MV
+        ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
+        
         // 设置下一首播放
         let nextSong = getNextSongFromSongs(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
         xib_nextSongName.text = nextSong.data_title ?? ""
