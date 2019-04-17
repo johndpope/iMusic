@@ -69,6 +69,8 @@
 		C56BDB74225F462B008AE913 /* MPSongInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56BDB72225F462B008AE913 /* MPSongInfoView.xib */; };
 		C56BDB7922606B1F008AE913 /* MPPlayQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB7822606B1F008AE913 /* MPPlayQueue.swift */; };
 		C56BDB882266D3D8008AE913 /* Track+Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB832266D3D7008AE913 /* Track+Provider.m */; };
+		C56BDB8D22671C14008AE913 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB8922671C12008AE913 /* PlayerViewController.m */; };
+		C56BDB8E22671C14008AE913 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB8A22671C12008AE913 /* Track.m */; };
 		C57FC5722240D9D900218DE7 /* iMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */; };
 		C57FC57D2240D9D900218DE7 /* iMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC57C2240D9D900218DE7 /* iMusicPlayerUITests.swift */; };
 		C57FC7D72240DC2F00218DE7 /* DAConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C57FC58B2240DC2E00218DE7 /* DAConfig.m */; };
@@ -527,6 +529,10 @@
 		C56BDB7822606B1F008AE913 /* MPPlayQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayQueue.swift; sourceTree = "<group>"; };
 		C56BDB832266D3D7008AE913 /* Track+Provider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Track+Provider.m"; sourceTree = "<group>"; };
 		C56BDB852266D3D7008AE913 /* Track+Provider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Track+Provider.h"; sourceTree = "<group>"; };
+		C56BDB8922671C12008AE913 /* PlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		C56BDB8A22671C12008AE913 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
+		C56BDB8B22671C13008AE913 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		C56BDB8C22671C13008AE913 /* PlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
 		C57FC5592240D9D700218DE7 /* iMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC56D2240D9D900218DE7 /* iMusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMusicPlayerTests.swift; sourceTree = "<group>"; };
@@ -1254,6 +1260,10 @@
 		C56BDB7F2266D3BD008AE913 /* AudioPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				C56BDB8C22671C13008AE913 /* PlayerViewController.h */,
+				C56BDB8922671C12008AE913 /* PlayerViewController.m */,
+				C56BDB8B22671C13008AE913 /* Track.h */,
+				C56BDB8A22671C12008AE913 /* Track.m */,
 				C56BDB852266D3D7008AE913 /* Track+Provider.h */,
 				C56BDB832266D3D7008AE913 /* Track+Provider.m */,
 			);
@@ -3570,6 +3580,7 @@
 				C57FC8972240DC2F00218DE7 /* BaseView.swift in Sources */,
 				C57FC7E32240DC2F00218DE7 /* LTCommentViewController.swift in Sources */,
 				C57FC9182240DC3000218DE7 /* String+Extension.swift in Sources */,
+				C56BDB8D22671C14008AE913 /* PlayerViewController.m in Sources */,
 				C57FC84A2240DC2F00218DE7 /* MPPopularViewController.swift in Sources */,
 				C57FC7E52240DC2F00218DE7 /* MKGPX.swift in Sources */,
 				C59498C92240E6AC00AC10DD /* MPEditSongListViewController.swift in Sources */,
@@ -3692,6 +3703,7 @@
 				C57FC7EB2240DC2F00218DE7 /* FCSearchHouseModel.swift in Sources */,
 				C57FC8A32240DC2F00218DE7 /* HotSearchController.swift in Sources */,
 				C5F537902254964D006D228B /* MPYBWebPlayerView.swift in Sources */,
+				C56BDB8E22671C14008AE913 /* Track.m in Sources */,
 				C57FC8592240DC2F00218DE7 /* MPSongListTableViewCell.swift in Sources */,
 				C57FC8102240DC2F00218DE7 /* MPChoicenessTableViewCell.swift in Sources */,
 				C53E97662251A3FF007F3920 /* MPRecentlyPlayModel.swift in Sources */,
