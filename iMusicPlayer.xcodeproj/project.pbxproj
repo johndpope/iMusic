@@ -68,6 +68,7 @@
 		C56BDB73225F462B008AE913 /* MPSongInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB71225F462B008AE913 /* MPSongInfoView.swift */; };
 		C56BDB74225F462B008AE913 /* MPSongInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56BDB72225F462B008AE913 /* MPSongInfoView.xib */; };
 		C56BDB7922606B1F008AE913 /* MPPlayQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB7822606B1F008AE913 /* MPPlayQueue.swift */; };
+		C56BDB882266D3D8008AE913 /* Track+Provider.m in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB832266D3D7008AE913 /* Track+Provider.m */; };
 		C57FC5722240D9D900218DE7 /* iMusicPlayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */; };
 		C57FC57D2240D9D900218DE7 /* iMusicPlayerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC57C2240D9D900218DE7 /* iMusicPlayerUITests.swift */; };
 		C57FC7D72240DC2F00218DE7 /* DAConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C57FC58B2240DC2E00218DE7 /* DAConfig.m */; };
@@ -524,6 +525,8 @@
 		C56BDB71225F462B008AE913 /* MPSongInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSongInfoView.swift; sourceTree = "<group>"; };
 		C56BDB72225F462B008AE913 /* MPSongInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSongInfoView.xib; sourceTree = "<group>"; };
 		C56BDB7822606B1F008AE913 /* MPPlayQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayQueue.swift; sourceTree = "<group>"; };
+		C56BDB832266D3D7008AE913 /* Track+Provider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Track+Provider.m"; sourceTree = "<group>"; };
+		C56BDB852266D3D7008AE913 /* Track+Provider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Track+Provider.h"; sourceTree = "<group>"; };
 		C57FC5592240D9D700218DE7 /* iMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC56D2240D9D900218DE7 /* iMusicPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMusicPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57FC5712240D9D900218DE7 /* iMusicPlayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMusicPlayerTests.swift; sourceTree = "<group>"; };
@@ -1052,6 +1055,7 @@
 		C53E976922521F6C007F3920 /* PlayingView(播放详情展开) */ = {
 			isa = PBXGroup;
 			children = (
+				C56BDB7F2266D3BD008AE913 /* AudioPlayer */,
 				C56BDB7722606AE0008AE913 /* PlayQueue(播放队列) */,
 				C56BDB70225F4601008AE913 /* SongInfoView(歌曲信息) */,
 				C5F5378D22549608006D228B /* YBWebPlayer */,
@@ -1245,6 +1249,15 @@
 				C56BDB7822606B1F008AE913 /* MPPlayQueue.swift */,
 			);
 			path = "PlayQueue(播放队列)";
+			sourceTree = "<group>";
+		};
+		C56BDB7F2266D3BD008AE913 /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				C56BDB852266D3D7008AE913 /* Track+Provider.h */,
+				C56BDB832266D3D7008AE913 /* Track+Provider.m */,
+			);
+			path = AudioPlayer;
 			sourceTree = "<group>";
 		};
 		C57FC5502240D9D700218DE7 = {
@@ -3278,13 +3291,13 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BGFMDB/BGFMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/DOUAudioStreamer/DOUAudioStreamer.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/KingfisherWebP/KingfisherWebP.framework",
-				"${BUILT_PRODUCTS_DIR}/LTScrollView/LTScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
@@ -3292,7 +3305,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/StreamingKit/StreamingKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
@@ -3305,13 +3317,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGFMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DOUAudioStreamer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KingfisherWebP.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
@@ -3319,7 +3331,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StreamingKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
@@ -3569,6 +3580,7 @@
 				C57FC8FF2240DC3000218DE7 /* HXDatePhotoPreviewViewController.m in Sources */,
 				C57FC9332240DC3000218DE7 /* MDFlowViewCollectionViewCell.swift in Sources */,
 				C57FC87F2240DC2F00218DE7 /* TLWelcomeCollectionViewCell.swift in Sources */,
+				C56BDB882266D3D8008AE913 /* Track+Provider.m in Sources */,
 				C57FC8482240DC2F00218DE7 /* MPRecommendCollectionViewCell.swift in Sources */,
 				C57FC8E02240DC2F00218DE7 /* NSDate+BRPickerView.m in Sources */,
 				C57FC89F2240DC2F00218DE7 /* FlowLayoutViewController.swift in Sources */,

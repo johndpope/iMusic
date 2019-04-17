@@ -463,7 +463,7 @@ class MPModelTools: NSObject {
     ///   - tableName: 表名
     ///   - finished: 回调
     class func getRadioModel(type: Int = 0, tableName: String = MPSongModel.classCode, finished: ((_ models: [MPSongModel]?)->Void)? = nil) {
-        if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel], arr.count < 0 {
+        if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
             QYTools.shared.Log(log: "本地数据库获取数据")
             if let f = finished {
                 f(arr)
@@ -476,10 +476,10 @@ class MPModelTools: NSObject {
                     if let f = finished, model!.count > 0 {
                         // 缓存
                         
-                        var temps = [String]()
-                        model?.forEach({ (item) in
-                            temps.append(item.data_cache ?? "--------------")
-                        })
+//                        var temps = [String]()
+//                        model?.forEach({ (item) in
+//                            temps.append(item.data_cache ?? "--------------")
+//                        })
                         
                         (model! as NSArray).bg_save(withName: tableName)
                         f(model)

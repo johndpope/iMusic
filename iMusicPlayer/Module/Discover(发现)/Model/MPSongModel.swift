@@ -8,7 +8,12 @@
 
 import ObjectMapper
 
-class MPSongModel:BaseModel {
+class MPSongModel:BaseModel, DOUAudioFile {
+    
+    func audioFileURL() -> URL! {
+         let url = URL(string: data_cache ?? "")
+        return url
+    }
     
     var data_id: Int = 0
     var data_originalId: String?
@@ -29,6 +34,8 @@ class MPSongModel:BaseModel {
     
     var data_isSelected: Int = 0
     
+    var data_audioFileURL: URL?
+    
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(self.data_id, forKey: "id")
         aCoder.encode(self.data_originalId, forKey: "originalId")
@@ -42,6 +49,9 @@ class MPSongModel:BaseModel {
         aCoder.encode(self.data_artworkBigUrl, forKey: "artworkBigUrl")
         aCoder.encode(self.data_durationInSeconds, forKey: "durationInSeconds")
         aCoder.encode(self.data_songName, forKey: "songName")
+        
+        let url = URL(string: data_cache ?? "")
+        aCoder.encode(url, forKey: "audioFileURL")
         
         
 //        aCoder.encode(self.data_songName, forKey: "playingStatus")
@@ -62,6 +72,8 @@ class MPSongModel:BaseModel {
         self.data_artworkBigUrl = aDecoder.decodeObject(forKey: "artworkBigUrl") as? String ?? ""
          self.data_durationInSeconds = aDecoder.decodeInteger(forKey: "durationInSeconds")
         self.data_songName = aDecoder.decodeObject(forKey: "songName") as? String ?? ""
+        
+        self.data_audioFileURL = aDecoder.decodeObject(forKey: "audioFileURL") as? URL
         
 //        self.data_playingStatus = aDecoder.decodeInteger(forKey: "playingStatus")
     }
@@ -88,6 +100,8 @@ class MPSongModel:BaseModel {
         data_artworkBigUrl <- map["artworkBigUrl"]
         data_durationInSeconds <- map["durationInSeconds"]
         data_songName <- map["songName"]
+        
+        data_audioFileURL = URL(string: data_cache ?? "")
     }
 }
 

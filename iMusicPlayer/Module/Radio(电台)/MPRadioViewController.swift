@@ -91,6 +91,11 @@ class MPRadioViewController: BaseViewController {
         }else {
             cell?.playBtnShow = true
         }
+        
+//        let vc = PlayerViewController()
+//        vc.tracks = mappingToTracks()
+//        vc.title = "Remote Music ♫"
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }
@@ -131,3 +136,18 @@ extension MPRadioViewController : UICollectionViewDelegate , UICollectionViewDat
     
 }
 
+extension MPRadioViewController {
+    private func mappingToTracks() -> [Track] {
+        var temps = [Track]()
+        model.forEach { (item) in
+            let tempM = Track()
+            tempM.artist = item.data_singerName
+            tempM.title = item.data_songName
+            if let url = URL(string: item.data_cache ?? "") {
+                tempM.audioFileURL = url
+            }
+            temps.append(tempM)
+        }
+        return temps
+    }
+}

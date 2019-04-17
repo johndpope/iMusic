@@ -7,6 +7,7 @@ PODS:
     - BGFMDB/FMDB
   - BGFMDB/FMDB (2.0.13)
   - CryptoSwift (0.14.0)
+  - DOUAudioStreamer (0.2.15)
   - FSPagerView (0.8.2)
   - GoogleSignIn (4.4.0):
     - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
@@ -53,7 +54,6 @@ PODS:
   - libwebp/utils (1.0.2):
     - libwebp/core
   - libwebp/webp (1.0.2)
-  - LTScrollView (0.2.1)
   - MJRefresh (3.1.15.7)
   - ObjectMapper (3.4.2)
   - RxAtomic (4.4.2)
@@ -62,7 +62,6 @@ PODS:
   - RxSwift (4.4.2):
     - RxAtomic (>= 4.4.2, ~> 4.4)
   - SnapKit (4.2.0)
-  - StreamingKit (0.1.30)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.2.0)
   - TagListView (1.3.2)
@@ -74,19 +73,18 @@ DEPENDENCIES:
   - Alamofire
   - BGFMDB
   - CryptoSwift
+  - DOUAudioStreamer
   - FSPagerView
   - GoogleSignIn
   - IQKeyboardManager
   - JPush
   - Kingfisher
   - KingfisherWebP
-  - LTScrollView
   - MJRefresh
   - ObjectMapper
   - RxCocoa
   - RxSwift
   - SnapKit
-  - StreamingKit
   - SVProgressHUD
   - SwiftyJSON
   - TagListView
@@ -99,6 +97,7 @@ SPEC REPOS:
     - Alamofire
     - BGFMDB
     - CryptoSwift
+    - DOUAudioStreamer
     - FSPagerView
     - GoogleSignIn
     - GoogleToolboxForMac
@@ -109,14 +108,12 @@ SPEC REPOS:
     - Kingfisher
     - KingfisherWebP
     - libwebp
-    - LTScrollView
     - MJRefresh
     - ObjectMapper
     - RxAtomic
     - RxCocoa
     - RxSwift
     - SnapKit
-    - StreamingKit
     - SVProgressHUD
     - SwiftyJSON
     - TagListView
@@ -128,6 +125,7 @@ SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   BGFMDB: 48e6823027232402a678acc7f71484b1fc9171d0
   CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
+  DOUAudioStreamer: 14f217bab01b52171fc2bd7d96e1f8fdd50fce68
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: ff31605b7d66400dcec09bed5861689aebadda4d
@@ -138,14 +136,12 @@ SPEC CHECKSUMS:
   Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   KingfisherWebP: 310f69a932151c526a7649de965f57e56918c8d0
   libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
-  LTScrollView: 93fff4aed9f9545f541a99b320b27808f5307c12
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   RxAtomic: d00e97c10db88c6f08540e0bf2752fc5a2404167
   RxCocoa: 477990dc3b4c3ff55fb0ac77e1cc06244e0aaec8
   RxSwift: 74c29b693c8e42b0f64400e8b06564575742d649
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  StreamingKit: 70ca8608c206864b4d54a577eacb3c8bf7c72209
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   TagListView: 0c7e9c26b9aff858224ee6b155f5fcacd9e27c83
@@ -153,6 +149,6 @@ SPEC CHECKSUMS:
   WechatOpenSDK: 9b721089507c895d05f997408c30bb6e6f5f9b60
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 9e075ad4e2b6c06f8fb4e2d7438359bb48226918
+PODFILE CHECKSUM: 4c5b912b50d37c266d47bab3bf3b8712bc329460
 
 COCOAPODS: 1.6.1

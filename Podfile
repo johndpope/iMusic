@@ -30,8 +30,8 @@ target 'iMusicPlayer' do
   pod "MJRefresh"
   
   #   选项卡：Viewpager
-  pod 'LTScrollView'
-  
+#  pod 'LTScrollView'
+
   #    Google登录
   pod 'GoogleSignIn'
   
@@ -52,7 +52,8 @@ target 'iMusicPlayer' do
   # tableView拖动单行交换位置
   # pod "TableViewDragger"
   # 音频（流媒体）播放
-   pod "StreamingKit"
+#   pod "StreamingKit"
+   pod "DOUAudioStreamer"
 
   target 'iMusicPlayerTests' do
     inherit! :search_paths
