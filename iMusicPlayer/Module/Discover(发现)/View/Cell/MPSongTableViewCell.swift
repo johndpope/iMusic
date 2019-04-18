@@ -115,17 +115,24 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
             let imgUrl = API.baseImageURL + img
             xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
         }
-        if sourceType != -1 {
+//        if sourceType != -1 {
+//            xib_title.text = model.data_title
+//            xib_desc.text = model.data_channelTitle
+//        }else {
+//        }
+        var type = -1
+        if let _ = model.data_songId, let _ = model.data_cache {
+            type = 1
+        }else {
+            type = 0
+        }
+        
+        if type == 0 {
             xib_title.text = model.data_title
             xib_desc.text = model.data_channelTitle
         }else {
-            if SourceType == 0 {
-                xib_title.text = model.data_title
-                xib_desc.text = model.data_channelTitle
-            }else {
-                xib_title.text = model.data_songName
-                xib_desc.text = model.data_singerName
-            }
+            xib_title.text = model.data_songName
+            xib_desc.text = model.data_singerName
         }
         
         // 是否选中

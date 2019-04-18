@@ -153,7 +153,14 @@ extension MPRadioViewController_backup {
     
     private func updateView(index: Int) {
         let m = self.model[index]
-        if SourceType == 0 {
+        var type = -1
+        if let _ = m.data_songId, let _ = m.data_cache {
+            type = 1
+        }else {
+            type = 0
+        }
+        
+        if type == 0 {
             xib_title.text = m.data_title
             xib_user.text = m.data_channelTitle
         }else {
