@@ -158,6 +158,9 @@ class MPPlayingBigView: BaseView {
             // 将当前播放列表保存到数据库
             MPModelTools.saveCurrentPlayList(currentList: model)
             
+            var t = self.model
+            randomModel = t.randomObjects_ck()
+            
             randomMode()
             
             configPlayer()
@@ -166,17 +169,15 @@ class MPPlayingBigView: BaseView {
     
     private func randomMode() {
         if currentPlayOrderMode == 1 {  // 随机播放
-            var t = self.model
-            randomModel = t.randomObjects_ck()
-            
             // 更新下一首播放
-            currentSong = randomModel.first
-//            if SourceType == 0 {
-//                updateMVView()
-//            }else {
-//                updateMp3View()
-//            }
-    
+            let index = getIndexFromSongs(song: currentSong!, songs: randomModel)
+            currentSong = randomModel[index]
+            currentTrackIndex = index
+        }else {
+            // 更新下一首播放
+            let index = getIndexFromSongs(song: currentSong!, songs: model)
+            currentSong = model[index]
+            currentTrackIndex = index
         }
     }
     
@@ -231,10 +232,6 @@ class MPPlayingBigView: BaseView {
             let imgUrl = API.baseImageURL + img
             xib_coverImage.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "placeholder"))
         }
-        
-        // 设置时间
-        xib_startTime.text = "\(streamer.currentTime)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
-        xib_endTime.text = "\(streamer.duration)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
         
         updateSmallPlayView()
     }
@@ -805,7 +802,7 @@ extension MPPlayingBigView {
         if model.count == 0 {
             // 重置UI
         }else {
-            let music = model[currentTrackIndex]
+            let music = (currentPlayOrderMode == 1 ? randomModel : model)[currentTrackIndex]
             
             // 更新UI
             
@@ -842,10 +839,10 @@ extension MPPlayingBigView {
     
     private func setupHintForStreamer() {
         var nextIndex = currentTrackIndex + 1
-        if nextIndex >= model.count {
+        if nextIndex >= model.count - 1 {
             nextIndex = 0
         }
-        DOUAudioStreamer.setHintWith(model[nextIndex])
+        DOUAudioStreamer.setHintWith((currentPlayOrderMode == 1 ? randomModel : model)[nextIndex])
     }
     
     @objc private func updateStatus() {
@@ -917,7 +914,7 @@ extension MPPlayingBigView {
     }
     
     private func actionNext() {
-        if ++currentTrackIndex >= model.count {
+        if ++currentTrackIndex >= model.count - 1 {
             currentTrackIndex = 0
         }
         self.resetStreamer()
