@@ -18,6 +18,8 @@ class MPRecentlyTableViewCell: UITableViewCell {
     
     var itemClickedBlock: ((_ index: Int)->Void)? = nil
     
+    var playClickedBlock: ((_ index: Int)->Void)? = nil
+    
     var model = [GeneralPlaylists]() {
         didSet {
             collectionView.reloadData()
@@ -45,6 +47,13 @@ extension MPRecentlyTableViewCell: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.identifier, for: indexPath) as! MPRecentlyCollectionViewCell
         cell.updateCell(model: model[indexPath.row])
+        cell.clickBlock = {(sender) in
+            if let btn = sender as? UIButton {
+                if let b = self.playClickedBlock {
+                    b(indexPath.row)
+                }
+            }
+        }
         return cell
     }
     

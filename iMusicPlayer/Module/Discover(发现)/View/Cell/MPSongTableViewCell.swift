@@ -42,6 +42,8 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     
     var currentAlbum: GeneralPlaylists?
     
+    var sourceType = -1
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -59,6 +61,11 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
             
             // 显示当前的播放View
             if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+                if self.sourceType != -1 {
+                    pv.currentSouceType = 0
+                }else {
+                    pv.currentSouceType = SourceType
+                }
                 pv.currentSong = self.currentSong
                 pv.model = currentSongList
                 pv.currentAlbum = currentAlbum
@@ -100,6 +107,9 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
         currentSongList = models
         currentSong = model
         currentAlbum = album
+        
+        self.sourceType = sourceType
+        
         //设置图片
         if let img = model.data_artworkBigUrl, img != "" {
             let imgUrl = API.baseImageURL + img

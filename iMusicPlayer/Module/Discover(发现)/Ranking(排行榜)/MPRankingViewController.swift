@@ -69,6 +69,20 @@ extension MPRankingViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MPRankingTableViewCell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPRankingTableViewCell
         cell.updateCell(model: models[indexPath.row])
+        cell.clickBlock = {(sender) in
+            if let btn = sender as? UIButton {
+                if var source = self.models[indexPath.row].data_title {
+                    source.removeLast()
+                    let tableName = source
+                    NSArray.bg_drop(source)
+                    MPModelTools.getRankingModel(rankType: source, tableName: source) { (models) in
+                        if let m = models {
+                            self.play(model: m, headerModel: self.models[indexPath.row])
+                        }
+                    }
+                }
+            }
+        }
         return cell
     }
     
@@ -114,5 +128,30 @@ extension MPRankingViewController {
             temps.append(tempM)
         }
         return temps
+    }
+}
+
+import ObjectMapper
+extension MPRankingViewController {
+    private func play(index: Int = -1, model: [MPSongModel], headerModel: MPRankingTempModel) {
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+            var cs: MPSongModel?
+            // 循序不能倒过来
+            if index != -1 {
+                cs = model[index]
+            }else {
+                cs = model.first
+            }
+            // 随机播放
+            pv.currentSong = cs
+            pv.model = model
+            // 构造当前播放专辑列表模型
+            let json: [String : Any] = ["id": 0, "title": headerModel.data_title ?? "", "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": headerModel.data_image ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 6]
+            //        let album = GeneralPlaylists(JSON: json)
+            let album = Mapper<GeneralPlaylists>().map(JSON: json)
+            pv.currentAlbum = album
+            pv.bigStyle()
+        }
     }
 }

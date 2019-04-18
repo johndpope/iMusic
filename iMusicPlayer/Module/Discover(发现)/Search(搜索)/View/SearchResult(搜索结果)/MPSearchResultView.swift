@@ -143,12 +143,28 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPDiscoverTableViewCell
             if let models = model?.data_playlists {
                 (cell as! MPDiscoverTableViewCell).updateCell(model: models[indexPath.row], type: 1)
+                (cell as! MPDiscoverTableViewCell).clickBlock = {(sender) in
+                    if let btn = sender as? UIButton {
+                        DiscoverCent?.requestSearchSongListByYoutube(playlistId: models[indexPath.row].data_originalId ?? "", pageToken: "", complete: { (isSucceed, model, msg) in
+                            switch isSucceed {
+                            case true:
+                                if let m = model?.data_songs {
+                                    self.play(model: m, headerSongModel: models[indexPath.row])
+                                }
+                                break
+                            case false:
+                                SVProgressHUD.showError(withStatus: msg)
+                                break
+                            }
+                        })
+                    }
+                }
             }
             break
         default:
             break
         }
-        
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -175,12 +191,52 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let models = model?.data_playlists {
-            let vc = MPSongListViewController()
-            vc.headerSongModel = models[indexPath.row]
-            vc.type = 3
-            HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
+        
+        switch currentIndex {
+        case 0:
+            break
+        case 1:
+            if indexPath.section == 0 {
+                if let models = model?.data_collection {
+                    let vc = MPSongListViewController()
+                    vc.headerSongModel = models[indexPath.row]
+                    vc.type = 3
+                    HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
+                }
+            }else {
+            }
+            break
+        case 2:
+            if let models = model?.data_playlists {
+                let vc = MPSongListViewController()
+                vc.headerSongModel = models[indexPath.row]
+                vc.type = 3
+                HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
+            }
+            break
+        default:
+            break
         }
     }
     
+}
+extension MPSearchResultView {
+    private func play(index: Int = -1, model: [MPSongModel], headerSongModel: GeneralPlaylists) {
+        // 显示当前的播放View
+        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+            var cs: MPSongModel?
+            // 循序不能倒过来
+            if index != -1 {
+                cs = model[index]
+            }else {
+                cs = model.first
+            }
+            // 随机播放
+            pv.currentSouceType = 0
+            pv.currentSong = cs
+            pv.model = model
+            pv.currentAlbum = headerSongModel
+            pv.bigStyle()
+        }
+    }
 }

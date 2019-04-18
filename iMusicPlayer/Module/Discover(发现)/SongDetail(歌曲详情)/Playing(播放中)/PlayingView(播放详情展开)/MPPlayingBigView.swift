@@ -136,12 +136,14 @@ class MPPlayingBigView: BaseView {
     /// 当前播放MV的ID
     var songID: String = ""
     
+    var currentSouceType: Int = SourceType
+    
     var currentSong: MPSongModel? {
         didSet {
-            songID = (SourceType == 0 ? currentSong?.data_originalId ?? "" : currentSong?.data_songId ?? "")
+            songID = (currentSouceType == 0 ? currentSong?.data_originalId ?? "" : currentSong?.data_songId ?? "")
             // 设置播放状态
             currentSong?.data_playingStatus = 1
-            if SourceType == 0, model.count > 0 {
+            if currentSouceType == 0, model.count > 0 {
                 updateMVView()
             }
         }
@@ -182,7 +184,7 @@ class MPPlayingBigView: BaseView {
     }
     
     private func configPlayer() {
-        if SourceType == 0 {
+        if currentSouceType == 0 {
             playMV()
         }else {
             currentTrackIndex = getIndexFromSongs(song: currentSong!, songs: model)
@@ -327,7 +329,7 @@ class MPPlayingBigView: BaseView {
             break
         }
         
-        if SourceType == 0 {
+        if currentSouceType == 0 {
             mvBtnDidClicked(sender: sender)
         }else {
             mp3BtnDidClicked(sender: sender)
@@ -435,7 +437,7 @@ extension MPPlayingBigView {
         self.moreView = pv
         pv.plistName = "extensionTools"
         pv.delegate = self
-        pv.title = (SourceType == 0 ? currentSong?.data_title : currentSong?.data_songName) ?? ""
+        pv.title = (currentSouceType == 0 ? currentSong?.data_title : currentSong?.data_songName) ?? ""
         HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
     }
 }
@@ -446,7 +448,7 @@ extension MPPlayingBigView {
     ///
     /// - Parameter sender: 滑竿
     @objc func sliderDidChange(sender: UISlider) {
-        if SourceType == 0 {
+        if currentSouceType == 0 {
             let value = sender.value
             let progress = Float(ybPlayView.duration()) * value
             ybPlayView.seek(toSeconds: progress, allowSeekAhead: true)
@@ -683,7 +685,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
     ///   - view: -
     ///   - index: 下标
     func playingView(pre view: MPPlayingView, index: Int) {
-        if SourceType == 0 {
+        if currentSouceType == 0 {
             ybPlayView.previousVideo()
             // 刷新当前view
             self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
@@ -693,7 +695,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
     }
     
     func playingView(next view: MPPlayingView, index: Int) {
-        if SourceType == 0 {
+        if currentSouceType == 0 {
             ybPlayView.nextVideo()
             // 刷新当前view
             self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
@@ -718,7 +720,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
     }
     
     private func playDidClicked() {
-        if SourceType == 0 {
+        if currentSouceType == 0 {
             if ybPlayView.playerState() == YTPlayerState.playing {
                 ybPlayView.pauseVideo()
             }else {

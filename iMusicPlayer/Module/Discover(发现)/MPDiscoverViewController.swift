@@ -124,13 +124,20 @@ extension MPDiscoverViewController {
 //                self?.present(nav, animated: true, completion: nil)
                 
                 // 显示当前的播放View
-                self?.play(index: index)
+                if let m = self?.model?.data_recommendations  {
+                    self?.play(index: index, model: m)
+                }
                 
             }
             break
         case 1:
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.recentlyIdentifier)!
             (cell as! MPRecentlyTableViewCell).model = self.currentAlbum
+            
+            (cell as! MPRecentlyTableViewCell).playClickedBlock = {[weak self] (index) in
+                // 播放什么？？
+            }
+            
             (cell as! MPRecentlyTableViewCell).itemClickedBlock = {[weak self] (index) in
                 
                 if let album = self?.currentAlbum[index].data_recentlyType {
@@ -169,7 +176,9 @@ extension MPDiscoverViewController {
                         self?.navigationController?.pushViewController(vc, animated: true)
                         break
                     case 7: // Top 100
-                        self?.play()
+                        if let m = self?.model?.data_recommendations {
+                            self?.play(model: m)
+                        }
                         break
                     case 8: // 自己创建的歌单
                         let vc = MPEditSongListViewController()
@@ -190,6 +199,15 @@ extension MPDiscoverViewController {
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.discoverIdentifier)!
             if let models = model?.data_generalPlaylists {
                 (cell as! MPDiscoverTableViewCell).updateCell(model: models[indexPath.row])
+                (cell as! MPDiscoverTableViewCell).clickBlock = {(sender) in
+                    if let btn = sender as? UIButton {
+                        MPModelTools.getSongListByIDModel(playlistId: models[indexPath.row].data_id, tableName: "") { (model) in
+                            if let m = model {
+                                self.play(model: m)
+                            }
+                        }
+                    }
+                }
             }
             break
         default:
@@ -294,28 +312,27 @@ extension MPDiscoverViewController {
 }
 // MARK: - 获取数据
 extension MPDiscoverViewController {
-    private func play(index: Int = -1) {
+    private func play(index: Int = -1, model: [MPSongModel]) {
         // 显示当前的播放View
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
-            if let m = self.model?.data_recommendations  {
-                var cs: MPSongModel?
-                // 循序不能倒过来
-                if index != -1 {
-                    cs = m[index]
-                }else {
-                    cs = m.first
-                }
-                pv.currentSong = cs
-                pv.model = m
+            var cs: MPSongModel?
+            // 循序不能倒过来
+            if index != -1 {
+                cs = model[index]
                 // 构造当前播放专辑列表模型
                 let tempImg = cs?.data_artworkBigUrl ?? ""
                 let img = (tempImg == "" ? (cs?.data_artworkUrl ?? "") : tempImg) == "" ? "pic_album_default" : (tempImg == "" ? (cs?.data_artworkUrl ?? "") : tempImg)
-                let json: [String : Any] = ["id": 0, "title": "Top 100", "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": img, "tracksCount": m.count, "recentlyType": 7]
-//                let album = GeneralPlaylists(JSON: json)
+                let json: [String : Any] = ["id": 0, "title": "Top 100", "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": img, "tracksCount": model.count, "recentlyType": 7]
+                //                let album = GeneralPlaylists(JSON: json)
                 let album = Mapper<GeneralPlaylists>().map(JSON: json)
                 pv.currentAlbum = album
-                pv.bigStyle()
+            }else {
+                cs = model.first
             }
+            pv.currentSong = cs
+            pv.model = model
+
+            pv.bigStyle()
         }
     }
 }

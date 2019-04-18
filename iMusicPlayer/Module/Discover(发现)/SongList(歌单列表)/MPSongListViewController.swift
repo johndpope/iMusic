@@ -174,6 +174,9 @@ extension MPSongListViewController {
                 cs = model.first
             }
             // 随机播放
+            if self.type == 3 {
+                pv.currentSouceType = 0
+            }
             pv.currentPlayOrderMode = 1
             pv.currentSong = cs
             pv.model = model

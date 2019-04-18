@@ -32,4 +32,12 @@ class MPRankingTableViewCell: UITableViewCell {
         
     }
     
+    var clickBlock: ((Any?) -> ())?
+    
+    @IBAction func btn_DidClicked(_ sender: UIButton) {
+        if let b = clickBlock {
+            b(sender)
+        }
+    }
+    
 }
