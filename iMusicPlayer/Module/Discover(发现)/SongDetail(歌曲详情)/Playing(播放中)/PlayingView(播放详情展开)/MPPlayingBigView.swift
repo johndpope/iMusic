@@ -143,6 +143,13 @@ class MPPlayingBigView: BaseView {
             songID = (currentSouceType == 0 ? currentSong?.data_originalId ?? "" : currentSong?.data_songId ?? "")
             // 设置播放状态
             currentSong?.data_playingStatus = 1
+            
+            if let sn = currentSong?.data_cache, let sid = currentSong?.data_songId {
+                currentSouceType = 1
+            }else {
+                currentSouceType = 0
+            }
+            
             if currentSouceType == 0, model.count > 0 {
                 updateMVView()
             }
@@ -312,6 +319,7 @@ class MPPlayingBigView: BaseView {
         case 10010: // 播放列表
             let pv = MPPlayingListsPopView.md_viewFromXIB() as! MPPlayingListsPopView
             pv.model = self.model
+            pv.sourceType = self.currentSouceType
             HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
             pv.updateRelateSongsBlock = {(type) in
                 if type == 0 {

@@ -26,14 +26,14 @@ class MPMediaLibraryTableViewCell: UITableViewCell {
         }
     }
     
-    func updateCell(model: MPSongModel) {
+    func updateCell(model: MPSongModel, sourceType: Int = -1) {
         //设置图片
         if let img = model.data_artworkBigUrl, img != "" {
             let imgUrl = API.baseImageURL + img
             xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
         }
         
-        if SourceType == 0 {
+        if sourceType == 0 {
             xib_title.text = model.data_title
             xib_desc.text = model.data_channelTitle
         }else {

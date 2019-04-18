@@ -28,6 +28,8 @@ class MPPlayingListsPopView: UITableViewCell {
         }
     }
     
+    var sourceType = -1
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -77,7 +79,7 @@ extension MPPlayingListsPopView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constant.identifier) as! MPMediaLibraryTableViewCell
         cell.selectionStyle = .none
-        cell.updateCell(model: model[indexPath.row])
+        cell.updateCell(model: model[indexPath.row], sourceType: self.sourceType)
         return cell
     }
     
