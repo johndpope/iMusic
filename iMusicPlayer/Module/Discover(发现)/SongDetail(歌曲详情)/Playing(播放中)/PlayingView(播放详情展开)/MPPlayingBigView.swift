@@ -165,10 +165,10 @@ class MPPlayingBigView: BaseView {
     var model = [MPSongModel]() {
         didSet {
             // 将当前播放列表保存到数据库
-            MPModelTools.saveCurrentPlayList(currentList: model)
-            
-            var t = self.model
-            randomModel = t.randomObjects_ck()
+//            MPModelTools.saveCurrentPlayList(currentList: model)
+//            
+//            var t = self.model
+//            randomModel = t.randomObjects_ck()
             
             randomMode()
             

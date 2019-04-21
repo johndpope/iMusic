@@ -28,6 +28,8 @@
 				<integer>12</integer>
 			</dict>
 			<dict>
+				<key>id</key>
+				<string>1</string>
 				<key>icon</key>
 				<string>icon_add_to_next-1</string>
 				<key>title</key>
