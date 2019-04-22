@@ -1309,10 +1309,13 @@ extension Array {
     ///
     /// - Returns: 打乱后数组
     mutating func randomObjects_ck() -> Array {
+        let startTime = CFAbsoluteTimeGetCurrent()
         self.sort { (obj1, obj2) -> Bool in
             let randomResult = Int(arc4random()) % 2; // arc4random() 返回值为 UInt32，先转为 Int，方便转为 Bool
             return  Bool.init(exactly: NSNumber(value: randomResult)) ?? false
         }
+        let endTime = CFAbsoluteTimeGetCurrent()
+        debugPrint("\(#function)代码执行时长：%f 毫秒", (endTime - startTime)*1000)
         return self
     }
 }

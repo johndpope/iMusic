@@ -10,7 +10,12 @@ import UIKit
 
 class MPRecommendCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var xib_image: UIImageView!
+    @IBOutlet weak var xib_image: UIImageView! {
+        didSet {
+            xib_image.md_cornerRadius = 5
+            xib_image.contentMode = .scaleAspectFill
+        }
+    }
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_user: UILabel!
     

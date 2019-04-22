@@ -356,7 +356,7 @@ extension MPPlayingViewController {
 //        playView.subviews.last!.removeFromSuperview()
         
         // 异步更新当前列表状态
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
              self.xib_collect.isSelected = MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
         }
     }

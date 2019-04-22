@@ -70,6 +70,9 @@ extension MPMediaLibraryViewController {
         if indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.mediaLibraryIdentifier)!
             (cell as! MPMediaLibraryOutTableViewCell).model = self.model
+            (cell as! MPMediaLibraryOutTableViewCell).itemClickedBlock = {(index) in
+                QYTools.shared.Log(log: "\(index)")
+            }
         }else {
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.categoryIdentifier)!
             (cell as! MPCategoryTableViewCell).updateCell(model: MPMediaLibraryModel.categoryDatas[indexPath.row])

@@ -181,8 +181,20 @@ class MPModelTools: NSObject {
     ///   - currentList: 播放列表
     ///   - tableName: 表名
     class func saveCurrentPlayList(currentList: [MPSongModel], tableName: String = "CurrentPlayList") {
+        let startTime = CFAbsoluteTimeGetCurrent()
         // 缓存
-        (currentList as NSArray).bg_save(withName: tableName)
+        DispatchQueue.global().async {
+            (currentList as NSArray).bg_save(withName: tableName)
+        }
+        
+        // 或你自己启动事物操作:
+//        bg_inTransaction { () -> Bool in
+//            (currentList as NSArray).bg_save(withName: tableName)
+//            return true
+//        }
+        
+        let endTime = CFAbsoluteTimeGetCurrent()
+        debugPrint("\(#function)代码执行时长：%f 毫秒", (endTime - startTime)*1000)
     }
     
    /// 创建歌单

@@ -71,7 +71,7 @@ class MPRadioViewController: BaseViewController {
         super.requestData()
         
         if MPModelTools.data_RadioModels.count == 0 {
-            DispatchQueue.main.async {
+            DispatchQueue.global().async {
                 MPModelTools.getRadioModel(tableName: MPRadioViewController.classCode + "\(SourceType)") { (model) in
                     if let m = model {
                         self.model = m

@@ -141,7 +141,7 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
 //        }
         
         // 异步更新当前收藏状态
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             if MPModelTools.checkSongExsistInPlayingList(song: model, tableName: MPMyFavoriteViewController.classCode) {
                 self.xib_collect.isSelected = true
             }

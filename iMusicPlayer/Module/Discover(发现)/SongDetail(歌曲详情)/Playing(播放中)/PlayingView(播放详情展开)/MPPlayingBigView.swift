@@ -117,6 +117,17 @@ class MPPlayingBigView: BaseView {
     @IBOutlet weak var xib_collect: UIButton!
     
     /// YouTube播放器配置
+//    var playerVars: [String: Any] = [
+//        "autoplay": 0,
+//        "autohide": 1,
+//        "controls": 0,
+//        "enablejsapi": 1,
+//        "fs": 0,
+//        "origin" : "https://www.youtube.com",
+//        "rel": 0,
+//        "showinfo": 0,
+//        "iv_load_policy": 3
+//    ]
     var playerVars: [String : Any] = [ "showinfo": "0", "modestbranding" : "1", "playsinline": "1", "controls": "0", "autohide": "1"]
     
     /// 0: 顺序播放  1: 随机播放
@@ -150,7 +161,7 @@ class MPPlayingBigView: BaseView {
                 currentSouceType = 0
             }
             
-            if currentSouceType == 0, model.count > 0 {
+            if currentSouceType == 0, model.count > 0, let _ = playerVars["playlist"] {
                 updateMVView()
             }
         }
@@ -164,11 +175,16 @@ class MPPlayingBigView: BaseView {
     
     var model = [MPSongModel]() {
         didSet {
-            // 将当前播放列表保存到数据库
-//            MPModelTools.saveCurrentPlayList(currentList: model)
-//            
-//            var t = self.model
-//            randomModel = t.randomObjects_ck()
+            
+            DispatchQueue.global().async {
+                // 将当前播放列表保存到数据库
+                if self.model.count < 50 {
+                    MPModelTools.saveCurrentPlayList(currentList: self.model)
+                }
+    
+                var t = self.model
+                self.randomModel = t.randomObjects_ck()
+            }
             
             randomMode()
             
@@ -761,7 +777,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
                 ybPlayView.pauseVideo()
             }else {
                 ybPlayView.playVideo()
-                ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "")
+//                ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "", playerVars: playerVars)
             }
         }else {
             self.actionPlayPause()
