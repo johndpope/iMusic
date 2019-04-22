@@ -126,7 +126,7 @@ class MPModelTools: NSObject {
         let tableName = songList.data_title ?? "SongList"
         var rs = false
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
-            QYTools.shared.Log(log: "本地数据库获取数据")
+//            QYTools.shared.Log(log: "本地数据库获取数据")
             arr.forEach { (item) in
                 if item.data_title == song.data_title {
                     rs = true
@@ -143,7 +143,7 @@ class MPModelTools: NSObject {
     class func checkSongExsistInPlayingList(song: MPSongModel, tableName: String = "CurrentPlayList") -> Bool {
         var rs = false
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
-            QYTools.shared.Log(log: "本地数据库获取数据")
+//            QYTools.shared.Log(log: "本地数据库获取数据")
             arr.forEach { (item) in
                 if item.data_id == song.data_id {
                     rs = true
@@ -456,17 +456,37 @@ class MPModelTools: NSObject {
         }
     }
     
+    
+    static var data_RadioModels = [MPSongModel]()
     /// 电台
     ///
     /// - Parameters:
     ///   - type: 风格流派ID
     ///   - tableName: 表名
     ///   - finished: 回调
-    class func getRadioModel(type: Int = 0, tableName: String = MPSongModel.classCode, finished: ((_ models: [MPSongModel]?)->Void)? = nil) {
+    class func getRadioModel(type: Int = 0, tableName: String = MPSongModel.classCode, location: Int = 1, finished: ((_ models: [MPSongModel]?)->Void)? = nil) {
+        
+        /**
+         根据范围查询.
+         */
+//        NSArray* arr = [People bg_find:bg_tablename range:NSMakeRange(i,50) orderBy:nil desc:NO];
+        
+        /**
+         直接写SQL语句操作.
+         */
+//        NSArray* arr = bg_executeSql(@"select * from yy", bg_tablename, [People class]);//查询时,后面两个参数必须要传入.
+//        let str = "select * from \(tableName)"
+//        let ar = bg_executeSql(str, tableName, NSArray.self)
+        
+//        if let arr = NSArray.bg_find(tableName, range: NSRange(location: location, length: 20), orderBy: nil, desc: false) as? [MPSongModel] {
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
             QYTools.shared.Log(log: "本地数据库获取数据")
             if let f = finished {
+                data_RadioModels = arr
                 f(arr)
+                if arr.count > 1000 {
+                    NSArray.bg_clear(withName: tableName)
+                }
             }
         }else {
             DiscoverCent?.requestRadio(type: type, complete: { (isSucceed, model, msg) in
@@ -480,6 +500,7 @@ class MPModelTools: NSObject {
 //                        model?.forEach({ (item) in
 //                            temps.append(item.data_cache ?? "--------------")
 //                        })
+                        data_RadioModels = model!
                         
                         (model! as NSArray).bg_save(withName: tableName)
                         f(model)
@@ -717,7 +738,7 @@ class MPModelTools: NSObject {
     ///
     /// - Parameter finished: 数据获取完成回调
     class func getDiscoverModel(finished: ((_ models: MPDiscoverModel?)->Void)? = nil) {
-        if let arr: [MPDiscoverModel]  = MPDiscoverModel.bg_findAll(MPDiscoverModel.classCode) as? [MPDiscoverModel], let model = arr.first {
+        if let arr: [MPDiscoverModel]  = MPDiscoverModel.bg_findAll(MPDiscoverModel.classCode + "\(SourceType)") as? [MPDiscoverModel], let model = arr.first {
             QYTools.shared.Log(log: "本地数据库获取数据")
             
             printSQLiteData(arr: arr)
@@ -731,7 +752,7 @@ class MPModelTools: NSObject {
                     QYTools.shared.Log(log: "在线获取数据")
                     if let f = finished {
                         // 缓存数据库
-                        model!.bg_tableName = MPDiscoverModel.classCode
+                        model!.bg_tableName = MPDiscoverModel.classCode + "\(SourceType)"
                         model!.bg_save()
                         f(model)
                     }

@@ -69,13 +69,19 @@ class MPRadioViewController: BaseViewController {
     
     override func requestData() {
         super.requestData()
-        DispatchQueue.main.async {
-            MPModelTools.getRadioModel(tableName: MPRadioViewController.classCode + "\(SourceType)") { (model) in
-                if let m = model {
-                    self.model = m
+        
+        if MPModelTools.data_RadioModels.count == 0 {
+            DispatchQueue.main.async {
+                MPModelTools.getRadioModel(tableName: MPRadioViewController.classCode + "\(SourceType)") { (model) in
+                    if let m = model {
+                        self.model = m
+                    }
                 }
             }
+        }else {
+            self.model = MPModelTools.data_RadioModels
         }
+        
     }
     
     private func play() {

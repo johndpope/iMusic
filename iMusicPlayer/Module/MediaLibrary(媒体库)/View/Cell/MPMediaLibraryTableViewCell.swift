@@ -34,7 +34,7 @@ class MPMediaLibraryTableViewCell: UITableViewCell {
         }
         
         var type = -1
-        if let _ = model.data_songId, let _ = model.data_cache {
+       if let sid = model.data_songId, sid != "", let cache = model.data_cache, cache != "" {
             type = 1
         }else {
             type = 0

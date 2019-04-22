@@ -154,7 +154,9 @@ extension MPPlayingView: UICollectionViewDataSource, UICollectionViewDelegate, U
         let x = scrollView.contentOffset.x.truncatingRemainder(dividingBy: 375)
         // 显示当前的播放View
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
-            pv.playView?.left = -x
+            if let width = pv.playView?.frame.width, width != SCREEN_WIDTH {
+                pv.playView?.left = -x
+            }
         }
     }
     

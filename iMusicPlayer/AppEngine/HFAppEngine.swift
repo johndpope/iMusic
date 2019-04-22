@@ -346,6 +346,15 @@ class HFAppEngine: NSObject, UITabBarControllerDelegate, CLLocationManagerDelega
         if self.checkAppStatus() == AppStatus.DidLogin {
             
         }
+        
+        // 提前获取电台数据
+        DispatchQueue.main.async {
+            MPModelTools.getRadioModel(tableName: MPRadioViewController.classCode + "\(SourceType)") { (model) in
+                if let m = model {
+                    MPModelTools.data_RadioModels = m
+                }
+            }
+        }
 
         
         group.notify(queue: .main) {

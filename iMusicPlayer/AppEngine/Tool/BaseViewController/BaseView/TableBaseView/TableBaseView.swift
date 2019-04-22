@@ -47,7 +47,11 @@ class TableBaseView: BaseView {
         }
     }
     
-    var groups: NSArray = NSArray()
+    var groups: NSArray = NSArray() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     private func initData() {
         var arr = NSArray()

@@ -144,7 +144,7 @@ class MPPlayingBigView: BaseView {
             // 设置播放状态
             currentSong?.data_playingStatus = 1
             
-            if let sn = currentSong?.data_cache, let sid = currentSong?.data_songId {
+            if let sn = currentSong?.data_cache, sn != "", let sid = currentSong?.data_songId, sid != "" {
                 currentSouceType = 1
             }else {
                 currentSouceType = 0
@@ -192,8 +192,16 @@ class MPPlayingBigView: BaseView {
     
     private func configPlayer() {
         if currentSouceType == 0 {
+            // 替换样式
+            xib_coverImage.isHidden = true
+//            playBgView.bringSubviewToFront(ybPlayView)
+            ybPlayView.isHidden = false
             playMV()
         }else {
+            // 替换样式
+            xib_coverImage.isHidden = false
+            ybPlayView.isHidden = true
+//            playBgView.bringSubviewToFront(xib_coverImage)
             currentTrackIndex = getIndexFromSongs(song: currentSong!, songs: model)
             self.starPlayer()
         }
@@ -252,7 +260,9 @@ class MPPlayingBigView: BaseView {
         }
         
         // 小窗口播放数据源
-        playingView.currentIndex = model.getIndexFromArray(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
+        var mIndex = model.getIndexFromArray(song: self.currentSong!, songs: currentPlayOrderMode == 1 ? randomModel : model)
+        mIndex = currentSouceType == 1 ? currentTrackIndex : mIndex
+        playingView.currentIndex = mIndex
         playingView.model = currentPlayOrderMode == 1 ? randomModel : model
     }
     
@@ -273,6 +283,10 @@ class MPPlayingBigView: BaseView {
     }
     
     func setupStyle() {
+        
+        playView?.isHidden = true
+        xib_coverImage.isHidden = true
+        
         if !IPHONEX {
             topViewH.constant = defaultTopViewH - Constant.sbReduceHeight
         }
@@ -446,6 +460,13 @@ extension MPPlayingBigView {
         pv.plistName = "extensionTools"
         pv.delegate = self
         pv.title = (currentSouceType == 0 ? currentSong?.data_title : currentSong?.data_songName) ?? ""
+        
+        if let songid = currentSong?.data_songId, songid != "", let oid = currentSong?.data_originalId, oid != "" {
+            pv.isShowMvOrMp3 = true
+        }else {
+            pv.isShowMvOrMp3 = false
+        }
+        
         HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
     }
 }
@@ -591,6 +612,13 @@ extension MPPlayingBigView: MPSongToolsViewDelegate {
     
     func playVideo() {
         QYTools.shared.Log(log: "播放视频")
+        // 判断当前是MV还是MP3
+        if SourceType == 0 {
+            currentSouceType = 1
+        }else {
+            currentSouceType = 0
+        }
+        configPlayer()
     }
     
     func songInfo() {
@@ -733,6 +761,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
                 ybPlayView.pauseVideo()
             }else {
                 ybPlayView.playVideo()
+                ybPlayView.load(withVideoId: currentSong?.data_originalId ?? "")
             }
         }else {
             self.actionPlayPause()
@@ -815,6 +844,7 @@ extension MPPlayingBigView {
             let music = (currentPlayOrderMode == 1 ? randomModel : model)[currentTrackIndex]
             
             // 更新UI
+            updateMp3View()
             
             streamer = DOUAudioStreamer(audioFile: music)
             streamer.addObserver(self, forKeyPath: "status", options: .new, context: nil)
@@ -917,7 +947,7 @@ extension MPPlayingBigView {
     }
     
     private func actionPrev() {
-        if --currentTrackIndex == 0 {
+        if --currentTrackIndex <= 0 {
             currentTrackIndex = 0
         }
         self.resetStreamer()
