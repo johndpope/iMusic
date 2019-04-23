@@ -47,14 +47,14 @@ class MPSongListViewController: BaseTableViewController {
                 MPModelTools.getSongListByIDModel(playlistId: playlistId, tableName: "") { (model) in
                     if let m = model {
                         self.model = m
-                        self.tableView.mj_header.endRefreshing()
+//                        self.tableView.mj_header.endRefreshing()
                     }
                 }
             }else if type == 2 {
                 MPModelTools.getSongerListByIDModel(singerId: singerId, tableName: "") { (model) in
                     if let m = model {
                         self.model = m
-                        self.tableView.mj_header.endRefreshing()
+//                        self.tableView.mj_header.endRefreshing()
                     }
                 }
             }else if type == 3 {
@@ -65,7 +65,7 @@ class MPSongListViewController: BaseTableViewController {
                             self.model = m
                             self.headerSongModel?.data_tracksCount = model?.data_num ?? 0
                             (self.tableView.tableHeaderView as? MPSongListHeaderView)?.updateView(model: self.headerSongModel!)
-                            self.tableView.mj_header.endRefreshing()
+//                            self.tableView.mj_header.endRefreshing()
                         }
                         break
                     case false:
@@ -100,6 +100,9 @@ override func clickRight(sender: UIButton) {
         super.setupTableView()
         
         self.identifier = Constant.identifier
+        
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
         
     }
     

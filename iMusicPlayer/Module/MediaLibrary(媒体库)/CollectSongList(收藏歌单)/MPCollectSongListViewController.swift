@@ -32,7 +32,7 @@ class MPCollectSongListViewController: BaseTableViewController {
         MPModelTools.getCollectListModel(tableName: MPCollectSongListViewController.classCode) { (model) in
             if let m = model {
                 self.model = m
-                self.tableView.mj_header.endRefreshing()
+//                self.tableView.mj_header.endRefreshing()
             }
         }
     }
@@ -60,6 +60,9 @@ class MPCollectSongListViewController: BaseTableViewController {
         super.setupTableView()
         
         self.identifier = Constant.identifier
+        
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
         
     }
     

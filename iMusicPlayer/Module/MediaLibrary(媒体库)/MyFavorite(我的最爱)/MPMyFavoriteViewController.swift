@@ -49,7 +49,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
             MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
                 if let m = model {
                     self.model = m
-                    self.tableView.mj_header.endRefreshing()
+//                    self.tableView.mj_header.endRefreshing()
                     
                     self.headerView?.count = model?.count ?? 0
                 }
@@ -59,7 +59,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
             MPModelTools.getSongInTable(tableName: MPMyFavoriteViewController.classCode) { (model) in
                 if let m = model {
                     self.model = m
-                    self.tableView.mj_header.endRefreshing()
+//                    self.tableView.mj_header.endRefreshing()
                     
                     self.headerView?.count = model?.count ?? 0
                 }
@@ -92,6 +92,9 @@ class MPMyFavoriteViewController: BaseTableViewController {
         
         self.identifier = Constant.identifier
         tableView.backgroundColor = UIColor.white
+        
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
     }
     
     override func setupTableHeaderView() {

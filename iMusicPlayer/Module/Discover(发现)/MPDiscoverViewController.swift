@@ -45,6 +45,8 @@ class MPDiscoverViewController: BaseTableViewController {
         self.identifier = Constant.discoverIdentifier
         self.identifier = Constant.categoryIdentifier
     
+        tableView.mj_footer = nil
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

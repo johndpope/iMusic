@@ -48,7 +48,7 @@ class MPEditSongListViewController: BaseTableViewController {
         MPModelTools.getSongInTable(tableName: songListModel?.data_title ?? "") { (model) in
             if let m = model {
                 self.model = m
-                self.tableView.mj_header.endRefreshing()
+//                self.tableView.mj_header.endRefreshing()
             }
         }
     }
@@ -69,6 +69,9 @@ class MPEditSongListViewController: BaseTableViewController {
         
         self.identifier = Constant.identifier
         tableView.backgroundColor = UIColor.white
+        
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
     }
     
     override func setupTableHeaderView() {

@@ -83,7 +83,7 @@ class MPSearchViewController: BaseTableViewController {
         MPModelTools.getSearchKeywordModel(tableName: MPSearchKeywordModel.classCode) { (models) in
             if let m = models {
                 self.keywordModel = m
-                self.tableView.mj_header.endRefreshing()
+//                self.tableView.mj_header.endRefreshing()
             }
         }
         
@@ -103,6 +103,9 @@ class MPSearchViewController: BaseTableViewController {
         super.setupTableView()
         
         self.identifier = Constant.identifier
+        
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
     }
     
     override func setupTableHeaderView() {

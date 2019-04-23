@@ -33,7 +33,7 @@ class MPMediaLibraryViewController: BaseTableViewController {
         MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
             if let m = model {
                 self.model = m
-                self.tableView.mj_header.endRefreshing()
+//                self.tableView.mj_header.endRefreshing()
             }
         }
     }
@@ -43,6 +43,9 @@ class MPMediaLibraryViewController: BaseTableViewController {
         
         self.identifier = Constant.mediaLibraryIdentifier
         self.identifier = Constant.categoryIdentifier
+        
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
         
     }
     

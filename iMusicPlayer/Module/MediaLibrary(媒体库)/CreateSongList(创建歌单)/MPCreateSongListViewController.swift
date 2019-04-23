@@ -43,7 +43,7 @@ class MPCreateSongListViewController: BaseTableViewController {
         MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
             if let m = model {
                 self.model = m
-                self.tableView.mj_header.endRefreshing()
+//                self.tableView.mj_header.endRefreshing()
             }
         }
     }
@@ -72,6 +72,9 @@ class MPCreateSongListViewController: BaseTableViewController {
         
         self.identifier = Constant.identifier
         tableView.backgroundColor = UIColor.white
+        
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
     }
     
     override func setupTableHeaderView() {

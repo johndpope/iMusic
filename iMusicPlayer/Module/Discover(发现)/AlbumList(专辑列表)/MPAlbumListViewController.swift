@@ -56,7 +56,7 @@ class MPAlbumListViewController: BaseTableViewController {
                 }
             }
         }
-        tableView.mj_header.endRefreshing()
+//        tableView.mj_header.endRefreshing()
     }
     
     override func setupStyle() {
@@ -82,6 +82,9 @@ override func clickRight(sender: UIButton) {
         super.setupTableView()
         
         self.identifier = Constant.identifier
+        
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
         
     }
     

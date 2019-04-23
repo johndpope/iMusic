@@ -62,10 +62,18 @@ class MPSearchResultView: BaseView {
         tableView.register(UINib(nibName: Constant.collectionIdentifier, bundle: nil), forCellReuseIdentifier: Constant.collectionIdentifier)
         tableView.register(UINib(nibName: "MPDiscoverTableViewCell", bundle: nil), forCellReuseIdentifier: Constant.songListIdentifier)
         
+        QYTools.refreshData(target: self, scrollView: tableView, refresh: #selector(refreshData), loadMore: #selector(pageTurning))
+        
         tableView.tableFooterView = UIView()
         
         setupHeaderView()
     }
+    
+    /// 刷新数据
+    @objc open func refreshData() {}
+    
+    /// 数据翻页
+    @objc open func pageTurning() {}
     
     private func setupHeaderView() {
         let hv = MPSearchResultHeaderView.md_viewFromXIB() as! MPSearchResultHeaderView

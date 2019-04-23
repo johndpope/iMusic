@@ -51,13 +51,16 @@ class MPRankingViewController: BaseTableViewController {
         
         self.identifier = Constant.identifier
         
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
+        
     }
     
     override func refreshData() {
         super.refreshData()
         
 //        models = MPRankingModel.getModel()
-        tableView.mj_header.endRefreshing()
+//        tableView.mj_header.endRefreshing()
     }
     
 }

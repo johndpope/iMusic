@@ -58,13 +58,15 @@ class MPEditSongListDetailViewController: BaseTableViewController {
         
         self.identifier = Constant.identifier
         tableView.backgroundColor = UIColor.white
+        
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
+        
     }
     
     override func setupTableHeaderView() {
         super.setupTableHeaderView()
         
-        tableView.mj_header = nil
-        tableView.mj_footer = nil
         // 将tableView往下挤
         tableView.tableHeaderView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: Constant.topHeight)))
     }
