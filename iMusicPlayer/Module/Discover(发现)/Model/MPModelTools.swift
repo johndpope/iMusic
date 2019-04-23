@@ -627,7 +627,7 @@ class MPModelTools: NSObject {
     class func getStyleGenreModel(tableName: String = Genre.classCode, finished: ((_ models: MPStyleGenreModel?)->Void)? = nil) {
         if let arr: [MPStyleGenreModel]  = MPStyleGenreModel.bg_findAll(tableName) as? [MPStyleGenreModel], let model = arr.first {
             QYTools.shared.Log(log: "本地数据库获取数据")
-            printSQLiteData(arr: arr)
+//            printSQLiteData(arr: arr)
             if let f = finished {
                 f(model)
             }
@@ -753,7 +753,7 @@ class MPModelTools: NSObject {
         if let arr: [MPDiscoverModel]  = MPDiscoverModel.bg_findAll(MPDiscoverModel.classCode + "\(SourceType)") as? [MPDiscoverModel], let model = arr.first {
             QYTools.shared.Log(log: "本地数据库获取数据")
             
-            printSQLiteData(arr: arr)
+//            printSQLiteData(arr: arr)
             if let f = finished {
                 f(model)
             }

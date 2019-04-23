@@ -191,32 +191,40 @@ class MPPlayingBigView: BaseView {
                 if self.model.count < 50 {
 //                    MPModelTools.saveCurrentPlayList(currentList: self.model)
                 }
-    
-                var t = self.model
-                self.randomModel = t.randomObjects_ck()
             }
-            
-//            randomMode()
             
             configPlayer()
         }
     }
     
     private func randomMode() {
+        guard let cs = currentSong, model.count > 0 else {
+            return
+        }
         if currentPlayOrderMode == 1 {  // 随机播放
+            xib_orderMode.isSelected = true
+            xib_cycleMode.isSelected = false
             // 更新下一首播放
-            let index = getIndexFromSongs(song: currentSong!, songs: randomModel)
+            let index = getIndexFromSongs(song: cs, songs: randomModel)
             currentSong = randomModel[index]
             currentTrackIndex = index
         }else {
+            xib_orderMode.isSelected = false
+            xib_cycleMode.isSelected = true
             // 更新下一首播放
-            let index = getIndexFromSongs(song: currentSong!, songs: model)
+            let index = getIndexFromSongs(song: cs, songs: model)
             currentSong = model[index]
             currentTrackIndex = index
         }
     }
     
     private func configPlayer() {
+        // 设置随机播放列表数据：深拷贝
+        var t = self.model
+        self.randomModel = t.randomObjects_ck()
+        
+        randomMode()
+        
         if currentSouceType == 0 {
             // 替换样式
             xib_coverImage.isHidden = true
