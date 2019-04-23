@@ -11,7 +11,12 @@ import UIKit
 class MPRadioCollectionViewCell: UICollectionViewCell, ViewClickedDelegate {
     var clickBlock: ((Any?) -> ())?
 
-    @IBOutlet weak var xib_image: UIImageView!
+    @IBOutlet weak var xib_image: UIImageView! {
+        didSet {
+            xib_image.md_cornerRadius = 2
+            xib_image.contentMode = .scaleAspectFill
+        }
+    }
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
     @IBOutlet weak var xib_play: UIButton!

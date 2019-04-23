@@ -14,6 +14,7 @@ class MPPopularTableViewCell: UITableViewCell {
         didSet {
             xib_image.layer.cornerRadius = xib_image.height/2
             xib_image.layer.masksToBounds = true
+            xib_image.contentMode = .scaleAspectFill
         }
     }
     @IBOutlet weak var xib_title: UILabel!

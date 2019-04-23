@@ -15,6 +15,7 @@ class MPCollectSongListTableViewCell: UITableViewCell, ViewClickedDelegate {
     @IBOutlet weak var xib_image: UIImageView! {
         didSet {
             xib_image.viewClipCornerDirection(radius: 2, direct: .left)
+            xib_image.contentMode = .scaleAspectFill
         }
     }
     

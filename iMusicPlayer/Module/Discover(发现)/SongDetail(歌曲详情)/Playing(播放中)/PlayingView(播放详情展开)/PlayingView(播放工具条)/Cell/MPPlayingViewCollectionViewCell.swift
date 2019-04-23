@@ -13,7 +13,12 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
     
     var clickBlock: ((Any?) -> ())?
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView! {
+        didSet {
+            imageView.md_cornerRadius = 2
+            imageView.contentMode = .scaleAspectFill
+        }
+    }
     
     @IBOutlet weak var playView: UIView!
     @IBOutlet weak var xib_title: UILabel!

@@ -96,7 +96,12 @@ class MPPlayingBigView: BaseView {
     
     /// 播放区域背景View
     @IBOutlet weak var playBgView: UIView!
-    @IBOutlet weak var xib_coverImage: UIImageView!
+    @IBOutlet weak var xib_coverImage: UIImageView! {
+        didSet {
+            xib_coverImage.md_cornerRadius = 2
+            xib_coverImage.contentMode = .scaleAspectFill
+        }
+    }
     
     /// YouTube播放控件
     private lazy var ybPlayView: YTPlayerView = {

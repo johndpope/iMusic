@@ -16,6 +16,7 @@ class MPSongListHeaderView: UITableViewCell, ViewClickedDelegate {
         didSet {
             xib_image.md_cornerRadius = xib_image.height/2
             xib_image.md_borderColor = Color.ThemeColor
+            xib_image.contentMode = .scaleAspectFill
         }
     }
     @IBOutlet weak var xib_random: UIButton! {
