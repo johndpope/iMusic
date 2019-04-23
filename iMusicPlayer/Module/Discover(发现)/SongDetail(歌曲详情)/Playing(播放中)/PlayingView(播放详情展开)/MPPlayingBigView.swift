@@ -31,7 +31,7 @@ class MPPlayingBigView: BaseView {
     
     var currentTrackIndex = 0 {
         didSet {
-            if model.count > 0, streamer != nil {
+            if model.count > 0, currentTrackIndex > 0, currentTrackIndex <= model.count - 1, streamer != nil {
                 updateMp3View()
             }
         }
@@ -147,7 +147,16 @@ class MPPlayingBigView: BaseView {
     /// 当前播放MV的ID
     var songID: String = ""
     
-    var currentSouceType: Int = SourceType
+    var currentSouceType: Int = SourceType {
+        didSet {
+            if oldValue != currentSouceType {
+                if currentSouceType == 0, streamer != nil {
+                    // 暂停当前播放的歌曲
+                    self.endPlayer()
+                }
+            }
+        }
+    }
     
     var currentSong: MPSongModel? {
         didSet {
@@ -744,7 +753,8 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
             // 刷新当前view
             self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
         }else {
-            self.actionPrev()
+            currentTrackIndex = index
+            self.resetStreamer()
         }
     }
     
@@ -754,7 +764,8 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
             // 刷新当前view
             self.currentSong = (currentPlayOrderMode == 1 ? randomModel : model)[index]
         }else {
-            self.actionNext()
+            currentTrackIndex = index
+            self.resetStreamer()
         }
     }
     
@@ -842,6 +853,11 @@ extension MPPlayingBigView {
         timer.invalidate()
         streamer.stop()
         self.cancelStreamer()
+        //
+        xib_play.isSelected = false
+        xib_slider.value = 0
+        xib_startTime.text = "00:00"
+        xib_endTime.text = "00:00"
     }
 
     private func cancelStreamer() {
@@ -965,16 +981,19 @@ extension MPPlayingBigView {
     }
     
     private func actionPrev() {
-        if --currentTrackIndex <= 0 {
-            currentTrackIndex = 0
-        }
+        let temp = currentTrackIndex == 0 ? model.count : currentTrackIndex
+        currentTrackIndex = (temp-1) % model.count
+//        if --currentTrackIndex <= 0 {
+//            currentTrackIndex = model.count - 1
+//        }
         self.resetStreamer()
     }
     
     private func actionNext() {
-        if ++currentTrackIndex >= model.count - 1 {
-            currentTrackIndex = 0
-        }
+        currentTrackIndex = (currentTrackIndex + 1) % model.count
+//        if ++currentTrackIndex >= model.count - 1 {
+//            currentTrackIndex = 0
+//        }
         self.resetStreamer()
     }
     

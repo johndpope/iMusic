@@ -32,7 +32,7 @@ class MPPlayingView: BaseView {
         didSet {
             collectionView.reloadData()
             
-            collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: true)
+            collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredHorizontally, animated: false)
         }
     }
     
