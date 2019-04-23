@@ -325,7 +325,7 @@
                 <outlet property="xib_title" destination="tNo-wZ-lJC" id="Cfc-B4-987"/>
                 <outlet property="xib_topView" destination="EIM-nG-wYo" id="EeW-Ud-BC8"/>
             </connections>
-            <point key="canvasLocation" x="-31" y="142"/>
+            <point key="canvasLocation" x="-260" y="286"/>
         </view>
     </objects>
     <resources>

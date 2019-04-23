@@ -89,7 +89,6 @@ let CurrentVersion: String                                   = "CurrentVersion"
 let CollectCountDownTimeName                            = "CollectCountDownTimeName"
 
 
-
 /// 屏幕宽度
 let SCREEN_WIDTH = UIScreen.main.bounds.width
 /// 屏幕高度

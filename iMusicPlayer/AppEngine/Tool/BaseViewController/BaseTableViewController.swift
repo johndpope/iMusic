@@ -14,6 +14,11 @@ protocol BaseTableViewDelegate: class {
     func setupTableView()
 }
 
+private struct Constant {
+    static let playerViewHeight = SCREEN_WIDTH * (48/375)
+    static let smallPlayerHeight = SCREEN_WIDTH * (48/375)
+}
+
 class BaseTableViewController: BaseViewController {
     
     // MARK: - TableView
@@ -31,11 +36,18 @@ class BaseTableViewController: BaseViewController {
         
         super.loadView()
         
+//        self.view.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.96, alpha: 1)
+        
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(view)
             make.top.equalTo(self.view.safeArea.top)
-            make.bottom.equalTo(self.view.safeArea.bottom)
+            var offset: CGFloat = 0
+            let top = SCREEN_HEIGHT - TabBarHeight - Constant.smallPlayerHeight
+            if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView, pv.top == top {
+                offset = -Constant.playerViewHeight
+            }
+            make.bottom.equalTo(self.view.safeArea.bottom).offset(offset)
         }
     }
     
@@ -72,7 +84,6 @@ class BaseTableViewController: BaseViewController {
     }
     
     open func setupTableView() {
-        self.view.backgroundColor = UIColor.white
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.1))
         QYTools.refreshData(target: self, scrollView: tableView, refresh: #selector(refreshData), loadMore: #selector(pageTurning))

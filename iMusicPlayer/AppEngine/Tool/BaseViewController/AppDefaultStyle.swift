@@ -178,6 +178,8 @@ struct NotCenter{
     
     static let Change_UserInfo:String    =    "Change_UserInfo"
     
+    static let NC_ChangeTableViewBottom = "NC_ChangeTableViewBottom"
+    
 }
 
 

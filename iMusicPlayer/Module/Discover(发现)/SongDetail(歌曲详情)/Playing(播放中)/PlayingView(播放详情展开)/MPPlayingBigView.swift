@@ -841,6 +841,10 @@ extension MPPlayingBigView {
             let tabbar = rvc.tabBar
             tabbar.top = SCREEN_HEIGHT - TabBarHeight
         }
+        
+        // 发送一个通知
+        NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_ChangeTableViewBottom), object: nil)
+        
     }
     
     func bigStyle() {

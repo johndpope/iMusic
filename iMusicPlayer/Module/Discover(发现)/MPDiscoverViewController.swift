@@ -14,6 +14,9 @@ private struct Constant {
     static let categoryIdentifier = "MPCategoryTableViewCell"
     static let recommendIdentifier = "MPRecommendTableViewCell"
     static let recentlyIdentifier = "MPRecentlyTableViewCell"
+    
+    static let playerViewHeight = SCREEN_WIDTH * (48/375)
+    static let smallPlayerHeight = SCREEN_WIDTH * (48/375)
 }
 
 class MPDiscoverViewController: BaseTableViewController {
@@ -34,7 +37,18 @@ class MPDiscoverViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // 注册一个通知来接收是否需要调整tableView的底部边距：小窗播放时需要调整
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_ChangeTableViewBottom), object: nil, queue: nil) { (center) in
+            QYTools.shared.Log(log: "调整底部边距通知")
+//            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constant.smallPlayerHeight, right: 0)
+            self.tableView.snp.updateConstraints({ (make) in
+                make.bottom.equalTo(self.view.safeArea.bottom).offset(-Constant.smallPlayerHeight)
+            })
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     override func setupTableView() {
