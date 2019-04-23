@@ -147,7 +147,7 @@ class MDNavigationController: UINavigationController {
     //MARK: ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.customization()
+//        self.customization()
     }
     
     deinit {

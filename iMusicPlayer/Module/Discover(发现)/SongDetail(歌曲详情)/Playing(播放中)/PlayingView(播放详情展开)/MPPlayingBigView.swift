@@ -300,6 +300,8 @@ class MPPlayingBigView: BaseView {
     
     func setupStyle() {
         
+//        self.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: self.height))
+        
         playView?.isHidden = true
         xib_coverImage.isHidden = true
         

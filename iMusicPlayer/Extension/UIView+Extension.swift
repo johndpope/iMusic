@@ -131,7 +131,9 @@ extension UIView {
             view.layer.masksToBounds = true
             
             view.autoresizingMask = .flexibleWidth
-            view.bounds = CGRect(origin: .zero, size: CGSize(width: view.width, height: view.height+SaveAreaHeight))
+            let width = view.width == 375 ? SCREEN_WIDTH : view.width
+//            view.bounds = CGRect(origin: .zero, size: CGSize(width: width, height: view.height+SaveAreaHeight))
+            view.frame = CGRect(origin: view.frame.origin, size: CGSize(width: width, height: view.height+SaveAreaHeight))
             
             return view
         }

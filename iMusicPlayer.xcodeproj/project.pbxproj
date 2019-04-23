@@ -1063,8 +1063,9 @@
 			children = (
 				C56BDB7F2266D3BD008AE913 /* AudioPlayer */,
 				C56BDB7722606AE0008AE913 /* PlayQueue(播放队列) */,
-				C56BDB70225F4601008AE913 /* SongInfoView(歌曲信息) */,
 				C5F5378D22549608006D228B /* YBWebPlayer */,
+				C56BDB70225F4601008AE913 /* SongInfoView(歌曲信息) */,
+				C56034112243439C00F6795F /* PlayingView(播放工具条) */,
 				C53E976A22521FDD007F3920 /* MPPlayingBigView.swift */,
 				C53E976B22521FDD007F3920 /* MPPlayingBigView.xib */,
 			);
@@ -1477,7 +1478,6 @@
 				C5F5378122544E66006D228B /* PlayerView(播放悬浮窗) */,
 				C57FC5B32240DC2E00218DE7 /* LTLocationBottomView.swift */,
 				C57FC5B22240DC2E00218DE7 /* LTLocationBottomView.xib */,
-				C56034112243439C00F6795F /* PlayingView(播放工具条) */,
 				C57FC5B42240DC2E00218DE7 /* YDMenu */,
 			);
 			path = View;
