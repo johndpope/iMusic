@@ -197,6 +197,9 @@ class MPPlayingBigView_new: BaseView {
     private func getPlayLists() {
         MPModelTools.getCurrentPlayList(tableName: Constant.CurrentPlayListTableName) { (models, cs) in
             self.model = models
+            // 设置随机播放列表
+            var t = models
+            self.randomModel = t.randomObjects_ck()
             self.currentTrackIndex = self.getCurrentIndexInPlayLists(models: models)
         }
     }
@@ -757,9 +760,10 @@ extension MPPlayingBigView_new {
 extension MPPlayingBigView_new {
     
     private func endPlayer() {
-        timer.invalidate()
+//        timer.invalidate()
         streamer.stop()
         self.cancelStreamer()
+        timer.invalidate()
         //
         xib_play.isSelected = false
         xib_slider.value = 0
