@@ -31,6 +31,11 @@ class MPPlayingBigView: BaseView {
     
     var currentTrackIndex = 0 {
         didSet {
+            let models = (currentPlayOrderMode == 1 ? randomModel : model)
+            if models.count > 0, currentTrackIndex < model.count {
+                setupCurrentSourceType(song: models[currentTrackIndex])
+            }
+            
             if model.count > 0, currentTrackIndex > 0, currentTrackIndex <= model.count - 1, streamer != nil {
                 updateMp3View()
             }
@@ -159,6 +164,10 @@ class MPPlayingBigView: BaseView {
                     // 暂停当前播放的歌曲
                     self.endPlayer()
                 }
+                // 重新播放
+                if model.count > 0 {
+                    configPlayer()
+                }
             }
         }
     }
@@ -168,13 +177,9 @@ class MPPlayingBigView: BaseView {
             songID = (currentSouceType == 0 ? currentSong?.data_originalId ?? "" : currentSong?.data_songId ?? "")
             // 设置播放状态
             currentSong?.data_playingStatus = 1
-            
-            if let sn = currentSong?.data_cache, sn != "", let sid = currentSong?.data_songId, sid != "" {
-                currentSouceType = 1
-            }else {
-                currentSouceType = 0
+            if let cs = currentSong {
+                setupCurrentSourceType(song: cs)
             }
-            
             if currentSouceType == 0, model.count > 0 {
 //                if currentSouceType == 0, model.count > 0, let _ = playerVars["playlist"] {
                 updateMVView()
@@ -202,20 +207,26 @@ class MPPlayingBigView: BaseView {
         }
     }
     
+    private func setupCurrentSourceType(song: MPSongModel) {
+        if let sn = song.data_cache, sn != "", let sid = song.data_songId, sid != "" {
+            currentSouceType = 1
+        }else {
+            currentSouceType = 0
+        }
+    }
+    
     private func randomMode() {
         guard let cs = currentSong, model.count > 0 else {
             return
         }
         if currentPlayOrderMode == 1 {  // 随机播放
-            xib_orderMode.isSelected = true
-            xib_cycleMode.isSelected = false
+            currentPlayCycleMode = 2
             // 更新下一首播放
             let index = getIndexFromSongs(song: cs, songs: randomModel)
             currentSong = randomModel[index]
             currentTrackIndex = index
         }else {
-            xib_orderMode.isSelected = false
-            xib_cycleMode.isSelected = true
+            currentPlayCycleMode = 0
             // 更新下一首播放
             let index = getIndexFromSongs(song: cs, songs: model)
             currentSong = model[index]
@@ -341,6 +352,12 @@ class MPPlayingBigView: BaseView {
         switch sender.tag {
         case 10005: // 播放模式：列表循环/单曲循环
             currentPlayCycleMode = (currentPlayCycleMode + 1) % 2
+            //
+            if xib_orderMode.isSelected {
+                currentPlayOrderMode = 1
+            }else {
+                currentPlayOrderMode = 0
+            }
             break
         case 10006: // 随机播放
             sender.isSelected = !sender.isSelected
@@ -547,17 +564,17 @@ extension MPPlayingBigView {
         case 0:
             xib_cycleMode.setImage(UIImage(named: "icon_play_order-1"), for: .normal)
             xib_orderMode.isSelected = false
-            currentPlayOrderMode = 0
+//            currentPlayOrderMode = 0
             break
         case 1:
             xib_cycleMode.setImage(UIImage(named: "icon_play_single"), for: .normal)
             xib_orderMode.isSelected = false
-            currentPlayOrderMode = 0
+//            currentPlayOrderMode = 0
             break
         case 2:
             xib_cycleMode.setImage(UIImage(named: "icon_play_order_off"), for: .normal)
             xib_orderMode.isSelected = true
-            currentPlayOrderMode = 1
+//            currentPlayOrderMode = 1
             break
         default:
             break

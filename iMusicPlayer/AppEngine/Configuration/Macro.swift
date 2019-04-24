@@ -117,7 +117,7 @@ let window = UIApplication.shared.keyWindow!
 let BundleName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
 
 // 当前显示MV还是MP3
-let SourceType = 0
+let SourceType = 1
 
 // 当前显示的语言版本：ja: 日版 en: 英文版
 let LanguageType: String = "ja"
