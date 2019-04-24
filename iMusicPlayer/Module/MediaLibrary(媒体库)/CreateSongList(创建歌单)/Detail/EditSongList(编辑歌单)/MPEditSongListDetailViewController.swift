@@ -321,9 +321,11 @@ extension MPEditSongListDetailViewController {
         // 添加到播放列表: 判断是否在列表中：不在则添加
         if !MPModelTools.checkSongExsistInPlayingList(song: song) {
             MPModelTools.getCurrentPlayList { (model, currentPlaySong) in
-                if var m = model {
-                    m.append(song)
-                }
+                var m = model
+                m.append(song)
+//                if var m = model {
+//                    m.append(song)
+//                }
             }
         }else {
             SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在播放列表中", comment: ""))
@@ -350,19 +352,25 @@ extension MPEditSongListDetailViewController {
     /// - Parameter index: -
     private func play(index: Int = -1) {
         // 显示当前的播放View
-        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
-            var cs: MPSongModel?
-            // 循序不能倒过来
-            if index != -1 {
-                cs = selectModel[index]
-            }else {
-                cs = selectModel.first
-            }
-            pv.currentSong = cs
-            pv.model = selectModel
-            pv.currentAlbum = songListModel
-            pv.smallStyle()
-        }
+//        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+//            var cs: MPSongModel?
+//            // 循序不能倒过来
+//            if index != -1 {
+//                cs = selectModel[index]
+//            }else {
+//                cs = selectModel.first
+//            }
+//            pv.currentSong = cs
+//            pv.model = selectModel
+//            pv.currentAlbum = songListModel
+//            pv.smallStyle()
+//        }
+        
+        selectModel[index].data_playingStatus = 1
+        
+        MPModelTools.saveCurrentPlayList(currentList: selectModel)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
     }
     
     /// 更新专辑信息

@@ -65,17 +65,23 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
 //            HFAppEngine.shared.currentViewController()?.present(nav, animated: true, completion: nil)
             
             // 显示当前的播放View
-            if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
-                if self.sourceType != -1 {
-                    pv.currentSouceType = 0
-                }else {
-                    pv.currentSouceType = SourceType
-                }
-                pv.currentSong = self.currentSong
-                pv.model = currentSongList
-                pv.currentAlbum = currentAlbum
-                pv.bigStyle()
-            }
+//            if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+//                if self.sourceType != -1 {
+//                    pv.currentSouceType = 0
+//                }else {
+//                    pv.currentSouceType = SourceType
+//                }
+//                pv.currentSong = self.currentSong
+//                pv.model = currentSongList
+//                pv.currentAlbum = currentAlbum
+//                pv.bigStyle()
+//            }
+            let index = getIndexFromSongs(song: currentSong!, songs: currentSongList)
+            currentSongList[index].data_playingStatus = 1
+            
+            MPModelTools.saveCurrentPlayList(currentList: currentSongList)
+            
+            NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
         }
     }
     
@@ -212,7 +218,8 @@ extension MPSongTableViewCell: MPSongToolsViewDelegate {
         // 添加到播放列表的下一首: 判断是否在列表中：在则调换到下一首，不在则添加到下一首
         if !MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!) {
             MPModelTools.getCurrentPlayList { (model, currentPlaySong) in
-                if var m = model, let cs = currentPlaySong {
+                var m = model
+                if let cs = currentPlaySong {
                     let index = self.getIndexFromSongs(song: cs, songs: m)
                     let nextIndex = (index+1)%m.count
                     m.insert(self.currentSong!, at: nextIndex)
@@ -227,9 +234,8 @@ extension MPSongTableViewCell: MPSongToolsViewDelegate {
         // 添加到播放列表: 判断是否在列表中：不在则添加
         if !MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!) {
             MPModelTools.getCurrentPlayList { (model, currentPlaySong) in
-                if var m = model {
-                    m.append(self.currentSong!)
-                }
+                var m = model
+                m.append(self.currentSong!)
             }
         }else {
             SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在播放列表中", comment: ""))

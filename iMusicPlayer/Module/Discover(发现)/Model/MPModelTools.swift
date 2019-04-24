@@ -158,7 +158,7 @@ class MPModelTools: NSObject {
     /// - Parameters:
     ///   - tableName: 表名
     ///   - finished: 回调
-    class func getCurrentPlayList(tableName: String = "CurrentPlayList", finished: ((_ models: [MPSongModel]?, _ currentPlayingSong: MPSongModel?)->Void)? = nil) {
+    class func getCurrentPlayList(tableName: String = "CurrentPlayList", finished: ((_ models: [MPSongModel], _ currentPlayingSong: MPSongModel?)->Void)? = nil) {
         var tempPlaySong: MPSongModel?
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
             QYTools.shared.Log(log: "本地数据库获取数据")
@@ -184,8 +184,11 @@ class MPModelTools: NSObject {
         let startTime = CFAbsoluteTimeGetCurrent()
         // 缓存
         DispatchQueue.global().async {
-            (currentList as NSArray).bg_save(withName: tableName)
+//            NSArray.bg_drop(tableName)
+//            (currentList as NSArray).bg_save(withName: tableName)
         }
+        NSArray.bg_drop(tableName)
+        (currentList as NSArray).bg_save(withName: tableName)
         
         // 或你自己启动事物操作:
 //        bg_inTransaction { () -> Bool in

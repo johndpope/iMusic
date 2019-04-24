@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var playingView: MPPlayingView?
     
-    var playingBigView: MPPlayingBigView?
+    var playingBigView: MPPlayingBigView_new?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -199,7 +199,7 @@ extension AppDelegate {
     // 提前添加播放控制View到window上
     private func addPlayingView() {
         // 添加播放详情View
-        let pbv = MPPlayingBigView.md_viewFromXIB() as! MPPlayingBigView
+        let pbv = MPPlayingBigView_new.md_viewFromXIB() as! MPPlayingBigView_new
         pbv.top = window?.frame.height ?? 0
         playingBigView = pbv
         window?.addSubview(pbv)

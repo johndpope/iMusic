@@ -231,20 +231,26 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
 extension MPSearchResultView {
     private func play(index: Int = -1, model: [MPSongModel], headerSongModel: GeneralPlaylists) {
         // 显示当前的播放View
-        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
-            var cs: MPSongModel?
-            // 循序不能倒过来
-            if index != -1 {
-                cs = model[index]
-            }else {
-                cs = model.first
-            }
-            // 随机播放
-            pv.currentSouceType = 0
-            pv.currentSong = cs
-            pv.model = model
-            pv.currentAlbum = headerSongModel
-            pv.bigStyle()
-        }
+//        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+//            var cs: MPSongModel?
+//            // 循序不能倒过来
+//            if index != -1 {
+//                cs = model[index]
+//            }else {
+//                cs = model.first
+//            }
+//            // 随机播放
+//            pv.currentSouceType = 0
+//            pv.currentSong = cs
+//            pv.model = model
+//            pv.currentAlbum = headerSongModel
+//            pv.bigStyle()
+//        }
+        
+        model[index == -1 ? 0 : index].data_playingStatus = 1
+        
+        MPModelTools.saveCurrentPlayList(currentList: model)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
     }
 }

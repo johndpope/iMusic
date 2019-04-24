@@ -238,7 +238,7 @@ extension MDNavigationController {
         let appdelegate = (UIApplication.shared.delegate as? AppDelegate)
         if appdelegate?.playingBigView == nil {
             // 添加播放详情View
-            let pbv = MPPlayingBigView.md_viewFromXIB() as! MPPlayingBigView
+            let pbv = MPPlayingBigView_new.md_viewFromXIB() as! MPPlayingBigView_new
             pbv.top = window.frame.height
             self.view.addSubview(pbv)
             appdelegate?.playingBigView = pbv

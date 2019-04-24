@@ -194,7 +194,7 @@ class HFAppEngine: NSObject, UITabBarControllerDelegate, CLLocationManagerDelega
     
     private func addPlayingView(tabVc: UITabBarController) {
         // 添加播放详情View
-        let pbv = MPPlayingBigView.md_viewFromXIB() as! MPPlayingBigView
+        let pbv = MPPlayingBigView_new.md_viewFromXIB() as! MPPlayingBigView_new
         pbv.top = window!.frame.height
         tabVc.view.addSubview(pbv)
         // 将播放控制器View添加到tabbarController上

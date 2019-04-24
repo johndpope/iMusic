@@ -59,6 +59,9 @@
                         <state key="normal" title="关闭">
                             <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="close:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9wr-NB-MbN"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEs-ua-ph9">
                         <rect key="frame" x="0.0" y="50" width="375" height="145"/>
@@ -94,7 +97,7 @@
                 <outlet property="topLineView" destination="XfJ-Ue-dNi" id="uQs-AA-P07"/>
                 <outlet property="xib_title" destination="ewQ-mh-7y8" id="PPq-mN-diH"/>
             </connections>
-            <point key="canvasLocation" x="-233" y="-31"/>
+            <point key="canvasLocation" x="14" y="-53"/>
         </tableViewCell>
     </objects>
 </document>

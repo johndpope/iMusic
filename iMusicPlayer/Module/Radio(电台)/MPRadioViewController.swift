@@ -89,10 +89,18 @@ class MPRadioViewController: BaseViewController {
         let cell = collectionView.cellForItem(at: IndexPath(row: currentIndex, section: 0)) as? MPRadioCollectionViewCell
         // 显示当前的播放View
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
-            pv.currentSong = model[currentIndex]
-            pv.model = model
-//            pv.top = SCREEN_HEIGHT - TabBarHeight - 48
+//            pv.currentSong = model[currentIndex]
+//            pv.model = model
+            
+            
+            model[currentIndex].data_playingStatus = 1
+            
+            MPModelTools.saveCurrentPlayList(currentList: model)
+            
+            NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
+            
             pv.smallStyle()
+            
             cell?.playBtnShow = false
         }else {
             cell?.playBtnShow = true

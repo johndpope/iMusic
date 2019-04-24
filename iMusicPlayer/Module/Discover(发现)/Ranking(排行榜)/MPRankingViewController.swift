@@ -138,23 +138,29 @@ import ObjectMapper
 extension MPRankingViewController {
     private func play(index: Int = -1, model: [MPSongModel], headerModel: MPRankingTempModel) {
         // 显示当前的播放View
-        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
-            var cs: MPSongModel?
-            // 循序不能倒过来
-            if index != -1 {
-                cs = model[index]
-            }else {
-                cs = model.first
-            }
-            // 随机播放
-            pv.currentSong = cs
-            pv.model = model
-            // 构造当前播放专辑列表模型
-            let json: [String : Any] = ["id": 0, "title": headerModel.data_title ?? "", "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": headerModel.data_image ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 6]
-            //        let album = GeneralPlaylists(JSON: json)
-            let album = Mapper<GeneralPlaylists>().map(JSON: json)
-            pv.currentAlbum = album
-            pv.bigStyle()
-        }
+//        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
+//            var cs: MPSongModel?
+//            // 循序不能倒过来
+//            if index != -1 {
+//                cs = model[index]
+//            }else {
+//                cs = model.first
+//            }
+//            // 随机播放
+//            pv.currentSong = cs
+//            pv.model = model
+//            // 构造当前播放专辑列表模型
+//            let json: [String : Any] = ["id": 0, "title": headerModel.data_title ?? "", "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": headerModel.data_image ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 6]
+//            //        let album = GeneralPlaylists(JSON: json)
+//            let album = Mapper<GeneralPlaylists>().map(JSON: json)
+//            pv.currentAlbum = album
+//            pv.bigStyle()
+//        }
+        
+        model[index == -1 ? 0 : index].data_playingStatus = 1
+        
+        MPModelTools.saveCurrentPlayList(currentList: model)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
     }
 }

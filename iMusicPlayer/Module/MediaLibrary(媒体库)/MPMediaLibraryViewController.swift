@@ -28,8 +28,6 @@ class MPMediaLibraryViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refreshData()
-        
         // 注册一个通知来接收是否需要调整tableView的底部边距：小窗播放时需要调整
         NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_ChangeTableViewBottom), object: nil, queue: nil) { (center) in
             QYTools.shared.Log(log: "调整底部边距通知")
@@ -38,6 +36,11 @@ class MPMediaLibraryViewController: BaseTableViewController {
                 make.bottom.equalTo(self.view.safeArea.bottom).offset(-Constant.smallPlayerHeight)
             })
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshData()
     }
     
     deinit {

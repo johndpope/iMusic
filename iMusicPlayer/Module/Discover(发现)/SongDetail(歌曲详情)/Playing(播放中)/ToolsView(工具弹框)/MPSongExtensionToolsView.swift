@@ -107,6 +107,10 @@ class MPSongExtensionToolsView: TableBaseView {
         }
     }
     
+    @IBAction func close(_ sender: Any) {
+        self.removeFromWindow()
+    }
+    
     // MARK: - 构造会员特权项
     private func getMvOrMp3Model(type: Int = -1) -> [String: Any?]? {
         let title = type == 0 ? NSLocalizedString("播放Mp3", comment: "") : NSLocalizedString("播放视频", comment: "")
