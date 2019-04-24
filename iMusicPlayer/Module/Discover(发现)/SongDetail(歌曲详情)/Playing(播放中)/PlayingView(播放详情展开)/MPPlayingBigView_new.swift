@@ -500,13 +500,9 @@ extension MPPlayingBigView_new {
         self.moreView = pv
         pv.plistName = "extensionTools"
         pv.delegate = self
-        pv.title = (currentSouceType == 0 ? currentSong?.data_title : currentSong?.data_songName) ?? ""
+        pv.title = (currentSouceType == 0 ? self.getCurrentSong().data_title : self.getCurrentSong().data_songName) ?? ""
         
-        if let songid = currentSong?.data_songId, songid != "", let oid = currentSong?.data_originalId, oid != "" {
-            pv.isShowMvOrMp3 = true
-        }else {
-            pv.isShowMvOrMp3 = false
-        }
+        pv.isShowMvOrMp3 = currentSouceType == 1 ? true : false
         
         HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
     }
