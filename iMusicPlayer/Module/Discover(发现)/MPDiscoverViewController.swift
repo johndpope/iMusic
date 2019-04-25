@@ -320,7 +320,8 @@ extension MPDiscoverViewController {
         MPModelTools.saveCurrentPlayList(currentList: model)
         
         // 发送一个通知播放
-        NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_PlayCurrentList), object: nil, userInfo: ["randomMode" : 0])
+//        NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
         
     }
     
@@ -336,7 +337,8 @@ extension MPDiscoverViewController {
             if songs.count > 0 {
                 songs.first?.data_playingStatus = 1
                 MPModelTools.saveCurrentPlayList(currentList: songs)
-                NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_PlayCurrentList), object: nil, userInfo: ["randomMode" : 0])
+//                NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
             }
         }else {
             let albumType = self.currentAlbum[index].data_recentlyType

@@ -118,7 +118,11 @@ class MPPlayingBigView_new: BaseView {
     private var playerVars: [String : Any] = [ "showinfo": "0", "modestbranding" : "1", "playsinline": "1", "controls": "0", "autohide": "1"]
     
     /// 0: 顺序播放  1: 随机播放
-    var currentPlayOrderMode: Int = 0
+    var currentPlayOrderMode: Int = 0 {
+        didSet {
+            xib_orderMode.isSelected = currentPlayOrderMode == 1 ? true : false
+        }
+    }
     
     /// 0: 列表循环  1: 单曲循环 2: 只播放当前列表
     var currentPlayCycleMode: Int = 0 {
@@ -129,7 +133,7 @@ class MPPlayingBigView_new: BaseView {
     
     private var currentSouceType: Int = SourceType
     
-    var currentSong: MPSongModel?
+    var nextSong: MPSongModel!
     
     /// 随机播放列表
     var randomModel = [MPSongModel]()
@@ -175,6 +179,12 @@ class MPPlayingBigView_new: BaseView {
         
         // 注册一个通知来接收播放通知
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NotCenter.NC_PlayCurrentList), object: nil, queue: nil) { (center) in
+            
+            // 随机播放
+            if let randomMode = center.userInfo?["randomMode"] as? Int {
+//                self.currentPlayOrderMode = randomMode
+                self.currentPlayCycleMode = randomMode == 1 ? 2 : 0
+            }
             
             QYTools.shared.Log(log: "收到播放通知")
             
@@ -266,21 +276,45 @@ class MPPlayingBigView_new: BaseView {
     }
     
     private func updateView(type: Int) {
-        // 设置下一首播放
+        
         let temps = getCurrentModels()
-        let song = self.getCurrentSong()
-         let nextSong = temps[(currentTrackIndex+1) % temps.count]
+        var song: MPSongModel!
+        
+        if currentPlayOrderMode == 1 {
+            song = temps[getRandomIndexByIndex(index: currentTrackIndex)]
+        }else {
+            song = getCurrentSong()
+        }
         
         if type == 1 {
             xib_lrc.isSelected = true
             xib_title.text = song.data_songName
             xib_desc.text = song.data_singerName
-            xib_nextSongName.text = nextSong.data_songName
         }else {
             xib_lrc.isSelected = false
             xib_title.text = song.data_title
             xib_desc.text = song.data_channelTitle
-            xib_nextSongName.text = nextSong.data_title
+        }
+        
+        //设置图片
+        xib_coverImage.isHidden = false
+        if let img = song.data_artworkBigUrl, img != "" {
+            let imgUrl = API.baseImageURL + img
+            xib_coverImage.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "placeholder"))
+        }
+        
+        self.updateNextSongName()
+        
+        self.updateSmallPlayView()
+    }
+    
+    private func updateNextSongName() {
+        let temps = getCurrentModels()
+        var nextSong: MPSongModel!
+        if currentPlayOrderMode == 1 {
+            nextSong = temps[(getRandomIndexByIndex(index: currentTrackIndex)+1) % temps.count]
+        }else {
+            nextSong = temps[(currentTrackIndex+1) % temps.count]
         }
         
         let nextType = setupCurrentSourceType(song: nextSong)
@@ -289,15 +323,35 @@ class MPPlayingBigView_new: BaseView {
         }else {
             xib_nextSongName.text = nextSong.data_title
         }
-
-        //设置图片
-        xib_coverImage.isHidden = false
-        if let img = song.data_artworkBigUrl, img != "" {
-            let imgUrl = API.baseImageURL + img
-            xib_coverImage.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "placeholder"))
-        }
         
-        updateSmallPlayView()
+        self.nextSong = nextSong
+        
+    }
+    
+    private func getIndexBySong(song: MPSongModel) -> Int {
+        // 获取当前歌曲在随机播放列表中的下标：确保是同一首歌曲而不是同一个下标处的歌曲
+        let cs = song
+        var index = -1
+        for i in 0..<self.getCurrentModels().count {
+            let item = self.getCurrentModels()[i]
+            if item.data_title == cs.data_title {
+                index = i
+            }
+        }
+        return index
+    }
+    
+    private func getRandomIndexByIndex(index: Int) -> Int {
+        // 获取当前歌曲在随机播放列表中的下标：确保是同一首歌曲而不是同一个下标处的歌曲
+        let cs = model[currentTrackIndex]
+        var index = -1
+        for i in 0..<self.randomModel.count {
+            let item = self.randomModel[i]
+            if item.data_title == cs.data_title {
+                index = i
+            }
+        }
+        return index
     }
     
     private func updateSmallPlayView() {
@@ -592,15 +646,15 @@ extension MPPlayingBigView_new {
         switch currentPlayCycleMode {
         case 0:
             xib_cycleMode.setImage(UIImage(named: "icon_play_order-1"), for: .normal)
-            xib_orderMode.isSelected = false
+            currentPlayOrderMode = 0
             break
         case 1:
             xib_cycleMode.setImage(UIImage(named: "icon_play_single"), for: .normal)
-            xib_orderMode.isSelected = false
+            currentPlayOrderMode = 0
             break
         case 2:
             xib_cycleMode.setImage(UIImage(named: "icon_play_order_off"), for: .normal)
-            xib_orderMode.isSelected = true
+            currentPlayOrderMode = 1
             break
         default:
             break
