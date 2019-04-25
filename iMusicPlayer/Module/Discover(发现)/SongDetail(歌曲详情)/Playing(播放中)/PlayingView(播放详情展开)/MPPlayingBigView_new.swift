@@ -56,7 +56,7 @@ class MPPlayingBigView_new: BaseView {
             pv.snp.makeConstraints { (make) in
                 make.edges.equalToSuperview()
             }
-            self.smallStyle()
+//            self.smallStyle()
         }
     }
     /// 大窗高度
@@ -160,6 +160,8 @@ class MPPlayingBigView_new: BaseView {
     }
     
     private func setupStyle() {
+        playView = self.ybPlayView
+        
         playView.isHidden = true
         xib_coverImage.isHidden = true
         
@@ -561,7 +563,12 @@ extension MPPlayingBigView_new {
         pv.delegate = self
         pv.title = (currentSouceType == 0 ? self.getCurrentSong().data_title : self.getCurrentSong().data_songName) ?? ""
         
-        pv.isShowMvOrMp3 = currentSouceType == 1 ? true : false
+        let song = getCurrentSong()
+        if let sn = song.data_cache, sn != "", let sid = song.data_songId, sid != "", let oid = song.data_originalId, oid != "" {
+            pv.isShowMvOrMp3 = true
+        }else {
+            pv.isShowMvOrMp3 = false
+        }
         
         HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
     }
@@ -766,8 +773,8 @@ extension MPPlayingBigView_new {
     
     func smallStyle() {
         self.top = SCREEN_HEIGHT - TabBarHeight - Constant.smallPlayerHeight
-        xib_playingView.insertSubview(ybPlayView, at: 0)
-        ybPlayView.snp.makeConstraints { (make) in
+        xib_playingView.insertSubview(playView, at: 0)
+        playView.snp.makeConstraints { (make) in
             make.left.top.bottom.equalToSuperview()
             make.width.equalTo(Constant.smallPlayerWidth)
         }
