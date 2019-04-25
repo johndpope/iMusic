@@ -36,6 +36,11 @@ class MPMediaLibraryViewController: BaseTableViewController {
                 make.bottom.equalTo(self.view.safeArea.bottom).offset(-Constant.smallPlayerHeight)
             })
         }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshRecentlyList), object: nil, queue: nil) { (center) in
+            QYTools.shared.Log(log: "刷新数据")
+            self.refreshData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +56,7 @@ class MPMediaLibraryViewController: BaseTableViewController {
         super.refreshData()
         MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
             if let m = model {
-                self.model = m
+                self.model = m.reversed()
 //                self.tableView.mj_header.endRefreshing()
             }
         }

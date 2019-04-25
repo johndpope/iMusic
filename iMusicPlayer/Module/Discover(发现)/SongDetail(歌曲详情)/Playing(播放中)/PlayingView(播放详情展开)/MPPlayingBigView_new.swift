@@ -685,6 +685,13 @@ extension MPPlayingBigView_new {
             // 添加到最近播放列表
             if !MPModelTools.checkSongExsistInPlayingList(song: self.getCurrentSong(), tableName: "RecentlyPlay") {
                 MPModelTools.saveSongToTable(song: self.getCurrentSong(), tableName: "RecentlyPlay")
+                NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_RefreshRecentlyList), object: nil)
+            }else {
+                // 将已存在的歌曲提前
+                MPModelTools.deleteSongInTable(tableName: "RecentlyPlay", songs: [self.getCurrentSong()], finished: {
+                    MPModelTools.saveSongToTable(song: self.getCurrentSong(), tableName: "RecentlyPlay")
+                    NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_RefreshRecentlyList), object: nil)
+                })
             }
         }
         

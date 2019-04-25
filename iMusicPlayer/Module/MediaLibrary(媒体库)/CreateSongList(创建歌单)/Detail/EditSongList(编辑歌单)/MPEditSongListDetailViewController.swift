@@ -375,7 +375,7 @@ extension MPEditSongListDetailViewController {
         MPModelTools.saveCurrentPlayList(currentList: selectModel)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_PlayCurrentList), object: nil, userInfo: ["randomMode" : 0])
-//        NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
+        
     }
     
     /// 更新专辑信息

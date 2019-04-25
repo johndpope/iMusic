@@ -181,6 +181,10 @@ struct NotCenter{
     static let NC_ChangeTableViewBottom = "NC_ChangeTableViewBottom"
     
     static let NC_PlayCurrentList = "NC_PlayCurrentList"
+    
+    static let NC_RefreshRecentlyList = "NC_RefreshRecentlyList"
+    
+    static let NC_RefreshRecentlyAlbum = "NC_RefreshRecentlyAlbum"
 }
 
 

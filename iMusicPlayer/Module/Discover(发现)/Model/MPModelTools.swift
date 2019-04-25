@@ -145,7 +145,7 @@ class MPModelTools: NSObject {
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
 //            QYTools.shared.Log(log: "本地数据库获取数据")
             arr.forEach { (item) in
-                if item.data_id == song.data_id {
+                if item.data_title == song.data_title {
                     rs = true
                 }
             }
@@ -217,6 +217,7 @@ class MPModelTools: NSObject {
                 NSArray.bg_addObject(withName: "RecentlyAlbum", object: album)
             }
         }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_RefreshRecentlyAlbum), object: nil)
     }
     
    /// 创建歌单

@@ -44,6 +44,11 @@ class MPDiscoverViewController: BaseTableViewController {
                 make.bottom.equalTo(self.view.safeArea.bottom).offset(-Constant.smallPlayerHeight)
             })
         }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshRecentlyAlbum), object: nil, queue: nil) { (center) in
+            QYTools.shared.Log(log: "刷新数据")
+            self.refreshData()
+        }
     }
     
     deinit {

@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.105566"
+            timestampString = "577878481.87293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "162"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.106328"
+            timestampString = "577878481.873643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "getCollectListModel(tableName:finished:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.106653"
+            timestampString = "577878481.874079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "392"
-            endingLineNumber = "392"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "getSearchResult(q:duration:filter:order:size:y:tableName:finished:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.106953"
+            timestampString = "577878481.874405"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "439"
-            endingLineNumber = "439"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
             landmarkName = "getSearchKeywordModel(tableName:finished:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.107247"
+            timestampString = "577878481.874743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "561"
-            endingLineNumber = "561"
+            startingLineNumber = "562"
+            endingLineNumber = "562"
             landmarkName = "getSongerListByIDModel(singerId:tableName:finished:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.107538"
+            timestampString = "577878481.875073"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "592"
-            endingLineNumber = "592"
+            startingLineNumber = "593"
+            endingLineNumber = "593"
             landmarkName = "getSongListByIDModel(playlistId:tableName:finished:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.107832"
+            timestampString = "577878481.8755701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "623"
-            endingLineNumber = "623"
+            startingLineNumber = "624"
+            endingLineNumber = "624"
             landmarkName = "getSongListModel(typeID:tableName:finished:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.108121"
+            timestampString = "577878481.87603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "653"
-            endingLineNumber = "653"
+            startingLineNumber = "654"
+            endingLineNumber = "654"
             landmarkName = "getStyleGenreModel(tableName:finished:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.1084141"
+            timestampString = "577878481.8764189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "688"
-            endingLineNumber = "688"
+            startingLineNumber = "689"
+            endingLineNumber = "689"
             landmarkName = "getPopularModel(songerName:nationality:type:tableName:finished:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.108706"
+            timestampString = "577878481.876832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "719"
-            endingLineNumber = "719"
+            startingLineNumber = "720"
+            endingLineNumber = "720"
             landmarkName = "getLatestModel(latestType:tableName:finished:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.109"
+            timestampString = "577878481.877341"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "750"
-            endingLineNumber = "750"
+            startingLineNumber = "751"
+            endingLineNumber = "751"
             landmarkName = "getRankingModel(rankType:tableName:finished:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.109292"
+            timestampString = "577878481.877777"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "778"
-            endingLineNumber = "778"
+            startingLineNumber = "779"
+            endingLineNumber = "779"
             landmarkName = "getDiscoverModel(finished:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.109583"
+            timestampString = "577878481.878131"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/MediaLibrary(&#x5a92;&#x4f53;&#x5e93;)/CreateSongList(&#x521b;&#x5efa;&#x6b4c;&#x5355;)/Detail/EditSongList(&#x7f16;&#x8f91;&#x6b4c;&#x5355;)/MPEditSongListDetailViewController.swift"
-            timestampString = "577875681.109885"
+            timestampString = "577878481.87851"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "323"
@@ -234,7 +234,7 @@
                   moduleName = "iMusicPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/modi/Documents/Modi/GitLab/iMusicPlayer/iMusicPlayer/Module/MediaLibrary(%E5%AA%92%E4%BD%93%E5%BA%93)/CreateSongList(%E5%88%9B%E5%BB%BA%E6%AD%8C%E5%8D%95)/Detail/EditSongList(%E7%BC%96%E8%BE%91%E6%AD%8C%E5%8D%95)/MPEditSongListDetailViewController.swift"
-                  timestampString = "577873822.9196481"
+                  timestampString = "577878482.56639"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "323"
@@ -249,7 +249,7 @@
                   moduleName = "iMusicPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/modi/Documents/Modi/GitLab/iMusicPlayer/iMusicPlayer/Module/MediaLibrary(%E5%AA%92%E4%BD%93%E5%BA%93)/CreateSongList(%E5%88%9B%E5%BB%BA%E6%AD%8C%E5%8D%95)/Detail/EditSongList(%E7%BC%96%E8%BE%91%E6%AD%8C%E5%8D%95)/MPEditSongListDetailViewController.swift"
-                  timestampString = "577873822.9219511"
+                  timestampString = "577878482.568085"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "324"
@@ -266,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/View/Cell/MPSongTableViewCell.swift"
-            timestampString = "577875681.110111"
+            timestampString = "577878481.878839"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "229"
@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/View/Cell/MPSongTableViewCell.swift"
-            timestampString = "577875681.1102951"
+            timestampString = "577878481.879096"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "244"
@@ -308,7 +308,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "577875681.110351"
+            timestampString = "577878481.879194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "190"
@@ -324,12 +324,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Search(&#x641c;&#x7d22;)/View/SearchResult(&#x641c;&#x7d22;&#x7ed3;&#x679c;)/MPSearchResultView.swift"
-            timestampString = "577875681.11061"
+            timestampString = "577878481.879661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "251"
             endingLineNumber = "251"
             landmarkName = "play(index:model:headerSongModel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/MPPlayingViewController.swift"
+            timestampString = "577878388.27411"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
+            landmarkName = "playerViewDidBecomeReady(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView_backup.swift"
+            timestampString = "577878481.8800091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "728"
+            endingLineNumber = "728"
+            landmarkName = "playerViewDidBecomeReady(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView_new.swift"
+            timestampString = "577878481.8802069"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "692"
+            endingLineNumber = "692"
+            landmarkName = "playingStatusAction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView_new.swift"
+            timestampString = "577878481.880972"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "687"
+            endingLineNumber = "687"
+            landmarkName = "playingStatusAction()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
