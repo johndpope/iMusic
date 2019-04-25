@@ -419,9 +419,12 @@ class MPPlayingBigView_new: BaseView {
                 if type == 0 {
                     pv.model = self.model
                 }else if type == 1 {
+                    SVProgressHUD.show()
+                    pv.model = [MPSongModel]()
                     let song = self.getCurrentSong()
                     let id: String = (self.currentSouceType == 1 ? song.data_songId : song.data_originalId) ?? ""
                     MPModelTools.getRelatedSongsModel(id: id, tableName: "", finished: { (model) in
+                        SVProgressHUD.dismiss()
                         if let m = model {
                             pv.model = m
                         }
@@ -579,6 +582,8 @@ extension MPPlayingBigView_new: MPSongToolsViewDelegate {
     
     func playVideo() {
         QYTools.shared.Log(log: "播放视频")
+        // 关闭弹框
+        self.moreView?.removeFromWindow()
         // 判断当前是MV还是MP3
         if SourceType == 0 {
             currentSouceType = 1

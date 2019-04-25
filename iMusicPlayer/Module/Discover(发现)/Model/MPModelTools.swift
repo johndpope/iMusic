@@ -476,9 +476,11 @@ class MPModelTools: NSObject {
                 switch isSucceed {
                 case true:
                     QYTools.shared.Log(log: "在线获取数据")
-                    if let f = finished, model!.count > 0 {
+                    if let m = model, m.count > 0 {
                         // 缓存
-                        (model! as NSArray).bg_save(withName: tableName)
+                        (m as NSArray).bg_save(withName: tableName)
+                    }
+                    if let f = finished {
                         f(model)
                     }
                     break
