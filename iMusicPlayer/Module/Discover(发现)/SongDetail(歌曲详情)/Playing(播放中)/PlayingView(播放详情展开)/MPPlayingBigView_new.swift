@@ -681,7 +681,7 @@ extension MPPlayingBigView_new {
         xib_endTime.text = "\(endtime)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
         
         // 异步添加
-        DispatchQueue.global().async {
+        DispatchQueue.init(label: "updateRecentlyList").async {
             // 添加到最近播放列表
             if !MPModelTools.checkSongExsistInPlayingList(song: self.getCurrentSong(), tableName: "RecentlyPlay") {
                 MPModelTools.saveSongToTable(song: self.getCurrentSong(), tableName: "RecentlyPlay")

@@ -18,8 +18,12 @@ class MPModelTools: NSObject {
     ///   - song: 歌曲
     ///   - tableName: 表名
     class func saveSongToTable(song: MPSongModel, tableName: String = "") {
+        // 线程锁：同一时刻只能一个线程调用
+        let lock = DispatchSemaphore.init(value: 1)
+        lock.wait()
         // 缓存
         ([song] as NSArray).bg_save(withName: tableName)
+        lock.signal()
     }
     // MARK: - 公共获取歌曲列表：数组
     /// 获取对应歌曲列表
@@ -183,10 +187,6 @@ class MPModelTools: NSObject {
     class func saveCurrentPlayList(currentList: [MPSongModel], tableName: String = "CurrentPlayList") {
         let startTime = CFAbsoluteTimeGetCurrent()
         // 缓存
-        DispatchQueue.global().async {
-//            NSArray.bg_drop(tableName)
-//            (currentList as NSArray).bg_save(withName: tableName)
-        }
         NSArray.bg_drop(tableName)
         (currentList as NSArray).bg_save(withName: tableName)
         

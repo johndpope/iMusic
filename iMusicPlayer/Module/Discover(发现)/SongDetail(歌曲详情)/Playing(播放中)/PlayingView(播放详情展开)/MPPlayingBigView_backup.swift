@@ -195,14 +195,6 @@ class MPPlayingBigView: BaseView {
     
     var model = [MPSongModel]() {
         didSet {
-            
-            DispatchQueue.global().async {
-                // 将当前播放列表保存到数据库
-                if self.model.count < 50 {
-//                    MPModelTools.saveCurrentPlayList(currentList: self.model)
-                }
-            }
-            
             configPlayer()
         }
     }
