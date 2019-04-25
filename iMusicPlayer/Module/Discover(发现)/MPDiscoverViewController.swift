@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ObjectMapper
 
 private struct Constant {
     static let discoverIdentifier = "MPDiscoverTableViewCell"
@@ -23,7 +22,7 @@ class MPDiscoverViewController: BaseTableViewController {
 
     var model: MPDiscoverModel? {
         didSet {
-            if let m = model {
+            if model != nil {
                 tableView.reloadData()
             }
         }
@@ -152,59 +151,11 @@ extension MPDiscoverViewController {
             
             (cell as! MPRecentlyTableViewCell).playClickedBlock = {[weak self] (index) in
                 // 播放什么？？
+                self?.playRecentlyAlbum(index: index, type: 2)
             }
             
             (cell as! MPRecentlyTableViewCell).itemClickedBlock = {[weak self] (index) in
-                
-                if let album = self?.currentAlbum[index].data_recentlyType {
-                    switch album {
-                    case 1: // 最近播放
-                        let vc = MPMyFavoriteViewController()
-                        vc.fromType = .Recently
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                        break
-                    case 2: // 最新发布
-                        let vc = MPLatestViewController()
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                        break
-                    case 3: // 我的最爱
-                        let vc = MPMyFavoriteViewController()
-                        vc.fromType = .Favorite
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                        break
-                    case 4: // 歌手
-                        let vc = MPSongListViewController()
-                        vc.headerSongModel = self?.currentAlbum[index]
-                        // 判断是歌手还是歌单
-                        vc.type = 2
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                        break
-                    case 5: // 歌单
-                        let vc = MPSongListViewController()
-                        vc.headerSongModel = self?.currentAlbum[index]
-                        // 判断是歌手还是歌单
-                        vc.type = 1
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                        break
-                    case 6: // 排行榜
-                        let vc = MPRankingViewController()
-                        vc.tempModels = self?.model?.data_charts
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                        break
-                    case 7: // Top 100
-                        if let m = self?.model?.data_recommendations {
-                            self?.play(model: m)
-                        }
-                        break
-                    case 8: // 自己创建的歌单
-                        let vc = MPEditSongListViewController()
-                        vc.songListModel = self?.currentAlbum[index]
-                        self?.navigationController?.pushViewController(vc, animated: true)
-                        break
-                    default:
-                        break
-                    }
-                }
+                self?.playRecentlyAlbum(index: index, type: 1)
             }
             break
         case 2:
@@ -216,7 +167,7 @@ extension MPDiscoverViewController {
             if let models = model?.data_generalPlaylists {
                 (cell as! MPDiscoverTableViewCell).updateCell(model: models[indexPath.row])
                 (cell as! MPDiscoverTableViewCell).clickBlock = {(sender) in
-                    if let btn = sender as? UIButton {
+                    if (sender as? UIButton) != nil {
                         MPModelTools.getSongListByIDModel(playlistId: models[indexPath.row].data_id, tableName: "") { (model) in
                             if let m = model {
                                 self.play(model: m)
@@ -351,7 +302,19 @@ extension MPDiscoverViewController {
 //            pv.bigStyle()
 //        }
         
-        model[index == -1 ? 0 : index].data_playingStatus = 1
+        let cs = model[index == -1 ? 0 : index]
+        
+        // 构造当前播放专辑列表模型
+        let tempImg = cs.data_artworkBigUrl ?? ""
+        let img = (tempImg == "" ? (cs.data_artworkUrl ?? "") : tempImg) == "" ? "pic_album_default" : (tempImg == "" ? (cs.data_artworkUrl ?? "") : tempImg)
+        let json: [String : Any] = ["id": 0, "title": "Top 100", "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": img, "tracksCount": model.count, "recentlyType": 7]
+        let album = GeneralPlaylists(JSON: json)
+        album?.data_songs = model
+        
+        // 保存当前专辑列表
+        MPModelTools.saveRecentlyAlbum(album: album!)
+        
+        cs.data_playingStatus = 1
         
         // 设置当前播放列表
         MPModelTools.saveCurrentPlayList(currentList: model)
@@ -359,5 +322,128 @@ extension MPDiscoverViewController {
         // 发送一个通知播放
         NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
         
+    }
+    
+    
+    /// 最近播放专辑点击事件处理
+    ///
+    /// - Parameters:
+    ///   - index: 当前下标
+    ///   - type: 播放/进入列表：2/1
+    private func playRecentlyAlbum(index: Int, type: Int) {
+        if type == 2 {
+            let songs = getSongsInAlbum(index: index)
+            if songs.count > 0 {
+                songs.first?.data_playingStatus = 1
+                MPModelTools.saveCurrentPlayList(currentList: songs)
+                NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
+            }
+        }else {
+            let albumType = self.currentAlbum[index].data_recentlyType
+            switch albumType {
+            case 1: // 最近播放
+//                let vc = MPMyFavoriteViewController()
+//                vc.fromType = .Recently
+//                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            case 2: // 最新发布
+                let vc = MPLatestViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            case 3: // 我的最爱
+                let vc = MPMyFavoriteViewController()
+                vc.fromType = .Favorite
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            case 4: // 歌手
+                let vc = MPSongListViewController()
+                vc.headerSongModel = self.currentAlbum[index]
+                // 判断是歌手还是歌单
+                vc.type = 2
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            case 5: // 歌单
+                let vc = MPSongListViewController()
+                vc.headerSongModel = self.currentAlbum[index]
+                // 判断是歌手还是歌单
+                vc.type = 1
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            case 6: // 排行榜
+//                let vc = MPRankingViewController()
+//                vc.tempModels = self.model?.data_charts
+//                self.navigationController?.pushViewController(vc, animated: true)
+                
+                let vc = MPAlbumListViewController()
+                let songs = getSongsInAlbum(index: index)
+                let album = self.currentAlbum[index]
+                let time = getUpdateTime(album: album)
+                let tm = MPRankingTempModel(image: album.data_img, title: album.data_title, updateTime: time, songOne: songs.first?.data_title, songTwo: (songs.count > 0 ? songs[1].data_title : ""))
+                vc.headerModel = tm
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            case 7: // Top 100
+                if let m = self.model?.data_recommendations {
+                    self.play(model: m)
+                }
+                break
+            case 8: // 自己创建的歌单
+                let vc = MPEditSongListViewController()
+                vc.songListModel = self.currentAlbum[index]
+                self.navigationController?.pushViewController(vc, animated: true)
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    private func getUpdateTime(album: GeneralPlaylists) -> String {
+        var time = ""
+        if let oricon = album.data_title, oricon == "Oricon" {
+            time = NSLocalizedString("每周三更新", comment: "")
+        }
+        
+        if let oricon = album.data_title, oricon == "Ment" {
+            time = NSLocalizedString("每周一更新", comment: "")
+        }
+        
+        if let oricon = album.data_title, oricon == "Billboard" {
+            time = NSLocalizedString("每周三更新", comment: "")
+        }
+        
+        if let oricon = album.data_title, oricon == "ITunes" {
+            time = NSLocalizedString("每周一更新", comment: "")
+        }
+        
+        if let oricon = album.data_title, oricon == "Listen" {
+            time = NSLocalizedString("每日更新", comment: "")
+        }
+        
+        if let oricon = album.data_title, oricon == "Collection" {
+            time = NSLocalizedString("每日更新", comment: "")
+        }
+        
+        if let oricon = album.data_title, oricon == "UK" {
+            time = NSLocalizedString("每周一更新", comment: "")
+        }
+        return time
+    }
+    
+    /// 获取当前播放专辑的歌单列表数据
+    ///
+    /// - Parameters:
+    ///   - index: 下标
+    ///   - finished: 回调
+    private func getSongsInAlbum(index: Int) -> [MPSongModel] {
+        let album = self.currentAlbum[index]
+        
+        var temps = [MPSongModel]()
+        
+        if let songs = album.data_songs {
+            temps = songs
+        }
+        
+        return temps
     }
 }

@@ -127,7 +127,7 @@ class GeneralPlaylists: BaseModel {
     var data_type: String?
     
     /// 最近播放类型：1：最近播放单曲 2：最新歌曲列表 3：我的最爱  4：歌手  5：专辑 6: 排行榜 7: Top 100  8：创建的歌单
-    var data_recentlyType: Int = 1
+    var data_recentlyType: Int = -1
     /// 用来存储当前专辑的歌曲
     var data_songs: [MPSongModel]?
     

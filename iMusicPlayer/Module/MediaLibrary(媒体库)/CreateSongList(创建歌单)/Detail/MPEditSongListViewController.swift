@@ -140,6 +140,9 @@ extension MPEditSongListViewController {
 //            pv.bigStyle()
 //        }
         
+        songListModel?.data_songs = model
+        MPModelTools.saveRecentlyAlbum(album: songListModel!)
+        
         model[index == -1 ? 0 : index].data_playingStatus = 1
         
         MPModelTools.saveCurrentPlayList(currentList: model)

@@ -157,6 +157,12 @@ extension MPRankingViewController {
 //            pv.bigStyle()
 //        }
         
+        // 构造当前播放专辑列表模型
+        let json: [String : Any] = ["id": 0, "title": headerModel.data_title ?? "", "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": headerModel.data_image ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 6]
+        let album = GeneralPlaylists(JSON: json)
+        album?.data_songs = model
+        MPModelTools.saveRecentlyAlbum(album: album!)
+        
         model[index == -1 ? 0 : index].data_playingStatus = 1
         
         MPModelTools.saveCurrentPlayList(currentList: model)

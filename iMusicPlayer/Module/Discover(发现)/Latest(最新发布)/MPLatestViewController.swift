@@ -132,7 +132,17 @@ extension MPLatestViewController {
 //            pv.bigStyle()
 //        }
         
-        models[index == -1 ? 0 : index].data_playingStatus = 1
+        let cs = models[index == -1 ? 0 : index]
+        // 构造当前播放专辑列表模型
+        let tempImg = cs.data_artworkBigUrl ?? ""
+        let img = (tempImg == "" ? (cs.data_artworkUrl ?? "") : tempImg) == "" ? "pic_album_default" : (tempImg == "" ? (cs.data_artworkUrl ?? "") : tempImg)
+        // 构造当前播放专辑列表模型
+        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("新歌首发", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": img, "tracksCount": models.count, "recentlyType": 2]
+        let album = GeneralPlaylists(JSON: json)
+        album?.data_songs = models
+        MPModelTools.saveRecentlyAlbum(album: album!)
+        
+        cs.data_playingStatus = 1
         
         MPModelTools.saveCurrentPlayList(currentList: models)
         

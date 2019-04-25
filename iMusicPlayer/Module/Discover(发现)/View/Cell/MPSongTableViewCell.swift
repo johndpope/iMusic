@@ -76,6 +76,12 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
 //                pv.currentAlbum = currentAlbum
 //                pv.bigStyle()
 //            }
+            
+            if let album = currentAlbum {
+                album.data_songs = currentSongList
+                MPModelTools.saveRecentlyAlbum(album: album)
+            }
+            
             let index = getIndexFromSongs(song: currentSong!, songs: currentSongList)
             currentSongList[index].data_playingStatus = 1
             

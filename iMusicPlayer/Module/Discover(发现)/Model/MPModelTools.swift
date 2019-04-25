@@ -195,9 +195,28 @@ class MPModelTools: NSObject {
 //            (currentList as NSArray).bg_save(withName: tableName)
 //            return true
 //        }
-        
+
         let endTime = CFAbsoluteTimeGetCurrent()
         debugPrint("\(#function)代码执行时长：%f 毫秒", (endTime - startTime)*1000)
+    }
+    
+    
+    /// 保存当前专辑列表到本地
+    ///
+    /// - Parameter album: 待保存的专辑对象
+    class func saveRecentlyAlbum(album: GeneralPlaylists) {
+        // 把当前的专辑添加到最近播放
+        let index = MPModelTools.getCollectListExsistIndex(model: album, tableName: "RecentlyAlbum", condition: album.data_title ?? "")
+        if index == -1 {
+            MPModelTools.saveCollectListModel(model: album, tableName: "RecentlyAlbum")
+        }else {
+            // 删除原来的并将当前的插入到第一位
+            let sql = String(format: "where %@=%@",bg_sqlKey("index"),bg_sqlValue("\(index)"))
+            if NSArray.bg_delete("RecentlyAlbum", where: sql) {
+                // 添加到最后一项：获取的时候倒序即可
+                NSArray.bg_addObject(withName: "RecentlyAlbum", object: album)
+            }
+        }
     }
     
    /// 创建歌单

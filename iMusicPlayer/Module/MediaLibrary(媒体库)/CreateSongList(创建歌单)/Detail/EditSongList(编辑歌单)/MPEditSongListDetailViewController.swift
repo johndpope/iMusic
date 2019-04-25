@@ -366,6 +366,10 @@ extension MPEditSongListDetailViewController {
 //            pv.smallStyle()
 //        }
         
+        // 保存最近播放专辑
+        songListModel?.data_songs = selectModel
+        MPModelTools.saveRecentlyAlbum(album: songListModel!)
+        
         selectModel[index].data_playingStatus = 1
         
         MPModelTools.saveCurrentPlayList(currentList: selectModel)

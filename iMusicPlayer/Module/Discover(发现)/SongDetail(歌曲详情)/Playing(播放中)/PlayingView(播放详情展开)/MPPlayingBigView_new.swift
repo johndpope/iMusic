@@ -618,21 +618,6 @@ extension MPPlayingBigView_new {
             if !MPModelTools.checkSongExsistInPlayingList(song: self.getCurrentSong(), tableName: "RecentlyPlay") {
                 MPModelTools.saveSongToTable(song: self.getCurrentSong(), tableName: "RecentlyPlay")
             }
-            
-            // 把当前的专辑添加到最近播放
-            if let a = self.currentAlbum {
-                let index = MPModelTools.getCollectListExsistIndex(model: a, tableName: "RecentlyAlbum", condition: a.data_title ?? "")
-                if index == -1 {
-                    MPModelTools.saveCollectListModel(model: a, tableName: "RecentlyAlbum")
-                }else {
-                    // 删除原来的并将当前的插入到第一位
-                    let sql = String(format: "where %@=%@",bg_sqlKey("index"),bg_sqlValue("\(index)"))
-                    if NSArray.bg_delete("RecentlyAlbum", where: sql) {
-                        // 添加到最后一项：获取的时候倒序即可
-                        NSArray.bg_addObject(withName: "RecentlyAlbum", object: a)
-                    }
-                }
-            }
         }
         
     }
@@ -756,10 +741,9 @@ extension MPPlayingBigView_new {
 extension MPPlayingBigView_new {
     
     private func endPlayer() {
-//        timer.invalidate()
+        timer.invalidate()
         streamer.stop()
         self.cancelStreamer()
-        timer.invalidate()
         //
         xib_play.isSelected = false
         xib_slider.value = 0
@@ -853,6 +837,9 @@ extension MPPlayingBigView_new {
     }
 
     @objc private func timerAction(timer: Timer) {
+        guard streamer != nil else {
+            return
+        }
         if streamer.duration == 0.0 {
             xib_slider.setValue(0.0, animated: false)
         }else {
