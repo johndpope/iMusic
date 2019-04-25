@@ -17,6 +17,8 @@ class MPChoicenessViewController: BaseTableViewController {
     
     var typeID: Int = 0
     
+    var start = 0
+    
     var model = [GeneralPlaylists]() {
         didSet {
             tableView.reloadData()
@@ -38,6 +40,31 @@ class MPChoicenessViewController: BaseTableViewController {
                 self.tableView.mj_header.endRefreshing()
             }
         }
+        
+    }
+    
+    override func pageTurning() {
+        super.pageTurning()
+        start += 20
+        DiscoverCent?.requestSongList(type: typeID, rows: 20, start: start, complete: { (isSucceed, model, msg) in
+            switch isSucceed {
+            case true:
+                self.tableView.mj_footer.endRefreshing()
+                if let m = model, m.count > 0 {
+                    QYTools.shared.Log(log: "获取到下一页数据")
+                    self.model += m
+                }else {
+                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    self.start -= 20
+                }
+                break
+            case false:
+                SVProgressHUD.showError(withStatus: msg)
+                self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                self.start -= 20
+                break
+            }
+        })
         
     }
     
