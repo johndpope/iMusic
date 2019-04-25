@@ -32,6 +32,8 @@ class MPPlayingBigView_new: BaseView {
     var volumeSlider: UISlider!
     // 当前播放歌曲下标
     var currentTrackIndex = 0
+    // 当前播放歌曲在随机播放列表下标
+    var currentRandomIndex = 0
     // 音频流播放器
     var streamer: DOUAudioStreamer!
     // 音频乐谱图
@@ -121,6 +123,13 @@ class MPPlayingBigView_new: BaseView {
     var currentPlayOrderMode: Int = 0 {
         didSet {
             xib_orderMode.isSelected = currentPlayOrderMode == 1 ? true : false
+            if model.count > 0 {
+                if currentPlayOrderMode == 1 {
+                    currentRandomIndex = getRandomIndexByIndex(index: currentTrackIndex)
+                }
+                // 更新下一首播放
+                self.updateNextSongName()
+            }
         }
     }
     
@@ -133,7 +142,7 @@ class MPPlayingBigView_new: BaseView {
     
     private var currentSouceType: Int = SourceType
     
-    var nextSong: MPSongModel!
+    var currentSong: MPSongModel?
     
     /// 随机播放列表
     var randomModel = [MPSongModel]()
@@ -181,9 +190,8 @@ class MPPlayingBigView_new: BaseView {
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: NotCenter.NC_PlayCurrentList), object: nil, queue: nil) { (center) in
             
             // 随机播放
-            if let randomMode = center.userInfo?["randomMode"] as? Int {
-//                self.currentPlayOrderMode = randomMode
-                self.currentPlayCycleMode = randomMode == 1 ? 2 : 0
+            if let randomMode = center.userInfo?["randomMode"] as? Int, randomMode == 1 {
+                self.currentPlayCycleMode = 2
             }
             
             QYTools.shared.Log(log: "收到播放通知")
@@ -227,6 +235,9 @@ class MPPlayingBigView_new: BaseView {
     
     private func getCurrentSong() -> MPSongModel {
         let temps = self.getCurrentModels()
+        if currentPlayOrderMode == 1 {
+            return temps[self.currentRandomIndex]
+        }
         return temps[self.currentTrackIndex]
     }
     
@@ -276,15 +287,8 @@ class MPPlayingBigView_new: BaseView {
     }
     
     private func updateView(type: Int) {
-        
-        let temps = getCurrentModels()
-        var song: MPSongModel!
-        
-        if currentPlayOrderMode == 1 {
-            song = temps[getRandomIndexByIndex(index: currentTrackIndex)]
-        }else {
-            song = getCurrentSong()
-        }
+        // 设置下一首播放
+        let song = self.getCurrentSong()
         
         if type == 1 {
             xib_lrc.isSelected = true
@@ -310,9 +314,10 @@ class MPPlayingBigView_new: BaseView {
     
     private func updateNextSongName() {
         let temps = getCurrentModels()
+        
         var nextSong: MPSongModel!
         if currentPlayOrderMode == 1 {
-            nextSong = temps[(getRandomIndexByIndex(index: currentTrackIndex)+1) % temps.count]
+            nextSong = temps[(currentRandomIndex+1) % temps.count]
         }else {
             nextSong = temps[(currentTrackIndex+1) % temps.count]
         }
@@ -323,24 +328,12 @@ class MPPlayingBigView_new: BaseView {
         }else {
             xib_nextSongName.text = nextSong.data_title
         }
-        
-        self.nextSong = nextSong
-        
     }
     
-    private func getIndexBySong(song: MPSongModel) -> Int {
-        // 获取当前歌曲在随机播放列表中的下标：确保是同一首歌曲而不是同一个下标处的歌曲
-        let cs = song
-        var index = -1
-        for i in 0..<self.getCurrentModels().count {
-            let item = self.getCurrentModels()[i]
-            if item.data_title == cs.data_title {
-                index = i
-            }
-        }
-        return index
-    }
-    
+    /// 获取顺序播放列表下标对应歌曲在随机播放列表下面的下标
+    ///
+    /// - Parameter index: 顺序下标
+    /// - Returns: 随机列表下标
     private func getRandomIndexByIndex(index: Int) -> Int {
         // 获取当前歌曲在随机播放列表中的下标：确保是同一首歌曲而不是同一个下标处的歌曲
         let cs = model[currentTrackIndex]
@@ -442,8 +435,13 @@ class MPPlayingBigView_new: BaseView {
     }
     
     private func mvPrev() {
-        let temp = currentTrackIndex == 0 ? model.count : currentTrackIndex
-        currentTrackIndex = (temp-1) % model.count
+        if currentPlayOrderMode == 1 {
+            let temp = currentRandomIndex == 0 ? model.count : currentRandomIndex
+            currentRandomIndex = (temp-1) % model.count
+        }else {
+            let temp = currentTrackIndex == 0 ? model.count : currentTrackIndex
+            currentTrackIndex = (temp-1) % model.count
+        }
         let song = self.getCurrentSong()
         self.currentSouceType = setupCurrentSourceType(song: song)
         playMvOrMp3(type: self.currentSouceType)
@@ -463,7 +461,11 @@ class MPPlayingBigView_new: BaseView {
     }
     
     private func mvNext() {
-        currentTrackIndex = (currentTrackIndex + 1) % model.count
+        if currentPlayOrderMode == 1 {
+            currentRandomIndex = (currentRandomIndex + 1) % model.count
+        }else {
+            currentTrackIndex = (currentTrackIndex + 1) % model.count
+        }
         let song = self.getCurrentSong()
         self.currentSouceType = setupCurrentSourceType(song: song)
         playMvOrMp3(type: self.currentSouceType)
