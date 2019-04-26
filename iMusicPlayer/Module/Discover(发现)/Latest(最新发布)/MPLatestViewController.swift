@@ -18,6 +18,8 @@ private struct Constant {
 class MPLatestViewController: BaseTableViewController {
     
     var headView: MPLatestHeaderView?
+    
+    var offset = 0
 
     var models = [MPSongModel]() {
         didSet {
@@ -34,13 +36,38 @@ class MPLatestViewController: BaseTableViewController {
     override func refreshData() {
         super.refreshData()
         if let hv = self.headView {
-            MPModelTools.getLatestModel(latestType:  hv.currentType, tableName: hv.currentType) { (models) in
+            MPModelTools.getLatestModel(latestType:  hv.currentType, tableName: "") { (models) in
                 if let m = models {
                     self.models = m
+                    self.offset = 0
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.resetNoMoreData()
                 }
             }
         }
-        tableView.mj_header.endRefreshing()
+    }
+    
+    override func pageTurning() {
+        super.pageTurning()
+        offset += 20
+         DiscoverCent?.requestLatest(type: self.headView?.currentType ?? "Japan", limit: 20, offset: offset, complete: { (isSucceed, model, msg) in
+            self.tableView.mj_footer.endRefreshing()
+            switch isSucceed {
+            case true:
+                if let m = model, m.count > 0 {
+                    QYTools.shared.Log(log: "获取到下一页数据")
+                    self.models += m
+                }else {
+                    self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    self.offset -= 20
+                }
+                break
+            case false:
+                SVProgressHUD.showError(withStatus: msg)
+                self.offset -= 20
+                break
+            }
+        })
     }
     
     override func setupStyle() {

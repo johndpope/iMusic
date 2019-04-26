@@ -194,6 +194,142 @@ class MPDiscoverDataCent: HFDataCent {
         }
     }
     
+//    /search/getSongs?duration=any&filter=official&order=date&page=0&q=lemon&size=20&token=z%23master%40Music1.4.8&y=0
+    
+    /// 单独搜索MP3
+    ///
+    /// - Parameters:
+    ///   - q: 关键词
+    ///   - duration: 时长
+    ///   - filter: 过滤
+    ///   - order: 排序
+    ///   - size: 条数
+    ///   - y: 是否用MV来填充MP3
+    ///   - page: 页码下标
+    ///   - complete: 回调
+    func requestSearchMp3(q: String = "", duration: String = "", filter: String = "", order: String = "", size: Int = 20, y: String = "0", page: Int = 0, complete:@escaping ((_ isSucceed: Bool, _ data: MPSearchResultModel?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["q": q,"duration": duration, "filter": filter, "order": order, "size": size, "y": y, "m": 1, "page": page]
+        
+        HFNetworkManager.request(url: API.SearchMp3, method: .get, parameters:param, description: "搜索") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            
+            //            guard let dataArr = resp?["data"].arrayObject else {return}
+            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            let model: MPSearchResultModel = Mapper<MPSearchResultModel>().map(JSONObject: dataDic)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
+//    /search/getVideos?duration=any&filter=official&m=0&order=date&page=0&q=lemon&size=20&token=z%23master%40Music1.4.8
+    
+    /// 单独搜索YouTube MV
+    ///
+    /// - Parameters:
+    ///   - q: 关键词
+    ///   - duration: 时长
+    ///   - filter: 过滤
+    ///   - order: 排序
+    ///   - size: 条数
+    ///   - pageToken: 下一页token
+    ///   - complete: 回调
+    func requestSearchMV(q: String = "", duration: String = "", filter: String = "", order: String = "", size: Int = 20, pageToken: String = "", complete:@escaping ((_ isSucceed: Bool, _ data: MPSearchResultModel?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["q": q,"duration": duration, "filter": filter, "order": order, "size": size, "m": 1, "pageToken": pageToken]
+        
+        HFNetworkManager.request(url: API.SearchMV, method: .get, parameters:param, description: "搜索") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            
+            //            guard let dataArr = resp?["data"].arrayObject else {return}
+            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            let model: MPSearchResultModel = Mapper<MPSearchResultModel>().map(JSONObject: dataDic)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
+//    /search/getPlaylists?duration=any&filter=official&order=date&q=lemon&size=20&token=z%23master%40Music1.4.8
+    
+    /// 单独搜索YouTube歌单列表
+    ///
+    /// - Parameters:
+    ///   - q: 关键词
+    ///   - duration: 时长
+    ///   - filter: 过滤
+    ///   - order: 排序
+    ///   - size: 条数
+    ///   - pageToken: 下一页token
+    ///   - complete: 回调
+    func requestSearchList(q: String = "", duration: String = "", filter: String = "", order: String = "", size: Int = 20, pageToken: String = "", complete:@escaping ((_ isSucceed: Bool, _ data: MPSearchResultModel?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["q": q,"duration": duration, "filter": filter, "order": order, "size": size, "m": 1, "pageToken": pageToken]
+        
+        HFNetworkManager.request(url: API.SearchList, method: .get, parameters:param, description: "搜索") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            
+            //            guard let dataArr = resp?["data"].arrayObject else {return}
+            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            let model: MPSearchResultModel = Mapper<MPSearchResultModel>().map(JSONObject: dataDic)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
 //    /music/getSearchKeyword?token=z%23master%40Music1.4.8
     // MARK: - 搜索关键词
     var data_SearchKeyword: [MPSearchKeywordModel]?
@@ -535,7 +671,7 @@ class MPDiscoverDataCent: HFDataCent {
     ///   - limit: 分页设置
     ///   - offset: 分页间隔
     ///   - complete: 完成回调
-    func requestLatest(type: String = "Japan", limit: Int = 20, offset: Int = 15,complete:@escaping ((_ isSucceed: Bool, _ data: [MPSongModel]?, _ message: String) -> Void)) {
+    func requestLatest(type: String = "Japan", limit: Int = 20, offset: Int = 0,complete:@escaping ((_ isSucceed: Bool, _ data: [MPSongModel]?, _ message: String) -> Void)) {
         
         let param: [String:Any] = ["limit": limit, "offset": offset, "type":  type]
         

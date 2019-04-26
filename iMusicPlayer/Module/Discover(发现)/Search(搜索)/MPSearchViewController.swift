@@ -20,6 +20,7 @@ class MPSearchViewController: BaseTableViewController {
     
     var searchingView: MPSearchingView?
     var searchResultView: MPSearchResultView?
+    var searchResultTableView: UITableView?
     var searchView: MPSearchNavView?
     
     var headerView: MPSearchHeaderView?
@@ -27,6 +28,11 @@ class MPSearchViewController: BaseTableViewController {
     var duration: String = "any"  // 时长：any, short, medium, long
     var filter: String = ""  // 选择："", official, preview, 可多选： "official, preview"
     var order: String = "relevance"  // 排序：relevance, date, videoCount
+    var sgmIndex: Int = 0
+    
+    var mp3Start = 0
+    var nextPageTokenVideo: String = ""
+    var nextPageTokenPlaylist: String = ""
     
     var keyword: String = "" {
         didSet {
@@ -83,15 +89,103 @@ class MPSearchViewController: BaseTableViewController {
         MPModelTools.getSearchKeywordModel(tableName: MPSearchKeywordModel.classCode) { (models) in
             if let m = models {
                 self.keywordModel = m
-//                self.tableView.mj_header.endRefreshing()
             }
         }
         
         MPModelTools.getSearchResult(q: self.keyword, duration: self.duration, filter: self.filter, order: self.order, tableName: "", finished: { (model) in
+            self.searchResultTableView?.mj_header.endRefreshing()
+            self.searchResultTableView?.mj_footer.resetNoMoreData()
             if let m = model {
                 self.searchResultView?.model = m
+                self.nextPageTokenVideo = m.data_nextPageTokenVideo ?? ""
+                self.nextPageTokenPlaylist = m.data_nextPageTokenPlaylist ?? ""
             }
         })
+    }
+    
+    override func pageTurning() {
+        super.pageTurning()
+        if sgmIndex == 0 {
+            mp3Start += 20
+            DiscoverCent?.requestSearchMp3(q: self.keyword, duration: duration, filter: filter, order: order, size: 20, page: mp3Start, complete: { (isSucceed, model, msg) in
+                self.searchResultTableView?.mj_footer.endRefreshing()
+                switch isSucceed {
+                case true:
+                    if let m = model?.data_songs, m.count > 0 {
+                        QYTools.shared.Log(log: "获取到下一页数据")
+                        if let oms = self.searchResultView?.model?.data_songs {
+                            let temps = oms + m
+                            let tempM = self.searchResultView?.model
+                            tempM?.data_songs = temps
+                            self.searchResultView?.model = tempM
+                        }
+                    }else {
+                        self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
+                        self.mp3Start -= 20
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    self.mp3Start -= 20
+                    break
+                }
+            })
+        }else if sgmIndex == 1 {
+            if nextPageTokenVideo == "" {
+                self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
+                return
+            }
+            DiscoverCent?.requestSearchMV(q: self.keyword, duration: duration, filter: filter, order: order, size: 20, pageToken: nextPageTokenVideo, complete: { (isSucceed, model, msg) in
+                self.searchResultTableView?.mj_footer.endRefreshing()
+                switch isSucceed {
+                case true:
+                    if let m = model?.data_videos, m.count > 0 {
+                        QYTools.shared.Log(log: "获取到下一页数据")
+                        if let oms = self.searchResultView?.model?.data_videos {
+                            self.nextPageTokenVideo = model?.data_nextPageTokenVideo ?? ""
+                            let temps = oms + m
+                            let tempM = self.searchResultView?.model
+                            tempM?.data_videos = temps
+                            self.searchResultView?.model = tempM
+                        }
+                    }else {
+                        self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    break
+                }
+            })
+        }else if sgmIndex == 2 {
+            if nextPageTokenPlaylist == "" {
+                self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
+                return
+            }
+            DiscoverCent?.requestSearchList(q: self.keyword, duration: duration, filter: filter, order: order, size: 20, pageToken: nextPageTokenPlaylist, complete: { (isSucceed, model, msg) in
+                self.searchResultTableView?.mj_footer.endRefreshing()
+                switch isSucceed {
+                case true:
+                    if let m = model?.data_playlists, m.count > 0 {
+                        QYTools.shared.Log(log: "获取到下一页数据")
+                        if let oms = self.searchResultView?.model?.data_playlists {
+                            self.nextPageTokenPlaylist = model?.data_nextPageTokenPlaylist ?? ""
+                            let temps = oms + m
+                            let tempM = self.searchResultView?.model
+                            tempM?.data_playlists = temps
+                            self.searchResultView?.model = tempM
+                        }
+                    }else {
+                        self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    break
+                }
+            })
+        }
+        
     }
     
     override func setupStyle() {
@@ -230,6 +324,8 @@ extension MPSearchViewController {
                 // 新增结果列表
                 let rv = MPSearchResultView()
                 self.searchResultView = rv
+                self.searchResultTableView = rv.tableView
+                rv.delegate = self
                 self.view.addSubview(rv)
                 rv.snp.makeConstraints { (make) in
                     make.left.right.top.bottom.equalToSuperview()
@@ -239,6 +335,7 @@ extension MPSearchViewController {
                     self.duration = duration
                     self.filter = filter
                     self.order = order
+                    self.sgmIndex = sgmIndex
                     // 判断是否需要时长和选择
                     if sgmIndex == 2 {
                         self.duration = "any"
@@ -266,5 +363,13 @@ extension MPSearchViewController {
         return keys
     }
 }
-
-
+// MARK: - 刷新搜索结果View
+extension MPSearchViewController: MPSearchResultViewDelegate {
+    func refreshData(_ searchResultView: MPSearchResultView) {
+        self.refreshData()
+    }
+    
+    func pageTurning(_ searchResultView: MPSearchResultView) {
+        self.pageTurning()
+    }
+}

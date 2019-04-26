@@ -17,6 +17,8 @@ class MPChoicenessViewController: BaseTableViewController {
     
     var typeID: Int = 0
     
+    var leftTitle = ""
+    
     var start = 0
     
     var model = [GeneralPlaylists]() {
@@ -34,10 +36,12 @@ class MPChoicenessViewController: BaseTableViewController {
     override func refreshData() {
         super.refreshData()
         
-        MPModelTools.getSongListModel(typeID: typeID, tableName: GeneralPlaylists.classCode + "\(typeID)") { (model) in
+        MPModelTools.getSongListModel(typeID: typeID, tableName: "") { (model) in
             if let m = model {
                 self.model = m
+                self.start = 0
                 self.tableView.mj_header.endRefreshing()
+                self.tableView.mj_footer.resetNoMoreData()
             }
         }
         
@@ -47,9 +51,9 @@ class MPChoicenessViewController: BaseTableViewController {
         super.pageTurning()
         start += 20
         DiscoverCent?.requestSongList(type: typeID, rows: 20, start: start, complete: { (isSucceed, model, msg) in
+           self.tableView.mj_footer.endRefreshing()
             switch isSucceed {
             case true:
-                self.tableView.mj_footer.endRefreshing()
                 if let m = model, m.count > 0 {
                     QYTools.shared.Log(log: "获取到下一页数据")
                     self.model += m
@@ -60,7 +64,6 @@ class MPChoicenessViewController: BaseTableViewController {
                 break
             case false:
                 SVProgressHUD.showError(withStatus: msg)
-                self.tableView.mj_footer.endRefreshingWithNoMoreData()
                 self.start -= 20
                 break
             }
@@ -71,7 +74,11 @@ class MPChoicenessViewController: BaseTableViewController {
     override func setupStyle() {
         super.setupStyle()
         
-        addLeftItem(title: NSLocalizedString("精选歌单", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
+        var title = NSLocalizedString("精选歌单", comment: "")
+        if leftTitle != "" {
+            title = NSLocalizedString(leftTitle, comment: "")
+        }
+        addLeftItem(title: title, imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
         addRightItem(imageName: "nav_icon_search")
     }
     

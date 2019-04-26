@@ -152,6 +152,7 @@ extension MPStyleGenreViewController {
         }
         if let cm = cellModel {
             vc.typeID = cm.data_id
+            vc.leftTitle = cm.data_title ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

@@ -19,7 +19,8 @@ class MPSearchResultHeaderView: UITableViewCell {
     var tempFilterArr = [String]()
     var order: String = "relevance"  // 排序：relevance, date, videoCount
     
-    var itemClickedBlock: ((_ duration: String, _ filter: String, _ order: String) -> Void)?
+//    var itemClickedBlock: ((_ duration: String, _ filter: String, _ order: String) -> Void)?
+    var itemClickedBlock: ((_ duration: String, _ filter: String, _ order: String, _ segIndex: Int) -> Void)?
     
     var defaultConditionH: CGFloat = 0
     var defaultTimeTagsH: CGFloat = 0
@@ -121,6 +122,10 @@ extension MPSearchResultHeaderView {
             b(segment.selectedSegmentIndex)
         }
         
+        if let b = itemClickedBlock {
+            b(duration, filter, order, segment.selectedSegmentIndex)
+        }
+        
         // 回调
         if let b = frameChangeBlock {
             b()
@@ -218,7 +223,7 @@ extension MPSearchResultHeaderView: TagListViewDelegate {
             }
             filter = tempFilterArr.joined(separator: ",")
             if let b = itemClickedBlock {
-                b(duration, filter, order)
+                b(duration, filter, order, segment.selectedSegmentIndex)
             }
             break
         case xib_sortTagList:
@@ -247,7 +252,7 @@ extension MPSearchResultHeaderView: TagListViewDelegate {
         resetStyle(sender: sender)
         tagView.isSelected = !tagView.isSelected
         if let b = itemClickedBlock {
-             b(duration, filter, order)
+             b(duration, filter, order, segment.selectedSegmentIndex)
         }
     }
 }

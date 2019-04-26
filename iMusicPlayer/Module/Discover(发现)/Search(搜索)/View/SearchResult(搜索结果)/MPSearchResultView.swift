@@ -19,9 +19,16 @@ private struct Constant {
     static let songListRowHeight = SCREEN_WIDTH * (100/375)
 }
 
+protocol MPSearchResultViewDelegate {
+    func refreshData(_ searchResultView: MPSearchResultView)
+    func pageTurning(_ searchResultView: MPSearchResultView)
+}
+
 class MPSearchResultView: BaseView {
     
     var itemClickedBlock: ((_ duration: String, _ filter: String, _ order: String, _ segIndex: Int) -> Void)?
+    
+    var delegate: MPSearchResultViewDelegate?
     
     var model: MPSearchResultModel? {
         didSet {
@@ -35,7 +42,7 @@ class MPSearchResultView: BaseView {
         }
     }
     
-    private let tableView = UITableView()
+    let tableView = UITableView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -70,10 +77,18 @@ class MPSearchResultView: BaseView {
     }
     
     /// 刷新数据
-    @objc open func refreshData() {}
+    @objc open func refreshData() {
+        if let d = self.delegate {
+            d.refreshData(self)
+        }
+    }
     
     /// 数据翻页
-    @objc open func pageTurning() {}
+    @objc open func pageTurning() {
+        if let d = self.delegate {
+            d.pageTurning(self)
+        }
+    }
     
     private func setupHeaderView() {
         let hv = MPSearchResultHeaderView.md_viewFromXIB() as! MPSearchResultHeaderView
@@ -85,11 +100,13 @@ class MPSearchResultView: BaseView {
             self.tableView.reloadData()
         }
         
-        hv.itemClickedBlock = {(duration, filter, order) in
+        hv.itemClickedBlock = {(duration, filter, order, sgmIndex) in
             if let b = self.itemClickedBlock {
-                b(duration, filter, order, self.currentIndex)
+                b(duration, filter, order, sgmIndex)
             }
         }
+        
+//        hv.itemClickedBlock = self.itemClickedBlock
     }
     
 }

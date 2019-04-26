@@ -16,6 +16,9 @@ private struct Constant {
 class MPPopularViewController: BaseTableViewController {
     
     var headerView: MPPopularHeaderView?
+    
+    var page: Int = 0
+    
     var songName: String = "" {
         didSet {
             self.refreshData()
@@ -43,10 +46,36 @@ class MPPopularViewController: BaseTableViewController {
                 if let m = models {
                     self.model = m
                     self.tableView.mj_header.endRefreshing()
+                    self.tableView.mj_footer.resetNoMoreData()
                 }
             }
         }
         
+    }
+    
+    override func pageTurning() {
+        super.pageTurning()
+        self.page += 20
+        if let hv = self.headerView {
+            DiscoverCent?.requestPopular(nationality: hv.nationality, type: hv.type, name: songName, page: self.page, row: 20, complete: { (isSucceed, model, msg) in
+                self.tableView.mj_footer.endRefreshing()
+                switch isSucceed {
+                case true:
+                    if let m = model, m.count > 0 {
+                        QYTools.shared.Log(log: "获取到下一页数据")
+                        self.model += m
+                    }else {
+                        self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                        self.page -= 20
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    self.page -= 20
+                    break
+                }
+            })
+        }
     }
     
     override func setupStyle() {
