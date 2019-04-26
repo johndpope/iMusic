@@ -76,13 +76,13 @@ class API: NSObject {
     // MARK: - 搜索
     static let SearchResult         = "/search/getAll"
     
-    // MARK: -
+    // MARK: - 单独搜索MP3
     static let SearchMp3         = "/search/getSongs"
     
-    // MARK: -
+    // MARK: - 单独搜索MV
     static let SearchMV         = "/search/getVideos"
     
-    // MARK: -
+    // MARK: - 单独搜索YouTube歌单
     static let SearchList         = "/search/getPlaylists"
     
     // MARK: - 联想关键词
@@ -102,4 +102,7 @@ class API: NSObject {
     
     // MARK: - 播放来源
     static let MVSource        = "https://www.youtube.com/watch?v="
+    
+    // MARK: - 搜索歌词
+    static let SearchLyrics         = "/playlists/getLyrics"
 }

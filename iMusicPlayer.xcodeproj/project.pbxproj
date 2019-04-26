@@ -27,6 +27,7 @@
 		C53E976F2252FF2D007F3920 /* MPYoutubeMVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E976E2252FF2D007F3920 /* MPYoutubeMVModel.swift */; };
 		C54D6DD8227007AA0007F57F /* MPPlayingBigView_backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D6DD7227007AA0007F57F /* MPPlayingBigView_backup.swift */; };
 		C54D6DDB227017450007F57F /* MPPlayingBigView_new.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54D6DDA227017450007F57F /* MPPlayingBigView_new.xib */; };
+		C54D6DDD2272F0B40007F57F /* MPLyricsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D6DDC2272F0B40007F57F /* MPLyricsModel.swift */; };
 		C56033F12242255200F6795F /* MPSearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033EF2242255100F6795F /* MPSearchingView.swift */; };
 		C56033F62242258900F6795F /* MPSearchingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */; };
 		C56033F72242258900F6795F /* MPSearchingViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */; };
@@ -489,6 +490,7 @@
 		C53E976E2252FF2D007F3920 /* MPYoutubeMVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPYoutubeMVModel.swift; sourceTree = "<group>"; };
 		C54D6DD7227007AA0007F57F /* MPPlayingBigView_backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayingBigView_backup.swift; sourceTree = "<group>"; };
 		C54D6DDA227017450007F57F /* MPPlayingBigView_new.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MPPlayingBigView_new.xib; path = "iMusicPlayer/Module/Discover(发现)/SongDetail(歌曲详情)/Playing(播放中)/PlayingView(播放详情展开)/MPPlayingBigView_new.xib"; sourceTree = SOURCE_ROOT; };
+		C54D6DDC2272F0B40007F57F /* MPLyricsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPLyricsModel.swift; sourceTree = "<group>"; };
 		C56033EF2242255100F6795F /* MPSearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingView.swift; sourceTree = "<group>"; };
 		C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingViewTableViewCell.swift; sourceTree = "<group>"; };
 		C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchingViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -1984,6 +1986,7 @@
 				C53E976722520910007F3920 /* MPYoutubeModel.swift */,
 				C53E976E2252FF2D007F3920 /* MPYoutubeMVModel.swift */,
 				C51CE7FA2270BC7300964D38 /* MPRecentlyAlbumModel.swift */,
+				C54D6DDC2272F0B40007F57F /* MPLyricsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3737,6 +3740,7 @@
 				C5F5378622544EB8006D228B /* Video.swift in Sources */,
 				C57FC9112240DC3000218DE7 /* HXCustomPreviewView.m in Sources */,
 				C57FC8032240DC2F00218DE7 /* MPMediaLibraryModel.swift in Sources */,
+				C54D6DDD2272F0B40007F57F /* MPLyricsModel.swift in Sources */,
 				C57FC8BE2240DC2F00218DE7 /* UIView+Category.m in Sources */,
 				C57FC8622240DC2F00218DE7 /* MPUploadMusicViewController.swift in Sources */,
 				C57FC8C32240DC2F00218DE7 /* NSString+Category.m in Sources */,

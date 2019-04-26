@@ -14,6 +14,47 @@ import Alamofire
 
 class MPDiscoverDataCent: HFDataCent {
     
+//    /playlists/getLyrics?name=%E7%B6%BB%E3%81%B3%E3%81%AE%E5%BD%B1&songId=486194220&token=z%23master%40Music1.4.8
+    
+    /// 搜索歌词
+    ///
+    /// - Parameters:
+    ///   - name: 歌曲名
+    ///   - songId: 歌曲ID
+    ///   - complete: 回调
+    func requestSearchLyrics(name: String = "", songId: String = "", complete:@escaping ((_ isSucceed: Bool, _ data: MPLyricsModel?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["name": name,"songId": songId]
+        
+        HFNetworkManager.request(url: API.SearchLyrics, method: .get, parameters:param, description: "搜索歌词") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            
+            //            guard let dataArr = resp?["data"].arrayObject else {return}
+            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            let model: MPLyricsModel = Mapper<MPLyricsModel>().map(JSONObject: dataDic)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
 //    /playlists/getYoutubePlaylistItems?playlistId=PL5DkbtlaY8IyLg3AOjWcheija4y2N7vIr&token=z%23master%40Music1.4.8
     // MARK: - 通过后台搜索YouTube歌单
     var data_SongListByYoutube: MPYoutubeMVModel?
