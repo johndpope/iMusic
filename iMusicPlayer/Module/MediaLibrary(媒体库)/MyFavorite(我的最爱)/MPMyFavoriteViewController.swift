@@ -48,7 +48,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
             title = NSLocalizedString("最近播放", comment: "")
             MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
                 if let m = model {
-                    self.model = m
+                    self.model = m.reversed()
 //                    self.tableView.mj_header.endRefreshing()
                     
                     self.headerView?.count = model?.count ?? 0

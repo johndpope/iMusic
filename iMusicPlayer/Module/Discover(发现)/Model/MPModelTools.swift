@@ -53,7 +53,7 @@ class MPModelTools: NSObject {
             for i in 0..<arr.count {
                 var isExsist = false
                 for j in 0..<songs.count {
-                    if arr[i].data_title == songs[j].data_title {
+                    if (arr[i].data_title == songs[j].data_title) || (arr[i].data_songName == songs[j].data_songName) {
                         isExsist = true
                     }
                 }

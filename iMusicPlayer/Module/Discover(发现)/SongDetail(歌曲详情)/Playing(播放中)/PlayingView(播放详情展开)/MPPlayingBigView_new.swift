@@ -267,6 +267,9 @@ class MPPlayingBigView_new: BaseView {
     
     private func playMvOrMp3(type: Int) {
         self.bigStyle()
+        
+        self.playingStatusAction()
+        
         if type == 1 {
             playMp3()
         }else {
@@ -520,7 +523,9 @@ class MPPlayingBigView_new: BaseView {
     /// 状态开始播放
     private func startPlaying() {
         xib_play.isSelected = true
-        self.playingStatusAction()
+        // 更新结束时间
+        let endtime: TimeInterval = currentSouceType == 1 ? self.streamer.duration : self.playView.duration()
+        xib_endTime.text = "\(endtime)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
     }
     /// 状态结束播放
     private func endPlaying() {
@@ -717,10 +722,6 @@ extension MPPlayingBigView_new {
     }
     
     private func playingStatusAction() {
-        // 更新结束时间
-        let endtime: TimeInterval = currentSouceType == 1 ? self.streamer.duration : self.playView.duration() ?? 0.0
-        xib_endTime.text = "\(endtime)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
-        
         // 异步添加
         DispatchQueue.init(label: "updateRecentlyList").async {
             // 添加到最近播放列表
@@ -735,7 +736,6 @@ extension MPPlayingBigView_new {
                 })
             }
         }
-        
     }
 }
 
