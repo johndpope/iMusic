@@ -36,6 +36,8 @@ class MPSongModel:BaseModel, DOUAudioFile {
     
     var data_audioFileURL: URL?
     
+    var data_lyrics: String?
+    
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(self.data_id, forKey: "id")
         aCoder.encode(self.data_originalId, forKey: "originalId")

@@ -38,6 +38,13 @@ class MPPlayingBigView_new: BaseView {
     var streamer: DOUAudioStreamer!
     // 音频乐谱图
     var audioVisualizer: DOUAudioVisualizer!
+    /// 歌词模型
+    var lyricsModel: MPLyricsModel! {
+        didSet {
+            lrcView?.model = lyricsModel
+        }
+    }
+    var lrcView: MPLrcView?
     // MARK: - MP3属性结束
     
     /// 扩展功能View
@@ -293,11 +300,11 @@ class MPPlayingBigView_new: BaseView {
         let song = self.getCurrentSong()
         
         if type == 1 {
-            xib_lrc.isSelected = true
+//            xib_lrc.isSelected = true
             xib_title.text = song.data_songName
             xib_desc.text = song.data_singerName
         }else {
-            xib_lrc.isSelected = false
+//            xib_lrc.isSelected = false
             xib_title.text = song.data_title
             xib_desc.text = song.data_channelTitle
         }
@@ -354,6 +361,27 @@ class MPPlayingBigView_new: BaseView {
         DispatchQueue.main.async {
             let song = self.getCurrentSong()
             self.xib_collect.isSelected = MPModelTools.checkSongExsistInPlayingList(song: song, tableName: MPMyFavoriteViewController.classCode)
+            
+            self.xib_lrc.isSelected = false
+            self.xib_lrc.isEnabled = false
+            if self.currentSouceType == 1, let name = song.data_songName, let sid = song.data_songId {
+                // 获取歌词信息
+                DiscoverCent?.requestSearchLyrics(name: name, songId: sid, complete: { (isSucceed, model, msg) in
+                    switch isSucceed {
+                    case true:
+                        // 将歌词赋值给自定义属性
+                        self.lyricsModel = model
+                        if let lrcM = model, let lrc = lrcM.data_lyrics {
+                            self.xib_lrc.isSelected = true
+                            self.xib_lrc.isEnabled = true
+                        }
+                        break
+                    case false:
+                        SVProgressHUD.showError(withStatus: msg)
+                        break
+                    }
+                })
+            }
         }
         
         // 小窗口播放数据源
@@ -366,6 +394,19 @@ class MPPlayingBigView_new: BaseView {
         switch sender.tag {
         case 10001: // 歌词
             let pv = MPLrcView.md_viewFromXIB() as! MPLrcView
+            self.lrcView = pv
+            // 设置当前播放时间
+            if streamer != nil {
+                 self.lyricsModel.data_currentTime = streamer.currentTime
+            }
+            pv.model = self.lyricsModel
+            
+            pv.seekToTimeBlock = {(time) in
+                if self.streamer != nil {
+                    self.streamer.currentTime = time
+                }
+            }
+            
             HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
             break
         case 10002: // 上一曲

@@ -10,6 +10,9 @@ import UIKit
 
 
 open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
+    
+    var seekToTimeBlock: ((_ time: TimeInterval) -> Void)?
+    
     // 滑动时播放View
     private var scrollPlayView: MPScrollPlayView?
     
@@ -119,6 +122,9 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
                 if let time = lyricsModel?.time {
                     pv.updateTime(model: "\(Int(time))".md_dateDistanceTimeWithBeforeTime(format: "mm:ss"))
                     self.timer.seek(toTime: time)
+                    if let b = self.seekToTimeBlock {
+                        b(time)
+                    }
                 }
             }
             

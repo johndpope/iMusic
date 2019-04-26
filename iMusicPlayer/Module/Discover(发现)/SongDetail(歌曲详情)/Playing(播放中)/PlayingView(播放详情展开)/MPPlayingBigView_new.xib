@@ -90,7 +90,7 @@
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQJ-Vb-bek">
+                                <button opaque="NO" tag="10001" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQJ-Vb-bek">
                                     <rect key="frame" x="199" y="70.5" width="35" height="14"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                     <state key="normal" title="歌词" image="icon_lyrics_none">
