@@ -82,16 +82,18 @@ class HFNetworkManager: NSObject {
         let token = TokenCode
         let s = StyleImageType
         
-        p["app_id"] = app_id
-        p["hl"] = hl
-//        p["m"] = m
-        p["op"] = op
-        p["s"] = s
-        p["token"] = token
-        if (p["m"] == nil) {
-            p["m"] = m
-        }else {
-//            p.removeValue(forKey: "m")
+        if method == .get {
+            p["app_id"] = app_id
+            p["hl"] = hl
+            //        p["m"] = m
+            p["op"] = op
+            p["s"] = s
+            p["token"] = token
+            if (p["m"] == nil) {
+                p["m"] = m
+            }else {
+                //            p.removeValue(forKey: "m")
+            }
         }
         
         // 设置编码格式

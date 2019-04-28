@@ -33,7 +33,7 @@ class API: NSObject {
     static let WXUserinfo          = "https://api.weixin.qq.com/sns/userinfo"
     
     // MARK: - 登录
-    static let Login         = "/user/loginUser/login"
+    static let Login         = "/config/login"
     
     // MARK: - 刷新token
     static let RefreshToken         = "/user/loginUser/refreshToken"
@@ -105,4 +105,11 @@ class API: NSObject {
     
     // MARK: - 搜索歌词
     static let SearchLyrics         = "/playlists/getLyrics"
+    
+    // MARK: - 拉取用户保存的数据
+    static let UserCloudList         = "/user/getUserData"
+    
+    // MARK: -
+    static let SaveUserCloudList         = "/user/syncUserData"
+    
 }

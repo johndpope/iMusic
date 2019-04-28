@@ -29,6 +29,7 @@
 		C54D6DDB227017450007F57F /* MPPlayingBigView_new.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54D6DDA227017450007F57F /* MPPlayingBigView_new.xib */; };
 		C54D6DDD2272F0B40007F57F /* MPLyricsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D6DDC2272F0B40007F57F /* MPLyricsModel.swift */; };
 		C54D6DDF227541A60007F57F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C54D6DDE227541A60007F57F /* GoogleService-Info.plist */; };
+		C54D6DE12275AB270007F57F /* MPUserCloudListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D6DE02275AB260007F57F /* MPUserCloudListModel.swift */; };
 		C56033F12242255200F6795F /* MPSearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033EF2242255100F6795F /* MPSearchingView.swift */; };
 		C56033F62242258900F6795F /* MPSearchingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */; };
 		C56033F72242258900F6795F /* MPSearchingViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */; };
@@ -493,6 +494,7 @@
 		C54D6DDA227017450007F57F /* MPPlayingBigView_new.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MPPlayingBigView_new.xib; path = "iMusicPlayer/Module/Discover(发现)/SongDetail(歌曲详情)/Playing(播放中)/PlayingView(播放详情展开)/MPPlayingBigView_new.xib"; sourceTree = SOURCE_ROOT; };
 		C54D6DDC2272F0B40007F57F /* MPLyricsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPLyricsModel.swift; sourceTree = "<group>"; };
 		C54D6DDE227541A60007F57F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C54D6DE02275AB260007F57F /* MPUserCloudListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPUserCloudListModel.swift; sourceTree = "<group>"; };
 		C56033EF2242255100F6795F /* MPSearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingView.swift; sourceTree = "<group>"; };
 		C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingViewTableViewCell.swift; sourceTree = "<group>"; };
 		C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchingViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -1989,6 +1991,7 @@
 				C53E976E2252FF2D007F3920 /* MPYoutubeMVModel.swift */,
 				C51CE7FA2270BC7300964D38 /* MPRecentlyAlbumModel.swift */,
 				C54D6DDC2272F0B40007F57F /* MPLyricsModel.swift */,
+				C54D6DE02275AB260007F57F /* MPUserCloudListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3381,6 +3384,8 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iMusicPlayer/Pods-iMusicPlayer-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/TencentOpenAPI/TencentOpenApi_IOS_Bundle.bundle",
 			);
@@ -3388,6 +3393,8 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TencentOpenApi_IOS_Bundle.bundle",
 			);
@@ -3638,6 +3645,7 @@
 				C57FC8D52240DC2F00218DE7 /* JSDropDownMenu.m in Sources */,
 				C57FC92E2240DC3000218DE7 /* UIView+Extension.m in Sources */,
 				C57FC9202240DC3000218DE7 /* FJSQLiteUtils.swift in Sources */,
+				C54D6DE12275AB270007F57F /* MPUserCloudListModel.swift in Sources */,
 				C57FC9102240DC3000218DE7 /* UIButton+HXExtension.m in Sources */,
 				C57FC92B2240DC3000218DE7 /* CYPasswordView.m in Sources */,
 				C57FC8CE2240DC2F00218DE7 /* UIColor+Category.m in Sources */,

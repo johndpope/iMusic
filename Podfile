@@ -34,6 +34,7 @@ target 'iMusicPlayer' do
 
   #    Google登录
   pod 'GoogleSignIn'
+  pod 'FirebaseUI/Google'
   
   pod "RxSwift"
   pod "RxCocoa"

@@ -8,6 +8,9 @@ PODS:
   - BGFMDB/FMDB (2.0.13)
   - CryptoSwift (0.14.0)
   - DOUAudioStreamer (0.2.15)
+  - Firebase/Auth (5.18.0):
+    - Firebase/CoreOnly
+    - FirebaseAuth (= 5.4.0)
   - Firebase/Core (5.18.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.7.0)
@@ -22,12 +25,24 @@ PODS:
     - GoogleUtilities/Network (~> 5.2)
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
+  - FirebaseAuth (5.4.0):
+    - FirebaseAuthInterop (~> 1.0)
+    - FirebaseCore (~> 5.2)
+    - GoogleUtilities/Environment (~> 5.2)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseAuthInterop (1.0.0)
   - FirebaseCore (5.3.1):
     - GoogleUtilities/Logger (~> 5.2)
   - FirebaseInstanceID (3.7.0):
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/UserDefaults (~> 5.2)
+  - FirebaseUI/Auth (6.1.1):
+    - Firebase/Auth (~> 5.0)
+    - GoogleUtilities/UserDefaults
+  - FirebaseUI/Google (6.1.1):
+    - FirebaseUI/Auth
+    - GoogleSignIn (~> 4.0)
   - FSPagerView (0.8.2)
   - GoogleAppMeasurement (5.7.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
@@ -124,6 +139,7 @@ DEPENDENCIES:
   - CryptoSwift
   - DOUAudioStreamer
   - Firebase/Core
+  - FirebaseUI/Google
   - FSPagerView
   - GoogleSignIn
   - IQKeyboardManager
@@ -150,8 +166,11 @@ SPEC REPOS:
     - DOUAudioStreamer
     - Firebase
     - FirebaseAnalytics
+    - FirebaseAuth
+    - FirebaseAuthInterop
     - FirebaseCore
     - FirebaseInstanceID
+    - FirebaseUI
     - FSPagerView
     - GoogleAppMeasurement
     - GoogleSignIn
@@ -185,8 +204,11 @@ SPEC CHECKSUMS:
   DOUAudioStreamer: 14f217bab01b52171fc2bd7d96e1f8fdd50fce68
   Firebase: 02f3281965c075426141a0ce1277e9de6649cab9
   FirebaseAnalytics: 23851fe602c872130a2c5c55040b302120346cc2
+  FirebaseAuth: d85d052354447f30b4b2a805ab91b511458b56a6
+  FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: 52f851b30e11360f1e67cf04b1edfebf0a47a2d3
   FirebaseInstanceID: bd6fc5a258884e206fd5c474ebe4f5b00e21770e
+  FirebaseUI: 1345f778d53f9484f21474c7b10bba313b28a76b
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
   GoogleAppMeasurement: 6cf307834da065863f9faf4c0de0a936d81dd832
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
@@ -213,6 +235,6 @@ SPEC CHECKSUMS:
   WechatOpenSDK: 9b721089507c895d05f997408c30bb6e6f5f9b60
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 46be2f8d9768b8747e4f0003fe1a07efb684d5f1
+PODFILE CHECKSUM: 956994148c776cbdde4390ffc48a85df445020d4
 
 COCOAPODS: 1.6.1

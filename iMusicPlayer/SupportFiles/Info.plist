@@ -22,10 +22,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>litong</string>
+			<string>imusic</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>LiTong</string>
+				<string>fm.music.musicbox.musicfm.download.freemusic.offline.free.online.song.jpop</string>
 			</array>
 		</dict>
 		<dict>
@@ -75,7 +75,7 @@
 			<string>google</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.491659727556-vtk3kbfmvck4fggm806mafct16gnbi4j</string>
+				<string>com.googleusercontent.apps.874894841042-7e8kvcluqcdu7f5c2tjkk6398ed2pmnt</string>
 			</array>
 		</dict>
 	</array>

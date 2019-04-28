@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import FirebaseUI
 
 class MPUserSettingViewController: BaseTableViewController {
 
+    var authUI: FUIAuth!
+    
+    var headerView: MPUserSettingHeaderView!
+    
     private static let plistPathName = "/usersetting.plist"
     
     var plistName: String = "usersetting" {
@@ -30,7 +35,10 @@ class MPUserSettingViewController: BaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        self.authUI = FUIAuth.defaultAuthUI()
+        // You need to adopt a FUIAuthDelegate protocol to receive callback
+//        self.authUI.delegate = self
+        HFThirdPartyManager.shared.delegate = self
     }
     
     override func setupStyle() {
@@ -49,13 +57,49 @@ class MPUserSettingViewController: BaseTableViewController {
         tableView.backgroundColor = UIColor.white
         tableView.separatorStyle = .singleLine
 //        tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
+        
     }
     
     override func setupTableHeaderView() {
         super.setupTableHeaderView()
         
         let hv = MPUserSettingHeaderView.md_viewFromXIB() as! MPUserSettingHeaderView
+        headerView = hv
         tableView.tableHeaderView = hv
+        
+        hv.clickBlock = {(sender) in
+            if let btn = sender as? UIButton {
+                if btn.tag == 10001 {
+                    var alert: HFAlertController?
+                    let config = MDAlertConfig()
+                    config.title = NSLocalizedString("退出\n", comment: "")
+                    config.desc = NSLocalizedString("确定要退出登录吗？", comment: "")
+                    config.negativeTitle = NSLocalizedString("取消", comment: "")
+                    config.positiveTitle = NSLocalizedString("确定", comment: "")
+                    config.negativeTitleColor = Color.ThemeColor
+                    config.positiveTitleColor = Color.ThemeColor
+                    alert = HFAlertController.alertController(config: config, ConfirmCallBack: {
+                        // 退出登录
+                        let firebaseAuth = Auth.auth()
+                        do {
+                            try firebaseAuth.signOut()
+                        } catch let signOutError as NSError {
+                            print ("Error signing out: %@", signOutError)
+                        }
+                        hv.normalStyle()
+                    }) {
+                        // 取消
+                        alert?.dismiss(animated: true, completion: nil)
+                    }
+                    HFAppEngine.shared.currentViewController()?.present(alert!, animated: true, completion: nil)
+                }else {
+                    HFThirdPartyManager.shared.loginByThirdParty(type: .Google)
+                }
+            }
+        }
     }
     
     
@@ -254,5 +298,53 @@ extension MPUserSettingViewController {
     /// 去广告
     @objc func removeAd() {
         
+    }
+}
+import GoogleSignIn
+extension MPUserSettingViewController: HFThirdPartyManagerDelegate {
+    func GoogleLoginDidComlete(_ isSucced: Bool, _ msg: String, _ data: GIDGoogleUser?) {
+        switch isSucced {
+        case true:
+            
+            guard let authentication = data?.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+            
+            Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                if error != nil {
+                    return
+                }
+                // firebase授权成功：获取用户信息
+                if let userInfo = authResult?.additionalUserInfo?.profile {
+                    guard let picture = userInfo["picture"] as? String, let name = userInfo["name"] as? String, let email = userInfo["email"] as? String, let did = userInfo["id"] as? String else {
+                        return
+                    }
+                    let uid = UIDevice.current.identifierForVendor?.uuidString ?? "JA8888"
+                    let t = MPUserSettingHeaderViewModel.init(picture: picture, name: name, email: email, uid: uid, did: did)
+                    self.headerView.updateView(model: t)
+                    
+                    // 异步保存用户信息
+                    DispatchQueue.init(label: "SaveUserInfo").async {
+                        DiscoverCent?.requestLogin(name: t.name, avatar: t.picture, contact: t.email, did: t.did, uid: t.uid, complete: { (isSucceed, msg) in
+                            switch isSucceed {
+                            case true:
+                                SVProgressHUD.showInfo(withStatus: "用户信息保存成功~")
+                                break
+                            case false:
+                                SVProgressHUD.showError(withStatus: msg)
+                                break
+                            }
+                        })
+                    }
+                    
+                }
+               
+            }
+            
+            break
+        case false:
+            SVProgressHUD.showError(withStatus: msg)
+            break
+        }
     }
 }

@@ -13,6 +13,125 @@ import SwiftyJSON
 import Alamofire
 
 class MPDiscoverDataCent: HFDataCent {
+//    /user/syncUserData?contact=1&reset=1&token=z%23master%40Music1.4.8&uid=1
+    
+    func requestSaveUserCloudList(contact: String, reset: Int = 1, uid: String, model: MPUserCloudListModel, complete:@escaping ((_ isSucceed: Bool, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["contact": contact,"uid": uid, "reset": reset]
+//        {{music}}/user/syncUserData?token={{token}}&uid=MtyTnSfvidZnRohJWWzujIfF7Yq2&reset=1&contact=hrf82898@gmail.com
+        let url = API.SaveUserCloudList + "?token=z%23master%40Music1.4.8&contact=\(contact)&reset=\(reset)&uid=\(uid)"
+        
+        HFNetworkManager.request(url: url, method: .post, parameters: [param].asParameters(), requestHeader: AppCommon.JsonRequestHeader,
+                                 encoding: JSONEncoding.default, description: "保存数据到云端") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            //            guard let dataArr = resp?["data"].arrayObject else {return}
+            //            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            // 请求成功时
+            complete(true, msg)
+        }
+    }
+    
+//    /user/getUserData?contact=1294432350%40qq.com&token=z%23master%40Music1.4.8&uid=3C918520-B55F-4DD4-8D9F-D71CC9A38AD7
+    
+    /// 获取云端保存数据
+    ///
+    /// - Parameters:
+    ///   - contact: 邮箱
+    ///   - uid: UID
+    ///   - complete: 回调
+    func requestUserCloudList(contact: String = "", uid: String = "", complete:@escaping ((_ isSucceed: Bool, _ data: MPUserCloudListModel?, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["contact": contact,"uid": uid]
+        
+        HFNetworkManager.request(url: API.UserCloudList, method: .get, parameters:param, description: "获取云端数据") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, nil, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false,nil, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            //            guard let dataArr = resp?["data"].arrayObject else {return}
+            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            let model: MPUserCloudListModel = Mapper<MPUserCloudListModel>().map(JSONObject: dataDic)!
+            
+            // 请求成功时
+            complete(true,model,msg)
+        }
+    }
+    
+//    /config/login?avatar=1&contact=1&did=1&name=1&token=ok&uid=1
+
+    /// 登录保存用户信息
+    ///
+    /// - Parameters:
+    ///   - name: 用户名
+    ///   - avatar: 头像
+    ///   - contact: 邮箱
+    ///   - did: 用户ID
+    ///   - uid: 设备ID
+    ///   - complete: 回调
+    func requestLogin(name: String = "", avatar: String = "", contact: String = "", did: String = "", uid: String = "", complete:@escaping ((_ isSucceed: Bool, _ message: String) -> Void)) {
+        
+        let param: [String:Any] = ["name": name, "avatar": avatar,"contact": contact, "did": did, "uid": uid]
+        
+        HFNetworkManager.request(url: API.Login, method: .get, parameters:param, description: "登录：保存用户信息") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false, msg)
+                return
+            }
+            
+            //            guard let code = resp?["code"].string else {return}
+            //            guard let dataArr = resp?["data"].arrayObject else {return}
+            //            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            
+            // 保存用户信息
+            let dict = ["email": contact, "uid": uid]
+            self.localizationUserInfo(dict: dict)
+            
+            // 请求成功时
+            complete(true,msg)
+        }
+    }
     
 //    /playlists/getLyrics?name=%E7%B6%BB%E3%81%B3%E3%81%AE%E5%BD%B1&songId=486194220&token=z%23master%40Music1.4.8
     
@@ -829,6 +948,22 @@ class MPDiscoverDataCent: HFDataCent {
             // 请求成功时
             complete(true,model,msg)
         }
+    }
+    
+    /// 本地化用户基本信息
+    ///
+    /// - Parameter resp: -
+    private func localizationUserInfo(dict: [String: Any]) {
+        // 保存用户信息
+        if let email = dict["email"] as? String {
+            UserDefaults.standard.setValue(email, forKey: UserNameKEY)
+        }
+        
+        if let uid = dict["uid"] as? String {
+            UserDefaults.standard.setValue(uid, forKey: UserIDKEY)
+        }
+        
+        UserDefaults.standard.synchronize()
     }
     
 }

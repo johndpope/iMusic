@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import Kingfisher
+import FirebaseUI
 
 enum HFThirdPartyLoginType {
     case Wechat
@@ -38,6 +39,8 @@ enum HFThirdPartyPayType {
     @objc optional func AliPayDidComplete(_ isSucceed: Bool, _ msg: String, _ data: [AnyHashable:Any]?)
     @objc optional func QQLoginDidComlete(_ isSucced: Bool, _ msg: String, _ data: QQUserInfoModel?)
     
+    @objc optional func GoogleLoginDidComlete(_ isSucced: Bool, _ msg: String, _ data: GIDGoogleUser?)
+    
 }
 
 class HFThirdPartyManager: NSObject, WXApiDelegate, TencentSessionDelegate {
@@ -56,7 +59,9 @@ class HFThirdPartyManager: NSObject, WXApiDelegate, TencentSessionDelegate {
     static let AlipayScheme: String = "LiTong"
     
 //    static let GoogleClientID = "com.googleusercontent.apps.491659727556-vtk3kbfmvck4fggm806mafct16gnbi4j"
-    static let GoogleClientID = "491659727556-vtk3kbfmvck4fggm806mafct16gnbi4j.apps.googleusercontent.com"
+//    static let GoogleClientID = "491659727556-vtk3kbfmvck4fggm806mafct16gnbi4j.apps.googleusercontent.com"
+//    874894841042-7e8kvcluqcdu7f5c2tjkk6398ed2pmnt.apps.googleusercontent.com
+    static let GoogleClientID = "874894841042-7e8kvcluqcdu7f5c2tjkk6398ed2pmnt.apps.googleusercontent.com"
     
     static let JPushAppKey = "338b37a013e2c4f8c3f15672"
 
@@ -94,7 +99,7 @@ class HFThirdPartyManager: NSObject, WXApiDelegate, TencentSessionDelegate {
             self.tencentOAuth?.authorize(permissions)
 
         case .Google:
-//            self.googleLoginAction()
+            self.googleLoginAction()
             break
         case .Facebook:
 //            self.handleFaceBookNotify()
@@ -376,10 +381,17 @@ class HFThirdPartyManager: NSObject, WXApiDelegate, TencentSessionDelegate {
         
         // facebook
 //        FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        
 //        // Google
-//        GIDSignIn.sharedInstance().handle(url as URL?,
-//                                          sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-//                                          annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+        GIDSignIn.sharedInstance().handle(url as URL?,
+                                          sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                          annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+        
+        // firebase谷歌登陆
+//        let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
+//        if sourceApplication == "test-d636a.firebaseapp.com" {
+//            return FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false
+//        }
         
         return true
     }
@@ -685,7 +697,7 @@ class QQCompleteHandler: NSObject, QQApiInterfaceDelegate {
 //        SVProgressHUD.showInfo(withStatus: "isOnlineResponse")
     }
 }
-/*
+import GoogleSignIn
 // MARK: - 处理Google登录回调
 extension HFThirdPartyManager: GIDSignInDelegate, GIDSignInUIDelegate {
     
@@ -741,6 +753,8 @@ extension HFThirdPartyManager: GIDSignInDelegate, GIDSignInUIDelegate {
         HFAppEngine.shared.currentViewController()?.dismiss(animated: true, completion: nil)
     }
 }
+ 
+ /*
 // MARK: - 处理Facebook登录
 extension HFThirdPartyManager {
     private func facebookLoginAction(viewController: UIViewController?) {

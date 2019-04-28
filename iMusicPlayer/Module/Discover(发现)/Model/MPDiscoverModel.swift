@@ -131,6 +131,12 @@ class GeneralPlaylists: BaseModel {
     /// 用来存储当前专辑的歌曲
     var data_songs: [MPSongModel]?
     
+    var data_data: [MPSongModel]?
+    
+    var data_trackNums: Int = 0
+    
+    var data_oldTitle: String?
+    
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(self.data_img, forKey: "img")
         aCoder.encode(self.data_id, forKey: "id")
@@ -171,6 +177,12 @@ class GeneralPlaylists: BaseModel {
         data_type <- map["type"]
         
         data_recentlyType <- map["recentlyType"]
+        
+        data_data <- map["data"]
+        
+        data_trackNums <- map["trackNums"]
+        
+        data_oldTitle <- map["oldTitle"]
     }
 }
 
