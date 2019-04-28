@@ -11,6 +11,7 @@ import IQKeyboardManager
 import Kingfisher
 import KingfisherWebP
 import youtube_ios_player_helper
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -58,6 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             // Fallback on earlier versions
         }
+        
+        // 配置Firebase
+        FirebaseApp.configure()
         
         return true
     }

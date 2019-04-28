@@ -28,6 +28,7 @@
 		C54D6DD8227007AA0007F57F /* MPPlayingBigView_backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D6DD7227007AA0007F57F /* MPPlayingBigView_backup.swift */; };
 		C54D6DDB227017450007F57F /* MPPlayingBigView_new.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54D6DDA227017450007F57F /* MPPlayingBigView_new.xib */; };
 		C54D6DDD2272F0B40007F57F /* MPLyricsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D6DDC2272F0B40007F57F /* MPLyricsModel.swift */; };
+		C54D6DDF227541A60007F57F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C54D6DDE227541A60007F57F /* GoogleService-Info.plist */; };
 		C56033F12242255200F6795F /* MPSearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033EF2242255100F6795F /* MPSearchingView.swift */; };
 		C56033F62242258900F6795F /* MPSearchingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */; };
 		C56033F72242258900F6795F /* MPSearchingViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */; };
@@ -491,6 +492,7 @@
 		C54D6DD7227007AA0007F57F /* MPPlayingBigView_backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayingBigView_backup.swift; sourceTree = "<group>"; };
 		C54D6DDA227017450007F57F /* MPPlayingBigView_new.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MPPlayingBigView_new.xib; path = "iMusicPlayer/Module/Discover(发现)/SongDetail(歌曲详情)/Playing(播放中)/PlayingView(播放详情展开)/MPPlayingBigView_new.xib"; sourceTree = SOURCE_ROOT; };
 		C54D6DDC2272F0B40007F57F /* MPLyricsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPLyricsModel.swift; sourceTree = "<group>"; };
+		C54D6DDE227541A60007F57F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C56033EF2242255100F6795F /* MPSearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingView.swift; sourceTree = "<group>"; };
 		C56033F42242258900F6795F /* MPSearchingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchingViewTableViewCell.swift; sourceTree = "<group>"; };
 		C56033F52242258900F6795F /* MPSearchingViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchingViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -2477,6 +2479,7 @@
 				C57FC6D82240DC2F00218DE7 /* AppDelegate.swift */,
 				C57FC6D92240DC2F00218DE7 /* iMusicPlayer-Bridging-Header.h */,
 				C57FC6DA2240DC2F00218DE7 /* Info.plist */,
+				C54D6DDE227541A60007F57F /* GoogleService-Info.plist */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -3261,6 +3264,7 @@
 				C569B6E1226215840003D186 /* bg_xh.jpg in Resources */,
 				C57FC9322240DC3000218DE7 /* MDFlowViewCollectionViewCell.xib in Resources */,
 				C57FC82D2240DC2F00218DE7 /* MPSongDetailHeaderView.xib in Resources */,
+				C54D6DDF227541A60007F57F /* GoogleService-Info.plist in Resources */,
 				C560341F2243881E00F6795F /* MPPlayingNavView.xib in Resources */,
 				C560341A2243636200F6795F /* MPPlayingViewCollectionViewCell.xib in Resources */,
 				C57FC8AD2240DC2F00218DE7 /* Localizable.strings in Resources */,
@@ -3318,6 +3322,7 @@
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/KingfisherWebP/KingfisherWebP.framework",
@@ -3331,6 +3336,7 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -3344,6 +3350,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KingfisherWebP.framework",
@@ -3357,6 +3364,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
