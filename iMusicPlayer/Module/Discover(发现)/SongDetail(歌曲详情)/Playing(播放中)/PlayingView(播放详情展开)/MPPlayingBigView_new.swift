@@ -209,11 +209,6 @@ class MPPlayingBigView_new: BaseView {
             // 2.获取当前播放列表中被播放标记的下标：如果没有则获取第一首并标记
             self.getPlayLists()
             
-            // 3.判断当前被标记的歌曲时MV还是MP3
-            let song = self.getCurrentSong()
-            self.currentSouceType = self.setupCurrentSourceType(song: song)
-            // 4.播放MV或者MP3
-            self.playMvOrMp3(type: self.currentSouceType)
         }
     }
     // 移除通知
@@ -228,6 +223,14 @@ class MPPlayingBigView_new: BaseView {
             var t = models
             self.randomModel = t.randomObjects_ck()
             self.currentTrackIndex = self.getCurrentIndexInPlayLists(models: models)
+            
+            // 3.判断当前被标记的歌曲时MV还是MP3
+            // 重置当前下标
+            self.currentRandomIndex = self.getRandomIndexByIndex(index: self.currentTrackIndex)
+            let song = self.getCurrentSong()
+            self.currentSouceType = self.setupCurrentSourceType(song: song)
+            // 4.播放MV或者MP3
+            self.playMvOrMp3(type: self.currentSouceType)
         }
     }
     

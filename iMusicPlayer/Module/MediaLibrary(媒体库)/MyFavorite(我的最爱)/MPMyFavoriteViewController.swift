@@ -52,6 +52,9 @@ class MPMyFavoriteViewController: BaseTableViewController {
 //                    self.tableView.mj_header.endRefreshing()
                     
                     self.headerView?.count = model?.count ?? 0
+                    
+                    self.saveListToCloudModel(m: m)
+                    
                 }
             }
             break
@@ -62,11 +65,16 @@ class MPMyFavoriteViewController: BaseTableViewController {
 //                    self.tableView.mj_header.endRefreshing()
                     
                     self.headerView?.count = model?.count ?? 0
+                    
+                    self.saveListToCloudModel(m: m)
                 }
             }
             break
         case .Download:
             title = NSLocalizedString("我的下载", comment: "")
+            
+//            self.saveListToCloudModel(m: m)
+            
             break
         case .Cache:
             title = NSLocalizedString("离线歌曲", comment: "")
@@ -75,6 +83,32 @@ class MPMyFavoriteViewController: BaseTableViewController {
             break
         }
         addLeftItem(title: title, imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
+    }
+    
+    private func saveListToCloudModel(m: [MPSongModel]) {
+        DispatchQueue.init(label: "SaveListToCloud").async {
+            // 保存到上传模型
+            switch self.fromType {
+            case .Recently:
+                if DiscoverCent?.data_CloudListUploadModel.data_history?.count != m.count {
+                    DiscoverCent?.data_CloudListUploadModel.data_history = m
+                }
+                break
+            case .Favorite:
+                if DiscoverCent?.data_CloudListUploadModel.data_favorite?.count != m.count {
+                    DiscoverCent?.data_CloudListUploadModel.data_favorite = m
+                }
+                break
+            case .Download:
+                if DiscoverCent?.data_CloudListUploadModel.data_download?.count != m.count {
+                    DiscoverCent?.data_CloudListUploadModel.data_download = m
+                }
+                break
+            default:
+                break
+            }
+            
+        }
     }
     
     override func setupStyle() {

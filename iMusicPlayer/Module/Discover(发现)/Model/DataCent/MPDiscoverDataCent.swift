@@ -14,14 +14,16 @@ import Alamofire
 
 class MPDiscoverDataCent: HFDataCent {
 //    /user/syncUserData?contact=1&reset=1&token=z%23master%40Music1.4.8&uid=1
-    
-    func requestSaveUserCloudList(contact: String, reset: Int = 1, uid: String, model: MPUserCloudListModel, complete:@escaping ((_ isSucceed: Bool, _ message: String) -> Void)) {
-        
-        let param: [String:Any] = ["contact": contact,"uid": uid, "reset": reset]
 //        {{music}}/user/syncUserData?token={{token}}&uid=MtyTnSfvidZnRohJWWzujIfF7Yq2&reset=1&contact=hrf82898@gmail.com
+    
+    var data_CloudListUploadModel: MPUserCloudListModel = MPUserCloudListModel()
+    
+    func requestSaveUserCloudList(contact: String, reset: Int = 1, uid: String, model: MPUserCloudListModel? = nil, complete:@escaping ((_ isSucceed: Bool, _ message: String) -> Void)) {
+        
+        let param = self.mappingToJson(model: data_CloudListUploadModel)
         let url = API.SaveUserCloudList + "?token=z%23master%40Music1.4.8&contact=\(contact)&reset=\(reset)&uid=\(uid)"
         
-        HFNetworkManager.request(url: url, method: .post, parameters: [param].asParameters(), requestHeader: AppCommon.JsonRequestHeader,
+        HFNetworkManager.request(url: url, method: .post, parameters: param, requestHeader: AppCommon.JsonRequestHeader,
                                  encoding: JSONEncoding.default, description: "保存数据到云端") { (error, resp) in
             
             // 连接失败时
@@ -46,6 +48,45 @@ class MPDiscoverDataCent: HFDataCent {
             // 请求成功时
             complete(true, msg)
         }
+    }
+    
+    private func mappingToJson(model: MPUserCloudListModel) -> [String: Any] {
+        var customlistArr = [[String: Any]]()
+        model.data_customlist?.forEach({ (item) in
+            customlistArr.append(item.getJsonByCustom())
+        })
+        
+        var downloadArr = [[String: Any]]()
+        model.data_download?.forEach({ (item) in
+            downloadArr.append(item.getJson())
+        })
+        
+        var favoriteArr = [[String: Any]]()
+        model.data_favorite?.forEach({ (item) in
+            favoriteArr.append(item.getJson())
+        })
+        
+        var historyArr = [[String: Any]]()
+        model.data_history?.forEach({ (item) in
+            historyArr.append(item.getJson())
+        })
+        
+        var playlistArr = [[String: Any]]()
+        model.data_playlist?.forEach({ (item) in
+            playlistArr.append(item.getJson())
+        })
+        
+        let dict: [String: Any] = [
+            "customlist": customlistArr,
+            "download": downloadArr,
+            "favorite": favoriteArr,
+            "history": historyArr,
+            "playlist": playlistArr
+        ]
+        
+        let json = JSON(dict)
+//        QYTools.shared.Log(log: json.dictionaryValue)
+        return json.dictionaryObject!
     }
     
 //    /user/getUserData?contact=1294432350%40qq.com&token=z%23master%40Music1.4.8&uid=3C918520-B55F-4DD4-8D9F-D71CC9A38AD7
@@ -125,8 +166,7 @@ class MPDiscoverDataCent: HFDataCent {
             //            guard let dataDic = resp?["data"].dictionaryObject else {return}
             
             // 保存用户信息
-            let dict = ["email": contact, "uid": uid]
-            self.localizationUserInfo(dict: dict)
+            self.localizationUserInfo(model: MPUserSettingHeaderViewModel(picture: avatar, name: name, email: contact, uid: uid, did: did))
             
             // 请求成功时
             complete(true,msg)
@@ -953,15 +993,11 @@ class MPDiscoverDataCent: HFDataCent {
     /// 本地化用户基本信息
     ///
     /// - Parameter resp: -
-    private func localizationUserInfo(dict: [String: Any]) {
-        // 保存用户信息
-        if let email = dict["email"] as? String {
-            UserDefaults.standard.setValue(email, forKey: UserNameKEY)
-        }
+    private func localizationUserInfo(model: MPUserSettingHeaderViewModel) {
         
-        if let uid = dict["uid"] as? String {
-            UserDefaults.standard.setValue(uid, forKey: UserIDKEY)
-        }
+        let arcObj = NSKeyedArchiver.archivedData(withRootObject: model)
+        // 保存用户信息
+        UserDefaults.standard.setValue(arcObj, forKey: "UserInfoModel")
         
         UserDefaults.standard.synchronize()
     }

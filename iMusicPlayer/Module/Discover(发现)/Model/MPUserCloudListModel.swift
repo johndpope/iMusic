@@ -24,4 +24,9 @@ class MPUserCloudListModel: Mappable {
         data_download <- map["download"]
         data_history <- map["history"]
     }
+    
+    init() {
+        
+    }
+    
 }

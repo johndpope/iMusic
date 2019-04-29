@@ -60,6 +60,9 @@ class MPUserSettingHeaderView: BaseView {
         if img != "" {
             let imgUrl = API.baseImageURL + img
             xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
+            
+            NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_RefreshUserPicture), object: nil)
+            
         }
         
         xib_title.text = model.name
@@ -71,7 +74,7 @@ class MPUserSettingHeaderView: BaseView {
     
 }
 
-class MPUserSettingHeaderViewModel {
+class MPUserSettingHeaderViewModel: NSObject, NSCoding {
     var picture: String
     var name: String
     var email: String
@@ -85,4 +88,21 @@ class MPUserSettingHeaderViewModel {
         self.uid = uid
         self.did = did
     }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.picture, forKey: "picture")
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.email, forKey: "email")
+        aCoder.encode(self.uid, forKey: "uid")
+        aCoder.encode(self.did, forKey: "did")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.picture = aDecoder.decodeObject(forKey: "picture") as! String
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.email = aDecoder.decodeObject(forKey: "email") as! String
+        self.uid = aDecoder.decodeObject(forKey: "uid") as! String
+        self.did = aDecoder.decodeObject(forKey: "did") as! String
+    }
+    
 }

@@ -81,6 +81,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="sRI-hy-GoD"/>
+            <connections>
+                <outlet property="xib_image" destination="sLA-K4-hlS" id="lSu-6k-jEe"/>
+            </connections>
             <point key="canvasLocation" x="-508" y="-364"/>
         </view>
     </objects>

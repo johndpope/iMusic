@@ -47,14 +47,14 @@ class MPSongListViewController: BaseTableViewController {
                 MPModelTools.getSongListByIDModel(playlistId: playlistId, tableName: "") { (model) in
                     if let m = model {
                         self.model = m
-//                        self.tableView.mj_header.endRefreshing()
+                        self.saveListToCloud(m: m)
                     }
                 }
             }else if type == 2 {
                 MPModelTools.getSongerListByIDModel(singerId: singerId, tableName: "") { (model) in
                     if let m = model {
                         self.model = m
-//                        self.tableView.mj_header.endRefreshing()
+                        self.saveListToCloud(m: m)
                     }
                 }
             }else if type == 3 {
@@ -65,7 +65,7 @@ class MPSongListViewController: BaseTableViewController {
                             self.model = m
                             self.headerSongModel?.data_tracksCount = model?.data_num ?? 0
                             (self.tableView.tableHeaderView as? MPSongListHeaderView)?.updateView(model: self.headerSongModel!)
-//                            self.tableView.mj_header.endRefreshing()
+                            self.saveListToCloud(m: m)
                         }
                         break
                     case false:
@@ -73,6 +73,26 @@ class MPSongListViewController: BaseTableViewController {
                         break
                     }
                 })
+            }
+        }
+    }
+    
+    private func saveListToCloud(m: [MPSongModel]) {
+        DispatchQueue.init(label: "SaveListToCloud").async {
+            // 赋值到属性模型
+            if m.count != self.headerSongModel?.data_data?.count {
+                self.headerSongModel?.data_data = m
+                
+                // 更新到上传模型
+                if var playlist = DiscoverCent?.data_CloudListUploadModel.data_playlist {
+                    for i in 0..<playlist.count {
+                        let item = playlist[i]
+                        if item.data_title == self.headerSongModel?.data_title {
+                            playlist[i] = self.headerSongModel!
+                        }
+                    }
+                }
+                
             }
         }
     }

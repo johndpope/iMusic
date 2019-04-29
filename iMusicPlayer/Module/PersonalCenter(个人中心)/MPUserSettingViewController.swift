@@ -68,6 +68,11 @@ class MPUserSettingViewController: BaseTableViewController {
         
         let hv = MPUserSettingHeaderView.md_viewFromXIB() as! MPUserSettingHeaderView
         headerView = hv
+        
+        if let obj = UserDefaults.standard.value(forKey: "UserInfoModel") as? Data, let m = NSKeyedUnarchiver.unarchiveObject(with: obj) as? MPUserSettingHeaderViewModel  {
+            hv.updateView(model: m)
+        }
+        
         tableView.tableHeaderView = hv
         
         hv.clickBlock = {(sender) in
@@ -316,9 +321,15 @@ extension MPUserSettingViewController: HFThirdPartyManagerDelegate {
                 }
                 // firebase授权成功：获取用户信息
                 if let userInfo = authResult?.additionalUserInfo?.profile {
-                    guard let picture = userInfo["picture"] as? String, let name = userInfo["name"] as? String, let email = userInfo["email"] as? String, let did = userInfo["id"] as? String else {
+                    guard let picture = userInfo["picture"] as? String, let name = userInfo["name"] as? String, let email = userInfo["email"] as? String else {
                         return
                     }
+                    
+                    var did = userInfo["id"] as? String ?? ""
+                    if did == "" {
+                        did = userInfo["sub"] as? String ?? ""
+                    }
+                    
                     let uid = UIDevice.current.identifierForVendor?.uuidString ?? "JA8888"
                     let t = MPUserSettingHeaderViewModel.init(picture: picture, name: name, email: email, uid: uid, did: did)
                     self.headerView.updateView(model: t)

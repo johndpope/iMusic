@@ -19,6 +19,14 @@ extension Array {
     }
 }
 
+/// Extenstion that allows an array be sent as a request parameters
+extension Dictionary {
+    /// Convert the receiver array to a `Parameters` object.
+    func asParameters() -> Parameters {
+        return [arrayParametersKey: self]
+    }
+}
+
 
 /// Convert the parameters into a json array, and it is added as the request body.
 /// The array must be sent as parameters using its `asParameters` method.

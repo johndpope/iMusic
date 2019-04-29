@@ -79,6 +79,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         debugPrint("前台进入后台 --------------------------> ")
+        
+        guard let email = UserDefaults.standard.value(forKey: UserNameKEY) as? String, let uid = UserDefaults.standard.value(forKey: UserIDKEY) as? String else {return}
+        DiscoverCent?.requestSaveUserCloudList(contact: email, reset: 1, uid: uid, complete: { (isSucceed, msg) in
+            switch isSucceed {
+            case true:
+                SVProgressHUD.showInfo(withStatus: "数据保存成功~")
+                break
+            case false:
+                SVProgressHUD.showError(withStatus: msg)
+                break
+            }
+        })
+        
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {

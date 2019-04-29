@@ -184,6 +184,38 @@ class GeneralPlaylists: BaseModel {
         
         data_oldTitle <- map["oldTitle"]
     }
+    
+    func getJson() -> [String: Any] {
+        let dict: [String: Any] = [
+            "contact": UserDefaults.standard.value(forKey: UserNameKEY) as? String ?? "",
+            "description": "",
+            "id": self.data_id,
+            "img": self.data_img ?? "",
+            "originalId": self.data_originalId ?? "",
+            "title": self.data_title ?? "",
+            "tracksCount": self.data_tracksCount,
+            "type": self.data_type ?? "",
+            "userId": UserDefaults.standard.value(forKey: UserIDKEY) as? String ?? ""
+        ]
+        return dict
+    }
+    
+    func getJsonByCustom() -> [String: Any] {
+        
+        var arr = [[String: Any]]()
+        self.data_data?.forEach({ (item) in
+            arr.append(item.getJson())
+        })
+        
+        let dict: [String: Any] = [
+            "data": arr,
+            "img": self.data_img ?? "",
+            "oldTitle": self.data_oldTitle ?? "",
+            "title": self.data_title ?? ""
+        ]
+        return dict
+    }
+    
 }
 
 class Genre: BaseModel {

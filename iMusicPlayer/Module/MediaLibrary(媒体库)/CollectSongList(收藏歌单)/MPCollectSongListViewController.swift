@@ -32,7 +32,26 @@ class MPCollectSongListViewController: BaseTableViewController {
         MPModelTools.getCollectListModel(tableName: MPCollectSongListViewController.classCode) { (model) in
             if let m = model {
                 self.model = m
-//                self.tableView.mj_header.endRefreshing()
+                self.saveListToCloudModel(m: m)
+            }
+        }
+    }
+    
+    private func saveListToCloudModel(m: [GeneralPlaylists]) {
+        DispatchQueue.init(label: "SaveListToCloud").async {
+            // 保存到上传模型
+            if DiscoverCent?.data_CloudListUploadModel.data_playlist?.count != m.count {
+                DiscoverCent?.data_CloudListUploadModel.data_playlist = m
+                // 将歌单里面的数据赋值到data_data
+//                for i in 0..<m.count {
+//                    let item = m[i]
+//                    MPModelTools.getSongInTable(tableName: item.data_title ?? "") { (model) in
+//                        if let m = model {
+//                            item.data_data = m
+//                        }
+//                    }
+//                    DiscoverCent?.data_CloudListUploadModel.data_playlist?[i] = item
+//                }
             }
         }
     }

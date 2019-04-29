@@ -105,6 +105,30 @@ class MPSongModel:BaseModel, DOUAudioFile {
         
         data_audioFileURL = URL(string: data_cache ?? "")
     }
+    
+    func getJson() -> [String : Any] {
+        let dict: [String : Any] = [
+            "artworkBigUrl": self.data_artworkUrl ?? "",
+            "artworkUrl": self.data_artworkUrl ?? "",
+            "cache": self.data_cache ?? "",
+            "channelTitle": self.data_channelTitle ?? "",
+            "contact": UserDefaults.standard.value(forKey: UserNameKEY) as? String ?? "",
+            "createTime": "",
+            "durationInSeconds": self.data_durationInSeconds,
+            "heatIndex": self.data_heatIndex,
+            "id": self.data_id,
+            "originalId": self.data_originalId ?? "",
+            "playlistId": "",
+            "singerName": self.data_singerName ?? "",
+            "songId": self.data_songId ?? "",
+            "songName": self.data_songName ?? "",
+            "title": self.data_title ?? "",
+            "type": "",
+            "userId": UserDefaults.standard.value(forKey: UserIDKEY) as? String ?? ""
+            ]
+        return dict
+    }
+    
 }
 
 extension Array {

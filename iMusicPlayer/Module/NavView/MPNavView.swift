@@ -10,6 +10,13 @@ import UIKit
 
 class MPNavView: BaseView {
 
+    @IBOutlet weak var xib_image: UIButton! {
+        didSet {
+            xib_image.md_cornerRadius = xib_image.height/2
+            xib_image.imageView?.contentMode = .scaleAspectFit
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

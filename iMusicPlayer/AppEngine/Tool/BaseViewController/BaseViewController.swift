@@ -72,6 +72,7 @@ class BaseViewController: UIViewController, PlaceholderViewDelegate {
                 // 导航栏设置
                 let nav = MPNavView.md_viewFromXIB() as! MPNavView
                 self.navigationItem.titleView = nav
+                self.updateNavView(nav: nav)
                 nav.clickBlock = { [weak self] (sender) in
                     if let btn = sender as? UIButton {
                         if btn.tag == 10001 {
@@ -81,9 +82,28 @@ class BaseViewController: UIViewController, PlaceholderViewDelegate {
                         }
                     }
                 }
+                
+                NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshUserPicture), object: nil, queue: nil) { (center) in
+                    self.updateNavView(nav: nav)
+                }
             }
         }
        
+    }
+    
+    private func updateNavView(nav: MPNavView) {
+        if let obj = UserDefaults.standard.value(forKey: "UserInfoModel") as? Data, let m = NSKeyedUnarchiver.unarchiveObject(with: obj) as? MPUserSettingHeaderViewModel  {
+            //设置图片
+            let img = m.picture
+            if img != "" {
+                let imgUrl = API.baseImageURL + img
+                nav.xib_image.kf.setImage(with: URL(string: imgUrl), for: .normal, placeholder: #imageLiteral(resourceName: "img_photo_default"))
+            }
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     /// 返回
