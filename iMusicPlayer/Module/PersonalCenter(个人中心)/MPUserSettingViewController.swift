@@ -91,10 +91,13 @@ class MPUserSettingViewController: BaseTableViewController {
                         let firebaseAuth = Auth.auth()
                         do {
                             try firebaseAuth.signOut()
+                            hv.normalStyle()
+                            // 清空当前的用户数据
+                            UserDefaults.standard.setValue(nil, forKey: "UserInfoModel")
+                            UserDefaults.standard.synchronize()
                         } catch let signOutError as NSError {
                             print ("Error signing out: %@", signOutError)
                         }
-                        hv.normalStyle()
                     }) {
                         // 取消
                         alert?.dismiss(animated: true, completion: nil)
@@ -340,6 +343,20 @@ extension MPUserSettingViewController: HFThirdPartyManagerDelegate {
                             switch isSucceed {
                             case true:
                                 SVProgressHUD.showInfo(withStatus: "用户信息保存成功~")
+                                //  用户已经登陆：拉去云端数据并合并到本地
+                                DiscoverCent?.requestUserCloudList(contact: t.email, uid: t.uid, complete: { (isSucceed, model, msg) in
+                                    switch isSucceed {
+                                    case true:
+                                        if let m = model {
+                                            // 合并数据
+                                            
+                                        }
+                                        break
+                                    case false:
+                                        SVProgressHUD.showError(withStatus: msg)
+                                        break
+                                    }
+                                })
                                 break
                             case false:
                                 SVProgressHUD.showError(withStatus: msg)

@@ -40,18 +40,16 @@ class MPCollectSongListViewController: BaseTableViewController {
     private func saveListToCloudModel(m: [GeneralPlaylists]) {
         DispatchQueue.init(label: "SaveListToCloud").async {
             // 保存到上传模型
-            if DiscoverCent?.data_CloudListUploadModel.data_playlist?.count != m.count {
+            if DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0 > m.count {
+                DiscoverCent?.data_CloudListUploadModel.data_playlistReset = 1
+                
                 DiscoverCent?.data_CloudListUploadModel.data_playlist = m
-                // 将歌单里面的数据赋值到data_data
-//                for i in 0..<m.count {
-//                    let item = m[i]
-//                    MPModelTools.getSongInTable(tableName: item.data_title ?? "") { (model) in
-//                        if let m = model {
-//                            item.data_data = m
-//                        }
-//                    }
-//                    DiscoverCent?.data_CloudListUploadModel.data_playlist?[i] = item
-//                }
+            }else {
+                DiscoverCent?.data_CloudListUploadModel.data_playlistReset = 0
+                
+                let location = DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0
+                let length = m.count - location
+                DiscoverCent?.data_CloudListUploadModel.data_playlist = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists]
             }
         }
     }

@@ -15,6 +15,12 @@ class MPUserCloudListModel: Mappable {
     var data_download: [MPSongModel]?
     var data_history: [MPSongModel]?
     
+    var data_customlistReset: Int = -1
+    var data_playlistReset: Int = -1
+    var data_favoriteReset: Int = -1
+    var data_downloadReset: Int = -1
+    var data_historyReset: Int = -1
+    
     required init?(map: Map) {}
     
     func mapping(map: Map) {

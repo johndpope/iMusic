@@ -129,6 +129,9 @@ let StyleImageType = 0
 
 let TokenCode = "z#master@Music1.4.8"
 
+/// 标记当前需要同步的数据是增加还是减少：1：当前数据减少了、0：当前数据增加、1：当前数据增加和减少：增加或减少的项需要发送当前全部数据给后台：不变的可以不传
+var SyncReset = 0
+
 /// 配置TabBar
 let TabBarDataSource: [[String: String]] = {
     let dic1 = ["title": NSLocalizedString("发现", comment: ""), "imageNameS": "icon_discover_selected", "imageNameN": "icon_discover_selected(1)", "viewController": "MPDiscoverViewController"]

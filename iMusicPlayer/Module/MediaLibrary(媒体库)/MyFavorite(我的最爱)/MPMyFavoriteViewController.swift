@@ -90,18 +90,45 @@ class MPMyFavoriteViewController: BaseTableViewController {
             // 保存到上传模型
             switch self.fromType {
             case .Recently:
-                if DiscoverCent?.data_CloudListUploadModel.data_history?.count != m.count {
+                // 修改当前标记
+                if DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0 > m.count {
+                    DiscoverCent?.data_CloudListUploadModel.data_historyReset = 1
+                    
                     DiscoverCent?.data_CloudListUploadModel.data_history = m
+                }else {
+                    DiscoverCent?.data_CloudListUploadModel.data_historyReset = 0
+                    
+                    let location = DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0
+                    let length = m.count - location
+                    DiscoverCent?.data_CloudListUploadModel.data_history = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel]
                 }
                 break
             case .Favorite:
-                if DiscoverCent?.data_CloudListUploadModel.data_favorite?.count != m.count {
+                // 修改当前标记
+                if DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0 > m.count {
+                    DiscoverCent?.data_CloudListUploadModel.data_favoriteReset = 1
+                    
                     DiscoverCent?.data_CloudListUploadModel.data_favorite = m
+                }else {
+                    DiscoverCent?.data_CloudListUploadModel.data_favoriteReset = 0
+                    
+                    let location = DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0
+                    let length = m.count - location
+                    DiscoverCent?.data_CloudListUploadModel.data_favorite = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel]
                 }
                 break
             case .Download:
-                if DiscoverCent?.data_CloudListUploadModel.data_download?.count != m.count {
+                // 修改当前标记
+                if DiscoverCent?.data_CloudListUploadModel.data_download?.count ?? 0 > m.count {
+                    DiscoverCent?.data_CloudListUploadModel.data_downloadReset = 1
+                    
                     DiscoverCent?.data_CloudListUploadModel.data_download = m
+                }else {
+                    DiscoverCent?.data_CloudListUploadModel.data_downloadReset = 0
+                    
+                    let location = DiscoverCent?.data_CloudListUploadModel.data_download?.count ?? 0
+                    let length = m.count - location
+                    DiscoverCent?.data_CloudListUploadModel.data_download = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel]
                 }
                 break
             default:

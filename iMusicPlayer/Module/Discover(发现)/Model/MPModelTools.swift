@@ -9,7 +9,98 @@
 import UIKit
 import ObjectMapper
 
+extension Array {
+    // 去重
+    func filterDuplicates<E: Equatable>(_ filter: (Element) -> E) -> [Element] {
+        var result = [Element]()
+        for value in self {
+            let key = filter(value)
+            if !result.map({filter($0)}).contains(key) {
+                result.append(value)
+            }
+        }
+        return result
+    }
+}
+
 class MPModelTools: NSObject {
+    
+    /// 合并本地与云端数据
+    ///
+    /// - Parameters:
+    ///   - local: 本地数据
+    ///   - cloud: 云端数据
+    ///   - finished: 回调
+    class func mergeLocalAndCloudListModel(local: MPUserCloudListModel, cloud: MPUserCloudListModel, finished: ((_ model: MPUserCloudListModel) -> Void)?)  {
+        let tempM = MPUserCloudListModel()
+        
+        // 1.判断当前是否是同一份数据：第一首相同、歌曲数量相同
+        // 2.第一首相同、歌曲数量不同：以歌曲数多的为准
+        // 3.第一首不同：合并两个数组并去重：本地加上云端：去重
+        let localHistoryFirst = local.data_history?.first
+        let cloudHistoryFirst = cloud.data_history?.first
+        
+        let localHistoryC = local.data_history?.count ?? 0
+        let cloudHistoryC = cloud.data_history?.count ?? 0
+        
+        if localHistoryFirst == cloudHistoryFirst, localHistoryC == cloudHistoryC {
+            tempM.data_history = local.data_history
+        }
+        
+        if localHistoryFirst == cloudHistoryFirst, localHistoryC > cloudHistoryC {
+            tempM.data_history = local.data_history
+        }else {
+            tempM.data_history = cloud.data_history
+        }
+        
+//        if localHistoryFirst != cloudHistoryFirst {
+//            tempM.data_history = (local.data_history! + cloud.data_history!).filterDuplicates({ (item) -> Equatable in
+//                
+//            })
+//        }
+        
+    }
+    
+    
+    /// 获取用户当前本地模型数据
+    ///
+    /// - Parameter finished: 回调
+    class func getLocalCloudListModel(finished: ((_ model: MPUserCloudListModel) -> Void)?)  {
+        let tempM = MPUserCloudListModel()
+        
+        // 获取历史数据
+        MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
+            if let m = model {
+                tempM.data_history = m
+            }
+            
+            // 获取下载歌曲
+            
+            // 获取收藏歌曲
+            MPModelTools.getSongInTable(tableName: MPMyFavoriteViewController.classCode) { (model) in
+                if let m = model {
+                    tempM.data_favorite = m
+                }
+                
+                // 获取创建的歌单
+                MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
+                    if let m = model {
+                        tempM.data_customlist = m
+                    }
+                    
+                    // 获取收藏的歌单
+                    MPModelTools.getCollectListModel(tableName: MPCollectSongListViewController.classCode) { (model) in
+                        if let m = model {
+                            tempM.data_playlist = m
+                        }
+                        if let f = finished {
+                            f(tempM)
+                        }
+                    }
+                }
+            }
+        }
+    }
     
     // MARK: - 公共存储歌曲列表：数组
     /// 保存歌曲到对应的表名中

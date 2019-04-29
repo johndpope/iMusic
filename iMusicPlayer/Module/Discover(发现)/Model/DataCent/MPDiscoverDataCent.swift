@@ -21,7 +21,10 @@ class MPDiscoverDataCent: HFDataCent {
     func requestSaveUserCloudList(contact: String, reset: Int = 1, uid: String, model: MPUserCloudListModel? = nil, complete:@escaping ((_ isSucceed: Bool, _ message: String) -> Void)) {
         
         let param = self.mappingToJson(model: data_CloudListUploadModel)
-        let url = API.SaveUserCloudList + "?token=z%23master%40Music1.4.8&contact=\(contact)&reset=\(reset)&uid=\(uid)"
+        
+        let tempReset = self.getReset(model: data_CloudListUploadModel)
+        
+        let url = API.SaveUserCloudList + "?token=z%23master%40Music1.4.8&contact=\(contact)&reset=\(tempReset)&uid=\(uid)"
         
         HFNetworkManager.request(url: url, method: .post, parameters: param, requestHeader: AppCommon.JsonRequestHeader,
                                  encoding: JSONEncoding.default, description: "保存数据到云端") { (error, resp) in
@@ -47,6 +50,14 @@ class MPDiscoverDataCent: HFDataCent {
             
             // 请求成功时
             complete(true, msg)
+        }
+    }
+    
+    private func getReset(model: MPUserCloudListModel) -> Int {
+        if model.data_playlistReset == 0, model.data_customlistReset == 0, model.data_downloadReset == 0, model.data_favoriteReset == 0, model.data_historyReset == 0 {
+            return 0
+        }else {
+             return 1
         }
     }
     
