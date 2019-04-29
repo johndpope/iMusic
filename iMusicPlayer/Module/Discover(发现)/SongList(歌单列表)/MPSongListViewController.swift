@@ -150,6 +150,7 @@ override func clickRight(sender: UIButton) {
                     }
                 }else {
                     QYTools.shared.Log(log: "收藏歌单")
+                    self.headerSongModel?.data_collectionType = self.type
                     let isExsist = MPModelTools.checkCollectListExsist(model: self.headerSongModel!, tableName: MPCollectSongListViewController.classCode)
                     if !isExsist {
                         btn.isSelected = true

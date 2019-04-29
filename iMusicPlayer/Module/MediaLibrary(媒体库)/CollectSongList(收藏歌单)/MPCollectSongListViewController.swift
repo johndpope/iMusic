@@ -108,7 +108,7 @@ extension MPCollectSongListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = MPSongListViewController()
         vc.headerSongModel = model[indexPath.row]
-        vc.type = 1
+        vc.type = model[indexPath.row].data_collectionType
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

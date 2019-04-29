@@ -137,6 +137,9 @@ class GeneralPlaylists: BaseModel {
     
     var data_oldTitle: String?
     
+    /// 收藏类型：1: 歌单 2：歌手 3: youtube获取
+    var data_collectionType: Int = -1
+    
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(self.data_img, forKey: "img")
         aCoder.encode(self.data_id, forKey: "id")
