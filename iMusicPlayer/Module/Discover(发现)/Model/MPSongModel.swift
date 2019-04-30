@@ -10,6 +10,10 @@ import ObjectMapper
 
 class MPSongModel:BaseModel, DOUAudioFile {
     
+    override var hashValue: Int {
+        return (self.data_originalId! + "\(self.data_songId)").hashValue
+    }
+    
     func audioFileURL() -> URL! {
          let url = URL(string: data_cache ?? "")
         return url

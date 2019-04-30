@@ -29,7 +29,11 @@ class MPCreateSongListViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refreshData()
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshLocalModels), object: nil, queue: nil) { (center) in
+            QYTools.shared.Log(log: "刷新数据")
+            self.refreshData()
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,13 +43,22 @@ class MPCreateSongListViewController: BaseTableViewController {
     
     override func refreshData() {
         super.refreshData()
-//        NSArray.bg_delete(MPCreateSongListViewController.classCode, row: 1)
+        
+//        if let localModel = DiscoverCent?.data_CloudListUploadModel, let model = localModel.data_customlist {
+//            self.model = model
+//        }else {
+//            MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
+//                if let m = model {
+//                    self.model = m
+//                    self.saveListToCloudModel(m: m)
+//                }
+//            }
+//        }
+        
         MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
             if let m = model {
                 self.model = m
-                
                 self.saveListToCloudModel(m: m)
-                
             }
         }
     }

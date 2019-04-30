@@ -347,9 +347,13 @@ extension MPUserSettingViewController: HFThirdPartyManagerDelegate {
                                 DiscoverCent?.requestUserCloudList(contact: t.email, uid: t.uid, complete: { (isSucceed, model, msg) in
                                     switch isSucceed {
                                     case true:
-                                        if let m = model {
-                                            // 合并数据
-                                            
+                                        if let m = model, let local = DiscoverCent?.data_CloudListUploadModel {
+                                            // 合并数据并赋值给本地模型
+                                            MPModelTools.mergeLocalAndCloudListModel(local: local, cloud: m, finished: { (model) in
+                                                DiscoverCent?.data_CloudListUploadModel = model
+                                                // 通知更新列表数据
+                                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_RefreshLocalModels), object: nil)
+                                            })
                                         }
                                         break
                                     case false:

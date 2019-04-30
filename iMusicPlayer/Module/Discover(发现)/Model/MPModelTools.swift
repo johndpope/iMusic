@@ -23,6 +23,13 @@ extension Array {
     }
 }
 
+extension Array where Element: Hashable & Equatable {
+    var unique : [Element] {
+        var keys:[Element:()] = [:]
+        return filter{keys.updateValue((), forKey:$0) == nil}
+    }
+}
+
 class MPModelTools: NSObject {
     
     /// 合并本地与云端数据
@@ -34,33 +41,93 @@ class MPModelTools: NSObject {
     class func mergeLocalAndCloudListModel(local: MPUserCloudListModel, cloud: MPUserCloudListModel, finished: ((_ model: MPUserCloudListModel) -> Void)?)  {
         let tempM = MPUserCloudListModel()
         
-        // 1.判断当前是否是同一份数据：第一首相同、歌曲数量相同
-        // 2.第一首相同、歌曲数量不同：以歌曲数多的为准
-        // 3.第一首不同：合并两个数组并去重：本地加上云端：去重
-        let localHistoryFirst = local.data_history?.first
-        let cloudHistoryFirst = cloud.data_history?.first
-        
-        let localHistoryC = local.data_history?.count ?? 0
-        let cloudHistoryC = cloud.data_history?.count ?? 0
-        
-        if localHistoryFirst == cloudHistoryFirst, localHistoryC == cloudHistoryC {
-            tempM.data_history = local.data_history
+        if let lHistory = local.data_history, let cHistory = cloud.data_history {
+            tempM.data_history = mergeModel(local: lHistory, cloud: cHistory)
         }
         
-        if localHistoryFirst == cloudHistoryFirst, localHistoryC > cloudHistoryC {
-            tempM.data_history = local.data_history
-        }else {
-            tempM.data_history = cloud.data_history
+        if let lFavorite = local.data_favorite, let cFavorite = cloud.data_favorite {
+            tempM.data_favorite = mergeModel(local: lFavorite, cloud: cFavorite)
         }
         
-//        if localHistoryFirst != cloudHistoryFirst {
-//            tempM.data_history = (local.data_history! + cloud.data_history!).filterDuplicates({ (item) -> Equatable in
-//                
-//            })
-//        }
+        if let lDownload = local.data_download, let cDownload = cloud.data_download {
+            tempM.data_download = mergeModel(local: lDownload, cloud: cDownload)
+        }
+        
+        if let lCustomlist = local.data_customlist, let cCustomlist = cloud.data_customlist {
+            tempM.data_customlist = mergeModel(local: lCustomlist, cloud: cCustomlist)
+        }
+        
+        if let lPlaylist = local.data_playlist, let cPlaylist = cloud.data_playlist {
+            tempM.data_playlist = mergeModel(local: lPlaylist, cloud: cPlaylist)
+        }
+        
+        // 将合并完成后数据存入本地
+        saveUserCloudListModel(model: tempM)
+        
+        if let b = finished {
+            b(tempM)
+        }
+    }
+    
+    class func saveUserCloudListModel(model: MPUserCloudListModel) {
+        // 缓存
+        if let history = model.data_history as NSArray? {
+            NSArray.bg_drop("RecentlyPlay")
+            history.bg_save(withName: "RecentlyPlay")
+        }
+        
+        if let favorite = model.data_favorite as NSArray? {
+            NSArray.bg_drop(MPMyFavoriteViewController.classCode)
+            favorite.bg_save(withName: MPMyFavoriteViewController.classCode)
+        }
+        
+        if let download = model.data_download as NSArray? {
+//            NSArray.bg_drop("RecentlyPlay")
+//            download.bg_save(withName: "RecentlyPlay")
+        }
+        
+        if let customlist = model.data_customlist as NSArray? {
+            NSArray.bg_drop(MPCreateSongListViewController.classCode)
+            customlist.bg_save(withName: MPCreateSongListViewController.classCode)
+        }
+        
+        if let playlist = model.data_playlist as NSArray? {
+            NSArray.bg_drop(MPCollectSongListViewController.classCode)
+            playlist.bg_save(withName: MPCollectSongListViewController.classCode)
+        }
         
     }
     
+    /// 数组合并去重
+    ///
+    /// - Parameters:
+    ///   - local: 本地模型
+    ///   - cloud: 云端模型
+    /// - Returns: 合并后模型
+    class func mergeModel<T: Equatable & Hashable>(local: [T], cloud: [T]) -> [T] {
+        var temps = [T]()
+        
+        // 1.判断当前是否是同一份数据：第一首相同、歌曲数量相同
+        // 2.第一首相同、歌曲数量不同：以歌曲数多的为准
+        // 3.第一首不同：合并两个数组并去重：本地加上云端：去重
+        let localFirst = local.first
+        let cloudFirst = cloud.first
+        
+        let localC = local.count
+        let cloudC = cloud.count
+        
+        if localFirst == cloudFirst, localC >= cloudC {
+            temps = local
+        }else {
+            temps = cloud
+        }
+        
+        if localFirst != cloudFirst {
+            temps = (local + cloud).unique
+        }
+        
+        return temps
+    }
     
     /// 获取用户当前本地模型数据
     ///

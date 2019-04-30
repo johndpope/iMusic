@@ -41,6 +41,11 @@ class MPMediaLibraryViewController: BaseTableViewController {
             QYTools.shared.Log(log: "刷新数据")
             self.refreshData()
         }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshLocalModels), object: nil, queue: nil) { (center) in
+            QYTools.shared.Log(log: "刷新数据")
+            self.refreshData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,12 +59,23 @@ class MPMediaLibraryViewController: BaseTableViewController {
     
     override func refreshData() {
         super.refreshData()
+       
+//        if let localModel = DiscoverCent?.data_CloudListUploadModel, let model = localModel.data_history {
+//            self.model = model.reversed()
+//        }else {
+//            MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
+//                if let m = model {
+//                    self.model = m.reversed()
+//                }
+//            }
+//        }
+        
         MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
             if let m = model {
                 self.model = m.reversed()
-//                self.tableView.mj_header.endRefreshing()
             }
         }
+        
     }
     
     override func setupTableView() {

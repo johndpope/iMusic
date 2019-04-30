@@ -37,6 +37,11 @@ class MPMyFavoriteViewController: BaseTableViewController {
         super.viewDidLoad()
         
         refreshData()
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshLocalModels), object: nil, queue: nil) { (center) in
+            QYTools.shared.Log(log: "刷新数据")
+            self.refreshData()
+        }
     }
     
     override func refreshData() {
@@ -46,26 +51,41 @@ class MPMyFavoriteViewController: BaseTableViewController {
         switch fromType {
         case .Recently:
             title = NSLocalizedString("最近播放", comment: "")
+//            if let localModel = DiscoverCent?.data_CloudListUploadModel, let model = localModel.data_history {
+//                self.model = model.reversed()
+//            }else {
+//                MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
+//                    if let m = model {
+//                        self.model = m.reversed()
+//                        self.saveListToCloudModel(m: m)
+//                        
+//                    }
+//                }
+//            }
+            
             MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
                 if let m = model {
                     self.model = m.reversed()
-//                    self.tableView.mj_header.endRefreshing()
-                    
-                    self.headerView?.count = model?.count ?? 0
-                    
                     self.saveListToCloudModel(m: m)
                     
                 }
             }
             break
         case .Favorite:
+//            if let localModel = DiscoverCent?.data_CloudListUploadModel, let model = localModel.data_favorite {
+//                self.model = model
+//            }else {
+//                MPModelTools.getSongInTable(tableName: MPMyFavoriteViewController.classCode) { (model) in
+//                    if let m = model {
+//                        self.model = m
+//                        self.saveListToCloudModel(m: m)
+//                    }
+//                }
+//            }
+            
             MPModelTools.getSongInTable(tableName: MPMyFavoriteViewController.classCode) { (model) in
                 if let m = model {
                     self.model = m
-//                    self.tableView.mj_header.endRefreshing()
-                    
-                    self.headerView?.count = model?.count ?? 0
-                    
                     self.saveListToCloudModel(m: m)
                 }
             }
@@ -86,6 +106,9 @@ class MPMyFavoriteViewController: BaseTableViewController {
     }
     
     private func saveListToCloudModel(m: [MPSongModel]) {
+        // 更新数量
+        self.headerView?.count = m.count
+        
         DispatchQueue.init(label: "SaveListToCloud").async {
             // 保存到上传模型
             switch self.fromType {

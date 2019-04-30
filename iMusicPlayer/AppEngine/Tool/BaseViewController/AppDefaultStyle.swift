@@ -187,6 +187,8 @@ struct NotCenter{
     static let NC_RefreshRecentlyAlbum = "NC_RefreshRecentlyAlbum"
     
     static let NC_RefreshUserPicture = "NC_RefreshUserPicture"
+
+    static let NC_RefreshLocalModels = "NC_RefreshLocalModels"
 }
 
 

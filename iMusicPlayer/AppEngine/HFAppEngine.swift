@@ -348,34 +348,32 @@ class HFAppEngine: NSObject, UITabBarControllerDelegate, CLLocationManagerDelega
         }
         
         // 提前获取电台数据
-        DispatchQueue.main.async {
+        DispatchQueue.init(label: "GetRadioModels").async {
             MPModelTools.getRadioModel(tableName: MPRadioViewController.classCode + "\(SourceType)") { (model) in
                 if let m = model {
                     MPModelTools.data_RadioModels = m
                 }
             }
-        }
-
-        //  初始化上传模型：用户已经登陆
-        if let obj = UserDefaults.standard.value(forKey: "UserInfoModel") as? Data, let m = NSKeyedUnarchiver.unarchiveObject(with: obj) as? MPUserSettingHeaderViewModel  {
-            DiscoverCent?.requestUserCloudList(contact: m.email, uid: m.uid, complete: { (isSucceed, model, msg) in
-                switch isSucceed {
-                case true:
-                    if let m = model {
-                        DiscoverCent?.data_CloudListUploadModel = m
-                        // 合并数据
-                        
+            
+            //  初始化上传模型：用户已经登陆
+            if let obj = UserDefaults.standard.value(forKey: "UserInfoModel") as? Data, let m = NSKeyedUnarchiver.unarchiveObject(with: obj) as? MPUserSettingHeaderViewModel  {
+                DiscoverCent?.requestUserCloudList(contact: m.email, uid: m.uid, complete: { (isSucceed, model, msg) in
+                    switch isSucceed {
+                    case true:
+                        if let m = model {
+                            DiscoverCent?.data_CloudListUploadModel = m
+                        }
+                        break
+                    case false:
+                        SVProgressHUD.showError(withStatus: msg)
+                        break
                     }
-                    break
-                case false:
-                    SVProgressHUD.showError(withStatus: msg)
-                    break
-                }
-            })
-        }else {
-            //  初始化上传模型：用户未登陆
-            MPModelTools.getLocalCloudListModel { (model) in
-                DiscoverCent?.data_CloudListUploadModel = model
+                })
+            }else {
+                //  初始化上传模型：用户未登陆
+//                MPModelTools.getLocalCloudListModel { (model) in
+//                    DiscoverCent?.data_CloudListUploadModel = model
+//                }
             }
         }
         

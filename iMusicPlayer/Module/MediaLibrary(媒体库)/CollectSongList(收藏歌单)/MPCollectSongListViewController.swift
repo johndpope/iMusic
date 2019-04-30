@@ -25,10 +25,27 @@ class MPCollectSongListViewController: BaseTableViewController {
         super.viewDidLoad()
         
         refreshData()
+
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshLocalModels), object: nil, queue: nil) { (center) in
+            QYTools.shared.Log(log: "刷新数据")
+            self.refreshData()
+        }
     }
     
     override func refreshData() {
         super.refreshData()
+        
+//        if let localModel = DiscoverCent?.data_CloudListUploadModel, let model = localModel.data_playlist {
+//            self.model = model
+//        }else {
+//            MPModelTools.getCollectListModel(tableName: MPCollectSongListViewController.classCode) { (model) in
+//                if let m = model {
+//                    self.model = m
+//                    self.saveListToCloudModel(m: m)
+//                }
+//            }
+//        }
+        
         MPModelTools.getCollectListModel(tableName: MPCollectSongListViewController.classCode) { (model) in
             if let m = model {
                 self.model = m
