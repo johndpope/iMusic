@@ -155,6 +155,9 @@ override func clickRight(sender: UIButton) {
                     if !isExsist {
                         btn.isSelected = true
                         MPModelTools.saveCollectListModel(model: self.headerSongModel!, tableName: MPCollectSongListViewController.classCode)
+                        
+                        // 更新上传模型
+                        MPModelTools.updateCloudListModel(type: 5)
                     }
                 }
             }

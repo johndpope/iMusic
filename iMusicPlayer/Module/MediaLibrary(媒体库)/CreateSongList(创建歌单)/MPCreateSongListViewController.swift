@@ -58,7 +58,7 @@ class MPCreateSongListViewController: BaseTableViewController {
         MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
             if let m = model {
                 self.model = m
-                self.saveListToCloudModel(m: m)
+//                self.saveListToCloudModel(m: m)
             }
         }
     }

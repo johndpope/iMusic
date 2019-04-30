@@ -110,7 +110,7 @@ class MPDiscoverDataCent: HFDataCent {
     ///   - complete: 回调
     func requestUserCloudList(contact: String = "", uid: String = "", complete:@escaping ((_ isSucceed: Bool, _ data: MPUserCloudListModel?, _ message: String) -> Void)) {
         
-        let param: [String:Any] = ["contact": contact,"uid": uid]
+        let param: [String:Any] = ["contact": contact,"uid": uid.md5()]
         
         HFNetworkManager.request(url: API.UserCloudList, method: .get, parameters:param, description: "获取云端数据") { (error, resp) in
             
@@ -153,7 +153,7 @@ class MPDiscoverDataCent: HFDataCent {
     ///   - complete: 回调
     func requestLogin(name: String = "", avatar: String = "", contact: String = "", did: String = "", uid: String = "", complete:@escaping ((_ isSucceed: Bool, _ message: String) -> Void)) {
         
-        let param: [String:Any] = ["name": name, "avatar": avatar,"contact": contact, "did": did, "uid": uid]
+        let param: [String:Any] = ["name": name, "avatar": avatar,"contact": contact, "did": did, "uid": uid.md5()]
         
         HFNetworkManager.request(url: API.Login, method: .get, parameters:param, description: "登录：保存用户信息") { (error, resp) in
             
@@ -177,7 +177,7 @@ class MPDiscoverDataCent: HFDataCent {
             //            guard let dataDic = resp?["data"].dictionaryObject else {return}
             
             // 保存用户信息
-            self.localizationUserInfo(model: MPUserSettingHeaderViewModel(picture: avatar, name: name, email: contact, uid: uid, did: did))
+            self.localizationUserInfo(model: MPUserSettingHeaderViewModel(picture: avatar, name: name, email: contact, uid: uid.md5(), did: did))
             
             // 请求成功时
             complete(true,msg)

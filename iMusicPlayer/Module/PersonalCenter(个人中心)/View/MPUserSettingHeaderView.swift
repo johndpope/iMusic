@@ -10,6 +10,8 @@ import UIKit
 
 class MPUserSettingHeaderView: BaseView {
 
+    @IBOutlet weak var xib_logout: UIButton!
+    
     @IBOutlet weak var xib_image: UIImageView! {
         didSet {
             xib_image.md_cornerRadius = xib_image.height/2
@@ -39,10 +41,14 @@ class MPUserSettingHeaderView: BaseView {
     func normalStyle() {
         xib_image.image = #imageLiteral(resourceName: "img_photo_default")
         xib_loginBgView.isHidden = true
+        
+        xib_logout.isEnabled = false
     }
     
     private func loginStyle() {
         xib_loginBgView.isHidden = false
+        
+        xib_logout.isEnabled = true
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {

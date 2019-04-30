@@ -99,6 +99,8 @@ class BaseViewController: UIViewController, PlaceholderViewDelegate {
                 let imgUrl = API.baseImageURL + img
                 nav.xib_image.kf.setImage(with: URL(string: imgUrl), for: .normal, placeholder: #imageLiteral(resourceName: "img_photo_default"))
             }
+        }else {
+            nav.xib_image.setImage(#imageLiteral(resourceName: "img_photo_default"), for: .normal)
         }
     }
     

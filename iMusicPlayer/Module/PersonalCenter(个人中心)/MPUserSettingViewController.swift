@@ -95,6 +95,10 @@ class MPUserSettingViewController: BaseTableViewController {
                             // 清空当前的用户数据
                             UserDefaults.standard.setValue(nil, forKey: "UserInfoModel")
                             UserDefaults.standard.synchronize()
+                            
+                            // 更新首页头像信息
+                            NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_RefreshUserPicture), object: nil)
+                            
                         } catch let signOutError as NSError {
                             print ("Error signing out: %@", signOutError)
                         }

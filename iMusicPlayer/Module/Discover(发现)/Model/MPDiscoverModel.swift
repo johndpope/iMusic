@@ -190,7 +190,7 @@ class GeneralPlaylists: BaseModel {
     
     func getJson() -> [String: Any] {
         let dict: [String: Any] = [
-            "contact": UserDefaults.standard.value(forKey: UserNameKEY) as? String ?? "",
+//            "contact": UserDefaults.standard.value(forKey: UserNameKEY) as? String ?? "",
             "description": "",
             "id": self.data_id,
             "img": self.data_img ?? "",
@@ -198,7 +198,7 @@ class GeneralPlaylists: BaseModel {
             "title": self.data_title ?? "",
             "tracksCount": self.data_tracksCount,
             "type": self.data_type ?? "",
-            "userId": UserDefaults.standard.value(forKey: UserIDKEY) as? String ?? ""
+//            "userId": UserDefaults.standard.value(forKey: UserIDKEY) as? String ?? ""
         ]
         return dict
     }

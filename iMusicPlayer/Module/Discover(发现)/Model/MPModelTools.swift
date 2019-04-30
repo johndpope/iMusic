@@ -71,27 +71,27 @@ class MPModelTools: NSObject {
     
     class func saveUserCloudListModel(model: MPUserCloudListModel) {
         // 缓存
-        if let history = model.data_history as NSArray? {
+        if let history = model.data_history as NSArray?, history.count > 0 {
             NSArray.bg_drop("RecentlyPlay")
             history.bg_save(withName: "RecentlyPlay")
         }
         
-        if let favorite = model.data_favorite as NSArray? {
+        if let favorite = model.data_favorite as NSArray?, favorite.count > 0 {
             NSArray.bg_drop(MPMyFavoriteViewController.classCode)
             favorite.bg_save(withName: MPMyFavoriteViewController.classCode)
         }
         
-        if let download = model.data_download as NSArray? {
+        if let download = model.data_download as NSArray?, download.count > 0 {
 //            NSArray.bg_drop("RecentlyPlay")
 //            download.bg_save(withName: "RecentlyPlay")
         }
         
-        if let customlist = model.data_customlist as NSArray? {
+        if let customlist = model.data_customlist as NSArray?, customlist.count > 0 {
             NSArray.bg_drop(MPCreateSongListViewController.classCode)
             customlist.bg_save(withName: MPCreateSongListViewController.classCode)
         }
         
-        if let playlist = model.data_playlist as NSArray? {
+        if let playlist = model.data_playlist as NSArray?, playlist.count > 0 {
             NSArray.bg_drop(MPCollectSongListViewController.classCode)
             playlist.bg_save(withName: MPCollectSongListViewController.classCode)
         }
@@ -140,28 +140,160 @@ class MPModelTools: NSObject {
             if let m = model {
                 tempM.data_history = m
             }
-            
-            // 获取下载歌曲
-            
+        }
+        
+        // 获取下载歌曲
+        
+        // 获取收藏歌曲
+        MPModelTools.getSongInTable(tableName: MPMyFavoriteViewController.classCode) { (model) in
+            if let m = model {
+                tempM.data_favorite = m
+            }
+        }
+        
+        // 获取创建的歌单
+        MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
+            if let m = model {
+                tempM.data_customlist = m
+                
+                // 将歌单里面的数据赋值到data_data
+                for i in 0..<m.count {
+                    let item = m[i]
+                    MPModelTools.getSongInTable(tableName: item.data_title ?? "") { (model) in
+                        if let m = model {
+                            item.data_data = m
+                            tempM.data_customlist?[i] = item
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 获取收藏的歌单
+        MPModelTools.getCollectListModel(tableName: MPCollectSongListViewController.classCode) { (model) in
+            if let m = model {
+                tempM.data_playlist = m
+            }
+        }
+        
+        if let f = finished {
+            f(tempM)
+        }
+    }
+    
+    /// 更新上传模型数据
+    ///
+    /// - Parameter type: 类型：历史、收藏、下载、自定义歌单、收藏歌单
+    class func updateCloudListModel(type: Int = -1)  {
+        switch type {
+        case 1:
+            // 获取历史数据
+            MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
+                if let m = model {
+                    // 修改当前标记
+                    if DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0 > m.count {
+                        DiscoverCent?.data_CloudListUploadModel.data_historyReset = 1
+                        
+                        DiscoverCent?.data_CloudListUploadModel.data_history = m
+                    }else {
+                        DiscoverCent?.data_CloudListUploadModel.data_historyReset = 0
+                        
+                        let location = DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0
+                        let length = m.count - location
+                        DiscoverCent?.data_CloudListUploadModel.data_history = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel]
+                    }
+                }
+            }
+            break
+        case 2:
             // 获取收藏歌曲
             MPModelTools.getSongInTable(tableName: MPMyFavoriteViewController.classCode) { (model) in
                 if let m = model {
-                    tempM.data_favorite = m
-                }
-                
-                // 获取创建的歌单
-                MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
-                    if let m = model {
-                        tempM.data_customlist = m
+                    if DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0 > m.count {
+                        DiscoverCent?.data_CloudListUploadModel.data_favoriteReset = 1
+                        
+                        DiscoverCent?.data_CloudListUploadModel.data_favorite = m
+                    }else {
+                        DiscoverCent?.data_CloudListUploadModel.data_favoriteReset = 0
+                        
+                        let location = DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0
+                        let length = m.count - location
+                        DiscoverCent?.data_CloudListUploadModel.data_favorite = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel]
                     }
-                    
-                    // 获取收藏的歌单
-                    MPModelTools.getCollectListModel(tableName: MPCollectSongListViewController.classCode) { (model) in
+                }
+            }
+            break
+        case 3:
+            // 获取下载歌曲
+            break
+        case 4:
+            // 获取创建的歌单
+            MPModelTools.getCollectListModel(tableName: MPCreateSongListViewController.classCode) { (model) in
+                if let m = model {
+                    saveCustomListToCloudModel(m: m)
+                }
+            }
+            break
+        case 5:
+            // 获取收藏的歌单
+            MPModelTools.getCollectListModel(tableName: MPCollectSongListViewController.classCode) { (model) in
+                if let m = model {
+                    saveListToCloudModel(m: m)
+                }
+            }
+            break
+        default:
+            break
+        }
+    }
+    
+    class func saveListToCloudModel(m: [GeneralPlaylists]) {
+        DispatchQueue.init(label: "SaveListToCloud").async {
+            // 保存到上传模型
+            if DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0 > m.count {
+                DiscoverCent?.data_CloudListUploadModel.data_playlistReset = 1
+                
+                DiscoverCent?.data_CloudListUploadModel.data_playlist = m
+            }else {
+                DiscoverCent?.data_CloudListUploadModel.data_playlistReset = 0
+                
+                let location = DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0
+                let length = m.count - location
+                DiscoverCent?.data_CloudListUploadModel.data_playlist = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists]
+            }
+        }
+    }
+    
+    class func saveCustomListToCloudModel(m: [GeneralPlaylists]) {
+        DispatchQueue.init(label: "SaveListToCloud").async {
+            // 保存到上传模型
+            if DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0 > m.count {
+                DiscoverCent?.data_CloudListUploadModel.data_customlistReset = 1
+                
+                DiscoverCent?.data_CloudListUploadModel.data_customlist = m
+                // 将歌单里面的数据赋值到data_data
+                for i in 0..<m.count {
+                    let item = m[i]
+                    MPModelTools.getSongInTable(tableName: item.data_title ?? "") { (model) in
                         if let m = model {
-                            tempM.data_playlist = m
+                            item.data_data = m
+                            DiscoverCent?.data_CloudListUploadModel.data_customlist?[i] = item
                         }
-                        if let f = finished {
-                            f(tempM)
+                    }
+                }
+            }else {
+                DiscoverCent?.data_CloudListUploadModel.data_customlistReset = 0
+                // 只需要赋值增加的项
+                let location = DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0
+                let length = m.count-location
+                DiscoverCent?.data_CloudListUploadModel.data_customlist = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists]
+                // 将歌单里面的数据赋值到data_data
+                for i in location..<m.count {
+                    let item = m[i]
+                    MPModelTools.getSongInTable(tableName: item.data_title ?? "") { (model) in
+                        if let m = model {
+                            item.data_data = m
+                            DiscoverCent?.data_CloudListUploadModel.data_customlist?[i] = item
                         }
                     }
                 }
@@ -176,12 +308,16 @@ class MPModelTools: NSObject {
     ///   - song: 歌曲
     ///   - tableName: 表名
     class func saveSongToTable(song: MPSongModel, tableName: String = "") {
-        // 线程锁：同一时刻只能一个线程调用
-        let lock = DispatchSemaphore.init(value: 1)
-        lock.wait()
         // 缓存
         ([song] as NSArray).bg_save(withName: tableName)
-        lock.signal()
+        
+        // 判断收藏操作
+        
+        // 判断最近播放
+        
+        // 判断添加歌曲到歌单
+        
+        
     }
     // MARK: - 公共获取歌曲列表：数组
     /// 获取对应歌曲列表
@@ -395,6 +531,9 @@ class MPModelTools: NSObject {
         }else {
             SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
         }
+    
+    // 判断创建歌单
+    
         return rs
     }
     
@@ -443,6 +582,9 @@ class MPModelTools: NSObject {
     class func saveCollectListModel(model: GeneralPlaylists, tableName: String = GeneralPlaylists.classCode) {
         // 缓存
         ([model] as NSArray).bg_save(withName: tableName)
+        
+        // 判断收藏歌单
+        
     }
     
     /// 检查当前歌单是否已经创建

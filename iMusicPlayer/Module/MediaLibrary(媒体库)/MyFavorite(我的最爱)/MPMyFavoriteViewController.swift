@@ -66,7 +66,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
             MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
                 if let m = model {
                     self.model = m.reversed()
-                    self.saveListToCloudModel(m: m)
+//                    self.saveListToCloudModel(m: m)
                     
                 }
             }
@@ -86,7 +86,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
             MPModelTools.getSongInTable(tableName: MPMyFavoriteViewController.classCode) { (model) in
                 if let m = model {
                     self.model = m
-                    self.saveListToCloudModel(m: m)
+//                    self.saveListToCloudModel(m: m)
                 }
             }
             break

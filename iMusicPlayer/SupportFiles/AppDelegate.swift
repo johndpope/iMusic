@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var playingBigView: MPPlayingBigView_new?
     
+    var backgroundTaskIdentifier: UIBackgroundTaskIdentifier!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -80,18 +82,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         debugPrint("前台进入后台 --------------------------> ")
         
-        guard let email = UserDefaults.standard.value(forKey: UserNameKEY) as? String, let uid = UserDefaults.standard.value(forKey: UserIDKEY) as? String else {return}
-        DiscoverCent?.requestSaveUserCloudList(contact: email, reset: 1, uid: uid, complete: { (isSucceed, msg) in
-            switch isSucceed {
-            case true:
-                SVProgressHUD.showInfo(withStatus: "数据保存成功~")
-                break
-            case false:
-                SVProgressHUD.showError(withStatus: msg)
-                break
-            }
-        })
+        backgroundTaskIdentifier = application.beginBackgroundTask {
+            self.endBackgroundTask()
+        }
+        self.syncData()
+    }
+    
+    private func endBackgroundTask() {
+        DispatchQueue.main.sync {
+            UIApplication.shared.endBackgroundTask(self.backgroundTaskIdentifier)
+            self.backgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
+        }
+    }
+    
+    @objc private func syncData() {
         
+        if let obj = UserDefaults.standard.value(forKey: "UserInfoModel") as? Data, let m = NSKeyedUnarchiver.unarchiveObject(with: obj) as? MPUserSettingHeaderViewModel  {
+            DiscoverCent?.requestSaveUserCloudList(contact: m.email, reset: 1, uid: m.uid, complete: { (isSucceed, msg) in
+                switch isSucceed {
+                case true:
+                    //                SVProgressHUD.showInfo(withStatus: "数据保存成功~")
+                    QYTools.shared.Log(log: "数据保存成功~")
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    break
+                }
+            })
+        }
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {

@@ -371,9 +371,9 @@ class HFAppEngine: NSObject, UITabBarControllerDelegate, CLLocationManagerDelega
                 })
             }else {
                 //  初始化上传模型：用户未登陆
-//                MPModelTools.getLocalCloudListModel { (model) in
-//                    DiscoverCent?.data_CloudListUploadModel = model
-//                }
+                MPModelTools.getLocalCloudListModel { (model) in
+                    DiscoverCent?.data_CloudListUploadModel = model
+                }
             }
         }
         

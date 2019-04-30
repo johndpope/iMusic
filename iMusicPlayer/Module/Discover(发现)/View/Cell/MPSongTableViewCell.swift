@@ -108,6 +108,9 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
                 // 设置为收藏状态
                 xib_collect.isSelected = true
                 SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲收藏成功", comment: ""))
+                // 更新上传模型
+                MPModelTools.updateCloudListModel(type: 2)
+                
             }else {
                 // 取消收藏
                 SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收藏", comment: ""))
@@ -192,6 +195,9 @@ extension MPSongTableViewCell: MPSongToolsViewDelegate {
                                     lv.model = m
                                 }
                             }
+                            
+                            // 更新上传模型
+                            MPModelTools.updateCloudListModel(type: 4)
                         }else {
                             SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
                         }
@@ -212,6 +218,9 @@ extension MPSongTableViewCell: MPSongToolsViewDelegate {
                     MPModelTools.updateCountForSongList(songList: songList, finished: {
                         lv.removeFromWindow()
                     })
+                    
+                    // 更新上传模型
+                    MPModelTools.updateCloudListModel(type: 4)
                 }else {
                     SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在该歌单中", comment: ""))
                 }

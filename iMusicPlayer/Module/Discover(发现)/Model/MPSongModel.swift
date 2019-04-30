@@ -11,7 +11,7 @@ import ObjectMapper
 class MPSongModel:BaseModel, DOUAudioFile {
     
     override var hashValue: Int {
-        return (self.data_originalId! + "\(self.data_songId)").hashValue
+        return (self.data_originalId ?? "" + "\(self.data_songId)").hashValue
     }
     
     func audioFileURL() -> URL! {
@@ -116,7 +116,7 @@ class MPSongModel:BaseModel, DOUAudioFile {
             "artworkUrl": self.data_artworkUrl ?? "",
             "cache": self.data_cache ?? "",
             "channelTitle": self.data_channelTitle ?? "",
-            "contact": UserDefaults.standard.value(forKey: UserNameKEY) as? String ?? "",
+//            "contact": UserDefaults.standard.value(forKey: UserNameKEY) as? String ?? "",
             "createTime": "",
             "durationInSeconds": self.data_durationInSeconds,
             "heatIndex": self.data_heatIndex,
@@ -128,7 +128,7 @@ class MPSongModel:BaseModel, DOUAudioFile {
             "songName": self.data_songName ?? "",
             "title": self.data_title ?? "",
             "type": "",
-            "userId": UserDefaults.standard.value(forKey: UserIDKEY) as? String ?? ""
+//            "userId": UserDefaults.standard.value(forKey: UserIDKEY) as? String ?? ""
             ]
         return dict
     }
