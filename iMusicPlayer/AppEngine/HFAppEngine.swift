@@ -360,8 +360,17 @@ class HFAppEngine: NSObject, UITabBarControllerDelegate, CLLocationManagerDelega
                 DiscoverCent?.requestUserCloudList(contact: m.email, uid: m.uid, complete: { (isSucceed, model, msg) in
                     switch isSucceed {
                     case true:
-                        if let m = model {
-                            DiscoverCent?.data_CloudListUploadModel = m
+                        if let cloud = model {
+                            //  初始化上传模型：用户未登陆
+                            MPModelTools.getLocalCloudListModel { (model) in
+                                let local = model
+                                // 合并数据并赋值给本地模型
+                                MPModelTools.mergeLocalAndCloudListModel(local: local, cloud: cloud, finished: { (model) in
+                                    DiscoverCent?.data_CloudListUploadModel = model
+                                    // 通知更新列表数据
+                                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_RefreshLocalModels), object: nil)
+                                })
+                            }
                         }
                         break
                     case false:

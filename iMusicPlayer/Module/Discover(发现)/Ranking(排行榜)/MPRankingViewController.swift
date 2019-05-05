@@ -103,31 +103,66 @@ extension MPRankingViewController {
     func mappingToMPRankingTempModel(model: Charts) -> [MPRankingTempModel]  {
         var temps = [MPRankingTempModel]()
         if let oricon = model.data_oricon, oricon.count > 0 {
-            let tempM = MPRankingTempModel(image: "img_ranking_oricon", title: "Oricon" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每周三更新", comment: ""), songOne: oricon.first?.data_title, songTwo: oricon[1].data_title)
+            let fn = oricon.first?.data_title ?? ""
+            var sn = ""
+            if oricon.count > 1 {
+                sn = oricon[1].data_title ?? ""
+            }
+            let tempM = MPRankingTempModel(image: "img_ranking_oricon", title: "Oricon" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每周三更新", comment: ""), songOne: fn, songTwo: sn)
             temps.append(tempM)
         }
         if let mnet = model.data_mnet, mnet.count > 0 {
-            let tempM = MPRankingTempModel(image: "img_ranking_ment", title: "Ment" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每周一更新", comment: ""), songOne: mnet.first?.data_title, songTwo: mnet[1].data_title)
+            let fn = mnet.first?.data_title ?? ""
+            var sn = ""
+            if mnet.count > 1 {
+                sn = mnet[1].data_title ?? ""
+            }
+            let tempM = MPRankingTempModel(image: "img_ranking_ment", title: "Ment" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每周一更新", comment: ""), songOne: fn, songTwo: sn)
             temps.append(tempM)
         }
         if let billboard = model.data_billboard, billboard.count > 0 {
-            let tempM = MPRankingTempModel(image: "img_ranking_billboard", title: "Billboard" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每周三更新", comment: ""), songOne: billboard.first?.data_title, songTwo: billboard[1].data_title)
+            let fn = billboard.first?.data_title ?? ""
+            var sn = ""
+            if billboard.count > 1 {
+                sn = billboard[1].data_title ?? ""
+            }
+            let tempM = MPRankingTempModel(image: "img_ranking_billboard", title: "Billboard" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每周三更新", comment: ""), songOne: fn, songTwo: sn)
             temps.append(tempM)
         }
         if let iTunes = model.data_iTunes, iTunes.count > 0 {
-            let tempM = MPRankingTempModel(image: "img_ranking_itunes", title: "ITunes" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每周一更新", comment: ""), songOne: iTunes.first?.data_title, songTwo: iTunes[1].data_title)
+            let fn = iTunes.first?.data_title ?? ""
+            var sn = ""
+            if iTunes.count > 1 {
+                sn = iTunes[1].data_title ?? ""
+            }
+            let tempM = MPRankingTempModel(image: "img_ranking_itunes", title: "ITunes" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每周一更新", comment: ""), songOne: fn, songTwo: sn)
             temps.append(tempM)
         }
         if let listen = model.data_listen, listen.count > 0 {
-            let tempM = MPRankingTempModel(image: "img_ranking_musicz_play", title: "Listen" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每日更新", comment: ""), songOne: listen.first?.data_title, songTwo: listen[1].data_title)
+            let fn = listen.first?.data_title ?? ""
+            var sn = ""
+            if listen.count > 1 {
+                sn = listen[1].data_title ?? ""
+            }
+            let tempM = MPRankingTempModel(image: "img_ranking_musicz_play", title: "Listen" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每日更新", comment: ""), songOne: fn, songTwo: sn)
             temps.append(tempM)
         }
         if let collection = model.data_collection, collection.count > 0 {
-            let tempM = MPRankingTempModel(image: "img_ranking_collection", title: "Collection" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每日更新", comment: ""), songOne: collection.first?.data_title, songTwo: collection[1].data_title)
+            let fn = collection.first?.data_title ?? ""
+            var sn = ""
+            if collection.count > 1 {
+                sn = collection[1].data_title ?? ""
+            }
+            let tempM = MPRankingTempModel(image: "img_ranking_musicz_collect", title: "Collection" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每日更新", comment: ""), songOne: fn, songTwo: sn)
             temps.append(tempM)
         }
         if let uK = model.data_uK, uK.count > 0 {
-            let tempM = MPRankingTempModel(image: "img_ranking_uk", title: "UK" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每周一更新", comment: ""), songOne: uK.first?.data_title, songTwo: uK[1].data_title)
+            let fn = uK.first?.data_title ?? ""
+            var sn = ""
+            if uK.count > 1 {
+                sn = uK[1].data_title ?? ""
+            }
+            let tempM = MPRankingTempModel(image: "img_ranking_uk", title: "UK" + NSLocalizedString("榜", comment: ""), updateTime: NSLocalizedString("每周一更新", comment: ""), songOne: fn, songTwo: sn)
             temps.append(tempM)
         }
         return temps

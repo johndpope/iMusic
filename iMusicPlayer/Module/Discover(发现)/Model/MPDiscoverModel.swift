@@ -118,6 +118,11 @@ class Charts: BaseModel {
 }
 
 class GeneralPlaylists: BaseModel {
+    
+    override var hash: Int {
+        return (self.data_title ?? "").md5().hash
+    }
+    
     var data_img: String?
     var data_id: Int = 0
     var data_title: String?

@@ -144,6 +144,8 @@ class MPCreateSongListViewController: BaseTableViewController {
                         }else {
                             if MPModelTools.createSongList(songListName: pv.xib_songListName.text ?? "") {
                                 self.refreshData()
+                                // 更新上传模型
+                                MPModelTools.updateCloudListModel(type: 4)
                             }else {
                                 SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
                             }

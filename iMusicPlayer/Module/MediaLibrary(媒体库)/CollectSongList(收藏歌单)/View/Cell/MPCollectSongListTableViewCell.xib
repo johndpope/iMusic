@@ -22,26 +22,29 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waF-Cm-JS0">
                         <rect key="frame" x="12" y="0.0" width="296" height="99.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_album" translatesAutoresizingMaskIntoConstraints="NO" id="saW-nJ-zER">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="pic_album" translatesAutoresizingMaskIntoConstraints="NO" id="saW-nJ-zER">
                                 <rect key="frame" x="0.0" y="0.0" width="99.5" height="99.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="saW-nJ-zER" secondAttribute="height" id="iG9-tO-yTV"/>
+                                    <constraint firstAttribute="width" secondItem="saW-nJ-zER" secondAttribute="height" multiplier="1:1" id="Flk-e0-3eD"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="オネエ達の人生バイブル13曲" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-hO-hmN">
-                                <rect key="frame" x="111.5" y="18" width="134.5" height="38.5"/>
+                                <rect key="frame" x="111.5" y="18" width="147" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="26首" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCg-HD-JdE">
-                                <rect key="frame" x="111.5" y="68.5" width="134.5" height="15"/>
+                                <rect key="frame" x="111.5" y="68.5" width="147" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1u-qm-9vu">
                                 <rect key="frame" x="267" y="37.5" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="x1u-qm-9vu" secondAttribute="height" multiplier="1:1" id="ine-95-YPm"/>
+                                </constraints>
                                 <state key="normal" image="icon_more_1"/>
                                 <connections>
                                     <action selector="btn_DidClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4Va-Ly-90v"/>
@@ -62,7 +65,6 @@
                             <constraint firstAttribute="trailing" secondItem="x1u-qm-9vu" secondAttribute="trailing" constant="4" id="leO-yX-AhZ"/>
                             <constraint firstAttribute="bottom" secondItem="saW-nJ-zER" secondAttribute="bottom" id="rdb-jz-m3b"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OCg-HD-JdE" secondAttribute="bottom" constant="8" id="uIg-wM-YaP"/>
-                            <constraint firstAttribute="trailing" secondItem="Y1i-hO-hmN" secondAttribute="trailing" constant="50" id="wZU-cg-Ay8"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.connerRadius">

@@ -258,7 +258,7 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
             return
         }
         
-        if let lastIndex = lastIndex {
+        if let lastIndex = lastIndex, lastIndex < lyricsViewModels.count {
             lyricsViewModels[lastIndex].highlighted = false
         }
         

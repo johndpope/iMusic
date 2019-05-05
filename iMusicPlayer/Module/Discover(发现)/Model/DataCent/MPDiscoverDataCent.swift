@@ -54,7 +54,13 @@ class MPDiscoverDataCent: HFDataCent {
     }
     
     private func getReset(model: MPUserCloudListModel) -> Int {
-        if model.data_playlistReset == 0, model.data_customlistReset == 0, model.data_downloadReset == 0, model.data_favoriteReset == 0, model.data_historyReset == 0 {
+        let tp = model.data_playlistReset
+        let tc = model.data_customlistReset
+        let td = model.data_downloadReset
+        let tf = model.data_favoriteReset
+        let th = model.data_historyReset
+        
+        if tp == 0 || tp == -1, tc == 0 || tc == -1, td == 0 || td == -1, tf == 0 || tf == -1, th == 0 || th == -1 {
             return 0
         }else {
              return 1

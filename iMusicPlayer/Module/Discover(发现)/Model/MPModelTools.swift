@@ -11,7 +11,7 @@ import ObjectMapper
 
 extension Array {
     // 去重
-    func filterDuplicates<E: Equatable>(_ filter: (Element) -> E) -> [Element] {
+    func filterDuplicates<E: Equatable & Hashable>(_ filter: (Element) -> E) -> [Element] {
         var result = [Element]()
         for value in self {
             let key = filter(value)
@@ -89,6 +89,17 @@ class MPModelTools: NSObject {
         if let customlist = model.data_customlist as NSArray?, customlist.count > 0 {
             NSArray.bg_drop(MPCreateSongListViewController.classCode)
             customlist.bg_save(withName: MPCreateSongListViewController.classCode)
+            // 将同步下来的歌曲也要缓存起来
+            if let list = customlist as? [GeneralPlaylists] {
+                list.forEach { (item) in
+                    let tableName = item.data_title ?? ""
+                    // 缓存
+                    if let songs = item.data_data {
+                        NSArray.bg_drop(tableName)
+                        (songs as NSArray).bg_save(withName: tableName)
+                    }
+                }
+            }
         }
         
         if let playlist = model.data_playlist as NSArray?, playlist.count > 0 {
@@ -116,17 +127,20 @@ class MPModelTools: NSObject {
         let localC = local.count
         let cloudC = cloud.count
         
-        if localFirst == cloudFirst, localC >= cloudC {
+        if localFirst.hashValue == cloudFirst.hashValue, localC >= cloudC {
             temps = local
         }else {
             temps = cloud
         }
         
-        if localFirst != cloudFirst {
-            temps = (local + cloud).unique
+        if localFirst.hashValue != cloudFirst.hashValue {
+            temps = local + cloud
         }
-        
-        return temps
+        // 去重
+        let t = temps.filterDuplicates({ (item) -> Int in
+            return item.hashValue
+        })
+        return t
     }
     
     /// 获取用户当前本地模型数据
@@ -259,7 +273,7 @@ class MPModelTools: NSObject {
                 
                 let location = DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0
                 let length = m.count - location
-                DiscoverCent?.data_CloudListUploadModel.data_playlist = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists]
+                DiscoverCent?.data_CloudListUploadModel.data_playlist! += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists])!
             }
         }
     }
@@ -277,6 +291,9 @@ class MPModelTools: NSObject {
                     MPModelTools.getSongInTable(tableName: item.data_title ?? "") { (model) in
                         if let m = model {
                             item.data_data = m
+                            if item.data_oldTitle == "" {
+                                item.data_oldTitle = item.data_title
+                            }
                             DiscoverCent?.data_CloudListUploadModel.data_customlist?[i] = item
                         }
                     }
@@ -286,7 +303,7 @@ class MPModelTools: NSObject {
                 // 只需要赋值增加的项
                 let location = DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0
                 let length = m.count-location
-                DiscoverCent?.data_CloudListUploadModel.data_customlist = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists]
+                DiscoverCent?.data_CloudListUploadModel.data_customlist! += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists])!
                 // 将歌单里面的数据赋值到data_data
                 for i in location..<m.count {
                     let item = m[i]
