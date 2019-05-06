@@ -763,6 +763,9 @@ extension MPPlayingBigView_new: YTPlayerViewDelegate {
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         playerView.playVideo()
+        UIView.animate(withDuration: 0.25) {
+            self.playBgView.bringSubviewToFront(self.playView)
+        }
     }
     
     func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
@@ -869,6 +872,8 @@ extension MPPlayingBigView_new {
             let tabbar = rvc.tabBar
             tabbar.top = SCREEN_HEIGHT
         }
+        
+        playBgView.sendSubviewToBack(playView)
     }
 }
 
