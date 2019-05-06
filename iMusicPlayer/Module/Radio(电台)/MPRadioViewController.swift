@@ -51,7 +51,7 @@ class MPRadioViewController: BaseViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 20.0
         // 将cell挤成一行
-        layout.minimumInteritemSpacing = 100
+        layout.minimumInteritemSpacing = (view.height - CELL_HEIGHT)
         layout.sectionInset = UIEdgeInsets(top: 0, left: LAYOUT_LEFTORRIGHT_WIDTH, bottom: 0, right: LAYOUT_LEFTORRIGHT_WIDTH)
         layout.itemSize = CGSize(width: CELL_WIDTH, height: CELL_WIDTH + 80)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
