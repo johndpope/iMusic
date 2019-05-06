@@ -873,7 +873,9 @@ extension MPPlayingBigView_new {
             tabbar.top = SCREEN_HEIGHT
         }
         
-        playBgView.sendSubviewToBack(playView)
+        if playView.playerState() != .playing, playView.playerState() != .paused {
+            playBgView.sendSubviewToBack(playView)
+        }
     }
 }
 
