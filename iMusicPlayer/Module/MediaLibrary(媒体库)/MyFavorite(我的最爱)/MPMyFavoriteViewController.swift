@@ -109,61 +109,70 @@ class MPMyFavoriteViewController: BaseTableViewController {
         addLeftItem(title: title, imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
     }
     
-    private func saveListToCloudModel(m: [MPSongModel]) {
-        // 更新数量
-        self.headerView?.count = m.count
-        
-        DispatchQueue.init(label: "SaveListToCloud").async {
-            // 保存到上传模型
-            switch self.fromType {
-            case .Recently:
-                // 修改当前标记
-                if DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0 > m.count {
-                    DiscoverCent?.data_CloudListUploadModel.data_historyReset = 1
-                    
-                    DiscoverCent?.data_CloudListUploadModel.data_history = m
-                }else {
-                    DiscoverCent?.data_CloudListUploadModel.data_historyReset = 0
-                    
-                    let location = DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0
-                    let length = m.count - location
-                    DiscoverCent?.data_CloudListUploadModel.data_history = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel]
-                }
-                break
-            case .Favorite:
-                // 修改当前标记
-                if DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0 > m.count {
-                    DiscoverCent?.data_CloudListUploadModel.data_favoriteReset = 1
-                    
-                    DiscoverCent?.data_CloudListUploadModel.data_favorite = m
-                }else {
-                    DiscoverCent?.data_CloudListUploadModel.data_favoriteReset = 0
-                    
-                    let location = DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0
-                    let length = m.count - location
-                    DiscoverCent?.data_CloudListUploadModel.data_favorite = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel]
-                }
-                break
-            case .Download:
-                // 修改当前标记
-                if DiscoverCent?.data_CloudListUploadModel.data_download?.count ?? 0 > m.count {
-                    DiscoverCent?.data_CloudListUploadModel.data_downloadReset = 1
-                    
-                    DiscoverCent?.data_CloudListUploadModel.data_download = m
-                }else {
-                    DiscoverCent?.data_CloudListUploadModel.data_downloadReset = 0
-                    
-                    let location = DiscoverCent?.data_CloudListUploadModel.data_download?.count ?? 0
-                    let length = m.count - location
-                    DiscoverCent?.data_CloudListUploadModel.data_download = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel]
-                }
-                break
-            default:
-                break
-            }
-            
-        }
-    }
+//    private func saveListToCloudModel(m: [MPSongModel]) {
+//        // 更新数量
+//        self.headerView?.count = m.count
+//        
+//        DispatchQueue.init(label: "SaveListToCloud").async {
+//            // 保存到上传模型
+//            switch self.fromType {
+//            case .Recently:
+//                // 修改当前标记
+//                if DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0 > m.count {
+//                    DiscoverCent?.data_CloudListUploadModel.data_historyReset = 1
+//                    
+//                    DiscoverCent?.data_CloudListUploadModel.data_history = m
+//                }else {
+//                    DiscoverCent?.data_CloudListUploadModel.data_historyReset = 0
+//                    
+//                    let location = DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0
+//                    let length = m.count - location
+//                    guard var hlist = DiscoverCent?.data_CloudListUploadModel.data_history else {
+//                        return
+//                    }
+//                    hlist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel])!
+//                }
+//                break
+//            case .Favorite:
+//                // 修改当前标记
+//                if DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0 > m.count {
+//                    DiscoverCent?.data_CloudListUploadModel.data_favoriteReset = 1
+//                    
+//                    DiscoverCent?.data_CloudListUploadModel.data_favorite = m
+//                }else {
+//                    DiscoverCent?.data_CloudListUploadModel.data_favoriteReset = 0
+//                    
+//                    let location = DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0
+//                    let length = m.count - location
+//                    guard var flist = DiscoverCent?.data_CloudListUploadModel.data_favorite else {
+//                        return
+//                    }
+//                    flist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel])!
+//                }
+//                break
+//            case .Download:
+//                // 修改当前标记
+//                if DiscoverCent?.data_CloudListUploadModel.data_download?.count ?? 0 > m.count {
+//                    DiscoverCent?.data_CloudListUploadModel.data_downloadReset = 1
+//                    
+//                    DiscoverCent?.data_CloudListUploadModel.data_download = m
+//                }else {
+//                    DiscoverCent?.data_CloudListUploadModel.data_downloadReset = 0
+//                    
+//                    let location = DiscoverCent?.data_CloudListUploadModel.data_download?.count ?? 0
+//                    let length = m.count - location
+//                    guard var dlist = DiscoverCent?.data_CloudListUploadModel.data_download else {
+//                        return
+//                    }
+//                    dlist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel])!
+//                }
+//                break
+//            default:
+//                break
+//            }
+//            
+//        }
+//    }
     
     override func setupStyle() {
         super.setupStyle()

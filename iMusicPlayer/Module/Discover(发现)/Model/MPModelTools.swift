@@ -214,7 +214,11 @@ class MPModelTools: NSObject {
                         
                         let location = DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0
                         let length = m.count - location
-                        DiscoverCent?.data_CloudListUploadModel.data_history = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel]
+                        guard var hlist = DiscoverCent?.data_CloudListUploadModel.data_history else {
+                            return
+                        }
+                        hlist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel])!
+                        DiscoverCent?.data_CloudListUploadModel.data_history = hlist
                     }
                 }
             }
@@ -232,7 +236,11 @@ class MPModelTools: NSObject {
                         
                         let location = DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0
                         let length = m.count - location
-                        DiscoverCent?.data_CloudListUploadModel.data_favorite = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel]
+                        guard var flist = DiscoverCent?.data_CloudListUploadModel.data_favorite else {
+                            return
+                        }
+                        flist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel])!
+                        DiscoverCent?.data_CloudListUploadModel.data_favorite = flist
                     }
                 }
             }
@@ -277,6 +285,8 @@ class MPModelTools: NSObject {
                     return
                 }
                 plist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists])!
+                
+                DiscoverCent?.data_CloudListUploadModel.data_playlist = plist
             }
         }
     }
@@ -284,7 +294,7 @@ class MPModelTools: NSObject {
     class func saveCustomListToCloudModel(m: [GeneralPlaylists]) {
         DispatchQueue.init(label: "SaveListToCloud").async {
             // 保存到上传模型
-            if DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0 > m.count {
+            if DiscoverCent?.data_CloudListUploadModel.data_customlist == nil || DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0 > m.count {
                 DiscoverCent?.data_CloudListUploadModel.data_customlistReset = 1
                 
                 DiscoverCent?.data_CloudListUploadModel.data_customlist = m
@@ -306,17 +316,24 @@ class MPModelTools: NSObject {
                 // 只需要赋值增加的项
                 let location = DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0
                 let length = m.count-location
-                DiscoverCent?.data_CloudListUploadModel.data_customlist! += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists])!
+                guard var clist = DiscoverCent?.data_CloudListUploadModel.data_customlist else {
+                    return
+                }
+                clist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists])!
                 // 将歌单里面的数据赋值到data_data
                 for i in location..<m.count {
                     let item = m[i]
                     MPModelTools.getSongInTable(tableName: item.data_title ?? "") { (model) in
                         if let m = model {
                             item.data_data = m
-                            DiscoverCent?.data_CloudListUploadModel.data_customlist?[i] = item
+                            if item.data_oldTitle == "" {
+                                item.data_oldTitle = item.data_title
+                            }
+                            clist[i] = item
                         }
                     }
                 }
+                DiscoverCent?.data_CloudListUploadModel.data_customlist = clist
             }
         }
     }

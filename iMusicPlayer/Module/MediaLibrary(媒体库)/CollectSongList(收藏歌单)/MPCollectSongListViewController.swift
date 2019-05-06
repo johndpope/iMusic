@@ -58,22 +58,25 @@ class MPCollectSongListViewController: BaseTableViewController {
         }
     }
     
-    private func saveListToCloudModel(m: [GeneralPlaylists]) {
-        DispatchQueue.init(label: "SaveListToCloud").async {
-            // 保存到上传模型
-            if DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0 > m.count {
-                DiscoverCent?.data_CloudListUploadModel.data_playlistReset = 1
-                
-                DiscoverCent?.data_CloudListUploadModel.data_playlist = m
-            }else {
-                DiscoverCent?.data_CloudListUploadModel.data_playlistReset = 0
-                
-                let location = DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0
-                let length = m.count - location
-                DiscoverCent?.data_CloudListUploadModel.data_playlist = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists]
-            }
-        }
-    }
+//    private func saveListToCloudModel(m: [GeneralPlaylists]) {
+//        DispatchQueue.init(label: "SaveListToCloud").async {
+//            // 保存到上传模型
+//            if DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0 > m.count {
+//                DiscoverCent?.data_CloudListUploadModel.data_playlistReset = 1
+//                
+//                DiscoverCent?.data_CloudListUploadModel.data_playlist = m
+//            }else {
+//                DiscoverCent?.data_CloudListUploadModel.data_playlistReset = 0
+//                
+//                let location = DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0
+//                let length = m.count - location
+//                guard var plist = DiscoverCent?.data_CloudListUploadModel.data_playlist else {
+//                    return
+//                }
+//                plist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists])!
+//            }
+//        }
+//    }
     
     override func setupStyle() {
         super.setupStyle()

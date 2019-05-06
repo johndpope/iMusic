@@ -67,42 +67,45 @@ class MPCreateSongListViewController: BaseTableViewController {
         }
     }
     
-    private func saveListToCloudModel(m: [GeneralPlaylists]) {
-        DispatchQueue.init(label: "SaveListToCloud").async {
-            // 保存到上传模型
-            if DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0 > m.count {
-                DiscoverCent?.data_CloudListUploadModel.data_customlistReset = 1
-                
-                DiscoverCent?.data_CloudListUploadModel.data_customlist = m
-                // 将歌单里面的数据赋值到data_data
-                for i in 0..<m.count {
-                    let item = m[i]
-                    MPModelTools.getSongInTable(tableName: item.data_title ?? "") { (model) in
-                        if let m = model {
-                            item.data_data = m
-                        }
-                    }
-                    DiscoverCent?.data_CloudListUploadModel.data_customlist?[i] = item
-                }
-            }else {
-                DiscoverCent?.data_CloudListUploadModel.data_customlistReset = 0
-                // 只需要赋值增加的项
-                let location = DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0
-                let length = m.count-location
-                DiscoverCent?.data_CloudListUploadModel.data_customlist = (m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists]
-                // 将歌单里面的数据赋值到data_data
-                for i in location..<m.count {
-                    let item = m[i]
-                    MPModelTools.getSongInTable(tableName: item.data_title ?? "") { (model) in
-                        if let m = model {
-                            item.data_data = m
-                        }
-                    }
-                    DiscoverCent?.data_CloudListUploadModel.data_customlist?[i] = item
-                }
-            }
-        }
-    }
+//    private func saveListToCloudModel(m: [GeneralPlaylists]) {
+//        DispatchQueue.init(label: "SaveListToCloud").async {
+//            // 保存到上传模型
+//            if DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0 > m.count {
+//                DiscoverCent?.data_CloudListUploadModel.data_customlistReset = 1
+//                
+//                DiscoverCent?.data_CloudListUploadModel.data_customlist = m
+//                // 将歌单里面的数据赋值到data_data
+//                for i in 0..<m.count {
+//                    let item = m[i]
+//                    MPModelTools.getSongInTable(tableName: item.data_title ?? "") { (model) in
+//                        if let m = model {
+//                            item.data_data = m
+//                        }
+//                    }
+//                    DiscoverCent?.data_CloudListUploadModel.data_customlist?[i] = item
+//                }
+//            }else {
+//                DiscoverCent?.data_CloudListUploadModel.data_customlistReset = 0
+//                // 只需要赋值增加的项
+//                let location = DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0
+//                let length = m.count-location
+//                guard var clist = DiscoverCent?.data_CloudListUploadModel.data_customlist else {
+//                    return
+//                }
+//                clist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists])!
+//                // 将歌单里面的数据赋值到data_data
+//                for i in location..<m.count {
+//                    let item = m[i]
+//                    MPModelTools.getSongInTable(tableName: item.data_title ?? "") { (model) in
+//                        if let m = model {
+//                            item.data_data = m
+//                        }
+//                    }
+//                    DiscoverCent?.data_CloudListUploadModel.data_customlist?[i] = item
+//                }
+//            }
+//        }
+//    }
     
     override func setupStyle() {
         super.setupStyle()
