@@ -153,6 +153,8 @@ extension MPEditSongListDetailViewController {
                     
                     // 更新当前专辑信息：数量图片等
                     self.updateAlbumModel(count: (self.songListModel?.data_tracksCount ?? 0) - self.selectModel.count)
+                    
+                    MPModelTools.updateCloudListModel(type: 4)
                 })
             }) {
                 // 取消

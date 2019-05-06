@@ -149,6 +149,7 @@ extension MPCollectSongListViewController {
             // 删除本地模型数据并刷新
             MPModelTools.deleteCollectListModel(songList: tempM, tableName: MPCollectSongListViewController.classCode, finished: {
                 self.refreshData()
+                MPModelTools.updateCloudListModel(type: 5)
             })
         }) {
             // 取消

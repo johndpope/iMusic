@@ -256,6 +256,7 @@ extension MPCreateSongListViewController: MPSongToolsViewDelegate {
             // 删除本地模型数据并刷新
             MPModelTools.deleteCollectListModel(songList: tempM, tableName: MPCreateSongListViewController.classCode, finished: {
                 self.refreshData()
+                MPModelTools.updateCloudListModel(type: 4)
             })
         }) {
             // 取消
