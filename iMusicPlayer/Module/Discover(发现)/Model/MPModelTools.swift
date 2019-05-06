@@ -456,6 +456,7 @@ class MPModelTools: NSObject {
     /// - Parameter song: 歌曲
     /// - Returns: 是否存在
     class func checkSongExsistInPlayingList(song: MPSongModel, tableName: String = "CurrentPlayList") -> Bool {
+        let startTime = CFAbsoluteTimeGetCurrent()
         var rs = false
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
 //            QYTools.shared.Log(log: "本地数据库获取数据")
@@ -465,6 +466,8 @@ class MPModelTools: NSObject {
                 }
             }
         }
+        let endTime = CFAbsoluteTimeGetCurrent()
+        debugPrint("\(#function)代码执行时长：%f 毫秒", (endTime - startTime)*1000)
         return rs
     }
     
