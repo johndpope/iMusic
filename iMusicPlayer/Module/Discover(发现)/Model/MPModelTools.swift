@@ -273,7 +273,10 @@ class MPModelTools: NSObject {
                 
                 let location = DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0
                 let length = m.count - location
-                DiscoverCent?.data_CloudListUploadModel.data_playlist! += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists])!
+                guard var plist = DiscoverCent?.data_CloudListUploadModel.data_playlist else {
+                    return
+                }
+                plist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [GeneralPlaylists])!
             }
         }
     }

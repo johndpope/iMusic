@@ -32,6 +32,10 @@ class MPCollectSongListViewController: BaseTableViewController {
         }
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func refreshData() {
         super.refreshData()
         

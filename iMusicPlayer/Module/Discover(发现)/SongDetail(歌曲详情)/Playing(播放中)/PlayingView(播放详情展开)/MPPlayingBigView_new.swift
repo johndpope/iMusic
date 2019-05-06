@@ -448,12 +448,17 @@ class MPPlayingBigView_new: BaseView {
                 // 设置为收藏状态
                 xib_collect.isSelected = true
                 SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲收藏成功", comment: ""))
-                
+            }else {
+                MPModelTools.deleteSongInTable(tableName: MPMyFavoriteViewController.classCode, songs: [song]) {
+                    // 标记为收藏状态：喜爱列表、当前列表
+                    song.data_collectStatus = 0
+                    // 设置为收藏状态
+                    self.xib_collect.isSelected = false
+                    // 取消收藏
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("取消收藏成功", comment: ""))
+                }
                 // 更新上传模型
                 MPModelTools.updateCloudListModel(type: 2)
-            }else {
-                // 取消收藏
-                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收藏", comment: ""))
             }
             break
         case 10008: // 添加到歌单
