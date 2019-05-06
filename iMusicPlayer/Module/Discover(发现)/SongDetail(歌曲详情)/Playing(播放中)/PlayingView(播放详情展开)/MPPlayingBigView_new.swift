@@ -923,6 +923,8 @@ extension MPPlayingBigView_new {
             
             self.updateBufferingStatus()
             self.setupHintForStreamer()
+            
+            QYTools.shared.Log(log: "缓冲路径：\(streamer.cachedPath)")
         }
     }
     
