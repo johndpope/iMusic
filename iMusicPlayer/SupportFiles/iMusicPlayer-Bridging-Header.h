@@ -57,4 +57,6 @@
 #import "PlayerViewController.h"
 #import "Track+Provider.h"
 
+#import "ConvertAudioFile.h"
+
 #endif /* Bridge_Header_h */

@@ -436,6 +436,9 @@
 		C59498DA2240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59498D82240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift */; };
 		C59498DB2240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59498D92240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib */; };
 		C59498DD2240EE8400AC10DD /* MPEditSongListDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59498DC2240EE8400AC10DD /* MPEditSongListDetailViewController.xib */; };
+		C59D308122811FA800D91724 /* lame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59D307D22811FA700D91724 /* lame.framework */; };
+		C59D308222811FA800D91724 /* ConvertAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C59D307E22811FA700D91724 /* ConvertAudioFile.m */; };
+		C59D308322811FA800D91724 /* AudioRecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D308022811FA700D91724 /* AudioRecordManager.swift */; };
 		C5C86541225DD3E000E54DE2 /* TableViewDragger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653B225DD3E000E54DE2 /* TableViewDragger.swift */; };
 		C5C86542225DD3E000E54DE2 /* ScrollRects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653D225DD3E000E54DE2 /* ScrollRects.swift */; };
 		C5C86543225DD3E000E54DE2 /* TableViewDraggerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653E225DD3E000E54DE2 /* TableViewDraggerCell.swift */; };
@@ -1005,6 +1008,10 @@
 		C59498D82240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPEditSongListDetailHeaderView.swift; sourceTree = "<group>"; };
 		C59498D92240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPEditSongListDetailHeaderView.xib; sourceTree = "<group>"; };
 		C59498DC2240EE8400AC10DD /* MPEditSongListDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPEditSongListDetailViewController.xib; sourceTree = "<group>"; };
+		C59D307D22811FA700D91724 /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = lame.framework; sourceTree = "<group>"; };
+		C59D307E22811FA700D91724 /* ConvertAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvertAudioFile.m; sourceTree = "<group>"; };
+		C59D307F22811FA700D91724 /* ConvertAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvertAudioFile.h; sourceTree = "<group>"; };
+		C59D308022811FA700D91724 /* AudioRecordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordManager.swift; sourceTree = "<group>"; };
 		C5C8653B225DD3E000E54DE2 /* TableViewDragger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDragger.swift; sourceTree = "<group>"; };
 		C5C8653C225DD3E000E54DE2 /* TableViewDragger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewDragger.h; sourceTree = "<group>"; };
 		C5C8653D225DD3E000E54DE2 /* ScrollRects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollRects.swift; sourceTree = "<group>"; };
@@ -1029,6 +1036,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				701D2952618FCCD15AC04295 /* Pods_iMusicPlayer.framework in Frameworks */,
+				C59D308122811FA800D91724 /* lame.framework in Frameworks */,
 				C57FC8872240DC2F00218DE7 /* AlipaySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2499,6 +2507,7 @@
 				C57FC6DD2240DC2F00218DE7 /* UIFont+Extension.swift */,
 				C57FC72B2240DC2F00218DE7 /* UIView+Extension.swift */,
 				C57FC7312240DC2F00218DE7 /* UserDefault+Extension.swift */,
+				C59D307B22811FA700D91724 /* AudioRecord */,
 				C57FC6E02240DC2F00218DE7 /* Category */,
 				C57FC7C62240DC2F00218DE7 /* CYPasswordView */,
 				C57FC72E2240DC2F00218DE7 /* FGConverter */,
@@ -3003,6 +3012,25 @@
 				C59498D12240E90600AC10DD /* MPEditSongListDetailTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C59D307B22811FA700D91724 /* AudioRecord */ = {
+			isa = PBXGroup;
+			children = (
+				C59D307C22811FA700D91724 /* Lame */,
+				C59D307E22811FA700D91724 /* ConvertAudioFile.m */,
+				C59D307F22811FA700D91724 /* ConvertAudioFile.h */,
+				C59D308022811FA700D91724 /* AudioRecordManager.swift */,
+			);
+			path = AudioRecord;
+			sourceTree = "<group>";
+		};
+		C59D307C22811FA700D91724 /* Lame */ = {
+			isa = PBXGroup;
+			children = (
+				C59D307D22811FA700D91724 /* lame.framework */,
+			);
+			path = Lame;
 			sourceTree = "<group>";
 		};
 		C5C8653A225DD3E000E54DE2 /* TableViewDragger */ = {
@@ -3629,6 +3657,7 @@
 				C57FC8E02240DC2F00218DE7 /* NSDate+BRPickerView.m in Sources */,
 				C57FC89F2240DC2F00218DE7 /* FlowLayoutViewController.swift in Sources */,
 				C57FC9192240DC3000218DE7 /* SnailPopupController.m in Sources */,
+				C59D308222811FA800D91724 /* ConvertAudioFile.m in Sources */,
 				C57FC85C2240DC2F00218DE7 /* MPSongListViewController.swift in Sources */,
 				C57FC8082240DC2F00218DE7 /* MPMediaLibraryOutTableViewCell.swift in Sources */,
 				C57FC9142240DC3000218DE7 /* HXDateVideoEditViewController.m in Sources */,
@@ -3651,6 +3680,7 @@
 				C57FC92E2240DC3000218DE7 /* UIView+Extension.m in Sources */,
 				C57FC9202240DC3000218DE7 /* FJSQLiteUtils.swift in Sources */,
 				C54D6DE12275AB270007F57F /* MPUserCloudListModel.swift in Sources */,
+				C59D308322811FA800D91724 /* AudioRecordManager.swift in Sources */,
 				C57FC9102240DC3000218DE7 /* UIButton+HXExtension.m in Sources */,
 				C57FC92B2240DC3000218DE7 /* CYPasswordView.m in Sources */,
 				C57FC8CE2240DC2F00218DE7 /* UIColor+Category.m in Sources */,
@@ -3978,6 +4008,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMusicPlayer/AppEngine/Tool/AliPay",
+					"$(PROJECT_DIR)/iMusicPlayer/Extension/AudioRecord/Lame",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iMusicPlayer/SupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -4005,6 +4036,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMusicPlayer/AppEngine/Tool/AliPay",
+					"$(PROJECT_DIR)/iMusicPlayer/Extension/AudioRecord/Lame",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/iMusicPlayer/SupportFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
