@@ -174,11 +174,13 @@ class MPPlayingBigView_new: BaseView {
         
         if !IPHONEX {
             topViewH.constant = defaultTopViewH - Constant.sbReduceHeight
+            self.height = SCREEN_HEIGHT + Constant.smallPlayerHeight + StatusBarHeight
+        }else {
+            self.height = SCREEN_HEIGHT - TabBarHeight + Constant.smallPlayerHeight + StatusBarHeight
         }
         
         playerViewTop.constant = StatusBarHeight
-        self.height = SCREEN_HEIGHT - TabBarHeight + Constant.smallPlayerHeight + StatusBarHeight
-        contentViewH.constant = SCREEN_HEIGHT  - TabBarHeight - StatusBarHeight
+        contentViewH.constant = SCREEN_HEIGHT - TabBarHeight - StatusBarHeight
     }
     
     private func setupAction() {

@@ -6,47 +6,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.902598"
+            timestampString = "578929361.857206"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "666"
-            endingLineNumber = "666"
-            landmarkName = "getCollectListExsistIndex(model:tableName:condition:)"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "getLocalCloudListModel(finished:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "static iMusicPlayer.MPModelTools.getCollectListExsistIndex(model: iMusicPlayer.GeneralPlaylists, tableName: Swift.String, condition: Swift.String) -&gt; Swift.Int"
+                  symbolName = "static iMusicPlayer.MPModelTools.getLocalCloudListModel(finished: Swift.Optional&lt;(iMusicPlayer.MPUserCloudListModel) -&gt; ()&gt;) -&gt; ()"
                   moduleName = "iMusicPlayer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/modi/Documents/Modi/GitLab/iMusicPlayer/iMusicPlayer/Module/Discover(%E5%8F%91%E7%8E%B0)/Model/MPModelTools.swift"
-                  timestampString = "578737981.6542161"
+                  urlString = "file:///Users/modi/Documents/Modi/gitee/iMusic/iMusicPlayer/Module/Discover(%E5%8F%91%E7%8E%B0)/Model/MPModelTools.swift"
+                  timestampString = "578929364.081287"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "632"
-                  endingLineNumber = "632"
-                  offsetFromSymbolStart = "256">
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
+                  offsetFromSymbolStart = "208">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;iMusicPlayer.GeneralPlaylists&gt;&gt;) -&gt; () in static iMusicPlayer.MPModelTools.getCollectListExsistIndex(model: iMusicPlayer.GeneralPlaylists, tableName: Swift.String, condition: Swift.String) -&gt; Swift.Int"
+                  symbolName = "closure #2 (Swift.Optional&lt;Swift.Array&lt;iMusicPlayer.MPSongModel&gt;&gt;) -&gt; () in static iMusicPlayer.MPModelTools.getLocalCloudListModel(finished: Swift.Optional&lt;(iMusicPlayer.MPUserCloudListModel) -&gt; ()&gt;) -&gt; ()"
                   moduleName = "iMusicPlayer"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/modi/Documents/Modi/GitLab/iMusicPlayer/iMusicPlayer/Module/Discover(%E5%8F%91%E7%8E%B0)/Model/MPModelTools.swift"
-                  timestampString = "578737981.656322"
+                  urlString = "file:///Users/modi/Documents/Modi/gitee/iMusic/iMusicPlayer/Module/Discover(%E5%8F%91%E7%8E%B0)/Model/MPModelTools.swift"
+                  timestampString = "578929364.086218"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "631"
-                  endingLineNumber = "631"
-                  offsetFromSymbolStart = "56">
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "42">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.9029649"
+            timestampString = "578929361.864018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "713"
-            endingLineNumber = "713"
-            landmarkName = "getHistoryModels()"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "updateCloudListModel(type:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,59 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.903235"
+            timestampString = "578929361.8647701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "835"
-            endingLineNumber = "835"
-            landmarkName = "MPModelTools"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.903634"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "866"
-            endingLineNumber = "866"
-            landmarkName = "getRadioModel(type:tableName:location:finished:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.903957"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "897"
-            endingLineNumber = "897"
-            landmarkName = "MPModelTools"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.9043159"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "927"
-            endingLineNumber = "927"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "MPModelTools"
             landmarkType = "3">
          </BreakpointContent>
@@ -138,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.904629"
+            timestampString = "578929361.865471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "993"
-            endingLineNumber = "993"
-            landmarkName = "getStyleGenreModel(tableName:finished:)"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
+            landmarkName = "updateSongInTable(song:tableName:finished:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,11 +106,107 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.904891"
+            timestampString = "578929361.866097"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1024"
-            endingLineNumber = "1024"
+            startingLineNumber = "451"
+            endingLineNumber = "451"
+            landmarkName = "updateCountForSongList(songList:tableName:finished:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
+            timestampString = "578929361.8667279"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "571"
+            endingLineNumber = "571"
+            landmarkName = "createSongList(songListName:tableName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
+            timestampString = "578929361.867348"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "602"
+            endingLineNumber = "602"
+            landmarkName = "deleteCollectListModel(songList:tableName:finished:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
+            timestampString = "578929361.86797"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "632"
+            endingLineNumber = "632"
+            landmarkName = "MPModelTools"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
+            timestampString = "578929361.868603"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "667"
+            endingLineNumber = "667"
+            landmarkName = "getCollectListExsistIndex(model:tableName:condition:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
+            timestampString = "578929361.8692091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "698"
+            endingLineNumber = "698"
+            landmarkName = "MPModelTools"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
+            timestampString = "578929361.869841"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "729"
+            endingLineNumber = "729"
             landmarkName = "MPModelTools"
             landmarkType = "3">
          </BreakpointContent>
@@ -170,13 +218,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.905141"
+            timestampString = "578929361.870533"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1052"
-            endingLineNumber = "1052"
+            startingLineNumber = "757"
+            endingLineNumber = "757"
             landmarkName = "MPModelTools"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
+            timestampString = "578929361.871176"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -186,45 +250,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/MediaLibrary(&#x5a92;&#x4f53;&#x5e93;)/CreateSongList(&#x521b;&#x5efa;&#x6b4c;&#x5355;)/Detail/EditSongList(&#x7f16;&#x8f91;&#x6b4c;&#x5355;)/MPEditSongListDetailViewController.swift"
-            timestampString = "578825765.384624"
+            timestampString = "577795487.136134"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
             landmarkName = "addToPlayList(song:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "iMusicPlayer.MPEditSongListDetailViewController.addToPlayList(song: iMusicPlayer.MPSongModel) -&gt; ()"
-                  moduleName = "iMusicPlayer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/modi/Documents/Modi/GitLab/iMusicPlayer/iMusicPlayer/Module/MediaLibrary(%E5%AA%92%E4%BD%93%E5%BA%93)/CreateSongList(%E5%88%9B%E5%BB%BA%E6%AD%8C%E5%8D%95)/Detail/EditSongList(%E7%BC%96%E8%BE%91%E6%AD%8C%E5%8D%95)/MPEditSongListDetailViewController.swift"
-                  timestampString = "578825767.1101789"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "331"
-                  endingLineNumber = "331"
-                  offsetFromSymbolStart = "117">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;iMusicPlayer.MPSongModel&gt;, Swift.Optional&lt;iMusicPlayer.MPSongModel&gt;) -&gt; () in iMusicPlayer.MPEditSongListDetailViewController.addToPlayList(song: iMusicPlayer.MPSongModel) -&gt; ()"
-                  moduleName = "iMusicPlayer"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/modi/Documents/Modi/GitLab/iMusicPlayer/iMusicPlayer/Module/MediaLibrary(%E5%AA%92%E4%BD%93%E5%BA%93)/CreateSongList(%E5%88%9B%E5%BB%BA%E6%AD%8C%E5%8D%95)/Detail/EditSongList(%E7%BC%96%E8%BE%91%E6%AD%8C%E5%8D%95)/MPEditSongListDetailViewController.swift"
-                  timestampString = "578825767.112041"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "332"
-                  endingLineNumber = "332"
-                  offsetFromSymbolStart = "54">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/View/Cell/MPSongTableViewCell.swift"
+            timestampString = "577795487.136322"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "MPSongTableViewCell"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/View/Cell/MPSongTableViewCell.swift"
+            timestampString = "577795487.136498"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "nextPlay()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/MPDiscoverViewController.swift"
+            timestampString = "577900335.639792"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
+            landmarkName = "playRecentlyAlbum(index:type:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -243,13 +323,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/MPPlayingViewController.swift"
-            timestampString = "577880746.841386"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/MPDiscoverViewController.swift"
+            timestampString = "577900335.639855"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
-            landmarkName = "playerViewDidBecomeReady(_:)"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
+            landmarkName = "playRecentlyAlbum(index:type:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -259,61 +339,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView_backup.swift"
-            timestampString = "578303104.281113"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Search(&#x641c;&#x7d22;)/View/SearchResult(&#x641c;&#x7d22;&#x7ed3;&#x679c;)/MPSearchResultView.swift"
+            timestampString = "577795487.136824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "720"
-            endingLineNumber = "720"
-            landmarkName = "playerViewDidBecomeReady(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView_new.swift"
-            timestampString = "578918170.5512249"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "961"
-            endingLineNumber = "961"
-            landmarkName = "updateStatus()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Extension/MDModifyKit/SpotlightLyrics/SpotlightLyrics/LyricsView/LyricsView.swift"
-            timestampString = "578825765.385425"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "addScrollPlayView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView_new.swift"
-            timestampString = "578918170.551329"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "411"
-            endingLineNumber = "411"
-            landmarkName = "btn_DidClicked(_:)"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "play(index:model:headerSongModel:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -323,141 +355,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/PersonalCenter(&#x4e2a;&#x4eba;&#x4e2d;&#x5fc3;)/MPUserSettingViewController.swift"
-            timestampString = "578731029.351045"
+            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Search(&#x641c;&#x7d22;)/View/SearchResult(&#x641c;&#x7d22;&#x7ed3;&#x679c;)/MPSearchResultView.swift"
+            timestampString = "577795487.137001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "354"
-            endingLineNumber = "354"
-            landmarkName = "GoogleLoginDidComlete(_:_:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/DataCent/MPDiscoverDataCent.swift"
-            timestampString = "578825765.386016"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "requestLogin(name:avatar:contact:did:uid:complete:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/DataCent/MPDiscoverDataCent.swift"
-            timestampString = "578825765.386212"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1015"
-            endingLineNumber = "1015"
-            landmarkName = "localizationUserInfo(model:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/DataCent/MPDiscoverDataCent.swift"
-            timestampString = "578825765.386263"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "mappingToJson(model:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/SupportFiles/AppDelegate.swift"
-            timestampString = "578825765.3863111"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "syncData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/MediaLibrary(&#x5a92;&#x4f53;&#x5e93;)/CreateSongList(&#x521b;&#x5efa;&#x6b4c;&#x5355;)/Detail/EditSongList(&#x7f16;&#x8f91;&#x6b4c;&#x5355;)/MPEditSongListDetailViewController.swift"
-            timestampString = "578825765.386482"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
-            landmarkName = "addToSongList()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView_new.swift"
-            timestampString = "578918170.551514"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "611"
-            endingLineNumber = "611"
-            landmarkName = "addToSongList()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/View/Cell/MPSongTableViewCell.swift"
-            timestampString = "578918170.551569"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
-            landmarkName = "addToSongList()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.905876"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "updateCloudListModel(type:)"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "play(index:model:headerSongModel:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -468,92 +372,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.906118"
+            timestampString = "578929361.872097"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "297"
-            endingLineNumber = "297"
-            landmarkName = "saveCustomListToCloudModel(m:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/DataCent/MPDiscoverDataCent.swift"
-            timestampString = "578825765.387692"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "requestSaveUserCloudList(contact:reset:uid:model:complete:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/DataCent/MPDiscoverDataCent.swift"
-            timestampString = "578825765.38774"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "getReset(model:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/Model/MPModelTools.swift"
-            timestampString = "578906821.906394"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
-            landmarkName = "saveCustomListToCloudModel(m:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView_new.swift"
-            timestampString = "578918170.551728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "927"
-            endingLineNumber = "927"
-            landmarkName = "resetStreamer()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView_new.swift"
-            timestampString = "578918170.5517811"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "945"
-            endingLineNumber = "945"
-            landmarkName = "updateBufferingStatus()"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "getLocalCloudListModel(finished:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -55,6 +55,12 @@ class MDSettingTableViewCell: UITableViewCell {
         if let icon = cellInfo["icon"] as? String {
             let image = UIImage(named: icon)
             self.imageView?.image = image
+            let item = CGSize(width: 36, height: 36)
+            UIGraphicsBeginImageContextWithOptions(item, false, UIScreen.main.scale)
+            let rect = CGRect(x: 0, y: 0, width: item.width, height: item.height)
+            self.imageView?.image?.draw(in: rect)
+            self.imageView?.image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
         }
         //通过plist中类型判断View类型在动态的设置accessoryView
         if let accesoryType = cellInfo["accessoryType"] as? String {
