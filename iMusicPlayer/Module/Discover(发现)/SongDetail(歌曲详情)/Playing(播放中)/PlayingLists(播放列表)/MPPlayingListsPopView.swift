@@ -17,6 +17,8 @@ class MPPlayingListsPopView: UITableViewCell {
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var playingBtn: UIButton!
+    @IBOutlet weak var relatedBtn: UIButton!
     @IBOutlet weak var playingBv: UIView!
     @IBOutlet weak var relatedBv: UIView!
     
@@ -45,6 +47,8 @@ class MPPlayingListsPopView: UITableViewCell {
             if playingBv.isHidden {
                 playingBv.isHidden = false
                 relatedBv.isHidden = true
+                playingBtn.setTitleColor(Color.ThemeColor, for: .normal)
+                relatedBtn.setTitleColor(Color.FontColor_666, for: .normal)
                 // 获取相关歌曲
                 if let b = updateRelateSongsBlock {
                     b(0)
@@ -55,6 +59,8 @@ class MPPlayingListsPopView: UITableViewCell {
             if !playingBv.isHidden {
                 playingBv.isHidden = true
                 relatedBv.isHidden = false
+                relatedBtn.setTitleColor(Color.ThemeColor, for: .normal)
+                playingBtn.setTitleColor(Color.FontColor_666, for: .normal)
                 // 获取相关歌曲
                 if let b = updateRelateSongsBlock {
                     b(1)

@@ -11,6 +11,7 @@ import UIKit
 private struct Constant {
     static let identifier = "MPChoicenessTableViewCell"
     static let rowHeight = SCREEN_WIDTH * (117/375)
+    static let sectionHeight = SCREEN_WIDTH * (8/375)
 }
 
 class MPChoicenessViewController: BaseTableViewController {
@@ -98,7 +99,13 @@ class MPChoicenessViewController: BaseTableViewController {
         super.setupTableView()
         
         self.identifier = Constant.identifier
+        tableView.backgroundColor = UIColor.white
+    }
+    
+    override func setupTableHeaderView() {
+        super.setupTableHeaderView()
         
+        tableView.tableHeaderView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: Constant.sectionHeight)))
     }
     
 }

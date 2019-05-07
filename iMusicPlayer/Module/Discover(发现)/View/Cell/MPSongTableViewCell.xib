@@ -58,6 +58,13 @@
                             <action selector="btn_DidClicked:" destination="crp-CE-Poe" eventType="touchUpInside" id="qCa-r0-xH7"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qde-LH-3YS">
+                        <rect key="frame" x="61.5" y="51" width="258.5" height="0.5"/>
+                        <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="WWf-9r-Xec"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="jTz-8U-Zpo" firstAttribute="leading" secondItem="BYK-Oy-vWF" secondAttribute="trailing" constant="8" id="2kM-Zh-O24"/>
@@ -66,6 +73,7 @@
                     <constraint firstItem="X7o-aq-9uW" firstAttribute="trailing" secondItem="mox-CV-Djf" secondAttribute="trailing" id="6ei-hd-a1o"/>
                     <constraint firstItem="X7o-aq-9uW" firstAttribute="top" secondItem="mox-CV-Djf" secondAttribute="bottom" constant="4" id="9Ja-S3-AdE"/>
                     <constraint firstItem="jTz-8U-Zpo" firstAttribute="centerY" secondItem="OiH-gG-9LG" secondAttribute="centerY" id="EIM-Cr-lU1"/>
+                    <constraint firstAttribute="trailing" secondItem="qde-LH-3YS" secondAttribute="trailing" id="H6Z-B8-sBr"/>
                     <constraint firstAttribute="bottom" secondItem="608-zv-dkv" secondAttribute="bottom" constant="5" id="LGL-BV-gJU"/>
                     <constraint firstItem="BYK-Oy-vWF" firstAttribute="height" secondItem="jTz-8U-Zpo" secondAttribute="height" id="Meq-lD-XXh"/>
                     <constraint firstItem="mox-CV-Djf" firstAttribute="top" secondItem="608-zv-dkv" secondAttribute="top" id="Nd8-ZQ-LeK"/>
@@ -74,8 +82,10 @@
                     <constraint firstItem="608-zv-dkv" firstAttribute="top" secondItem="OiH-gG-9LG" secondAttribute="top" constant="5" id="UzH-3D-3Oa"/>
                     <constraint firstItem="BYK-Oy-vWF" firstAttribute="width" secondItem="BYK-Oy-vWF" secondAttribute="height" id="WU1-37-Oug"/>
                     <constraint firstItem="X7o-aq-9uW" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="608-zv-dkv" secondAttribute="bottom" id="Wra-u7-b6L"/>
+                    <constraint firstItem="qde-LH-3YS" firstAttribute="leading" secondItem="mox-CV-Djf" secondAttribute="leading" id="YM6-Jy-2ob"/>
                     <constraint firstItem="608-zv-dkv" firstAttribute="leading" secondItem="OiH-gG-9LG" secondAttribute="leading" constant="12" id="hwe-EW-0wz"/>
                     <constraint firstItem="mox-CV-Djf" firstAttribute="leading" secondItem="608-zv-dkv" secondAttribute="trailing" constant="8" id="oiG-ht-k9m"/>
+                    <constraint firstAttribute="bottom" secondItem="qde-LH-3YS" secondAttribute="bottom" id="rYC-2G-623"/>
                     <constraint firstItem="jTz-8U-Zpo" firstAttribute="top" secondItem="OiH-gG-9LG" secondAttribute="top" constant="14" id="seT-tv-Qcu"/>
                     <constraint firstItem="BYK-Oy-vWF" firstAttribute="width" secondItem="jTz-8U-Zpo" secondAttribute="width" id="trs-mj-Nw7"/>
                     <constraint firstItem="BYK-Oy-vWF" firstAttribute="centerY" secondItem="jTz-8U-Zpo" secondAttribute="centerY" id="wgK-Jt-HBt"/>

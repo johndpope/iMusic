@@ -126,6 +126,7 @@ extension MPDiscoverViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = UITableViewCell()
+        cell.selectionStyle = .none
         
         switch indexPath.section {
         case 0:
@@ -164,6 +165,7 @@ extension MPDiscoverViewController {
             }
             break
         case 2:
+            cell.selectionStyle = .default
             cell = tableView.dequeueReusableCell(withIdentifier: Constant.categoryIdentifier)!
             (cell as! MPCategoryTableViewCell).updateCell(model: MPDiscoverModel.categoryDatas[indexPath.row])
             break
@@ -185,7 +187,6 @@ extension MPDiscoverViewController {
         default:
             break
         }
-        cell.selectionStyle = .none
         return cell
     }
     
@@ -193,10 +194,10 @@ extension MPDiscoverViewController {
         var height: CGFloat = SCREEN_WIDTH * (117/375)
         switch indexPath.section {
         case 0:
-            height = SCREEN_WIDTH * (260/375)
+            height = SCREEN_WIDTH * (212/375)
             break
         case 1:
-            height = self.currentAlbum.count == 0 ? 0 : SCREEN_WIDTH * (220/375)
+            height = self.currentAlbum.count == 0 ? 0 : SCREEN_WIDTH * (202/375)
             break
         case 2:
             height = SCREEN_WIDTH * (60/375)

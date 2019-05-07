@@ -53,6 +53,9 @@ class MPTimeOffViewController: BaseTableViewController {
         tableView.backgroundColor = UIColor.white
         self.identifier = Constant.identifier
         
+        tableView.mj_header = nil
+        tableView.mj_footer = nil
+        
     }
     
     override func setupTableHeaderView() {

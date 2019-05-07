@@ -12,7 +12,6 @@ class MPDiscoverTableViewCell: UITableViewCell {
 
     @IBOutlet weak var xib_image: UIImageView! {
         didSet {
-            xib_image.viewClipCornerDirection(radius: 2, direct: .left)
             xib_image.contentMode = .scaleAspectFill
         }
     }
@@ -35,8 +34,10 @@ class MPDiscoverTableViewCell: UITableViewCell {
         
         if type != -1 {
             xib_count.isHidden = true
+            xib_image.md_cornerRadius = 2
         }else {
             xib_count.isHidden = false
+            xib_image.viewClipCornerDirection(radius: 2, direct: .left)
         }
     }
 

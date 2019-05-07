@@ -79,8 +79,8 @@
                             <rect key="frame" x="0.0" y="324" width="375" height="304"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family Song" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNo-wZ-lJC">
-                                    <rect key="frame" x="12" y="40" width="351" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <rect key="frame" x="12" y="36.5" width="351" height="21.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -92,6 +92,9 @@
                                 </label>
                                 <button opaque="NO" tag="10001" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQJ-Vb-bek">
                                     <rect key="frame" x="199" y="70.5" width="35" height="14"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="U3G-Yi-aFV"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                     <state key="normal" title="歌词" image="icon_lyrics_none">
                                         <color key="titleColor" red="0.94901960780000005" green="0.46274509800000002" blue="0.21960784310000001" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
@@ -237,6 +240,13 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ujd-4V-ElX">
                             <rect key="frame" x="0.0" y="628" width="375" height="53"/>
                             <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ey-ae-aVQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                                    <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="0.5" id="Tlt-nD-jtJ"/>
+                                    </constraints>
+                                </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下一首播放：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUt-yo-Pk4">
                                     <rect key="frame" x="12" y="17.5" width="92" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -259,18 +269,31 @@
                                         <action selector="btn_DidClicked:" destination="Foq-qU-FC9" eventType="touchUpInside" id="nD4-xI-9zt"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" tag="10010" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqv-au-cC5">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+                                    <connections>
+                                        <action selector="btn_DidClicked:" destination="Foq-qU-FC9" eventType="touchUpInside" id="PfV-ct-fdX"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="Ald-s5-XaV" secondAttribute="trailing" constant="12" id="3tM-cJ-Xtb"/>
+                                <constraint firstItem="0Ey-ae-aVQ" firstAttribute="top" secondItem="ujd-4V-ElX" secondAttribute="top" id="Auy-gH-Ox7"/>
+                                <constraint firstAttribute="trailing" secondItem="rqv-au-cC5" secondAttribute="trailing" id="BEd-cI-pnQ"/>
+                                <constraint firstItem="0Ey-ae-aVQ" firstAttribute="leading" secondItem="ujd-4V-ElX" secondAttribute="leading" id="BNt-RP-KuF"/>
                                 <constraint firstItem="Ald-s5-XaV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uWU-jY-X5q" secondAttribute="trailing" constant="12" id="Fo4-av-bsw"/>
                                 <constraint firstAttribute="height" constant="53" id="HPE-9t-d2P"/>
                                 <constraint firstItem="uWU-jY-X5q" firstAttribute="centerY" secondItem="wUt-yo-Pk4" secondAttribute="centerY" id="RPz-53-9iK"/>
                                 <constraint firstItem="uWU-jY-X5q" firstAttribute="leading" secondItem="wUt-yo-Pk4" secondAttribute="trailing" id="SEy-Zn-kI8"/>
                                 <constraint firstItem="Ald-s5-XaV" firstAttribute="top" secondItem="ujd-4V-ElX" secondAttribute="top" constant="12" id="VPB-pZ-quR"/>
                                 <constraint firstItem="wUt-yo-Pk4" firstAttribute="centerY" secondItem="ujd-4V-ElX" secondAttribute="centerY" id="Xab-d3-oZe"/>
+                                <constraint firstItem="rqv-au-cC5" firstAttribute="top" secondItem="ujd-4V-ElX" secondAttribute="top" id="Xrv-rh-Z0o"/>
                                 <constraint firstItem="Ald-s5-XaV" firstAttribute="centerY" secondItem="ujd-4V-ElX" secondAttribute="centerY" id="boz-Bl-oIJ"/>
                                 <constraint firstItem="wUt-yo-Pk4" firstAttribute="leading" secondItem="ujd-4V-ElX" secondAttribute="leading" constant="12" id="deh-gP-o7X"/>
+                                <constraint firstItem="rqv-au-cC5" firstAttribute="leading" secondItem="ujd-4V-ElX" secondAttribute="leading" id="nID-Dr-kYL"/>
+                                <constraint firstAttribute="trailing" secondItem="0Ey-ae-aVQ" secondAttribute="trailing" id="oyH-Pv-MpQ"/>
+                                <constraint firstAttribute="bottom" secondItem="rqv-au-cC5" secondAttribute="bottom" id="rwT-3d-Fhs"/>
                                 <constraint firstAttribute="bottom" secondItem="Ald-s5-XaV" secondAttribute="bottom" constant="12" id="vyC-3G-ZX1"/>
                             </constraints>
                         </view>
@@ -325,7 +348,7 @@
                 <outlet property="xib_title" destination="tNo-wZ-lJC" id="Cfc-B4-987"/>
                 <outlet property="xib_topView" destination="EIM-nG-wYo" id="EeW-Ud-BC8"/>
             </connections>
-            <point key="canvasLocation" x="-260" y="286"/>
+            <point key="canvasLocation" x="49" y="332"/>
         </view>
     </objects>
     <resources>

@@ -72,6 +72,7 @@ class MPSearchResultView: BaseView {
         QYTools.refreshData(target: self, scrollView: tableView, refresh: #selector(refreshData), loadMore: #selector(pageTurning))
         
         tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
         
         setupHeaderView()
     }
@@ -92,6 +93,7 @@ class MPSearchResultView: BaseView {
     
     private func setupHeaderView() {
         let hv = MPSearchResultHeaderView.md_viewFromXIB() as! MPSearchResultHeaderView
+        hv.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: SCREEN_WIDTH*(59/375)))
         tableView.tableHeaderView = hv
         hv.segmentChangeBlock = {(index) in
             self.currentIndex = index

@@ -24,6 +24,9 @@ class MPSearchResultHeaderView: UITableViewCell {
     
     var defaultConditionH: CGFloat = 0
     var defaultTimeTagsH: CGFloat = 0
+    var defaultTimeTagTop: CGFloat = 0
+    var defaultSelectTagTop: CGFloat = 0
+    var defaultSelectTagBottom: CGFloat = 0
     var defaultFileter: Bool = false
     
     @IBOutlet weak var segment: UISegmentedControl!
@@ -36,6 +39,21 @@ class MPSearchResultHeaderView: UITableViewCell {
     @IBOutlet weak var timeTagsH: NSLayoutConstraint! {
         didSet {
             defaultTimeTagsH = timeTagsH.constant
+        }
+    }
+    @IBOutlet weak var selectTagTop: NSLayoutConstraint!{
+        didSet {
+            defaultSelectTagTop = selectTagTop.constant
+        }
+    }
+    @IBOutlet weak var selectTagBottom: NSLayoutConstraint!{
+        didSet {
+            defaultSelectTagBottom = selectTagBottom.constant
+        }
+    }
+    @IBOutlet weak var timeTagTop: NSLayoutConstraint!{
+        didSet {
+            defaultTimeTagTop = timeTagTop.constant
         }
     }
     private let timeTags = [NSLocalizedString("不限", comment: ""), NSLocalizedString("< 4 min", comment: ""), NSLocalizedString("4 min - 20 min", comment: ""), NSLocalizedString(" > 20 min", comment: "")]
@@ -144,6 +162,9 @@ extension MPSearchResultHeaderView {
         conditionViewH.constant = defaultConditionH
         conditionView.isHidden = false
         timeTagsH.constant = defaultTimeTagsH
+        selectTagTop.constant = defaultSelectTagTop
+//        selectTagBottom.constant = defaultSelectTagBottom
+        timeTagTop.constant = defaultTimeTagTop
         
         timeLabel.isHidden = false
         xib_timeTagList.isHidden = false
@@ -158,6 +179,9 @@ extension MPSearchResultHeaderView {
         conditionViewH.constant = 48
         conditionView.isHidden = false
         timeTagsH.constant = 0
+        selectTagTop.constant = 0
+//        selectTagBottom.constant = 0
+        timeTagTop.constant = 0
         
         timeLabel.isHidden = true
         xib_timeTagList.isHidden = true

@@ -11,6 +11,7 @@ import UIKit
 private struct Constant {
     static let identifier = "MPPopularTableViewCell"
     static let rowHeight = SCREEN_WIDTH * (76/375)
+    static let headerHeight = SCREEN_WIDTH * (120/375)
 }
 
 class MPPopularViewController: BaseTableViewController {
@@ -108,6 +109,7 @@ class MPPopularViewController: BaseTableViewController {
         super.setupTableHeaderView()
         
         let hv = MPPopularHeaderView.md_viewFromXIB() as! MPPopularHeaderView
+        hv.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: Constant.headerHeight))
         headerView = hv
         tableView.tableHeaderView = hv
         hv.sgmDidChangeBlock = {(name) in

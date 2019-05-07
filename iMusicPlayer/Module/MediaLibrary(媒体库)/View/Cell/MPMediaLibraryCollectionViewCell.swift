@@ -30,6 +30,7 @@ class MPMediaLibraryCollectionViewCell: UICollectionViewCell {
         tableView.register(UINib(nibName: Constant.identifier, bundle: nil), forCellReuseIdentifier: Constant.identifier)
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
+        tableView.separatorStyle = .none
     }
     
 }

@@ -101,10 +101,15 @@ class MPCollectSongListViewController: BaseTableViewController {
         super.setupTableView()
         
         self.identifier = Constant.identifier
-        
+        tableView.backgroundColor = UIColor.white
         tableView.mj_header = nil
         tableView.mj_footer = nil
         
+    }
+    
+    override func setupTableHeaderView() {
+        super.setupTableHeaderView()
+        tableView.tableHeaderView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: 8)))
     }
     
 }
@@ -126,6 +131,10 @@ extension MPCollectSongListViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
     }
+    
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 8
+//    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = MPSongListViewController()

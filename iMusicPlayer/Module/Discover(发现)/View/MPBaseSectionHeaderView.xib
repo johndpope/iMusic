@@ -17,19 +17,19 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精选歌单" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uax-OJ-6TN">
-                    <rect key="frame" x="12" y="25.5" width="97.5" height="29"/>
+                    <rect key="frame" x="12" y="35" width="97.5" height="29"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Jp-4c-Kqp">
-                    <rect key="frame" x="12" y="6.5" width="42" height="15"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <rect key="frame" x="12" y="16" width="43" height="15"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                     <color key="textColor" red="0.94901960784313721" green="0.46274509803921571" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="icon_arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="34c-dd-C8m">
-                    <rect key="frame" x="117.5" y="30" width="20" height="20"/>
+                    <rect key="frame" x="117.5" y="39.5" width="20" height="20"/>
                 </imageView>
                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmm-QO-pUF">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
@@ -42,7 +42,7 @@
             <constraints>
                 <constraint firstItem="Zmm-QO-pUF" firstAttribute="top" secondItem="2G3-rj-Rkc" secondAttribute="top" id="Bi6-2A-9NA"/>
                 <constraint firstItem="uax-OJ-6TN" firstAttribute="top" secondItem="0Jp-4c-Kqp" secondAttribute="bottom" constant="4" id="GrF-Sa-VSC"/>
-                <constraint firstItem="uax-OJ-6TN" firstAttribute="centerY" secondItem="Bcw-Wd-WpV" secondAttribute="centerY" id="SNg-Z4-d3W"/>
+                <constraint firstItem="2G3-rj-Rkc" firstAttribute="bottom" secondItem="uax-OJ-6TN" secondAttribute="bottom" constant="16" id="M9s-5n-cww"/>
                 <constraint firstItem="34c-dd-C8m" firstAttribute="leading" secondItem="uax-OJ-6TN" secondAttribute="trailing" constant="8" id="Sdv-nW-WZu"/>
                 <constraint firstItem="34c-dd-C8m" firstAttribute="centerY" secondItem="uax-OJ-6TN" secondAttribute="centerY" id="ZaF-0d-LXU"/>
                 <constraint firstItem="2G3-rj-Rkc" firstAttribute="bottom" secondItem="Zmm-QO-pUF" secondAttribute="bottom" id="dAz-Ys-C6X"/>
@@ -59,7 +59,7 @@
                 <outlet property="xib_title" destination="uax-OJ-6TN" id="JT7-xl-ryL"/>
                 <outlet property="xib_top100" destination="0Jp-4c-Kqp" id="0lU-kV-cov"/>
             </connections>
-            <point key="canvasLocation" x="446" y="-28"/>
+            <point key="canvasLocation" x="445.60000000000002" y="-28.785607196401802"/>
         </view>
     </objects>
     <resources>

@@ -198,6 +198,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
         super.setupTableHeaderView()
         
         let hv = MPMyFavoriteHeaderView.md_viewFromXIB() as! MPMyFavoriteHeaderView
+        hv.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: Constant.rowHeight))
         headerView = hv
         tableView.tableHeaderView = hv
         

@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQH-9V-eMR">
-                        <rect key="frame" x="12" y="48.5" width="292" height="0.5"/>
+                        <rect key="frame" x="12" y="59" width="292" height="0.5"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="5sf-Rk-Gsx"/>
@@ -38,8 +38,8 @@
                     <constraint firstAttribute="trailingMargin" secondItem="XQH-9V-eMR" secondAttribute="trailing" id="7bU-6y-gvL"/>
                     <constraint firstItem="HFN-cb-LcF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="8xV-da-BKY"/>
                     <constraint firstItem="XQH-9V-eMR" firstAttribute="leading" secondItem="HFN-cb-LcF" secondAttribute="leading" id="jE5-rb-tQN"/>
-                    <constraint firstItem="XQH-9V-eMR" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="mnp-x9-9vw"/>
                     <constraint firstAttribute="trailing" secondItem="HFN-cb-LcF" secondAttribute="trailing" constant="12" id="oQh-Ve-ef5"/>
+                    <constraint firstAttribute="bottom" secondItem="XQH-9V-eMR" secondAttribute="bottom" id="sR9-b4-qFq"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

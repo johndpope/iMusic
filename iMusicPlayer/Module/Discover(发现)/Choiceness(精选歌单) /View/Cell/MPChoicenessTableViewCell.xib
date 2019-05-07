@@ -23,25 +23,32 @@
                         <rect key="frame" x="12" y="0.0" width="296" height="99.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic_album" translatesAutoresizingMaskIntoConstraints="NO" id="saW-nJ-zER">
-                                <rect key="frame" x="0.0" y="0.0" width="99.5" height="99.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="91.5" height="91.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="saW-nJ-zER" secondAttribute="height" id="iG9-tO-yTV"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="オネエ達の人生バイブル13曲" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1i-hO-hmN">
-                                <rect key="frame" x="111.5" y="18" width="172.5" height="38.5"/>
+                                <rect key="frame" x="103.5" y="18" width="180.5" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="26首" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCg-HD-JdE">
-                                <rect key="frame" x="111.5" y="68.5" width="172.5" height="15"/>
+                                <rect key="frame" x="103.5" y="68.5" width="180.5" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Hb-t9-AbR">
+                                <rect key="frame" x="103.5" y="99" width="192.5" height="0.5"/>
+                                <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="ZKB-g7-OJB"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OCg-HD-JdE" firstAttribute="leading" secondItem="Y1i-hO-hmN" secondAttribute="leading" id="0TF-mE-1Bd"/>
                             <constraint firstItem="saW-nJ-zER" firstAttribute="top" secondItem="waF-Cm-JS0" secondAttribute="top" id="4kD-iU-zPZ"/>
@@ -50,7 +57,10 @@
                             <constraint firstItem="Y1i-hO-hmN" firstAttribute="leading" secondItem="saW-nJ-zER" secondAttribute="trailing" constant="12" id="Utr-YD-XVZ"/>
                             <constraint firstItem="OCg-HD-JdE" firstAttribute="trailing" secondItem="Y1i-hO-hmN" secondAttribute="trailing" id="Z8k-dV-GCY"/>
                             <constraint firstItem="saW-nJ-zER" firstAttribute="leading" secondItem="waF-Cm-JS0" secondAttribute="leading" id="arA-3Q-h49"/>
-                            <constraint firstAttribute="bottom" secondItem="saW-nJ-zER" secondAttribute="bottom" id="rdb-jz-m3b"/>
+                            <constraint firstItem="7Hb-t9-AbR" firstAttribute="leading" secondItem="Y1i-hO-hmN" secondAttribute="leading" id="lyS-Rn-x9b"/>
+                            <constraint firstAttribute="bottom" secondItem="7Hb-t9-AbR" secondAttribute="bottom" id="my6-Nf-p1N"/>
+                            <constraint firstAttribute="trailing" secondItem="7Hb-t9-AbR" secondAttribute="trailing" id="rG4-a7-Exg"/>
+                            <constraint firstAttribute="bottom" secondItem="saW-nJ-zER" secondAttribute="bottom" constant="8" id="rdb-jz-m3b"/>
                             <constraint firstAttribute="trailing" secondItem="Y1i-hO-hmN" secondAttribute="trailing" constant="12" id="wZU-cg-Ay8"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="OCg-HD-JdE" secondAttribute="bottom" constant="12" id="zml-7T-To8"/>
                         </constraints>

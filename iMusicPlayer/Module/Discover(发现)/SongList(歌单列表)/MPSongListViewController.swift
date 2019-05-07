@@ -11,6 +11,7 @@ import UIKit
 private struct Constant {
     static let identifier = "MPSongTableViewCell"
     static let rowHeight = SCREEN_WIDTH * (52/375)
+    static let headerHeight = SCREEN_WIDTH * (225/375)
 }
 
 class MPSongListViewController: BaseTableViewController {
@@ -130,6 +131,7 @@ override func clickRight(sender: UIButton) {
         super.setupTableHeaderView()
         
         let hv = MPSongListHeaderView.md_viewFromXIB() as! MPSongListHeaderView
+        hv.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: Constant.headerHeight))
         if let hm = self.headerSongModel {
             hv.updateView(model: hm)
         }

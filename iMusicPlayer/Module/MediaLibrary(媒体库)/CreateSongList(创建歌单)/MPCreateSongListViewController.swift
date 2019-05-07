@@ -12,6 +12,7 @@ import ObjectMapper
 private struct Constant {
     static let identifier = "MPCollectSongListTableViewCell"
     static let rowHeight = SCREEN_WIDTH * (90/375)
+    static let sectionHeight = SCREEN_WIDTH * (60/375)
 }
 
 class MPCreateSongListViewController: BaseTableViewController {
@@ -139,6 +140,7 @@ class MPCreateSongListViewController: BaseTableViewController {
     override func setupTableHeaderView() {
         super.setupTableHeaderView()
         let hv = MPCreateSongListHeaderView.md_viewFromXIB() as! MPCreateSongListHeaderView
+        hv.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: Constant.sectionHeight))
         hv.clickBlock = {(sender) in
             if let _ = sender as? UIButton {
                 let pv = MPCreateSongListView.md_viewFromXIB() as! MPCreateSongListView
