@@ -67,7 +67,7 @@ class MPSearchResultView: BaseView {
         tableView.register(UINib(nibName: "MPSongTableViewCell", bundle: nil), forCellReuseIdentifier: Constant.songIdentifier)
         tableView.register(UINib(nibName: "MPSongTableViewCell", bundle: nil), forCellReuseIdentifier: Constant.mvIdentifier)
         tableView.register(UINib(nibName: Constant.collectionIdentifier, bundle: nil), forCellReuseIdentifier: Constant.collectionIdentifier)
-        tableView.register(UINib(nibName: "MPDiscoverTableViewCell", bundle: nil), forCellReuseIdentifier: Constant.songListIdentifier)
+        tableView.register(UINib(nibName: "MPChoicenessTableViewCell", bundle: nil), forCellReuseIdentifier: Constant.songListIdentifier)
         
         QYTools.refreshData(target: self, scrollView: tableView, refresh: #selector(refreshData), loadMore: #selector(pageTurning))
         
@@ -167,25 +167,25 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
             }
             break
         case 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPDiscoverTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPChoicenessTableViewCell
             if let models = model?.data_playlists {
-                (cell as! MPDiscoverTableViewCell).updateCell(model: models[indexPath.row], type: 1)
-                (cell as! MPDiscoverTableViewCell).clickBlock = {(sender) in
-                    if let btn = sender as? UIButton {
-                        DiscoverCent?.requestSearchSongListByYoutube(playlistId: models[indexPath.row].data_originalId ?? "", pageToken: "", complete: { (isSucceed, model, msg) in
-                            switch isSucceed {
-                            case true:
-                                if let m = model?.data_songs {
-                                    self.play(model: m, headerSongModel: models[indexPath.row])
-                                }
-                                break
-                            case false:
-                                SVProgressHUD.showError(withStatus: msg)
-                                break
-                            }
-                        })
-                    }
-                }
+                (cell as! MPChoicenessTableViewCell).updateCell(model: models[indexPath.row])
+//                (cell as! MPDiscoverTableViewCell).clickBlock = {(sender) in
+//                    if let btn = sender as? UIButton {
+//                        DiscoverCent?.requestSearchSongListByYoutube(playlistId: models[indexPath.row].data_originalId ?? "", pageToken: "", complete: { (isSucceed, model, msg) in
+//                            switch isSucceed {
+//                            case true:
+//                                if let m = model?.data_songs {
+//                                    self.play(model: m, headerSongModel: models[indexPath.row])
+//                                }
+//                                break
+//                            case false:
+//                                SVProgressHUD.showError(withStatus: msg)
+//                                break
+//                            }
+//                        })
+//                    }
+//                }
             }
             break
         default:

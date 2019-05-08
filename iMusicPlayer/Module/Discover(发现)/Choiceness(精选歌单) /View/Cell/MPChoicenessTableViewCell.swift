@@ -12,7 +12,7 @@ class MPChoicenessTableViewCell: UITableViewCell {
 
     @IBOutlet weak var xib_image: UIImageView! {
         didSet {
-            xib_image.viewClipCornerDirection(radius: 2, direct: .left)
+            xib_image.md_cornerRadius = 2
             xib_image.contentMode = .scaleAspectFill
         }
     }
