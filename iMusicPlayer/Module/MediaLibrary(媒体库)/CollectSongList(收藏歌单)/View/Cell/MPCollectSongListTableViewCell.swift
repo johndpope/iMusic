@@ -22,6 +22,11 @@ class MPCollectSongListTableViewCell: UITableViewCell, ViewClickedDelegate {
     
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_count: UILabel!
+    @IBOutlet weak var xib_more: UIButton! {
+        didSet {
+            xib_more.touchAreaInsets = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        }
+    }
     
     var type: Int = 0 // 0: 创建  1：收藏
     

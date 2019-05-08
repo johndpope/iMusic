@@ -95,6 +95,7 @@
             <connections>
                 <outlet property="xib_count" destination="OCg-HD-JdE" id="Uv6-rv-HQs"/>
                 <outlet property="xib_image" destination="saW-nJ-zER" id="CSF-AC-tI0"/>
+                <outlet property="xib_more" destination="x1u-qm-9vu" id="lRg-1X-oyz"/>
                 <outlet property="xib_title" destination="Y1i-hO-hmN" id="6Jj-bD-Tdg"/>
             </connections>
             <point key="canvasLocation" x="-51.200000000000003" y="30.134932533733135"/>

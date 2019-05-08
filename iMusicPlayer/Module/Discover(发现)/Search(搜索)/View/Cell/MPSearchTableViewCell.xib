@@ -26,7 +26,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bya-G4-wIU">
-                        <rect key="frame" x="283" y="10" width="25" height="25"/>
+                        <rect key="frame" x="275.5" y="0.0" width="44.5" height="44.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="bya-G4-wIU" secondAttribute="height" multiplier="1:1" id="XRg-1d-tQd"/>
+                        </constraints>
                         <state key="normal" image="list_icon_delete_1"/>
                         <connections>
                             <action selector="btn_DidClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Rtp-ui-wJ9"/>
@@ -41,7 +44,9 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="bya-G4-wIU" secondAttribute="trailing" constant="12" id="KUs-cc-acW"/>
+                    <constraint firstAttribute="bottom" secondItem="bya-G4-wIU" secondAttribute="bottom" id="FW4-hO-f7J"/>
+                    <constraint firstAttribute="trailing" secondItem="bya-G4-wIU" secondAttribute="trailing" id="KUs-cc-acW"/>
+                    <constraint firstItem="bya-G4-wIU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Lo7-25-cQX"/>
                     <constraint firstAttribute="trailing" secondItem="qw7-aD-qnG" secondAttribute="trailing" id="UpZ-PR-vCA"/>
                     <constraint firstAttribute="bottom" secondItem="qw7-aD-qnG" secondAttribute="bottom" id="VVh-y9-wtY"/>
                     <constraint firstItem="qw7-aD-qnG" firstAttribute="leading" secondItem="xWl-le-dU1" secondAttribute="leading" id="WNh-Ei-bcW"/>

@@ -38,8 +38,18 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     }
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
-    @IBOutlet weak var xib_collect: UIButton!
-    @IBOutlet weak var xib_more: UIButton!
+    @IBOutlet weak var xib_collect: UIButton! {
+        didSet {
+            // 扩大按钮热区
+            xib_collect.touchAreaInsets = UIEdgeInsets(top: 14, left: 8, bottom: 14, right: 4)
+        }
+    }
+    @IBOutlet weak var xib_more: UIButton! {
+        didSet {
+            // 扩大按钮热区
+            xib_more.touchAreaInsets = UIEdgeInsets(top: 14, left: 8, bottom: 14, right: 12)
+        }
+    }
     
     var currentSong: MPSongModel?
     
