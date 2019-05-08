@@ -12,6 +12,8 @@ private struct Constant {
     static let identifier = "MPSearchTableViewCell"
     static let tableName = "MPSearchViewController"
     static let rowHeight: CGFloat = SCREEN_WIDTH * (45/375)
+    
+    static let HeaderNotTagH: CGFloat =  17*2 + 13*3 + 32
 }
 
 class MPSearchViewController: BaseTableViewController {
@@ -46,7 +48,7 @@ class MPSearchViewController: BaseTableViewController {
                 let temps = getSearchKeys(models: keywordModel)
                 hv.updateTags(tags: temps) { (tagv) in
                     let contentH = tagv.intrinsicContentSize.height
-                    hv.height = contentH + 17*2 + 13*4
+                    hv.height = contentH + Constant.HeaderNotTagH
                     self.tableView.reloadData()
                 }
             }
@@ -211,7 +213,7 @@ class MPSearchViewController: BaseTableViewController {
         let temps = ["AKB48", "三浦大知", "星野源", "西野カナ", "中島愛", "米津玄师", "Winds" , "星野源", "杨超越", "星野源", "西野カナ", "中島愛", "米津玄师", "Winds" , "星野源", "杨超越"]
         hv.updateTags(tags: temps) { (tagv) in
             let contentH = tagv.intrinsicContentSize.height
-            hv.height = contentH + 17*2 + 13*4
+            hv.height = contentH + Constant.HeaderNotTagH
             self.tableView.reloadData()
         }
     

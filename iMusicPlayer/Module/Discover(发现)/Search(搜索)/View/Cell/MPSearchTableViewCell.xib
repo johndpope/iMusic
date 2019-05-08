@@ -32,9 +32,19 @@
                             <action selector="btn_DidClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Rtp-ui-wJ9"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qw7-aD-qnG">
+                        <rect key="frame" x="15" y="44" width="305" height="0.5"/>
+                        <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="bJQ-Vd-S2o"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="bya-G4-wIU" secondAttribute="trailing" constant="12" id="KUs-cc-acW"/>
+                    <constraint firstAttribute="trailing" secondItem="qw7-aD-qnG" secondAttribute="trailing" id="UpZ-PR-vCA"/>
+                    <constraint firstAttribute="bottom" secondItem="qw7-aD-qnG" secondAttribute="bottom" id="VVh-y9-wtY"/>
+                    <constraint firstItem="qw7-aD-qnG" firstAttribute="leading" secondItem="xWl-le-dU1" secondAttribute="leading" id="WNh-Ei-bcW"/>
                     <constraint firstItem="xWl-le-dU1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="a0h-vv-vt3"/>
                     <constraint firstItem="bya-G4-wIU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xWl-le-dU1" secondAttribute="trailing" constant="12" id="eev-Wj-PT3"/>
                     <constraint firstItem="bya-G4-wIU" firstAttribute="centerY" secondItem="xWl-le-dU1" secondAttribute="centerY" id="fqr-m2-0Pc"/>

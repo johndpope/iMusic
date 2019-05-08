@@ -23,7 +23,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜索历史" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efP-uz-U8f">
-                    <rect key="frame" x="13" y="78" width="58" height="17"/>
+                    <rect key="frame" x="13" y="97" width="58" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                 <constraint firstItem="uN8-l7-ssX" firstAttribute="top" secondItem="3Yl-ZU-g46" secondAttribute="top" constant="13" id="99d-yb-lYH"/>
                 <constraint firstItem="C8u-8w-6DD" firstAttribute="top" secondItem="uN8-l7-ssX" secondAttribute="bottom" constant="13" id="EXE-bw-8pj"/>
                 <constraint firstItem="uN8-l7-ssX" firstAttribute="leading" secondItem="3Yl-ZU-g46" secondAttribute="leading" constant="13" id="OAF-VL-EfA"/>
-                <constraint firstItem="efP-uz-U8f" firstAttribute="top" secondItem="C8u-8w-6DD" secondAttribute="bottom" constant="13" id="ttn-ht-VXV"/>
+                <constraint firstItem="efP-uz-U8f" firstAttribute="top" secondItem="C8u-8w-6DD" secondAttribute="bottom" constant="32" id="ttn-ht-VXV"/>
                 <constraint firstItem="efP-uz-U8f" firstAttribute="leading" secondItem="3Yl-ZU-g46" secondAttribute="leading" constant="13" id="zDe-hT-bgX"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

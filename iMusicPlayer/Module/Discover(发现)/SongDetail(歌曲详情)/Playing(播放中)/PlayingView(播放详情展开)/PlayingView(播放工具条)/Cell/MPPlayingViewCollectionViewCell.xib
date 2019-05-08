@@ -22,6 +22,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-8V-K5P" customClass="MPPlayingView" customModule="iMusicPlayer" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jWY-NE-dIc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                                <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="9wP-pS-WTw"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z9F-ZW-5fp">
                                 <rect key="frame" x="0.0" y="0.0" width="90" height="48"/>
                                 <subviews>
@@ -77,6 +84,8 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="1Rv-kc-RZQ" firstAttribute="leading" secondItem="PG4-WC-O0y" secondAttribute="trailing" id="0WV-YV-KQA"/>
+                            <constraint firstItem="Ofx-yA-aLT" firstAttribute="trailing" secondItem="jWY-NE-dIc" secondAttribute="trailing" id="2Hf-q4-FS3"/>
+                            <constraint firstItem="jWY-NE-dIc" firstAttribute="leading" secondItem="Ofx-yA-aLT" secondAttribute="leading" id="6lq-bv-bwg"/>
                             <constraint firstItem="Ofx-yA-aLT" firstAttribute="top" secondItem="z9F-ZW-5fp" secondAttribute="top" id="7Aj-9B-Occ"/>
                             <constraint firstItem="BMw-RL-Xus" firstAttribute="width" secondItem="1Rv-kc-RZQ" secondAttribute="width" id="9IZ-Lt-Wj7"/>
                             <constraint firstItem="z9F-ZW-5fp" firstAttribute="bottom" secondItem="Ofx-yA-aLT" secondAttribute="bottom" id="9gE-Ni-qit"/>
@@ -90,6 +99,7 @@
                             <constraint firstItem="1Rv-kc-RZQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NNd-L0-fmg" secondAttribute="trailing" constant="8" id="ZY7-23-K0x"/>
                             <constraint firstItem="1Rv-kc-RZQ" firstAttribute="centerY" secondItem="BMw-RL-Xus" secondAttribute="centerY" id="b3t-CM-fwl"/>
                             <constraint firstItem="z9F-ZW-5fp" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NVb-Nc-Ace" secondAttribute="bottom" id="gjt-pT-nh8"/>
+                            <constraint firstItem="Ofx-yA-aLT" firstAttribute="top" secondItem="jWY-NE-dIc" secondAttribute="top" id="n6D-6X-lf2"/>
                             <constraint firstItem="NNd-L0-fmg" firstAttribute="centerY" secondItem="z9F-ZW-5fp" secondAttribute="centerY" constant="-10" id="pCE-in-J6w"/>
                             <constraint firstItem="BMw-RL-Xus" firstAttribute="height" secondItem="1Rv-kc-RZQ" secondAttribute="height" id="v7r-an-Ls2"/>
                             <constraint firstItem="NVb-Nc-Ace" firstAttribute="leading" secondItem="NNd-L0-fmg" secondAttribute="leading" id="vKC-UF-9gL"/>
