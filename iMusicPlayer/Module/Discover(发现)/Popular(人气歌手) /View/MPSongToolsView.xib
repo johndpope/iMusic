@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,7 +35,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rk2-uc-mbf">
-                    <rect key="frame" x="0.0" y="49" width="375" height="1"/>
+                    <rect key="frame" x="0.0" y="41" width="375" height="1"/>
                     <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="eu8-jq-BLS"/>
@@ -45,7 +46,7 @@
             <constraints>
                 <constraint firstItem="tkL-6C-zXt" firstAttribute="leading" secondItem="Be0-IQ-Fkw" secondAttribute="leading" id="0kI-is-388"/>
                 <constraint firstItem="rk2-uc-mbf" firstAttribute="trailing" secondItem="tkL-6C-zXt" secondAttribute="trailing" id="4tj-0H-Z1y"/>
-                <constraint firstItem="rk2-uc-mbf" firstAttribute="top" secondItem="tkL-6C-zXt" secondAttribute="bottom" constant="8" id="QsZ-kO-oK8"/>
+                <constraint firstItem="rk2-uc-mbf" firstAttribute="top" secondItem="tkL-6C-zXt" secondAttribute="bottom" id="QsZ-kO-oK8"/>
                 <constraint firstItem="tkL-6C-zXt" firstAttribute="top" secondItem="Be0-IQ-Fkw" secondAttribute="top" id="U8M-wu-6YV"/>
                 <constraint firstItem="rk2-uc-mbf" firstAttribute="leading" secondItem="tkL-6C-zXt" secondAttribute="leading" id="a3W-Fm-vnt"/>
                 <constraint firstItem="QPj-fr-r1S" firstAttribute="trailing" secondItem="tkL-6C-zXt" secondAttribute="trailing" id="bOj-hp-fza"/>
@@ -54,6 +55,7 @@
             <viewLayoutGuide key="safeArea" id="QPj-fr-r1S"/>
             <connections>
                 <outlet property="topLineView" destination="rk2-uc-mbf" id="qMc-pH-3jm"/>
+                <outlet property="xib_title" destination="Jzg-iF-RaU" id="kAC-dG-k15"/>
             </connections>
             <point key="canvasLocation" x="63" y="-61"/>
         </view>

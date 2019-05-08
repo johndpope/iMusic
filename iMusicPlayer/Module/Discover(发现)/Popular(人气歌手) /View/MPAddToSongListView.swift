@@ -11,6 +11,8 @@ import UIKit
 private struct Constant {
     static let identifier = "MPAddToSongListTableViewCell"
     static let rowHeight = SCREEN_WIDTH * (58/375)
+    static let NotTabHeight = IPHONEX ? SCREEN_WIDTH * (41/375) + SaveAreaHeight : SCREEN_WIDTH * (41/375)
+    
 }
 
 class MPAddToSongListView: BaseView {
@@ -24,6 +26,9 @@ class MPAddToSongListView: BaseView {
     var model = [GeneralPlaylists]() {
         didSet {
             tableView.reloadData()
+            let tempH = CGFloat(model.count + 1) * Constant.rowHeight + Constant.NotTabHeight
+            self.height = tempH > SCREEN_HEIGHT * 3/5 ? SCREEN_HEIGHT * 3/5 : tempH
+            self.top = SCREEN_HEIGHT-self.height
         }
     }
     

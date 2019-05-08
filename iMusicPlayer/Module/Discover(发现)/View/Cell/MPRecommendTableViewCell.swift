@@ -10,6 +10,9 @@ import UIKit
 
 private struct Constant {
     static let identifier = "MPRecommendCollectionViewCell"
+    static let itemWidth =  SCREEN_HEIGHT * (252/667)
+    static let itemHeight = IPHONEX ? SCREEN_WIDTH * (142/375) + SCREEN_WIDTH * (72/375) + 20 : SCREEN_WIDTH * (142/375) + SCREEN_WIDTH * (72/375)
+    static let itemSize = CGSize(width: itemWidth, height: itemHeight)
 }
 
 class MPRecommendTableViewCell: UITableViewCell {
@@ -53,9 +56,7 @@ extension MPRecommendTableViewCell: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width =  SCREEN_HEIGHT * (252/667)
-        let height = SCREEN_WIDTH * (260/375)
-        return CGSize(width: width, height: height)
+        return Constant.itemSize
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

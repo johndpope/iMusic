@@ -635,6 +635,8 @@ extension MPPlayingBigView_new {
             pv.isShowMvOrMp3 = false
         }
         
+        pv.updateTableViewHeight()
+        
         HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
     }
 }

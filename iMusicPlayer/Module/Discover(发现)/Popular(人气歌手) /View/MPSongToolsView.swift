@@ -13,6 +13,13 @@ class MPSongToolsView: TableBaseView {
     var delegate: MPSongToolsViewDelegate?
     
     @IBOutlet weak var topLineView: UIView!
+    @IBOutlet weak var xib_title: UILabel!
+    
+    var title = "" {
+        didSet {
+            xib_title.text = title
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

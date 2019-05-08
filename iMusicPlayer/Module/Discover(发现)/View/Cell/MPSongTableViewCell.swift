@@ -129,6 +129,9 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
             let pv = MPSongToolsView.md_viewFromXIB() as! MPSongToolsView
             pv.plistName = "songTools"
             pv.delegate = self
+            if let song = currentSong {
+                pv.title = MPModelTools.getTitleByMPSongModel(model: song)
+            }
             HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
         }
         

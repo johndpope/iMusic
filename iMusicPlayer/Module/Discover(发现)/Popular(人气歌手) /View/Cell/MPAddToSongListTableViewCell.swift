@@ -30,6 +30,13 @@ class MPAddToSongListTableViewCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        xib_image.image = UIImage(named: "icon_add")
+        xib_title.text = NSLocalizedString("新建歌单", comment: "")
+        xib_count.text = ""
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

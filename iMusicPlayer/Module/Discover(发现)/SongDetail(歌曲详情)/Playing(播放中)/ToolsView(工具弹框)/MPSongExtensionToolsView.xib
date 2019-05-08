@@ -94,6 +94,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bottomLineView" destination="ebp-6v-7Jm" id="j0O-vy-Wvt"/>
+                <outlet property="tableViewH" destination="K9x-ho-5vc" id="keF-hP-fz5"/>
                 <outlet property="topLineView" destination="XfJ-Ue-dNi" id="uQs-AA-P07"/>
                 <outlet property="xib_title" destination="ewQ-mh-7y8" id="PPq-mN-diH"/>
             </connections>

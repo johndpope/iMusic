@@ -8,6 +8,11 @@
 
 import UIKit
 
+private struct Constant {
+    static let TableViewCellHeight: CGFloat = 44
+    static let NotTabHeight = IPHONEX ? SCREEN_WIDTH * (91/375) + SaveAreaHeight : SCREEN_WIDTH * (91/375)
+}
+
 class MPSongExtensionToolsView: TableBaseView {
     
     var delegate: MPSongToolsViewDelegate?
@@ -15,6 +20,7 @@ class MPSongExtensionToolsView: TableBaseView {
     @IBOutlet weak var topLineView: UIView!
     @IBOutlet weak var bottomLineView: UIView!
     @IBOutlet weak var xib_title: UILabel!
+    @IBOutlet weak var tableViewH: NSLayoutConstraint!
     
     var title: String = "" {
         didSet {
@@ -26,6 +32,14 @@ class MPSongExtensionToolsView: TableBaseView {
         didSet {
             self.isExsistFirstModel()
         }
+    }
+    
+    func updateTableViewHeight() {
+        //获取组
+        let group = groups.object(at: 0) as! NSDictionary
+        let item = group["items"] as! NSArray
+        tableViewH.constant = CGFloat(item.count) * Constant.TableViewCellHeight
+        self.height = tableViewH.constant + Constant.NotTabHeight
     }
     
     private func isExsistFirstModel() {

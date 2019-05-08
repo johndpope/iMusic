@@ -16,6 +16,14 @@ private struct Constant {
     
     static let playerViewHeight = SCREEN_WIDTH * (48/375)
     static let smallPlayerHeight = SCREEN_WIDTH * (48/375)
+    
+    static let RecommendHeight = IPHONEX ? SCREEN_WIDTH * (142/375) + SCREEN_WIDTH * (64/375) + 20 : SCREEN_WIDTH * (142/375) + SCREEN_WIDTH * (64/375)
+    
+    static let RecentlyHeight = SCREEN_WIDTH * (120/375) + SCREEN_WIDTH * (42/375)
+    
+    static let CategoryHeight = SCREEN_WIDTH * (60/375)
+    
+    static let DiscoverHeight = SCREEN_WIDTH * (117/375)
 }
 
 class MPDiscoverViewController: BaseTableViewController {
@@ -191,19 +199,19 @@ extension MPDiscoverViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height: CGFloat = SCREEN_WIDTH * (117/375)
+        var height: CGFloat = Constant.DiscoverHeight
         switch indexPath.section {
         case 0:
-            height = SCREEN_WIDTH * (212/375)
+            height = Constant.RecommendHeight
             break
         case 1:
-            height = self.currentAlbum.count == 0 ? 0 : SCREEN_WIDTH * (202/375)
+            height = self.currentAlbum.count == 0 ? 0 : Constant.RecentlyHeight
             break
         case 2:
-            height = SCREEN_WIDTH * (60/375)
+            height = Constant.CategoryHeight
             break
         case 3:
-            height = SCREEN_WIDTH * (117/375)
+            height = Constant.DiscoverHeight
             break
         default:
             break

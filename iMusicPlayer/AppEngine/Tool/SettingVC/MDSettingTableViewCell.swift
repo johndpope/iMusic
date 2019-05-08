@@ -55,7 +55,7 @@ class MDSettingTableViewCell: UITableViewCell {
         if let icon = cellInfo["icon"] as? String {
             let image = UIImage(named: icon)
             self.imageView?.image = image
-            let item = CGSize(width: 36, height: 36)
+            let item = CGSize(width: 32, height: 32)
             UIGraphicsBeginImageContextWithOptions(item, false, UIScreen.main.scale)
             let rect = CGRect(x: 0, y: 0, width: item.width, height: item.height)
             self.imageView?.image?.draw(in: rect)

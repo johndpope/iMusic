@@ -10,6 +10,9 @@ import UIKit
 
 private struct Constant {
     static let identifier = "MPRecentlyCollectionViewCell"
+    static let itemWidth =  SCREEN_HEIGHT * (120/667)
+    static let itemHeight = itemWidth + SCREEN_WIDTH * (50/375)
+    static let itemSize = CGSize(width: itemWidth, height: itemHeight)
 }
 
 class MPRecentlyTableViewCell: UITableViewCell {
@@ -62,9 +65,7 @@ extension MPRecentlyTableViewCell: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width =  SCREEN_HEIGHT * (120/667)
-        let height = SCREEN_WIDTH * (220/375)
-        return CGSize(width: width, height: height)
+        return Constant.itemSize
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

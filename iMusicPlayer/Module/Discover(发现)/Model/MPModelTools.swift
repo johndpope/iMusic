@@ -32,6 +32,14 @@ extension Array where Element: Hashable & Equatable {
 
 class MPModelTools: NSObject {
     
+    class func getTitleByMPSongModel(model: MPSongModel) -> String {
+        if model.data_songId != nil || model.data_songId != "" {
+            return model.data_songName ?? ""
+        }else {
+            return model.data_title ?? ""
+        }
+    }
+    
     /// 合并本地与云端数据
     ///
     /// - Parameters:

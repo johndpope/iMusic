@@ -207,6 +207,8 @@ extension MPCreateSongListViewController: MPSongToolsViewDelegate {
         pv.plistName = "createSLExtensionTools"
         pv.delegate = self
         pv.title = title
+        
+        pv.updateTableViewHeight()
         HFAlertController.showCustomView(view: pv, type: HFAlertType.ActionSheet)
     }
     

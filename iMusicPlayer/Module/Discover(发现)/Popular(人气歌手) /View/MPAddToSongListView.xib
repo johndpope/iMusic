@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HH8-dk-dTG">
-                    <rect key="frame" x="0.0" y="50" width="375" height="333"/>
+                    <rect key="frame" x="0.0" y="42" width="375" height="341"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9oI-0h-og4">
@@ -39,7 +39,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IAD-1o-wAm">
-                    <rect key="frame" x="0.0" y="49" width="375" height="1"/>
+                    <rect key="frame" x="0.0" y="41" width="375" height="1"/>
                     <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="vYd-gP-6vi"/>
@@ -56,7 +56,7 @@
                 <constraint firstItem="sXR-Lf-piV" firstAttribute="trailing" secondItem="9oI-0h-og4" secondAttribute="trailing" id="e4x-fx-SKt"/>
                 <constraint firstItem="sXR-Lf-piV" firstAttribute="trailing" secondItem="HH8-dk-dTG" secondAttribute="trailing" id="jDz-su-FJe"/>
                 <constraint firstItem="HH8-dk-dTG" firstAttribute="top" secondItem="IAD-1o-wAm" secondAttribute="bottom" id="l4c-oj-zBN"/>
-                <constraint firstItem="IAD-1o-wAm" firstAttribute="top" secondItem="9oI-0h-og4" secondAttribute="bottom" constant="8" id="pXH-fm-ymu"/>
+                <constraint firstItem="IAD-1o-wAm" firstAttribute="top" secondItem="9oI-0h-og4" secondAttribute="bottom" id="pXH-fm-ymu"/>
                 <constraint firstItem="IAD-1o-wAm" firstAttribute="leading" secondItem="9oI-0h-og4" secondAttribute="leading" id="xbg-ZE-Y95"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
