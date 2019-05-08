@@ -25,6 +25,8 @@
 		C53E976C22521FDD007F3920 /* MPPlayingBigView_new.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E976A22521FDD007F3920 /* MPPlayingBigView_new.swift */; };
 		C53E976D22521FDD007F3920 /* MPPlayingBigView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53E976B22521FDD007F3920 /* MPPlayingBigView.xib */; };
 		C53E976F2252FF2D007F3920 /* MPYoutubeMVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E976E2252FF2D007F3920 /* MPYoutubeMVModel.swift */; };
+		C542D1C92282D1300051854F /* MPNoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C542D1C72282D1300051854F /* MPNoDataView.swift */; };
+		C542D1CA2282D1300051854F /* MPNoDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C542D1C82282D1300051854F /* MPNoDataView.xib */; };
 		C54D6DD8227007AA0007F57F /* MPPlayingBigView_backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D6DD7227007AA0007F57F /* MPPlayingBigView_backup.swift */; };
 		C54D6DDB227017450007F57F /* MPPlayingBigView_new.xib in Resources */ = {isa = PBXBuildFile; fileRef = C54D6DDA227017450007F57F /* MPPlayingBigView_new.xib */; };
 		C54D6DDD2272F0B40007F57F /* MPLyricsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D6DDC2272F0B40007F57F /* MPLyricsModel.swift */; };
@@ -493,6 +495,8 @@
 		C53E976A22521FDD007F3920 /* MPPlayingBigView_new.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayingBigView_new.swift; sourceTree = "<group>"; };
 		C53E976B22521FDD007F3920 /* MPPlayingBigView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPPlayingBigView.xib; sourceTree = "<group>"; };
 		C53E976E2252FF2D007F3920 /* MPYoutubeMVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPYoutubeMVModel.swift; sourceTree = "<group>"; };
+		C542D1C72282D1300051854F /* MPNoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPNoDataView.swift; sourceTree = "<group>"; };
+		C542D1C82282D1300051854F /* MPNoDataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPNoDataView.xib; sourceTree = "<group>"; };
 		C54D6DD7227007AA0007F57F /* MPPlayingBigView_backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayingBigView_backup.swift; sourceTree = "<group>"; };
 		C54D6DDA227017450007F57F /* MPPlayingBigView_new.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MPPlayingBigView_new.xib; path = "iMusicPlayer/Module/Discover(发现)/SongDetail(歌曲详情)/Playing(播放中)/PlayingView(播放详情展开)/MPPlayingBigView_new.xib"; sourceTree = SOURCE_ROOT; };
 		C54D6DDC2272F0B40007F57F /* MPLyricsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPLyricsModel.swift; sourceTree = "<group>"; };
@@ -1497,10 +1501,12 @@
 		C57FC5B12240DC2E00218DE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C5F5378122544E66006D228B /* PlayerView(播放悬浮窗) */,
 				C57FC5B32240DC2E00218DE7 /* LTLocationBottomView.swift */,
 				C57FC5B22240DC2E00218DE7 /* LTLocationBottomView.xib */,
+				C5F5378122544E66006D228B /* PlayerView(播放悬浮窗) */,
 				C57FC5B42240DC2E00218DE7 /* YDMenu */,
+				C542D1C72282D1300051854F /* MPNoDataView.swift */,
+				C542D1C82282D1300051854F /* MPNoDataView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3227,6 +3233,7 @@
 				C57FC8EB2240DC2F00218DE7 /* CardViewController.xib in Resources */,
 				C59498DB2240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib in Resources */,
 				C56BDB6A225DE942008AE913 /* createSLExtensionTools.plist in Resources */,
+				C542D1CA2282D1300051854F /* MPNoDataView.xib in Resources */,
 				C560344322447DA200F6795F /* MPScrollPlayView.xib in Resources */,
 				C57FC8642240DC2F00218DE7 /* policy.strings in Resources */,
 				C57FC8652240DC2F00218DE7 /* policy.plist in Resources */,
@@ -3519,6 +3526,7 @@
 				C57FC8B92240DC2F00218DE7 /* NSArray+Category.m in Sources */,
 				C57FC9132240DC3000218DE7 /* HXCircleProgressView.m in Sources */,
 				C57FC8282240DC2F00218DE7 /* MPPlayListViewController.swift in Sources */,
+				C542D1C92282D1300051854F /* MPNoDataView.swift in Sources */,
 				C56BDB73225F462B008AE913 /* MPSongInfoView.swift in Sources */,
 				C57FC8CC2240DC2F00218DE7 /* NSDate+Format.m in Sources */,
 				C5603414224343CE00F6795F /* MPPlayingView.swift in Sources */,

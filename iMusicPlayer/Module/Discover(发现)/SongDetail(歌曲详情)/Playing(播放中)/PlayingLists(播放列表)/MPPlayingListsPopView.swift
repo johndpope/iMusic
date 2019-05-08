@@ -22,11 +22,18 @@ class MPPlayingListsPopView: UITableViewCell {
     @IBOutlet weak var playingBv: UIView!
     @IBOutlet weak var relatedBv: UIView!
     
+    var noDataView: MPNoDataView!
+    
     var updateRelateSongsBlock: ((_ type: Int)->Void)?
     
     var model = [MPSongModel]() {
         didSet {
             tableView.reloadData()
+            if model.count == 0 {
+                noDataView.isHidden = false
+            }else {
+                noDataView.isHidden = true
+            }
         }
     }
     
@@ -39,6 +46,28 @@ class MPPlayingListsPopView: UITableViewCell {
         tableView.delegate = self
         tableView.register(UINib(nibName: Constant.identifier, bundle: nil), forCellReuseIdentifier: Constant.identifier)
         tableView.tableFooterView = UIView()
+        
+        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("无歌曲列表", comment: ""))
+    }
+    
+    private func setupNoDataView(image: String, text: String) {
+        // 添加无数据提示View
+        let sv = MPNoDataView.md_viewFromXIB() as! MPNoDataView
+        let x: CGFloat = 20
+        let y = tableView.height * 1/4
+        let width = (tableView.width - 40)
+        let height = SCREEN_WIDTH * (180/375)
+        sv.frame = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: width, height: height))
+        sv.updateView(image: image, text: text)
+        sv.isHidden = true
+        noDataView = sv
+        tableView.addSubview(sv)
+        //        sv.snp.makeConstraints { (make) in
+        //            make.centerX.equalTo(tableView.centerX)
+        //            make.centerY.equalTo(tableView.centerY).offset(-tableView.height*1/4)
+        //            make.width.equalTo(width)
+        //            make.height.equalTo(height)
+        //        }
     }
 
     @IBAction func btn_DidClicked(_ sender: UIButton) {

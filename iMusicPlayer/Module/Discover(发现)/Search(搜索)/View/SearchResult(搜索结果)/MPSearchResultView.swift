@@ -39,10 +39,25 @@ class MPSearchResultView: BaseView {
     var currentIndex: Int = 0 {
         didSet {
             tableView.reloadData()
+            if currentIndex == 0 {
+                if model?.data_songs?.count == 0 {
+                    noDataView.isHidden = false
+                }
+            }else if currentIndex == 1 {
+                if model?.data_videos?.count == 0 {
+                    noDataView.isHidden = false
+                }
+            }else if currentIndex == 2 {
+                if model?.data_playlists?.count == 0 {
+                    noDataView.isHidden = false
+                }
+            }
         }
     }
     
     let tableView = UITableView()
+    
+    var noDataView: MPNoDataView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,10 +70,31 @@ class MPSearchResultView: BaseView {
         
         //
         setupTableView()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupNoDataView(image: String, text: String) {
+        // 添加无数据提示View
+        let sv = MPNoDataView.md_viewFromXIB() as! MPNoDataView
+        let x: CGFloat = 20
+        let y = tableView.height * 1/4
+        let width = (tableView.width - 40)
+        let height = SCREEN_WIDTH * (180/375)
+        sv.frame = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: width, height: height))
+        sv.updateView(image: image, text: text)
+        sv.isHidden = true
+        noDataView = sv
+        tableView.addSubview(sv)
+        //        sv.snp.makeConstraints { (make) in
+        //            make.centerX.equalTo(tableView.centerX)
+        //            make.centerY.equalTo(tableView.centerY).offset(-tableView.height*1/4)
+        //            make.width.equalTo(width)
+        //            make.height.equalTo(height)
+        //        }
     }
     
     private func setupTableView() {
@@ -75,6 +111,8 @@ class MPSearchResultView: BaseView {
         tableView.separatorStyle = .none
         
         setupHeaderView()
+        
+        setupNoDataView(image: "pic_no_resault", text: NSLocalizedString("无搜索结果", comment: ""))
     }
     
     /// 刷新数据

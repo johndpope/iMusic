@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Kws-VF-Pki" customClass="MPNoDataView" customModule="iMusicPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="pic_no_resault" translatesAutoresizingMaskIntoConstraints="NO" id="vbq-bw-OXk">
+                    <rect key="frame" x="91" y="106" width="193" height="126"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="vbq-bw-OXk" secondAttribute="height" multiplier="188:123" id="mwZ-lU-9FB"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="无搜索结果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdT-A1-CvV">
+                    <rect key="frame" x="91" y="252" width="193" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fdT-A1-CvV" firstAttribute="trailing" secondItem="vbq-bw-OXk" secondAttribute="trailing" id="8dS-Qb-6iv"/>
+                <constraint firstItem="fdT-A1-CvV" firstAttribute="leading" secondItem="vbq-bw-OXk" secondAttribute="leading" id="BTG-kt-K8A"/>
+                <constraint firstItem="vbq-bw-OXk" firstAttribute="centerX" secondItem="Kws-VF-Pki" secondAttribute="centerX" id="H8C-IF-Bce"/>
+                <constraint firstItem="vbq-bw-OXk" firstAttribute="centerY" secondItem="Kws-VF-Pki" secondAttribute="centerY" constant="-10" id="Uzr-5o-sSL"/>
+                <constraint firstItem="fdT-A1-CvV" firstAttribute="top" secondItem="vbq-bw-OXk" secondAttribute="bottom" constant="20" id="pvo-KP-aq6"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="gQ8-QI-nIu"/>
+            <connections>
+                <outlet property="xib_image" destination="vbq-bw-OXk" id="rgj-M5-Q3F"/>
+                <outlet property="xib_text" destination="fdT-A1-CvV" id="ZMP-lJ-HfQ"/>
+            </connections>
+            <point key="canvasLocation" x="418" y="-329"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pic_no_resault" width="193" height="123"/>
+    </resources>
+</document>
