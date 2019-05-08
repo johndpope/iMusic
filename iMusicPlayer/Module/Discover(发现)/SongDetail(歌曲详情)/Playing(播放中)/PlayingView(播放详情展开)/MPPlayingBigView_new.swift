@@ -82,7 +82,11 @@ class MPPlayingBigView_new: BaseView {
     @IBOutlet weak var xib_nextSongName: UILabel!
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
-    @IBOutlet weak var xib_lrc: UIButton!
+    @IBOutlet weak var xib_lrc: UIButton! {
+        didSet {
+            xib_lrc.touchAreaInsets = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
+        }
+    }
     @IBOutlet weak var xib_slider: UISlider! {
         didSet {
             xib_slider.value = 0
