@@ -13,6 +13,12 @@ class MPNoDataView: BaseView {
     @IBOutlet weak var xib_image: UIImageView!
     @IBOutlet weak var xib_text: UILabel!
     
+    var text: String = "" {
+        didSet {
+            xib_text.text = text
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

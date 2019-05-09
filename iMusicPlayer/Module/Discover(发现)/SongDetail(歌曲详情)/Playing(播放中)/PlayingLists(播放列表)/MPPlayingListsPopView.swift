@@ -54,7 +54,7 @@ class MPPlayingListsPopView: UITableViewCell {
         // 添加无数据提示View
         let sv = MPNoDataView.md_viewFromXIB() as! MPNoDataView
         let x: CGFloat = 20
-        let y = tableView.height * 1/4
+        let y = tableView.height * 1/5
         let width = (tableView.width - 40)
         let height = SCREEN_WIDTH * (180/375)
         sv.frame = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: width, height: height))
@@ -62,12 +62,6 @@ class MPPlayingListsPopView: UITableViewCell {
         sv.isHidden = true
         noDataView = sv
         tableView.addSubview(sv)
-        //        sv.snp.makeConstraints { (make) in
-        //            make.centerX.equalTo(tableView.centerX)
-        //            make.centerY.equalTo(tableView.centerY).offset(-tableView.height*1/4)
-        //            make.width.equalTo(width)
-        //            make.height.equalTo(height)
-        //        }
     }
 
     @IBAction func btn_DidClicked(_ sender: UIButton) {

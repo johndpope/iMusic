@@ -371,11 +371,13 @@ class MPModelTools: NSObject {
     ///   - tableName: 表名
     ///   - finished: 回调
     class func getSongInTable(tableName: String = "", finished: ((_ models: [MPSongModel]?)->Void)? = nil) {
+        var temps = [MPSongModel]()
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
             QYTools.shared.Log(log: "本地数据库获取数据")
-            if let f = finished {
-                f(arr)
-            }
+            temps = arr
+        }
+        if let f = finished {
+            f(temps)
         }
     }
     
