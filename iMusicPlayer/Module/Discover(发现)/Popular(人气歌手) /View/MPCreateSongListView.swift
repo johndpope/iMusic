@@ -19,6 +19,25 @@ class MPCreateSongListView: UITableViewCell, ViewClickedDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        xib_songListName.becomeFirstResponder()
+        
+        // 监听键盘改变事件
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillChangeFrameNotification, object: nil, queue: nil) { (notify) in
+            // 改变view的高度
+            let keyBH = (notify.userInfo!["UIKeyboardFrameEndUserInfoKey"] as! CGRect).height
+            let keyBY = (notify.userInfo!["UIKeyboardFrameEndUserInfoKey"] as! CGRect).origin.y
+            if keyBY == SCREEN_HEIGHT {
+                self.top = (SCREEN_HEIGHT - self.height)/2
+            }else {
+                let y =  (SCREEN_HEIGHT - keyBH - self.height)/2
+                self.top = y
+            }
+        }
+        
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
