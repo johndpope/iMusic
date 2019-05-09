@@ -593,11 +593,13 @@ class MPModelTools: NSObject {
     ///   - tableName: 表名
     ///   - finished: 回调
     class func getCollectListModel(tableName: String = GeneralPlaylists.classCode, finished: ((_ models: [GeneralPlaylists]?)->Void)? = nil) {
+        var temps = [GeneralPlaylists]()
         if let arr = NSArray.bg_array(withName: tableName) as? [GeneralPlaylists] {
             QYTools.shared.Log(log: "本地数据库获取数据")
-            if let f = finished {
-                f(arr)
-            }
+            temps = arr
+        }
+        if let f = finished {
+            f(temps)
         }
     }
     

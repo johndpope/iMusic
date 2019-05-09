@@ -82,7 +82,6 @@ class MPMyFavoriteViewController: BaseTableViewController {
                 }
             }
             
-            noDataView.text = NSLocalizedString("暂无最近播放", comment: "")
             break
         case .Favorite:
 //            if let localModel = DiscoverCent?.data_CloudListUploadModel, let model = localModel.data_favorite {
@@ -102,19 +101,16 @@ class MPMyFavoriteViewController: BaseTableViewController {
 //                    self.saveListToCloudModel(m: m)
                 }
             }
-            noDataView.text = NSLocalizedString("暂无收藏歌曲", comment: "")
             break
         case .Download:
             title = NSLocalizedString("我的下载", comment: "")
             
 //            self.saveListToCloudModel(m: m)
             
-            noDataView.text = NSLocalizedString("暂无下载歌曲", comment: "")
             break
         case .Cache:
             title = NSLocalizedString("离线歌曲", comment: "")
             
-            noDataView.text = NSLocalizedString("暂无离线歌曲", comment: "")
             break
         default:
             break
@@ -205,6 +201,8 @@ class MPMyFavoriteViewController: BaseTableViewController {
         
         tableView.mj_header = nil
         tableView.mj_footer = nil
+        
+        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("暂无歌曲", comment: ""))
     }
     
     override func setupTableHeaderView() {
@@ -224,17 +222,16 @@ class MPMyFavoriteViewController: BaseTableViewController {
                 }
             }
         }
-        
-        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("", comment: ""))
     }
     
     private func setupNoDataView(image: String, text: String) {
         // 添加无数据提示View
         let sv = MPNoDataView.md_viewFromXIB() as! MPNoDataView
         let x: CGFloat = 20
-        let y = tableView.tableHeaderView?.height ?? 0 + tableView.height * 1/5
         let width = (tableView.width - 40)
         let height = SCREEN_WIDTH * (180/375)
+        let hvH = tableView.tableHeaderView?.height ?? 0
+        let y = (SCREEN_HEIGHT-NavBarHeight-TabBarHeight - height - hvH) * 1/2
         sv.frame = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: width, height: height))
         sv.updateView(image: image, text: text)
         sv.isHidden = true

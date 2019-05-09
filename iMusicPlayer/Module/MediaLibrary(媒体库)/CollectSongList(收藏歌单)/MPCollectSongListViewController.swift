@@ -15,9 +15,16 @@ private struct Constant {
 
 class MPCollectSongListViewController: BaseTableViewController {
     
+    var noDataView: MPNoDataView!
+    
     var model = [GeneralPlaylists]() {
         didSet {
             tableView.reloadData()
+            if model.count == 0 {
+                noDataView.isHidden = false
+            }else {
+                noDataView.isHidden = true
+            }
         }
     }
     
@@ -105,11 +112,27 @@ class MPCollectSongListViewController: BaseTableViewController {
         tableView.mj_header = nil
         tableView.mj_footer = nil
         
+        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("暂无歌单", comment: ""))
     }
     
     override func setupTableHeaderView() {
         super.setupTableHeaderView()
         tableView.tableHeaderView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: 8)))
+    }
+    
+    private func setupNoDataView(image: String, text: String) {
+        // 添加无数据提示View
+        let sv = MPNoDataView.md_viewFromXIB() as! MPNoDataView
+        let x: CGFloat = 20
+        let width = (tableView.width - 40)
+        let height = SCREEN_WIDTH * (180/375)
+        let hvH = tableView.tableHeaderView?.height ?? 0
+        let y = (SCREEN_HEIGHT-NavBarHeight-TabBarHeight - height - hvH) * 1/2
+        sv.frame = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: width, height: height))
+        sv.updateView(image: image, text: text)
+        sv.isHidden = true
+        noDataView = sv
+        tableView.addSubview(sv)
     }
     
 }

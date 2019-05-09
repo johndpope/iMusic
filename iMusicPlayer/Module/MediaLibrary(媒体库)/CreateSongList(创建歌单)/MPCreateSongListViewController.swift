@@ -20,12 +20,19 @@ class MPCreateSongListViewController: BaseTableViewController {
     var model = [GeneralPlaylists]() {
         didSet {
             tableView.reloadData()
+            if model.count == 0 {
+                noDataView.isHidden = false
+            }else {
+                noDataView.isHidden = true
+            }
         }
     }
     
     var currentIndex: Int = 0
     
     var extensionView: MPSongExtensionToolsView?
+    
+    var noDataView: MPNoDataView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,6 +142,23 @@ class MPCreateSongListViewController: BaseTableViewController {
         
         tableView.mj_header = nil
         tableView.mj_footer = nil
+        
+        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("暂无歌单", comment: ""))
+    }
+    
+    private func setupNoDataView(image: String, text: String) {
+        // 添加无数据提示View
+        let sv = MPNoDataView.md_viewFromXIB() as! MPNoDataView
+        let x: CGFloat = 20
+        let width = (tableView.width - 40)
+        let height = SCREEN_WIDTH * (180/375)
+        let hvH = tableView.tableHeaderView?.height ?? 0
+        let y = (SCREEN_HEIGHT-NavBarHeight-TabBarHeight - height - hvH) * 1/2
+        sv.frame = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: width, height: height))
+        sv.updateView(image: image, text: text)
+        sv.isHidden = true
+        noDataView = sv
+        tableView.addSubview(sv)
     }
     
     override func setupTableHeaderView() {
@@ -143,7 +167,7 @@ class MPCreateSongListViewController: BaseTableViewController {
         hv.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: Constant.sectionHeight))
         hv.clickBlock = {(sender) in
             if let _ = sender as? UIButton {
-                let pv = MPCreateSongListView.md_viewFromXIB() as! MPCreateSongListView
+                let pv = MPCreateSongListView.md_viewFromXIB(cornerRadius: 4) as! MPCreateSongListView
                 HFAlertController.showCustomView(view: pv)
                 pv.clickBlock = {(sender) in
                     if let btn = sender as? UIButton {
@@ -151,7 +175,11 @@ class MPCreateSongListViewController: BaseTableViewController {
                             // 取消
                             pv.removeFromWindow()
                         }else {
-                            if MPModelTools.createSongList(songListName: pv.xib_songListName.text ?? "") {
+                            guard let sName = pv.xib_songListName.text, sName != "" else {
+                                SVProgressHUD.showInfo(withStatus: NSLocalizedString("请输入歌单名称", comment: ""))
+                                return
+                            }
+                            if MPModelTools.createSongList(songListName: sName) {
                                 self.refreshData()
                                 // 更新上传模型
                                 MPModelTools.updateCloudListModel(type: 4)
