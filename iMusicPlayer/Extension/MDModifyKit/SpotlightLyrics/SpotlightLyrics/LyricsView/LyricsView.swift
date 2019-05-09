@@ -107,7 +107,7 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
      */
     open func addScrollPlayView() {
         let pv = MPScrollPlayView.md_viewFromXIB() as! MPScrollPlayView
-        pv.frame = CGRect(x: 0, y: defaultLyricsHeight/2, width: SCREEN_WIDTH, height: 64)
+        pv.frame = CGRect(x: 0, y: (defaultLyricsHeight-64)/2, width: SCREEN_WIDTH, height: 64)
         pv.isHidden = true
         self.scrollPlayView = pv
         if let sv = self.superview {
@@ -196,19 +196,28 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         QYTools.shared.Log(log: #function)
         // 获取当前的View的centerY所在的Cell, 滚动tableView到当前的Cell
-        var centerCell = UITableViewCell()
-        if visibleCells.count/2 >= 0 {  // 偶数
-            centerCell = visibleCells[visibleCells.count/2 + 1]
-        }else {
-            centerCell = visibleCells[visibleCells.count/2]
+        var centerIndex = -1
+        if let scToTableViewPoint = self.scrollPlayView?.convert(scrollPlayView!.center, to: self) {
+            for index in 0..<visibleCells.count {
+                let item = visibleCells[index]
+                if item.frame.contains(scToTableViewPoint) {
+                    centerIndex = self.indexPath(for: item)?.row ?? 0
+                }
+            }
         }
-        
-        if let indexPath = self.indexPath(for: centerCell) {
-            self.scrollToRow(at: indexPath, at: .middle, animated: true)
+        if centerIndex != -1 {
+            let centerCell = self.cellForRow(at: IndexPath(row: centerIndex, section: 0))
+            self.scrollToRow(at: IndexPath(row: centerIndex, section: 0), at: .middle, animated: true)
             // 设置滑动到的Cell
             scrollToCell = centerCell
+            
+            
         }
         
+    }
+    
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        QYTools.shared.Log(log: #function)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
             self.scrollPlayView?.isHidden = true
         }

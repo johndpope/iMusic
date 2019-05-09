@@ -410,6 +410,7 @@ class MPPlayingBigView_new: BaseView {
             // 设置当前播放时间
             if streamer != nil {
                  self.lyricsModel.data_currentTime = streamer.currentTime
+                self.lyricsModel.data_currentStatus = streamer.status == .playing ? 1 : 0
             }
             pv.model = self.lyricsModel
             

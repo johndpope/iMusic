@@ -15,6 +15,8 @@ class MPLyricsModel: Mappable {
     
     /// 当前播放的时间
     var data_currentTime: TimeInterval = 0
+    /// 当前播放状态：0：暂停 1：播放
+    var data_currentStatus: Int = 0
     
     required init?(map: Map) {}
     
