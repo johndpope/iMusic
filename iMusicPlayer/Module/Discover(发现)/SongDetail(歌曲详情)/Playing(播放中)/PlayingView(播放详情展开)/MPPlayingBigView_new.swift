@@ -494,6 +494,12 @@ class MPPlayingBigView_new: BaseView {
                     })
                 }
             }
+            
+            pv.playByIndexBlock = {(index) in
+                self.playByIndex(index: index)
+                self.bigStyle()
+            }
+            
             break
         default:
             break

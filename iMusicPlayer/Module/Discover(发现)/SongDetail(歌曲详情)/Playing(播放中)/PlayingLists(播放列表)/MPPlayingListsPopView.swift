@@ -26,6 +26,8 @@ class MPPlayingListsPopView: UITableViewCell {
     
     var updateRelateSongsBlock: ((_ type: Int)->Void)?
     
+    var playByIndexBlock: ((_ index: Int)->Void)?
+    
     var model = [MPSongModel]() {
         didSet {
             tableView.reloadData()
@@ -114,5 +116,11 @@ extension MPPlayingListsPopView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constant.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let p = self.playByIndexBlock {
+            p(indexPath.row)
+        }
     }
 }
