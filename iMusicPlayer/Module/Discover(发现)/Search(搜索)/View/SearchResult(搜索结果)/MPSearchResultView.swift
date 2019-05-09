@@ -32,26 +32,13 @@ class MPSearchResultView: BaseView {
     
     var model: MPSearchResultModel? {
         didSet {
-            tableView.reloadData()
+            refreshView()
         }
     }
     
     var currentIndex: Int = 0 {
         didSet {
-            tableView.reloadData()
-            if currentIndex == 0 {
-                if model?.data_songs?.count == 0 {
-                    noDataView.isHidden = false
-                }
-            }else if currentIndex == 1 {
-                if model?.data_videos?.count == 0 {
-                    noDataView.isHidden = false
-                }
-            }else if currentIndex == 2 {
-                if model?.data_playlists?.count == 0 {
-                    noDataView.isHidden = false
-                }
-            }
+            refreshView()
         }
     }
     
@@ -77,11 +64,35 @@ class MPSearchResultView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func refreshView() {
+        tableView.reloadData()
+        if currentIndex == 0 {
+            if model?.data_songs?.count == 0 {
+                noDataView.isHidden = false
+            }else {
+                noDataView.isHidden = true
+            }
+        }else if currentIndex == 1 {
+            if model?.data_videos?.count == 0 {
+                noDataView.isHidden = false
+            }else {
+                noDataView.isHidden = true
+            }
+        }else if currentIndex == 2 {
+            if model?.data_playlists?.count == 0 {
+                noDataView.isHidden = false
+            }else {
+                noDataView.isHidden = true
+            }
+        }
+        noDataView.top = tableView.tableHeaderView?.height ?? 0 + tableView.height * 1/4
+    }
+    
     private func setupNoDataView(image: String, text: String) {
         // 添加无数据提示View
         let sv = MPNoDataView.md_viewFromXIB() as! MPNoDataView
         let x: CGFloat = 20
-        let y = tableView.height * 1/4
+        let y = SCREEN_WIDTH*(59/375) + tableView.height * 1/4
         let width = (tableView.width - 40)
         let height = SCREEN_WIDTH * (180/375)
         sv.frame = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: width, height: height))
@@ -138,6 +149,7 @@ class MPSearchResultView: BaseView {
         }
         hv.frameChangeBlock = {
             self.tableView.reloadData()
+            self.noDataView.isHidden = true
         }
         
         hv.itemClickedBlock = {(duration, filter, order, sgmIndex) in
