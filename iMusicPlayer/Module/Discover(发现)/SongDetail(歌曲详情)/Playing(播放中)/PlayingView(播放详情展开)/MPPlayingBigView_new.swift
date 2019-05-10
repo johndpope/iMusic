@@ -443,7 +443,11 @@ class MPPlayingBigView_new: BaseView {
             self.mvNext()
             break
         case 10005: // 播放模式：列表循环/单曲循环
-            currentPlayCycleMode = (currentPlayCycleMode + 1) % 2
+            if currentPlayCycleMode == 2 {
+                currentPlayCycleMode = 0
+            }else {
+                currentPlayCycleMode = (currentPlayCycleMode + 1) % 2
+            }
             //
             if xib_orderMode.isSelected {
                 currentPlayOrderMode = 1
