@@ -102,7 +102,7 @@ class MPModelTools: NSObject {
                 list.forEach { (item) in
                     let tableName = item.data_title ?? ""
                     // 缓存
-                    if let songs = item.data_data {
+                    if let songs = item.data_data, songs.count > 0 {
                         NSArray.bg_drop(tableName)
                         (songs as NSArray).bg_save(withName: tableName)
                     }
@@ -213,7 +213,7 @@ class MPModelTools: NSObject {
             MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
                 if let m = model {
                     // 修改当前标记
-                    if DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0 > m.count {
+                    if DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0 >= m.count {
                         DiscoverCent?.data_CloudListUploadModel.data_historyReset = 1
                         
                         DiscoverCent?.data_CloudListUploadModel.data_history = m
@@ -235,7 +235,7 @@ class MPModelTools: NSObject {
             // 获取收藏歌曲
             MPModelTools.getSongInTable(tableName: MPMyFavoriteViewController.classCode) { (model) in
                 if let m = model {
-                    if DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0 > m.count {
+                    if DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0 >= m.count {
                         DiscoverCent?.data_CloudListUploadModel.data_favoriteReset = 1
                         
                         DiscoverCent?.data_CloudListUploadModel.data_favorite = m
@@ -280,7 +280,7 @@ class MPModelTools: NSObject {
     class func saveListToCloudModel(m: [GeneralPlaylists]) {
         DispatchQueue.init(label: "SaveListToCloud").async {
             // 保存到上传模型
-            if DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0 > m.count {
+            if DiscoverCent?.data_CloudListUploadModel.data_playlist?.count ?? 0 >= m.count {
                 DiscoverCent?.data_CloudListUploadModel.data_playlistReset = 1
                 
                 DiscoverCent?.data_CloudListUploadModel.data_playlist = m
@@ -302,7 +302,7 @@ class MPModelTools: NSObject {
     class func saveCustomListToCloudModel(m: [GeneralPlaylists]) {
         DispatchQueue.init(label: "SaveListToCloud").async {
             // 保存到上传模型
-            if DiscoverCent?.data_CloudListUploadModel.data_customlist == nil || DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0 > m.count {
+            if DiscoverCent?.data_CloudListUploadModel.data_customlist == nil || DiscoverCent?.data_CloudListUploadModel.data_customlist?.count ?? 0 >= m.count {
                 DiscoverCent?.data_CloudListUploadModel.data_customlistReset = 1
                 
                 DiscoverCent?.data_CloudListUploadModel.data_customlist = m
@@ -449,7 +449,12 @@ class MPModelTools: NSObject {
                             tempM.data_title = songList.data_title
                             tempM.data_tracksCount = count
                             tempM.data_img = arr.first?.data_artworkUrl
+                            tempM.data_oldTitle = songList.data_oldTitle
                             NSArray.bg_updateObject(withName: MPCreateSongListViewController.classCode, object: tempM, index: i)
+                            // 修改数据库表名
+                            let sql = "ALTER  TABLE \(songList.data_oldTitle ?? "") RENAME TO \(songList.data_title ?? "");"
+                            bg_executeSql(sql, nil, nil)
+                            
                             QYTools.shared.Log(log: "专辑图片及数量更新成功")
                             if let f = finished {
                                 f()

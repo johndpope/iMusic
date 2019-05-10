@@ -253,6 +253,8 @@ extension MPCreateSongListViewController: MPSongToolsViewDelegate {
         pv.xib_title.text = NSLocalizedString("修改名称", comment: "")
         pv.xib_songListName.placeholder = NSLocalizedString("请输入名称", comment: "")
         pv.xib_songListName.text = tempM.data_title
+        // 给旧名称赋值
+        tempM.data_oldTitle = pv.xib_songListName.text
         
         HFAlertController.showCustomView(view: pv)
         pv.clickBlock = {(sender) in
@@ -265,6 +267,8 @@ extension MPCreateSongListViewController: MPSongToolsViewDelegate {
                     MPModelTools.updateCountForSongList(songList: tempM, tableName: tableName, finished: {
                         QYTools.shared.Log(log: "修改名称成功")
                         self.refreshData()
+                        
+                        MPModelTools.updateCloudListModel(type: 4)
                     })
                     pv.removeFromWindow()
                 }

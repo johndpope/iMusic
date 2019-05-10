@@ -218,7 +218,7 @@ class GeneralPlaylists: BaseModel {
         let dict: [String: Any] = [
             "data": arr,
             "img": self.data_img ?? "",
-            "oldTitle": self.data_oldTitle ?? "",
+            "oldTitle": self.data_oldTitle ?? (self.data_title ?? ""),
             "title": self.data_title ?? ""
         ]
         return dict
