@@ -24,6 +24,7 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
     @IBOutlet weak var xib_play: UIButton!
+    @IBOutlet weak var xib_downloadOrCollect: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -63,7 +64,11 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
             xib_desc.text = model.data_singerName
         }
         
-        
+        DispatchQueue.main.async {
+            if MPModelTools.checkSongExsistInPlayingList(song: model, tableName: MPMyFavoriteViewController.classCode) {
+                self.xib_downloadOrCollect.isSelected = true
+            }
+        }
     }
     
 }
