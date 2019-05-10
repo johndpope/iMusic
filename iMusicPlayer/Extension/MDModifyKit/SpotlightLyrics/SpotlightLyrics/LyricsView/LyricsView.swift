@@ -170,14 +170,13 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         QYTools.shared.Log(log: #function)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
-            self.scrollPlayView?.isHidden = true
-        }
+        scrollCellToCenter()
     }
     
     
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         QYTools.shared.Log(log: #function)
+        scrollPlayView?.isHidden = false
     }
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -186,41 +185,23 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         QYTools.shared.Log(log: #function)
+        if !decelerate {
+            scrollCellToCenter()
+        }
     }
     
     public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         QYTools.shared.Log(log: #function)
-        scrollPlayView?.isHidden = false
+        
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         QYTools.shared.Log(log: #function)
-        // 获取当前的View的centerY所在的Cell, 滚动tableView到当前的Cell
-        var centerIndex = -1
-        if let scToTableViewPoint = self.scrollPlayView?.convert(scrollPlayView!.center, to: self) {
-            for index in 0..<visibleCells.count {
-                let item = visibleCells[index]
-                if item.frame.contains(scToTableViewPoint) {
-                    centerIndex = self.indexPath(for: item)?.row ?? 0
-                }
-            }
-        }
-        if centerIndex != -1 {
-            let centerCell = self.cellForRow(at: IndexPath(row: centerIndex, section: 0))
-            self.scrollToRow(at: IndexPath(row: centerIndex, section: 0), at: .middle, animated: true)
-            // 设置滑动到的Cell
-            scrollToCell = centerCell
-            
-            
-        }
-        
+        scrollCellToCenter()
     }
     
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         QYTools.shared.Log(log: #function)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
-            self.scrollPlayView?.isHidden = true
-        }
     }
     
     // MARK:
@@ -275,6 +256,33 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
             lyricsViewModels[index - 1].highlighted = true
             scrollToRow(at: IndexPath(row: index - 1, section: 0), at: .middle, animated: animated)
             lastIndex = index - 1
+        }
+    }
+}
+
+extension LyricsView {
+    /// 歌词精准吸附
+    private func scrollCellToCenter() {
+        // 获取当前的View的centerY所在的Cell, 滚动tableView到当前的Cell
+        if let scFrameToTableView = self.scrollPlayView?.convert(scrollPlayView!.bounds, to: self) {
+            let scToTableViewPoint = CGPoint(x: (scFrameToTableView.origin.x) + scFrameToTableView.size.width/2, y: scFrameToTableView.origin.y + scFrameToTableView.size.height/2)
+            for item in visibleCells {
+                let itemFrameToTableView = item.convert(item.bounds, to: self)
+                if itemFrameToTableView.contains(scToTableViewPoint) {
+                    self.scrollToRow(at: self.indexPath(for: item)!, at: .middle, animated: true)
+                    // 设置滑动到的Cell
+                    scrollToCell = item
+                    // 更新当前的播放时间
+                    let lyricsModel = self.parser?.lyrics[indexPath(for: item)?.row ?? 0]
+                    if let time = lyricsModel?.time {
+                        scrollPlayView?.updateTime(model: "\(Int(time))".md_dateDistanceTimeWithBeforeTime(format: "mm:ss"))
+                    }
+                }
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+            self.scrollPlayView?.isHidden = true
         }
     }
 }
