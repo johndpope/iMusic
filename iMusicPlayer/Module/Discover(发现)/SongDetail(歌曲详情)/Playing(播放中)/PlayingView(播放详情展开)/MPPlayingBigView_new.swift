@@ -550,6 +550,15 @@ class MPPlayingBigView_new: BaseView {
         // 更新结束时间
         let endtime: TimeInterval = currentSouceType == 1 ? self.streamer.duration : self.playView.duration()
         xib_endTime.text = "\(endtime)".md_dateDistanceTimeWithBeforeTime(format: "mm:ss")
+        
+        // 歌词是否显示显示则播放
+        // 设置当前播放时间
+        if streamer != nil, self.lyricsModel != nil {
+            self.lyricsModel.data_currentTime = streamer.currentTime
+            self.lyricsModel.data_currentStatus = streamer.status == .playing ? 1 : 0
+            self.lrcView?.model = self.lyricsModel
+        }
+        
     }
     /// 状态结束播放
     private func endPlaying() {
