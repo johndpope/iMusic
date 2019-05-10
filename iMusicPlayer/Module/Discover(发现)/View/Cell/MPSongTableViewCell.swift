@@ -24,6 +24,8 @@ protocol MPSongTableViewCellDelegate {
 
 class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     
+    var extView: MPSongToolsView!
+    
     var delegate: MPSongTableViewCellDelegate?
     
     var clickBlock: ((Any?) -> ())?
@@ -138,6 +140,7 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
         }else {
             let pv = MPSongToolsView.md_viewFromXIB() as! MPSongToolsView
             pv.plistName = "songTools"
+            extView = pv
             pv.delegate = self
             if let song = currentSong {
                 pv.title = MPModelTools.getTitleByMPSongModel(model: song)
@@ -259,19 +262,29 @@ extension MPSongTableViewCell: MPSongToolsViewDelegate {
     }
     
     func nextPlay() {
-        // 添加到播放列表的下一首: 判断是否在列表中：在则调换到下一首，不在则添加到下一首
-        if !MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!) {
+            // 调换一下位置
             MPModelTools.getCurrentPlayList { (model, currentPlaySong) in
                 var m = model
                 if let cs = currentPlaySong {
                     let index = self.getIndexFromSongs(song: cs, songs: m)
                     let nextIndex = (index+1)%m.count
+    
+                    // 添加到播放列表的下一首: 判断是否在列表中：在则调换到下一首，不在则添加到下一首
+                    if MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!) {
+                        let csi = self.getIndexFromSongs(song: self.currentSong!, songs: m)
+                        m.remove(at: csi)
+                    }
+    
                     m.insert(self.currentSong!, at: nextIndex)
+                    // 保存到当前播放列表
+                    MPModelTools.saveCurrentPlayList(currentList: m)
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已添加到下一首播放", comment: ""))
+                    self.extView.removeFromWindow()
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_PlayCurrentList), object: nil, userInfo: ["needPlay" : 0])
                 }
             }
-        }else {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在播放列表中", comment: ""))
-        }
+    
     }
     
     func addToPlayList() {
@@ -280,6 +293,11 @@ extension MPSongTableViewCell: MPSongToolsViewDelegate {
             MPModelTools.getCurrentPlayList { (model, currentPlaySong) in
                 var m = model
                 m.append(self.currentSong!)
+                // 保存到当前播放列表
+                MPModelTools.saveCurrentPlayList(currentList: m)
+                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已添加到播放列表", comment: ""))
+                self.extView.removeFromWindow()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_PlayCurrentList), object: nil, userInfo: ["needPlay" : 0])
             }
         }else {
             SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在播放列表中", comment: ""))

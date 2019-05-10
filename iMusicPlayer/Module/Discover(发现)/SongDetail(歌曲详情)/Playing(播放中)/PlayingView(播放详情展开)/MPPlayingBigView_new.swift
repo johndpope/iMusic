@@ -163,6 +163,8 @@ class MPPlayingBigView_new: BaseView {
     
     var model = [MPSongModel]()
     
+    var needPlay: Int = -1
+    
     // MARK: - 重新整理逻辑开始
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -207,6 +209,13 @@ class MPPlayingBigView_new: BaseView {
             // 随机播放
             if let randomMode = center.userInfo?["randomMode"] as? Int, randomMode == 1 {
                 self.currentPlayCycleMode = 2
+            }
+            
+            // 随机播放
+            if let needPlay = center.userInfo?["needPlay"] as? Int {
+                self.needPlay = needPlay
+            }else {
+                self.needPlay = -1
             }
             
             QYTools.shared.Log(log: "收到播放通知")
@@ -279,10 +288,12 @@ class MPPlayingBigView_new: BaseView {
         
         self.playingStatusAction()
         
-        if type == 1 {
-            playMp3()
-        }else {
-            playMv()
+        if needPlay == -1 {
+            if type == 1 {
+                playMp3()
+            }else {
+                playMv()
+            }
         }
         updateView(type: self.currentSouceType)
     }
@@ -397,7 +408,7 @@ class MPPlayingBigView_new: BaseView {
         }
         
         // 小窗口播放数据源
-        playingView.currentIndex = currentTrackIndex
+        playingView.currentIndex = self.currentPlayOrderMode == 1 ? currentRandomIndex : currentTrackIndex
         playingView.model = self.getCurrentModels()
     }
     
@@ -497,6 +508,8 @@ class MPPlayingBigView_new: BaseView {
             }
             
             pv.playByIndexBlock = {(index) in
+                // 重置状态
+                self.needPlay = -1
                 self.playByIndex(index: index)
                 self.bigStyle()
             }
@@ -534,6 +547,9 @@ class MPPlayingBigView_new: BaseView {
     }
     
     private func mvNext() {
+        // 重置状态
+        needPlay = -1
+        
         if currentPlayOrderMode == 1 {
             currentRandomIndex = (currentRandomIndex + 1) % model.count
         }else {
@@ -836,7 +852,11 @@ extension MPPlayingBigView_new: MPPlayingViewDelegate {
     }
     
     private func playByIndex(index: Int) {
-        currentTrackIndex = index
+        if self.currentPlayOrderMode == 1 {
+            self.currentRandomIndex = index
+        }else {
+            self.currentTrackIndex = index
+        }
         self.currentSouceType = setupCurrentSourceType(song: self.getCurrentSong())
         playMvOrMp3(type: self.currentSouceType)
         
