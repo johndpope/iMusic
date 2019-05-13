@@ -95,10 +95,11 @@ class MPPlayingBigView_new: BaseView {
     }
     /// 播放区域背景View
     @IBOutlet weak var playBgView: UIView!
+    @IBOutlet weak var xib_bgImage: UIButton!
     @IBOutlet weak var xib_coverImage: UIImageView! {
         didSet {
             xib_coverImage.md_cornerRadius = 2
-            xib_coverImage.contentMode = .scaleAspectFill
+            xib_coverImage.contentMode = .scaleAspectFit
         }
     }
     /// YouTube播放控件
@@ -336,7 +337,18 @@ class MPPlayingBigView_new: BaseView {
         xib_coverImage.isHidden = false
         if let img = song.data_artworkBigUrl, img != "" {
             let imgUrl = API.baseImageURL + img
-            xib_coverImage.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "placeholder"))
+            xib_coverImage.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "placeholder"), options: nil, progressBlock: nil) { (rs) in
+                // 设置一张高斯模糊背景
+                QYTools.shared.Log(log: rs.debugDescription)
+                do {
+                    let image = try rs.get().image.byBlurLight()
+//                    self.xib_coverImage.backgroundColor = UIColor.init(patternImage: image!)
+                    self.xib_bgImage.setBackgroundImage(image, for: .normal)
+                }catch {
+                    QYTools.shared.Log(log: error.localizedDescription)
+                }
+                
+            }
         }
         
         self.updateNextSongName()

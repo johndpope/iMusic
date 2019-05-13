@@ -64,17 +64,24 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZX-8K-Exd">
                             <rect key="frame" x="0.0" y="44" width="375" height="280"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I3s-zU-vVE">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                                </button>
                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HjF-D5-D2g">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" red="0.8862745098" green="0.69411764710000001" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
+                                <constraint firstItem="I3s-zU-vVE" firstAttribute="top" secondItem="rZX-8K-Exd" secondAttribute="top" id="2rA-t7-4JN"/>
                                 <constraint firstAttribute="trailing" secondItem="HjF-D5-D2g" secondAttribute="trailing" id="97M-V1-6hW"/>
+                                <constraint firstAttribute="trailing" secondItem="I3s-zU-vVE" secondAttribute="trailing" id="9UU-cf-FkA"/>
+                                <constraint firstAttribute="bottom" secondItem="I3s-zU-vVE" secondAttribute="bottom" id="MYJ-rG-Rs9"/>
                                 <constraint firstItem="HjF-D5-D2g" firstAttribute="leading" secondItem="rZX-8K-Exd" secondAttribute="leading" id="Xdc-6m-Pjb"/>
                                 <constraint firstAttribute="bottom" secondItem="HjF-D5-D2g" secondAttribute="bottom" id="bJ4-LX-ex1"/>
                                 <constraint firstAttribute="height" constant="280" id="cHc-gX-3UU"/>
                                 <constraint firstItem="HjF-D5-D2g" firstAttribute="top" secondItem="rZX-8K-Exd" secondAttribute="top" id="mBt-h5-eRb"/>
+                                <constraint firstItem="I3s-zU-vVE" firstAttribute="leading" secondItem="rZX-8K-Exd" secondAttribute="leading" id="tJu-gC-Pw6"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lZw-ZE-3yH">
@@ -343,6 +350,7 @@
                 <outlet property="playBgView" destination="rZX-8K-Exd" id="qZE-Pb-Mf0"/>
                 <outlet property="playerViewTop" destination="hho-wK-Fik" id="brh-oB-6Sq"/>
                 <outlet property="topViewH" destination="cHc-gX-3UU" id="gIn-fN-bg0"/>
+                <outlet property="xib_bgImage" destination="I3s-zU-vVE" id="kS0-h7-9J7"/>
                 <outlet property="xib_collect" destination="tej-Uh-iU5" id="2Cn-5K-vn5"/>
                 <outlet property="xib_coverImage" destination="HjF-D5-D2g" id="xF5-wd-JgA"/>
                 <outlet property="xib_cycleMode" destination="8Zc-rA-hvB" id="QN4-Ee-KL3"/>
