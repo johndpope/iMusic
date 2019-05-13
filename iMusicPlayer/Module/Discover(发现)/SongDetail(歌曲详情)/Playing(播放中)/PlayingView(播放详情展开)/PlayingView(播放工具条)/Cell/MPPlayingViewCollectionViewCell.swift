@@ -30,6 +30,12 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
         super.awakeFromNib()
         // Initialization code
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        xib_downloadOrCollect.isSelected = false
+    }
 
     @IBAction func btn_DidClicked(_ sender: UIButton) {
         if let b = clickBlock {

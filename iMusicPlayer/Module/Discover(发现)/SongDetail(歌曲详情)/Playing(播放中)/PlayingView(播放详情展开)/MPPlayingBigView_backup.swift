@@ -808,8 +808,9 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
         self.bigStyle()
     }
     
-    func playingView(download view: MPPlayingView) {
+    func playingView(download view: MPPlayingView) -> Bool {
         QYTools.shared.Log(log: "下载")
+        return false
     }
     
     func playingView(play view: MPPlayingView, status: Bool) {
