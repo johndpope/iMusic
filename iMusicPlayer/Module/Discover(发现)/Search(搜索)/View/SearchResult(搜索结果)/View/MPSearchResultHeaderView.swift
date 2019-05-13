@@ -29,7 +29,18 @@ class MPSearchResultHeaderView: UITableViewCell {
     var defaultSelectTagBottom: CGFloat = 0
     var defaultFileter: Bool = false
     
-    @IBOutlet weak var segment: UISegmentedControl!
+    @IBOutlet weak var segment: UISegmentedControl! {
+        didSet {
+            if SourceType == 0 {
+                segment.removeSegment(at: 0, animated: true)
+            }else {
+                if segment.numberOfSegments < 3 {
+                    segment.insertSegment(withTitle: NSLocalizedString("歌曲", comment: ""), at: 0, animated: true)
+                }
+            }
+            segment.selectedSegmentIndex = 0
+        }
+    }
     
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var selectLabel: UILabel!
@@ -99,13 +110,19 @@ class MPSearchResultHeaderView: UITableViewCell {
 //        sender.imageView?.trans180DegreeAnimation()
         
         defaultFileter = sender.isSelected
-        if defaultFileter {
+        if defaultFileter, segment.numberOfSegments == 3 {
             if segment.selectedSegmentIndex == 1 {
                 mvStyle()
             }else if segment.selectedSegmentIndex == 2 {
                 songListStyle()
             }else {
                 songStyle()
+            }
+        }else if defaultFileter {
+            if segment.selectedSegmentIndex == 0 {
+                mvStyle()
+            }else if segment.selectedSegmentIndex == 1 {
+                songListStyle()
             }
         }else {
             songStyle()
@@ -120,7 +137,7 @@ extension MPSearchResultHeaderView {
     
     @objc func segmentChanged(seg: UISegmentedControl) {
         // 筛选是否选中
-        if defaultFileter {
+        if defaultFileter, seg.numberOfSegments == 3 {
             switch seg.selectedSegmentIndex {
             case 0: // 单曲
                 songStyle()
@@ -134,6 +151,20 @@ extension MPSearchResultHeaderView {
             default:
                 break
             }
+        }else if defaultFileter {
+            switch seg.selectedSegmentIndex {
+            case 0: // MV
+                mvStyle()
+                break
+            case 1: // 歌单
+                songListStyle()
+                break
+            default:
+                songStyle()
+                break
+            }
+        }else {
+            songStyle()
         }
         // 回调
         if let b = segmentChangeBlock {

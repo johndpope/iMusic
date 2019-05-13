@@ -107,87 +107,108 @@ class MPSearchViewController: BaseTableViewController {
     
     override func pageTurning() {
         super.pageTurning()
-        if sgmIndex == 0 {
-            mp3Start += 20
-            DiscoverCent?.requestSearchMp3(q: self.keyword, duration: duration, filter: filter, order: order, size: 20, page: mp3Start, complete: { (isSucceed, model, msg) in
-                self.searchResultTableView?.mj_footer.endRefreshing()
-                switch isSucceed {
-                case true:
-                    if let m = model?.data_songs, m.count > 0 {
-                        QYTools.shared.Log(log: "获取到下一页数据")
-                        if let oms = self.searchResultView?.model?.data_songs {
-                            let temps = oms + m
-                            let tempM = self.searchResultView?.model
-                            tempM?.data_songs = temps
-                            self.searchResultView?.model = tempM
-                        }
-                    }else {
-                        self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
-                        self.mp3Start -= 20
-                    }
-                    break
-                case false:
-                    SVProgressHUD.showError(withStatus: msg)
-                    self.mp3Start -= 20
-                    break
-                }
-            })
-        }else if sgmIndex == 1 {
-            if nextPageTokenVideo == "" {
-                self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
-                return
+        
+        if SourceType == 1 {
+            if sgmIndex == 0 {
+                pageTurningSong()
+            }else if sgmIndex == 1 {
+                pageTurningMv()
+            }else if sgmIndex == 2 {
+                pageTurningList()
             }
-            DiscoverCent?.requestSearchMV(q: self.keyword, duration: duration, filter: filter, order: order, size: 20, pageToken: nextPageTokenVideo, complete: { (isSucceed, model, msg) in
-                self.searchResultTableView?.mj_footer.endRefreshing()
-                switch isSucceed {
-                case true:
-                    if let m = model?.data_videos, m.count > 0 {
-                        QYTools.shared.Log(log: "获取到下一页数据")
-                        if let oms = self.searchResultView?.model?.data_videos {
-                            self.nextPageTokenVideo = model?.data_nextPageTokenVideo ?? ""
-                            let temps = oms + m
-                            let tempM = self.searchResultView?.model
-                            tempM?.data_videos = temps
-                            self.searchResultView?.model = tempM
-                        }
-                    }else {
-                        self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
-                    }
-                    break
-                case false:
-                    SVProgressHUD.showError(withStatus: msg)
-                    break
-                }
-            })
-        }else if sgmIndex == 2 {
-            if nextPageTokenPlaylist == "" {
-                self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
-                return
+        }else {
+            if sgmIndex == 0 {
+                pageTurningMv()
+            }else if sgmIndex == 1 {
+                pageTurningList()
             }
-            DiscoverCent?.requestSearchList(q: self.keyword, duration: duration, filter: filter, order: order, size: 20, pageToken: nextPageTokenPlaylist, complete: { (isSucceed, model, msg) in
-                self.searchResultTableView?.mj_footer.endRefreshing()
-                switch isSucceed {
-                case true:
-                    if let m = model?.data_playlists, m.count > 0 {
-                        QYTools.shared.Log(log: "获取到下一页数据")
-                        if let oms = self.searchResultView?.model?.data_playlists {
-                            self.nextPageTokenPlaylist = model?.data_nextPageTokenPlaylist ?? ""
-                            let temps = oms + m
-                            let tempM = self.searchResultView?.model
-                            tempM?.data_playlists = temps
-                            self.searchResultView?.model = tempM
-                        }
-                    }else {
-                        self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
-                    }
-                    break
-                case false:
-                    SVProgressHUD.showError(withStatus: msg)
-                    break
-                }
-            })
         }
         
+    }
+    
+    private func pageTurningSong() {
+        mp3Start += 20
+        DiscoverCent?.requestSearchMp3(q: self.keyword, duration: duration, filter: filter, order: order, size: 20, page: mp3Start, complete: { (isSucceed, model, msg) in
+            self.searchResultTableView?.mj_footer.endRefreshing()
+            switch isSucceed {
+            case true:
+                if let m = model?.data_songs, m.count > 0 {
+                    QYTools.shared.Log(log: "获取到下一页数据")
+                    if let oms = self.searchResultView?.model?.data_songs {
+                        let temps = oms + m
+                        let tempM = self.searchResultView?.model
+                        tempM?.data_songs = temps
+                        self.searchResultView?.model = tempM
+                    }
+                }else {
+                    self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
+                    self.mp3Start -= 20
+                }
+                break
+            case false:
+                SVProgressHUD.showError(withStatus: msg)
+                self.mp3Start -= 20
+                break
+            }
+        })
+    }
+    
+    private func pageTurningMv() {
+        if nextPageTokenVideo == "" {
+            self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
+            return
+        }
+        DiscoverCent?.requestSearchMV(q: self.keyword, duration: duration, filter: filter, order: order, size: 20, pageToken: nextPageTokenVideo, complete: { (isSucceed, model, msg) in
+            self.searchResultTableView?.mj_footer.endRefreshing()
+            switch isSucceed {
+            case true:
+                if let m = model?.data_videos, m.count > 0 {
+                    QYTools.shared.Log(log: "获取到下一页数据")
+                    if let oms = self.searchResultView?.model?.data_videos {
+                        self.nextPageTokenVideo = model?.data_nextPageTokenVideo ?? ""
+                        let temps = oms + m
+                        let tempM = self.searchResultView?.model
+                        tempM?.data_videos = temps
+                        self.searchResultView?.model = tempM
+                    }
+                }else {
+                    self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
+                }
+                break
+            case false:
+                SVProgressHUD.showError(withStatus: msg)
+                break
+            }
+        })
+    }
+    
+    private func pageTurningList() {
+        if nextPageTokenPlaylist == "" {
+            self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
+            return
+        }
+        DiscoverCent?.requestSearchList(q: self.keyword, duration: duration, filter: filter, order: order, size: 20, pageToken: nextPageTokenPlaylist, complete: { (isSucceed, model, msg) in
+            self.searchResultTableView?.mj_footer.endRefreshing()
+            switch isSucceed {
+            case true:
+                if let m = model?.data_playlists, m.count > 0 {
+                    QYTools.shared.Log(log: "获取到下一页数据")
+                    if let oms = self.searchResultView?.model?.data_playlists {
+                        self.nextPageTokenPlaylist = model?.data_nextPageTokenPlaylist ?? ""
+                        let temps = oms + m
+                        let tempM = self.searchResultView?.model
+                        tempM?.data_playlists = temps
+                        self.searchResultView?.model = tempM
+                    }
+                }else {
+                    self.searchResultTableView?.mj_footer.endRefreshingWithNoMoreData()
+                }
+                break
+            case false:
+                SVProgressHUD.showError(withStatus: msg)
+                break
+            }
+        })
     }
     
     override func setupStyle() {
@@ -339,10 +360,18 @@ extension MPSearchViewController {
                     self.order = order
                     self.sgmIndex = sgmIndex
                     // 判断是否需要时长和选择
-                    if sgmIndex == 2 {
-                        self.duration = "any"
-                        self.filter = ""
+                    if SourceType == 1 {
+                        if sgmIndex == 2 {
+                            self.duration = "any"
+                            self.filter = ""
+                        }
+                    }else {
+                        if sgmIndex == 1 {
+                            self.duration = "any"
+                            self.filter = ""
+                        }
                     }
+                    
                     self.refreshData()
                 }
                 // 获取搜索结果数据

@@ -66,23 +66,39 @@ class MPSearchResultView: BaseView {
     
     private func refreshView() {
         tableView.reloadData()
-        if currentIndex == 0 {
-            if model?.data_songs?.count == 0 {
-                noDataView.isHidden = false
-            }else {
-                noDataView.isHidden = true
+        if SourceType == 1 {
+            if currentIndex == 0 {
+                if model?.data_songs?.count == 0 {
+                    noDataView.isHidden = false
+                }else {
+                    noDataView.isHidden = true
+                }
+            }else if currentIndex == 1 {
+                if model?.data_videos?.count == 0 {
+                    noDataView.isHidden = false
+                }else {
+                    noDataView.isHidden = true
+                }
+            }else if currentIndex == 2 {
+                if model?.data_playlists?.count == 0 {
+                    noDataView.isHidden = false
+                }else {
+                    noDataView.isHidden = true
+                }
             }
-        }else if currentIndex == 1 {
-            if model?.data_videos?.count == 0 {
-                noDataView.isHidden = false
-            }else {
-                noDataView.isHidden = true
-            }
-        }else if currentIndex == 2 {
-            if model?.data_playlists?.count == 0 {
-                noDataView.isHidden = false
-            }else {
-                noDataView.isHidden = true
+        }else {
+            if currentIndex == 0 {
+                if model?.data_videos?.count == 0 {
+                    noDataView.isHidden = false
+                }else {
+                    noDataView.isHidden = true
+                }
+            }else if currentIndex == 1 {
+                if model?.data_playlists?.count == 0 {
+                    noDataView.isHidden = false
+                }else {
+                    noDataView.isHidden = true
+                }
             }
         }
         noDataView.top = tableView.tableHeaderView?.height ?? 0 + tableView.height * 1/4
@@ -159,25 +175,46 @@ class MPSearchResultView: BaseView {
 extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         var num = 1
-        if currentIndex == 1 {
-            num = 2
+        if SourceType == 1 {
+            if currentIndex == 1 {
+                num = 2
+            }
+        }else {
+            if currentIndex == 0 {
+                num = 2
+            }
         }
+        
         return num
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var num = 0
-        if currentIndex == 1, section == 0 {
-            if let m = model?.data_collection, m.count > 0 {
-                num = 1
+        if SourceType == 1 {
+            if currentIndex == 1, section == 0 {
+                if let m = model?.data_collection, m.count > 0 {
+                    num = 1
+                }
+            }else {
+                if currentIndex == 0 {
+                    num = model?.data_songs?.count ?? 0
+                }else if currentIndex == 1 {
+                    num = model?.data_videos?.count ?? 0
+                }else if currentIndex == 2 {
+                    num = model?.data_playlists?.count ?? 0
+                }
             }
         }else {
-            if currentIndex == 0 {
-                num = model?.data_songs?.count ?? 0
-            }else if currentIndex == 1 {
-                num = model?.data_videos?.count ?? 0
-            }else if currentIndex == 2 {
-                num = model?.data_playlists?.count ?? 0
+            if currentIndex == 0, section == 0 {
+                if let m = model?.data_collection, m.count > 0 {
+                    num = 1
+                }
+            }else {
+                if currentIndex == 0 {
+                    num = model?.data_videos?.count ?? 0
+                }else if currentIndex == 1 {
+                    num = model?.data_playlists?.count ?? 0
+                }
             }
         }
         return num
@@ -186,54 +223,68 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         
-        switch currentIndex {
-        case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: Constant.songIdentifier) as! MPSongTableViewCell
-            if let models = model?.data_songs {
-                (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models)
-            }
-            break
-        case 1:
-            if indexPath.section == 0 {
-                cell = tableView.dequeueReusableCell(withIdentifier: Constant.collectionIdentifier) as! MPSRCollectionTableViewCell
-                if let models = model?.data_collection {
-                    (cell as! MPSRCollectionTableViewCell).updateCell(model: models[indexPath.row])
+        if SourceType == 1 {
+            switch currentIndex {
+            case 0:
+                cell = tableView.dequeueReusableCell(withIdentifier: Constant.songIdentifier) as! MPSongTableViewCell
+                if let models = model?.data_songs {
+                    (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models)
                 }
-            }else {
-                cell = tableView.dequeueReusableCell(withIdentifier: Constant.mvIdentifier) as! MPSongTableViewCell
-                if let models = model?.data_videos {
-                    if let amodels = model?.data_collection, amodels.count > 0 {
-                        (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, album: amodels[0], sourceType: 1)
-                    }else {
-                        (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, sourceType: 1)
+                break
+            case 1:
+                if indexPath.section == 0 {
+                    cell = tableView.dequeueReusableCell(withIdentifier: Constant.collectionIdentifier) as! MPSRCollectionTableViewCell
+                    if let models = model?.data_collection {
+                        (cell as! MPSRCollectionTableViewCell).updateCell(model: models[indexPath.row])
+                    }
+                }else {
+                    cell = tableView.dequeueReusableCell(withIdentifier: Constant.mvIdentifier) as! MPSongTableViewCell
+                    if let models = model?.data_videos {
+                        if let amodels = model?.data_collection, amodels.count > 0 {
+                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, album: amodels[0], sourceType: 1)
+                        }else {
+                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, sourceType: 1)
+                        }
                     }
                 }
+                break
+            case 2:
+                cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPChoicenessTableViewCell
+                if let models = model?.data_playlists {
+                    (cell as! MPChoicenessTableViewCell).updateCell(model: models[indexPath.row])
+                }
+                break
+            default:
+                break
             }
-            break
-        case 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPChoicenessTableViewCell
-            if let models = model?.data_playlists {
-                (cell as! MPChoicenessTableViewCell).updateCell(model: models[indexPath.row])
-//                (cell as! MPDiscoverTableViewCell).clickBlock = {(sender) in
-//                    if let btn = sender as? UIButton {
-//                        DiscoverCent?.requestSearchSongListByYoutube(playlistId: models[indexPath.row].data_originalId ?? "", pageToken: "", complete: { (isSucceed, model, msg) in
-//                            switch isSucceed {
-//                            case true:
-//                                if let m = model?.data_songs {
-//                                    self.play(model: m, headerSongModel: models[indexPath.row])
-//                                }
-//                                break
-//                            case false:
-//                                SVProgressHUD.showError(withStatus: msg)
-//                                break
-//                            }
-//                        })
-//                    }
-//                }
+        }else {
+            switch currentIndex {
+            case 0:
+                if indexPath.section == 0 {
+                    cell = tableView.dequeueReusableCell(withIdentifier: Constant.collectionIdentifier) as! MPSRCollectionTableViewCell
+                    if let models = model?.data_collection {
+                        (cell as! MPSRCollectionTableViewCell).updateCell(model: models[indexPath.row])
+                    }
+                }else {
+                    cell = tableView.dequeueReusableCell(withIdentifier: Constant.mvIdentifier) as! MPSongTableViewCell
+                    if let models = model?.data_videos {
+                        if let amodels = model?.data_collection, amodels.count > 0 {
+                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, album: amodels[0], sourceType: 1)
+                        }else {
+                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, sourceType: 1)
+                        }
+                    }
+                }
+                break
+            case 1:
+                cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPChoicenessTableViewCell
+                if let models = model?.data_playlists {
+                    (cell as! MPChoicenessTableViewCell).updateCell(model: models[indexPath.row])
+                }
+                break
+            default:
+                break
             }
-            break
-        default:
-            break
         }
         cell.selectionStyle = .none
         return cell
@@ -241,52 +292,95 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         var height: CGFloat = 0
-        switch currentIndex {
-        case 0:
-            height = Constant.songRowHeight
-            break
-        case 1:
-            if indexPath.section == 0 {
-                height = Constant.collectionRowHeight
-            }else {
-                height = Constant.mvRowHeight
+        if SourceType == 1 {
+            switch currentIndex {
+            case 0:
+                height = Constant.songRowHeight
+                break
+            case 1:
+                if indexPath.section == 0 {
+                    height = Constant.collectionRowHeight
+                }else {
+                    height = Constant.mvRowHeight
+                }
+                break
+            case 2:
+                height = Constant.songListRowHeight
+                break
+            default:
+                break
             }
-            break
-        case 2:
-            height = Constant.songListRowHeight
-            break
-        default:
-            break
+        }else {
+            switch currentIndex {
+            case 0:
+                if indexPath.section == 0 {
+                    height = Constant.collectionRowHeight
+                }else {
+                    height = Constant.mvRowHeight
+                }
+                break
+            case 1:
+                height = Constant.songListRowHeight
+                break
+            default:
+                break
+            }
         }
         return height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch currentIndex {
-        case 0:
-            break
-        case 1:
-            if indexPath.section == 0 {
-                if let models = model?.data_collection {
+        if SourceType == 1 {
+            switch currentIndex {
+            case 0:
+                break
+            case 1:
+                if indexPath.section == 0 {
+                    if let models = model?.data_collection {
+                        let vc = MPSongListViewController()
+                        vc.headerSongModel = models[indexPath.row]
+                        vc.type = 3
+                        HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }else {
+                }
+                break
+            case 2:
+                if let models = model?.data_playlists {
                     let vc = MPSongListViewController()
                     vc.headerSongModel = models[indexPath.row]
                     vc.type = 3
                     HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
                 }
-            }else {
+                break
+            default:
+                break
             }
-            break
-        case 2:
-            if let models = model?.data_playlists {
-                let vc = MPSongListViewController()
-                vc.headerSongModel = models[indexPath.row]
-                vc.type = 3
-                HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
+        }else {
+            switch currentIndex {
+            case 0:
+                if indexPath.section == 0 {
+                    if let models = model?.data_collection {
+                        let vc = MPSongListViewController()
+                        vc.headerSongModel = models[indexPath.row]
+                        vc.type = 3
+                        HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }else {
+                }
+                break
+            case 1:
+                if let models = model?.data_playlists {
+                    let vc = MPSongListViewController()
+                    vc.headerSongModel = models[indexPath.row]
+                    vc.type = 3
+                    HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
+                }
+                break
+            default:
+                break
             }
-            break
-        default:
-            break
         }
     }
     
