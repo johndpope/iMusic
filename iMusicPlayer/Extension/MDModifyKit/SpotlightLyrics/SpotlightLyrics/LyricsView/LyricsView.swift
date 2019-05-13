@@ -160,48 +160,48 @@ open class LyricsView: UITableView, UITableViewDataSource, UITableViewDelegate {
     }
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        QYTools.shared.Log(log: #function)
+//        QYTools.shared.Log(log: #function)
         scrollPlayView?.isHidden = false
     }
     
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        QYTools.shared.Log(log: #function)
+//        QYTools.shared.Log(log: #function)
     }
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        QYTools.shared.Log(log: #function)
+//        QYTools.shared.Log(log: #function)
         scrollCellToCenter()
     }
     
     
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        QYTools.shared.Log(log: #function)
+//        QYTools.shared.Log(log: #function)
         scrollPlayView?.isHidden = false
     }
     
     public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        QYTools.shared.Log(log: #function)
+//        QYTools.shared.Log(log: #function)
     }
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        QYTools.shared.Log(log: #function)
+//        QYTools.shared.Log(log: #function)
         if !decelerate {
             scrollCellToCenter()
         }
     }
     
     public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        QYTools.shared.Log(log: #function)
+//        QYTools.shared.Log(log: #function)
         
     }
     
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        QYTools.shared.Log(log: #function)
+//        QYTools.shared.Log(log: #function)
         scrollCellToCenter()
     }
     
     public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        QYTools.shared.Log(log: #function)
+//        QYTools.shared.Log(log: #function)
     }
     
     // MARK:

@@ -16,9 +16,11 @@ class MPLrcView: BaseView {
         didSet {
             if let lrcs = model?.data_lyrics {
                 lyricsView.lyrics = lrcs
-                self.seekToTime(time: model?.data_currentTime ?? 0.0)
                 // 设置歌词可以滑动到开始和结束位置
                 lyricsView.contentInset = UIEdgeInsets(top: lrcView.height / 2, left: 0, bottom: lrcView.height / 2, right: 0)
+                
+                lyricsView.scroll(toTime: model?.data_currentTime ?? 0.0, animated: true)
+                self.seekToTime(time: model?.data_currentTime ?? 0.0)
             }else {
                 lyricsView.lyrics = ""
                 self.pause()
