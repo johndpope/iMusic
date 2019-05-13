@@ -884,9 +884,8 @@ extension MPPlayingBigView_new: MPPlayingViewDelegate {
         self.bigStyle()
     }
     
-    func playingView(download view: MPPlayingView) -> Bool {
+    func playingView(download view: MPPlayingView) {
         QYTools.shared.Log(log: "下载")
-        var rs = false
         let cs = self.getCurrentSong()
         // 添加到我的最爱列表
         if !MPModelTools.checkSongExsistInPlayingList(song: cs, tableName: MPMyFavoriteViewController.classCode) {
@@ -896,7 +895,6 @@ extension MPPlayingBigView_new: MPPlayingViewDelegate {
             // 设置为收藏状态
             xib_collect.isSelected = true
             SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲收藏成功", comment: ""))
-            rs = true
         }else {
             MPModelTools.deleteSongInTable(tableName: MPMyFavoriteViewController.classCode, songs: [cs]) {
                 // 标记为收藏状态：喜爱列表、当前列表
@@ -911,7 +909,6 @@ extension MPPlayingBigView_new: MPPlayingViewDelegate {
         MPModelTools.updateCloudListModel(type: 2)
         // 通知更新列表数据
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_RefreshLocalModels), object: nil)
-        return rs
     }
     
     func playingView(play view: MPPlayingView, status: Bool) {

@@ -16,7 +16,7 @@ private struct Constant {
 
 protocol MPPlayingViewDelegate {
     func playingView(toDetail view: MPPlayingView)
-    func playingView(download view: MPPlayingView) -> Bool
+    func playingView(download view: MPPlayingView)
     func playingView(play view: MPPlayingView, status: Bool)
     func playingView(pre view: MPPlayingView, index: Int)
     func playingView(next view: MPPlayingView, index: Int)
@@ -101,9 +101,8 @@ extension MPPlayingView: UICollectionViewDataSource, UICollectionViewDelegate, U
                     break
                 case 10002: // 下载、收藏
                     if let d = self.delegate {
-                        if d.playingView(download: self) {
-                            collectionView.reloadItems(at: [indexPath])
-                        }
+                        d.playingView(download: self)
+                        collectionView.reloadItems(at: [indexPath])
                     }
                     break
                 case 10003: // 暂停、播放
