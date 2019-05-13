@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func endBackgroundTask() {
-        DispatchQueue.main.sync {
+        if self.backgroundTaskIdentifier != UIBackgroundTaskIdentifier.invalid {
             UIApplication.shared.endBackgroundTask(self.backgroundTaskIdentifier)
             self.backgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
         }
