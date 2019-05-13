@@ -100,12 +100,6 @@ class MPSearchResultView: BaseView {
         sv.isHidden = true
         noDataView = sv
         tableView.addSubview(sv)
-        //        sv.snp.makeConstraints { (make) in
-        //            make.centerX.equalTo(tableView.centerX)
-        //            make.centerY.equalTo(tableView.centerY).offset(-tableView.height*1/4)
-        //            make.width.equalTo(width)
-        //            make.height.equalTo(height)
-        //        }
     }
     
     private func setupTableView() {

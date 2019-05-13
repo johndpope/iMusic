@@ -1042,20 +1042,27 @@ class MPModelTools: NSObject {
     ///   - tableName: 缓存表名
     ///   - finished: 回调
     class func getPopularModel(songerName name: String = "", nationality: Int = 0, type: Int = 0, tableName: String = "PopularModel", finished: ((_ models: [GeneralPlaylists]?)->Void)? = nil) {
+        var temps = [GeneralPlaylists]()
         if let arr = NSArray.bg_array(withName: tableName) as? [GeneralPlaylists] {
             QYTools.shared.Log(log: "本地数据库获取数据")
+            temps = arr
             if let f = finished {
-                f(arr)
+                f(temps)
             }
         }else {
             DiscoverCent?.requestPopular(nationality: nationality, type: type, name: name, complete: { (isSucceed, model, msg) in
                 switch isSucceed {
                 case true:
                     QYTools.shared.Log(log: "在线获取数据")
-                    if let f = finished, model!.count > 0 {
+                    if let m = model {
+                        temps = m
+                        if let f = finished {
+                            f(temps)
+                        }
                         // 缓存
-                        (model! as NSArray).bg_save(withName: tableName)
-                        f(model)
+                        if m.count > 0 {
+                            (m as NSArray).bg_save(withName: tableName)
+                        }
                     }
                     break
                 case false:
@@ -1064,6 +1071,7 @@ class MPModelTools: NSObject {
                 }
             })
         }
+        
     }
     
     /// 最新发布

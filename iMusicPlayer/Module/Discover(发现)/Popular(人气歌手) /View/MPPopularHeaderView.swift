@@ -91,6 +91,23 @@ extension MPPopularHeaderView: TagListViewDelegate {
 }
 
 extension MPPopularHeaderView: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if var text = textField.text, let d = sgmDidChangeBlock {
+            var txt = ""
+            
+            if string == "", text != "" {
+                text.removeLast()
+                txt = text
+            }else {
+                txt = text + string
+            }
+            
+            d(txt)
+        }
+        return true
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let b = sgmDidChangeBlock {
             b(xib_nameTF.text ?? "")

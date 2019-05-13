@@ -18,6 +18,8 @@ class MPPopularViewController: BaseTableViewController {
     
     var headerView: MPPopularHeaderView?
     
+    var noDataView: MPNoDataView!
+    
     var page: Int = 0
     
     var songName: String = "" {
@@ -29,6 +31,14 @@ class MPPopularViewController: BaseTableViewController {
     var model = [GeneralPlaylists]() {
         didSet {
             tableView.reloadData()
+            
+            if model.count == 0 {
+                noDataView.isHidden = false
+                tableView.mj_footer.isHidden = true
+            }else {
+                noDataView.isHidden = true
+                tableView.mj_footer.isHidden = false
+            }
         }
     }
     
@@ -102,7 +112,24 @@ class MPPopularViewController: BaseTableViewController {
         super.setupTableView()
         
         self.identifier = Constant.identifier
+        tableView.backgroundColor = UIColor.white
         
+        setupNoDataView(image: "pic_no_resault", text: NSLocalizedString("无搜索结果", comment: ""))
+    }
+    
+    private func setupNoDataView(image: String, text: String) {
+        // 添加无数据提示View
+        let sv = MPNoDataView.md_viewFromXIB() as! MPNoDataView
+        let x: CGFloat = 20
+        let width = (tableView.width - 40)
+        let height = SCREEN_WIDTH * (180/375)
+        let hvH = tableView.tableHeaderView?.height ?? 0
+        let y = (SCREEN_HEIGHT-NavBarHeight-TabBarHeight - height - hvH)*1/2
+        sv.frame = CGRect(origin: CGPoint(x: x, y: y), size: CGSize(width: width, height: height))
+        sv.updateView(image: image, text: text)
+        sv.isHidden = true
+        noDataView = sv
+        tableView.addSubview(sv)
     }
     
     override func setupTableHeaderView() {
