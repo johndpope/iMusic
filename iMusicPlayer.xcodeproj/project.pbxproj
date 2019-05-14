@@ -63,6 +63,7 @@
 		C560343E224477EF00F6795F /* LyricsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5603434224477EF00F6795F /* LyricsCell.swift */; };
 		C560344222447DA200F6795F /* MPScrollPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560344022447DA200F6795F /* MPScrollPlayView.swift */; };
 		C560344322447DA200F6795F /* MPScrollPlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C560344122447DA200F6795F /* MPScrollPlayView.xib */; };
+		C566E1FD228A6EA70078C31C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C566E1FF228A6EA70078C31C /* Localizable.strings */; };
 		C569B6D6226214020003D186 /* MPRadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569B6D5226214020003D186 /* MPRadioViewController.swift */; };
 		C569B6DB2262152D0003D186 /* CDViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569B6D92262152D0003D186 /* CDViewCell.swift */; };
 		C569B6DC2262152D0003D186 /* CDFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569B6DA2262152D0003D186 /* CDFlowLayout.swift */; };
@@ -294,7 +295,6 @@
 		C57FC8AA2240DC2F00218DE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6D12240DC2F00218DE7 /* Assets.xcassets */; };
 		C57FC8AB2240DC2F00218DE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6D22240DC2F00218DE7 /* LaunchScreen.storyboard */; };
 		C57FC8AC2240DC2F00218DE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6D42240DC2F00218DE7 /* Main.storyboard */; };
-		C57FC8AD2240DC2F00218DE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6D62240DC2F00218DE7 /* Localizable.strings */; };
 		C57FC8AF2240DC2F00218DE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6D82240DC2F00218DE7 /* AppDelegate.swift */; };
 		C57FC8B12240DC2F00218DE7 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6DC2240DC2F00218DE7 /* UIDevice+Extension.swift */; };
 		C57FC8B22240DC2F00218DE7 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6DD2240DC2F00218DE7 /* UIFont+Extension.swift */; };
@@ -533,6 +533,19 @@
 		C5603434224477EF00F6795F /* LyricsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LyricsCell.swift; sourceTree = "<group>"; };
 		C560344022447DA200F6795F /* MPScrollPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPScrollPlayView.swift; sourceTree = "<group>"; };
 		C560344122447DA200F6795F /* MPScrollPlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPScrollPlayView.xib; sourceTree = "<group>"; };
+		C566E1FE228A6EA70078C31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C566E200228A6EBA0078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		C566E201228A6EBA0078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		C566E202228A6EBB0078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C566E206228A6F330078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		C566E207228A6F330078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		C566E208228A6F340078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C566E209228A6F750078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		C566E20A228A6F760078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Main.strings"; sourceTree = "<group>"; };
+		C566E20B228A6F760078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C566E20C228A6FC50078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		C566E20D228A6FC50078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Main.strings"; sourceTree = "<group>"; };
+		C566E20E228A6FC50078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C569B6D5226214020003D186 /* MPRadioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPRadioViewController.swift; sourceTree = "<group>"; };
 		C569B6D92262152D0003D186 /* CDViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDViewCell.swift; sourceTree = "<group>"; };
 		C569B6DA2262152D0003D186 /* CDFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDFlowLayout.swift; sourceTree = "<group>"; };
@@ -775,7 +788,6 @@
 		C57FC6D12240DC2F00218DE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C57FC6D32240DC2F00218DE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C57FC6D52240DC2F00218DE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C57FC6D62240DC2F00218DE7 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C57FC6D72240DC2F00218DE7 /* Info-original.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-original.plist"; sourceTree = "<group>"; };
 		C57FC6D82240DC2F00218DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C57FC6D92240DC2F00218DE7 /* iMusicPlayer-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iMusicPlayer-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -2491,7 +2503,7 @@
 				C57FC6D12240DC2F00218DE7 /* Assets.xcassets */,
 				C57FC6D22240DC2F00218DE7 /* LaunchScreen.storyboard */,
 				C57FC6D42240DC2F00218DE7 /* Main.storyboard */,
-				C57FC6D62240DC2F00218DE7 /* Localizable.strings */,
+				C566E1FF228A6EA70078C31C /* Localizable.strings */,
 				C57FC6D72240DC2F00218DE7 /* Info-original.plist */,
 				C57FC6D82240DC2F00218DE7 /* AppDelegate.swift */,
 				C57FC6D92240DC2F00218DE7 /* iMusicPlayer-Bridging-Header.h */,
@@ -3191,6 +3203,10 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
+				"zh-Hans",
+				"zh-Hant-TW",
+				"zh-Hant-HK",
 			);
 			mainGroup = C57FC5502240D9D700218DE7;
 			productRefGroup = C57FC55A2240D9D700218DE7 /* Products */;
@@ -3310,7 +3326,7 @@
 				C54D6DDF227541A60007F57F /* GoogleService-Info.plist in Resources */,
 				C560341F2243881E00F6795F /* MPPlayingNavView.xib in Resources */,
 				C560341A2243636200F6795F /* MPPlayingViewCollectionViewCell.xib in Resources */,
-				C57FC8AD2240DC2F00218DE7 /* Localizable.strings in Resources */,
+				C566E1FD228A6EA70078C31C /* Localizable.strings in Resources */,
 				C53E976D22521FDD007F3920 /* MPPlayingBigView.xib in Resources */,
 				C57FC81C2240DC2F00218DE7 /* MPSearchNavView.xib in Resources */,
 				C5F5378922544F37006D228B /* PlayerView.xib in Resources */,
@@ -3870,10 +3886,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C566E1FF228A6EA70078C31C /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C566E1FE228A6EA70078C31C /* en */,
+				C566E202228A6EBB0078C31C /* ja */,
+				C566E208228A6F340078C31C /* zh-Hans */,
+				C566E20B228A6F760078C31C /* zh-Hant-TW */,
+				C566E20E228A6FC50078C31C /* zh-Hant-HK */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		C57FC6D22240DC2F00218DE7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C57FC6D32240DC2F00218DE7 /* Base */,
+				C566E200228A6EBA0078C31C /* ja */,
+				C566E206228A6F330078C31C /* zh-Hans */,
+				C566E209228A6F750078C31C /* zh-Hant-TW */,
+				C566E20C228A6FC50078C31C /* zh-Hant-HK */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -3882,6 +3914,10 @@
 			isa = PBXVariantGroup;
 			children = (
 				C57FC6D52240DC2F00218DE7 /* Base */,
+				C566E201228A6EBA0078C31C /* ja */,
+				C566E207228A6F330078C31C /* zh-Hans */,
+				C566E20A228A6F760078C31C /* zh-Hant-TW */,
+				C566E20D228A6FC50078C31C /* zh-Hant-HK */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -3893,6 +3929,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -3954,6 +3991,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
