@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +13,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MPUploadMusicViewController" customModule="iMusicPlayer" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="xib_agreeBtn" destination="xr6-Yz-OWe" id="QDX-Kk-Qqh"/>
+                <outlet property="xib_coverPath" destination="ZAC-ah-HvW" id="AbS-5M-ch4"/>
+                <outlet property="xib_lrcPath" destination="zpi-Mt-h2R" id="UlY-GM-Vcf"/>
+                <outlet property="xib_mvPath" destination="fzU-eq-JYr" id="gsB-w5-voj"/>
+                <outlet property="xib_songName" destination="Mgm-xD-t2T" id="EUe-PC-pga"/>
+                <outlet property="xib_songPath" destination="eDY-gH-EOV" id="v9a-y2-3gJ"/>
+                <outlet property="xib_songerName" destination="9TZ-s3-MFm" id="9nr-2d-y7y"/>
                 <outlet property="xib_submit" destination="GfC-xt-2od" id="asa-AM-QN7"/>
             </connections>
         </placeholder>
@@ -101,19 +109,19 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请勿留空" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eDY-gH-EOV">
-                    <rect key="frame" x="92" y="150.5" width="234" height="30"/>
+                    <rect key="frame" x="92" y="150.5" width="271" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZAC-ah-HvW">
-                    <rect key="frame" x="92" y="192.5" width="234" height="30"/>
+                    <rect key="frame" x="92" y="192.5" width="271" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpi-Mt-h2R">
-                    <rect key="frame" x="92" y="234.5" width="234" height="30"/>
+                    <rect key="frame" x="92" y="234.5" width="271" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
@@ -131,8 +139,9 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtJ-jD-tDa">
-                    <rect key="frame" x="338" y="195" width="25" height="25"/>
+                    <rect key="frame" x="363" y="207.5" width="0.0" height="0.0"/>
                     <constraints>
+                        <constraint firstAttribute="width" id="H1q-XJ-ybv"/>
                         <constraint firstAttribute="width" secondItem="LtJ-jD-tDa" secondAttribute="height" multiplier="1:1" id="kFc-6Y-38J"/>
                     </constraints>
                     <state key="normal" image="icon_more_1"/>
@@ -141,9 +150,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="10003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIe-dr-OdO">
-                    <rect key="frame" x="338" y="237" width="25" height="25"/>
+                    <rect key="frame" x="363" y="249.5" width="0.0" height="0.0"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="oIe-dr-OdO" secondAttribute="height" multiplier="1:1" id="FTO-nD-NPF"/>
+                        <constraint firstAttribute="width" id="ROm-ra-e20"/>
                     </constraints>
                     <state key="normal" image="icon_more_1"/>
                     <connections>
@@ -151,8 +161,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sij-Zc-oRS">
-                    <rect key="frame" x="338" y="153" width="25" height="25"/>
+                    <rect key="frame" x="363" y="165.5" width="0.0" height="0.0"/>
                     <constraints>
+                        <constraint firstAttribute="width" id="E5q-od-Cbg"/>
                         <constraint firstAttribute="width" secondItem="Sij-Zc-oRS" secondAttribute="height" multiplier="1:1" id="bMl-nM-Wkx"/>
                     </constraints>
                     <state key="normal" image="icon_more_1"/>
@@ -173,7 +184,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Sij-Zc-oRS" firstAttribute="leading" secondItem="eDY-gH-EOV" secondAttribute="trailing" constant="12" id="0Bn-WH-wNQ"/>
+                <constraint firstItem="Sij-Zc-oRS" firstAttribute="leading" secondItem="eDY-gH-EOV" secondAttribute="trailing" id="0Bn-WH-wNQ"/>
                 <constraint firstItem="8xE-qV-OT9" firstAttribute="leading" secondItem="TDj-Z4-drs" secondAttribute="leading" id="0hY-oH-17i"/>
                 <constraint firstItem="fzU-eq-JYr" firstAttribute="trailing" secondItem="Mgm-xD-t2T" secondAttribute="trailing" id="1T8-Tl-ccE"/>
                 <constraint firstItem="eDY-gH-EOV" firstAttribute="leading" secondItem="Mgm-xD-t2T" secondAttribute="leading" id="1sR-1J-ddm"/>
@@ -197,7 +208,7 @@
                 <constraint firstItem="eDY-gH-EOV" firstAttribute="top" secondItem="9TZ-s3-MFm" secondAttribute="bottom" constant="12" id="NTD-Zb-j3r"/>
                 <constraint firstItem="0Hb-fi-cek" firstAttribute="centerY" secondItem="eDY-gH-EOV" secondAttribute="centerY" id="OBF-eV-Bj5"/>
                 <constraint firstItem="u4T-pY-UXj" firstAttribute="leading" secondItem="TDj-Z4-drs" secondAttribute="leading" id="R3y-sI-U8m"/>
-                <constraint firstItem="LtJ-jD-tDa" firstAttribute="leading" secondItem="ZAC-ah-HvW" secondAttribute="trailing" constant="12" id="Ro2-1f-cCf"/>
+                <constraint firstItem="LtJ-jD-tDa" firstAttribute="leading" secondItem="ZAC-ah-HvW" secondAttribute="trailing" id="Ro2-1f-cCf"/>
                 <constraint firstItem="xr6-Yz-OWe" firstAttribute="centerX" secondItem="GfC-xt-2od" secondAttribute="centerX" multiplier="0.75" id="TGJ-M4-vgz"/>
                 <constraint firstItem="Mgm-xD-t2T" firstAttribute="trailing" secondItem="VBF-HZ-KXY" secondAttribute="trailing" id="U6W-7F-c9Z"/>
                 <constraint firstItem="LtJ-jD-tDa" firstAttribute="centerY" secondItem="ZAC-ah-HvW" secondAttribute="centerY" id="Uf4-Ot-jz0"/>
@@ -214,7 +225,7 @@
                 <constraint firstItem="GfC-xt-2od" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="njP-4o-qR8"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VBF-HZ-KXY" secondAttribute="trailing" constant="12" id="nom-a5-cCT"/>
                 <constraint firstItem="VBF-HZ-KXY" firstAttribute="leading" secondItem="TDj-Z4-drs" secondAttribute="trailing" constant="40" id="og3-Q1-IVx"/>
-                <constraint firstItem="oIe-dr-OdO" firstAttribute="leading" secondItem="zpi-Mt-h2R" secondAttribute="trailing" constant="12" id="omg-B4-gJ2"/>
+                <constraint firstItem="oIe-dr-OdO" firstAttribute="leading" secondItem="zpi-Mt-h2R" secondAttribute="trailing" id="omg-B4-gJ2"/>
                 <constraint firstItem="cQw-0B-K9Y" firstAttribute="centerY" secondItem="ZAC-ah-HvW" secondAttribute="centerY" id="onV-lt-ZTu"/>
                 <constraint firstItem="TDj-Z4-drs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="12" id="pA9-KF-8R8"/>
                 <constraint firstItem="oIe-dr-OdO" firstAttribute="centerY" secondItem="zpi-Mt-h2R" secondAttribute="centerY" id="qGN-ve-gKY"/>

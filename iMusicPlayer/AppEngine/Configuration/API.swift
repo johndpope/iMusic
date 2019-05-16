@@ -112,4 +112,7 @@ class API: NSObject {
     // MARK: -
     static let SaveUserCloudList         = "/user/syncUserData"
     
+    // MARK: -
+    static let UploadMp3         = "/user/upload"
+    
 }

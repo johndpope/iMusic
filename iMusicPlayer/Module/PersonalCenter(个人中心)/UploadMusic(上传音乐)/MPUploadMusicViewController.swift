@@ -9,7 +9,14 @@
 import UIKit
 
 class MPUploadMusicViewController: BaseViewController {
-
+    @IBOutlet weak var xib_songName: UITextField!
+    @IBOutlet weak var xib_songerName: UITextField!
+    @IBOutlet weak var xib_songPath: UITextField!
+    @IBOutlet weak var xib_coverPath: UITextField!
+    @IBOutlet weak var xib_lrcPath: UITextField!
+    @IBOutlet weak var xib_mvPath: UITextField!
+    @IBOutlet weak var xib_agreeBtn: UIButton!
+    
     @IBOutlet weak var xib_submit: UIButton! {
         didSet {
             xib_submit.md_borderColor = Color.ThemeColor
@@ -45,6 +52,7 @@ class MPUploadMusicViewController: BaseViewController {
             }
             break
         case 10006: // 提交
+            submit()
             break
         default:
             break
@@ -53,6 +61,64 @@ class MPUploadMusicViewController: BaseViewController {
 }
 
 extension MPUploadMusicViewController {
+    
+    func submit() {
+        guard let songName = xib_songName.text else {
+            return
+        }
+        guard let songPath = xib_songPath.text else {
+            return
+        }
+        
+        if songName == "" {
+            SVProgressHUD.showInfo(withStatus:  NSLocalizedString("请输入歌曲名称", comment: ""))
+            return
+        }
+        
+        if songPath == "" {
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请输入歌曲URL", comment: ""))
+            return
+        }
+        
+        if !xib_agreeBtn.isSelected {
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请勾选用户协议", comment: ""))
+            return
+        }
+        
+        let songerName = xib_songerName.text ?? ""
+        let coverPath = xib_coverPath.text ?? ""
+        let lrcPath = xib_lrcPath.text ?? ""
+        let mvPath = xib_mvPath.text ?? ""
+        
+        if let obj = UserDefaults.standard.value(forKey: "UserInfoModel") as? Data, let m = NSKeyedUnarchiver.unarchiveObject(with: obj) as? MPUserSettingHeaderViewModel  {
+            let uid = m.uid
+            DiscoverCent?.requestUploadMP3(uid: uid, artistName: songerName, coverUrl: coverPath, lyricsUrl: lrcPath, musicName: songName, musicUrl: songPath, videoUrl: mvPath, complete: { (isSucceed, msg) in
+                switch isSucceed {
+                case true:
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("已成功上传", comment: ""))
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: NSLocalizedString("上传出现错误。请重试", comment: ""))
+                    break
+                }
+            })
+        }else {
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("登录了以后，您可以：", comment: ""))
+        }
+        
+    }
+    
+    func clearText() {
+        xib_songName.text = ""
+        xib_songerName.text = ""
+        xib_songPath.text = ""
+        xib_coverPath.text = ""
+        xib_lrcPath.text = ""
+        xib_mvPath.text = ""
+    }
     
     func searchMusic() {
         //从ipod库中读出音乐文件

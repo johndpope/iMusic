@@ -47,12 +47,17 @@ class MPUserSettingHeaderView: BaseView {
         xib_loginBgView.isHidden = true
         
         xib_logout.isEnabled = false
+        
+        xib_googleLogin.isHidden = false
+        xib_showInfo.isHidden = false
     }
     
     private func loginStyle() {
         xib_loginBgView.isHidden = false
         
         xib_logout.isEnabled = true
+        xib_googleLogin.isHidden = true
+        xib_showInfo.isHidden = true
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {

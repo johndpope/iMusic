@@ -13,6 +13,45 @@ import SwiftyJSON
 import Alamofire
 
 class MPDiscoverDataCent: HFDataCent {
+    
+//    /user/upload?token=ok&uid=fsdfds
+    
+    func requestUploadMP3(uid: String, artistName:  String = "", coverUrl:  String = "", lyricsUrl:  String = "", musicName:  String = "", musicUrl:  String = "", videoUrl:  String = "", complete:@escaping ((_ isSucceed: Bool, _ message: String) -> Void)) {
+        
+        let url = API.UploadMp3 + "?token=z%23master%40Music1.4.8&uid=\(uid.md5())"
+        
+        let param: [String:Any] = [
+            "artistName":  artistName,
+            "coverUrl":  coverUrl,
+            "lyricsUrl":  lyricsUrl,
+            "musicName":  musicName,
+            "musicUrl":  musicUrl,
+            "videoUrl":  videoUrl
+        ]
+        
+        HFNetworkManager.request(url: url, method: .post, parameters:param, requestHeader: AppCommon.JsonRequestHeader,
+                                 encoding: JSONEncoding.default, description: "上传MP3数据") { (error, resp) in
+            
+            // 连接失败时
+            if error != nil {
+                complete(false, error!.localizedDescription)
+                return
+            }
+            
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+            
+            // 请求失败时
+            if status != 200 {
+                complete(false, msg)
+                return
+            }
+            
+            // 请求成功时
+            complete(true,msg)
+        }
+    }
+    
 //    /user/syncUserData?contact=1&reset=1&token=z%23master%40Music1.4.8&uid=1
 //        {{music}}/user/syncUserData?token={{token}}&uid=MtyTnSfvidZnRohJWWzujIfF7Yq2&reset=1&contact=hrf82898@gmail.com
     
@@ -24,7 +63,7 @@ class MPDiscoverDataCent: HFDataCent {
         
         let tempReset = self.getReset(model: data_CloudListUploadModel)
         
-        let url = API.SaveUserCloudList + "?token=z%23master%40Music1.4.8&contact=\(contact)&reset=\(tempReset)&uid=\(uid)"
+        let url = API.SaveUserCloudList + "?token=z%23master%40Music1.4.8&contact=\(contact)&reset=\(tempReset)&uid=\(uid.md5())"
         
         HFNetworkManager.request(url: url, method: .post, parameters: param, requestHeader: AppCommon.JsonRequestHeader,
                                  encoding: JSONEncoding.default, description: "保存数据到云端") { (error, resp) in
