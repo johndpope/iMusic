@@ -1,0 +1,14 @@
+/* 
+  InfoPlist.strings
+  iMusicPlayer
+
+  Created by Modi on 2019/5/16.
+  Copyright © 2019 Modi. All rights reserved.
+*/
+
+{
+    "NSAppleMusicUsageDescription" = "我们需要访问您的媒体库来获取上传的音乐数据 - HongKong";
+    "NSCameraUsageDescription" = "我们需要访问您的相机来拍照上传歌曲封面信息 - HongKong";
+    "NSMicrophoneUsageDescription" = "我们需要访问您的相册来上传歌曲封面信息 - HongKong";
+    "NSPhotoLibraryUsageDescription" = "我们需要访问您的相册来上传歌曲封面信息 - HongKong";
+}
