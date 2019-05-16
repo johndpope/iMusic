@@ -417,31 +417,31 @@ extension MPDiscoverViewController {
     private func getUpdateTime(album: GeneralPlaylists) -> String {
         var time = ""
         if let oricon = album.data_title, oricon == "Oricon" {
-            time = NSLocalizedString("每周三更新", comment: "")
+            time = NSLocalizedString("周三更新", comment: "")
         }
         
         if let oricon = album.data_title, oricon == "Ment" {
-            time = NSLocalizedString("每周一更新", comment: "")
+            time = NSLocalizedString("周一更新", comment: "")
         }
         
         if let oricon = album.data_title, oricon == "Billboard" {
-            time = NSLocalizedString("每周三更新", comment: "")
+            time = NSLocalizedString("周三更新", comment: "")
         }
         
         if let oricon = album.data_title, oricon == "ITunes" {
-            time = NSLocalizedString("每周一更新", comment: "")
+            time = NSLocalizedString("周一更新", comment: "")
         }
         
         if let oricon = album.data_title, oricon == "Listen" {
-            time = NSLocalizedString("每日更新", comment: "")
+            time = NSLocalizedString("每天更新", comment: "")
         }
         
         if let oricon = album.data_title, oricon == "Collection" {
-            time = NSLocalizedString("每日更新", comment: "")
+            time = NSLocalizedString("每天更新", comment: "")
         }
         
         if let oricon = album.data_title, oricon == "UK" {
-            time = NSLocalizedString("每周一更新", comment: "")
+            time = NSLocalizedString("周一更新", comment: "")
         }
         return time
     }

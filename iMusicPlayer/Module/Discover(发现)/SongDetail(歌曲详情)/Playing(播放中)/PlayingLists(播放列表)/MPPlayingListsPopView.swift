@@ -21,6 +21,7 @@ class MPPlayingListsPopView: UITableViewCell {
     @IBOutlet weak var relatedBtn: UIButton!
     @IBOutlet weak var playingBv: UIView!
     @IBOutlet weak var relatedBv: UIView!
+    @IBOutlet weak var closeBtn: UIButton!
     
     var noDataView: MPNoDataView!
     
@@ -44,6 +45,10 @@ class MPPlayingListsPopView: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        playingBtn.setTitle(NSLocalizedString("播放列表", comment: ""), for: .normal)
+        relatedBtn.setTitle(NSLocalizedString("相关", comment: ""), for: .normal)
+        closeBtn.setTitle(NSLocalizedString("关闭", comment: ""), for: .normal)
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: Constant.identifier, bundle: nil), forCellReuseIdentifier: Constant.identifier)

@@ -22,7 +22,7 @@ class MPLatestHeaderView: BaseView {
     }
     
     @IBAction func segmentDidChange(_ sender: UISegmentedControl) {
-
+        
         switch sender.selectedSegmentIndex {
         case 0:
             currentType = "Japan"

@@ -11,6 +11,7 @@ import UIKit
 class MPEditSongListHeaderView: UITableViewCell {
 
     @IBOutlet weak var xib_random: UIButton!
+    @IBOutlet weak var xib_edit: UIButton!
     
     var count: Int = 0 {
         didSet {
@@ -22,6 +23,9 @@ class MPEditSongListHeaderView: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        xib_random.setTitle(NSLocalizedString("随机播放", comment: ""), for: .normal)
+        xib_edit.setTitle(NSLocalizedString("编辑", comment: ""), for: .normal)
     }
 
     @IBAction func btn_DidClicked(_ sender: UIButton) {

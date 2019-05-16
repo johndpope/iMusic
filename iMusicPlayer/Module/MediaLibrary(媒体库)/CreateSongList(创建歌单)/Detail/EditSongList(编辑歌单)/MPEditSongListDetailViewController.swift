@@ -129,13 +129,13 @@ extension MPEditSongListDetailViewController {
     /// // 删除当前模型和本地模型：刷新数据
     private func deleteSelModels() {
         if selectModel.count == 0 {
-            SVProgressHUD.showInfo(withStatus: "请选择歌曲")
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请选择", comment: ""))
             return
         }else {
             var alert: HFAlertController?
             let config = MDAlertConfig()
-            config.title = NSLocalizedString("删除歌曲\n", comment: "")
-            config.desc = NSLocalizedString("确定要删除已选择的歌曲吗？", comment: "")
+            config.title = NSLocalizedString("删除", comment: "") + "\n"
+            config.desc = NSLocalizedString("您确定要刪除吗？", comment: "")
             config.negativeTitle = NSLocalizedString("取消", comment: "")
             config.positiveTitle = NSLocalizedString("OK", comment: "")
             config.negativeTitleColor = Color.ThemeColor
@@ -227,7 +227,7 @@ extension MPEditSongListDetailViewController {
     /// 添加到歌单列表
     func addToSongList() {
         if selectModel.count == 0 {
-            SVProgressHUD.showInfo(withStatus: "请选择歌曲")
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请选择", comment: ""))
             return
         }
         
@@ -271,7 +271,7 @@ extension MPEditSongListDetailViewController {
                 self.selectModel.forEach({ (song) in    // 循环添加歌曲
                     if !MPModelTools.checkSongExsistInSongList(song: song, songList: songList) {
                         MPModelTools.saveSongToTable(song: song, tableName: tn)
-                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲添加成功", comment: ""))
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("成功添加歌单", comment: ""))
                         // 更新当前歌单图片及数量：+1
                         MPModelTools.updateCountForSongList(songList: songList, finished: {
                             lv.removeFromWindow()
@@ -280,7 +280,7 @@ extension MPEditSongListDetailViewController {
                         // 更新上传模型
                         MPModelTools.updateCloudListModel(type: 4)
                     }else {
-                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在该歌单中", comment: ""))
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: ""))
                     }
                 })
             }
@@ -292,7 +292,7 @@ extension MPEditSongListDetailViewController {
     /// 下一首播放
     func nextPlay() {
         if selectModel.count == 0 {
-            SVProgressHUD.showInfo(withStatus: "请选择歌曲")
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请选择", comment: ""))
             return
         }
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
@@ -310,9 +310,9 @@ extension MPEditSongListDetailViewController {
                         let index = self.getIndexFromSongs(song: cs, songs: currentPlayingList)
                         let nextIndex = (index + 1) % currentPlayingList.count
                         pv.model.insert(song, at: nextIndex)
-                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲插入成功", comment: ""))
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("已添加，下一首播放", comment: ""))
                     }else {
-                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在播放列表中", comment: ""))
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: ""))
                     }
                 })
             }else {
@@ -336,7 +336,7 @@ extension MPEditSongListDetailViewController {
 //                }
             }
         }else {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在播放列表中", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: ""))
         }
     }
     

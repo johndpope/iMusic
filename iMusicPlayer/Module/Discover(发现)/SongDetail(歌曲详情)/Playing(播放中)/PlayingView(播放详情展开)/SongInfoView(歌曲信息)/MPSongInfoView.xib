@@ -116,8 +116,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="S9X-hV-pzM"/>
             <connections>
+                <outlet property="xib_complaint" destination="NaF-O0-gHj" id="Ejw-L2-VoW"/>
                 <outlet property="xib_desc" destination="ajZ-hg-B29" id="DSV-YL-7Xg"/>
+                <outlet property="xib_protocol" destination="KCC-Go-hNi" id="lYW-F9-Op5"/>
                 <outlet property="xib_title" destination="bgb-5u-DPP" id="0h8-cy-ldu"/>
+                <outlet property="xib_uploader" destination="YXg-8t-VBl" id="A6X-bd-v0e"/>
             </connections>
             <point key="canvasLocation" x="288.80000000000001" y="-130.43478260869566"/>
         </view>

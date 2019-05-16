@@ -86,7 +86,7 @@
                 <outlet property="xib_title" destination="c0o-wW-nbV" id="T9Z-qe-KvM"/>
                 <outlet property="xib_updateTime" destination="FhJ-mH-2x6" id="9ED-6e-iXB"/>
             </connections>
-            <point key="canvasLocation" x="-3" y="1"/>
+            <point key="canvasLocation" x="-338" y="-1"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -262,9 +262,9 @@ class Genre: BaseModel {
 
 class MPDiscoverModel: BaseModel {
     
-    static let categoryDatas = [NSLocalizedString("最新发布", comment: ""), NSLocalizedString("排行榜", comment: ""), NSLocalizedString("人气歌手", comment: ""), NSLocalizedString("风格流派", comment: "")]
+    static let categoryDatas = [NSLocalizedString("最新发布", comment: ""), NSLocalizedString("排行榜", comment: ""), NSLocalizedString("人气歌手", comment: ""), NSLocalizedString("风格及流派", comment: "")]
     
-    static let sectionTitleDatas = [NSLocalizedString("每日推荐", comment: ""), NSLocalizedString("最近播放", comment: ""), "", NSLocalizedString("精选歌单", comment: "")]
+    static let sectionTitleDatas = [NSLocalizedString("每日热门歌曲", comment: ""), NSLocalizedString("最近播放", comment: ""), "", NSLocalizedString("歌单精选", comment: "")]
     
     var data_latest: Latest?
     var data_hotSingerPlaylists: [GeneralPlaylists]?

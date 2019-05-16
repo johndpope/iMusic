@@ -75,7 +75,7 @@ class MPChoicenessViewController: BaseTableViewController {
     override func setupStyle() {
         super.setupStyle()
         
-        var title = NSLocalizedString("精选歌单", comment: "")
+        var title = NSLocalizedString("歌单精选", comment: "")
         if leftTitle != "" {
             title = NSLocalizedString(leftTitle, comment: "")
         }

@@ -63,6 +63,7 @@
             <viewLayoutGuide key="safeArea" id="sXR-Lf-piV"/>
             <connections>
                 <outlet property="tableView" destination="HH8-dk-dTG" id="1m4-B4-LLm"/>
+                <outlet property="xib_title" destination="TGe-6t-oU5" id="dTQ-WH-R0d"/>
             </connections>
             <point key="canvasLocation" x="-510" y="99"/>
         </view>

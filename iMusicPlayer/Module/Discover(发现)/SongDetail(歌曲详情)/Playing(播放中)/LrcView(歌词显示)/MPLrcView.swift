@@ -10,6 +10,7 @@ import UIKit
 
 class MPLrcView: BaseView {
     
+    @IBOutlet weak var xib_lrc: UILabel!
     var seekToTimeBlock: ((_ time: TimeInterval) -> Void)?
     
     var model: MPLyricsModel? {
@@ -61,6 +62,8 @@ class MPLrcView: BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        xib_lrc.text = NSLocalizedString("歌词", comment: "")
     }
     
     func play() {

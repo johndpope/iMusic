@@ -106,6 +106,7 @@
                 <outlet property="xib_image" destination="aoK-Oz-J75" id="9Vy-Ng-zve"/>
                 <outlet property="xib_loginBgView" destination="TmP-qq-TVS" id="CmA-Z6-0BC"/>
                 <outlet property="xib_logout" destination="0L2-bS-8d4" id="ewP-N9-jhG"/>
+                <outlet property="xib_showInfo" destination="q8w-gs-M9U" id="WtU-2d-Bpt"/>
                 <outlet property="xib_title" destination="z04-Uo-VSj" id="daZ-rm-b0l"/>
             </connections>
             <point key="canvasLocation" x="16.800000000000001" y="-196.10194902548727"/>

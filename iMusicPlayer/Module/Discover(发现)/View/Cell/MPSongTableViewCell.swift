@@ -119,7 +119,7 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
                 MPModelTools.saveSongToTable(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
                 // 设置为收藏状态
                 xib_collect.isSelected = true
-                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲收藏成功", comment: ""))
+                SVProgressHUD.showInfo(withStatus: NSLocalizedString("收藏成功", comment: ""))
             }else {
                 guard let song = self.currentSong else {
                     return
@@ -130,7 +130,7 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
                     // 设置为收藏状态
                     self.xib_collect.isSelected = false
                     // 取消收藏
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("取消收藏成功", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("取消收藏", comment: ""))
                 }
             }
             // 更新上传模型
@@ -244,7 +244,7 @@ extension MPSongTableViewCell: MPSongToolsViewDelegate {
             if let song = self.currentSong, let tn = songList.data_title {
                 if !MPModelTools.checkSongExsistInSongList(song: song, songList: songList) {
                     MPModelTools.saveSongToTable(song: self.currentSong!, tableName: tn)
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲添加成功", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("成功添加歌单", comment: ""))
                     // 更新当前歌单图片及数量：+1
                     MPModelTools.updateCountForSongList(songList: songList, finished: {
                         lv.removeFromWindow()
@@ -253,7 +253,7 @@ extension MPSongTableViewCell: MPSongToolsViewDelegate {
                     // 更新上传模型
                     MPModelTools.updateCloudListModel(type: 4)
                 }else {
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在该歌单中", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: ""))
                 }
             }
         }
@@ -278,7 +278,7 @@ extension MPSongTableViewCell: MPSongToolsViewDelegate {
                     m.insert(self.currentSong!, at: nextIndex)
                     // 保存到当前播放列表
                     MPModelTools.saveCurrentPlayList(currentList: m)
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已添加到下一首播放", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("已添加，下一首播放", comment: ""))
                     self.extView.removeFromWindow()
                     
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_PlayCurrentList), object: nil, userInfo: ["needPlay" : 0])
@@ -295,12 +295,12 @@ extension MPSongTableViewCell: MPSongToolsViewDelegate {
                 m.append(self.currentSong!)
                 // 保存到当前播放列表
                 MPModelTools.saveCurrentPlayList(currentList: m)
-                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已添加到播放列表", comment: ""))
+                SVProgressHUD.showInfo(withStatus: NSLocalizedString("已加入到播放列表", comment: ""))
                 self.extView.removeFromWindow()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_PlayCurrentList), object: nil, userInfo: ["needPlay" : 0])
             }
         }else {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在播放列表中", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("已加入到播放列表", comment: ""))
         }
     }
     

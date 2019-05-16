@@ -39,7 +39,7 @@ class MPUploadMusicViewController: BaseViewController {
             let path = Bundle.main.path(forResource: "policy", ofType: "plist")
             if let p = path, let policys = NSDictionary(contentsOfFile: p) {
                 let vc = MDWebViewController()
-                vc.title = NSLocalizedString("隐私政策", comment: "")
+                vc.title = NSLocalizedString("隐私权政策", comment: "")
                 vc.text = policys["policy_1"] as! String
                 self.navigationController?.pushViewController(vc, animated: true)
             }

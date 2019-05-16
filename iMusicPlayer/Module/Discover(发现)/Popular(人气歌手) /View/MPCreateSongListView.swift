@@ -16,9 +16,17 @@ class MPCreateSongListView: UITableViewCell, ViewClickedDelegate {
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_songListName: UITextField!
     @IBOutlet weak var xib_count: UILabel!
+    @IBOutlet weak var xib_submit: UIButton!
+    @IBOutlet weak var xib_cancel: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        xib_title.text = NSLocalizedString("新增歌单", comment: "")
+        xib_songListName.placeholder = NSLocalizedString("请输入歌单名称", comment: "")
+        xib_cancel.setTitle(NSLocalizedString("取消", comment: ""), for: .normal)
+        xib_submit.setTitle(NSLocalizedString("新建", comment: ""), for: .normal)
+        
         xib_songListName.becomeFirstResponder()
         
         // 监听键盘改变事件

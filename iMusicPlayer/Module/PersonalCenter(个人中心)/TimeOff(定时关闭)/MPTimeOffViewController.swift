@@ -171,11 +171,11 @@ extension MPTimeOffViewController {
         let minutes = (time)/60;
         //秒计算
         let second = (time)%60;
-        var str = NSLocalizedString("计时结束后，将暂停播放歌曲", comment: "")
+        var str = NSLocalizedString("定时到达后，歌曲将被暂停播放", comment: "")
         if minutes == 0 && second == 0 {
-            str = NSLocalizedString("计时结束后，将暂停播放歌曲", comment: "")
+            str = NSLocalizedString("定时到达后，歌曲将被暂停播放", comment: "")
         }else {
-            str = "\(minutes)" + NSLocalizedString("分", comment: "") + "\(second)" + NSLocalizedString("秒", comment: "") + NSLocalizedString("后，将暂停播放歌曲", comment: "")
+            str = "\(minutes)" + NSLocalizedString("分", comment: "") + "\(second)" + NSLocalizedString("秒", comment: "") + NSLocalizedString("后，歌曲将被暂停", comment: "")
         }
         QYTools.shared.Log(log: str)
         // 更新title

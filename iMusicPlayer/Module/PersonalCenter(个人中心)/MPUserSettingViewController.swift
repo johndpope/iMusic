@@ -80,8 +80,8 @@ class MPUserSettingViewController: BaseTableViewController {
                 if btn.tag == 10001 {
                     var alert: HFAlertController?
                     let config = MDAlertConfig()
-                    config.title = NSLocalizedString("退出\n", comment: "")
-                    config.desc = NSLocalizedString("确定要退出登录吗？", comment: "")
+                    config.title = NSLocalizedString("退出", comment: "") + "\n"
+                    config.desc = NSLocalizedString("您确定要退出吗？", comment: "")
                     config.negativeTitle = NSLocalizedString("取消", comment: "")
                     config.positiveTitle = NSLocalizedString("确定", comment: "")
                     config.negativeTitleColor = Color.ThemeColor
@@ -296,7 +296,7 @@ extension MPUserSettingViewController {
         let path = Bundle.main.path(forResource: "policy", ofType: "plist")
         if let p = path, let policys = NSDictionary(contentsOfFile: p) {
             let vc = MDWebViewController()
-            vc.title = NSLocalizedString("隐私政策", comment: "")
+            vc.title = NSLocalizedString("隐私权政策", comment: "")
             vc.text = policys["policy_1"] as! String
             self.navigationController?.pushViewController(vc, animated: true)
         }

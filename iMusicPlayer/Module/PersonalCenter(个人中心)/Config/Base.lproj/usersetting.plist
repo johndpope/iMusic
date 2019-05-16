@@ -95,28 +95,6 @@
 			</dict>
 			<dict>
 				<key>icon</key>
-				<string>icon_profile_message</string>
-				<key>title</key>
-				<string>意见反馈</string>
-				<key>accessoryType</key>
-				<string>UIImageView</string>
-				<key>accessoryView</key>
-				<string></string>
-				<key>funcKey</key>
-				<string>feedback</string>
-				<key>cellStyle</key>
-				<string>value1</string>
-				<key>titleColor</key>
-				<string>#333333</string>
-				<key>titleFontSize</key>
-				<integer>14</integer>
-				<key>subTitleColor</key>
-				<string>#999999</string>
-				<key>subTitleFontSize</key>
-				<integer>12</integer>
-			</dict>
-			<dict>
-				<key>icon</key>
 				<string>icon_profile_no_ad</string>
 				<key>title</key>
 				<string>免除广告</string>

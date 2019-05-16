@@ -117,7 +117,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="xib_cancel" destination="6k4-Py-lzh" id="AxZ-Cu-Wr7"/>
+                <outlet property="xib_minutes" destination="cH4-uj-pkB" id="gwA-PL-iZp"/>
+                <outlet property="xib_submit" destination="MDs-dY-vj5" id="ugL-Jn-8lt"/>
                 <outlet property="xib_time" destination="4Qa-Pe-f25" id="ADh-yV-Tpu"/>
+                <outlet property="xib_timeDesc" destination="D3V-Q2-rIU" id="MHQ-06-1bv"/>
+                <outlet property="xib_title" destination="y0R-s2-jT5" id="wtA-VS-88T"/>
             </connections>
             <point key="canvasLocation" x="130.40000000000001" y="153.82308845577214"/>
         </tableViewCell>

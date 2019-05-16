@@ -88,7 +88,7 @@ class MPCollectSongListViewController: BaseTableViewController {
     override func setupStyle() {
         super.setupStyle()
         
-        addLeftItem(title: NSLocalizedString("我收藏的歌单", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
+        addLeftItem(title: NSLocalizedString("我的歌单收藏", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
         addRightItem(imageName: "nav_icon_search")
     }
     
@@ -174,8 +174,8 @@ extension MPCollectSongListViewController {
         QYTools.shared.Log(log: "删除歌单")
         var alert: HFAlertController?
         let config = MDAlertConfig()
-        config.title = NSLocalizedString("删除歌单\n", comment: "")
-        config.desc = NSLocalizedString("确定要删除歌单\(tempM.data_title ?? "")吗？", comment: "")
+        config.title = NSLocalizedString("删除", comment: "") + "\n"
+        config.desc = NSLocalizedString("确定要删除歌单", comment: "") + (tempM.data_title ?? "") + NSLocalizedString("吗？", comment: "")
         config.negativeTitle = NSLocalizedString("取消", comment: "")
         config.positiveTitle = NSLocalizedString("OK", comment: "")
         config.negativeTitleColor = Color.ThemeColor

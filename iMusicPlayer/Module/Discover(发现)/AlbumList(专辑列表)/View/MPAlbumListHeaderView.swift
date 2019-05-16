@@ -27,6 +27,8 @@ class MPAlbumListHeaderView: UITableViewCell, ViewClickedDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        xib_random.setTitle(NSLocalizedString("随机播放", comment: ""), for: .normal)
     }
     
     func updateView(model: MPRankingTempModel) {

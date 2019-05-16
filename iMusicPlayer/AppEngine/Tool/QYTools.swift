@@ -232,9 +232,15 @@ extension QYTools {
             header?.activityIndicatorViewStyle = UIActivityIndicatorView.Style.gray
             header?.lastUpdatedTimeLabel.isHidden = false
             // 下拉可以刷新 ：松开立即刷新 ：正在刷新数据中...
-            header?.setTitle(NSLocalizedString("下拉可以刷新", comment: ""), for: MJRefreshState.idle)
-            header?.setTitle(NSLocalizedString("松开立即刷新", comment: ""), for: MJRefreshState.pulling)
-            header?.setTitle(NSLocalizedString("正在刷新数据中...", comment: ""), for: MJRefreshState.refreshing)
+//            header?.setTitle(NSLocalizedString("下拉可以刷新", comment: ""), for: MJRefreshState.idle)
+//            header?.setTitle(NSLocalizedString("松开立即刷新", comment: ""), for: MJRefreshState.pulling)
+//            header?.setTitle(NSLocalizedString("正在刷新数据中...", comment: ""), for: MJRefreshState.refreshing)
+            header?.setTitle(NSLocalizedString("", comment: ""), for: MJRefreshState.idle)
+            header?.setTitle(NSLocalizedString("", comment: ""), for: MJRefreshState.pulling)
+            header?.setTitle(NSLocalizedString("", comment: ""), for: MJRefreshState.refreshing)
+            header?.setTitle("", for: .willRefresh)
+            header?.lastUpdatedTimeLabel.text = ""
+            header?.lastUpdatedTimeLabel.isHidden = true
             scrollView.mj_header = header
         }
         if( loadMore != nil ){
@@ -242,9 +248,13 @@ extension QYTools {
             footer?.stateLabel.font = UIFont.systemFont(ofSize: 14)
             footer?.stateLabel.textColor = UIColor.darkGray
             // 点击或上拉加载更多 ：已经全部加载完毕 ：正在加载更多数据...
-            footer?.setTitle(NSLocalizedString("点击或上拉加载更多", comment: ""), for: MJRefreshState.idle)
-            footer?.setTitle(NSLocalizedString("已经全部加载完毕", comment: ""), for: MJRefreshState.noMoreData)
-            footer?.setTitle(NSLocalizedString("正在加载更多数据...", comment: ""), for: MJRefreshState.refreshing)
+//            footer?.setTitle(NSLocalizedString("点击或上拉加载更多", comment: ""), for: MJRefreshState.idle)
+//            footer?.setTitle(NSLocalizedString("已经全部加载完毕", comment: ""), for: MJRefreshState.noMoreData)
+//            footer?.setTitle(NSLocalizedString("正在加载更多数据...", comment: ""), for: MJRefreshState.refreshing)
+            footer?.setTitle(NSLocalizedString("", comment: ""), for: MJRefreshState.idle)
+            footer?.setTitle(NSLocalizedString("", comment: ""), for: MJRefreshState.noMoreData)
+            footer?.setTitle(NSLocalizedString("", comment: ""), for: MJRefreshState.refreshing)
+            footer?.setTitle("", for: .willRefresh)
             scrollView.mj_footer = footer
         }
         

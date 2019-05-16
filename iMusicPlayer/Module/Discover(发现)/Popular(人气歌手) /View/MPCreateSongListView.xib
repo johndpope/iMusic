@@ -100,8 +100,10 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="xib_cancel" destination="a81-0l-pKK" id="DSw-cd-LP8"/>
                 <outlet property="xib_count" destination="Tkw-6m-GxF" id="51t-B2-mKi"/>
                 <outlet property="xib_songListName" destination="6kk-Jk-Dwh" id="dwk-zh-cY1"/>
+                <outlet property="xib_submit" destination="41P-in-ff1" id="ZfG-Xd-0tV"/>
                 <outlet property="xib_title" destination="h9M-Cp-qLs" id="Zyh-sl-bC9"/>
             </connections>
             <point key="canvasLocation" x="69" y="-24"/>

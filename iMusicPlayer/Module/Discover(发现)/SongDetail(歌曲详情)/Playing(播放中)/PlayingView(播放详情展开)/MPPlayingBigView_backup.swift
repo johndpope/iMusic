@@ -368,7 +368,7 @@ class MPPlayingBigView: BaseView {
                 MPModelTools.saveSongToTable(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
                 // 设置为收藏状态
                 xib_collect.isSelected = true
-                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲收藏成功", comment: ""))
+                SVProgressHUD.showInfo(withStatus: NSLocalizedString("收藏成功", comment: ""))
             }else {
                 // 取消收藏
                 SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收藏", comment: ""))

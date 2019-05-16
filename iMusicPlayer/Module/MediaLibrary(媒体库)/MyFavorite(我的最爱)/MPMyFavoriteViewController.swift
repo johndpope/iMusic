@@ -202,7 +202,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
         tableView.mj_header = nil
         tableView.mj_footer = nil
         
-        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("暂无歌曲", comment: ""))
+        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("找不到歌曲", comment: ""))
     }
     
     override func setupTableHeaderView() {
@@ -218,7 +218,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
                 if self.model.count > 0 {
                     self.randomPlay()
                 }else {
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("没有可播放的歌曲", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("找不到歌曲", comment: ""))
                 }
             }
         }

@@ -1,0 +1,39 @@
+
+/* Class = "UILabel"; text = "音乐文件"; ObjectID = "0Hb-fi-cek"; */
+"0Hb-fi-cek.text" = "音楽";
+
+/* Class = "UILabel"; text = "歌词文件"; ObjectID = "8xE-qV-OT9"; */
+"8xE-qV-OT9.text" = "歌詞";
+
+/* Class = "UIButton"; normalTitle = "《著作权许可协议》"; ObjectID = "EGp-Sn-JGa"; */
+"EGp-Sn-JGa.normalTitle" = "《著作権に関して》";
+
+/* Class = "UIButton"; normalTitle = "提交"; ObjectID = "GfC-xt-2od"; */
+"GfC-xt-2od.normalTitle" = "提出";
+
+/* Class = "UILabel"; text = "歌曲名称"; ObjectID = "Hh1-tz-mmU"; */
+"Hh1-tz-mmU.text" = "曲名";
+
+/* Class = "UITextField"; placeholder = "请勿留空"; ObjectID = "Mgm-xD-t2T"; */
+"Mgm-xD-t2T.placeholder" = "Required";
+
+/* Class = "UILabel"; text = "上传者"; ObjectID = "TDj-Z4-drs"; */
+"TDj-Z4-drs.text" = "共有者";
+
+/* Class = "UILabel"; text = "Modi"; ObjectID = "VBF-HZ-KXY"; */
+"VBF-HZ-KXY.text" = "Modi";
+
+/* Class = "UILabel"; text = "封面文件"; ObjectID = "cQw-0B-K9Y"; */
+"cQw-0B-K9Y.text" = "カバー";
+
+/* Class = "UITextField"; placeholder = "请勿留空"; ObjectID = "eDY-gH-EOV"; */
+"eDY-gH-EOV.placeholder" = "Required";
+
+/* Class = "UILabel"; text = "歌手姓名"; ObjectID = "u4T-pY-UXj"; */
+"u4T-pY-UXj.text" = "アーティスト";
+
+/* Class = "UILabel"; text = "视频URL"; ObjectID = "ue5-y9-6tE"; */
+"ue5-y9-6tE.text" = "MV";
+
+/* Class = "UIButton"; normalTitle = "我所上传的内容符合"; ObjectID = "xr6-Yz-OWe"; */
+"xr6-Yz-OWe.normalTitle" = "に同意する";

@@ -32,9 +32,17 @@ class MPPopularHeaderView: BaseView {
     }
     @IBOutlet weak var xib_nameTF: UITextField!
     
+    @IBOutlet weak var xib_country: UILabel!
+    @IBOutlet weak var xib_category: UILabel!
+    @IBOutlet weak var xib_nameLB: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        xib_country.text = NSLocalizedString("国家", comment: "")
+        xib_category.text = NSLocalizedString("类别", comment: "")
+        xib_nameLB.text = NSLocalizedString("姓名", comment: "")
+        xib_nameTF.placeholder = NSLocalizedString("搜索歌手", comment: "")
+        
         xib_countryTagList.addTags(countryTags)
         xib_categoryTagList.addTags(categoryTags)
         

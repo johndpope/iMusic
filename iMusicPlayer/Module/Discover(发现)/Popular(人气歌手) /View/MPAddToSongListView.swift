@@ -17,6 +17,7 @@ private struct Constant {
 
 class MPAddToSongListView: BaseView {
     
+    @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var createSongListBlock: (()->Void)?
@@ -35,6 +36,8 @@ class MPAddToSongListView: BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        xib_title.text = NSLocalizedString("加入到歌单", comment: "")
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()

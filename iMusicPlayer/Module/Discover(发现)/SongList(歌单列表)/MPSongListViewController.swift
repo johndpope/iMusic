@@ -148,7 +148,7 @@ override func clickRight(sender: UIButton) {
                     if self.model.count > 0 {
                         self.randomPlay()
                     }else {
-                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("没有可播放的歌曲", comment: ""))
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("找不到歌曲", comment: ""))
                     }
                 }else {
                     QYTools.shared.Log(log: "收藏歌单")

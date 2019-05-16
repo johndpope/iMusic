@@ -9,5 +9,5 @@
 import UIKit
 
 class MPMediaLibraryModel: NSObject {
-    static let categoryDatas = [NSLocalizedString("我的最爱", comment: ""), NSLocalizedString("我的下载", comment: ""), NSLocalizedString("离线歌曲", comment: ""), NSLocalizedString("我创建的歌单", comment: ""), NSLocalizedString("我收藏的歌单", comment: "")]
+    static let categoryDatas = [NSLocalizedString("我的最爱", comment: ""), NSLocalizedString("我的下载", comment: ""), NSLocalizedString("离线歌曲", comment: ""), NSLocalizedString("我的歌单", comment: ""), NSLocalizedString("我的歌单收藏", comment: "")]
 }

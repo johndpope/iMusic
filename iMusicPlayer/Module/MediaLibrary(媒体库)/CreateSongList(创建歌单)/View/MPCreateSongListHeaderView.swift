@@ -11,9 +11,12 @@ import UIKit
 class MPCreateSongListHeaderView: UITableViewCell, ViewClickedDelegate {
     var clickBlock: ((Any?) -> ())?
 
+    @IBOutlet weak var xib_title: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        xib_title.setTitle(NSLocalizedString("新建", comment: ""), for: .normal)
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {

@@ -250,8 +250,8 @@ extension MPCreateSongListViewController: MPSongToolsViewDelegate {
         
         let pv = MPCreateSongListView.md_viewFromXIB() as! MPCreateSongListView
         
-        pv.xib_title.text = NSLocalizedString("修改名称", comment: "")
-        pv.xib_songListName.placeholder = NSLocalizedString("请输入名称", comment: "")
+        pv.xib_title.text = NSLocalizedString("更改名称", comment: "")
+        pv.xib_songListName.placeholder = NSLocalizedString("请输入歌单名称", comment: "")
         pv.xib_songListName.text = tempM.data_title
         // 给旧名称赋值
         tempM.data_oldTitle = pv.xib_songListName.text
@@ -265,7 +265,7 @@ extension MPCreateSongListViewController: MPSongToolsViewDelegate {
                 }else {
                     tempM.data_title = pv.xib_songListName.text
                     MPModelTools.updateCountForSongList(songList: tempM, tableName: tableName, finished: {
-                        QYTools.shared.Log(log: "修改名称成功")
+                        QYTools.shared.Log(log: "更改成功了")
                         self.refreshData()
                         
                         MPModelTools.updateCloudListModel(type: 4)
@@ -285,8 +285,8 @@ extension MPCreateSongListViewController: MPSongToolsViewDelegate {
         QYTools.shared.Log(log: "删除歌单")
         var alert: HFAlertController?
         let config = MDAlertConfig()
-        config.title = NSLocalizedString("删除歌单\n", comment: "")
-        config.desc = NSLocalizedString("确定要删除歌单\(tempM.data_title ?? "")吗？", comment: "")
+        config.title = NSLocalizedString("删除", comment: "") + "\n"
+        config.desc = NSLocalizedString("确定要删除歌单", comment: "") + (tempM.data_title ?? "") + NSLocalizedString("吗？", comment: "")
         config.negativeTitle = NSLocalizedString("取消", comment: "")
         config.positiveTitle = NSLocalizedString("OK", comment: "")
         config.negativeTitleColor = Color.ThemeColor

@@ -133,7 +133,7 @@ class MPSearchResultView: BaseView {
         
         setupHeaderView()
         
-        setupNoDataView(image: "pic_no_resault", text: NSLocalizedString("无搜索结果", comment: ""))
+        setupNoDataView(image: "pic_no_resault", text: NSLocalizedString("找不到歌曲", comment: ""))
     }
     
     /// 刷新数据

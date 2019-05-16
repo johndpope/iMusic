@@ -73,7 +73,7 @@ class MPLatestViewController: BaseTableViewController {
     override func setupStyle() {
         super.setupStyle()
         
-        addLeftItem(title: NSLocalizedString("最新歌曲", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
+        addLeftItem(title: NSLocalizedString("最新发布", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
     }
     
     override func clickLeft() {
@@ -106,7 +106,7 @@ class MPLatestViewController: BaseTableViewController {
                 if self.models.count > 0 {
                     self.randomPlay()
                 }else {
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("没有可播放的歌曲", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("找不到歌曲", comment: ""))
                 }
             }
         }
@@ -121,7 +121,7 @@ extension MPLatestViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
         // 构造当前播放专辑列表模型
-        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("新歌首发", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": models.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": models.count, "recentlyType": 2]
+        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("最新发布", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": models.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": models.count, "recentlyType": 2]
 //        let album = GeneralPlaylists(JSON: json)
         let album = Mapper<GeneralPlaylists>().map(JSON: json)
         cell.updateCell(model: models[indexPath.row], models: self.models, album: album)
@@ -164,7 +164,7 @@ extension MPLatestViewController {
         let tempImg = cs.data_artworkBigUrl ?? ""
         let img = (tempImg == "" ? (cs.data_artworkUrl ?? "") : tempImg) == "" ? "pic_album_default" : (tempImg == "" ? (cs.data_artworkUrl ?? "") : tempImg)
         // 构造当前播放专辑列表模型
-        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("新歌首发", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": img, "tracksCount": models.count, "recentlyType": 2]
+        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("最新发布", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": img, "tracksCount": models.count, "recentlyType": 2]
         let album = GeneralPlaylists(JSON: json)
         album?.data_songs = models
         MPModelTools.saveRecentlyAlbum(album: album!)

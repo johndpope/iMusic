@@ -11,6 +11,9 @@ import TagListView
 
 class MPSearchHeaderView: BaseView {
     
+    @IBOutlet weak var xib_hot: UILabel!
+    @IBOutlet weak var xib_history: UILabel!
+    
     var itemClickedBlock: ((_ title: String) -> Void)?
 
     let tagDataSources = ["AKB48", "三浦大知", "星野源", "西野カナ", "中島愛", "米津玄师", "Winds" ]
@@ -20,6 +23,9 @@ class MPSearchHeaderView: BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        xib_hot.text = NSLocalizedString("人气搜索", comment: "")
+        xib_history.text = NSLocalizedString("搜索历史", comment: "")
         
         xib_tagListView.addTags(tagDataSources)
         xib_tagListView.delegate = self

@@ -22,6 +22,7 @@ class MPSearchNavView: BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        xib_textField.placeholder = NSLocalizedString("搜索关键字", comment: "")
     }
     
     func setupData(model: String) {

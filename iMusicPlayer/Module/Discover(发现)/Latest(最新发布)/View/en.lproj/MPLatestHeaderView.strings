@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "随机播放"; ObjectID = "4d8-Ze-eOA"; */
+"4d8-Ze-eOA.normalTitle" = "Shuffle Play";
+
+/* Class = "UISegmentedControl"; hHN-Fi-3gj.segmentTitles[0] = "日本"; ObjectID = "hHN-Fi-3gj"; */
+"hHN-Fi-3gj.segmentTitles[0]" = "Japanese";
+
+/* Class = "UISegmentedControl"; hHN-Fi-3gj.segmentTitles[1] = "欧美"; ObjectID = "hHN-Fi-3gj"; */
+"hHN-Fi-3gj.segmentTitles[1]" = "Western";
+
+/* Class = "UISegmentedControl"; hHN-Fi-3gj.segmentTitles[2] = "韩国"; ObjectID = "hHN-Fi-3gj"; */
+"hHN-Fi-3gj.segmentTitles[2]" = "Korean";

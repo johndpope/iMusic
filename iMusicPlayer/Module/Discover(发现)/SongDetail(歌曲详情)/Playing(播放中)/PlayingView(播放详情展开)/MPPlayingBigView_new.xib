@@ -357,6 +357,7 @@
                 <outlet property="xib_desc" destination="8VB-EI-KFX" id="fax-mu-036"/>
                 <outlet property="xib_endTime" destination="zRP-YE-hBp" id="Ozw-zy-SKK"/>
                 <outlet property="xib_lrc" destination="tQJ-Vb-bek" id="KS4-uv-OzH"/>
+                <outlet property="xib_nextPlay" destination="wUt-yo-Pk4" id="VST-kT-xNg"/>
                 <outlet property="xib_nextSongName" destination="uWU-jY-X5q" id="fIA-01-C5b"/>
                 <outlet property="xib_orderMode" destination="uiL-VL-Kg8" id="8s4-zN-6fr"/>
                 <outlet property="xib_play" destination="LEg-9d-juM" id="OBt-7C-jgf"/>

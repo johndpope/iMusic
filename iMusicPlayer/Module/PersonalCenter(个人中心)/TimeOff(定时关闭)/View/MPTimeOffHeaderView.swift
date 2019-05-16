@@ -17,7 +17,7 @@ class MPTimeOffHeaderView: UITableViewCell {
         // Initialization code
     }
     
-    var model: String = NSLocalizedString("计时结束后，将暂停播放歌曲", comment: "") {
+    var model: String = NSLocalizedString("定时到达后，歌曲将被暂停播放", comment: "") {
         didSet {
             xib_title.text = model
         }

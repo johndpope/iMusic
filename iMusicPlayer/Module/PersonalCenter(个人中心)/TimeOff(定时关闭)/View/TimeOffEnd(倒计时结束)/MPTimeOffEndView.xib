@@ -49,6 +49,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="4iB-cl-cYM"/>
+            <connections>
+                <outlet property="xib_desc" destination="nXu-YN-kPn" id="kSL-Cu-F4B"/>
+                <outlet property="xib_endTime" destination="0lI-a0-N3E" id="CNP-OB-PqR"/>
+            </connections>
             <point key="canvasLocation" x="169" y="-358"/>
         </view>
     </objects>

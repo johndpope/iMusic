@@ -12,10 +12,17 @@ class MPSongInfoView: BaseView {
 
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
+    @IBOutlet weak var xib_uploader: UILabel!
+    @IBOutlet weak var xib_protocol: MDRightIconButton!
+    @IBOutlet weak var xib_complaint: MDRightIconButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        xib_uploader.text = NSLocalizedString("上传者", comment: "")
+        xib_protocol.setTitle(NSLocalizedString("《著作权许可协议》", comment: ""), for: .normal)
+        xib_complaint.setTitle(NSLocalizedString("投诉", comment: ""), for: .normal)
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {

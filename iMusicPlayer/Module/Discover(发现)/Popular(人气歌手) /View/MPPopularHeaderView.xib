@@ -153,9 +153,12 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="OlU-w3-Yab"/>
             <connections>
+                <outlet property="xib_category" destination="Y9w-Nf-Mln" id="flK-Tp-rdT"/>
                 <outlet property="xib_categoryTagList" destination="JX5-B5-NCs" id="mi6-GY-hca"/>
+                <outlet property="xib_country" destination="tar-3L-rPx" id="hZU-T4-iZ8"/>
                 <outlet property="xib_countryTagList" destination="RG8-zg-jJB" id="BvJ-4O-8lB"/>
                 <outlet property="xib_nameBgView" destination="oxV-we-TWU" id="zDK-fM-rfV"/>
+                <outlet property="xib_nameLB" destination="uqI-zF-zwR" id="wEc-KQ-4lg"/>
                 <outlet property="xib_nameTF" destination="0wr-vW-frL" id="ZKN-aY-Udv"/>
             </connections>
             <point key="canvasLocation" x="55" y="-609"/>

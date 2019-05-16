@@ -38,6 +38,8 @@ class MPSongListHeaderView: UITableViewCell, ViewClickedDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        xib_random.setTitle(NSLocalizedString("随机播放", comment: ""), for: .normal)
+        xib_collect.setTitle(NSLocalizedString("收藏歌单", comment: ""), for: .normal)
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {

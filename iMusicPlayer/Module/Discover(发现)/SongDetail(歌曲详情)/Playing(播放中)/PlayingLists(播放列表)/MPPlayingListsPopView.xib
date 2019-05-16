@@ -137,6 +137,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="closeBtn" destination="Pdi-pC-HwE" id="AZy-Cb-LBg"/>
                 <outlet property="playingBtn" destination="Ngi-32-Jnj" id="ci1-cg-xQd"/>
                 <outlet property="playingBv" destination="Q6o-xp-OWd" id="hbh-Zn-wmh"/>
                 <outlet property="relatedBtn" destination="Dbx-yG-iis" id="q9f-Sl-Ac0"/>

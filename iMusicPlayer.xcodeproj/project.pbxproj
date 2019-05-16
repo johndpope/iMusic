@@ -45,7 +45,6 @@
 		C560340B2242336700F6795F /* MPSRSongListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56034092242336700F6795F /* MPSRSongListTableViewCell.swift */; };
 		C560340C2242336700F6795F /* MPSRSongListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C560340A2242336700F6795F /* MPSRSongListTableViewCell.xib */; };
 		C560340F2242379000F6795F /* MPSearchResultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560340D2242379000F6795F /* MPSearchResultHeaderView.swift */; };
-		C56034102242379000F6795F /* MPSearchResultHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C560340E2242379000F6795F /* MPSearchResultHeaderView.xib */; };
 		C5603414224343CE00F6795F /* MPPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5603412224343CE00F6795F /* MPPlayingView.swift */; };
 		C56034192243636200F6795F /* MPPlayingViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56034172243636200F6795F /* MPPlayingViewCollectionViewCell.swift */; };
 		C560341A2243636200F6795F /* MPPlayingViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56034182243636200F6795F /* MPPlayingViewCollectionViewCell.xib */; };
@@ -64,6 +63,11 @@
 		C560344222447DA200F6795F /* MPScrollPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560344022447DA200F6795F /* MPScrollPlayView.swift */; };
 		C560344322447DA200F6795F /* MPScrollPlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C560344122447DA200F6795F /* MPScrollPlayView.xib */; };
 		C566E1FD228A6EA70078C31C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C566E1FF228A6EA70078C31C /* Localizable.strings */; };
+		C566E20F228AA8E90078C31C /* MPUploadMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566E211228AA8E90078C31C /* MPUploadMusicViewController.xib */; };
+		C566E21C228AB9020078C31C /* MPEditSongListDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566E21E228AB9020078C31C /* MPEditSongListDetailHeaderView.xib */; };
+		C566E229228ABB1C0078C31C /* MPEditSongListDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566E22B228ABB1C0078C31C /* MPEditSongListDetailViewController.xib */; };
+		C566E236228AC09A0078C31C /* MPLatestHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566E238228AC09A0078C31C /* MPLatestHeaderView.xib */; };
+		C566E243228AC60F0078C31C /* MPSearchResultHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C566E245228AC60F0078C31C /* MPSearchResultHeaderView.xib */; };
 		C569B6D6226214020003D186 /* MPRadioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569B6D5226214020003D186 /* MPRadioViewController.swift */; };
 		C569B6DB2262152D0003D186 /* CDViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569B6D92262152D0003D186 /* CDViewCell.swift */; };
 		C569B6DC2262152D0003D186 /* CDFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569B6DA2262152D0003D186 /* CDFlowLayout.swift */; };
@@ -71,7 +75,6 @@
 		C569B6E4226215840003D186 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C569B6E0226215840003D186 /* test.jpg */; };
 		C569B6EC22622F030003D186 /* MPRadioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569B6EA22622F030003D186 /* MPRadioCollectionViewCell.swift */; };
 		C569B6ED22622F030003D186 /* MPRadioCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C569B6EB22622F030003D186 /* MPRadioCollectionViewCell.xib */; };
-		C56BDB6A225DE942008AE913 /* createSLExtensionTools.plist in Resources */ = {isa = PBXBuildFile; fileRef = C56BDB69225DE942008AE913 /* createSLExtensionTools.plist */; };
 		C56BDB6E225F35DA008AE913 /* MPTimeOffEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB6C225F35DA008AE913 /* MPTimeOffEndView.swift */; };
 		C56BDB6F225F35DA008AE913 /* MPTimeOffEndView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56BDB6D225F35DA008AE913 /* MPTimeOffEndView.xib */; };
 		C56BDB73225F462B008AE913 /* MPSongInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56BDB71225F462B008AE913 /* MPSongInfoView.swift */; };
@@ -141,7 +144,6 @@
 		C57FC80F2240DC2F00218DE7 /* MPChoicenessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC5E72240DC2E00218DE7 /* MPChoicenessViewController.swift */; };
 		C57FC8102240DC2F00218DE7 /* MPChoicenessTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC5EA2240DC2E00218DE7 /* MPChoicenessTableViewCell.swift */; };
 		C57FC8112240DC2F00218DE7 /* MPChoicenessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC5EB2240DC2E00218DE7 /* MPChoicenessTableViewCell.xib */; };
-		C57FC8122240DC2F00218DE7 /* MPLatestHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC5EE2240DC2E00218DE7 /* MPLatestHeaderView.xib */; };
 		C57FC8132240DC2F00218DE7 /* MPLatestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC5F02240DC2E00218DE7 /* MPLatestTableViewCell.xib */; };
 		C57FC8142240DC2F00218DE7 /* MPLatestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC5F12240DC2E00218DE7 /* MPLatestTableViewCell.swift */; };
 		C57FC8152240DC2F00218DE7 /* MPLatestHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC5F22240DC2E00218DE7 /* MPLatestHeaderView.swift */; };
@@ -160,7 +162,6 @@
 		C57FC8222240DC2F00218DE7 /* MPPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6072240DC2E00218DE7 /* MPPlayingViewController.xib */; };
 		C57FC8232240DC2F00218DE7 /* MPPlayingListsPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6092240DC2E00218DE7 /* MPPlayingListsPopView.swift */; };
 		C57FC8242240DC2F00218DE7 /* MPPlayingListsPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC60A2240DC2E00218DE7 /* MPPlayingListsPopView.xib */; };
-		C57FC8252240DC2F00218DE7 /* extensionTools.plist in Resources */ = {isa = PBXBuildFile; fileRef = C57FC60C2240DC2E00218DE7 /* extensionTools.plist */; };
 		C57FC8262240DC2F00218DE7 /* MPSongExtensionToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC60E2240DC2E00218DE7 /* MPSongExtensionToolsView.xib */; };
 		C57FC8272240DC2F00218DE7 /* MPSongExtensionToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC60F2240DC2E00218DE7 /* MPSongExtensionToolsView.swift */; };
 		C57FC8282240DC2F00218DE7 /* MPPlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6112240DC2E00218DE7 /* MPPlayListViewController.swift */; };
@@ -199,7 +200,6 @@
 		C57FC84A2240DC2F00218DE7 /* MPPopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6442240DC2E00218DE7 /* MPPopularViewController.swift */; };
 		C57FC84B2240DC2F00218DE7 /* MPCreateSongListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6462240DC2E00218DE7 /* MPCreateSongListView.xib */; };
 		C57FC84C2240DC2F00218DE7 /* MPAddToSongListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6472240DC2E00218DE7 /* MPAddToSongListView.swift */; };
-		C57FC84D2240DC2F00218DE7 /* songTools.plist in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6492240DC2E00218DE7 /* songTools.plist */; };
 		C57FC84E2240DC2F00218DE7 /* MPPopularHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC64A2240DC2E00218DE7 /* MPPopularHeaderView.swift */; };
 		C57FC84F2240DC2F00218DE7 /* MPSongToolsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC64B2240DC2E00218DE7 /* MPSongToolsView.xib */; };
 		C57FC8502240DC2F00218DE7 /* MPAddToSongListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC64C2240DC2E00218DE7 /* MPAddToSongListView.xib */; };
@@ -219,9 +219,7 @@
 		C57FC85E2240DC2F00218DE7 /* MPRadioViewController_backup.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC65F2240DC2E00218DE7 /* MPRadioViewController_backup.xib */; };
 		C57FC85F2240DC2F00218DE7 /* MPNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6612240DC2E00218DE7 /* MPNavView.swift */; };
 		C57FC8602240DC2F00218DE7 /* MPNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6622240DC2E00218DE7 /* MPNavView.xib */; };
-		C57FC8612240DC2F00218DE7 /* MPUploadMusicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6652240DC2E00218DE7 /* MPUploadMusicViewController.xib */; };
 		C57FC8622240DC2F00218DE7 /* MPUploadMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6662240DC2E00218DE7 /* MPUploadMusicViewController.swift */; };
-		C57FC8632240DC2F00218DE7 /* usersetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6682240DC2E00218DE7 /* usersetting.plist */; };
 		C57FC8642240DC2F00218DE7 /* policy.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6692240DC2E00218DE7 /* policy.strings */; };
 		C57FC8652240DC2F00218DE7 /* policy.plist in Resources */ = {isa = PBXBuildFile; fileRef = C57FC66A2240DC2E00218DE7 /* policy.plist */; };
 		C57FC8662240DC2F00218DE7 /* MPUserSettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC66C2240DC2E00218DE7 /* MPUserSettingHeaderView.swift */; };
@@ -436,8 +434,6 @@
 		C59498D32240E90600AC10DD /* MPEditSongListDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59498D12240E90600AC10DD /* MPEditSongListDetailTableViewCell.xib */; };
 		C59498D72240E93E00AC10DD /* MPEditSongListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59498D62240E93E00AC10DD /* MPEditSongListDetailViewController.swift */; };
 		C59498DA2240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59498D82240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift */; };
-		C59498DB2240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59498D92240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib */; };
-		C59498DD2240EE8400AC10DD /* MPEditSongListDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59498DC2240EE8400AC10DD /* MPEditSongListDetailViewController.xib */; };
 		C59D308122811FA800D91724 /* lame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C59D307D22811FA700D91724 /* lame.framework */; };
 		C59D308222811FA800D91724 /* ConvertAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = C59D307E22811FA700D91724 /* ConvertAudioFile.m */; };
 		C59D308322811FA800D91724 /* AudioRecordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D308022811FA700D91724 /* AudioRecordManager.swift */; };
@@ -445,6 +441,10 @@
 		C5C86542225DD3E000E54DE2 /* ScrollRects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653D225DD3E000E54DE2 /* ScrollRects.swift */; };
 		C5C86543225DD3E000E54DE2 /* TableViewDraggerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653E225DD3E000E54DE2 /* TableViewDraggerCell.swift */; };
 		C5C86544225DD3E000E54DE2 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C8653F225DD3E000E54DE2 /* UIScrollViewExtension.swift */; };
+		C5CA4D08228C12EE00DBE088 /* createSLExtensionTools.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5CA4D0A228C12EE00DBE088 /* createSLExtensionTools.plist */; };
+		C5CA4D10228C143E00DBE088 /* extensionTools.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5CA4D12228C143E00DBE088 /* extensionTools.plist */; };
+		C5CA4D18228C159900DBE088 /* songTools.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5CA4D1A228C159900DBE088 /* songTools.plist */; };
+		C5CA4D20228C1C5300DBE088 /* usersetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5CA4D22228C1C5300DBE088 /* usersetting.plist */; };
 		C5F5378522544EB8006D228B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378222544EB7006D228B /* PlayerView.swift */; };
 		C5F5378622544EB8006D228B /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378322544EB7006D228B /* Video.swift */; };
 		C5F5378722544EB8006D228B /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378422544EB8006D228B /* extensions.swift */; };
@@ -515,7 +515,6 @@
 		C56034092242336700F6795F /* MPSRSongListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSRSongListTableViewCell.swift; sourceTree = "<group>"; };
 		C560340A2242336700F6795F /* MPSRSongListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSRSongListTableViewCell.xib; sourceTree = "<group>"; };
 		C560340D2242379000F6795F /* MPSearchResultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchResultHeaderView.swift; sourceTree = "<group>"; };
-		C560340E2242379000F6795F /* MPSearchResultHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPSearchResultHeaderView.xib; sourceTree = "<group>"; };
 		C5603412224343CE00F6795F /* MPPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayingView.swift; sourceTree = "<group>"; };
 		C56034172243636200F6795F /* MPPlayingViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPPlayingViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		C56034182243636200F6795F /* MPPlayingViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPPlayingViewCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -546,6 +545,36 @@
 		C566E20C228A6FC50078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		C566E20D228A6FC50078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Main.strings"; sourceTree = "<group>"; };
 		C566E20E228A6FC50078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		C566E210228AA8E90078C31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MPUploadMusicViewController.xib; sourceTree = "<group>"; };
+		C566E213228AA8F30078C31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MPUploadMusicViewController.strings; sourceTree = "<group>"; };
+		C566E215228AA8F70078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MPUploadMusicViewController.strings; sourceTree = "<group>"; };
+		C566E217228AA8FC0078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MPUploadMusicViewController.strings"; sourceTree = "<group>"; };
+		C566E219228AA8FE0078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MPUploadMusicViewController.strings"; sourceTree = "<group>"; };
+		C566E21B228AA9010078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MPUploadMusicViewController.strings"; sourceTree = "<group>"; };
+		C566E21D228AB9020078C31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MPEditSongListDetailHeaderView.xib; sourceTree = "<group>"; };
+		C566E220228AB9090078C31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MPEditSongListDetailHeaderView.strings; sourceTree = "<group>"; };
+		C566E222228AB90C0078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MPEditSongListDetailHeaderView.strings; sourceTree = "<group>"; };
+		C566E224228AB90F0078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MPEditSongListDetailHeaderView.strings"; sourceTree = "<group>"; };
+		C566E226228AB9120078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MPEditSongListDetailHeaderView.strings"; sourceTree = "<group>"; };
+		C566E228228AB9150078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MPEditSongListDetailHeaderView.strings"; sourceTree = "<group>"; };
+		C566E22A228ABB1C0078C31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MPEditSongListDetailViewController.xib; sourceTree = "<group>"; };
+		C566E22D228ABB2C0078C31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MPEditSongListDetailViewController.strings; sourceTree = "<group>"; };
+		C566E22F228ABB2E0078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MPEditSongListDetailViewController.strings; sourceTree = "<group>"; };
+		C566E231228ABB320078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MPEditSongListDetailViewController.strings"; sourceTree = "<group>"; };
+		C566E233228ABB340078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MPEditSongListDetailViewController.strings"; sourceTree = "<group>"; };
+		C566E235228ABB370078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MPEditSongListDetailViewController.strings"; sourceTree = "<group>"; };
+		C566E237228AC09A0078C31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MPLatestHeaderView.xib; sourceTree = "<group>"; };
+		C566E23A228AC0D10078C31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MPLatestHeaderView.strings; sourceTree = "<group>"; };
+		C566E23C228AC0DC0078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MPLatestHeaderView.strings"; sourceTree = "<group>"; };
+		C566E23E228AC1A60078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MPLatestHeaderView.strings; sourceTree = "<group>"; };
+		C566E240228AC2C80078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MPLatestHeaderView.strings"; sourceTree = "<group>"; };
+		C566E242228AC2DD0078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MPLatestHeaderView.strings"; sourceTree = "<group>"; };
+		C566E244228AC60F0078C31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MPSearchResultHeaderView.xib; sourceTree = "<group>"; };
+		C566E247228AC6140078C31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MPSearchResultHeaderView.strings; sourceTree = "<group>"; };
+		C566E249228AC6190078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MPSearchResultHeaderView.strings; sourceTree = "<group>"; };
+		C566E24B228AC61D0078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MPSearchResultHeaderView.strings"; sourceTree = "<group>"; };
+		C566E24D228AC6210078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MPSearchResultHeaderView.strings"; sourceTree = "<group>"; };
+		C566E24F228AC6240078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MPSearchResultHeaderView.strings"; sourceTree = "<group>"; };
 		C569B6D5226214020003D186 /* MPRadioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPRadioViewController.swift; sourceTree = "<group>"; };
 		C569B6D92262152D0003D186 /* CDViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDViewCell.swift; sourceTree = "<group>"; };
 		C569B6DA2262152D0003D186 /* CDFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDFlowLayout.swift; sourceTree = "<group>"; };
@@ -553,7 +582,6 @@
 		C569B6E0226215840003D186 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		C569B6EA22622F030003D186 /* MPRadioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRadioCollectionViewCell.swift; sourceTree = "<group>"; };
 		C569B6EB22622F030003D186 /* MPRadioCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPRadioCollectionViewCell.xib; sourceTree = "<group>"; };
-		C56BDB69225DE942008AE913 /* createSLExtensionTools.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = createSLExtensionTools.plist; sourceTree = "<group>"; };
 		C56BDB6C225F35DA008AE913 /* MPTimeOffEndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPTimeOffEndView.swift; sourceTree = "<group>"; };
 		C56BDB6D225F35DA008AE913 /* MPTimeOffEndView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPTimeOffEndView.xib; sourceTree = "<group>"; };
 		C56BDB71225F462B008AE913 /* MPSongInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSongInfoView.swift; sourceTree = "<group>"; };
@@ -633,7 +661,6 @@
 		C57FC5E72240DC2E00218DE7 /* MPChoicenessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPChoicenessViewController.swift; sourceTree = "<group>"; };
 		C57FC5EA2240DC2E00218DE7 /* MPChoicenessTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPChoicenessTableViewCell.swift; sourceTree = "<group>"; };
 		C57FC5EB2240DC2E00218DE7 /* MPChoicenessTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPChoicenessTableViewCell.xib; sourceTree = "<group>"; };
-		C57FC5EE2240DC2E00218DE7 /* MPLatestHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPLatestHeaderView.xib; sourceTree = "<group>"; };
 		C57FC5F02240DC2E00218DE7 /* MPLatestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPLatestTableViewCell.xib; sourceTree = "<group>"; };
 		C57FC5F12240DC2E00218DE7 /* MPLatestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPLatestTableViewCell.swift; sourceTree = "<group>"; };
 		C57FC5F22240DC2E00218DE7 /* MPLatestHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPLatestHeaderView.swift; sourceTree = "<group>"; };
@@ -652,7 +679,6 @@
 		C57FC6072240DC2E00218DE7 /* MPPlayingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPPlayingViewController.xib; sourceTree = "<group>"; };
 		C57FC6092240DC2E00218DE7 /* MPPlayingListsPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPPlayingListsPopView.swift; sourceTree = "<group>"; };
 		C57FC60A2240DC2E00218DE7 /* MPPlayingListsPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPPlayingListsPopView.xib; sourceTree = "<group>"; };
-		C57FC60C2240DC2E00218DE7 /* extensionTools.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = extensionTools.plist; sourceTree = "<group>"; };
 		C57FC60E2240DC2E00218DE7 /* MPSongExtensionToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPSongExtensionToolsView.xib; sourceTree = "<group>"; };
 		C57FC60F2240DC2E00218DE7 /* MPSongExtensionToolsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPSongExtensionToolsView.swift; sourceTree = "<group>"; };
 		C57FC6112240DC2E00218DE7 /* MPPlayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPPlayListViewController.swift; sourceTree = "<group>"; };
@@ -691,7 +717,6 @@
 		C57FC6442240DC2E00218DE7 /* MPPopularViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPPopularViewController.swift; sourceTree = "<group>"; };
 		C57FC6462240DC2E00218DE7 /* MPCreateSongListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPCreateSongListView.xib; sourceTree = "<group>"; };
 		C57FC6472240DC2E00218DE7 /* MPAddToSongListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPAddToSongListView.swift; sourceTree = "<group>"; };
-		C57FC6492240DC2E00218DE7 /* songTools.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = songTools.plist; sourceTree = "<group>"; };
 		C57FC64A2240DC2E00218DE7 /* MPPopularHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPPopularHeaderView.swift; sourceTree = "<group>"; };
 		C57FC64B2240DC2E00218DE7 /* MPSongToolsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPSongToolsView.xib; sourceTree = "<group>"; };
 		C57FC64C2240DC2E00218DE7 /* MPAddToSongListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAddToSongListView.xib; sourceTree = "<group>"; };
@@ -711,9 +736,7 @@
 		C57FC65F2240DC2E00218DE7 /* MPRadioViewController_backup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPRadioViewController_backup.xib; sourceTree = "<group>"; };
 		C57FC6612240DC2E00218DE7 /* MPNavView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPNavView.swift; sourceTree = "<group>"; };
 		C57FC6622240DC2E00218DE7 /* MPNavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPNavView.xib; sourceTree = "<group>"; };
-		C57FC6652240DC2E00218DE7 /* MPUploadMusicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPUploadMusicViewController.xib; sourceTree = "<group>"; };
 		C57FC6662240DC2E00218DE7 /* MPUploadMusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPUploadMusicViewController.swift; sourceTree = "<group>"; };
-		C57FC6682240DC2E00218DE7 /* usersetting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = usersetting.plist; sourceTree = "<group>"; };
 		C57FC6692240DC2E00218DE7 /* policy.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = policy.strings; sourceTree = "<group>"; };
 		C57FC66A2240DC2E00218DE7 /* policy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = policy.plist; sourceTree = "<group>"; };
 		C57FC66C2240DC2E00218DE7 /* MPUserSettingHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPUserSettingHeaderView.swift; sourceTree = "<group>"; };
@@ -788,10 +811,8 @@
 		C57FC6D12240DC2F00218DE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C57FC6D32240DC2F00218DE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C57FC6D52240DC2F00218DE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C57FC6D72240DC2F00218DE7 /* Info-original.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-original.plist"; sourceTree = "<group>"; };
 		C57FC6D82240DC2F00218DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C57FC6D92240DC2F00218DE7 /* iMusicPlayer-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iMusicPlayer-Bridging-Header.h"; sourceTree = "<group>"; };
-		C57FC6DA2240DC2F00218DE7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C57FC6DC2240DC2F00218DE7 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		C57FC6DD2240DC2F00218DE7 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		C57FC6DE2240DC2F00218DE7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -1022,8 +1043,6 @@
 		C59498D12240E90600AC10DD /* MPEditSongListDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPEditSongListDetailTableViewCell.xib; sourceTree = "<group>"; };
 		C59498D62240E93E00AC10DD /* MPEditSongListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPEditSongListDetailViewController.swift; sourceTree = "<group>"; };
 		C59498D82240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPEditSongListDetailHeaderView.swift; sourceTree = "<group>"; };
-		C59498D92240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPEditSongListDetailHeaderView.xib; sourceTree = "<group>"; };
-		C59498DC2240EE8400AC10DD /* MPEditSongListDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MPEditSongListDetailViewController.xib; sourceTree = "<group>"; };
 		C59D307D22811FA700D91724 /* lame.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = lame.framework; sourceTree = "<group>"; };
 		C59D307E22811FA700D91724 /* ConvertAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvertAudioFile.m; sourceTree = "<group>"; };
 		C59D307F22811FA700D91724 /* ConvertAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConvertAudioFile.h; sourceTree = "<group>"; };
@@ -1034,6 +1053,31 @@
 		C5C8653E225DD3E000E54DE2 /* TableViewDraggerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDraggerCell.swift; sourceTree = "<group>"; };
 		C5C8653F225DD3E000E54DE2 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		C5C86540225DD3E000E54DE2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C5CA4D09228C12EE00DBE088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/createSLExtensionTools.plist; sourceTree = "<group>"; };
+		C5CA4D0B228C12F500DBE088 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/createSLExtensionTools.plist; sourceTree = "<group>"; };
+		C5CA4D0C228C12F800DBE088 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/createSLExtensionTools.plist; sourceTree = "<group>"; };
+		C5CA4D0D228C12FA00DBE088 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/createSLExtensionTools.plist"; sourceTree = "<group>"; };
+		C5CA4D0E228C12FD00DBE088 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/createSLExtensionTools.plist"; sourceTree = "<group>"; };
+		C5CA4D0F228C12FF00DBE088 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/createSLExtensionTools.plist"; sourceTree = "<group>"; };
+		C5CA4D11228C143E00DBE088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/extensionTools.plist; sourceTree = "<group>"; };
+		C5CA4D13228C144300DBE088 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/extensionTools.plist; sourceTree = "<group>"; };
+		C5CA4D14228C144500DBE088 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/extensionTools.plist; sourceTree = "<group>"; };
+		C5CA4D15228C144700DBE088 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/extensionTools.plist"; sourceTree = "<group>"; };
+		C5CA4D16228C144B00DBE088 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/extensionTools.plist"; sourceTree = "<group>"; };
+		C5CA4D17228C144D00DBE088 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/extensionTools.plist"; sourceTree = "<group>"; };
+		C5CA4D19228C159900DBE088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/songTools.plist; sourceTree = "<group>"; };
+		C5CA4D1B228C159C00DBE088 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/songTools.plist; sourceTree = "<group>"; };
+		C5CA4D1C228C159E00DBE088 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/songTools.plist; sourceTree = "<group>"; };
+		C5CA4D1D228C15A100DBE088 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/songTools.plist"; sourceTree = "<group>"; };
+		C5CA4D1E228C15A300DBE088 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/songTools.plist"; sourceTree = "<group>"; };
+		C5CA4D1F228C15A500DBE088 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/songTools.plist"; sourceTree = "<group>"; };
+		C5CA4D21228C1C5300DBE088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/usersetting.plist; sourceTree = "<group>"; };
+		C5CA4D23228C1C5600DBE088 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/usersetting.plist; sourceTree = "<group>"; };
+		C5CA4D24228C1C5800DBE088 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ja; path = ja.lproj/usersetting.plist; sourceTree = "<group>"; };
+		C5CA4D25228C1C5B00DBE088 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/usersetting.plist"; sourceTree = "<group>"; };
+		C5CA4D26228C1C5D00DBE088 /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/usersetting.plist"; sourceTree = "<group>"; };
+		C5CA4D27228C1C6400DBE088 /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/usersetting.plist"; sourceTree = "<group>"; };
+		C5CAA219228D04CB00C49BDE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5F5378222544EB7006D228B /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		C5F5378322544EB7006D228B /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		C5F5378422544EB8006D228B /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
@@ -1142,7 +1186,7 @@
 			children = (
 				C56033FC224232EE00F6795F /* Cell */,
 				C560340D2242379000F6795F /* MPSearchResultHeaderView.swift */,
-				C560340E2242379000F6795F /* MPSearchResultHeaderView.xib */,
+				C566E245228AC60F0078C31C /* MPSearchResultHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1751,7 +1795,7 @@
 			children = (
 				C57FC5EF2240DC2E00218DE7 /* Cell */,
 				C57FC5F22240DC2E00218DE7 /* MPLatestHeaderView.swift */,
-				C57FC5EE2240DC2E00218DE7 /* MPLatestHeaderView.xib */,
+				C566E238228AC09A0078C31C /* MPLatestHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1862,7 +1906,7 @@
 		C57FC60B2240DC2E00218DE7 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC60C2240DC2E00218DE7 /* extensionTools.plist */,
+				C5CA4D12228C143E00DBE088 /* extensionTools.plist */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -2082,7 +2126,7 @@
 		C57FC6482240DC2E00218DE7 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC6492240DC2E00218DE7 /* songTools.plist */,
+				C5CA4D1A228C159900DBE088 /* songTools.plist */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -2160,7 +2204,7 @@
 		C57FC6642240DC2E00218DE7 /* UploadMusic(上传音乐) */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC6652240DC2E00218DE7 /* MPUploadMusicViewController.xib */,
+				C566E211228AA8E90078C31C /* MPUploadMusicViewController.xib */,
 				C57FC6662240DC2E00218DE7 /* MPUploadMusicViewController.swift */,
 			);
 			path = "UploadMusic(上传音乐)";
@@ -2169,7 +2213,7 @@
 		C57FC6672240DC2E00218DE7 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				C57FC6682240DC2E00218DE7 /* usersetting.plist */,
+				C5CA4D22228C1C5300DBE088 /* usersetting.plist */,
 				C57FC6692240DC2E00218DE7 /* policy.strings */,
 				C57FC66A2240DC2E00218DE7 /* policy.plist */,
 			);
@@ -2498,16 +2542,15 @@
 		C57FC6CE2240DC2E00218DE7 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				C5CAA219228D04CB00C49BDE /* Info.plist */,
 				C57FC6CF2240DC2E00218DE7 /* ViewController.swift */,
 				C57FC6D02240DC2F00218DE7 /* ErrorCodeStrs.plist */,
 				C57FC6D12240DC2F00218DE7 /* Assets.xcassets */,
 				C57FC6D22240DC2F00218DE7 /* LaunchScreen.storyboard */,
 				C57FC6D42240DC2F00218DE7 /* Main.storyboard */,
 				C566E1FF228A6EA70078C31C /* Localizable.strings */,
-				C57FC6D72240DC2F00218DE7 /* Info-original.plist */,
 				C57FC6D82240DC2F00218DE7 /* AppDelegate.swift */,
 				C57FC6D92240DC2F00218DE7 /* iMusicPlayer-Bridging-Header.h */,
-				C57FC6DA2240DC2F00218DE7 /* Info.plist */,
 				C54D6DDE227541A60007F57F /* GoogleService-Info.plist */,
 			);
 			path = SupportFiles;
@@ -3008,7 +3051,7 @@
 			children = (
 				C59498D42240E90800AC10DD /* View */,
 				C59498D62240E93E00AC10DD /* MPEditSongListDetailViewController.swift */,
-				C59498DC2240EE8400AC10DD /* MPEditSongListDetailViewController.xib */,
+				C566E22B228ABB1C0078C31C /* MPEditSongListDetailViewController.xib */,
 			);
 			path = "EditSongList(编辑歌单)";
 			sourceTree = "<group>";
@@ -3018,7 +3061,7 @@
 			children = (
 				C59498D52240E91200AC10DD /* Cell */,
 				C59498D82240E95F00AC10DD /* MPEditSongListDetailHeaderView.swift */,
-				C59498D92240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib */,
+				C566E21E228AB9020078C31C /* MPEditSongListDetailHeaderView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3067,7 +3110,7 @@
 		C5C86546225DE49B00E54DE2 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				C56BDB69225DE942008AE913 /* createSLExtensionTools.plist */,
+				C5CA4D0A228C12EE00DBE088 /* createSLExtensionTools.plist */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -3226,7 +3269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C57FC8192240DC2F00218DE7 /* MPSearchTableViewCell.xib in Resources */,
-				C57FC8122240DC2F00218DE7 /* MPLatestHeaderView.xib in Resources */,
+				C566E236228AC09A0078C31C /* MPLatestHeaderView.xib in Resources */,
 				C5F537912254964D006D228B /* MPYBWebPlayerView.xib in Resources */,
 				C57FC8E62240DC2F00218DE7 /* MDPasswordView.xib in Resources */,
 				C57FC7DD2240DC2F00218DE7 /* LTLocationViewController.xib in Resources */,
@@ -3242,13 +3285,13 @@
 				C57FC8AB2240DC2F00218DE7 /* LaunchScreen.storyboard in Resources */,
 				C57FC8242240DC2F00218DE7 /* MPPlayingListsPopView.xib in Resources */,
 				C57FC8112240DC2F00218DE7 /* MPChoicenessTableViewCell.xib in Resources */,
-				C57FC84D2240DC2F00218DE7 /* songTools.plist in Resources */,
+				C5CA4D18228C159900DBE088 /* songTools.plist in Resources */,
 				C57FC8092240DC2F00218DE7 /* MPMediaLibraryTableViewCell.xib in Resources */,
 				C57FC8862240DC2F00218DE7 /* AlipaySDK.bundle in Resources */,
 				C56033F72242258900F6795F /* MPSearchingViewTableViewCell.xib in Resources */,
 				C57FC8EB2240DC2F00218DE7 /* CardViewController.xib in Resources */,
-				C59498DB2240E95F00AC10DD /* MPEditSongListDetailHeaderView.xib in Resources */,
-				C56BDB6A225DE942008AE913 /* createSLExtensionTools.plist in Resources */,
+				C566E21C228AB9020078C31C /* MPEditSongListDetailHeaderView.xib in Resources */,
+				C5CA4D08228C12EE00DBE088 /* createSLExtensionTools.plist in Resources */,
 				C542D1CA2282D1300051854F /* MPNoDataView.xib in Resources */,
 				C560344322447DA200F6795F /* MPScrollPlayView.xib in Resources */,
 				C57FC8642240DC2F00218DE7 /* policy.strings in Resources */,
@@ -3258,7 +3301,7 @@
 				C57FC7F62240DC2F00218DE7 /* MPCreateSongListTableViewCell.xib in Resources */,
 				C57FC7D92240DC2F00218DE7 /* AutoGenStrings.py in Resources */,
 				C57FC8432240DC2F00218DE7 /* MPRecentlyTableViewCell.xib in Resources */,
-				C57FC8632240DC2F00218DE7 /* usersetting.plist in Resources */,
+				C5CA4D20228C1C5300DBE088 /* usersetting.plist in Resources */,
 				C56034042242333B00F6795F /* MPSRMVTableViewCell.xib in Resources */,
 				C57FC8172240DC2F00218DE7 /* MPSearchHeaderView.xib in Resources */,
 				C57FC91D2240DC3000218DE7 /* icon_deleted @2x.png in Resources */,
@@ -3267,7 +3310,7 @@
 				C57FC9302240DC3000218DE7 /* MDFlowView.xib in Resources */,
 				C57FC80A2240DC2F00218DE7 /* MPAlbumListHeaderView.xib in Resources */,
 				C57FC91F2240DC3000218DE7 /* tp_region.sql in Resources */,
-				C57FC8612240DC2F00218DE7 /* MPUploadMusicViewController.xib in Resources */,
+				C566E20F228AA8E90078C31C /* MPUploadMusicViewController.xib in Resources */,
 				C57FC8202240DC2F00218DE7 /* MPRelatedSongsTableViewCell.xib in Resources */,
 				C57FC8292240DC2F00218DE7 /* MPPlayListTableViewCell.xib in Resources */,
 				C57FC8132240DC2F00218DE7 /* MPLatestTableViewCell.xib in Resources */,
@@ -3291,7 +3334,7 @@
 				C54D6DDB227017450007F57F /* MPPlayingBigView_new.xib in Resources */,
 				C57FC86A2240DC2F00218DE7 /* MPTimeOffPopView.xib in Resources */,
 				C57FC85E2240DC2F00218DE7 /* MPRadioViewController_backup.xib in Resources */,
-				C56034102242379000F6795F /* MPSearchResultHeaderView.xib in Resources */,
+				C566E243228AC60F0078C31C /* MPSearchResultHeaderView.xib in Resources */,
 				C57FC9232240DC3000218DE7 /* icon_deleted@3x.png in Resources */,
 				C57FC87E2240DC2F00218DE7 /* HFWelcomeViewController.xib in Resources */,
 				C57FC8602240DC2F00218DE7 /* MPNavView.xib in Resources */,
@@ -3301,7 +3344,7 @@
 				C57FC8392240DC2F00218DE7 /* MPStyleGenreCollectionViewCell.xib in Resources */,
 				C57FC92F2240DC3000218DE7 /* CYPasswordView.bundle in Resources */,
 				C57FC8902240DC2F00218DE7 /* project_intro.css in Resources */,
-				C57FC8252240DC2F00218DE7 /* extensionTools.plist in Resources */,
+				C5CA4D10228C143E00DBE088 /* extensionTools.plist in Resources */,
 				C57FC88F2240DC2F00218DE7 /* project_intro.html in Resources */,
 				C57FC82E2240DC2F00218DE7 /* MPRankingTableViewCell.xib in Resources */,
 				C57FC7DB2240DC2F00218DE7 /* MPLoginViewController.xib in Resources */,
@@ -3344,7 +3387,7 @@
 				C57FC8012240DC2F00218DE7 /* MPMyFavoriteHeaderView.xib in Resources */,
 				C57FC8062240DC2F00218DE7 /* MPMediaLibraryCollectionViewCell.xib in Resources */,
 				C57FC7F42240DC2F00218DE7 /* MPCreateSongListHeaderView.xib in Resources */,
-				C59498DD2240EE8400AC10DD /* MPEditSongListDetailViewController.xib in Resources */,
+				C566E229228ABB1C0078C31C /* MPEditSongListDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3898,6 +3941,71 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		C566E211228AA8E90078C31C /* MPUploadMusicViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C566E210228AA8E90078C31C /* Base */,
+				C566E213228AA8F30078C31C /* en */,
+				C566E215228AA8F70078C31C /* ja */,
+				C566E217228AA8FC0078C31C /* zh-Hans */,
+				C566E219228AA8FE0078C31C /* zh-Hant-TW */,
+				C566E21B228AA9010078C31C /* zh-Hant-HK */,
+			);
+			name = MPUploadMusicViewController.xib;
+			sourceTree = "<group>";
+		};
+		C566E21E228AB9020078C31C /* MPEditSongListDetailHeaderView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C566E21D228AB9020078C31C /* Base */,
+				C566E220228AB9090078C31C /* en */,
+				C566E222228AB90C0078C31C /* ja */,
+				C566E224228AB90F0078C31C /* zh-Hans */,
+				C566E226228AB9120078C31C /* zh-Hant-TW */,
+				C566E228228AB9150078C31C /* zh-Hant-HK */,
+			);
+			name = MPEditSongListDetailHeaderView.xib;
+			sourceTree = "<group>";
+		};
+		C566E22B228ABB1C0078C31C /* MPEditSongListDetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C566E22A228ABB1C0078C31C /* Base */,
+				C566E22D228ABB2C0078C31C /* en */,
+				C566E22F228ABB2E0078C31C /* ja */,
+				C566E231228ABB320078C31C /* zh-Hans */,
+				C566E233228ABB340078C31C /* zh-Hant-TW */,
+				C566E235228ABB370078C31C /* zh-Hant-HK */,
+			);
+			name = MPEditSongListDetailViewController.xib;
+			sourceTree = "<group>";
+		};
+		C566E238228AC09A0078C31C /* MPLatestHeaderView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C566E237228AC09A0078C31C /* Base */,
+				C566E23A228AC0D10078C31C /* en */,
+				C566E23C228AC0DC0078C31C /* zh-Hant-HK */,
+				C566E23E228AC1A60078C31C /* ja */,
+				C566E240228AC2C80078C31C /* zh-Hans */,
+				C566E242228AC2DD0078C31C /* zh-Hant-TW */,
+			);
+			name = MPLatestHeaderView.xib;
+			sourceTree = "<group>";
+		};
+		C566E245228AC60F0078C31C /* MPSearchResultHeaderView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C566E244228AC60F0078C31C /* Base */,
+				C566E247228AC6140078C31C /* en */,
+				C566E249228AC6190078C31C /* ja */,
+				C566E24B228AC61D0078C31C /* zh-Hans */,
+				C566E24D228AC6210078C31C /* zh-Hant-TW */,
+				C566E24F228AC6240078C31C /* zh-Hant-HK */,
+			);
+			name = MPSearchResultHeaderView.xib;
+			sourceTree = "<group>";
+		};
 		C57FC6D22240DC2F00218DE7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3920,6 +4028,58 @@
 				C566E20D228A6FC50078C31C /* zh-Hant-HK */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C5CA4D0A228C12EE00DBE088 /* createSLExtensionTools.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5CA4D09228C12EE00DBE088 /* Base */,
+				C5CA4D0B228C12F500DBE088 /* en */,
+				C5CA4D0C228C12F800DBE088 /* ja */,
+				C5CA4D0D228C12FA00DBE088 /* zh-Hans */,
+				C5CA4D0E228C12FD00DBE088 /* zh-Hant-TW */,
+				C5CA4D0F228C12FF00DBE088 /* zh-Hant-HK */,
+			);
+			name = createSLExtensionTools.plist;
+			sourceTree = "<group>";
+		};
+		C5CA4D12228C143E00DBE088 /* extensionTools.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5CA4D11228C143E00DBE088 /* Base */,
+				C5CA4D13228C144300DBE088 /* en */,
+				C5CA4D14228C144500DBE088 /* ja */,
+				C5CA4D15228C144700DBE088 /* zh-Hans */,
+				C5CA4D16228C144B00DBE088 /* zh-Hant-TW */,
+				C5CA4D17228C144D00DBE088 /* zh-Hant-HK */,
+			);
+			name = extensionTools.plist;
+			sourceTree = "<group>";
+		};
+		C5CA4D1A228C159900DBE088 /* songTools.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5CA4D19228C159900DBE088 /* Base */,
+				C5CA4D1B228C159C00DBE088 /* en */,
+				C5CA4D1C228C159E00DBE088 /* ja */,
+				C5CA4D1D228C15A100DBE088 /* zh-Hans */,
+				C5CA4D1E228C15A300DBE088 /* zh-Hant-TW */,
+				C5CA4D1F228C15A500DBE088 /* zh-Hant-HK */,
+			);
+			name = songTools.plist;
+			sourceTree = "<group>";
+		};
+		C5CA4D22228C1C5300DBE088 /* usersetting.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C5CA4D21228C1C5300DBE088 /* Base */,
+				C5CA4D23228C1C5600DBE088 /* en */,
+				C5CA4D24228C1C5800DBE088 /* ja */,
+				C5CA4D25228C1C5B00DBE088 /* zh-Hans */,
+				C5CA4D26228C1C5D00DBE088 /* zh-Hant-TW */,
+				C5CA4D27228C1C6400DBE088 /* zh-Hant-HK */,
+			);
+			name = usersetting.plist;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

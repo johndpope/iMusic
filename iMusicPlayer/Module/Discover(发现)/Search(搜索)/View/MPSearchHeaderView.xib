@@ -22,13 +22,13 @@
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜索历史" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efP-uz-U8f">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="搜索历史" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efP-uz-U8f">
                     <rect key="frame" x="13" y="97" width="58" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C8u-8w-6DD" customClass="TagListView" customModule="TagListView">
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C8u-8w-6DD" customClass="TagListView" customModule="TagListView">
                     <rect key="frame" x="13" y="43" width="349" height="22"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
@@ -81,9 +81,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="3Yl-ZU-g46"/>
             <connections>
+                <outlet property="xib_history" destination="efP-uz-U8f" id="wND-tI-X8C"/>
+                <outlet property="xib_hot" destination="uN8-l7-ssX" id="vto-G6-tka"/>
                 <outlet property="xib_tagListView" destination="C8u-8w-6DD" id="Ync-tX-OOD"/>
             </connections>
-            <point key="canvasLocation" x="358" y="-268"/>
+            <point key="canvasLocation" x="254" y="-245"/>
         </view>
     </objects>
 </document>

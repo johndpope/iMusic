@@ -72,6 +72,7 @@
             <viewLayoutGuide key="safeArea" id="kMC-k3-ly4"/>
             <connections>
                 <outlet property="lrcView" destination="5pe-nS-Aum" id="mFg-Y7-XMo"/>
+                <outlet property="xib_lrc" destination="Yb7-OQ-ICc" id="cA7-G5-KW6"/>
             </connections>
             <point key="canvasLocation" x="84" y="-61"/>
         </view>

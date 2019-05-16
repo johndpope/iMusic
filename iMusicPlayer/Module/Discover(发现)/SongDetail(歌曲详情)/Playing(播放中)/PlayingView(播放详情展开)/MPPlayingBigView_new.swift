@@ -79,6 +79,7 @@ class MPPlayingBigView_new: BaseView {
             defaultTopViewH = topViewH.constant
         }
     }
+    @IBOutlet weak var xib_nextPlay: UILabel!
     @IBOutlet weak var xib_nextSongName: UILabel!
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
@@ -174,6 +175,9 @@ class MPPlayingBigView_new: BaseView {
     }
     
     private func setupStyle() {
+        xib_lrc.setTitle(NSLocalizedString("歌词", comment: ""), for: .normal)
+        xib_nextPlay.text = NSLocalizedString("下一首播放", comment: "")
+        
         playView = self.ybPlayView
         
         playView.isHidden = true
@@ -481,7 +485,7 @@ class MPPlayingBigView_new: BaseView {
                 MPModelTools.saveSongToTable(song: song, tableName: MPMyFavoriteViewController.classCode)
                 // 设置为收藏状态
                 xib_collect.isSelected = true
-                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲收藏成功", comment: ""))
+                SVProgressHUD.showInfo(withStatus: NSLocalizedString("收藏成功", comment: ""))
             }else {
                 MPModelTools.deleteSongInTable(tableName: MPMyFavoriteViewController.classCode, songs: [song]) {
                     // 标记为收藏状态：喜爱列表、当前列表
@@ -489,7 +493,7 @@ class MPPlayingBigView_new: BaseView {
                     // 设置为收藏状态
                     self.xib_collect.isSelected = false
                     // 取消收藏
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("取消收藏成功", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("取消收藏", comment: ""))
                 }
                 // 更新上传模型
                 MPModelTools.updateCloudListModel(type: 2)
@@ -655,7 +659,7 @@ extension MPPlayingBigView_new {
                 let song = self.getCurrentSong()
                 if !MPModelTools.checkSongExsistInSongList(song: song, songList: songList) {
                     MPModelTools.saveSongToTable(song: song, tableName: tn)
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲添加成功", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: ""))
                     // 更新当前歌单图片及数量：+1
                     MPModelTools.updateCountForSongList(songList: songList, finished: {
                         lv.removeFromWindow()
@@ -664,7 +668,7 @@ extension MPPlayingBigView_new {
                     // 更新上传模型
                     MPModelTools.updateCloudListModel(type: 4)
                 }else {
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已在该歌单中", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: ""))
                 }
             }
         }
@@ -894,7 +898,7 @@ extension MPPlayingBigView_new: MPPlayingViewDelegate {
             MPModelTools.saveSongToTable(song: cs, tableName: MPMyFavoriteViewController.classCode)
             // 设置为收藏状态
             xib_collect.isSelected = true
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲收藏成功", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("收藏成功", comment: ""))
         }else {
             MPModelTools.deleteSongInTable(tableName: MPMyFavoriteViewController.classCode, songs: [cs]) {
                 // 标记为收藏状态：喜爱列表、当前列表
@@ -902,7 +906,7 @@ extension MPPlayingBigView_new: MPPlayingViewDelegate {
                 // 设置为收藏状态
                 self.xib_collect.isSelected = false
                 // 取消收藏
-                SVProgressHUD.showInfo(withStatus: NSLocalizedString("取消收藏成功", comment: ""))
+                SVProgressHUD.showInfo(withStatus: NSLocalizedString("取消收藏", comment: ""))
             }
         }
         // 更新上传模型

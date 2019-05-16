@@ -114,7 +114,7 @@ class MPPopularViewController: BaseTableViewController {
         self.identifier = Constant.identifier
         tableView.backgroundColor = UIColor.white
         
-        setupNoDataView(image: "pic_no_resault", text: NSLocalizedString("无搜索结果", comment: ""))
+        setupNoDataView(image: "pic_no_resault", text: NSLocalizedString("找不到歌曲", comment: ""))
     }
     
     private func setupNoDataView(image: String, text: String) {
