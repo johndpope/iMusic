@@ -57,6 +57,8 @@ target 'iMusicPlayer' do
    pod "DOUAudioStreamer"
    
    pod 'Firebase/Core'
+   
+   pod 'Firebase/RemoteConfig'
 
   target 'iMusicPlayerTests' do
     inherit! :search_paths

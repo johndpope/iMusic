@@ -85,6 +85,8 @@ class MPPlayingBigView_new: BaseView {
     @IBOutlet weak var xib_desc: UILabel!
     @IBOutlet weak var xib_lrc: UIButton! {
         didSet {
+            // 判断是否开启歌词权限
+            xib_lrc.isHidden = !BOOL_OPEN_LYRICS
             xib_lrc.touchAreaInsets = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
         }
     }
@@ -116,7 +118,18 @@ class MPPlayingBigView_new: BaseView {
     @IBOutlet weak var xib_play: UIButton!
     @IBOutlet weak var xib_cycleMode: UIButton!
     @IBOutlet weak var xib_orderMode: UIButton!
-    @IBOutlet weak var xib_collect: UIButton!
+    @IBOutlet weak var xib_collect: UIButton! {
+        didSet {
+            // 判断是否开启下载权限
+            if BOOL_OPEN_MUSIC_DL {
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
+            }else {
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
+            }
+        }
+    }
     
     /// YouTube播放器配置
 //    var playerVars: [String: Any] = [

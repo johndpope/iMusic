@@ -157,3 +157,18 @@ var BtnDidClickedBlock: ((_ sender: UIButton) -> Void)?
  <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
  </userDefinedRuntimeAttributes>
  */
+
+// MARK: - 远程配置
+
+
+/// 为 true 则激活mp3功能
+var BOOL_OPEN_MP3: Bool = false
+
+/// 为true则激活下载功能
+var BOOL_OPEN_MUSIC_DL: Bool = false
+
+/// 为true则激活歌词功能
+var BOOL_OPEN_LYRICS: Bool = false
+
+/// 如果是"reject"，则不再激活任何隐藏功能（下载，mp3，歌词）。如果是"accept"则允许激活。如果为空，不作任何处理
+var STATUS_OF_DEVICE_AUTH: String = ""

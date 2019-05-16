@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>status_of_device_auth</key>
+	<string></string>
+	<key>bool_open_mp3</key>
+	<false/>
+	<key>bool_open_music_dl</key>
+	<false/>
+	<key>bool_open_lyrics</key>
+	<false/>
+</dict>
+</plist>

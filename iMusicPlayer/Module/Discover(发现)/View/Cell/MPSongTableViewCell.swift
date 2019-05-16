@@ -42,6 +42,16 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     @IBOutlet weak var xib_desc: UILabel!
     @IBOutlet weak var xib_collect: UIButton! {
         didSet {
+            
+            // 判断是否开启下载权限
+            if BOOL_OPEN_MUSIC_DL {
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
+            }else {
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
+            }
+            
             // 扩大按钮热区
             xib_collect.touchAreaInsets = UIEdgeInsets(top: 14, left: 8, bottom: 14, right: 4)
         }

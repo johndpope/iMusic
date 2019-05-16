@@ -24,7 +24,18 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
     @IBOutlet weak var xib_play: UIButton!
-    @IBOutlet weak var xib_downloadOrCollect: UIButton!
+    @IBOutlet weak var xib_downloadOrCollect: UIButton! {
+        didSet {
+            // 判断是否开启下载权限
+            if BOOL_OPEN_MUSIC_DL {
+                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
+                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
+            }else {
+                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
+                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

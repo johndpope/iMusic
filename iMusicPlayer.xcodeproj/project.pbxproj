@@ -446,6 +446,7 @@
 		C5CA4D18228C159900DBE088 /* songTools.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5CA4D1A228C159900DBE088 /* songTools.plist */; };
 		C5CA4D20228C1C5300DBE088 /* usersetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5CA4D22228C1C5300DBE088 /* usersetting.plist */; };
 		C5CAA21E228D06AC00C49BDE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5CAA220228D06AC00C49BDE /* InfoPlist.strings */; };
+		C5CAA226228D433E00C49BDE /* RemoteConfigDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5CAA225228D433E00C49BDE /* RemoteConfigDefault.plist */; };
 		C5F5378522544EB8006D228B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378222544EB7006D228B /* PlayerView.swift */; };
 		C5F5378622544EB8006D228B /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378322544EB7006D228B /* Video.swift */; };
 		C5F5378722544EB8006D228B /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378422544EB8006D228B /* extensions.swift */; };
@@ -1084,6 +1085,7 @@
 		C5CAA222228D06B300C49BDE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		C5CAA223228D06B500C49BDE /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		C5CAA224228D06B700C49BDE /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		C5CAA225228D433E00C49BDE /* RemoteConfigDefault.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefault.plist; sourceTree = "<group>"; };
 		C5F5378222544EB7006D228B /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		C5F5378322544EB7006D228B /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		C5F5378422544EB8006D228B /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
@@ -2559,6 +2561,7 @@
 				C57FC6D92240DC2F00218DE7 /* iMusicPlayer-Bridging-Header.h */,
 				C54D6DDE227541A60007F57F /* GoogleService-Info.plist */,
 				C5CAA220228D06AC00C49BDE /* InfoPlist.strings */,
+				C5CAA225228D433E00C49BDE /* RemoteConfigDefault.plist */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -3381,6 +3384,7 @@
 				C57FC81C2240DC2F00218DE7 /* MPSearchNavView.xib in Resources */,
 				C5F5378922544F37006D228B /* PlayerView.xib in Resources */,
 				C57FC80B2240DC2F00218DE7 /* MPAlbumListTableViewCell.xib in Resources */,
+				C5CAA226228D433E00C49BDE /* RemoteConfigDefault.plist in Resources */,
 				C57FC8A92240DC2F00218DE7 /* ErrorCodeStrs.plist in Resources */,
 				C57FC7E12240DC2F00218DE7 /* LTWebViewController.xib in Resources */,
 				C5CAA21E228D06AC00C49BDE /* InfoPlist.strings in Resources */,
@@ -3438,6 +3442,7 @@
 				"${BUILT_PRODUCTS_DIR}/KingfisherWebP/KingfisherWebP.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -3466,6 +3471,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KingfisherWebP.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",

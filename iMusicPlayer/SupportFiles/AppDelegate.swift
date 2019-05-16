@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var backgroundTaskIdentifier: UIBackgroundTaskIdentifier!
     
+    var remoteConfig: RemoteConfig!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -72,6 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 配置Google登陆
 //        GIDSignIn.sharedInstance().clientID = HFThirdPartyManager.GoogleClientID
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        
+        // 远程配置
+        setupRemoteConfig()
         
         return true
     }
@@ -254,3 +259,50 @@ extension AppDelegate {
     }
 }
 
+// MARK: - 远程配置相关
+extension AppDelegate {
+    
+    private func setupRemoteConfig() {
+        self.remoteConfig = RemoteConfig.remoteConfig()
+        
+        setFRCDefault()
+        updateKeyWithRCValues()
+        fetchRemoteConfig()
+    }
+    
+    private func setFRCDefault() {
+        remoteConfig.setDefaults(fromPlist: "RemoteConfigDefault")
+        QYTools.shared.Log(log: "成功设置默认值")
+    }
+    
+    private func fetchRemoteConfig() {
+        let dbgSetting = RemoteConfigSettings(developerModeEnabled: true)
+        RemoteConfig.remoteConfig().configSettings = dbgSetting
+        RemoteConfig.remoteConfig().fetch(withExpirationDuration: 0) { (status, error) in
+            guard error == nil else {
+                QYTools.shared.Log(log: "还没有配置默认值哦")
+                return
+            }
+            QYTools.shared.Log(log: "已经存在默认值")
+            RemoteConfig.remoteConfig().activateFetched()
+            self.updateKeyWithRCValues()
+        }
+    }
+    
+    private func updateKeyWithRCValues() {
+        let openMP3 = self.remoteConfig.configValue(forKey: "bool_open_mp3").boolValue
+        QYTools.shared.Log(log: "BOOL_OPEN_MP3 == \(openMP3)")
+        SourceType = openMP3 ? 1 : 0
+        BOOL_OPEN_MP3 = openMP3
+        let openMusicDL = self.remoteConfig.configValue(forKey: "bool_open_music_dl").boolValue
+        QYTools.shared.Log(log: "BOOL_OPEN_MUSIC_DL == \(openMusicDL)")
+        BOOL_OPEN_MUSIC_DL = openMusicDL
+        let openLyrics = self.remoteConfig.configValue(forKey: "bool_open_lyrics").boolValue
+        QYTools.shared.Log(log: "BOOL_OPEN_LYRICS == \(openLyrics)")
+        BOOL_OPEN_LYRICS = openLyrics
+        
+        let deviceAuth = self.remoteConfig.configValue(forKey: "status_of_device_auth").stringValue ?? ""
+        QYTools.shared.Log(log: "STATUS_OF_DEVICE_AUTH == \(deviceAuth)")
+        STATUS_OF_DEVICE_AUTH = deviceAuth
+    }
+}
