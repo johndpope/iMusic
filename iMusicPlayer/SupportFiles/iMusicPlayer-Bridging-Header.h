@@ -59,4 +59,8 @@
 
 #import "ConvertAudioFile.h"
 
+#import "GKDownloadManager.h"
+#import "GKHttpManager.h"
+#import "YYModel.h"
+
 #endif /* Bridge_Header_h */

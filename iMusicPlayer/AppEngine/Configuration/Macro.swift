@@ -172,3 +172,8 @@ var BOOL_OPEN_LYRICS: Bool = false
 
 /// 如果是"reject"，则不再激活任何隐藏功能（下载，mp3，歌词）。如果是"accept"则允许激活。如果为空，不作任何处理
 var STATUS_OF_DEVICE_AUTH: String = ""
+
+
+// MARK: - 下载管理类
+//KDownloadManager [GKDownloadManager sharedInstance]
+//let KDownloadManager = GKDownloadManager.sharedInstance()

@@ -55,6 +55,8 @@ target 'iMusicPlayer' do
   # 音频（流媒体）播放
 #   pod "StreamingKit"
    pod "DOUAudioStreamer"
+   pod 'YYModel'
+   pod 'AFNetworking'
    
    pod 'Firebase/Core'
    

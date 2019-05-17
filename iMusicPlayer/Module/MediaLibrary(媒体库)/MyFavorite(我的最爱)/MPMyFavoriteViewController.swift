@@ -104,9 +104,20 @@ class MPMyFavoriteViewController: BaseTableViewController {
             break
         case .Download:
             title = NSLocalizedString("我的下载", comment: "")
-            
-//            self.saveListToCloudModel(m: m)
-            
+            self.model.removeAll()
+            var temps = [MPSongModel]()
+            GKDownloadManager.sharedInstance()?.downloadedFileList()?.enumerateObjects({ (obj, idx, stop) in
+                if let dModel = obj as? GKDownloadModel {
+                    let sModel = MPSongModel()
+                    sModel.data_songName = dModel.fileName
+                    sModel.data_singerName = dModel.fileArtistName
+                    sModel.data_artworkUrl = dModel.fileImagePath
+                    sModel.data_songId = dModel.fileID
+                    sModel.data_cache = dModel.fileUrl
+                    temps.append(sModel)
+                }
+            })
+            self.model = temps
             break
         case .Cache:
             title = NSLocalizedString("离线歌曲", comment: "")
@@ -251,6 +262,11 @@ extension MPMyFavoriteViewController {
         let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的最爱", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
 //        let album = GeneralPlaylists(JSON: json)
         let album = Mapper<GeneralPlaylists>().map(JSON: json)
+        if fromType == .Download {
+            cell.updateCell(model: model[indexPath.row], models: self.model, album: album, sourceType: 1)
+        }else {
+            cell.updateCell(model: model[indexPath.row], models: self.model, album: album)
+        }
         cell.updateCell(model: model[indexPath.row], models: self.model, album: album)
         cell.selectionStyle = .none
         return cell

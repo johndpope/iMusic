@@ -443,6 +443,10 @@
 		C5CA4D20228C1C5300DBE088 /* usersetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5CA4D22228C1C5300DBE088 /* usersetting.plist */; };
 		C5CAA21E228D06AC00C49BDE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5CAA220228D06AC00C49BDE /* InfoPlist.strings */; };
 		C5CAA226228D433E00C49BDE /* RemoteConfigDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5CAA225228D433E00C49BDE /* RemoteConfigDefault.plist */; };
+		C5CAA22F228E900F00C49BDE /* GKDownloadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CAA22A228E900E00C49BDE /* GKDownloadModel.m */; };
+		C5CAA230228E900F00C49BDE /* GKDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CAA22B228E900E00C49BDE /* GKDownloadManager.m */; };
+		C5CAA244228E9E0E00C49BDE /* MPDownloadTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAA243228E9E0E00C49BDE /* MPDownloadTools.swift */; };
+		C5CAA248228E9F1800C49BDE /* GKHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CAA247228E9F1800C49BDE /* GKHttpManager.m */; };
 		C5F5378522544EB8006D228B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378222544EB7006D228B /* PlayerView.swift */; };
 		C5F5378622544EB8006D228B /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378322544EB7006D228B /* Video.swift */; };
 		C5F5378722544EB8006D228B /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378422544EB8006D228B /* extensions.swift */; };
@@ -1078,6 +1082,13 @@
 		C5CAA223228D06B500C49BDE /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		C5CAA224228D06B700C49BDE /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		C5CAA225228D433E00C49BDE /* RemoteConfigDefault.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefault.plist; sourceTree = "<group>"; };
+		C5CAA228228E900E00C49BDE /* GKDownloadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKDownloadModel.h; sourceTree = "<group>"; };
+		C5CAA229228E900E00C49BDE /* GKDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKDownloadManager.h; sourceTree = "<group>"; };
+		C5CAA22A228E900E00C49BDE /* GKDownloadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKDownloadModel.m; sourceTree = "<group>"; };
+		C5CAA22B228E900E00C49BDE /* GKDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKDownloadManager.m; sourceTree = "<group>"; };
+		C5CAA243228E9E0E00C49BDE /* MPDownloadTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPDownloadTools.swift; sourceTree = "<group>"; };
+		C5CAA246228E9F1800C49BDE /* GKHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHttpManager.h; sourceTree = "<group>"; };
+		C5CAA247228E9F1800C49BDE /* GKHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHttpManager.m; sourceTree = "<group>"; };
 		C5F5378222544EB7006D228B /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		C5F5378322544EB7006D228B /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		C5F5378422544EB8006D228B /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
@@ -1427,6 +1438,7 @@
 		C57FC5912240DC2E00218DE7 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C5CAA242228E9DD600C49BDE /* Download */,
 				C57FC5922240DC2E00218DE7 /* Login(登录) */,
 				C57FC5952240DC2E00218DE7 /* Launch(启动页) */,
 				C57FC5962240DC2E00218DE7 /* Common(公共) */,
@@ -1557,10 +1569,10 @@
 			children = (
 				C57FC5B32240DC2E00218DE7 /* LTLocationBottomView.swift */,
 				C57FC5B22240DC2E00218DE7 /* LTLocationBottomView.xib */,
-				C5F5378122544E66006D228B /* PlayerView(播放悬浮窗) */,
-				C57FC5B42240DC2E00218DE7 /* YDMenu */,
 				C542D1C72282D1300051854F /* MPNoDataView.swift */,
 				C542D1C82282D1300051854F /* MPNoDataView.xib */,
+				C5F5378122544E66006D228B /* PlayerView(播放悬浮窗) */,
+				C57FC5B42240DC2E00218DE7 /* YDMenu */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3113,6 +3125,36 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		C5CAA227228E900E00C49BDE /* GKDownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				C5CAA228228E900E00C49BDE /* GKDownloadModel.h */,
+				C5CAA229228E900E00C49BDE /* GKDownloadManager.h */,
+				C5CAA22A228E900E00C49BDE /* GKDownloadModel.m */,
+				C5CAA22B228E900E00C49BDE /* GKDownloadManager.m */,
+			);
+			path = GKDownloadManager;
+			sourceTree = "<group>";
+		};
+		C5CAA242228E9DD600C49BDE /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				C5CAA245228E9F1800C49BDE /* GKHttpManager */,
+				C5CAA227228E900E00C49BDE /* GKDownloadManager */,
+				C5CAA243228E9E0E00C49BDE /* MPDownloadTools.swift */,
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
+		C5CAA245228E9F1800C49BDE /* GKHttpManager */ = {
+			isa = PBXGroup;
+			children = (
+				C5CAA246228E9F1800C49BDE /* GKHttpManager.h */,
+				C5CAA247228E9F1800C49BDE /* GKHttpManager.m */,
+			);
+			path = GKHttpManager;
+			sourceTree = "<group>";
+		};
 		C5F5378122544E66006D228B /* PlayerView(播放悬浮窗) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3415,6 +3457,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iMusicPlayer/Pods-iMusicPlayer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BGFMDB/BGFMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
@@ -3436,6 +3479,7 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TagListView/TagListView.framework",
+				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
@@ -3444,6 +3488,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGFMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
@@ -3465,6 +3510,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TagListView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
@@ -3597,6 +3643,7 @@
 				C57FC8932240DC2F00218DE7 /* BaseViewController.swift in Sources */,
 				C57FC9062240DC3000218DE7 /* HXCustomCollectionReusableView.m in Sources */,
 				C57FC8832240DC2F00218DE7 /* MDSettingController.swift in Sources */,
+				C5CAA244228E9E0E00C49BDE /* MPDownloadTools.swift in Sources */,
 				C57FC82A2240DC2F00218DE7 /* MPPlayListTableViewCell.swift in Sources */,
 				C57FC91C2240DC3000218DE7 /* FJAddressTVCell.swift in Sources */,
 				C57FC7DE2240DC2F00218DE7 /* MDWebViewController.swift in Sources */,
@@ -3648,6 +3695,7 @@
 				C57FC7DC2240DC2F00218DE7 /* LTLocationViewController.swift in Sources */,
 				C57FC80F2240DC2F00218DE7 /* MPChoicenessViewController.swift in Sources */,
 				C57FC8E72240DC2F00218DE7 /* MDPasswordView.swift in Sources */,
+				C5CAA22F228E900F00C49BDE /* GKDownloadModel.m in Sources */,
 				C57FC8F62240DC3000218DE7 /* HXCollectionView.m in Sources */,
 				C57FC8162240DC2F00218DE7 /* MPLatestViewController.swift in Sources */,
 				C52E2A1D2249CD83000075E8 /* MPModelTools.swift in Sources */,
@@ -3848,6 +3896,7 @@
 				C57FC8952240DC2F00218DE7 /* BaseHeaderView.swift in Sources */,
 				C57FC8F72240DC3000218DE7 /* UIImageView+HXExtension.m in Sources */,
 				C57FC89A2240DC2F00218DE7 /* FYLSegmentView.m in Sources */,
+				C5CAA230228E900F00C49BDE /* GKDownloadManager.m in Sources */,
 				C57FC83B2240DC2F00218DE7 /* MPDiscoverModel.swift in Sources */,
 				C57FC8F02240DC3000218DE7 /* UIViewController+HXExtension.m in Sources */,
 				C57FC8CF2240DC2F00218DE7 /* NSString+MD5.m in Sources */,
@@ -3860,6 +3909,7 @@
 				C57FC8BE2240DC2F00218DE7 /* UIView+Category.m in Sources */,
 				C57FC8622240DC2F00218DE7 /* MPUploadMusicViewController.swift in Sources */,
 				C57FC8C32240DC2F00218DE7 /* NSString+Category.m in Sources */,
+				C5CAA248228E9F1800C49BDE /* GKHttpManager.m in Sources */,
 				C57FC8D12240DC2F00218DE7 /* NSAttributedString+Category.m in Sources */,
 				C57FC8182240DC2F00218DE7 /* MPSearchNavView.swift in Sources */,
 				C57FC83C2240DC2F00218DE7 /* MPBaseSectionHeaderView.swift in Sources */,

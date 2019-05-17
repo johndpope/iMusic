@@ -490,26 +490,10 @@ class MPPlayingBigView: BaseView {
             currentPlayCycleMode = sender.isSelected ? 2 : 0
             break
         case 10007: // 收藏
-            // 添加到我的最爱列表
-            let song = self.getCurrentSong()
-            if !MPModelTools.checkSongExsistInPlayingList(song: song, tableName: MPMyFavoriteViewController.classCode) {
-                // 标记为收藏状态：喜爱列表、当前列表
-                song.data_collectStatus = 1
-                MPModelTools.saveSongToTable(song: song, tableName: MPMyFavoriteViewController.classCode)
-                // 设置为收藏状态
-                xib_collect.isSelected = true
-                SVProgressHUD.showInfo(withStatus: NSLocalizedString("收藏成功", comment: ""))
+            if BOOL_OPEN_MUSIC_DL {
+                download()
             }else {
-                MPModelTools.deleteSongInTable(tableName: MPMyFavoriteViewController.classCode, songs: [song]) {
-                    // 标记为收藏状态：喜爱列表、当前列表
-                    song.data_collectStatus = 0
-                    // 设置为收藏状态
-                    self.xib_collect.isSelected = false
-                    // 取消收藏
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("取消收藏", comment: ""))
-                }
-                // 更新上传模型
-                MPModelTools.updateCloudListModel(type: 2)
+                collection()
             }
             break
         case 10008: // 添加到歌单
@@ -551,6 +535,37 @@ class MPPlayingBigView: BaseView {
         default:
             break
         }
+    }
+    
+    /// 收藏
+    private func collection() {
+        // 添加到我的最爱列表
+        let song = self.getCurrentSong()
+        if !MPModelTools.checkSongExsistInPlayingList(song: song, tableName: MPMyFavoriteViewController.classCode) {
+            // 标记为收藏状态：喜爱列表、当前列表
+            song.data_collectStatus = 1
+            MPModelTools.saveSongToTable(song: song, tableName: MPMyFavoriteViewController.classCode)
+            // 设置为收藏状态
+            xib_collect.isSelected = true
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("收藏成功", comment: ""))
+        }else {
+            MPModelTools.deleteSongInTable(tableName: MPMyFavoriteViewController.classCode, songs: [song]) {
+                // 标记为收藏状态：喜爱列表、当前列表
+                song.data_collectStatus = 0
+                // 设置为收藏状态
+                self.xib_collect.isSelected = false
+                // 取消收藏
+                SVProgressHUD.showInfo(withStatus: NSLocalizedString("取消收藏", comment: ""))
+            }
+            // 更新上传模型
+            MPModelTools.updateCloudListModel(type: 2)
+        }
+    }
+    
+    /// 下载
+    private func download() {
+        let song = self.getCurrentSong()
+        MPDownloadTools.downloadMusicWithSongId(model: song)
     }
     
     private func mvPrev() {
