@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var playingView: MPPlayingView?
     
-    var playingBigView: MPPlayingBigView_new?
+    var playingBigView: MPPlayingBigView?
     
     var backgroundTaskIdentifier: UIBackgroundTaskIdentifier!
     
@@ -237,14 +237,6 @@ extension AppDelegate: JPUSHRegisterDelegate {
 }
 // 监听后台回到前台
 extension AppDelegate {
-    // 提前添加播放控制View到window上
-    private func addPlayingView() {
-        // 添加播放详情View
-        let pbv = MPPlayingBigView_new.md_viewFromXIB() as! MPPlayingBigView_new
-        pbv.top = window?.frame.height ?? 0
-        playingBigView = pbv
-        window?.addSubview(pbv)
-    }
     
     @available(iOS 11.0, *)
     private func registerBackgroundPlay() {

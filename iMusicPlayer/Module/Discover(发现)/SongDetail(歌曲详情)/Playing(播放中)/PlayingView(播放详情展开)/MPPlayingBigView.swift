@@ -1,5 +1,5 @@
 //
-//  MPPlayingBigView_new.swift
+//  MPPlayingBigView.swift
 //  iMusicPlayer
 //
 //  Created by Modi on 2019/4/1.
@@ -22,7 +22,7 @@ private struct Constant {
     static let CurrentPlayListTableName = "CurrentPlayList"
 }
 
-class MPPlayingBigView_new: BaseView {
+class MPPlayingBigView: BaseView {
     
     // MARK: - MP3属性开始
     
@@ -628,7 +628,7 @@ class MPPlayingBigView_new: BaseView {
     
 }
 // MARK: - 歌曲控制相关操作
-extension MPPlayingBigView_new {
+extension MPPlayingBigView {
     /// 添加歌曲到歌单
     func addToSongList() {
         let lv = MPAddToSongListView.md_viewFromXIB() as! MPAddToSongListView
@@ -711,7 +711,7 @@ extension MPPlayingBigView_new {
 }
 
 // MARK: - MPSongToolsViewDelegate
-extension MPPlayingBigView_new: MPSongToolsViewDelegate {
+extension MPPlayingBigView: MPSongToolsViewDelegate {
     
     func timeOff() {
         QYTools.shared.Log(log: "定时关闭")
@@ -771,7 +771,7 @@ extension MPPlayingBigView_new: MPSongToolsViewDelegate {
 }
 
 // MARK: - 歌曲控制相关操作
-extension MPPlayingBigView_new {
+extension MPPlayingBigView {
     
     /// 滑动滑竿控制播放
     ///
@@ -832,7 +832,7 @@ extension MPPlayingBigView_new {
 }
 
 // MARK: - YTPlayerViewDelegate
-extension MPPlayingBigView_new: YTPlayerViewDelegate {
+extension MPPlayingBigView: YTPlayerViewDelegate {
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         playerView.playVideo()
@@ -866,7 +866,7 @@ extension MPPlayingBigView_new: YTPlayerViewDelegate {
     
 }
 // MARK: - MPPlayingViewDelegate：小窗控制事件回调
-extension MPPlayingBigView_new: MPPlayingViewDelegate {
+extension MPPlayingBigView: MPPlayingViewDelegate {
     /// 上一首
     ///
     /// - Parameters:
@@ -935,7 +935,7 @@ extension MPPlayingBigView_new: MPPlayingViewDelegate {
 }
 
 // MARK: - 扩展大小窗口切换时样式切换
-extension MPPlayingBigView_new {
+extension MPPlayingBigView {
     
     func hiddenStyle() {
         self.top = window!.frame.height
@@ -980,7 +980,7 @@ extension MPPlayingBigView_new {
 }
 
 // MARK: - 播放MP3
-extension MPPlayingBigView_new {
+extension MPPlayingBigView {
     
     private func endPlayer() {
         timer.invalidate()
