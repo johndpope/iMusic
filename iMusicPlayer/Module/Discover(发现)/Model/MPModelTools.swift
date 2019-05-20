@@ -506,6 +506,31 @@ class MPModelTools: NSObject {
         return rs
     }
     
+    class func checkSongExsistInDownloadList(song: MPSongModel) -> Bool {
+        let startTime = CFAbsoluteTimeGetCurrent()
+        var rs = false
+        var temps = [MPSongModel]()
+        GKDownloadManager.sharedInstance()?.downloadedFileList()?.enumerateObjects({ (obj, idx, stop) in
+            if let dModel = obj as? GKDownloadModel {
+                let sModel = MPSongModel()
+                sModel.data_songName = dModel.fileName
+                sModel.data_singerName = dModel.fileArtistName
+                sModel.data_artworkUrl = dModel.fileImagePath
+                sModel.data_songId = dModel.fileID
+                sModel.data_cache = dModel.fileUrl
+                temps.append(sModel)
+            }
+        })
+        temps.forEach { (item) in
+            if song.data_songId == item.data_songId {
+                rs = true
+            }
+        }
+        let endTime = CFAbsoluteTimeGetCurrent()
+        debugPrint("\(#function)代码执行时长：%f 毫秒", (endTime - startTime)*1000)
+        return rs
+    }
+    
     /// 获取当前播放列表
     ///
     /// - Parameters:

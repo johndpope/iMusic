@@ -57,7 +57,7 @@ class MPDownloadTools: NSObject {
         dModel.fileArtistName   = model.data_singerName;
 //        dModel.fileAlbumId      = model.album_id;
 //        dModel.fileAlbumName    = model.album_title;
-        dModel.fileCover             = model.data_artworkUrl;
+        dModel.fileCover             = model.data_artworkBigUrl;
         dModel.fileUrl               = model.data_cache;
         dModel.fileDuration     = "\(model.data_durationInSeconds)";
 //        dModel.fileFormat          = model.file_extension;

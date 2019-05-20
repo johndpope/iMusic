@@ -24,6 +24,8 @@ class MPMyFavoriteHeaderView: UITableViewCell, ViewClickedDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let title = NSLocalizedString("随机播放", comment: "")
+        xib_random.setTitle(title, for: .normal)
     }
     
     @IBAction func randomPlay(_ sender: UIButton) {

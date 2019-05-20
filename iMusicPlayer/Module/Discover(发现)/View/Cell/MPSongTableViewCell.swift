@@ -42,16 +42,6 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     @IBOutlet weak var xib_desc: UILabel!
     @IBOutlet weak var xib_collect: UIButton! {
         didSet {
-            
-            // 判断是否开启下载权限
-            if BOOL_OPEN_MUSIC_DL {
-                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
-                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
-            }else {
-                xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
-                xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
-            }
-            
             // 扩大按钮热区
             xib_collect.touchAreaInsets = UIEdgeInsets(top: 14, left: 8, bottom: 14, right: 4)
         }
@@ -71,6 +61,8 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     
     var sourceType = -1
     
+    var MVOrMP3: Int = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -79,26 +71,6 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     override func setSelected(_ selected: Bool, animated: Bool) {
         // 用户点击的时候调用
         if selected {
-//            let vc = MPPlayingViewController()
-//            // 循序不能倒过来
-//            vc.currentSong = self.currentSong
-//            vc.model = self.currentSongList
-//            let nav = UINavigationController(rootViewController: vc)
-//            HFAppEngine.shared.currentViewController()?.present(nav, animated: true, completion: nil)
-            
-            // 显示当前的播放View
-//            if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
-//                if self.sourceType != -1 {
-//                    pv.currentSouceType = 0
-//                }else {
-//                    pv.currentSouceType = SourceType
-//                }
-//                pv.currentSong = self.currentSong
-//                pv.model = currentSongList
-//                pv.currentAlbum = currentAlbum
-//                pv.bigStyle()
-//            }
-            
             if let album = currentAlbum {
                 album.data_songs = currentSongList
                 MPModelTools.saveRecentlyAlbum(album: album)
@@ -110,7 +82,6 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
             MPModelTools.saveCurrentPlayList(currentList: currentSongList)
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_PlayCurrentList), object: nil, userInfo: ["randomMode" : 0])
-//            NotificationCenter.default.post(name: NSNotification.Name(NotCenter.NC_PlayCurrentList), object: nil)
         }
     }
     
@@ -122,31 +93,11 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
         if sender.tag == 10001 {
-            // 添加到我的最爱列表
-            if !MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode) {
-                // 标记为收藏状态：喜爱列表、当前列表
-                self.currentSong?.data_collectStatus = 1
-                MPModelTools.saveSongToTable(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
-                // 设置为收藏状态
-                xib_collect.isSelected = true
-                SVProgressHUD.showInfo(withStatus: NSLocalizedString("收藏成功", comment: ""))
+            if BOOL_OPEN_MUSIC_DL, self.sourceType == -1, MVOrMP3 == 1 {
+                download()
             }else {
-                guard let song = self.currentSong else {
-                    return
-                }
-                MPModelTools.deleteSongInTable(tableName: MPMyFavoriteViewController.classCode, songs: [song]) {
-                    // 标记为收藏状态：喜爱列表、当前列表
-                    song.data_collectStatus = 0
-                    // 设置为收藏状态
-                    self.xib_collect.isSelected = false
-                    // 取消收藏
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("取消收藏", comment: ""))
-                }
+                collection()
             }
-            // 更新上传模型
-            MPModelTools.updateCloudListModel(type: 2)
-            // 通知更新列表数据
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_RefreshLocalModels), object: nil)
         }else {
             let pv = MPSongToolsView.md_viewFromXIB() as! MPSongToolsView
             pv.plistName = "songTools"
@@ -160,55 +111,90 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
         
     }
     
+    /// 收藏
+    private func collection() {
+        // 添加到我的最爱列表
+        if !MPModelTools.checkSongExsistInPlayingList(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode) {
+            // 标记为收藏状态：喜爱列表、当前列表
+            self.currentSong?.data_collectStatus = 1
+            MPModelTools.saveSongToTable(song: self.currentSong!, tableName: MPMyFavoriteViewController.classCode)
+            // 设置为收藏状态
+            xib_collect.isSelected = true
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("收藏成功", comment: ""))
+        }else {
+            guard let song = self.currentSong else {
+                return
+            }
+            MPModelTools.deleteSongInTable(tableName: MPMyFavoriteViewController.classCode, songs: [song]) {
+                // 标记为收藏状态：喜爱列表、当前列表
+                song.data_collectStatus = 0
+                // 设置为收藏状态
+                self.xib_collect.isSelected = false
+                // 取消收藏
+//                SVProgressHUD.showInfo(withStatus: NSLocalizedString("取消收藏", comment: ""))
+            }
+        }
+        // 更新上传模型
+        MPModelTools.updateCloudListModel(type: 2)
+        // 通知更新列表数据
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_RefreshLocalModels), object: nil)
+    }
+    
+    /// 下载
+    private func download() {
+        if let song = self.currentSong, !xib_collect.isSelected {
+            MPDownloadTools.downloadMusicWithSongId(model: song)
+            GKDownloadManager.sharedInstance()?.delegate = self
+        }
+    }
+    
     func updateCell(model: MPSongModel, models: [MPSongModel], album: GeneralPlaylists? = nil, sourceType: Int = -1) {
         currentSongList = models
         currentSong = model
         currentAlbum = album
         
         self.sourceType = sourceType
-        if BOOL_OPEN_MUSIC_DL, sourceType != -1 {
-            xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
-            xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
-        }else {
-            xib_collect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
-            xib_collect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
-        }
         
         //设置图片
-        if let img = model.data_artworkBigUrl, img != "" {
+        let img = model.data_artworkBigUrl ?? model.data_artworkUrl ?? ""
+        if img.contains("http") {
             let imgUrl = API.baseImageURL + img
-            xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
+            xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "pic_album"))
+        }else {
+            let path = model.data_artworkBigUrl ?? model.data_artworkUrl ?? ""
+            xib_image.image = UIImage(named: path) == nil ? #imageLiteral(resourceName: "pic_album") : UIImage(named: path)
         }
 
-        var type = -1
-       if let sid = model.data_songId, sid != "", let cache = model.data_cache, cache != "" {
-            type = 1
-        }else {
-            type = 0
-        }
-        
-        if type == 0 {
-            xib_title.text = model.data_title
-            xib_desc.text = model.data_channelTitle
-        }else {
+        if let sid = model.data_songId, sid != "", let cache = model.data_cache, cache != "" {   // MP3
+            MVOrMP3 = 1
             xib_title.text = model.data_songName
             xib_desc.text = model.data_singerName
+            if BOOL_OPEN_MUSIC_DL, sourceType == -1 {
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
+            }else {
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
+            }
+        }else {     // MV
+            MVOrMP3 = 0
+            xib_title.text = model.data_title
+            xib_desc.text = model.data_channelTitle
+            
+            xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
+            xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
         }
         
-        // 是否选中
-//        if model.data_collectStatus == 1 {
-//            xib_collect.isSelected = true
-//        }
-        
         // 异步更新当前收藏状态
-//        DispatchQueue.init(label: "updateCollectionStatus").async {
-//            if MPModelTools.checkSongExsistInPlayingList(song: model, tableName: MPMyFavoriteViewController.classCode) {
-//                self.xib_collect.isSelected = true
-//            }
-//        }
         DispatchQueue.main.async {
-            if MPModelTools.checkSongExsistInPlayingList(song: model, tableName: MPMyFavoriteViewController.classCode) {
-                self.xib_collect.isSelected = true
+            if BOOL_OPEN_MUSIC_DL, self.sourceType == -1, let song = self.currentSong, self.MVOrMP3 == 1 {
+                if MPModelTools.checkSongExsistInDownloadList(song: song) {
+                    self.xib_collect.isSelected = true
+                }
+            }else {
+                if MPModelTools.checkSongExsistInPlayingList(song: model, tableName: MPMyFavoriteViewController.classCode) {
+                    self.xib_collect.isSelected = true
+                }
             }
         }
         
@@ -328,4 +314,12 @@ extension MPSongTableViewCell: MPSongToolsViewDelegate {
         return index
     }
     
+}
+// MARK: - 下载相关代理事件
+extension MPSongTableViewCell: GKDownloadManagerDelegate {
+    func gkDownloadManager(_ downloadManager: GKDownloadManager!, downloadModel: GKDownloadModel!, stateChanged state: GKDownloadManagerState) {
+        if state == .finished {
+            xib_collect.isSelected = true
+        }
+    }
 }

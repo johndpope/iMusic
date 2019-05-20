@@ -180,7 +180,7 @@ extension MPSongListViewController {
         }else if type == 2 {
             self.headerSongModel?.data_recentlyType = 4
         }
-        cell.updateCell(model: model[indexPath.row], models: self.model, album: self.headerSongModel, sourceType: type)
+        cell.updateCell(model: model[indexPath.row], models: self.model, album: self.headerSongModel)
         return cell
     }
     

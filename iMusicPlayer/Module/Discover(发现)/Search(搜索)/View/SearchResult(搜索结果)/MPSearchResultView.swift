@@ -241,9 +241,9 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
                     cell = tableView.dequeueReusableCell(withIdentifier: Constant.mvIdentifier) as! MPSongTableViewCell
                     if let models = model?.data_videos {
                         if let amodels = model?.data_collection, amodels.count > 0 {
-                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, album: amodels[0], sourceType: 1)
+                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, album: amodels[0])
                         }else {
-                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, sourceType: 1)
+                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models)
                         }
                     }
                 }
@@ -269,9 +269,9 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
                     cell = tableView.dequeueReusableCell(withIdentifier: Constant.mvIdentifier) as! MPSongTableViewCell
                     if let models = model?.data_videos {
                         if let amodels = model?.data_collection, amodels.count > 0 {
-                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, album: amodels[0], sourceType: 1)
+                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, album: amodels[0])
                         }else {
-                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models, sourceType: 1)
+                            (cell as! MPSongTableViewCell).updateCell(model: models[indexPath.row], models: models)
                         }
                     }
                 }

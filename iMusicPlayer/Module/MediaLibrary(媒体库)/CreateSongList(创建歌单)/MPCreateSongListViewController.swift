@@ -118,7 +118,7 @@ class MPCreateSongListViewController: BaseTableViewController {
     override func setupStyle() {
         super.setupStyle()
         
-        addLeftItem(title: NSLocalizedString("我创建的歌单", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
+        addLeftItem(title: NSLocalizedString("我的歌单", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
         addRightItem(imageName: "nav_icon_search")
     }
     

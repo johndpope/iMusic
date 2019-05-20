@@ -136,7 +136,7 @@ var SyncReset = 0
 let TabBarDataSource: [[String: String]] = {
     let dic1 = ["title": NSLocalizedString("发现", comment: ""), "imageNameS": "icon_discover_selected", "imageNameN": "icon_discover_selected(1)", "viewController": "MPDiscoverViewController"]
     let dic2 = ["title": NSLocalizedString("电台", comment: ""), "imageNameS": "icon_fm_normal(1)", "imageNameN": "icon_fm_normal", "viewController": "MPRadioViewController"]
-    let dic3 = ["title": NSLocalizedString("媒体库", comment: ""), "imageNameS": "icon_list_normal(1)", "imageNameN": "icon_list_normal", "viewController": "MPMediaLibraryViewController"]
+    let dic3 = ["title": NSLocalizedString("歌单", comment: ""), "imageNameS": "icon_list_normal(1)", "imageNameN": "icon_list_normal", "viewController": "MPMediaLibraryViewController"]
     return [dic1, dic2, dic3]
 }()
 

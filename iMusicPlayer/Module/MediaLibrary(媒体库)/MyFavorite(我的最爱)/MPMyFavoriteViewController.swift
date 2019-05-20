@@ -58,7 +58,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
     override func refreshData() {
         super.refreshData()
         
-        var title = NSLocalizedString("我的最爱", comment: "")
+        var title = NSLocalizedString("我的音乐收藏", comment: "")
         switch fromType {
         case .Recently:
             title = NSLocalizedString("最近播放", comment: "")
@@ -111,7 +111,8 @@ class MPMyFavoriteViewController: BaseTableViewController {
                     let sModel = MPSongModel()
                     sModel.data_songName = dModel.fileName
                     sModel.data_singerName = dModel.fileArtistName
-                    sModel.data_artworkUrl = dModel.fileImagePath
+                    sModel.data_artworkUrl = dModel.fileCover
+                    sModel.data_artworkBigUrl = dModel.fileCover
                     sModel.data_songId = dModel.fileID
                     sModel.data_cache = dModel.fileUrl
                     temps.append(sModel)
@@ -120,7 +121,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
             self.model = temps
             break
         case .Cache:
-            title = NSLocalizedString("离线歌曲", comment: "")
+            title = NSLocalizedString("可离线播放", comment: "")
             
             break
         default:
@@ -128,71 +129,6 @@ class MPMyFavoriteViewController: BaseTableViewController {
         }
         addLeftItem(title: title, imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
     }
-    
-//    private func saveListToCloudModel(m: [MPSongModel]) {
-//        // 更新数量
-//        self.headerView?.count = m.count
-//        
-//        DispatchQueue.init(label: "SaveListToCloud").async {
-//            // 保存到上传模型
-//            switch self.fromType {
-//            case .Recently:
-//                // 修改当前标记
-//                if DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0 > m.count {
-//                    DiscoverCent?.data_CloudListUploadModel.data_historyReset = 1
-//                    
-//                    DiscoverCent?.data_CloudListUploadModel.data_history = m
-//                }else {
-//                    DiscoverCent?.data_CloudListUploadModel.data_historyReset = 0
-//                    
-//                    let location = DiscoverCent?.data_CloudListUploadModel.data_history?.count ?? 0
-//                    let length = m.count - location
-//                    guard var hlist = DiscoverCent?.data_CloudListUploadModel.data_history else {
-//                        return
-//                    }
-//                    hlist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel])!
-//                }
-//                break
-//            case .Favorite:
-//                // 修改当前标记
-//                if DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0 > m.count {
-//                    DiscoverCent?.data_CloudListUploadModel.data_favoriteReset = 1
-//                    
-//                    DiscoverCent?.data_CloudListUploadModel.data_favorite = m
-//                }else {
-//                    DiscoverCent?.data_CloudListUploadModel.data_favoriteReset = 0
-//                    
-//                    let location = DiscoverCent?.data_CloudListUploadModel.data_favorite?.count ?? 0
-//                    let length = m.count - location
-//                    guard var flist = DiscoverCent?.data_CloudListUploadModel.data_favorite else {
-//                        return
-//                    }
-//                    flist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel])!
-//                }
-//                break
-//            case .Download:
-//                // 修改当前标记
-//                if DiscoverCent?.data_CloudListUploadModel.data_download?.count ?? 0 > m.count {
-//                    DiscoverCent?.data_CloudListUploadModel.data_downloadReset = 1
-//                    
-//                    DiscoverCent?.data_CloudListUploadModel.data_download = m
-//                }else {
-//                    DiscoverCent?.data_CloudListUploadModel.data_downloadReset = 0
-//                    
-//                    let location = DiscoverCent?.data_CloudListUploadModel.data_download?.count ?? 0
-//                    let length = m.count - location
-//                    guard var dlist = DiscoverCent?.data_CloudListUploadModel.data_download else {
-//                        return
-//                    }
-//                    dlist += ((m as NSArray).subarray(with: NSRange(location: location, length: length)) as? [MPSongModel])!
-//                }
-//                break
-//            default:
-//                break
-//            }
-//            
-//        }
-//    }
     
     override func setupStyle() {
         super.setupStyle()
@@ -259,15 +195,14 @@ extension MPMyFavoriteViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
         // 构造当前播放专辑列表模型
-        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的最爱", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
+        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的音乐收藏", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
 //        let album = GeneralPlaylists(JSON: json)
         let album = Mapper<GeneralPlaylists>().map(JSON: json)
-        if fromType == .Download {
+        if fromType == .Favorite {
             cell.updateCell(model: model[indexPath.row], models: self.model, album: album, sourceType: 1)
         }else {
             cell.updateCell(model: model[indexPath.row], models: self.model, album: album)
         }
-        cell.updateCell(model: model[indexPath.row], models: self.model, album: album)
         cell.selectionStyle = .none
         return cell
     }
@@ -301,7 +236,7 @@ extension MPMyFavoriteViewController {
 //        }
         
         // 构造当前播放专辑列表模型
-        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的最爱", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
+        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的音乐收藏", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
         let album = GeneralPlaylists(JSON: json)
         
         album?.data_songs = model

@@ -24,18 +24,7 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
     @IBOutlet weak var xib_title: UILabel!
     @IBOutlet weak var xib_desc: UILabel!
     @IBOutlet weak var xib_play: UIButton!
-    @IBOutlet weak var xib_downloadOrCollect: UIButton! {
-        didSet {
-            // 判断是否开启下载权限
-            if BOOL_OPEN_MUSIC_DL {
-                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
-                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
-            }else {
-                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
-                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
-            }
-        }
-    }
+    @IBOutlet weak var xib_downloadOrCollect: UIButton! 
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,35 +44,43 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
     }
     
     func updateCell(model: MPSongModel) {
-        
-        var type = -1
        if let sid = model.data_songId, sid != "", let cache = model.data_cache, cache != "" {
-            type = 1
-        }else {
-            type = 0
-        }
-        
-        if type == 0 {
-            xib_title.text = model.data_title
-            xib_desc.text = model.data_channelTitle
-            
-            imageView.isHidden = true
-        }else {
-            
             imageView.isHidden = false
             //设置图片
             if let img = model.data_artworkBigUrl, img != "" {
                 let imgUrl = API.baseImageURL + img
                 imageView!.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
             }
-            
+        
             xib_title.text = model.data_songName
             xib_desc.text = model.data_singerName
+        
+            if BOOL_OPEN_MUSIC_DL {
+                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
+                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
+            }else {
+                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
+                xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
+            }
+        }else {
+            xib_title.text = model.data_title
+            xib_desc.text = model.data_channelTitle
+        
+            imageView.isHidden = true
+        
+            xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
+            xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
         }
         
         DispatchQueue.main.async {
-            if MPModelTools.checkSongExsistInPlayingList(song: model, tableName: MPMyFavoriteViewController.classCode) {
-                self.xib_downloadOrCollect.isSelected = true
+            if BOOL_OPEN_MUSIC_DL {
+                if MPModelTools.checkSongExsistInDownloadList(song: model) {
+                    self.xib_downloadOrCollect.isSelected = true
+                }
+            }else {
+                if MPModelTools.checkSongExsistInPlayingList(song: model, tableName: MPMyFavoriteViewController.classCode) {
+                    self.xib_downloadOrCollect.isSelected = true
+                }
             }
         }
     }
