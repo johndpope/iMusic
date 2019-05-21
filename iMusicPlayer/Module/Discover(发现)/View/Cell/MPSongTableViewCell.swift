@@ -320,6 +320,8 @@ extension MPSongTableViewCell: GKDownloadManagerDelegate {
     func gkDownloadManager(_ downloadManager: GKDownloadManager!, downloadModel: GKDownloadModel!, stateChanged state: GKDownloadManagerState) {
         if state == .finished {
             xib_collect.isSelected = true
+        }else if state == .failed {
+            QYTools.shared.Log(log: "下载失败")
         }
     }
 }

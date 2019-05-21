@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 private struct Constant {
     static let identifier = "MPSearchTableViewCell"
@@ -93,14 +94,26 @@ class MPSearchViewController: BaseTableViewController {
                 self.keywordModel = m
             }
         }
+        // 用户发起一次搜索
+        Analytics.logEvent("start_search", parameters: nil)
         
         MPModelTools.getSearchResult(q: self.keyword, duration: self.duration, filter: self.filter, order: self.order, tableName: "", finished: { (model) in
             self.searchResultTableView?.mj_header.endRefreshing()
             self.searchResultTableView?.mj_footer.resetNoMoreData()
             if let m = model {
+                Analytics.logEvent("search_sucess", parameters: nil)
                 self.searchResultView?.model = m
                 self.nextPageTokenVideo = m.data_nextPageTokenVideo ?? ""
                 self.nextPageTokenPlaylist = m.data_nextPageTokenPlaylist ?? ""
+            }else {
+                Analytics.logEvent("search_failed", parameters: nil)
+                
+                if SourceType == 1 {
+                    Analytics.logEvent("search_failed_mp3", parameters: nil)
+                }else {
+                    Analytics.logEvent("search_failed_yt", parameters: nil)
+                }
+                
             }
         })
     }

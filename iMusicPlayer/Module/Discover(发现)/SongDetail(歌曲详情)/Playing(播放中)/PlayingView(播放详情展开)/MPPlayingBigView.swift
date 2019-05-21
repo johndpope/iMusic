@@ -298,6 +298,9 @@ class MPPlayingBigView: BaseView {
     }
     
     private func playMvOrMp3(type: Int) {
+        
+        Analytics.logEvent("play_start", parameters: nil)
+        
         self.bigStyle()
         
         self.playingStatusAction()
@@ -583,6 +586,7 @@ class MPPlayingBigView: BaseView {
     private func download() {
         let song = self.getCurrentSong()
         MPDownloadTools.downloadMusicWithSongId(model: song)
+        GKDownloadManager.sharedInstance()?.delegate = self
     }
     
     private func mvPrev() {
@@ -627,6 +631,9 @@ class MPPlayingBigView: BaseView {
     
     /// 状态开始播放
     private func startPlaying() {
+        
+        Analytics.logEvent("play_success", parameters: nil)
+        
         xib_play.isSelected = true
         // 更新结束时间
         let endtime: TimeInterval = currentSouceType == 1 ? self.streamer.duration : self.playView.duration()
@@ -638,6 +645,8 @@ class MPPlayingBigView: BaseView {
             self.lyricsModel.data_currentTime = streamer.currentTime
             self.lyricsModel.data_currentStatus = streamer.status == .playing ? 1 : 0
             self.lrcView?.model = self.lyricsModel
+            
+            Analytics.logEvent("play_success_mp3", parameters: nil)
         }
         
     }
@@ -665,7 +674,8 @@ class MPPlayingBigView: BaseView {
             if promissionForMP3(), BOOL_OPEN_MP3 == false {
                 // 设置全局开关：激活PM3
                 BOOL_OPEN_MP3 = true
-                Analytics.setUserProperty(<#T##value: String?##String?#>, forName: "allow_mp3_activated")
+                // 用户第一次激活播放mp3功能
+                Analytics.logEvent("allow_mp3_activated", parameters: nil)
             }
         }
         
@@ -885,6 +895,8 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
         UIView.animate(withDuration: 0.25) {
             self.playBgView.bringSubviewToFront(self.playView)
         }
+        
+        Analytics.logEvent("play_success_yt", parameters: nil)
     }
     
     func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
@@ -903,6 +915,8 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
             break
         default:
             xib_play.isSelected = false
+            Analytics.logEvent("play_failed", parameters: nil)
+            Analytics.logEvent("play_failed_yt", parameters: nil)
             break
         }
         
@@ -1101,6 +1115,8 @@ extension MPPlayingBigView {
 //            break
         default:
             xib_play.isSelected = false
+            Analytics.logEvent("play_failed", parameters: nil)
+            Analytics.logEvent("play_failed_mp3", parameters: nil)
             break
         }
         
@@ -1197,5 +1213,16 @@ extension MPPlayingBigView {
         }
         
         return true
+    }
+}
+
+// MARK: - 下载相关代理事件
+extension MPPlayingBigView: GKDownloadManagerDelegate {
+    func gkDownloadManager(_ downloadManager: GKDownloadManager!, downloadModel: GKDownloadModel!, stateChanged state: GKDownloadManagerState) {
+        if state == .finished {
+            xib_collect.isSelected = true
+        }else if state == .failed {
+            QYTools.shared.Log(log: "下载失败")
+        }
     }
 }

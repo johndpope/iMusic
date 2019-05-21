@@ -287,12 +287,29 @@ extension AppDelegate {
         QYTools.shared.Log(log: "BOOL_OPEN_MP3 == \(openMP3)")
         SourceType = openMP3 ? 1 : 0
         BOOL_OPEN_MP3 = openMP3
+        if openMP3 {
+            Analytics.logEvent("allow_mp3_on", parameters: nil)
+        }else {
+            Analytics.logEvent("allow_mp3_off", parameters: nil)
+        }
+        
         let openMusicDL = self.remoteConfig.configValue(forKey: "bool_open_music_dl").boolValue
         QYTools.shared.Log(log: "BOOL_OPEN_MUSIC_DL == \(openMusicDL)")
         BOOL_OPEN_MUSIC_DL = openMusicDL
+        if openMusicDL {
+            Analytics.logEvent("allow_downloading_on", parameters: nil)
+        }else {
+            Analytics.logEvent("allow_downloading_off", parameters: nil)
+        }
+        
         let openLyrics = self.remoteConfig.configValue(forKey: "bool_open_lyrics").boolValue
         QYTools.shared.Log(log: "BOOL_OPEN_LYRICS == \(openLyrics)")
         BOOL_OPEN_LYRICS = openLyrics
+        if openLyrics {
+            Analytics.logEvent("allow_lyrics_on", parameters: nil)
+        }else {
+            Analytics.logEvent("allow_lyrics_off", parameters: nil)
+        }
         
         let deviceAuth = self.remoteConfig.configValue(forKey: "status_of_device_auth").stringValue ?? ""
         QYTools.shared.Log(log: "STATUS_OF_DEVICE_AUTH == \(deviceAuth)")

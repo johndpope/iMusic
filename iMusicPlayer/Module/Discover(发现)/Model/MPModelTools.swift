@@ -771,22 +771,27 @@ class MPModelTools: NSObject {
     ///   - tableName: 缓存必须传表名：空代表不缓存
     ///   - finished: 数据获取完成回调
     class func getSearchResult(q: String = "", duration: String = "", filter: String = "", order: String = "", size: Int = 20, y: String = "0", tableName: String = MPSearchResultModel.classCode, finished: ((_ models: MPSearchResultModel?)->Void)? = nil) {
+        var temp: MPSearchResultModel?
         if let arr: [MPSearchResultModel]  = MPSearchResultModel.bg_findAll(tableName) as? [MPSearchResultModel], let model = arr.first {
             QYTools.shared.Log(log: "本地数据库获取数据")
 //            printSQLiteData(arr: arr)
+            temp = model
             if let f = finished {
-                f(model)
+                f(temp)
             }
         }else {
             DiscoverCent?.requestSearchResult(q: q, duration: duration, filter: filter, order: order, size: size, y: y, complete: { (isSucceed, model, msg) in
                 switch isSucceed {
                 case true:
                     QYTools.shared.Log(log: "在线获取数据")
-                    if let f = finished {
+                    if let m = model {
                         // 缓存数据库
-                        model!.bg_tableName = tableName
-                        model!.bg_save()
-                        f(model)
+                        m.bg_tableName = tableName
+                        m.bg_save()
+                        temp = m
+                    }
+                    if let f = finished {
+                        f(temp)
                     }
                     break
                 case false:

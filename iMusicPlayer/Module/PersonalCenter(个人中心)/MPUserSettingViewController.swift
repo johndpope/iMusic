@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseUI
+import FirebaseAnalytics
 
 class MPUserSettingViewController: BaseTableViewController {
 
@@ -108,6 +109,9 @@ class MPUserSettingViewController: BaseTableViewController {
                     }
                     HFAppEngine.shared.currentViewController()?.present(alert!, animated: true, completion: nil)
                 }else {
+                    
+                    Analytics.logEvent("login_start", parameters: nil)
+                    
                     HFThirdPartyManager.shared.loginByThirdParty(type: .Google)
                 }
             }
@@ -341,6 +345,8 @@ extension MPUserSettingViewController: HFThirdPartyManagerDelegate {
                     let t = MPUserSettingHeaderViewModel.init(picture: picture, name: name, email: email, uid: uid, did: did)
                     self.headerView.updateView(model: t)
                     
+                    Analytics.logEvent("login_success", parameters: nil)
+                    
                     // 异步保存用户信息
                     DispatchQueue.init(label: "SaveUserInfo").async {
                         DiscoverCent?.requestLogin(name: t.name, avatar: t.picture, contact: t.email, did: t.did, uid: t.uid, complete: { (isSucceed, msg) in
@@ -379,6 +385,9 @@ extension MPUserSettingViewController: HFThirdPartyManagerDelegate {
             
             break
         case false:
+            
+            Analytics.logEvent("login_failed", parameters: nil)
+            
             SVProgressHUD.showError(withStatus: msg)
             break
         }
