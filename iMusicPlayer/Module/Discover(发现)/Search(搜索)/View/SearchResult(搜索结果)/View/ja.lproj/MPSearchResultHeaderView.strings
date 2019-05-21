@@ -15,7 +15,7 @@
 "dca-16-Znj.text" = "時間";
 
 /* Class = "UIButton"; normalTitle = "筛选"; ObjectID = "jhL-F4-qYo"; */
-"jhL-F4-qYo.normalTitle" = "筛选";
+"jhL-F4-qYo.normalTitle" = "";
 
 /* Class = "UILabel"; text = "选择"; ObjectID = "yRt-6B-NCU"; */
 "yRt-6B-NCU.text" = "特徴";

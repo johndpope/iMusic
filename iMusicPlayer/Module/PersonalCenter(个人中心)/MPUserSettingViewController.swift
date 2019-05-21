@@ -332,12 +332,12 @@ extension MPUserSettingViewController: HFThirdPartyManagerDelegate {
                         return
                     }
                     
-                    var did = userInfo["id"] as? String ?? ""
-                    if did == "" {
-                        did = userInfo["sub"] as? String ?? ""
+                    var uid = userInfo["id"] as? String ?? ""
+                    if uid == "" {
+                        uid = userInfo["sub"] as? String ?? ""
                     }
                     
-                    let uid = UIDevice.current.identifierForVendor?.uuidString ?? "JA8888"
+                    let did = UIDevice.current.identifierForVendor?.uuidString ?? "JA8888"
                     let t = MPUserSettingHeaderViewModel.init(picture: picture, name: name, email: email, uid: uid, did: did)
                     self.headerView.updateView(model: t)
                     

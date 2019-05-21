@@ -2,8 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>status_of_device_auth</key>
+	<key>dev_lang</key>
 	<string></string>
+	<key>dev_loc</key>
+	<string></string>
+	<key>float_min_act_hours_as_old_user</key>
+	<integer>3600</integer>
+	<key>int_min_completed_songs_as_old_user</key>
+	<integer>5</integer>
+	<key>status_of_device_auth</key>
+	<string>accept</string>
 	<key>bool_open_mp3</key>
 	<false/>
 	<key>bool_open_music_dl</key>

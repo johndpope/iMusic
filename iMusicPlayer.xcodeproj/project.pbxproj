@@ -447,6 +447,7 @@
 		C5CAA230228E900F00C49BDE /* GKDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CAA22B228E900E00C49BDE /* GKDownloadManager.m */; };
 		C5CAA244228E9E0E00C49BDE /* MPDownloadTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAA243228E9E0E00C49BDE /* MPDownloadTools.swift */; };
 		C5CAA248228E9F1800C49BDE /* GKHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CAA247228E9F1800C49BDE /* GKHttpManager.m */; };
+		C5CAA24A22939A2000C49BDE /* MPAppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CAA24922939A2000C49BDE /* MPAppConfig.swift */; };
 		C5F5378522544EB8006D228B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378222544EB7006D228B /* PlayerView.swift */; };
 		C5F5378622544EB8006D228B /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378322544EB7006D228B /* Video.swift */; };
 		C5F5378722544EB8006D228B /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F5378422544EB8006D228B /* extensions.swift */; };
@@ -1089,6 +1090,7 @@
 		C5CAA243228E9E0E00C49BDE /* MPDownloadTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPDownloadTools.swift; sourceTree = "<group>"; };
 		C5CAA246228E9F1800C49BDE /* GKHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKHttpManager.h; sourceTree = "<group>"; };
 		C5CAA247228E9F1800C49BDE /* GKHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKHttpManager.m; sourceTree = "<group>"; };
+		C5CAA24922939A2000C49BDE /* MPAppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPAppConfig.swift; sourceTree = "<group>"; };
 		C5F5378222544EB7006D228B /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		C5F5378322544EB7006D228B /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		C5F5378422544EB8006D228B /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
@@ -2070,6 +2072,7 @@
 				C51CE7FA2270BC7300964D38 /* MPRecentlyAlbumModel.swift */,
 				C54D6DDC2272F0B40007F57F /* MPLyricsModel.swift */,
 				C54D6DE02275AB260007F57F /* MPUserCloudListModel.swift */,
+				C5CAA24922939A2000C49BDE /* MPAppConfig.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3699,6 +3702,7 @@
 				C57FC8F62240DC3000218DE7 /* HXCollectionView.m in Sources */,
 				C57FC8162240DC2F00218DE7 /* MPLatestViewController.swift in Sources */,
 				C52E2A1D2249CD83000075E8 /* MPModelTools.swift in Sources */,
+				C5CAA24A22939A2000C49BDE /* MPAppConfig.swift in Sources */,
 				C57FC8DE2240DC2F00218DE7 /* ZXDrawPrizeView.swift in Sources */,
 				C569B6DC2262152D0003D186 /* CDFlowLayout.swift in Sources */,
 				C569B6EC22622F030003D186 /* MPRadioCollectionViewCell.swift in Sources */,

@@ -115,4 +115,7 @@ class API: NSObject {
     // MARK: -
     static let UploadMp3         = "/user/upload"
     
+    // MARK: -
+    static let AppConfig         = "/config/getAll"
+    
 }

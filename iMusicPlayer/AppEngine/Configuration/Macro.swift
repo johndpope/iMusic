@@ -116,6 +116,12 @@ let window = UIApplication.shared.keyWindow!
 // 包名
 let BundleName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
 
+// 版本号
+let APPVERSION = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+
+/// 设备具体型号
+let APPDEVICENAME = UIDevice.iphoneType()
+
 // 当前显示MV还是MP3
 var SourceType = 0
 
@@ -173,7 +179,23 @@ var BOOL_OPEN_LYRICS: Bool = false
 /// 如果是"reject"，则不再激活任何隐藏功能（下载，mp3，歌词）。如果是"accept"则允许激活。如果为空，不作任何处理
 var STATUS_OF_DEVICE_AUTH: String = ""
 
+/// 应用安装时长
+var FLOAT_MIN_ACT_HOURS_AS_OLD_USER: Float = 0
+
+/// 用户播放歌曲数量
+var INT_MIN_COMPLETED_SONGS_AS_OLD_USER: Int = 0
+
+/// 语言
+var DEV_LANG: String = ""
+
+/// 地区
+var DEV_LOC: String = ""
+
+// MARK: - 本地记录条件配置
+
+/// 用户完整播放歌曲数量：拖动进度条播放不做记录
+var USER_PLAY_SONG_COUNT: Int = 0
+
+var USER_OPEN_MP3: Bool = false
 
 // MARK: - 下载管理类
-//KDownloadManager [GKDownloadManager sharedInstance]
-//let KDownloadManager = GKDownloadManager.sharedInstance()

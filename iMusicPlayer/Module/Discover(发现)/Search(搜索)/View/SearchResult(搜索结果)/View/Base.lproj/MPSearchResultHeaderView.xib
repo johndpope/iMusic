@@ -38,7 +38,7 @@
                                 <constraint firstAttribute="width" secondItem="jhL-F4-qYo" secondAttribute="height" multiplier="66:35" id="vGn-Bn-9b3"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="筛选" image="list_icon_fliter_down">
+                            <state key="normal" image="list_icon_fliter_down">
                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <state key="selected" image="icon_arrow_up"/>

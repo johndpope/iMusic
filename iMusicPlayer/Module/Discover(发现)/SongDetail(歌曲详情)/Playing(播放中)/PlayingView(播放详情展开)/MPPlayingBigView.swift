@@ -86,7 +86,11 @@ class MPPlayingBigView: BaseView {
     @IBOutlet weak var xib_lrc: UIButton! {
         didSet {
             // 判断是否开启歌词权限
-            xib_lrc.isHidden = !BOOL_OPEN_LYRICS
+            if self.currentSouceType == 1, BOOL_OPEN_MP3, BOOL_OPEN_LYRICS {
+                xib_lrc.isHidden = false
+            }else {
+                xib_lrc.isHidden = true
+            }
             xib_lrc.touchAreaInsets = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
         }
     }
@@ -168,6 +172,9 @@ class MPPlayingBigView: BaseView {
     var model = [MPSongModel]()
     
     var needPlay: Int = -1
+    
+    /// 记录用户是否通过拖拽进度条播放
+    var userDragSlider: Bool = false
     
     // MARK: - 重新整理逻辑开始
     override func awakeFromNib() {
@@ -335,7 +342,7 @@ class MPPlayingBigView: BaseView {
             xib_desc.text = song.data_singerName
             
             // 判断是否开启下载权限
-            if BOOL_OPEN_MUSIC_DL {
+            if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
                 xib_collect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
                 xib_collect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
             }else {
@@ -414,7 +421,7 @@ class MPPlayingBigView: BaseView {
         DispatchQueue.main.async {
             let song = self.getCurrentSong()
             
-            if BOOL_OPEN_MUSIC_DL {
+            if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
                 if MPModelTools.checkSongExsistInDownloadList(song: song) {
                     self.xib_collect.isSelected = true
                 }
@@ -500,7 +507,7 @@ class MPPlayingBigView: BaseView {
             currentPlayCycleMode = sender.isSelected ? 2 : 0
             break
         case 10007: // 收藏
-            if BOOL_OPEN_MUSIC_DL {
+            if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
                 download()
             }else {
                 collection()
@@ -649,6 +656,19 @@ class MPPlayingBigView: BaseView {
         }else {
             self.mvNext()
         }
+        
+        // 记录用户播放的MP3数量
+        if userDragSlider == false {
+            // 歌曲数量+1
+            USER_PLAY_SONG_COUNT += 1
+            // 判断是否可以激活MP3
+            if promissionForMP3(), BOOL_OPEN_MP3 == false {
+                // 设置全局开关：激活PM3
+                BOOL_OPEN_MP3 = true
+                Analytics.setUserProperty(<#T##value: String?##String?#>, forName: "allow_mp3_activated")
+            }
+        }
+        
     }
     
 }
@@ -811,6 +831,7 @@ extension MPPlayingBigView {
                 playView.playVideo()
             }
         }else {
+            userDragSlider = true
             //播放器定位到对应的位置
             self.actionSliderProgress()
         }
@@ -928,7 +949,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
     
     func playingView(download view: MPPlayingView) {
         QYTools.shared.Log(log: "下载")
-        if BOOL_OPEN_MUSIC_DL {
+        if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
             self.download()
         }else {
             self.collection()
@@ -1142,3 +1163,39 @@ extension MPPlayingBigView {
     
 }
 
+// MARK: - 用户权限控制
+import FirebaseRemoteConfig
+import FirebaseAnalytics
+
+extension MPPlayingBigView {
+    
+    /// 判断用户是否达到开启MP3权限
+    ///
+    /// - Returns: -
+    func promissionForMP3() -> Bool {
+        
+        // 判断是否可以有激活权限
+        if STATUS_OF_DEVICE_AUTH != "accept" {
+            return false
+        }
+        
+        //        - 1.用户开机时间：超过3600s
+        let uptime = UIDevice.getLaunchSystemTime()
+        if uptime < 3600 {
+            return false
+        }
+        //        - 2.用户安装应用时间：
+        let installTime = UIDevice.getAppInstallTime()
+        let fsAppInstallSeconds = RemoteConfig.remoteConfig().configValue(forKey: "float_min_act_hours_as_old_user").numberValue?.doubleValue ?? 0
+        if installTime < fsAppInstallSeconds {
+            return false
+        }
+        //        - 3.用户播放歌曲数量：
+        let fsCompleteSongsCount = RemoteConfig.remoteConfig().configValue(forKey: "int_min_completed_songs_as_old_user").numberValue?.intValue ?? 0
+        if USER_PLAY_SONG_COUNT < fsCompleteSongsCount {
+            return false
+        }
+        
+        return true
+    }
+}

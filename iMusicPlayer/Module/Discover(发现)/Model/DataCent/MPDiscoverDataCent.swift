@@ -14,6 +14,53 @@ import Alamofire
 
 class MPDiscoverDataCent: HFDataCent {
     
+//    /config/getAll?ab_type=1&app_id=1&app_version=1&auth=1&did=1&lang=1&loc=1&min=0&op=1&phone=1&uid=1
+    
+    func requestAppConfig(complete:@escaping ((_ isSucceed: Bool, _ data: MPAppConfig?, _ message: String) -> Void)) {
+        
+        let did = UIDevice.current.identifierForVendor?.uuidString ?? "JA8888"
+        
+        var uid = did
+        if let obj = UserDefaults.standard.value(forKey: "UserInfoModel") as? Data, let m = NSKeyedUnarchiver.unarchiveObject(with: obj) as? MPUserSettingHeaderViewModel  {
+            uid = m.uid
+        }
+        
+        let param: [String:Any] = [
+            "uid":  uid,
+            "did":  did,
+            "phone":  APPDEVICENAME,
+            "min":  Date().timeIntervalSinceNow / 6000,
+            "loc":  DEV_LOC,
+            "lang":  DEV_LANG,
+            "auth":  STATUS_OF_DEVICE_AUTH,
+            "app_version":  APPVERSION,
+            "ab_type":  1
+        ]
+        
+        HFNetworkManager.request(url: API.AppConfig, method: .get, parameters: param, description: "获取APP后台配置") { (error, resp) in
+            // 连接失败时
+            if error != nil {
+            complete(false, nil, error!.localizedDescription)
+            return
+            }
+
+            guard let status = resp?["status"].intValue else {return}
+            guard let msg = resp?["errorMsg"].string else {return}
+
+            // 请求失败时
+            if status != 200 {
+            complete(false, nil, msg)
+            return
+            }
+
+            // 请求成功时
+            guard let dataDic = resp?["data"].dictionaryObject else {return}
+            let model: MPAppConfig = Mapper<MPAppConfig>().map(JSONObject: dataDic)!
+            
+            complete(true, model, msg)
+        }
+    }
+    
 //    /user/upload?token=ok&uid=fsdfds
     
     func requestUploadMP3(uid: String, artistName:  String = "", coverUrl:  String = "", lyricsUrl:  String = "", musicName:  String = "", musicUrl:  String = "", videoUrl:  String = "", complete:@escaping ((_ isSucceed: Bool, _ message: String) -> Void)) {

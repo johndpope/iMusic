@@ -55,7 +55,7 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
             xib_title.text = model.data_songName
             xib_desc.text = model.data_singerName
         
-            if BOOL_OPEN_MUSIC_DL {
+            if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
                 xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
                 xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
             }else {
@@ -73,7 +73,7 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
         }
         
         DispatchQueue.main.async {
-            if BOOL_OPEN_MUSIC_DL {
+            if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
                 if MPModelTools.checkSongExsistInDownloadList(song: model) {
                     self.xib_downloadOrCollect.isSelected = true
                 }

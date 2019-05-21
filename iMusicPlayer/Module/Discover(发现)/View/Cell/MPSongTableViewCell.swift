@@ -93,7 +93,7 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
         if sender.tag == 10001 {
-            if BOOL_OPEN_MUSIC_DL, self.sourceType == -1, MVOrMP3 == 1 {
+            if MVOrMP3 == 1, BOOL_OPEN_MP3 , BOOL_OPEN_MUSIC_DL, self.sourceType == -1 {
                 download()
             }else {
                 collection()
@@ -169,7 +169,7 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
             MVOrMP3 = 1
             xib_title.text = model.data_songName
             xib_desc.text = model.data_singerName
-            if BOOL_OPEN_MUSIC_DL, sourceType == -1 {
+            if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL, sourceType == -1 {
                 xib_collect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
                 xib_collect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
             }else {
@@ -187,7 +187,7 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
         
         // 异步更新当前收藏状态
         DispatchQueue.main.async {
-            if BOOL_OPEN_MUSIC_DL, self.sourceType == -1, let song = self.currentSong, self.MVOrMP3 == 1 {
+            if self.MVOrMP3 == 1, BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL, self.sourceType == -1, let song = self.currentSong {
                 if MPModelTools.checkSongExsistInDownloadList(song: song) {
                     self.xib_collect.isSelected = true
                 }
