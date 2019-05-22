@@ -26,6 +26,8 @@ class MPAddToSongListTableViewCell: UITableViewCell {
             if type == 1 {
                 nameCenterConstraints.constant = 0
                 xib_count.isHidden = true
+                
+                xib_title.text = NSLocalizedString("新增歌单", comment: "")
             }
         }
     }

@@ -23,6 +23,10 @@ class MPEditSongListDetailViewController: BaseTableViewController {
         }
     }
     @IBOutlet weak var xib_selectAll: UIButton!
+    @IBOutlet weak var xib_finished: UIButton!
+    @IBOutlet weak var xib_nextPlay: UILabel!
+    @IBOutlet weak var xib_addPlaylist: UILabel!
+    @IBOutlet weak var xib_delete: UILabel!
     
     /// 刷新专辑信息回调
     var updateAlbumBlock: ((_ album: GeneralPlaylists)->Void)?
@@ -39,6 +43,14 @@ class MPEditSongListDetailViewController: BaseTableViewController {
         super.viewDidLoad()
         
         self.configDragger()
+    }
+    
+    private func localized() {
+        xib_selectAll.setTitle(NSLocalizedString("全选", comment: ""), for: .normal)
+        xib_finished.setTitle(NSLocalizedString("完成", comment: ""), for: .normal)
+        xib_nextPlay.text = NSLocalizedString("下一首播放", comment: "")
+        xib_addPlaylist.text = NSLocalizedString("添加到歌单", comment: "")
+        xib_delete.text = NSLocalizedString("删除", comment: "")
     }
     
     override func setupStyle() {

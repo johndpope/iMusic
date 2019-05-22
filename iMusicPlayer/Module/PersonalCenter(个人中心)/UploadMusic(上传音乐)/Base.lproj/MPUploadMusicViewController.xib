@@ -15,12 +15,20 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="xib_agreeBtn" destination="xr6-Yz-OWe" id="QDX-Kk-Qqh"/>
                 <outlet property="xib_coverPath" destination="ZAC-ah-HvW" id="AbS-5M-ch4"/>
+                <outlet property="xib_coverPathLB" destination="cQw-0B-K9Y" id="CiN-dx-uTb"/>
                 <outlet property="xib_lrcPath" destination="zpi-Mt-h2R" id="UlY-GM-Vcf"/>
+                <outlet property="xib_lrcPathLB" destination="8xE-qV-OT9" id="Y9v-Km-1wh"/>
                 <outlet property="xib_mvPath" destination="fzU-eq-JYr" id="gsB-w5-voj"/>
+                <outlet property="xib_mvPathLB" destination="ue5-y9-6tE" id="YHq-2b-GRA"/>
+                <outlet property="xib_protocol" destination="EGp-Sn-JGa" id="c4C-t9-6rU"/>
                 <outlet property="xib_songName" destination="Mgm-xD-t2T" id="EUe-PC-pga"/>
+                <outlet property="xib_songNameLB" destination="Hh1-tz-mmU" id="jth-GA-IrP"/>
                 <outlet property="xib_songPath" destination="eDY-gH-EOV" id="v9a-y2-3gJ"/>
+                <outlet property="xib_songPathLB" destination="0Hb-fi-cek" id="tiR-xo-p1F"/>
                 <outlet property="xib_songerName" destination="9TZ-s3-MFm" id="9nr-2d-y7y"/>
+                <outlet property="xib_songerNameLB" destination="u4T-pY-UXj" id="XFB-1z-0nO"/>
                 <outlet property="xib_submit" destination="GfC-xt-2od" id="asa-AM-QN7"/>
+                <outlet property="xib_uploaderLB" destination="TDj-Z4-drs" id="s9k-Kb-ERK"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

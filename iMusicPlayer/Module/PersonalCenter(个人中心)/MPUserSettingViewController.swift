@@ -20,7 +20,7 @@ class MPUserSettingViewController: BaseTableViewController {
     
     var plistName: String = "usersetting" {
         didSet {
-            initData()
+            initPlistData()
         }
     }
     
@@ -32,6 +32,15 @@ class MPUserSettingViewController: BaseTableViewController {
         arr = NSArray(contentsOfFile: path!)!
         debugPrint("arr --> \(arr)")
         self.groups = arr
+    }
+    
+    private func initPlistData() {
+        if self.plistName == "usersetting" {
+            let tempArr: [[String: Any]] = [["footer":"","items":[["icon":"icon_profile_time","subTitleColor":"#999999","funcKey":"timeOff","titleColor":"#333333","title": NSLocalizedString("定时关闭", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_profile_upload","subTitleColor":"#999999","funcKey":"uploadMusic","titleColor":"#333333","title": NSLocalizedString("上传音乐", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_profile_message","subTitleColor":"#999999","funcKey":"message","titleColor":"#333333","title": NSLocalizedString("消息", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_info","subTitleColor":"#999999","funcKey":"policy","titleColor":"#333333","title": NSLocalizedString("隐私权政策", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_profile_no_ad","subTitleColor":"#999999","funcKey":"removeAd","titleColor":"#333333","title": NSLocalizedString("去除广告", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""]],"header":""]]
+            self.groups = tempArr as NSArray
+        }else {
+            initData()
+        }
     }
     
     override func viewDidLoad() {

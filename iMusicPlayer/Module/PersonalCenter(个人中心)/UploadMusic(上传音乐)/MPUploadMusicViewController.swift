@@ -17,6 +17,29 @@ class MPUploadMusicViewController: BaseViewController {
     @IBOutlet weak var xib_mvPath: UITextField!
     @IBOutlet weak var xib_agreeBtn: UIButton!
     
+    @IBOutlet weak var xib_uploaderLB: UILabel!
+    @IBOutlet weak var xib_songNameLB: UILabel!
+    @IBOutlet weak var xib_songerNameLB: UILabel!
+    @IBOutlet weak var xib_songPathLB: UILabel!
+    @IBOutlet weak var xib_coverPathLB: UILabel!
+    @IBOutlet weak var xib_lrcPathLB: UILabel!
+    @IBOutlet weak var xib_mvPathLB: UILabel!
+    @IBOutlet weak var xib_protocol: UIButton!
+    
+    private func localized() {
+        xib_uploaderLB.text = NSLocalizedString("上传者", comment: "")
+        xib_songNameLB.text = NSLocalizedString("名称", comment: "")
+        xib_songerNameLB.text = NSLocalizedString("姓名", comment: "")
+        xib_songPathLB.text = NSLocalizedString("音乐", comment: "")
+        xib_coverPathLB.text = NSLocalizedString("封面", comment: "")
+        xib_lrcPathLB.text = NSLocalizedString("歌词", comment: "")
+        xib_mvPathLB.text = NSLocalizedString("视频", comment: "")
+        xib_agreeBtn.setTitle(NSLocalizedString("我保证我提交的内容符合", comment: ""), for: .normal)
+        xib_protocol.setTitle(NSLocalizedString("《著作权许可协议》", comment: ""), for: .normal)
+        
+        xib_submit.setTitle(NSLocalizedString("提交", comment: ""), for: .normal)
+    }
+    
     @IBOutlet weak var xib_submit: UIButton! {
         didSet {
             xib_submit.md_borderColor = Color.ThemeColor

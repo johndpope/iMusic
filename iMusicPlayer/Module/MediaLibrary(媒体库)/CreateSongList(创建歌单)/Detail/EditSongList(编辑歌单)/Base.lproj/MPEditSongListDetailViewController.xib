@@ -15,6 +15,10 @@
                 <outlet property="topView" destination="pSw-rU-dEb" id="yhs-5H-Qb5"/>
                 <outlet property="topViewH" destination="Oiz-vH-O3y" id="cqE-lz-gDb"/>
                 <outlet property="view" destination="can-I8-UKU" id="UXu-ag-OTn"/>
+                <outlet property="xib_addPlaylist" destination="xAm-Mv-rjm" id="g1X-Df-WUv"/>
+                <outlet property="xib_delete" destination="c1t-wV-kgQ" id="u07-Eq-U5r"/>
+                <outlet property="xib_finished" destination="i5E-n4-sax" id="z5u-su-fXr"/>
+                <outlet property="xib_nextPlay" destination="RbR-1R-bWu" id="coZ-G8-tAf"/>
                 <outlet property="xib_selectAll" destination="N6L-Cz-1VT" id="Tv6-hM-bd9"/>
             </connections>
         </placeholder>

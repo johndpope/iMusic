@@ -12,13 +12,22 @@ class MPLatestHeaderView: BaseView {
     
     var sgmDidChangeBlock: (()->Void)?
     
-//    type=Japan。欧美：hl=Europe 韩国：Korea
+    @IBOutlet weak var xib_segment: UISegmentedControl!
+    @IBOutlet weak var xib_random: UIButton!
+    
+    //    type=Japan。欧美：hl=Europe 韩国：Korea
     var currentType = "Japan"
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: SCREEN_WIDTH*(90/375)))
+        
+        xib_random.setTitle(NSLocalizedString("随机播放", comment: ""), for: .normal)
+        xib_segment.setTitle(NSLocalizedString("日本", comment: ""), forSegmentAt: 0)
+        xib_segment.setTitle(NSLocalizedString("欧美", comment: ""), forSegmentAt: 1)
+        xib_segment.setTitle(NSLocalizedString("韩国", comment: ""), forSegmentAt: 2)
+        
     }
     
     @IBAction func segmentDidChange(_ sender: UISegmentedControl) {

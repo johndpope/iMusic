@@ -10,9 +10,13 @@ import UIKit
 
 class MPEditSongListDetailHeaderView: BaseView {
 
+    @IBOutlet weak var xib_selectAll: UIButton!
+    @IBOutlet weak var xib_finished: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        xib_selectAll.setTitle(NSLocalizedString("全选", comment: ""), for: .normal)
+        xib_finished.setTitle(NSLocalizedString("完成", comment: ""), for: .normal)
     }
     
 //    override var intrinsicContentSize: CGSize {

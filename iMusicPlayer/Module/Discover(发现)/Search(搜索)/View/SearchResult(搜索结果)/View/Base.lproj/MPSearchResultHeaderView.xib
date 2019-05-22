@@ -248,7 +248,7 @@
                 <outlet property="xib_sortTagList" destination="ytr-J8-6uO" id="99e-kh-aJ1"/>
                 <outlet property="xib_timeTagList" destination="Zhw-o6-lpa" id="BCw-x8-Wcp"/>
             </connections>
-            <point key="canvasLocation" x="176.80000000000001" y="-869.86506746626696"/>
+            <point key="canvasLocation" x="580" y="-913"/>
         </view>
     </objects>
     <resources>

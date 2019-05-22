@@ -32,11 +32,19 @@ class MPSearchResultHeaderView: UITableViewCell {
     @IBOutlet weak var segment: UISegmentedControl! {
         didSet {
             if SourceType == 0 {
-                segment.removeSegment(at: 0, animated: true)
+//                segment.removeSegment(at: 0, animated: true)
+                segment.removeAllSegments()
+                segment.setTitle(NSLocalizedString("MV", comment: ""), forSegmentAt: 0)
+                segment.setTitle(NSLocalizedString("歌单", comment: ""), forSegmentAt: 1)
             }else {
-                if segment.numberOfSegments < 3 {
-                    segment.insertSegment(withTitle: NSLocalizedString("单曲", comment: ""), at: 0, animated: true)
-                }
+//                if segment.numberOfSegments < 3 {
+//                    segment.insertSegment(withTitle: NSLocalizedString("单曲", comment: ""), at: 0, animated: true)
+//                }
+                
+                segment.removeAllSegments()
+                segment.setTitle(NSLocalizedString("单曲", comment: ""), forSegmentAt: 0)
+                segment.setTitle(NSLocalizedString("MV", comment: ""), forSegmentAt: 1)
+                segment.setTitle(NSLocalizedString("歌单", comment: ""), forSegmentAt: 2)
             }
             segment.selectedSegmentIndex = 0
         }
@@ -102,6 +110,14 @@ class MPSearchResultHeaderView: UITableViewCell {
         xib_sortTagList.delegate = self
         
         songStyle()
+        
+        localize()
+    }
+    
+    private func localize() {
+        timeLabel.text = NSLocalizedString("时长", comment: "")
+        selectLabel.text = NSLocalizedString("选择", comment: "")
+        sortLabel.text = NSLocalizedString("排序条件", comment: "")
     }
 
     @IBAction func filterDidClicked(_ sender: UIButton) {

@@ -547,35 +547,10 @@
 		C566E20D228A6FC50078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Main.strings"; sourceTree = "<group>"; };
 		C566E20E228A6FC50078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		C566E210228AA8E90078C31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MPUploadMusicViewController.xib; sourceTree = "<group>"; };
-		C566E213228AA8F30078C31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MPUploadMusicViewController.strings; sourceTree = "<group>"; };
-		C566E215228AA8F70078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MPUploadMusicViewController.strings; sourceTree = "<group>"; };
-		C566E217228AA8FC0078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MPUploadMusicViewController.strings"; sourceTree = "<group>"; };
-		C566E219228AA8FE0078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MPUploadMusicViewController.strings"; sourceTree = "<group>"; };
-		C566E21B228AA9010078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MPUploadMusicViewController.strings"; sourceTree = "<group>"; };
 		C566E21D228AB9020078C31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MPEditSongListDetailHeaderView.xib; sourceTree = "<group>"; };
-		C566E220228AB9090078C31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MPEditSongListDetailHeaderView.strings; sourceTree = "<group>"; };
-		C566E222228AB90C0078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MPEditSongListDetailHeaderView.strings; sourceTree = "<group>"; };
-		C566E224228AB90F0078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MPEditSongListDetailHeaderView.strings"; sourceTree = "<group>"; };
-		C566E226228AB9120078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MPEditSongListDetailHeaderView.strings"; sourceTree = "<group>"; };
-		C566E228228AB9150078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MPEditSongListDetailHeaderView.strings"; sourceTree = "<group>"; };
 		C566E22A228ABB1C0078C31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MPEditSongListDetailViewController.xib; sourceTree = "<group>"; };
-		C566E22D228ABB2C0078C31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MPEditSongListDetailViewController.strings; sourceTree = "<group>"; };
-		C566E22F228ABB2E0078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MPEditSongListDetailViewController.strings; sourceTree = "<group>"; };
-		C566E231228ABB320078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MPEditSongListDetailViewController.strings"; sourceTree = "<group>"; };
-		C566E233228ABB340078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MPEditSongListDetailViewController.strings"; sourceTree = "<group>"; };
-		C566E235228ABB370078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MPEditSongListDetailViewController.strings"; sourceTree = "<group>"; };
 		C566E237228AC09A0078C31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MPLatestHeaderView.xib; sourceTree = "<group>"; };
-		C566E23A228AC0D10078C31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MPLatestHeaderView.strings; sourceTree = "<group>"; };
-		C566E23C228AC0DC0078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MPLatestHeaderView.strings"; sourceTree = "<group>"; };
-		C566E23E228AC1A60078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MPLatestHeaderView.strings; sourceTree = "<group>"; };
-		C566E240228AC2C80078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MPLatestHeaderView.strings"; sourceTree = "<group>"; };
-		C566E242228AC2DD0078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MPLatestHeaderView.strings"; sourceTree = "<group>"; };
 		C566E244228AC60F0078C31C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MPSearchResultHeaderView.xib; sourceTree = "<group>"; };
-		C566E247228AC6140078C31C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MPSearchResultHeaderView.strings; sourceTree = "<group>"; };
-		C566E249228AC6190078C31C /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MPSearchResultHeaderView.strings; sourceTree = "<group>"; };
-		C566E24B228AC61D0078C31C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MPSearchResultHeaderView.strings"; sourceTree = "<group>"; };
-		C566E24D228AC6210078C31C /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/MPSearchResultHeaderView.strings"; sourceTree = "<group>"; };
-		C566E24F228AC6240078C31C /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/MPSearchResultHeaderView.strings"; sourceTree = "<group>"; };
 		C569B6D5226214020003D186 /* MPRadioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPRadioViewController.swift; sourceTree = "<group>"; };
 		C569B6D92262152D0003D186 /* CDViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDViewCell.swift; sourceTree = "<group>"; };
 		C569B6DA2262152D0003D186 /* CDFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDFlowLayout.swift; sourceTree = "<group>"; };
@@ -3997,11 +3972,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				C566E210228AA8E90078C31C /* Base */,
-				C566E213228AA8F30078C31C /* en */,
-				C566E215228AA8F70078C31C /* ja */,
-				C566E217228AA8FC0078C31C /* zh-Hans */,
-				C566E219228AA8FE0078C31C /* zh-Hant-TW */,
-				C566E21B228AA9010078C31C /* zh-Hant-HK */,
 			);
 			name = MPUploadMusicViewController.xib;
 			sourceTree = "<group>";
@@ -4010,11 +3980,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				C566E21D228AB9020078C31C /* Base */,
-				C566E220228AB9090078C31C /* en */,
-				C566E222228AB90C0078C31C /* ja */,
-				C566E224228AB90F0078C31C /* zh-Hans */,
-				C566E226228AB9120078C31C /* zh-Hant-TW */,
-				C566E228228AB9150078C31C /* zh-Hant-HK */,
 			);
 			name = MPEditSongListDetailHeaderView.xib;
 			sourceTree = "<group>";
@@ -4023,11 +3988,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				C566E22A228ABB1C0078C31C /* Base */,
-				C566E22D228ABB2C0078C31C /* en */,
-				C566E22F228ABB2E0078C31C /* ja */,
-				C566E231228ABB320078C31C /* zh-Hans */,
-				C566E233228ABB340078C31C /* zh-Hant-TW */,
-				C566E235228ABB370078C31C /* zh-Hant-HK */,
 			);
 			name = MPEditSongListDetailViewController.xib;
 			sourceTree = "<group>";
@@ -4036,11 +3996,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				C566E237228AC09A0078C31C /* Base */,
-				C566E23A228AC0D10078C31C /* en */,
-				C566E23C228AC0DC0078C31C /* zh-Hant-HK */,
-				C566E23E228AC1A60078C31C /* ja */,
-				C566E240228AC2C80078C31C /* zh-Hans */,
-				C566E242228AC2DD0078C31C /* zh-Hant-TW */,
 			);
 			name = MPLatestHeaderView.xib;
 			sourceTree = "<group>";
@@ -4049,11 +4004,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				C566E244228AC60F0078C31C /* Base */,
-				C566E247228AC6140078C31C /* en */,
-				C566E249228AC6190078C31C /* ja */,
-				C566E24B228AC61D0078C31C /* zh-Hans */,
-				C566E24D228AC6210078C31C /* zh-Hant-TW */,
-				C566E24F228AC6240078C31C /* zh-Hant-HK */,
 			);
 			name = MPSearchResultHeaderView.xib;
 			sourceTree = "<group>";

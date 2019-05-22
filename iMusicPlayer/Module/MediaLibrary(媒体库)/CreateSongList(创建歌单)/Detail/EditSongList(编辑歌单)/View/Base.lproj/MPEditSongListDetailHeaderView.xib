@@ -42,7 +42,11 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="ebS-5A-Md2"/>
-            <point key="canvasLocation" x="-132" y="-151"/>
+            <connections>
+                <outlet property="xib_finished" destination="UFH-6A-GOP" id="FXN-Jf-rJO"/>
+                <outlet property="xib_selectAll" destination="6Jg-ji-Cww" id="cj8-jL-1fz"/>
+            </connections>
+            <point key="canvasLocation" x="79" y="-155"/>
         </view>
     </objects>
     <resources>

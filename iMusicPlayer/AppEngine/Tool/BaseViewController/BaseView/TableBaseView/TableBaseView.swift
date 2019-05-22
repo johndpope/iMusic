@@ -43,7 +43,7 @@ class TableBaseView: BaseView {
     
     var plistName: String = "songTools" {
         didSet {
-            initData()
+            initPlistData()
         }
     }
     
@@ -59,6 +59,22 @@ class TableBaseView: BaseView {
         arr = NSArray(contentsOfFile: path!)!
         debugPrint("arr --> \(arr)")
         self.groups = arr
+    }
+    
+    
+    private func initPlistData() {
+        if self.plistName == "extensionTools" {
+            let tempArr: [[String: Any]] = [["footer":"","items":[["icon":"icon_add_to_next-2","subTitleColor":"#999999","funcKey":"timeOff","titleColor":"#333333","title": NSLocalizedString("定时关闭", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_add_to_next-1","subTitleColor":"#999999","funcKey":"playVideo","id":"1","title": NSLocalizedString("播放MV", comment: ""),"titleColor":"#333333","titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_add_to_playlist-1","subTitleColor":"#999999","funcKey":"songInfo","titleColor":"#333333","title": NSLocalizedString("信息", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""]],"header":""]]
+            self.groups = tempArr as NSArray
+        }else if self.plistName == "createSLExtensionTools" {
+            let tempArr: [[String: Any]] = [["footer":"","items":[["icon":"icon_add_to_next(1)","subTitleColor":"#999999","funcKey":"modifyAlbumName","titleColor":"#333333","title": NSLocalizedString("更改名称", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_add_to_playlist(1)","subTitleColor":"#999999","funcKey":"deleteSongList","titleColor":"#333333","title": NSLocalizedString("删除", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""]],"header":""]]
+            self.groups = tempArr as NSArray
+        }else if self.plistName == "songTools" {
+            let tempArr: [[String: Any]] = [["footer":"","items":[["icon":"icon_add","subTitleColor":"#999999","funcKey":"addToSongList","titleColor":"#333333","title": NSLocalizedString("加入到歌单", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_add_to_next_1","subTitleColor":"#999999","funcKey":"nextPlay","titleColor":"#333333","title": NSLocalizedString("播放下一首", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_add_to_playlist","subTitleColor":"#999999","funcKey":"addToPlayList","titleColor":"#333333","title": NSLocalizedString("添加到当前播放列表", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""]],"header":""]]
+            self.groups = tempArr as NSArray
+        }else {
+            initData()
+        }
     }
     
 }

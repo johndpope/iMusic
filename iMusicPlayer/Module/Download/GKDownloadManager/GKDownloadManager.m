@@ -9,7 +9,7 @@
 #import "GKDownloadManager.h"
 #import "GKDownloadModel.h"
 #import "AFNetworking.h"
-@import FirebaseAnalytics
+@import FirebaseAnalytics;
 
 #define kDocumentDirectory [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
 
