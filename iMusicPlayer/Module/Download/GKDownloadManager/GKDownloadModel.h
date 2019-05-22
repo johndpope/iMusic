@@ -45,4 +45,6 @@ typedef NS_ENUM(NSUInteger, GKDownloadManagerState) {
 /** 当前的下载长度 */
 @property (nonatomic, assign) NSInteger currentLength;
 
+@property (nonatomic, assign) NSInteger errorCode;
+
 @end

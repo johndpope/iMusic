@@ -9,6 +9,7 @@
 #import "GKDownloadManager.h"
 #import "GKDownloadModel.h"
 #import "AFNetworking.h"
+@import FirebaseAnalytics
 
 #define kDocumentDirectory [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
 
@@ -283,6 +284,14 @@
             
             model.state = GKDownloadManagerStateFailed;
             [strongSelf updateDownloadModel:model];
+            
+            // 设置失败具体原因
+            NSString *codeStr = error.localizedDescription;
+            if ([codeStr isEqualToString:@"not found (404)"]) {
+                [FIRAnalytics logEventWithName:@"download_failed_server_no_file" parameters:nil];
+            }else if ([codeStr isEqualToString:@"The request timed out."]) {
+                [FIRAnalytics logEventWithName:@"download_failed_network_timeout" parameters:nil];
+            }
             
             if ([strongSelf.delegate respondsToSelector:@selector(gkDownloadManager:downloadModel:stateChanged:)]) {
                 [strongSelf.delegate gkDownloadManager:self downloadModel:model stateChanged:GKDownloadManagerStateFailed];

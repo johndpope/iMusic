@@ -295,6 +295,9 @@ extension AppDelegate {
         
         let openMusicDL = self.remoteConfig.configValue(forKey: "bool_open_music_dl").boolValue
         QYTools.shared.Log(log: "BOOL_OPEN_MUSIC_DL == \(openMusicDL)")
+        if BOOL_OPEN_MUSIC_DL == false, openMusicDL == true {
+            Analytics.logEvent("allow_downloading_activated", parameters: nil)
+        }
         BOOL_OPEN_MUSIC_DL = openMusicDL
         if openMusicDL {
             Analytics.logEvent("allow_downloading_on", parameters: nil)
@@ -304,6 +307,9 @@ extension AppDelegate {
         
         let openLyrics = self.remoteConfig.configValue(forKey: "bool_open_lyrics").boolValue
         QYTools.shared.Log(log: "BOOL_OPEN_LYRICS == \(openLyrics)")
+        if BOOL_OPEN_LYRICS == false, openLyrics == true {
+            Analytics.logEvent("allow_lyrics_activated", parameters: nil)
+        }
         BOOL_OPEN_LYRICS = openLyrics
         if openLyrics {
             Analytics.logEvent("allow_lyrics_on", parameters: nil)
