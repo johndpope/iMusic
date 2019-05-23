@@ -114,6 +114,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
                     sModel.data_artworkBigUrl = dModel.fileCover
                     sModel.data_songId = dModel.fileID
                     sModel.data_cache = dModel.fileUrl
+                    sModel.data_localPath = dModel.fileLocalPath
                     temps.append(sModel)
                 }
             })

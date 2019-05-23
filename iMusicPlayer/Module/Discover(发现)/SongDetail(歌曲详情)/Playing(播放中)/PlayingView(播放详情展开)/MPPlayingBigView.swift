@@ -1054,7 +1054,13 @@ extension MPPlayingBigView {
             let music = self.getCurrentSong()
             
             if music.data_audioFileURL == nil {
-                music.data_audioFileURL = URL(string: music.data_cache ?? Constant.MP3Test)
+                var url: URL!
+                if music.data_localPath != "" {
+                    url = URL(fileURLWithPath: music.data_localPath)
+                }else {
+                    url = URL(string: music.data_cache ?? Constant.MP3Test)
+                }
+                music.data_audioFileURL = url
             }
             
             streamer = DOUAudioStreamer(audioFile: music)

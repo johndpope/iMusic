@@ -220,7 +220,7 @@ class BaseViewController: UIViewController, PlaceholderViewDelegate {
                 }
             }
         }else {
-            self.showNoNetworkView()
+//            self.showNoNetworkView()
         }
 
     }
