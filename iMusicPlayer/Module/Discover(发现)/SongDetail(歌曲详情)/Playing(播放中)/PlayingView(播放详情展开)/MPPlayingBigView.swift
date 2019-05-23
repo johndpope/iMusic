@@ -420,11 +420,13 @@ class MPPlayingBigView: BaseView {
     }
     
     private func updateSmallPlayView() {
+        xib_collect.isSelected = false
+        
         // 异步更新当前列表状态
         DispatchQueue.main.async {
             let song = self.getCurrentSong()
             
-            if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
+            if self.currentSouceType == 1, BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
                 if MPModelTools.checkSongExsistInDownloadList(song: song) {
                     self.xib_collect.isSelected = true
                 }
@@ -510,7 +512,7 @@ class MPPlayingBigView: BaseView {
             currentPlayCycleMode = sender.isSelected ? 2 : 0
             break
         case 10007: // 收藏
-            if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
+            if currentSouceType == 1, BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
                 download()
             }else {
                 collection()
@@ -962,7 +964,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
     
     func playingView(download view: MPPlayingView) {
         QYTools.shared.Log(log: "下载".decryptLog())
-        if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
+        if currentSouceType == 1, BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
             self.download()
         }else {
             self.collection()

@@ -44,7 +44,9 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
     }
     
     func updateCell(model: MPSongModel) {
+        var type = 0
        if let sid = model.data_songId, sid != "", let cache = model.data_cache, cache != "" {
+            type = 1
             imageView.isHidden = false
             //设置图片
             if let img = model.data_artworkBigUrl, img != "" {
@@ -63,6 +65,7 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
                 xib_downloadOrCollect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
             }
         }else {
+            type = 0
             xib_title.text = model.data_title
             xib_desc.text = model.data_channelTitle
         
@@ -73,7 +76,7 @@ class MPPlayingViewCollectionViewCell: UICollectionViewCell, ViewClickedDelegate
         }
         
         DispatchQueue.main.async {
-            if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
+            if type == 1, BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
                 if MPModelTools.checkSongExsistInDownloadList(song: model) {
                     self.xib_downloadOrCollect.isSelected = true
                 }
