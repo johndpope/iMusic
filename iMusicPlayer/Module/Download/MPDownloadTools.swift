@@ -25,10 +25,9 @@ class MPDownloadTools: NSObject {
         dModel.fileCover             = model.data_artworkBigUrl;
         dModel.fileUrl               = model.data_cache;
         dModel.fileDuration     = "\(model.data_durationInSeconds)";
-//        dModel.fileFormat          = model.file_extension;
-//        dModel.fileRate             = model.file_bitrate;
-//        dModel.fileSize             = model.file_size;
-//        dModel.fileLyric            = model.data_lyrics;
+        dModel.fileFormat          = "mp3";
+//        dModel.fileRate             = "128";
+//        dModel.fileSize             = "5423173";
         
         GKDownloadManager.sharedInstance()?.addDownloadArr([dModel])
         QYTools.shared.Log(log: "已经加入下载队列".decryptLog())

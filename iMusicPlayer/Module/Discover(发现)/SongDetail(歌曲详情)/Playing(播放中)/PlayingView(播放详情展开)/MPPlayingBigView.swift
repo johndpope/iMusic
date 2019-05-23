@@ -1053,15 +1053,20 @@ extension MPPlayingBigView {
         }else {
             let music = self.getCurrentSong()
             
-            if music.data_audioFileURL == nil {
-                var url: URL!
-                if music.data_localPath != "" {
-                    url = URL(fileURLWithPath: music.data_localPath)
-                }else {
-                    url = URL(string: music.data_cache ?? Constant.MP3Test)
-                }
-                music.data_audioFileURL = url
+            if music.data_localPath != "" {
+                music.data_audioFileURL = URL(fileURLWithPath: music.data_localPath)
+            }else {
+                music.data_audioFileURL = URL(string: music.data_cache ?? Constant.MP3Test)
             }
+//            if music.data_audioFileURL == nil {
+//                var url: URL!
+//                if music.data_localPath != "" {
+//                    url = URL(fileURLWithPath: music.data_localPath)
+//                }else {
+//                    url = URL(string: music.data_cache ?? Constant.MP3Test)
+//                }
+//                music.data_audioFileURL = url
+//            }
             
             streamer = DOUAudioStreamer(audioFile: music)
             streamer.addObserver(self, forKeyPath: "status", options: .new, context: nil)

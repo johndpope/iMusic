@@ -170,7 +170,7 @@
                   moduleName = "iMusicPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/modi/Documents/Modi/GitLab/iMusicPlayer/iMusicPlayer/Module/MediaLibrary(%E5%AA%92%E4%BD%93%E5%BA%93)/CreateSongList(%E5%88%9B%E5%BB%BA%E6%AD%8C%E5%8D%95)/Detail/EditSongList(%E7%BC%96%E8%BE%91%E6%AD%8C%E5%8D%95)/MPEditSongListDetailViewController.swift"
-                  timestampString = "580290049.519174"
+                  timestampString = "580299690.6069191"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "343"
@@ -185,7 +185,7 @@
                   moduleName = "iMusicPlayer"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/modi/Documents/Modi/GitLab/iMusicPlayer/iMusicPlayer/Module/MediaLibrary(%E5%AA%92%E4%BD%93%E5%BA%93)/CreateSongList(%E5%88%9B%E5%BB%BA%E6%AD%8C%E5%8D%95)/Detail/EditSongList(%E7%BC%96%E8%BE%91%E6%AD%8C%E5%8D%95)/MPEditSongListDetailViewController.swift"
-                  timestampString = "580290049.5209579"
+                  timestampString = "580299690.609391"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "344"
@@ -468,7 +468,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView.swift"
-            timestampString = "580290757.4904391"
+            timestampString = "580297159.58693"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "846"
@@ -500,12 +500,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView.swift"
-            timestampString = "580290757.490824"
+            timestampString = "580297159.5870171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1058"
-            endingLineNumber = "1058"
+            startingLineNumber = "1056"
+            endingLineNumber = "1056"
             landmarkName = "resetStreamer()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iMusicPlayer/Module/Download/MPDownloadTools.swift"
+            timestampString = "580299420.81101"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "downloadMusicWithSongId(model:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
