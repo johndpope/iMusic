@@ -262,9 +262,9 @@ class Genre: BaseModel {
 
 class MPDiscoverModel: BaseModel {
     
-    static let categoryDatas = [NSLocalizedString("最新发布", comment: ""), NSLocalizedString("排行榜", comment: ""), NSLocalizedString("人气歌手", comment: ""), NSLocalizedString("风格及流派", comment: "")]
+    static let categoryDatas = [NSLocalizedString("最新发布", comment: "").decryptString(), NSLocalizedString("排行榜", comment: "").decryptString(), NSLocalizedString("人气歌手", comment: "").decryptString(), NSLocalizedString("风格及流派", comment: "").decryptString()]
     
-    static let sectionTitleDatas = [NSLocalizedString("每日热门歌曲", comment: ""), NSLocalizedString("最近播放", comment: ""), "", NSLocalizedString("歌单精选", comment: "")]
+    static let sectionTitleDatas = [NSLocalizedString("每日热门歌曲", comment: "").decryptString(), NSLocalizedString("最近播放", comment: "").decryptString(), "", NSLocalizedString("歌单精选", comment: "").decryptString()]
     
     var data_latest: Latest?
     var data_hotSingerPlaylists: [GeneralPlaylists]?
@@ -285,7 +285,6 @@ class MPDiscoverModel: BaseModel {
     
     override init() {
         super.init()
-        QYTools.shared.Log(log: "调用初始化方法")
     }
     
     required init?(map: Map) {

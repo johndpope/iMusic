@@ -15,8 +15,8 @@ class MPEditSongListDetailHeaderView: BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        xib_selectAll.setTitle(NSLocalizedString("全选", comment: ""), for: .normal)
-        xib_finished.setTitle(NSLocalizedString("完成", comment: ""), for: .normal)
+        xib_selectAll.setTitle(NSLocalizedString("全选", comment: "").decryptString(), for: .normal)
+        xib_finished.setTitle(NSLocalizedString("完成", comment: "").decryptString(), for: .normal)
     }
     
 //    override var intrinsicContentSize: CGSize {

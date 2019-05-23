@@ -16,8 +16,8 @@ class MPTimeOffEndView: BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        xib_endTime.setTitle(NSLocalizedString("时间到了", comment: ""), for: .normal)
-        xib_desc.text = NSLocalizedString("音乐已被暂停", comment: "")
+        xib_endTime.setTitle(NSLocalizedString("时间到了", comment: "").decryptString(), for: .normal)
+        xib_desc.text = NSLocalizedString("音乐已被暂停", comment: "").decryptString()
     }
     
     @IBAction func close(_ sender: UIButton) {

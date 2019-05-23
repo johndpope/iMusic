@@ -85,7 +85,7 @@ class MPEditSongListViewController: BaseTableViewController {
                 if self?.model.count ?? 0 > 0 {
                     self?.randomPlay()
                 }else {
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("找不到歌曲", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("找不到歌曲", comment: "").decryptString())
                 }
             }else {
                 let vc = MPEditSongListDetailViewController.init(nibName: Constant.detailVcName, bundle: nil)

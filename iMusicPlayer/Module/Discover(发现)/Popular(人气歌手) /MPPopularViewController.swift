@@ -73,7 +73,7 @@ class MPPopularViewController: BaseTableViewController {
                 switch isSucceed {
                 case true:
                     if let m = model, m.count > 0 {
-                        QYTools.shared.Log(log: "获取到下一页数据")
+                        QYTools.shared.Log(log: "获取到下一页数据".decryptLog())
                         self.model += m
                     }else {
                         self.tableView.mj_footer.endRefreshingWithNoMoreData()
@@ -92,7 +92,7 @@ class MPPopularViewController: BaseTableViewController {
     override func setupStyle() {
         super.setupStyle()
         
-        addLeftItem(title: NSLocalizedString("人气歌手", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
+        addLeftItem(title: NSLocalizedString("人气歌手", comment: "").decryptString(), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
         addRightItem(imageName: "nav_icon_search")
     }
     
@@ -114,7 +114,7 @@ class MPPopularViewController: BaseTableViewController {
         self.identifier = Constant.identifier
         tableView.backgroundColor = UIColor.white
         
-        setupNoDataView(image: "pic_no_resault", text: NSLocalizedString("找不到歌曲", comment: ""))
+        setupNoDataView(image: "pic_no_resault", text: NSLocalizedString("找不到歌曲", comment: "").decryptString())
     }
     
     private func setupNoDataView(image: String, text: String) {

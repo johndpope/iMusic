@@ -15,11 +15,11 @@ class MPPopularHeaderView: BaseView {
     
     var nationality: Int = 0, type: Int = 0
 
-    private let countryTags = [NSLocalizedString("全部", comment: ""), NSLocalizedString("日本", comment: ""), NSLocalizedString("韩国", comment: ""), NSLocalizedString("欧美", comment: "")]
+    private let countryTags = [NSLocalizedString("全部", comment: "").decryptString(), NSLocalizedString("日本", comment: "").decryptString(), NSLocalizedString("韩国", comment: "").decryptString(), NSLocalizedString("欧美", comment: "").decryptString()]
     @IBOutlet weak var xib_countryTagList: TagListView!
     
     
-    private let categoryTags = [NSLocalizedString("全部", comment: ""), NSLocalizedString("男歌手", comment: ""), NSLocalizedString("女歌手", comment: ""), NSLocalizedString("组合", comment: "")]
+    private let categoryTags = [NSLocalizedString("全部", comment: "").decryptString(), NSLocalizedString("男歌手", comment: "").decryptString(), NSLocalizedString("女歌手", comment: "").decryptString(), NSLocalizedString("组合", comment: "").decryptString()]
     @IBOutlet weak var xib_categoryTagList: TagListView!
     
     @IBOutlet weak var xib_nameBgView: UIView! {
@@ -38,10 +38,10 @@ class MPPopularHeaderView: BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        xib_country.text = NSLocalizedString("国家", comment: "")
-        xib_category.text = NSLocalizedString("类别", comment: "")
-        xib_nameLB.text = NSLocalizedString("姓名", comment: "")
-        xib_nameTF.placeholder = NSLocalizedString("搜索歌手", comment: "")
+        xib_country.text = NSLocalizedString("国家", comment: "").decryptString()
+        xib_category.text = NSLocalizedString("类别", comment: "").decryptString()
+        xib_nameLB.text = NSLocalizedString("姓名", comment: "").decryptString()
+        xib_nameTF.placeholder = NSLocalizedString("搜索歌手", comment: "").decryptString()
         
         xib_countryTagList.addTags(countryTags)
         xib_categoryTagList.addTags(categoryTags)
@@ -65,13 +65,13 @@ extension MPPopularHeaderView: TagListViewDelegate {
         
         if sender == xib_countryTagList {
             switch title {
-            case NSLocalizedString("日本", comment: ""):
+            case NSLocalizedString("日本", comment: "").decryptString():
                 nationality = 1
                 break
-            case NSLocalizedString("韩国", comment: ""):
+            case NSLocalizedString("韩国", comment: "").decryptString():
                 nationality = 2
                 break
-            case NSLocalizedString("欧美", comment: ""):
+            case NSLocalizedString("欧美", comment: "").decryptString():
                 nationality = 3
                 break
             default:
@@ -79,13 +79,13 @@ extension MPPopularHeaderView: TagListViewDelegate {
             }
         }else {
             switch title {
-            case NSLocalizedString("男歌手", comment: ""):
+            case NSLocalizedString("男歌手", comment: "").decryptString():
                 type = 1
                 break
-            case NSLocalizedString("女歌手", comment: ""):
+            case NSLocalizedString("女歌手", comment: "").decryptString():
                 type = 2
                 break
-            case NSLocalizedString("组合", comment: ""):
+            case NSLocalizedString("组合", comment: "").decryptString():
                  type = 3
                 break
             default:

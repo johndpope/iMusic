@@ -34,7 +34,6 @@ class MPCollectSongListViewController: BaseTableViewController {
         refreshData()
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshLocalModels), object: nil, queue: nil) { (center) in
-            QYTools.shared.Log(log: "刷新数据")
             self.refreshData()
         }
     }
@@ -88,7 +87,7 @@ class MPCollectSongListViewController: BaseTableViewController {
     override func setupStyle() {
         super.setupStyle()
         
-        addLeftItem(title: NSLocalizedString("我的歌单收藏", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
+        addLeftItem(title: NSLocalizedString("我的歌单收藏", comment: "").decryptString(), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
         addRightItem(imageName: "nav_icon_search")
     }
     
@@ -112,7 +111,7 @@ class MPCollectSongListViewController: BaseTableViewController {
         tableView.mj_header = nil
         tableView.mj_footer = nil
         
-        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("暂无歌单", comment: ""))
+        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("暂无歌单", comment: "").decryptString())
     }
     
     override func setupTableHeaderView() {
@@ -171,13 +170,12 @@ extension MPCollectSongListViewController {
     /// 删除歌单
     func deleteSongList(index: Int) {
         let tempM = model[index]
-        QYTools.shared.Log(log: "删除歌单")
         var alert: HFAlertController?
         let config = MDAlertConfig()
-        config.title = NSLocalizedString("删除", comment: "") + "\n"
-        config.desc = NSLocalizedString("确定要删除歌单", comment: "") + (tempM.data_title ?? "") + NSLocalizedString("吗？", comment: "")
-        config.negativeTitle = NSLocalizedString("取消", comment: "")
-        config.positiveTitle = NSLocalizedString("OK", comment: "")
+        config.title = NSLocalizedString("删除", comment: "").decryptString() + "\n"
+        config.desc = NSLocalizedString("确定要删除歌单", comment: "").decryptString() + (tempM.data_title ?? "") + NSLocalizedString("吗？", comment: "").decryptString()
+        config.negativeTitle = NSLocalizedString("取消", comment: "").decryptString()
+        config.positiveTitle = NSLocalizedString("OK", comment: "").decryptString()
         config.negativeTitleColor = Color.ThemeColor
         config.positiveTitleColor = Color.ThemeColor
         alert = HFAlertController.alertController(config: config, ConfirmCallBack: {

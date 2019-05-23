@@ -32,7 +32,7 @@ class MPPopularTableViewCell: UITableViewCell {
             xib_image.kf.setImage(with: URL(string: imgUrl), placeholder: #imageLiteral(resourceName: "print_load"))
         }
         xib_title.text = model.data_title
-        xib_count.text = "\(model.data_tracksCount )" + NSLocalizedString("首", comment: "")
+        xib_count.text = "\(model.data_tracksCount )" + NSLocalizedString("首", comment: "").decryptString()
     }
     
 }

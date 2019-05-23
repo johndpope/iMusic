@@ -47,7 +47,7 @@ class MPCollectSongListTableViewCell: UITableViewCell, ViewClickedDelegate {
             }
         }
         xib_title.text = model.data_title
-        xib_count.text = "\(model.data_tracksCount)" + NSLocalizedString("首", comment: "")
+        xib_count.text = "\(model.data_tracksCount)" + NSLocalizedString("首", comment: "").decryptString()
     }
 
     @IBAction func btn_DidClicked(_ sender: UIButton) {

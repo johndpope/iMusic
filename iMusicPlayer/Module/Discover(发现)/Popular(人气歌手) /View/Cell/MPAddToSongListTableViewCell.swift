@@ -27,7 +27,7 @@ class MPAddToSongListTableViewCell: UITableViewCell {
                 nameCenterConstraints.constant = 0
                 xib_count.isHidden = true
                 
-                xib_title.text = NSLocalizedString("新增歌单", comment: "")
+                xib_title.text = NSLocalizedString("新增歌单", comment: "").decryptString()
             }
         }
     }
@@ -35,7 +35,7 @@ class MPAddToSongListTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         xib_image.image = UIImage(named: "icon_add")
-        xib_title.text = NSLocalizedString("新增歌单", comment: "")
+        xib_title.text = NSLocalizedString("新增歌单", comment: "").decryptString()
         xib_count.text = ""
     }
     
@@ -55,7 +55,7 @@ class MPAddToSongListTableViewCell: UITableViewCell {
             }
         }
         xib_title.text = model.data_title
-        xib_count.text = "\(model.data_tracksCount)" + NSLocalizedString("首", comment: "")
+        xib_count.text = "\(model.data_tracksCount)" + NSLocalizedString("首", comment: "").decryptString()
     }
     
 }

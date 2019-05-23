@@ -14,7 +14,7 @@ class MPCollectSongListHeaderView: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        xib_title.setTitle(NSLocalizedString("新建", comment: ""), for: .normal)
+        xib_title.setTitle(NSLocalizedString("新建", comment: "").decryptString(), for: .normal)
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {

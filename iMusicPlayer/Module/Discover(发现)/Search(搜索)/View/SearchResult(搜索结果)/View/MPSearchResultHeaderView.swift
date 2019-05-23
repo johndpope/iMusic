@@ -32,19 +32,14 @@ class MPSearchResultHeaderView: UITableViewCell {
     @IBOutlet weak var segment: UISegmentedControl! {
         didSet {
             if SourceType == 0 {
-//                segment.removeSegment(at: 0, animated: true)
                 segment.removeAllSegments()
-                segment.setTitle(NSLocalizedString("MV", comment: ""), forSegmentAt: 0)
-                segment.setTitle(NSLocalizedString("歌单", comment: ""), forSegmentAt: 1)
+                segment.setTitle(NSLocalizedString("MV", comment: "").decryptString(), forSegmentAt: 0)
+                segment.setTitle(NSLocalizedString("歌单", comment: "").decryptString(), forSegmentAt: 1)
             }else {
-//                if segment.numberOfSegments < 3 {
-//                    segment.insertSegment(withTitle: NSLocalizedString("单曲", comment: ""), at: 0, animated: true)
-//                }
-                
                 segment.removeAllSegments()
-                segment.setTitle(NSLocalizedString("单曲", comment: ""), forSegmentAt: 0)
-                segment.setTitle(NSLocalizedString("MV", comment: ""), forSegmentAt: 1)
-                segment.setTitle(NSLocalizedString("歌单", comment: ""), forSegmentAt: 2)
+                segment.setTitle(NSLocalizedString("单曲", comment: "").decryptString(), forSegmentAt: 0)
+                segment.setTitle(NSLocalizedString("MV", comment: "").decryptString(), forSegmentAt: 1)
+                segment.setTitle(NSLocalizedString("歌单", comment: "").decryptString(), forSegmentAt: 2)
             }
             segment.selectedSegmentIndex = 0
         }
@@ -75,14 +70,14 @@ class MPSearchResultHeaderView: UITableViewCell {
             defaultTimeTagTop = timeTagTop.constant
         }
     }
-    private let timeTags = [NSLocalizedString("不限", comment: ""), NSLocalizedString("< 4 min", comment: ""), NSLocalizedString("4 min - 20 min", comment: ""), NSLocalizedString(" > 20 min", comment: "")]
+    private let timeTags = [NSLocalizedString("不限", comment: "").decryptString(), NSLocalizedString("< 4 min", comment: ""), NSLocalizedString("4 min - 20 min", comment: ""), NSLocalizedString(" > 20 min", comment: "")]
     @IBOutlet weak var xib_timeTagList: TagListView!
     
     
-    private let selectTags = [NSLocalizedString("完整版", comment: ""), NSLocalizedString("官方", comment: "")]
+    private let selectTags = [NSLocalizedString("完整版", comment: "").decryptString(), NSLocalizedString("官方", comment: "").decryptString()]
     @IBOutlet weak var xib_selectTagList: TagListView!
     
-    private let sortTags = [NSLocalizedString("关联度", comment: ""), NSLocalizedString("日期", comment: ""), NSLocalizedString("播放次数", comment: "")]
+    private let sortTags = [NSLocalizedString("关联度", comment: "").decryptString(), NSLocalizedString("日期", comment: "").decryptString(), NSLocalizedString("播放次数", comment: "").decryptString()]
     @IBOutlet weak var xib_sortTagList: TagListView!
     
     @IBOutlet weak var conditionViewH: NSLayoutConstraint! {
@@ -115,9 +110,9 @@ class MPSearchResultHeaderView: UITableViewCell {
     }
     
     private func localize() {
-        timeLabel.text = NSLocalizedString("时长", comment: "")
-        selectLabel.text = NSLocalizedString("选择", comment: "")
-        sortLabel.text = NSLocalizedString("排序条件", comment: "")
+        timeLabel.text = NSLocalizedString("时长", comment: "").decryptString()
+        selectLabel.text = NSLocalizedString("选择", comment: "").decryptString()
+        sortLabel.text = NSLocalizedString("排序条件", comment: "").decryptString()
     }
 
     @IBAction func filterDidClicked(_ sender: UIButton) {

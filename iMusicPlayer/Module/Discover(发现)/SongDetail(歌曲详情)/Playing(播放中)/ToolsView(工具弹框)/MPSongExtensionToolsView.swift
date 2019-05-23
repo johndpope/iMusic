@@ -63,7 +63,7 @@ class MPSongExtensionToolsView: TableBaseView {
                             return
                         }else {
                             // 修改当前的title
-                            let title = SourceType == 0 ? NSLocalizedString("播放MP3", comment: "") : NSLocalizedString("播放MV", comment: "")
+                            let title = SourceType == 0 ? NSLocalizedString("播放MP3", comment: "").decryptString() : NSLocalizedString("播放MV", comment: "").decryptString()
                             var t = itemJ
                             t["title"] = title
                             let tempItems = NSMutableArray(array: items)
@@ -92,7 +92,7 @@ class MPSongExtensionToolsView: TableBaseView {
                         if let id = itemJ["id"] as? String, id == "1" {
                             tempIndex = i
                             // 修改当前的title
-                            let title = SourceType == 0 ? NSLocalizedString("播放MP3", comment: "") : NSLocalizedString("播放MV", comment: "")
+                            let title = SourceType == 0 ? NSLocalizedString("播放MP3", comment: "").decryptString() : NSLocalizedString("播放MV", comment: "").decryptString()
                             var t = itemJ
                             t["title"] = title
                             let tempItems = NSMutableArray(array: items)
@@ -113,7 +113,7 @@ class MPSongExtensionToolsView: TableBaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        xib_close.setTitle(NSLocalizedString("关闭", comment: ""), for: .normal)
+        xib_close.setTitle(NSLocalizedString("关闭", comment: "").decryptString(), for: .normal)
         
         // 将tableView重新布局
 //        self.bringSubviewToFront(tableView)
@@ -130,7 +130,7 @@ class MPSongExtensionToolsView: TableBaseView {
     
     // MARK: - 构造会员特权项
     private func getMvOrMp3Model(type: Int = -1) -> [String: Any?]? {
-        let title = type == 0 ? NSLocalizedString("播放MP3", comment: "") : NSLocalizedString("播放MV", comment: "")
+        let title = type == 0 ? NSLocalizedString("播放MP3", comment: "").decryptString() : NSLocalizedString("播放MV", comment: "").decryptString()
         let tempDic = ["id": "1", "icon": "icon_add_to_next-1", "title": title, "accessoryType": "UIImageView", "accessoryView": "", "funcKey": "playVideo", "cellStyle": "value1", "subTitle": ""]
         let tempArr = [tempDic]
         

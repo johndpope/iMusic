@@ -31,6 +31,6 @@ class MPDownloadTools: NSObject {
 //        dModel.fileLyric            = model.data_lyrics;
         
         GKDownloadManager.sharedInstance()?.addDownloadArr([dModel])
-        QYTools.shared.Log(log: "已经加入下载队列")
+        QYTools.shared.Log(log: "已经加入下载队列".decryptLog())
     }
 }

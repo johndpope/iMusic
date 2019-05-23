@@ -56,7 +56,7 @@ class MPChoicenessViewController: BaseTableViewController {
             switch isSucceed {
             case true:
                 if let m = model, m.count > 0 {
-                    QYTools.shared.Log(log: "获取到下一页数据")
+                    QYTools.shared.Log(log: "获取到下一页数据".decryptLog())
                     self.model += m
                 }else {
                     self.tableView.mj_footer.endRefreshingWithNoMoreData()
@@ -75,7 +75,7 @@ class MPChoicenessViewController: BaseTableViewController {
     override func setupStyle() {
         super.setupStyle()
         
-        var title = NSLocalizedString("歌单精选", comment: "")
+        var title = NSLocalizedString("歌单精选", comment: "").decryptString()
         if leftTitle != "" {
             title = NSLocalizedString(leftTitle, comment: "")
         }

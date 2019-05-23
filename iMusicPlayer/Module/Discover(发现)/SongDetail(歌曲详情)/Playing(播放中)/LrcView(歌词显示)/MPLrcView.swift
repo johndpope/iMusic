@@ -63,7 +63,7 @@ class MPLrcView: BaseView {
         super.awakeFromNib()
         // Initialization code
         
-        xib_lrc.text = NSLocalizedString("歌词", comment: "")
+        xib_lrc.text = NSLocalizedString("歌词", comment: "").decryptString()
     }
     
     func play() {

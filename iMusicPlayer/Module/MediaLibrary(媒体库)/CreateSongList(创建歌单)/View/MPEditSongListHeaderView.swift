@@ -15,7 +15,7 @@ class MPEditSongListHeaderView: UITableViewCell {
     
     var count: Int = 0 {
         didSet {
-            let title = NSLocalizedString("随机播放", comment: "") + "(\(count)\(NSLocalizedString("首", comment: "")))"
+            let title = NSLocalizedString("随机播放", comment: "").decryptString() + "(\(count)\(NSLocalizedString("首", comment: "").decryptString()))"
             xib_random.setTitle(title, for: .normal)
         }
     }
@@ -24,8 +24,8 @@ class MPEditSongListHeaderView: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        xib_random.setTitle(NSLocalizedString("随机播放", comment: ""), for: .normal)
-        xib_edit.setTitle(NSLocalizedString("编辑", comment: ""), for: .normal)
+        xib_random.setTitle(NSLocalizedString("随机播放", comment: "").decryptString(), for: .normal)
+        xib_edit.setTitle(NSLocalizedString("编辑", comment: "").decryptString(), for: .normal)
     }
 
     @IBAction func btn_DidClicked(_ sender: UIButton) {

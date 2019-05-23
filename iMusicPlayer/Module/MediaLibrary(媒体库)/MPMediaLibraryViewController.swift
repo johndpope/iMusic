@@ -30,7 +30,7 @@ class MPMediaLibraryViewController: BaseTableViewController {
         
         // 注册一个通知来接收是否需要调整tableView的底部边距：小窗播放时需要调整
         NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_ChangeTableViewBottom), object: nil, queue: nil) { (center) in
-            QYTools.shared.Log(log: "调整底部边距通知")
+            QYTools.shared.Log(log: "调整底部边距通知".decryptLog())
             //            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constant.smallPlayerHeight, right: 0)
             self.tableView.snp.updateConstraints({ (make) in
                 make.bottom.equalTo(self.view.safeArea.bottom).offset(-Constant.smallPlayerHeight)
@@ -38,12 +38,10 @@ class MPMediaLibraryViewController: BaseTableViewController {
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshRecentlyList), object: nil, queue: nil) { (center) in
-            QYTools.shared.Log(log: "刷新数据")
             self.refreshData()
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshLocalModels), object: nil, queue: nil) { (center) in
-            QYTools.shared.Log(log: "刷新数据")
             self.refreshData()
         }
     }
@@ -140,7 +138,7 @@ extension MPMediaLibraryViewController {
         if section == 0 {
             ft = .choiceness
             shv.fromType = ft
-            shv.updateView(model: NSLocalizedString(Constant.sectionOneTitle, comment: ""))
+            shv.updateView(model: NSLocalizedString("最近播放", comment: "").decryptString())
         }
         shv.clickBlock = {(sender) in
             if let _ = sender as? UIButton {

@@ -36,7 +36,7 @@ class MPUserSettingViewController: BaseTableViewController {
     
     private func initPlistData() {
         if self.plistName == "usersetting" {
-            let tempArr: [[String: Any]] = [["footer":"","items":[["icon":"icon_profile_time","subTitleColor":"#999999","funcKey":"timeOff","titleColor":"#333333","title": NSLocalizedString("定时关闭", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_profile_upload","subTitleColor":"#999999","funcKey":"uploadMusic","titleColor":"#333333","title": NSLocalizedString("上传音乐", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_profile_message","subTitleColor":"#999999","funcKey":"message","titleColor":"#333333","title": NSLocalizedString("消息", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_info","subTitleColor":"#999999","funcKey":"policy","titleColor":"#333333","title": NSLocalizedString("隐私权政策", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_profile_no_ad","subTitleColor":"#999999","funcKey":"removeAd","titleColor":"#333333","title": NSLocalizedString("去除广告", comment: ""),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""]],"header":""]]
+            let tempArr: [[String: Any]] = [["footer":"","items":[["icon":"icon_profile_time","subTitleColor":"#999999","funcKey":"timeOff","titleColor":"#333333","title": NSLocalizedString("定时关闭", comment: "").decryptString(),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_profile_upload","subTitleColor":"#999999","funcKey":"uploadMusic","titleColor":"#333333","title": NSLocalizedString("上传音乐", comment: "").decryptString(),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_profile_message","subTitleColor":"#999999","funcKey":"message","titleColor":"#333333","title": NSLocalizedString("消息", comment: "").decryptString(),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_info","subTitleColor":"#999999","funcKey":"policy","titleColor":"#333333","title": NSLocalizedString("隐私权政策", comment: "").decryptString(),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""],["icon":"icon_profile_no_ad","subTitleColor":"#999999","funcKey":"removeAd","titleColor":"#333333","title": NSLocalizedString("去除广告", comment: "").decryptString(),"titleFontSize":14,"subTitleFontSize":12,"cellStyle":"value1","accessoryType":"UIImageView","accessoryView":""]],"header":""]]
             self.groups = tempArr as NSArray
         }else {
             initData()
@@ -53,7 +53,7 @@ class MPUserSettingViewController: BaseTableViewController {
     
     override func setupStyle() {
         super.setupStyle()
-        addLeftItem(title: NSLocalizedString("我", comment: ""), imageName: "icon_nav_back", fontColor: UIColor(rgba: "#333333"), fontSize: 18, margin: 16)
+        addLeftItem(title: NSLocalizedString("我", comment: "").decryptString(), imageName: "icon_nav_back", fontColor: UIColor(rgba: "#333333"), fontSize: 18, margin: 16)
     }
     
     override func clickLeft() {
@@ -90,10 +90,10 @@ class MPUserSettingViewController: BaseTableViewController {
                 if btn.tag == 10001 {
                     var alert: HFAlertController?
                     let config = MDAlertConfig()
-                    config.title = NSLocalizedString("退出", comment: "") + "\n"
-                    config.desc = NSLocalizedString("您确定要退出吗？", comment: "")
-                    config.negativeTitle = NSLocalizedString("取消", comment: "")
-                    config.positiveTitle = NSLocalizedString("确定", comment: "")
+                    config.title = NSLocalizedString("退出", comment: "").decryptString() + "\n"
+                    config.desc = NSLocalizedString("您确定要退出吗？", comment: "").decryptString()
+                    config.negativeTitle = NSLocalizedString("取消", comment: "").decryptString()
+                    config.positiveTitle = NSLocalizedString("确定", comment: "").decryptString()
                     config.negativeTitleColor = Color.ThemeColor
                     config.positiveTitleColor = Color.ThemeColor
                     alert = HFAlertController.alertController(config: config, ConfirmCallBack: {
@@ -309,7 +309,7 @@ extension MPUserSettingViewController {
         let path = Bundle.main.path(forResource: "policy", ofType: "plist")
         if let p = path, let policys = NSDictionary(contentsOfFile: p) {
             let vc = MDWebViewController()
-            vc.title = NSLocalizedString("隐私权政策", comment: "")
+            vc.title = NSLocalizedString("隐私权政策", comment: "").decryptString()
             vc.text = policys["policy_1"] as! String
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -361,7 +361,7 @@ extension MPUserSettingViewController: HFThirdPartyManagerDelegate {
                         DiscoverCent?.requestLogin(name: t.name, avatar: t.picture, contact: t.email, did: t.did, uid: t.uid, complete: { (isSucceed, msg) in
                             switch isSucceed {
                             case true:
-                                SVProgressHUD.showInfo(withStatus: "用户信息保存成功~")
+//                                SVProgressHUD.showInfo(withStatus: "用户信息保存成功~")
                                 //  用户已经登陆：拉去云端数据并合并到本地
                                 DiscoverCent?.requestUserCloudList(contact: t.email, uid: t.uid, complete: { (isSucceed, model, msg) in
                                     switch isSucceed {

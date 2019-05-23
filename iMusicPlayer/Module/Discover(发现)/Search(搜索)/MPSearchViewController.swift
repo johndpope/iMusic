@@ -146,7 +146,7 @@ class MPSearchViewController: BaseTableViewController {
             switch isSucceed {
             case true:
                 if let m = model?.data_songs, m.count > 0 {
-                    QYTools.shared.Log(log: "获取到下一页数据")
+                    QYTools.shared.Log(log: "获取到下一页数据".decryptLog())
                     if let oms = self.searchResultView?.model?.data_songs {
                         let temps = oms + m
                         let tempM = self.searchResultView?.model
@@ -176,7 +176,7 @@ class MPSearchViewController: BaseTableViewController {
             switch isSucceed {
             case true:
                 if let m = model?.data_videos, m.count > 0 {
-                    QYTools.shared.Log(log: "获取到下一页数据")
+                    QYTools.shared.Log(log: "获取到下一页数据".decryptLog())
                     if let oms = self.searchResultView?.model?.data_videos {
                         self.nextPageTokenVideo = model?.data_nextPageTokenVideo ?? ""
                         let temps = oms + m
@@ -205,7 +205,7 @@ class MPSearchViewController: BaseTableViewController {
             switch isSucceed {
             case true:
                 if let m = model?.data_playlists, m.count > 0 {
-                    QYTools.shared.Log(log: "获取到下一页数据")
+                    QYTools.shared.Log(log: "获取到下一页数据".decryptLog())
                     if let oms = self.searchResultView?.model?.data_playlists {
                         self.nextPageTokenPlaylist = model?.data_nextPageTokenPlaylist ?? ""
                         let temps = oms + m
@@ -300,12 +300,12 @@ extension MPSearchViewController: MPSearchNavViewDelegate {
                 // 替换数据源
                 searchResultView?.isHidden = true
                 searchingView?.isHidden = false
-                QYTools.shared.Log(log: "替换数据源~")
+                QYTools.shared.Log(log: "替换数据源~".decryptLog())
                 MPModelTools.getRelatedKeyword(q: text, finished: { (model) in
                     self.searchingView?.model = model
                 })
             }else {
-                QYTools.shared.Log(log: "新增关联数据View~")
+                QYTools.shared.Log(log: "新增关联数据View~".decryptLog())
                 // 新增一个列表
                 let relatev = MPSearchingView()
                 searchingView = relatev
@@ -347,7 +347,7 @@ extension MPSearchViewController {
                 // 替换数据源
                 self.searchResultView?.isHidden = false
                 self.searchingView?.isHidden = true
-                QYTools.shared.Log(log: "替换数据源~")
+                QYTools.shared.Log(log: "替换数据源~".decryptLog())
                 
                 //                    MPModelTools.getRelatedKeyword(q: title, finished: { (model) in
                 //                        self?.searchingView?.model = model
@@ -356,7 +356,7 @@ extension MPSearchViewController {
                 // 获取搜索结果数据
                 self.keyword = title
             }else {
-                QYTools.shared.Log(log: "新增结果数据View~")
+                QYTools.shared.Log(log: "新增结果数据View~".decryptLog())
                 // 新增结果列表
                 let rv = MPSearchResultView()
                 self.searchResultView = rv

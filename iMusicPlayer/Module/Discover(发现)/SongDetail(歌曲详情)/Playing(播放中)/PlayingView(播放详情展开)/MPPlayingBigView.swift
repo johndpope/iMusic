@@ -184,8 +184,8 @@ class MPPlayingBigView: BaseView {
     }
     
     private func setupStyle() {
-        xib_lrc.setTitle(NSLocalizedString("歌词", comment: ""), for: .normal)
-        xib_nextPlay.text = NSLocalizedString("下一首播放", comment: "")
+        xib_lrc.setTitle(NSLocalizedString("歌词", comment: "").decryptString(), for: .normal)
+        xib_nextPlay.text = NSLocalizedString("下一首播放", comment: "").decryptString()
         
         playView = self.ybPlayView
         
@@ -232,7 +232,7 @@ class MPPlayingBigView: BaseView {
                 self.needPlay = -1
             }
             
-            QYTools.shared.Log(log: "收到播放通知")
+            QYTools.shared.Log(log: "收到播放通知".decryptLog())
             
             // 1.获取当前播放列表
             // 2.获取当前播放列表中被播放标记的下标：如果没有则获取第一首并标记
@@ -567,7 +567,7 @@ class MPPlayingBigView: BaseView {
             MPModelTools.saveSongToTable(song: song, tableName: MPMyFavoriteViewController.classCode)
             // 设置为收藏状态
             xib_collect.isSelected = true
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("收藏成功", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("收藏成功", comment: "").decryptString())
         }else {
             MPModelTools.deleteSongInTable(tableName: MPMyFavoriteViewController.classCode, songs: [song]) {
                 // 标记为收藏状态：喜爱列表、当前列表
@@ -712,7 +712,7 @@ extension MPPlayingBigView {
                             // 更新上传模型
                             MPModelTools.updateCloudListModel(type: 4)
                         }else {
-                            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
+                            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: "").decryptString())
                         }
                         pv.removeFromWindow()
                     }
@@ -727,7 +727,7 @@ extension MPPlayingBigView {
                 let song = self.getCurrentSong()
                 if !MPModelTools.checkSongExsistInSongList(song: song, songList: songList) {
                     MPModelTools.saveSongToTable(song: song, tableName: tn)
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: "").decryptString())
                     // 更新当前歌单图片及数量：+1
                     MPModelTools.updateCountForSongList(songList: songList, finished: {
                         lv.removeFromWindow()
@@ -736,7 +736,7 @@ extension MPPlayingBigView {
                     // 更新上传模型
                     MPModelTools.updateCloudListModel(type: 4)
                 }else {
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: "").decryptString())
                 }
             }
         }
@@ -769,7 +769,7 @@ extension MPPlayingBigView {
 extension MPPlayingBigView: MPSongToolsViewDelegate {
     
     func timeOff() {
-        QYTools.shared.Log(log: "定时关闭")
+        QYTools.shared.Log(log: "定时关闭".decryptLog())
         // 关闭弹框
         self.moreView?.removeFromWindow()
         // 缩小当前的View
@@ -779,7 +779,7 @@ extension MPPlayingBigView: MPSongToolsViewDelegate {
     }
     
     func playVideo() {
-        QYTools.shared.Log(log: "播放视频")
+        QYTools.shared.Log(log: "播放视频".decryptLog())
         // 关闭弹框
         self.moreView?.removeFromWindow()
         // 判断当前是MV还是MP3
@@ -792,7 +792,7 @@ extension MPPlayingBigView: MPSongToolsViewDelegate {
     }
     
     func songInfo() {
-        QYTools.shared.Log(log: "歌曲信息")
+        QYTools.shared.Log(log: "歌曲信息".decryptLog())
         // 关闭弹框
         self.moreView?.removeFromWindow()
         let pv = MPSongInfoView.md_viewFromXIB() as! MPSongInfoView
@@ -811,12 +811,12 @@ extension MPPlayingBigView: MPSongToolsViewDelegate {
                 
                 if btn.tag == 10001 {    // 协议
                     let vc = MDWebViewController()
-                    vc.title = NSLocalizedString("《著作权许可协议》", comment: "")
+                    vc.title = NSLocalizedString("《著作权许可协议》", comment: "").decryptString()
                     vc.url = API.Copyright
                     HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
                 }else {     // 投诉：跳转到一个H5界面
                     let vc = MDWebViewController()
-                    vc.title = NSLocalizedString("投诉", comment: "")
+                    vc.title = NSLocalizedString("投诉", comment: "").decryptString()
                     vc.url = API.Complaint
                     HFAppEngine.shared.currentViewController()?.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -957,12 +957,11 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
     }
     
     func playingView(toDetail view: MPPlayingView) {
-        QYTools.shared.Log(log: "跳转")
         self.bigStyle()
     }
     
     func playingView(download view: MPPlayingView) {
-        QYTools.shared.Log(log: "下载")
+        QYTools.shared.Log(log: "下载".decryptLog())
         if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
             self.download()
         }else {
@@ -971,7 +970,7 @@ extension MPPlayingBigView: MPPlayingViewDelegate {
     }
     
     func playingView(play view: MPPlayingView, status: Bool) {
-        QYTools.shared.Log(log: "播放")
+        QYTools.shared.Log(log: "播放".decryptLog())
         playDidClicked()
     }
 }
@@ -1222,7 +1221,7 @@ extension MPPlayingBigView: GKDownloadManagerDelegate {
         if state == .finished {
             xib_collect.isSelected = true
         }else if state == .failed {
-            QYTools.shared.Log(log: "下载失败")
+            QYTools.shared.Log(log: "下载失败".decryptLog())
         }
     }
 }

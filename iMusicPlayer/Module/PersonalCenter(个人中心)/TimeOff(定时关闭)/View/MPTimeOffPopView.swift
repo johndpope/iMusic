@@ -20,12 +20,12 @@ class MPTimeOffPopView: UITableViewCell, ViewClickedDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        xib_title.text = NSLocalizedString("自定义", comment: "")
-        xib_time.placeholder = NSLocalizedString("时间", comment: "")
-        xib_minutes.text = NSLocalizedString("分钟后", comment: "")
-        xib_timeDesc.text = NSLocalizedString("不能超过1440分钟", comment: "")
-        xib_cancel.setTitle(NSLocalizedString("取消", comment: ""), for: .normal)
-        xib_submit.setTitle(NSLocalizedString("确定", comment: ""), for: .normal)
+        xib_title.text = NSLocalizedString("自定义", comment: "").decryptString()
+        xib_time.placeholder = NSLocalizedString("时间", comment: "").decryptString()
+        xib_minutes.text = NSLocalizedString("分钟后", comment: "").decryptString()
+        xib_timeDesc.text = NSLocalizedString("不能超过1440分钟", comment: "").decryptString()
+        xib_cancel.setTitle(NSLocalizedString("取消", comment: "").decryptString(), for: .normal)
+        xib_submit.setTitle(NSLocalizedString("确定", comment: "").decryptString(), for: .normal)
     }
 
     var clickBlock: ((Any?) -> ())?

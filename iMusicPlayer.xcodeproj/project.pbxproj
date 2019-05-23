@@ -211,8 +211,6 @@
 		C57FC85A2240DC2F00218DE7 /* MPSongListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC65A2240DC2E00218DE7 /* MPSongListTableViewCell.xib */; };
 		C57FC85B2240DC2F00218DE7 /* MPSongListHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC65B2240DC2E00218DE7 /* MPSongListHeaderView.xib */; };
 		C57FC85C2240DC2F00218DE7 /* MPSongListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC65C2240DC2E00218DE7 /* MPSongListViewController.swift */; };
-		C57FC85D2240DC2F00218DE7 /* MPRadioViewController_backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC65E2240DC2E00218DE7 /* MPRadioViewController_backup.swift */; };
-		C57FC85E2240DC2F00218DE7 /* MPRadioViewController_backup.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC65F2240DC2E00218DE7 /* MPRadioViewController_backup.xib */; };
 		C57FC85F2240DC2F00218DE7 /* MPNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6612240DC2E00218DE7 /* MPNavView.swift */; };
 		C57FC8602240DC2F00218DE7 /* MPNavView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57FC6622240DC2E00218DE7 /* MPNavView.xib */; };
 		C57FC8622240DC2F00218DE7 /* MPUploadMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57FC6662240DC2E00218DE7 /* MPUploadMusicViewController.swift */; };
@@ -706,8 +704,6 @@
 		C57FC65A2240DC2E00218DE7 /* MPSongListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPSongListTableViewCell.xib; sourceTree = "<group>"; };
 		C57FC65B2240DC2E00218DE7 /* MPSongListHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPSongListHeaderView.xib; sourceTree = "<group>"; };
 		C57FC65C2240DC2E00218DE7 /* MPSongListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPSongListViewController.swift; sourceTree = "<group>"; };
-		C57FC65E2240DC2E00218DE7 /* MPRadioViewController_backup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPRadioViewController_backup.swift; sourceTree = "<group>"; };
-		C57FC65F2240DC2E00218DE7 /* MPRadioViewController_backup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPRadioViewController_backup.xib; sourceTree = "<group>"; };
 		C57FC6612240DC2E00218DE7 /* MPNavView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPNavView.swift; sourceTree = "<group>"; };
 		C57FC6622240DC2E00218DE7 /* MPNavView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPNavView.xib; sourceTree = "<group>"; };
 		C57FC6662240DC2E00218DE7 /* MPUploadMusicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPUploadMusicViewController.swift; sourceTree = "<group>"; };
@@ -1268,15 +1264,6 @@
 				C560344122447DA200F6795F /* MPScrollPlayView.xib */,
 			);
 			path = "ScrollPlayView(滑动歌词播放)";
-			sourceTree = "<group>";
-		};
-		C569B6D4226213710003D186 /* Backup(备份) */ = {
-			isa = PBXGroup;
-			children = (
-				C57FC65E2240DC2E00218DE7 /* MPRadioViewController_backup.swift */,
-				C57FC65F2240DC2E00218DE7 /* MPRadioViewController_backup.xib */,
-			);
-			path = "Backup(备份)";
 			sourceTree = "<group>";
 		};
 		C569B6D7226215100003D186 /* Cell */ = {
@@ -2161,7 +2148,6 @@
 			children = (
 				C569B6D8226215160003D186 /* View */,
 				C569B6D5226214020003D186 /* MPRadioViewController.swift */,
-				C569B6D4226213710003D186 /* Backup(备份) */,
 			);
 			path = "Radio(电台)";
 			sourceTree = "<group>";
@@ -3351,7 +3337,6 @@
 				C57FC83E2240DC2F00218DE7 /* MPRecommendTableViewCell.xib in Resources */,
 				C54D6DDB227017450007F57F /* MPPlayingBigView.xib in Resources */,
 				C57FC86A2240DC2F00218DE7 /* MPTimeOffPopView.xib in Resources */,
-				C57FC85E2240DC2F00218DE7 /* MPRadioViewController_backup.xib in Resources */,
 				C566E243228AC60F0078C31C /* MPSearchResultHeaderView.xib in Resources */,
 				C57FC9232240DC3000218DE7 /* icon_deleted@3x.png in Resources */,
 				C57FC87E2240DC2F00218DE7 /* HFWelcomeViewController.xib in Resources */,
@@ -3831,7 +3816,6 @@
 				C57FC7EF2240DC2F00218DE7 /* YDMenuDelegate.swift in Sources */,
 				C57FC8D42240DC2F00218DE7 /* ZYStarRateView.swift in Sources */,
 				C57FC8B12240DC2F00218DE7 /* UIDevice+Extension.swift in Sources */,
-				C57FC85D2240DC2F00218DE7 /* MPRadioViewController_backup.swift in Sources */,
 				C57FC8EE2240DC2F00218DE7 /* SLPasswordInputView.m in Sources */,
 				C57FC8682240DC2F00218DE7 /* MPTimeOffViewController.swift in Sources */,
 				C57FC92A2240DC3000218DE7 /* CYConst.m in Sources */,

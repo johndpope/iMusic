@@ -53,11 +53,6 @@ extension MPMediaLibraryOutTableViewCell: UICollectionViewDataSource, UICollecti
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.identifier, for: indexPath) as! MPMediaLibraryCollectionViewCell
         cell.model = offestModel[indexPath.row]
         cell.tempModel = self.model
-        
-        // 构造当前播放专辑列表模型
-//        let json: [String : Any] = ["data_id": 0, "data_title": NSLocalizedString("最近播放", comment: ""), "data_description": "", "data_originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "data_type": "YouTube", "data_img": model.first?.data_artworkBigUrl ?? "pic_album_default", "data_tracksCount": model.count, "data_recentlyType": 1]
-//        let album = GeneralPlaylists(JSON: json)
-//        cell.currentAlbum = album
         return cell
     }
     

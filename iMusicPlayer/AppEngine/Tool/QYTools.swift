@@ -271,3 +271,32 @@ extension String {
         print("QYTools :: Log ====================== \(self)")
     }
 }
+
+extension String {
+    
+    /// 字符串加密
+    func encryptString() -> String {
+        return self
+    }
+    
+    /// Log加密
+    ///
+    /// - Returns: -
+    func encryptLog() -> String {
+        return self
+    }
+    
+    /// 字符串解密·
+    ///
+    /// - Returns: -
+    func decryptString() -> String {
+        return self
+    }
+    
+    /// 解密Log
+    ///
+    /// - Returns: -
+    func decryptLog() -> String {
+        return self
+    }
+}

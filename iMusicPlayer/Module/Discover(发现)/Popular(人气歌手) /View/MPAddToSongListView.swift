@@ -36,7 +36,7 @@ class MPAddToSongListView: BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        xib_title.text = NSLocalizedString("加入到歌单", comment: "")
+        xib_title.text = NSLocalizedString("加入到歌单", comment: "").decryptString()
         
         tableView.dataSource = self
         tableView.delegate = self

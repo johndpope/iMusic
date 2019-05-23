@@ -27,17 +27,17 @@ class MPUploadMusicViewController: BaseViewController {
     @IBOutlet weak var xib_protocol: UIButton!
     
     private func localized() {
-        xib_uploaderLB.text = NSLocalizedString("上传者", comment: "")
-        xib_songNameLB.text = NSLocalizedString("名称", comment: "")
-        xib_songerNameLB.text = NSLocalizedString("姓名", comment: "")
-        xib_songPathLB.text = NSLocalizedString("音乐", comment: "")
-        xib_coverPathLB.text = NSLocalizedString("封面", comment: "")
-        xib_lrcPathLB.text = NSLocalizedString("歌词", comment: "")
-        xib_mvPathLB.text = NSLocalizedString("视频", comment: "")
-        xib_agreeBtn.setTitle(NSLocalizedString("我保证我提交的内容符合", comment: ""), for: .normal)
-        xib_protocol.setTitle(NSLocalizedString("《著作权许可协议》", comment: ""), for: .normal)
+        xib_uploaderLB.text = NSLocalizedString("上传者", comment: "").decryptString()
+        xib_songNameLB.text = NSLocalizedString("名称", comment: "").decryptString()
+        xib_songerNameLB.text = NSLocalizedString("姓名", comment: "").decryptString()
+        xib_songPathLB.text = NSLocalizedString("音乐", comment: "").decryptString()
+        xib_coverPathLB.text = NSLocalizedString("封面", comment: "").decryptString()
+        xib_lrcPathLB.text = NSLocalizedString("歌词", comment: "").decryptString()
+        xib_mvPathLB.text = NSLocalizedString("视频", comment: "").decryptString()
+        xib_agreeBtn.setTitle(NSLocalizedString("我保证我提交的内容符合", comment: "").decryptString(), for: .normal)
+        xib_protocol.setTitle(NSLocalizedString("《著作权许可协议》", comment: "").decryptString(), for: .normal)
         
-        xib_submit.setTitle(NSLocalizedString("提交", comment: ""), for: .normal)
+        xib_submit.setTitle(NSLocalizedString("提交", comment: "").decryptString(), for: .normal)
     }
     
     @IBOutlet weak var xib_submit: UIButton! {
@@ -69,7 +69,7 @@ class MPUploadMusicViewController: BaseViewController {
             let path = Bundle.main.path(forResource: "policy", ofType: "plist")
             if let p = path, let policys = NSDictionary(contentsOfFile: p) {
                 let vc = MDWebViewController()
-                vc.title = NSLocalizedString("隐私权政策", comment: "")
+                vc.title = NSLocalizedString("隐私权政策", comment: "").decryptString()
                 vc.text = policys["policy_1"] as! String
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -94,17 +94,17 @@ extension MPUploadMusicViewController {
         }
         
         if songName == "" {
-            SVProgressHUD.showInfo(withStatus:  NSLocalizedString("请输入歌曲名称", comment: ""))
+            SVProgressHUD.showInfo(withStatus:  NSLocalizedString("请输入歌曲名称", comment: "").decryptString())
             return
         }
         
         if songPath == "" {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请输入歌曲URL", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请输入歌曲URL", comment: "").decryptString())
             return
         }
         
         if !xib_agreeBtn.isSelected {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请勾选用户协议", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请勾选用户协议", comment: "").decryptString())
             return
         }
         
@@ -118,18 +118,18 @@ extension MPUploadMusicViewController {
             DiscoverCent?.requestUploadMP3(uid: uid, artistName: songerName, coverUrl: coverPath, lyricsUrl: lrcPath, musicName: songName, musicUrl: songPath, videoUrl: mvPath, complete: { (isSucceed, msg) in
                 switch isSucceed {
                 case true:
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("已成功上传", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("已成功上传", comment: "").decryptString())
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
                         self.navigationController?.popViewController(animated: true)
                     }
                     break
                 case false:
-                    SVProgressHUD.showError(withStatus: NSLocalizedString("上传出现错误。请重试", comment: ""))
+                    SVProgressHUD.showError(withStatus: NSLocalizedString("上传出现错误。请重试", comment: "").decryptString())
                     break
                 }
             })
         }else {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("登录了以后，您可以：", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("登录了以后，您可以：", comment: "").decryptString())
         }
         
     }

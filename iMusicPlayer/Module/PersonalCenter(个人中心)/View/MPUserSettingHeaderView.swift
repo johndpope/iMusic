@@ -36,8 +36,8 @@ class MPUserSettingHeaderView: BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        xib_showInfo.text = NSLocalizedString("歌单将保持在账号内，即使更换了设备歌单也不会丢失。", comment: "")
-        xib_googleLogin.setTitle(NSLocalizedString("使用 Google 账号进行登录", comment: ""), for: .normal)
+        xib_showInfo.text = NSLocalizedString("歌单将保持在账号内，即使更换了设备歌单也不会丢失。", comment: "").decryptString()
+        xib_googleLogin.setTitle(NSLocalizedString("使用 Google 账号进行登录", comment: "").decryptString(), for: .normal)
         
         normalStyle()
     }

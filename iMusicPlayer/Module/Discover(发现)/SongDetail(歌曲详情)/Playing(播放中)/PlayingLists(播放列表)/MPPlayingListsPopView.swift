@@ -45,16 +45,16 @@ class MPPlayingListsPopView: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        playingBtn.setTitle(NSLocalizedString("播放列表", comment: ""), for: .normal)
-        relatedBtn.setTitle(NSLocalizedString("相关", comment: ""), for: .normal)
-        closeBtn.setTitle(NSLocalizedString("关闭", comment: ""), for: .normal)
+        playingBtn.setTitle(NSLocalizedString("播放列表", comment: "").decryptString(), for: .normal)
+        relatedBtn.setTitle(NSLocalizedString("相关", comment: "").decryptString(), for: .normal)
+        closeBtn.setTitle(NSLocalizedString("关闭", comment: "").decryptString(), for: .normal)
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: Constant.identifier, bundle: nil), forCellReuseIdentifier: Constant.identifier)
         tableView.tableFooterView = UIView()
         
-        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("无歌曲列表", comment: ""))
+        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("无歌曲列表", comment: "").decryptString())
     }
     
     private func setupNoDataView(image: String, text: String) {

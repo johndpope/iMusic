@@ -373,7 +373,6 @@ class MPModelTools: NSObject {
     class func getSongInTable(tableName: String = "", finished: ((_ models: [MPSongModel]?)->Void)? = nil) {
         var temps = [MPSongModel]()
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
-            QYTools.shared.Log(log: "本地数据库获取数据")
             temps = arr
         }
         if let f = finished {
@@ -400,10 +399,9 @@ class MPModelTools: NSObject {
                 }
                 if isExsist {
                     NSArray.bg_deleteObject(withName: tableName, index: i)
-                    QYTools.shared.Log(log: "歌曲\(i)删除成功")
+                    QYTools.shared.Log(log: "歌曲\(i)删除成功".decryptLog())
                 }
             }
-//            QYTools.shared.Log(log: "本地数据库获取数据")
             if let f = finished {
                 f()
             }
@@ -423,7 +421,7 @@ class MPModelTools: NSObject {
                     let item = m[i]
                     if item.data_title == song.data_title {
                         NSArray.bg_updateObject(withName: tableName, object: song, index: i)
-                        QYTools.shared.Log(log: "歌曲收藏状态更新成功")
+                        QYTools.shared.Log(log: "歌曲收藏状态更新成功".decryptLog())
                         if let f = finished {
                             f()
                         }
@@ -455,7 +453,7 @@ class MPModelTools: NSObject {
                             let sql = "ALTER  TABLE \(songList.data_oldTitle ?? "") RENAME TO \(songList.data_title ?? "");"
                             bg_executeSql(sql, nil, nil)
                             
-                            QYTools.shared.Log(log: "专辑图片及数量更新成功")
+                            QYTools.shared.Log(log: "专辑图片及数量更新成功".decryptLog())
                             if let f = finished {
                                 f()
                             }
@@ -476,7 +474,6 @@ class MPModelTools: NSObject {
         let tableName = songList.data_title ?? "SongList"
         var rs = false
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
-//            QYTools.shared.Log(log: "本地数据库获取数据")
             arr.forEach { (item) in
                 if item.data_title == song.data_title {
                     rs = true
@@ -494,7 +491,6 @@ class MPModelTools: NSObject {
         let startTime = CFAbsoluteTimeGetCurrent()
         var rs = false
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
-//            QYTools.shared.Log(log: "本地数据库获取数据")
             arr.forEach { (item) in
                 if item.data_title == song.data_title {
                     rs = true
@@ -539,7 +535,6 @@ class MPModelTools: NSObject {
     class func getCurrentPlayList(tableName: String = "CurrentPlayList", finished: ((_ models: [MPSongModel], _ currentPlayingSong: MPSongModel?)->Void)? = nil) {
         var tempPlaySong: MPSongModel?
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
-            QYTools.shared.Log(log: "本地数据库获取数据")
             
             arr.forEach { (item) in
                 if item.data_playingStatus == 1 {
@@ -609,7 +604,7 @@ class MPModelTools: NSObject {
             MPModelTools.saveCollectListModel(model: model!, tableName: tableName)
             rs = true
         }else {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: "").decryptString())
         }
     
     // 判断创建歌单
@@ -625,7 +620,6 @@ class MPModelTools: NSObject {
     class func getCollectListModel(tableName: String = GeneralPlaylists.classCode, finished: ((_ models: [GeneralPlaylists]?)->Void)? = nil) {
         var temps = [GeneralPlaylists]()
         if let arr = NSArray.bg_array(withName: tableName) as? [GeneralPlaylists] {
-            QYTools.shared.Log(log: "本地数据库获取数据")
             temps = arr
         }
         if let f = finished {
@@ -773,7 +767,6 @@ class MPModelTools: NSObject {
     class func getSearchResult(q: String = "", duration: String = "", filter: String = "", order: String = "", size: Int = 20, y: String = "0", tableName: String = MPSearchResultModel.classCode, finished: ((_ models: MPSearchResultModel?)->Void)? = nil) {
         var temp: MPSearchResultModel?
         if let arr: [MPSearchResultModel]  = MPSearchResultModel.bg_findAll(tableName) as? [MPSearchResultModel], let model = arr.first {
-            QYTools.shared.Log(log: "本地数据库获取数据")
 //            printSQLiteData(arr: arr)
             temp = model
             if let f = finished {
@@ -783,7 +776,7 @@ class MPModelTools: NSObject {
             DiscoverCent?.requestSearchResult(q: q, duration: duration, filter: filter, order: order, size: size, y: y, complete: { (isSucceed, model, msg) in
                 switch isSucceed {
                 case true:
-                    QYTools.shared.Log(log: "在线获取数据")
+                    QYTools.shared.Log(log: "在线获取数据".decryptLog())
                     if let m = model {
                         // 缓存数据库
                         m.bg_tableName = tableName
@@ -824,7 +817,6 @@ class MPModelTools: NSObject {
     ///   - finished: 回调
     class func getSearchKeywordModel(tableName: String = MPSearchKeywordModel.classCode, finished: ((_ models: [MPSearchKeywordModel]?)->Void)? = nil) {
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSearchKeywordModel] {
-            QYTools.shared.Log(log: "本地数据库获取数据")
             if let f = finished {
                 f(arr)
             }
@@ -832,7 +824,7 @@ class MPModelTools: NSObject {
             DiscoverCent?.requestSearchKeyword(complete: { (isSucceed, model, msg) in
                 switch isSucceed {
                 case true:
-                    QYTools.shared.Log(log: "在线获取数据")
+                    QYTools.shared.Log(log: "在线获取数据".decryptLog())
                     if let f = finished, model!.count > 0 {
                         // 缓存
                         (model! as NSArray).bg_save(withName: tableName)
@@ -855,7 +847,6 @@ class MPModelTools: NSObject {
     ///   - finished: 回调
     class func getRelatedSongsModel(id: String = "", tableName: String = MPSongModel.classCode, finished: ((_ models: [MPSongModel]?)->Void)? = nil) {
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
-            QYTools.shared.Log(log: "本地数据库获取数据")
             if let f = finished {
                 f(arr)
             }

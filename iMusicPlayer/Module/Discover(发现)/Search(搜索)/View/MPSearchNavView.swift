@@ -22,7 +22,7 @@ class MPSearchNavView: BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        xib_textField.placeholder = NSLocalizedString("搜索关键字", comment: "")
+        xib_textField.placeholder = NSLocalizedString("搜索关键字", comment: "").decryptString()
     }
     
     func setupData(model: String) {
@@ -48,7 +48,6 @@ extension MPSearchNavView: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        QYTools.shared.Log(log: "回调")
         if let d = delegate {
             d.keyboardSearch(textField.text ?? "")
         }

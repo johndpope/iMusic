@@ -16,7 +16,7 @@ class MPMyFavoriteHeaderView: UITableViewCell, ViewClickedDelegate {
     
     var count: Int = 0 {
         didSet {
-            let title = NSLocalizedString("随机播放", comment: "") + "(\(count)\(NSLocalizedString("首", comment: "")))"
+            let title = NSLocalizedString("随机播放", comment: "").decryptString() + "(\(count)\(NSLocalizedString("首", comment: "").decryptString()))"
             xib_random.setTitle(title, for: .normal)
         }
     }
@@ -24,7 +24,7 @@ class MPMyFavoriteHeaderView: UITableViewCell, ViewClickedDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let title = NSLocalizedString("随机播放", comment: "")
+        let title = NSLocalizedString("随机播放", comment: "").decryptString()
         xib_random.setTitle(title, for: .normal)
     }
     

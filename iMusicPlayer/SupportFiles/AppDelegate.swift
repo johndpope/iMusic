@@ -107,7 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 switch isSucceed {
                 case true:
                     //                SVProgressHUD.showInfo(withStatus: "数据保存成功~")
-                    QYTools.shared.Log(log: "数据保存成功~")
+                    QYTools.shared.Log(log: "数据保存成功~".decryptLog())
                     break
                 case false:
                     SVProgressHUD.showError(withStatus: msg)
@@ -264,7 +264,7 @@ extension AppDelegate {
     
     private func setFRCDefault() {
         remoteConfig.setDefaults(fromPlist: "RemoteConfigDefault")
-        QYTools.shared.Log(log: "成功设置默认值")
+        QYTools.shared.Log(log: "成功设置默认值".decryptLog())
     }
     
     private func fetchRemoteConfig() {
@@ -272,10 +272,10 @@ extension AppDelegate {
         RemoteConfig.remoteConfig().configSettings = dbgSetting
         RemoteConfig.remoteConfig().fetch(withExpirationDuration: 0) { (status, error) in
             guard error == nil else {
-                QYTools.shared.Log(log: "还没有配置默认值哦")
+                QYTools.shared.Log(log: "还没有配置默认值哦".decryptLog())
                 return
             }
-            QYTools.shared.Log(log: "已经存在默认值")
+            QYTools.shared.Log(log: "已经存在默认值".decryptLog())
             RemoteConfig.remoteConfig().activateFetched()
             self.updateKeyWithRCValues()
         }

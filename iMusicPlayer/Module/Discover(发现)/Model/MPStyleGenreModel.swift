@@ -10,7 +10,7 @@ import ObjectMapper
 
 class MPStyleGenreModel: BaseModel {
     
-    static let sectionTitleDatas = [NSLocalizedString("推荐", comment: ""), NSLocalizedString("风格", comment: ""), NSLocalizedString("主题", comment: "")]
+    static let sectionTitleDatas = [NSLocalizedString("推荐", comment: "").decryptString(), NSLocalizedString("风格", comment: "").decryptString(), NSLocalizedString("主题", comment: "").decryptString()]
     
     var data_style: [Genre]?
     var data_theme: [Genre]?

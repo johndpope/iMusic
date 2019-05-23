@@ -101,7 +101,7 @@ class MPSongListViewController: BaseTableViewController {
     override func setupStyle() {
         super.setupStyle()
         
-        addLeftItem(title: NSLocalizedString("歌单列表", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
+        addLeftItem(title: NSLocalizedString("歌单列表", comment: "").decryptString(), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
         addRightItem(imageName: "nav_icon_search")
 }
 
@@ -144,14 +144,14 @@ override func clickRight(sender: UIButton) {
         hv.clickBlock = {(sender) in
             if let btn = sender as? UIButton {
                 if btn.tag == 10001 {
-                    QYTools.shared.Log(log: "随机播放")
+                    QYTools.shared.Log(log: "随机播放".decryptLog())
                     if self.model.count > 0 {
                         self.randomPlay()
                     }else {
-                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("找不到歌曲", comment: ""))
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("找不到歌曲", comment: "").decryptString())
                     }
                 }else {
-                    QYTools.shared.Log(log: "收藏歌单")
+                    QYTools.shared.Log(log: "收藏歌单".decryptLog())
                     self.headerSongModel?.data_collectionType = self.type
                     let isExsist = MPModelTools.checkCollectListExsist(model: self.headerSongModel!, tableName: MPCollectSongListViewController.classCode)
                     if !isExsist {

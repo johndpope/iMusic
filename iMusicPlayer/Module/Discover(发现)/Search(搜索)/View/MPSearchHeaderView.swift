@@ -24,8 +24,8 @@ class MPSearchHeaderView: BaseView {
         super.awakeFromNib()
         // Initialization code
         
-        xib_hot.text = NSLocalizedString("人气搜索", comment: "")
-        xib_history.text = NSLocalizedString("搜索历史", comment: "")
+        xib_hot.text = NSLocalizedString("人气搜索", comment: "").decryptString()
+        xib_history.text = NSLocalizedString("搜索历史", comment: "").decryptString()
         
         xib_tagListView.addTags(tagDataSources)
         xib_tagListView.delegate = self

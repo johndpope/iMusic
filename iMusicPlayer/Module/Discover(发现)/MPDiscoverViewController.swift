@@ -46,7 +46,7 @@ class MPDiscoverViewController: BaseTableViewController {
         super.viewDidLoad()
         // 注册一个通知来接收是否需要调整tableView的底部边距：小窗播放时需要调整
         NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_ChangeTableViewBottom), object: nil, queue: nil) { (center) in
-            QYTools.shared.Log(log: "调整底部边距通知")
+            QYTools.shared.Log(log: "调整底部边距通知".decryptLog())
 //            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constant.smallPlayerHeight, right: 0)
             self.tableView.snp.updateConstraints({ (make) in
                 make.bottom.equalTo(self.view.safeArea.bottom).offset(-Constant.smallPlayerHeight)
@@ -54,7 +54,6 @@ class MPDiscoverViewController: BaseTableViewController {
         }
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshRecentlyAlbum), object: nil, queue: nil) { (center) in
-            QYTools.shared.Log(log: "刷新数据")
             self.refreshData()
         }
     }
@@ -417,31 +416,31 @@ extension MPDiscoverViewController {
     private func getUpdateTime(album: GeneralPlaylists) -> String {
         var time = ""
         if let oricon = album.data_title, oricon == "Oricon" {
-            time = NSLocalizedString("周三更新", comment: "")
+            time = NSLocalizedString("周三更新", comment: "").decryptString()
         }
         
         if let oricon = album.data_title, oricon == "Ment" {
-            time = NSLocalizedString("周一更新", comment: "")
+            time = NSLocalizedString("周一更新", comment: "").decryptString()
         }
         
         if let oricon = album.data_title, oricon == "Billboard" {
-            time = NSLocalizedString("周三更新", comment: "")
+            time = NSLocalizedString("周三更新", comment: "").decryptString()
         }
         
         if let oricon = album.data_title, oricon == "ITunes" {
-            time = NSLocalizedString("周一更新", comment: "")
+            time = NSLocalizedString("周一更新", comment: "").decryptString()
         }
         
         if let oricon = album.data_title, oricon == "Listen" {
-            time = NSLocalizedString("每天更新", comment: "")
+            time = NSLocalizedString("每天更新", comment: "").decryptString()
         }
         
         if let oricon = album.data_title, oricon == "Collection" {
-            time = NSLocalizedString("每天更新", comment: "")
+            time = NSLocalizedString("每天更新", comment: "").decryptString()
         }
         
         if let oricon = album.data_title, oricon == "UK" {
-            time = NSLocalizedString("周一更新", comment: "")
+            time = NSLocalizedString("周一更新", comment: "").decryptString()
         }
         return time
     }

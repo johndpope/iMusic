@@ -46,7 +46,6 @@ class MPMyFavoriteViewController: BaseTableViewController {
         refreshData()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshLocalModels), object: nil, queue: nil) { (center) in
-            QYTools.shared.Log(log: "刷新数据")
             self.refreshData()
         }
     }
@@ -58,10 +57,10 @@ class MPMyFavoriteViewController: BaseTableViewController {
     override func refreshData() {
         super.refreshData()
         
-        var title = NSLocalizedString("我的音乐收藏", comment: "")
+        var title = NSLocalizedString("我的音乐收藏", comment: "").decryptString()
         switch fromType {
         case .Recently:
-            title = NSLocalizedString("最近播放", comment: "")
+            title = NSLocalizedString("最近播放", comment: "").decryptString()
 //            if let localModel = DiscoverCent?.data_CloudListUploadModel, let model = localModel.data_history {
 //                self.model = model.reversed()
 //            }else {
@@ -103,7 +102,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
             }
             break
         case .Download:
-            title = NSLocalizedString("我的下载", comment: "")
+            title = NSLocalizedString("我的下载", comment: "").decryptString()
             self.model.removeAll()
             var temps = [MPSongModel]()
             GKDownloadManager.sharedInstance()?.downloadedFileList()?.enumerateObjects({ (obj, idx, stop) in
@@ -121,7 +120,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
             self.model = temps
             break
         case .Cache:
-            title = NSLocalizedString("可离线播放", comment: "")
+            title = NSLocalizedString("可离线播放", comment: "").decryptString()
             
             break
         default:
@@ -149,7 +148,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
         tableView.mj_header = nil
         tableView.mj_footer = nil
         
-        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("找不到歌曲", comment: ""))
+        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("找不到歌曲", comment: "").decryptString())
     }
     
     override func setupTableHeaderView() {
@@ -165,7 +164,7 @@ class MPMyFavoriteViewController: BaseTableViewController {
                 if self.model.count > 0 {
                     self.randomPlay()
                 }else {
-                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("找不到歌曲", comment: ""))
+                    SVProgressHUD.showInfo(withStatus: NSLocalizedString("找不到歌曲", comment: "").decryptString())
                 }
             }
         }
@@ -195,7 +194,7 @@ extension MPMyFavoriteViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.identifier) as! MPSongTableViewCell
         // 构造当前播放专辑列表模型
-        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的音乐收藏", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
+        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的音乐收藏", comment: "").decryptString(), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
 //        let album = GeneralPlaylists(JSON: json)
         let album = Mapper<GeneralPlaylists>().map(JSON: json)
         if fromType == .Favorite {
@@ -214,29 +213,9 @@ extension MPMyFavoriteViewController {
 // MARK: - 随机播放
 extension MPMyFavoriteViewController {
     private func randomPlay(index: Int = -1) {
-        // 显示当前的播放View
-//        if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
-//            var cs: MPSongModel?
-//            // 循序不能倒过来
-//            if index != -1 {
-//                cs = model[index]
-//            }else {
-//                cs = model.first
-//            }
-//            // 随机播放
-//            pv.currentPlayOrderMode = 1
-//            pv.currentSong = cs
-//            pv.model = model
-//            // 构造当前播放专辑列表模型
-//            let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的最爱", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
-//            //        let album = GeneralPlaylists(JSON: json)
-//            let album = Mapper<GeneralPlaylists>().map(JSON: json)
-//            pv.currentAlbum = album
-//            pv.bigStyle()
-//        }
         
         // 构造当前播放专辑列表模型
-        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的音乐收藏", comment: ""), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
+        let json: [String : Any] = ["id": 0, "title": NSLocalizedString("我的音乐收藏", comment: "").decryptString(), "description": "", "originalId": "PLw-EF7Go2fRtjDCxwUkcvIuhR1Lip-Hl2", "type": "YouTube", "img": model.first?.data_artworkBigUrl ?? "pic_album_default", "tracksCount": model.count, "recentlyType": 3]
         let album = GeneralPlaylists(JSON: json)
         
         album?.data_songs = model

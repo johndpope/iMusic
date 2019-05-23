@@ -46,11 +46,11 @@ class MPEditSongListDetailViewController: BaseTableViewController {
     }
     
     private func localized() {
-        xib_selectAll.setTitle(NSLocalizedString("全选", comment: ""), for: .normal)
-        xib_finished.setTitle(NSLocalizedString("完成", comment: ""), for: .normal)
-        xib_nextPlay.text = NSLocalizedString("下一首播放", comment: "")
-        xib_addPlaylist.text = NSLocalizedString("添加到歌单", comment: "")
-        xib_delete.text = NSLocalizedString("删除", comment: "")
+        xib_selectAll.setTitle(NSLocalizedString("全选", comment: "").decryptString(), for: .normal)
+        xib_finished.setTitle(NSLocalizedString("完成", comment: "").decryptString(), for: .normal)
+        xib_nextPlay.text = NSLocalizedString("下一首播放", comment: "").decryptString()
+        xib_addPlaylist.text = NSLocalizedString("添加到歌单", comment: "").decryptString()
+        xib_delete.text = NSLocalizedString("删除", comment: "").decryptString()
     }
     
     override func setupStyle() {
@@ -141,15 +141,15 @@ extension MPEditSongListDetailViewController {
     /// // 删除当前模型和本地模型：刷新数据
     private func deleteSelModels() {
         if selectModel.count == 0 {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请选择", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请选择", comment: "").decryptString())
             return
         }else {
             var alert: HFAlertController?
             let config = MDAlertConfig()
-            config.title = NSLocalizedString("删除", comment: "") + "\n"
-            config.desc = NSLocalizedString("您确定要刪除吗？", comment: "")
-            config.negativeTitle = NSLocalizedString("取消", comment: "")
-            config.positiveTitle = NSLocalizedString("OK", comment: "")
+            config.title = NSLocalizedString("删除", comment: "").decryptString() + "\n"
+            config.desc = NSLocalizedString("您确定要刪除吗？", comment: "").decryptString()
+            config.negativeTitle = NSLocalizedString("取消", comment: "").decryptString()
+            config.positiveTitle = NSLocalizedString("OK", comment: "").decryptString()
             config.negativeTitleColor = Color.ThemeColor
             config.positiveTitleColor = Color.ThemeColor
             alert = HFAlertController.alertController(config: config, ConfirmCallBack: {
@@ -239,7 +239,7 @@ extension MPEditSongListDetailViewController {
     /// 添加到歌单列表
     func addToSongList() {
         if selectModel.count == 0 {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请选择", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请选择", comment: "").decryptString())
             return
         }
         
@@ -269,7 +269,7 @@ extension MPEditSongListDetailViewController {
                             // 更新上传模型
                             MPModelTools.updateCloudListModel(type: 4)
                         }else {
-                            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
+                            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: "").decryptString())
                         }
                         pv.removeFromWindow()
                     }
@@ -283,7 +283,7 @@ extension MPEditSongListDetailViewController {
                 self.selectModel.forEach({ (song) in    // 循环添加歌曲
                     if !MPModelTools.checkSongExsistInSongList(song: song, songList: songList) {
                         MPModelTools.saveSongToTable(song: song, tableName: tn)
-                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("成功添加歌单", comment: ""))
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("成功添加歌单", comment: "").decryptString())
                         // 更新当前歌单图片及数量：+1
                         MPModelTools.updateCountForSongList(songList: songList, finished: {
                             lv.removeFromWindow()
@@ -292,7 +292,7 @@ extension MPEditSongListDetailViewController {
                         // 更新上传模型
                         MPModelTools.updateCloudListModel(type: 4)
                     }else {
-                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: ""))
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: "").decryptString())
                     }
                 })
             }
@@ -304,7 +304,7 @@ extension MPEditSongListDetailViewController {
     /// 下一首播放
     func nextPlay() {
         if selectModel.count == 0 {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请选择", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("请选择", comment: "").decryptString())
             return
         }
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
@@ -322,9 +322,9 @@ extension MPEditSongListDetailViewController {
                         let index = self.getIndexFromSongs(song: cs, songs: currentPlayingList)
                         let nextIndex = (index + 1) % currentPlayingList.count
                         pv.model.insert(song, at: nextIndex)
-                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("已添加，下一首播放", comment: ""))
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("已添加，下一首播放", comment: "").decryptString())
                     }else {
-                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: ""))
+                        SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: "").decryptString())
                     }
                 })
             }else {
@@ -348,7 +348,7 @@ extension MPEditSongListDetailViewController {
 //                }
             }
         }else {
-            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: ""))
+            SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌曲已经收录到歌单了", comment: "").decryptString())
         }
     }
     
@@ -409,7 +409,7 @@ extension MPEditSongListDetailViewController {
         }
         tempM?.data_img = self.model.first?.data_artworkUrl ?? "pic_album_default"
         MPModelTools.updateCountForSongList(songList: tempM!, finished: {
-            QYTools.shared.Log(log: "专辑信息更新成功")
+            QYTools.shared.Log(log: "专辑信息更新成功".decryptLog())
             if let b = self.updateAlbumBlock {
                 b(tempM!)
             }
@@ -454,7 +454,7 @@ extension MPEditSongListDetailViewController: TableViewDraggerDataSource, TableV
         NSArray.bg_dropAsync(tbn) { (finished) in
             if finished {
                 if (self.model as NSArray).bg_save(withName: tbn) {
-                    QYTools.shared.Log(log: "本地模型更新成功")
+                    QYTools.shared.Log(log: "本地模型更新成功".decryptLog())
                     self.updateAlbumModel()
                 }
             }

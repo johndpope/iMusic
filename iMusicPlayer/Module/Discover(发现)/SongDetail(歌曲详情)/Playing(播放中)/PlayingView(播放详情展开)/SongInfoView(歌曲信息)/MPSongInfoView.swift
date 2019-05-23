@@ -20,9 +20,9 @@ class MPSongInfoView: BaseView {
         super.awakeFromNib()
         // Initialization code
         
-        xib_uploader.text = NSLocalizedString("上传者", comment: "")
-        xib_protocol.setTitle(NSLocalizedString("《著作权许可协议》", comment: ""), for: .normal)
-        xib_complaint.setTitle(NSLocalizedString("投诉", comment: ""), for: .normal)
+        xib_uploader.text = NSLocalizedString("上传者", comment: "").decryptString()
+        xib_protocol.setTitle(NSLocalizedString("《著作权许可协议》", comment: "").decryptString(), for: .normal)
+        xib_complaint.setTitle(NSLocalizedString("投诉", comment: "").decryptString(), for: .normal)
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {

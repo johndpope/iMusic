@@ -38,8 +38,8 @@ class MPSongListHeaderView: UITableViewCell, ViewClickedDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        xib_random.setTitle(NSLocalizedString("随机播放", comment: ""), for: .normal)
-        xib_collect.setTitle(NSLocalizedString("收藏歌单", comment: ""), for: .normal)
+        xib_random.setTitle(NSLocalizedString("随机播放", comment: "").decryptString(), for: .normal)
+        xib_collect.setTitle(NSLocalizedString("收藏歌单", comment: "").decryptString(), for: .normal)
     }
     
     @IBAction func btn_DidClicked(_ sender: UIButton) {
@@ -57,7 +57,7 @@ class MPSongListHeaderView: UITableViewCell, ViewClickedDelegate {
         }
         
         xib_title.text = model.data_title
-        xib_count.text = "\(model.data_tracksCount)" + NSLocalizedString("首", comment: "")
+        xib_count.text = "\(model.data_tracksCount)" + NSLocalizedString("首", comment: "").decryptString()
     }
     
 }

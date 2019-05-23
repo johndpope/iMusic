@@ -23,10 +23,10 @@ class MPLatestHeaderView: BaseView {
         // Initialization code
         self.bounds = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: SCREEN_WIDTH*(90/375)))
         
-        xib_random.setTitle(NSLocalizedString("随机播放", comment: ""), for: .normal)
-        xib_segment.setTitle(NSLocalizedString("日本", comment: ""), forSegmentAt: 0)
-        xib_segment.setTitle(NSLocalizedString("欧美", comment: ""), forSegmentAt: 1)
-        xib_segment.setTitle(NSLocalizedString("韩国", comment: ""), forSegmentAt: 2)
+        xib_random.setTitle(NSLocalizedString("随机播放", comment: "").decryptString(), for: .normal)
+        xib_segment.setTitle(NSLocalizedString("日本", comment: "").decryptString(), forSegmentAt: 0)
+        xib_segment.setTitle(NSLocalizedString("欧美", comment: "").decryptString(), forSegmentAt: 1)
+        xib_segment.setTitle(NSLocalizedString("韩国", comment: "").decryptString(), forSegmentAt: 2)
         
     }
     

@@ -22,10 +22,10 @@ class MPCreateSongListView: UITableViewCell, ViewClickedDelegate {
         super.awakeFromNib()
         // Initialization code
         
-        xib_title.text = NSLocalizedString("新增歌单", comment: "")
-        xib_songListName.placeholder = NSLocalizedString("请输入歌单名称", comment: "")
-        xib_cancel.setTitle(NSLocalizedString("取消", comment: ""), for: .normal)
-        xib_submit.setTitle(NSLocalizedString("新建", comment: ""), for: .normal)
+        xib_title.text = NSLocalizedString("新增歌单", comment: "").decryptString()
+        xib_songListName.placeholder = NSLocalizedString("请输入歌单名称", comment: "").decryptString()
+        xib_cancel.setTitle(NSLocalizedString("取消", comment: "").decryptString(), for: .normal)
+        xib_submit.setTitle(NSLocalizedString("新建", comment: "").decryptString(), for: .normal)
         
         xib_songListName.becomeFirstResponder()
         

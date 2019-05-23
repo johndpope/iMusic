@@ -38,7 +38,6 @@ class MPCreateSongListViewController: BaseTableViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(NotCenter.NC_RefreshLocalModels), object: nil, queue: nil) { (center) in
-            QYTools.shared.Log(log: "刷新数据")
             self.refreshData()
         }
         
@@ -118,7 +117,7 @@ class MPCreateSongListViewController: BaseTableViewController {
     override func setupStyle() {
         super.setupStyle()
         
-        addLeftItem(title: NSLocalizedString("我的歌单", comment: ""), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
+        addLeftItem(title: NSLocalizedString("我的歌单", comment: "").decryptString(), imageName: "icon_nav_back", fontColor: Color.FontColor_333, fontSize: 18, margin: 16)
         addRightItem(imageName: "nav_icon_search")
     }
     
@@ -143,7 +142,7 @@ class MPCreateSongListViewController: BaseTableViewController {
         tableView.mj_header = nil
         tableView.mj_footer = nil
         
-        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("暂无歌单", comment: ""))
+        setupNoDataView(image: "pic_noresault", text: NSLocalizedString("暂无歌单", comment: "").decryptString())
     }
     
     private func setupNoDataView(image: String, text: String) {
@@ -176,7 +175,7 @@ class MPCreateSongListViewController: BaseTableViewController {
                             pv.removeFromWindow()
                         }else {
                             guard let sName = pv.xib_songListName.text, sName != "" else {
-                                SVProgressHUD.showInfo(withStatus: NSLocalizedString("请输入歌单名称", comment: ""))
+                                SVProgressHUD.showInfo(withStatus: NSLocalizedString("请输入歌单名称", comment: "").decryptString())
                                 return
                             }
                             if MPModelTools.createSongList(songListName: sName) {
@@ -184,7 +183,7 @@ class MPCreateSongListViewController: BaseTableViewController {
                                 // 更新上传模型
                                 MPModelTools.updateCloudListModel(type: 4)
                             }else {
-                                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: ""))
+                                SVProgressHUD.showInfo(withStatus: NSLocalizedString("歌单已存在", comment: "").decryptString())
                             }
                             pv.removeFromWindow()
                         }
@@ -250,8 +249,8 @@ extension MPCreateSongListViewController: MPSongToolsViewDelegate {
         
         let pv = MPCreateSongListView.md_viewFromXIB() as! MPCreateSongListView
         
-        pv.xib_title.text = NSLocalizedString("更改名称", comment: "")
-        pv.xib_songListName.placeholder = NSLocalizedString("请输入歌单名称", comment: "")
+        pv.xib_title.text = NSLocalizedString("更改名称", comment: "").decryptString()
+        pv.xib_songListName.placeholder = NSLocalizedString("请输入歌单名称", comment: "").decryptString()
         pv.xib_songListName.text = tempM.data_title
         // 给旧名称赋值
         tempM.data_oldTitle = pv.xib_songListName.text
@@ -265,7 +264,6 @@ extension MPCreateSongListViewController: MPSongToolsViewDelegate {
                 }else {
                     tempM.data_title = pv.xib_songListName.text
                     MPModelTools.updateCountForSongList(songList: tempM, tableName: tableName, finished: {
-                        QYTools.shared.Log(log: "更改成功了")
                         self.refreshData()
                         
                         MPModelTools.updateCloudListModel(type: 4)
@@ -282,13 +280,12 @@ extension MPCreateSongListViewController: MPSongToolsViewDelegate {
         extensionView?.removeFromWindow()
         
         let tempM = model[currentIndex]
-        QYTools.shared.Log(log: "删除歌单")
         var alert: HFAlertController?
         let config = MDAlertConfig()
-        config.title = NSLocalizedString("删除", comment: "") + "\n"
-        config.desc = NSLocalizedString("确定要删除歌单", comment: "") + (tempM.data_title ?? "") + NSLocalizedString("吗？", comment: "")
-        config.negativeTitle = NSLocalizedString("取消", comment: "")
-        config.positiveTitle = NSLocalizedString("OK", comment: "")
+        config.title = NSLocalizedString("删除", comment: "").decryptString() + "\n"
+        config.desc = NSLocalizedString("确定要删除歌单", comment: "").decryptString() + (tempM.data_title ?? "") + NSLocalizedString("吗？", comment: "").decryptString()
+        config.negativeTitle = NSLocalizedString("取消", comment: "").decryptString()
+        config.positiveTitle = NSLocalizedString("OK", comment: "").decryptString()
         config.negativeTitleColor = Color.ThemeColor
         config.positiveTitleColor = Color.ThemeColor
         alert = HFAlertController.alertController(config: config, ConfirmCallBack: {
