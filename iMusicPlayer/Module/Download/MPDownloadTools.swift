@@ -33,5 +33,22 @@ class MPDownloadTools: NSObject {
         QYTools.shared.Log(log: "已经加入下载队列".decryptLog())
     }
     
-    
+    /// 检查文件是否存在
+    ///
+    /// - Parameter model: 歌曲模型
+    /// - Returns: 是否存在
+    class func checkCacheSongExist(model: MPSongModel) -> Bool {
+        let fm = FileManager.default
+//        let exist = fm.fileExists(atPath: path)
+        let tempPath: NSString = NSTemporaryDirectory() as NSString
+        let path = tempPath.appendingPathComponent(model.data_cachePath.components(separatedBy: "/").last ?? "")
+        // TODO: 判断文件是否存在
+        var isSave = fm.fileExists(atPath: path)
+        print(isSave)
+//        var directory: ObjCBool = ObjCBool(true)
+//        isSave = fm.fileExists(atPath: path, isDirectory: &directory)
+//        print(isSave)
+        
+        return isSave
+    }
 }

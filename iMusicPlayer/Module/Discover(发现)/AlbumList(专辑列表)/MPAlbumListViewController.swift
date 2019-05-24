@@ -156,6 +156,8 @@ extension MPAlbumListViewController {
         album?.data_songs = models
         MPModelTools.saveRecentlyAlbum(album: album!)
         
+        MPModelTools.ressetPlayStatus(currentList: models)
+        
         models[index == -1 ? 0 : index].data_playingStatus = 1
         
         MPModelTools.saveCurrentPlayList(currentList: models)

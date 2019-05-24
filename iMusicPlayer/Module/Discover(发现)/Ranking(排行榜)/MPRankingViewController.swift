@@ -198,6 +198,8 @@ extension MPRankingViewController {
         album?.data_songs = model
         MPModelTools.saveRecentlyAlbum(album: album!)
         
+        MPModelTools.ressetPlayStatus(currentList: model)
+        
         model[index == -1 ? 0 : index].data_playingStatus = 1
         
         MPModelTools.saveCurrentPlayList(currentList: model)

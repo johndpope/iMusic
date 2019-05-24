@@ -390,6 +390,8 @@ extension MPEditSongListDetailViewController {
         songListModel?.data_songs = selectModel
         MPModelTools.saveRecentlyAlbum(album: songListModel!)
         
+        MPModelTools.ressetPlayStatus(currentList: selectModel)
+        
         selectModel[index].data_playingStatus = 1
         
         MPModelTools.saveCurrentPlayList(currentList: selectModel)

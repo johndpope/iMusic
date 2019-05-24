@@ -61,43 +61,18 @@ class MPMyFavoriteViewController: BaseTableViewController {
         switch fromType {
         case .Recently:
             title = NSLocalizedString("最近播放", comment: "").decryptString()
-//            if let localModel = DiscoverCent?.data_CloudListUploadModel, let model = localModel.data_history {
-//                self.model = model.reversed()
-//            }else {
-//                MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
-//                    if let m = model {
-//                        self.model = m.reversed()
-//                        self.saveListToCloudModel(m: m)
-//                        
-//                    }
-//                }
-//            }
             
             MPModelTools.getSongInTable(tableName: "RecentlyPlay") { (model) in
                 if let m = model {
                     self.model = m.reversed()
-//                    self.saveListToCloudModel(m: m)
-                    
                 }
             }
             
             break
         case .Favorite:
-//            if let localModel = DiscoverCent?.data_CloudListUploadModel, let model = localModel.data_favorite {
-//                self.model = model
-//            }else {
-//                MPModelTools.getSongInTable(tableName: MPMyFavoriteViewController.classCode) { (model) in
-//                    if let m = model {
-//                        self.model = m
-//                        self.saveListToCloudModel(m: m)
-//                    }
-//                }
-//            }
-            
             MPModelTools.getSongInTable(tableName: MPMyFavoriteViewController.classCode) { (model) in
                 if let m = model {
                     self.model = m
-//                    self.saveListToCloudModel(m: m)
                 }
             }
             break
@@ -122,7 +97,17 @@ class MPMyFavoriteViewController: BaseTableViewController {
             break
         case .Cache:
             title = NSLocalizedString("可离线播放", comment: "").decryptString()
-            
+            MPModelTools.getSongInTable(tableName: "CacheList") { (model) in
+                if let m = model {
+                    var temps = [MPSongModel]()
+                    m.forEach({ (song) in
+                        if MPDownloadTools.checkCacheSongExist(model: song) {
+                            temps.append(song)
+                        }
+                    })
+                    self.model = temps
+                }
+            }
             break
         default:
             break
@@ -221,6 +206,8 @@ extension MPMyFavoriteViewController {
         
         album?.data_songs = model
         MPModelTools.saveRecentlyAlbum(album: album!)
+        
+        MPModelTools.ressetPlayStatus(currentList: model)
         
         model[index == -1 ? 0 : index].data_playingStatus = 1
         

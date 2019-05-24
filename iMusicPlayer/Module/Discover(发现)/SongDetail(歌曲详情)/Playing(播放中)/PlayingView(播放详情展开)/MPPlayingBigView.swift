@@ -1066,22 +1066,8 @@ extension MPPlayingBigView {
             // 重置UI
         }else {
             let music = self.getCurrentSong()
-            
-            if music.data_localPath != "" {
-                music.data_audioFileURL = URL(fileURLWithPath: music.data_localPath)
-            }else {
-                music.data_audioFileURL = URL(string: music.data_cache ?? Constant.MP3Test)
-            }
-//            if music.data_audioFileURL == nil {
-//                var url: URL!
-//                if music.data_localPath != "" {
-//                    url = URL(fileURLWithPath: music.data_localPath)
-//                }else {
-//                    url = URL(string: music.data_cache ?? Constant.MP3Test)
-//                }
-//                music.data_audioFileURL = url
-//            }
-            
+            // 为空时会奔溃
+            // music.audioFileURL()
             streamer = DOUAudioStreamer(audioFile: music)
             streamer.addObserver(self, forKeyPath: "status", options: .new, context: nil)
             streamer.addObserver(self, forKeyPath: "duration", options: .new, context: nil)
@@ -1112,6 +1098,15 @@ extension MPPlayingBigView {
         // 更新UI
         if streamer.bufferingRatio >= 1.0 {
             QYTools.shared.Log(log: "sha256: \(streamer.sha256)")
+            
+            // 缓存完成记录到列表中
+            let cacheModel = self.getCurrentSong()
+            cacheModel.data_cachePath = streamer.cachedPath
+            
+            // 保存到缓存数据表
+            if !MPModelTools.checkSongExsistInPlayingList(song: cacheModel, tableName: "CacheList") {
+                MPModelTools.saveSongToTable(song: cacheModel, tableName: "CacheList")
+            }
         }
     }
     

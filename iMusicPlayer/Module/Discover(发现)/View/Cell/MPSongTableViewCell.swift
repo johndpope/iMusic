@@ -77,6 +77,9 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
             }
             
             let index = getIndexFromSongs(song: currentSong!, songs: currentSongList)
+            
+            MPModelTools.ressetPlayStatus(currentList: currentSongList)
+            
             currentSongList[index].data_playingStatus = 1
             
             MPModelTools.saveCurrentPlayList(currentList: currentSongList)

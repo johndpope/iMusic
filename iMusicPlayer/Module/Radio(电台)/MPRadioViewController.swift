@@ -89,7 +89,7 @@ class MPRadioViewController: BaseViewController {
         if let pv = (UIApplication.shared.delegate as? AppDelegate)?.playingBigView {
 //            pv.currentSong = model[currentIndex]
 //            pv.model = model
-            
+            MPModelTools.ressetPlayStatus(currentList: model)
             
             model[currentIndex].data_playingStatus = 1
             

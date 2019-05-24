@@ -23,7 +23,9 @@ class MPSongModel:BaseModel, DOUAudioFile {
     
     func audioFileURL() -> URL! {
         var url: URL!
-        if data_localPath != "" {
+        if data_cachePath != "" {
+            url = URL(fileURLWithPath: data_cachePath)
+        }else if data_localPath != "" {
             url = URL(fileURLWithPath: data_localPath)
         }else {
             url = URL(string: data_cache ?? "")
@@ -55,6 +57,8 @@ class MPSongModel:BaseModel, DOUAudioFile {
     var data_lyrics: String?
     
     var data_localPath: String = ""
+    
+    var data_cachePath: String = ""
     
     var data_isDownload: Bool {
         return GKDownloadManager.sharedInstance()?.checkDownload(withID: data_songId ?? "") ?? false

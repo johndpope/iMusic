@@ -548,6 +548,17 @@ class MPModelTools: NSObject {
         }
     }
     
+    /// 重置列表播放状态
+    ///
+    /// - Parameter currentList: 播放列表
+    /// - Returns: -
+    class func ressetPlayStatus(currentList: [MPSongModel]) -> [MPSongModel] {
+        currentList.forEach { (item) in
+            item.data_playingStatus = 0
+        }
+        return currentList
+    }
+    
     /// 存储当前的播放列表
     ///
     /// - Parameters:

@@ -327,6 +327,8 @@ extension MPDiscoverViewController {
         // 保存当前专辑列表
         MPModelTools.saveRecentlyAlbum(album: album!)
         
+        MPModelTools.ressetPlayStatus(currentList: model)
+        
         cs.data_playingStatus = 1
         
         // 设置当前播放列表
@@ -348,6 +350,9 @@ extension MPDiscoverViewController {
         if type == 2 {
             let songs = getSongsInAlbum(index: index)
             if songs.count > 0 {
+                
+                MPModelTools.ressetPlayStatus(currentList: songs)
+                
                 songs.first?.data_playingStatus = 1
                 MPModelTools.saveCurrentPlayList(currentList: songs)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotCenter.NC_PlayCurrentList), object: nil, userInfo: ["randomMode" : 0])
