@@ -32,4 +32,6 @@ class MPDownloadTools: NSObject {
         GKDownloadManager.sharedInstance()?.addDownloadArr([dModel])
         QYTools.shared.Log(log: "已经加入下载队列".decryptLog())
     }
+    
+    
 }

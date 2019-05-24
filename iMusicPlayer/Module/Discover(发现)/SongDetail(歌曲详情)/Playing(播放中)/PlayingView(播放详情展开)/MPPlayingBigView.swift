@@ -587,8 +587,22 @@ class MPPlayingBigView: BaseView {
     /// 下载
     private func download() {
         let song = self.getCurrentSong()
-        MPDownloadTools.downloadMusicWithSongId(model: song)
-        GKDownloadManager.sharedInstance()?.delegate = self
+        
+//        if (song.data_isDownload) {
+//            let dModel = GKDownloadModel()
+//            dModel.fileID = song.data_songId
+//
+//            GKDownloadManager.sharedInstance()?.removeDownloadArr([dModel])
+//        }else {
+//            MPDownloadTools.downloadMusicWithSongId(model: song)
+//            GKDownloadManager.sharedInstance()?.delegate = self
+//        }
+        
+        if !(song.data_isDownload) {
+            MPDownloadTools.downloadMusicWithSongId(model: song)
+            GKDownloadManager.sharedInstance()?.delegate = self
+        }
+        
     }
     
     private func mvPrev() {

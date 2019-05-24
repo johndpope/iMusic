@@ -22,7 +22,12 @@ class MPSongModel:BaseModel, DOUAudioFile {
 //    }
     
     func audioFileURL() -> URL! {
-         let url = URL(string: data_cache ?? "")
+        var url: URL!
+        if data_localPath != "" {
+            url = URL(fileURLWithPath: data_localPath)
+        }else {
+            url = URL(string: data_cache ?? "")
+        }
         return url
     }
     
@@ -50,6 +55,10 @@ class MPSongModel:BaseModel, DOUAudioFile {
     var data_lyrics: String?
     
     var data_localPath: String = ""
+    
+    var data_isDownload: Bool {
+        return GKDownloadManager.sharedInstance()?.checkDownload(withID: data_songId ?? "") ?? false
+    }
     
     override func encode(with aCoder: NSCoder) {
         aCoder.encode(self.data_id, forKey: "id")
