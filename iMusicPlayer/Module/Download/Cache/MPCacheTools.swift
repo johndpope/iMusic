@@ -13,7 +13,7 @@ import Cache
 
 class MPCacheTools: NSObject {
     
-    static let sharedStorage = DiskStorage(config: DiskConfig(name: "cache"), path: "songcache", transformer: TransformerFactory.forData())
+    static let sharedStorage = DiskStorage(config: DiskConfig(name: "cache"), path: "", transformer: TransformerFactory.forData())
 
     class func addCache(model: MPSongModel) {
         do {

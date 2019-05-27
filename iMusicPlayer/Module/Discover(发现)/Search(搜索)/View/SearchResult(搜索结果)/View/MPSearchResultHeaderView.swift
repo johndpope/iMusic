@@ -33,13 +33,13 @@ class MPSearchResultHeaderView: UITableViewCell {
         didSet {
             if SourceType == 0 {
                 segment.removeAllSegments()
-                segment.setTitle(NSLocalizedString("MV", comment: "").decryptString(), forSegmentAt: 0)
-                segment.setTitle(NSLocalizedString("歌单", comment: "").decryptString(), forSegmentAt: 1)
+                segment.insertSegment(withTitle: NSLocalizedString("MV", comment: "").decryptString(), at: 0, animated: true)
+                segment.insertSegment(withTitle: NSLocalizedString("歌单", comment: "").decryptString(), at: 1, animated: true)
             }else {
                 segment.removeAllSegments()
-                segment.setTitle(NSLocalizedString("单曲", comment: "").decryptString(), forSegmentAt: 0)
-                segment.setTitle(NSLocalizedString("MV", comment: "").decryptString(), forSegmentAt: 1)
-                segment.setTitle(NSLocalizedString("歌单", comment: "").decryptString(), forSegmentAt: 2)
+                segment.insertSegment(withTitle: NSLocalizedString("单曲", comment: "").decryptString(), at: 0, animated: true)
+                segment.insertSegment(withTitle: NSLocalizedString("MV", comment: "").decryptString(), at: 1, animated: true)
+                segment.insertSegment(withTitle: NSLocalizedString("歌单", comment: "").decryptString(), at: 2, animated: true)
             }
             segment.selectedSegmentIndex = 0
         }
