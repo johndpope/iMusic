@@ -21,6 +21,7 @@ PODS:
   - BGFMDB/BG (2.0.13):
     - BGFMDB/FMDB
   - BGFMDB/FMDB (2.0.13)
+  - Cache (5.2.0)
   - CryptoSwift (0.14.0)
   - DOUAudioStreamer (0.2.15)
   - Firebase/Auth (5.18.0):
@@ -168,6 +169,7 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - BGFMDB
+  - Cache
   - CryptoSwift
   - DOUAudioStreamer
   - Firebase/Core
@@ -197,6 +199,7 @@ SPEC REPOS:
     - AFNetworking
     - Alamofire
     - BGFMDB
+    - Cache
     - CryptoSwift
     - DOUAudioStreamer
     - Firebase
@@ -240,6 +243,7 @@ SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   BGFMDB: 48e6823027232402a678acc7f71484b1fc9171d0
+  Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
   CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   DOUAudioStreamer: 14f217bab01b52171fc2bd7d96e1f8fdd50fce68
   Firebase: 02f3281965c075426141a0ce1277e9de6649cab9
@@ -279,6 +283,6 @@ SPEC CHECKSUMS:
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: d6244c6d1f45c977a9f961a6885e5b472df1567c
+PODFILE CHECKSUM: afdebd2253ade38fea3e5fae36c2732a926d7149
 
 COCOAPODS: 1.6.1

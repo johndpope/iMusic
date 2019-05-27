@@ -9,6 +9,7 @@
 import UIKit
 import youtube_ios_player_helper
 import DOUAudioStreamer
+import Cache
 
 private struct Constant {
     static let smallPlayerWidth = SCREEN_HEIGHT * (90/(IPHONEX ? 812 : 667))
@@ -1102,6 +1103,10 @@ extension MPPlayingBigView {
             // 缓存完成记录到列表中
             let cacheModel = self.getCurrentSong()
             cacheModel.data_cachePath = streamer.cachedPath
+            
+            // 自己缓存音乐数据
+            MPCacheTools.addCache(model: cacheModel)
+            QYTools.shared.Log(log: MPCacheTools.cachePath(key: cacheModel.data_cachePath.md5()))
             
             // 保存到缓存数据表
             if !MPModelTools.checkSongExsistInPlayingList(song: cacheModel, tableName: "CacheList") {

@@ -12,6 +12,7 @@
 		C51CE7FB2270BC7300964D38 /* MPRecentlyAlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51CE7FA2270BC7300964D38 /* MPRecentlyAlbumModel.swift */; };
 		C5229643224FBCD600ADAD20 /* MPSearchKeywordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5229642224FBCD600ADAD20 /* MPSearchKeywordModel.swift */; };
 		C5229645224FC54100ADAD20 /* MPSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5229644224FC54100ADAD20 /* MPSearchResult.swift */; };
+		C52B72E8229BF13A00403F5C /* MPCacheTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52B72E7229BF13A00403F5C /* MPCacheTools.swift */; };
 		C52E2A152248DFC7000075E8 /* MPRankingTempModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A142248DFC7000075E8 /* MPRankingTempModel.swift */; };
 		C52E2A192248E619000075E8 /* MPSongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A182248E619000075E8 /* MPSongModel.swift */; };
 		C52E2A1D2249CD83000075E8 /* MPModelTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52E2A1C2249CD83000075E8 /* MPModelTools.swift */; };
@@ -483,6 +484,7 @@
 		C51CE7FA2270BC7300964D38 /* MPRecentlyAlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRecentlyAlbumModel.swift; sourceTree = "<group>"; };
 		C5229642224FBCD600ADAD20 /* MPSearchKeywordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchKeywordModel.swift; sourceTree = "<group>"; };
 		C5229644224FC54100ADAD20 /* MPSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSearchResult.swift; sourceTree = "<group>"; };
+		C52B72E7229BF13A00403F5C /* MPCacheTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPCacheTools.swift; sourceTree = "<group>"; };
 		C52E2A142248DFC7000075E8 /* MPRankingTempModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPRankingTempModel.swift; sourceTree = "<group>"; };
 		C52E2A182248E619000075E8 /* MPSongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPSongModel.swift; sourceTree = "<group>"; };
 		C52E2A1C2249CD83000075E8 /* MPModelTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPModelTools.swift; sourceTree = "<group>"; };
@@ -1112,6 +1114,14 @@
 				3CA33FAF4D6CCF9867C457A9 /* Pods_iMusicPlayerUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C52B72E4229BE5DC00403F5C /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				C52B72E7229BF13A00403F5C /* MPCacheTools.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		C53616A0224780EF00CFBD63 /* DataCent */ = {
@@ -3103,6 +3113,7 @@
 		C5CAA242228E9DD600C49BDE /* Download */ = {
 			isa = PBXGroup;
 			children = (
+				C52B72E4229BE5DC00403F5C /* Cache */,
 				C5CAA245228E9F1800C49BDE /* GKHttpManager */,
 				C5CAA227228E900E00C49BDE /* GKDownloadManager */,
 				C5CAA243228E9E0E00C49BDE /* MPDownloadTools.swift */,
@@ -3423,6 +3434,7 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BGFMDB/BGFMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/DOUAudioStreamer/DOUAudioStreamer.framework",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
@@ -3454,6 +3466,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BGFMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DOUAudioStreamer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
@@ -3761,6 +3774,7 @@
 				C59D308322811FA800D91724 /* AudioRecordManager.swift in Sources */,
 				C57FC9102240DC3000218DE7 /* UIButton+HXExtension.m in Sources */,
 				C57FC92B2240DC3000218DE7 /* CYPasswordView.m in Sources */,
+				C52B72E8229BF13A00403F5C /* MPCacheTools.swift in Sources */,
 				C57FC8CE2240DC2F00218DE7 /* UIColor+Category.m in Sources */,
 				C57FC8882240DC2F00218DE7 /* HFNetworkManager.swift in Sources */,
 				C57FC7F52240DC2F00218DE7 /* MPCreateSongListTableViewCell.swift in Sources */,
