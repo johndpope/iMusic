@@ -492,7 +492,10 @@ class MPModelTools: NSObject {
         var rs = false
         if let arr = NSArray.bg_array(withName: tableName) as? [MPSongModel] {
             arr.forEach { (item) in
-                if item.data_title == song.data_title {
+//                if item.data_songId == song.data_songId || item.data_originalId == song.data_originalId {
+//                    rs = true
+//                }
+                if item.data_title == song.data_title || item.data_songName == song.data_songName {
                     rs = true
                 }
             }

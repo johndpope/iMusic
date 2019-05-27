@@ -99,13 +99,14 @@ class MPMyFavoriteViewController: BaseTableViewController {
             title = NSLocalizedString("可离线播放", comment: "").decryptString()
             MPModelTools.getSongInTable(tableName: "CacheList") { (model) in
                 if let m = model {
-                    var temps = [MPSongModel]()
-                    m.forEach({ (song) in
-                        if MPDownloadTools.checkCacheSongExist(model: song) {
-                            temps.append(song)
-                        }
-                    })
-                    self.model = temps
+//                    var temps = [MPSongModel]()
+//                    m.forEach({ (song) in
+//                        if MPDownloadTools.checkCacheSongExist(model: song) {
+//                            temps.append(song)
+//                        }
+//                    })
+//                    self.model = temps
+                    self.model = m
                 }
             }
             break
