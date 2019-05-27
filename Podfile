@@ -61,6 +61,8 @@ target 'iMusicPlayer' do
    pod 'Firebase/Core'
    
    pod 'Firebase/RemoteConfig'
+   
+   pod 'Cache'
 
   target 'iMusicPlayerTests' do
     inherit! :search_paths
