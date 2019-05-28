@@ -1108,6 +1108,10 @@ extension MPPlayingBigView {
             MPCacheTools.addCache(model: cacheModel)
             QYTools.shared.Log(log: MPCacheTools.cachePath(key: cacheModel.data_cachePath.md5()))
             
+            MPCacheTools.ss.async.object(forKey: cacheModel.data_cachePath.md5()) { (rs) in
+                print(rs)
+            }
+            
             // 保存到缓存数据表
             if !MPModelTools.checkSongExsistInPlayingList(song: cacheModel, tableName: "CacheList") {
                 MPModelTools.saveSongToTable(song: cacheModel, tableName: "CacheList")
