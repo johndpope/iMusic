@@ -347,8 +347,8 @@ class MPPlayingBigView: BaseView {
             
             // 判断是否开启下载权限
             if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL {
-                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
-                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_lock_screen"), for: .normal)
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_lock_screen(1)"), for: .selected)
             }else {
                 xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
                 xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)

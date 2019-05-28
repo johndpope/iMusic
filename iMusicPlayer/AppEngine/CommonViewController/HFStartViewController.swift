@@ -15,7 +15,7 @@ class HFStartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        self.imageView.image = UIImage(named: self.splashImage())
+        self.imageView.image = UIImage(named: self.splashImage())
         
     }
 

@@ -173,8 +173,8 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
             xib_title.text = model.data_songName
             xib_desc.text = model.data_singerName
             if BOOL_OPEN_MP3, BOOL_OPEN_MUSIC_DL, sourceType == -1 {
-                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_default_1"), for: .normal)
-                xib_collect.setImage(#imageLiteral(resourceName: "icon_download_finish_1"), for: .selected)
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_lock_screen"), for: .normal)
+                xib_collect.setImage(#imageLiteral(resourceName: "icon_lock_screen(1)"), for: .selected)
             }else {
                 xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_normal"), for: .normal)
                 xib_collect.setImage(#imageLiteral(resourceName: "icon_collect_selected"), for: .selected)
