@@ -284,9 +284,15 @@ extension AppDelegate {
     /// 获取firebase远程配置的值保持本地
     private func updateKeyWithRCValues() {
         let openMP3 = self.remoteConfig.configValue(forKey: "bool_open_mp3").boolValue
-        QYTools.shared.Log(log: "BOOL_OPEN_MP3 == \(openMP3)")
-        SourceType = openMP3 ? 1 : 0
-        BOOL_OPEN_MP3 = openMP3
+        
+        if let mp3Active = UserDefaults.standard.value(forKey: "mp3_activated") as? Bool, mp3Active {
+            SourceType = 1
+            BOOL_OPEN_MP3 = true
+        }else {
+            SourceType = 0
+            BOOL_OPEN_MP3_FS = openMP3
+        }
+        
         if openMP3 {
             Analytics.logEvent("allow_mp3_on", parameters: nil)
         }else {
@@ -294,11 +300,18 @@ extension AppDelegate {
         }
         
         let openMusicDL = self.remoteConfig.configValue(forKey: "bool_open_music_dl").boolValue
-        QYTools.shared.Log(log: "BOOL_OPEN_MUSIC_DL == \(openMusicDL)")
-        if BOOL_OPEN_MUSIC_DL == false, openMusicDL == true {
-            Analytics.logEvent("allow_downloading_activated", parameters: nil)
+        
+        if let downloadActive = UserDefaults.standard.value(forKey: "downloading_activated") as? Bool, downloadActive {
+            BOOL_OPEN_MUSIC_DL = true
+        }else {
+            if BOOL_OPEN_MUSIC_DL == false, openMusicDL == true {
+                Analytics.logEvent("allow_downloading_activated", parameters: nil)
+                // 保存激活状态
+                UserDefaults.standard.set(true, forKey: "downloading_activated")
+                BOOL_OPEN_MUSIC_DL = true
+            }
         }
-        BOOL_OPEN_MUSIC_DL = openMusicDL
+        
         if openMusicDL {
             Analytics.logEvent("allow_downloading_on", parameters: nil)
         }else {
@@ -306,11 +319,19 @@ extension AppDelegate {
         }
         
         let openLyrics = self.remoteConfig.configValue(forKey: "bool_open_lyrics").boolValue
-        QYTools.shared.Log(log: "BOOL_OPEN_LYRICS == \(openLyrics)")
-        if BOOL_OPEN_LYRICS == false, openLyrics == true {
-            Analytics.logEvent("allow_lyrics_activated", parameters: nil)
+        
+        if let lyricsActive = UserDefaults.standard.value(forKey: "lyrics_activated") as? Bool, lyricsActive {
+            BOOL_OPEN_LYRICS = true
+        }else {
+            if BOOL_OPEN_LYRICS == false, openLyrics == true {
+                Analytics.logEvent("allow_lyrics_activated", parameters: nil)
+                
+                // 保存激活状态
+                UserDefaults.standard.set(true, forKey: "lyrics_activated")
+                BOOL_OPEN_LYRICS = true
+            }
         }
-        BOOL_OPEN_LYRICS = openLyrics
+        
         if openLyrics {
             Analytics.logEvent("allow_lyrics_on", parameters: nil)
         }else {
@@ -318,23 +339,18 @@ extension AppDelegate {
         }
         
         let deviceAuth = self.remoteConfig.configValue(forKey: "status_of_device_auth").stringValue ?? ""
-        QYTools.shared.Log(log: "STATUS_OF_DEVICE_AUTH == \(deviceAuth)")
         STATUS_OF_DEVICE_AUTH = deviceAuth
         
         let installTime = self.remoteConfig.configValue(forKey: "float_min_act_hours_as_old_user").numberValue?.floatValue ?? 0
-        QYTools.shared.Log(log: "FLOAT_MIN_ACT_HOURS_AS_OLD_USER == \(installTime)")
         FLOAT_MIN_ACT_HOURS_AS_OLD_USER = installTime
         
         let completedSongs = self.remoteConfig.configValue(forKey: "int_min_completed_songs_as_old_user").numberValue?.intValue ?? 0
-        QYTools.shared.Log(log: "INT_MIN_COMPLETED_SONGS_AS_OLD_USER == \(completedSongs)")
         INT_MIN_COMPLETED_SONGS_AS_OLD_USER = completedSongs
         
         let devLang = self.remoteConfig.configValue(forKey: "dev_lang").stringValue ?? ""
-        QYTools.shared.Log(log: "DEV_LANG == \(devLang)")
         DEV_LANG = devLang
         
         let dev_loc = self.remoteConfig.configValue(forKey: "dev_loc").stringValue ?? ""
-        QYTools.shared.Log(log: "DEV_LOC == \(dev_loc)")
         DEV_LOC = dev_loc
         
         // 获取后台配置

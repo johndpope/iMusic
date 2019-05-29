@@ -688,11 +688,13 @@ class MPPlayingBigView: BaseView {
             // 歌曲数量+1
             USER_PLAY_SONG_COUNT += 1
             // 判断是否可以激活MP3
-            if promissionForMP3(), BOOL_OPEN_MP3 == false {
+            if promissionForMP3(), BOOL_OPEN_MP3_FS == true {
                 // 设置全局开关：激活PM3
                 BOOL_OPEN_MP3 = true
                 // 用户第一次激活播放mp3功能
                 Analytics.logEvent("allow_mp3_activated", parameters: nil)
+                
+                UserDefaults.standard.set(true, forKey: "mp3_activated")
             }
         }
         

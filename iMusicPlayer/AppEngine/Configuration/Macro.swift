@@ -170,6 +170,8 @@ var BtnDidClickedBlock: ((_ sender: UIButton) -> Void)?
 /// 为 true 则激活mp3功能
 var BOOL_OPEN_MP3: Bool = false
 
+var BOOL_OPEN_MP3_FS: Bool = false
+
 /// 为true则激活下载功能
 var BOOL_OPEN_MUSIC_DL: Bool = false
 

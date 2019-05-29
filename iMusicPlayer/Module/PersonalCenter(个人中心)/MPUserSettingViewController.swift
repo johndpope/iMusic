@@ -302,7 +302,8 @@ extension MPUserSettingViewController {
     }
     /// 我的消息
     @objc func message() {
-        
+        SVProgressHUD.showInfo(withStatus: NSLocalizedString("目前不可用，请稍后再重试", comment: "").decryptString())
+        return
     }
     /// 隐私政策
     @objc func policy() {
@@ -322,7 +323,8 @@ extension MPUserSettingViewController {
     }
     /// 去广告
     @objc func removeAd() {
-        
+        SVProgressHUD.showInfo(withStatus: NSLocalizedString("目前不可用，请稍后再重试", comment: "").decryptString())
+        return
     }
 }
 import GoogleSignIn
