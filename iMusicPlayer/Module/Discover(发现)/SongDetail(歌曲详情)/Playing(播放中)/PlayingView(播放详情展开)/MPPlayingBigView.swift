@@ -1069,7 +1069,7 @@ extension MPPlayingBigView {
             let music = self.getCurrentSong()
             // 为空时会奔溃
             // music.audioFileURL()
-            streamer = DOUAudioStreamer(audioFile: music)
+            streamer = DOUAudioStreamer(audioFile: music) 
             streamer.addObserver(self, forKeyPath: "status", options: .new, context: nil)
             streamer.addObserver(self, forKeyPath: "duration", options: .new, context: nil)
             streamer.addObserver(self, forKeyPath: "bufferingRatio", options: .new, context: nil)
@@ -1102,15 +1102,12 @@ extension MPPlayingBigView {
             
             // 缓存完成记录到列表中
             let cacheModel = self.getCurrentSong()
-            cacheModel.data_cachePath = streamer.cachedPath
             
             // 自己缓存音乐数据
-            MPCacheTools.addCache(model: cacheModel)
-            QYTools.shared.Log(log: MPCacheTools.cachePath(key: cacheModel.data_cachePath.md5()))
+            MPCacheTools.cacheMusic(path: streamer.cachedPath)
+            cacheModel.data_cachePath = MPCacheTools.cachePath(path: streamer.cachedPath)
             
-            MPCacheTools.ss.async.object(forKey: cacheModel.data_cachePath.md5()) { (rs) in
-                print(rs)
-            }
+//            try! MPCacheTools.sharedStorage.object(forKey: streamer.cachedPath.md5())
             
             // 保存到缓存数据表
             if !MPModelTools.checkSongExsistInPlayingList(song: cacheModel, tableName: "CacheList") {

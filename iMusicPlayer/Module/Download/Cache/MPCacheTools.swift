@@ -13,27 +13,36 @@ import Cache
 
 class MPCacheTools: NSObject {
     
-    static let sharedStorage = DiskStorage(config: DiskConfig(name: "cache"), path: "cacheList", transformer: TransformerFactory.forData())
-    static let ss = try! Storage(
-            diskConfig: DiskConfig(name: "CacheModels"),
-            memoryConfig: MemoryConfig(expiry: .never, countLimit: 10, totalCostLimit: 10),
+//    static let sharedStorage = DiskStorage(config: DiskConfig(name: "cache"), path: "cacheList", transformer: TransformerFactory.forData())
+    
+    static let diskConfig = DiskConfig(name: "iMusicPlayer.CacheMusic")
+    static let memoryConfig = MemoryConfig(expiry: .never, countLimit: 3, totalCostLimit: 0)
+    
+    static let sharedStorage = try! Storage(
+            diskConfig: diskConfig,
+            memoryConfig: memoryConfig,
             transformer: TransformerFactory.forData()
     )
-
-    class func addCache(model: MPSongModel) {
-        do {
-            try sharedStorage.removeAll()
-            if let data = NSData(contentsOfFile: model.data_cachePath) as Data? {
-                try sharedStorage.setObject(data, forKey: model.data_cachePath.md5())
-            }
-//            try ss.setObject(NSData(contentsOfFile: model.data_cachePath) as Data, forKey: "data")
-        }catch {
-            print(error)
-        }
+//    static let cachePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, .userDomainMask, true).last ?? ""
+//
+//    static let sharedStorage = try! DiskStorage(config: diskConfig, path: cachePath + "/iMusicPlayer.CacheMusic.new", transformer: TransformerFactory.forData())
+    
+    class func cachePath(path: String) -> String {
+        let cachePath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, .userDomainMask, true).last
+        return ((cachePath! as NSString).appendingPathComponent(diskConfig.name) as NSString).appendingPathComponent(path.md5().md5().uppercased())
     }
     
-    class func cachePath(key: String) -> String {
-        return sharedStorage.path
+    class func cacheMusic(path: String) {
+        do {
+            // 1.判断是否存在该音乐
+            let exist = try sharedStorage.existsObject(forKey: path.md5())
+            // 2.
+            if !exist {
+                try sharedStorage.setObject(NSData(contentsOfFile: path) as Data, forKey: path.md5())
+            }
+        }catch {
+            QYTools.shared.Log(log: error.localizedDescription)
+        }
     }
     
 }
