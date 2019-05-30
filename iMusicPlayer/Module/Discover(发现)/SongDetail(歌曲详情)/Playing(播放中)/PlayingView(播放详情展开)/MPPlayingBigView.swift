@@ -688,7 +688,7 @@ class MPPlayingBigView: BaseView {
             // 歌曲数量+1
             USER_PLAY_SONG_COUNT += 1
             // 判断是否可以激活MP3
-            if promissionForMP3(), BOOL_OPEN_MP3_FS == true {
+            if promissionForMP3() {
                 // 设置全局开关：激活PM3
                 BOOL_OPEN_MP3 = true
                 // 用户第一次激活播放mp3功能
@@ -1101,20 +1101,24 @@ extension MPPlayingBigView {
         // 更新UI
         if streamer.bufferingRatio >= 1.0 {
             QYTools.shared.Log(log: "sha256: \(streamer.sha256)")
-            
-            // 缓存完成记录到列表中
-            let cacheModel = self.getCurrentSong()
-            
-            // 自己缓存音乐数据
-            MPCacheTools.cacheMusic(path: streamer.cachedPath)
-            cacheModel.data_cachePath = MPCacheTools.cachePath(path: streamer.cachedPath)
-            
-//            try! MPCacheTools.sharedStorage.object(forKey: streamer.cachedPath.md5())
-            
-            // 保存到缓存数据表
-            if !MPModelTools.checkSongExsistInPlayingList(song: cacheModel, tableName: "CacheList") {
-                MPModelTools.saveSongToTable(song: cacheModel, tableName: "CacheList")
+            // 只有MP3状态下才会缓存
+            if BOOL_OPEN_MP3 {
+                addCache()
             }
+        }
+    }
+    
+    private func addCache() {
+        // 缓存完成记录到列表中
+        let cacheModel = self.getCurrentSong()
+        
+        // 自己缓存音乐数据
+        MPCacheTools.cacheMusic(path: streamer.cachedPath)
+        cacheModel.data_cachePath = MPCacheTools.cachePath(path: streamer.cachedPath)
+        
+        // 保存到缓存数据表
+        if !MPModelTools.checkSongExsistInPlayingList(song: cacheModel, tableName: "CacheList") {
+            MPModelTools.saveSongToTable(song: cacheModel, tableName: "CacheList")
         }
     }
     
@@ -1241,7 +1245,7 @@ extension MPPlayingBigView {
             return false
         }
         
-        return true
+        return (true && BOOL_OPEN_MP3_FS)
     }
 }
 
