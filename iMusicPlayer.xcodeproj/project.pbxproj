@@ -4223,7 +4223,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KU3Z84AU8W;
+				DEVELOPMENT_TEAM = ZZG8SS9R2S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMusicPlayer/AppEngine/Tool/AliPay",
@@ -4252,7 +4252,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KU3Z84AU8W;
+				DEVELOPMENT_TEAM = ZZG8SS9R2S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMusicPlayer/AppEngine/Tool/AliPay",

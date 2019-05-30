@@ -201,3 +201,7 @@ var USER_PLAY_SONG_COUNT: Int = 0
 var USER_OPEN_MP3: Bool = false
 
 // MARK: - 下载管理类
+
+
+// MARK: - 控制屏幕旋转
+var isAllowAutorotate = false

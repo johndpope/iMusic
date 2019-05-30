@@ -373,3 +373,15 @@ extension AppDelegate {
     }
     
 }
+
+extension AppDelegate {
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if isAllowAutorotate {
+            return [.portrait, .landscapeLeft, .landscapeRight]
+        }else {
+            return .portrait
+        }
+    }
+    
+}

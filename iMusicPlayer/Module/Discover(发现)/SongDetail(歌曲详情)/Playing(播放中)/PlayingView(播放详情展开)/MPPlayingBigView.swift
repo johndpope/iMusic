@@ -125,6 +125,7 @@ class MPPlayingBigView: BaseView {
     @IBOutlet weak var xib_orderMode: UIButton!
     @IBOutlet weak var xib_collect: UIButton!
     
+    @IBOutlet weak var xib_fullScreen: UIButton!
     /// YouTube播放器配置
 //    var playerVars: [String: Any] = [
 //        "autoplay": 0,
@@ -202,6 +203,8 @@ class MPPlayingBigView: BaseView {
         
         playerViewTop.constant = StatusBarHeight
         contentViewH.constant = SCREEN_HEIGHT - TabBarHeight - StatusBarHeight
+        
+        xib_fullScreen.isHidden = true
     }
     
     private func setupAction() {
@@ -212,8 +215,10 @@ class MPPlayingBigView: BaseView {
                     self.smallStyle()
                 }else {
                     // 全屏播放
-                    self.playerVars["playsinline"] = 0
-                    self.playView.playVideo()
+//                    self.playerVars["playsinline"] = 0
+//                    self.playView.playVideo()
+//                    isAllowAutorotate = true
+//                    self.fullscreen()
                 }
             }
         }
@@ -241,8 +246,16 @@ class MPPlayingBigView: BaseView {
             
         }
     }
+    var defaultPlayFrame: CGRect = .zero
+    private func fullscreen() {
+        playView.setPlaybackQuality(YTPlaybackQuality.large)
+//        self.defaultPlayFrame = playView.frame
+//        playView.frame = CGRect(origin: .zero, size: CGSize(width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+    }
+    
     // 移除通知
     deinit {
+        isAllowAutorotate = false
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -300,6 +313,8 @@ class MPPlayingBigView: BaseView {
     
     private func playMvOrMp3(type: Int) {
         
+        setLockScreenDisplay()
+        
         Analytics.logEvent("play_start", parameters: nil)
         
         self.bigStyle()
@@ -314,6 +329,23 @@ class MPPlayingBigView: BaseView {
             }
         }
         updateView(type: self.currentSouceType)
+    }
+    
+    //    MARK: 设置锁屏信息显示
+    func setLockScreenDisplay() {
+        
+        let model = self.getCurrentSong()
+        
+        var info = Dictionary<String, Any>()
+        info[MPMediaItemPropertyTitle] = model.data_title//歌名
+        info[MPMediaItemPropertyArtist] = model.data_channelTitle//作者
+        //        [info setObject:self.model.filename forKey:MPMediaItemPropertyAlbumTitle];//专辑名
+        info[MPMediaItemPropertyAlbumArtist] = model.data_channelTitle//专辑作者
+        info[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: UIImage.init(data: try! NSData.init(contentsOf: URL(string: model.data_artworkUrl!)!) as Data)!)//显示的图片
+        info[MPMediaItemPropertyPlaybackDuration] = model.data_durationInSeconds//总时长
+        info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0//播放速率
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+//        MPNowPlayingInfoCenter.default().playbackState = .playing
     }
     
     private func playMp3() {
