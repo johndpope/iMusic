@@ -194,11 +194,15 @@ class MPPlayingBigView: BaseView {
         playView.isHidden = true
         xib_coverImage.isHidden = true
         
-        if !IPHONEX {
+        if !(SCREEN_HEIGHT > 667) {
             topViewH.constant = defaultTopViewH - Constant.sbReduceHeight
             self.height = SCREEN_HEIGHT + Constant.smallPlayerHeight + StatusBarHeight
         }else {
-            self.height = SCREEN_HEIGHT - TabBarHeight + Constant.smallPlayerHeight + StatusBarHeight
+            if IPHONEX {
+                self.height = SCREEN_HEIGHT - TabBarHeight + Constant.smallPlayerHeight + StatusBarHeight
+            }else {
+                self.height = SCREEN_HEIGHT + Constant.smallPlayerHeight + StatusBarHeight
+            }
         }
         
         playerViewTop.constant = StatusBarHeight

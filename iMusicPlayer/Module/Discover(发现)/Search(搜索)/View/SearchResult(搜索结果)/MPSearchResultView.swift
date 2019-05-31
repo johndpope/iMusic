@@ -251,7 +251,7 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
             case 2:
                 cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPChoicenessTableViewCell
                 if let models = model?.data_playlists {
-                    (cell as! MPChoicenessTableViewCell).updateCell(model: models[indexPath.row])
+                    (cell as! MPChoicenessTableViewCell).updateCell(model: models[indexPath.row], type: 1)
                 }
                 break
             default:
@@ -279,7 +279,7 @@ extension MPSearchResultView: UITableViewDataSource, UITableViewDelegate {
             case 1:
                 cell = tableView.dequeueReusableCell(withIdentifier: Constant.songListIdentifier) as! MPChoicenessTableViewCell
                 if let models = model?.data_playlists {
-                    (cell as! MPChoicenessTableViewCell).updateCell(model: models[indexPath.row])
+                    (cell as! MPChoicenessTableViewCell).updateCell(model: models[indexPath.row], type: 1)
                 }
                 break
             default:
