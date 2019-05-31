@@ -51,15 +51,34 @@ class MPPopularViewController: BaseTableViewController {
     override func refreshData() {
         super.refreshData()
         
+//        if let hv = self.headerView {
+//            let tableName = songName + "\(hv.nationality)" + "\(hv.type)"
+//            MPModelTools.getPopularModel(songerName: songName, nationality: hv.nationality, type: hv.type, tableName: "") { (models) in
+//                if let m = models {
+//                    self.model = m
+//                    self.tableView.mj_header.endRefreshing()
+//                    self.tableView.mj_footer.resetNoMoreData()
+//                }
+//            }
+//        }
+        
+        self.page = 0
         if let hv = self.headerView {
-            let tableName = songName + "\(hv.nationality)" + "\(hv.type)"
-            MPModelTools.getPopularModel(songerName: songName, nationality: hv.nationality, type: hv.type, tableName: "") { (models) in
-                if let m = models {
-                    self.model = m
-                    self.tableView.mj_header.endRefreshing()
-                    self.tableView.mj_footer.resetNoMoreData()
+            DiscoverCent?.requestPopular(nationality: hv.nationality, type: hv.type, name: songName, page: self.page, row: 20, complete: { (isSucceed, model, msg) in
+                self.tableView.mj_header.endRefreshing()
+                switch isSucceed {
+                case true:
+                    if let m = model, m.count > 0 {
+                        self.model = m
+                        self.tableView.mj_header.endRefreshing()
+                        self.tableView.mj_footer.resetNoMoreData()
+                    }
+                    break
+                case false:
+                    SVProgressHUD.showError(withStatus: msg)
+                    break
                 }
-            }
+            })
         }
         
     }
