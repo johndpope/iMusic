@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>975560449099-cucm5i56htn102qmphrqurtq4tch8075.apps.googleusercontent.com</string>
+	<string>874894841042-7e8kvcluqcdu7f5c2tjkk6398ed2pmnt.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.975560449099-cucm5i56htn102qmphrqurtq4tch8075</string>
+	<string>com.googleusercontent.apps.874894841042-7e8kvcluqcdu7f5c2tjkk6398ed2pmnt</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD_rSthYssodmLFpcgTVKt_3rcB6yX6Cws</string>
+	<string>AIzaSyCcmgUidthoe85W54gSyUDTS2_UqCEbY6k</string>
 	<key>GCM_SENDER_ID</key>
-	<string>975560449099</string>
+	<string>874894841042</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>fm.music.musicbox.musicfm.download.freemusic.offline.free.online.song.jpop</string>
 	<key>PROJECT_ID</key>
-	<string>imusic-845c4</string>
+	<string>test-d636a</string>
 	<key>STORAGE_BUCKET</key>
-	<string>imusic-845c4.appspot.com</string>
+	<string>test-d636a.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:975560449099:ios:abe2acb55ea5dee5</string>
+	<string>1:874894841042:ios:abe2acb55ea5dee5</string>
 	<key>DATABASE_URL</key>
-	<string>https://imusic-845c4.firebaseio.com</string>
+	<string>https://test-d636a.firebaseio.com</string>
 </dict>
 </plist>

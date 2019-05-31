@@ -63,6 +63,8 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
     
     var MVOrMP3: Int = 0
     
+    var loadingView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -148,7 +150,36 @@ class MPSongTableViewCell: UITableViewCell, ViewClickedDelegate {
         if let song = self.currentSong, !xib_collect.isSelected {
             MPDownloadTools.downloadMusicWithSongId(model: song)
             GKDownloadManager.sharedInstance()?.delegate = self
+            
+            loadingAnimate()
         }
+    }
+    
+    private func loadingAnimate() {
+        let loadingImg = UIImageView(image: #imageLiteral(resourceName: "icon_loading"))
+        loadingView = loadingImg
+        xib_collect.isHidden = true
+        loadingImg.frame = xib_collect.frame
+        self.contentView.addSubview(loadingImg)
+        
+        transformAnimation(view: loadingImg)
+    }
+    
+    /// 风车视图的旋转
+    fileprivate func transformAnimation(view:UIView) {
+        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
+        // 默认是顺时针效果，若将formValue和toValue的值互换，则为逆时针效果
+        animation.fromValue = 0
+        animation.toValue = Double.pi*2
+        animation.duration = 2
+        animation.autoreverses = false
+        // 解决动画结束后回到原始状态的问题
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        animation.repeatCount = MAXFLOAT // 一直旋转的话，就设置为MAXFLOAT
+        // 定义动画的节奏
+        //        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        view.layer.add(animation, forKey: nil)
     }
     
     func updateCell(model: MPSongModel, models: [MPSongModel], album: GeneralPlaylists? = nil, sourceType: Int = -1) {
@@ -323,6 +354,11 @@ extension MPSongTableViewCell: GKDownloadManagerDelegate {
     func gkDownloadManager(_ downloadManager: GKDownloadManager!, downloadModel: GKDownloadModel!, stateChanged state: GKDownloadManagerState) {
         if state == .finished {
             xib_collect.isSelected = true
+            xib_collect.isHidden = false
+            
+            loadingView.isHidden = true
+            loadingView.removeFromSuperview()
+            loadingView = nil
         }else if state == .failed {
             QYTools.shared.Log(log: "下载失败".decryptLog())
         }

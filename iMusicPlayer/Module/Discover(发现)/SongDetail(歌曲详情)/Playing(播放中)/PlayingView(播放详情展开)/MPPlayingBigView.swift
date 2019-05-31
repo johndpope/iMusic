@@ -316,8 +316,9 @@ class MPPlayingBigView: BaseView {
     }
     
     private func playMvOrMp3(type: Int) {
+        ressetUI()
         
-        setLockScreenDisplay()
+//        setLockScreenDisplay()
         
         Analytics.logEvent("play_start", parameters: nil)
         
@@ -333,6 +334,18 @@ class MPPlayingBigView: BaseView {
             }
         }
         updateView(type: self.currentSouceType)
+    }
+    
+    private func loadingAnimate() {
+        
+    }
+    
+    private func ressetUI() {
+        // 重置参数
+        xib_play.isSelected = true
+        xib_startTime.text = "00:00"
+        xib_endTime.text = "00:00"
+        xib_slider.value = 0
     }
     
     //    MARK: 设置锁屏信息显示
@@ -962,11 +975,18 @@ extension MPPlayingBigView: YTPlayerViewDelegate {
     
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
         switch state {
+        case .buffering:
+            xib_play.isSelected = true
+            break
         case .playing:
             self.startPlaying()
             break
         case .ended:
             self.endPlaying()
+            break
+        case .unstarted, .unknown:
+            QYTools.shared.Log(log: "播放失败")
+            self.mvNext()
             break
         default:
             xib_play.isSelected = false
@@ -1178,8 +1198,9 @@ extension MPPlayingBigView {
         case .finished:
             self.endPlaying()
             break
-//        case .buffering:
-//            break
+        case .buffering:
+            xib_play.isSelected = true
+            break
 //        case .error:
 //            break
         default:

@@ -61,7 +61,7 @@ class HFThirdPartyManager: NSObject, WXApiDelegate, TencentSessionDelegate {
 //    static let GoogleClientID = "com.googleusercontent.apps.491659727556-vtk3kbfmvck4fggm806mafct16gnbi4j"
 //    static let GoogleClientID = "491659727556-vtk3kbfmvck4fggm806mafct16gnbi4j.apps.googleusercontent.com"
 //    874894841042-7e8kvcluqcdu7f5c2tjkk6398ed2pmnt.apps.googleusercontent.com
-    static let GoogleClientID = "874894841042-7e8kvcluqcdu7f5c2tjkk6398ed2pmnt.apps.googleusercontent.com"
+    static let GoogleClientID = "975560449099-cucm5i56htn102qmphrqurtq4tch8075.apps.googleusercontent.com"
     
     static let JPushAppKey = "338b37a013e2c4f8c3f15672"
 

@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // 极光推送
-        self.pushAction(launchOptions: launchOptions)
+//        self.pushAction(launchOptions: launchOptions)
         // KF支持webP图片
         KingfisherManager.shared.defaultOptions = [.processor(WebPProcessor.default), .cacheSerializer(WebPSerializer.default)]
         
