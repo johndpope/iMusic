@@ -196,7 +196,7 @@ var DEV_LOC: String = ""
 // MARK: - 本地记录条件配置
 
 /// 用户完整播放歌曲数量：拖动进度条播放不做记录
-var USER_PLAY_SONG_COUNT: Int = 0
+var USER_PLAY_SONG_COUNT: Int = 1
 
 var USER_OPEN_MP3: Bool = false
 

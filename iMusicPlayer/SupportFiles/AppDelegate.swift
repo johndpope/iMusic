@@ -384,4 +384,12 @@ extension AppDelegate {
         }
     }
     
+//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+//        QYTools.shared.Log(log: userInfo.description)
+//    }
+//    
+//    override func remoteControlReceived(with event: UIEvent?) {
+//        NotificationCenter.default.post(name: NSNotification.Name.init("songRemoteControlNotification"), object: self, userInfo: ["eventSubtype" : event?.subtype])
+//    }
+    
 }

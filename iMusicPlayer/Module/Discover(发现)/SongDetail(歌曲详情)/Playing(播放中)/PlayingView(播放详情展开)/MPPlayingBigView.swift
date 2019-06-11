@@ -208,7 +208,7 @@ class MPPlayingBigView: BaseView {
         playerViewTop.constant = StatusBarHeight
         contentViewH.constant = SCREEN_HEIGHT - TabBarHeight - StatusBarHeight
         
-        xib_fullScreen.isHidden = true
+//        xib_fullScreen.isHidden = true
     }
     
     private func setupAction() {
@@ -223,6 +223,9 @@ class MPPlayingBigView: BaseView {
 //                    self.playView.playVideo()
 //                    isAllowAutorotate = true
 //                    self.fullscreen()
+//                    let orientation = UIDeviceOrientation.landscapeRight.rawValue
+//                    UIDevice.current.setValue(0, forKey: "orientation")
+//                    UIDevice.current.setValue(orientation, forKey: "orientation")
                 }
             }
         }
@@ -261,6 +264,8 @@ class MPPlayingBigView: BaseView {
     deinit {
         isAllowAutorotate = false
         NotificationCenter.default.removeObserver(self)
+        
+        resignFirstResponder()
     }
     
     private func getPlayLists() {
@@ -318,8 +323,6 @@ class MPPlayingBigView: BaseView {
     private func playMvOrMp3(type: Int) {
         ressetUI()
         
-//        setLockScreenDisplay()
-        
         Analytics.logEvent("play_start", parameters: nil)
         
         self.bigStyle()
@@ -334,6 +337,8 @@ class MPPlayingBigView: BaseView {
             }
         }
         updateView(type: self.currentSouceType)
+        
+        setLockScreenDisplay()
     }
     
     private func loadingAnimate() {
@@ -346,23 +351,6 @@ class MPPlayingBigView: BaseView {
         xib_startTime.text = "00:00"
         xib_endTime.text = "00:00"
         xib_slider.value = 0
-    }
-    
-    //    MARK: 设置锁屏信息显示
-    func setLockScreenDisplay() {
-        
-        let model = self.getCurrentSong()
-        
-        var info = Dictionary<String, Any>()
-        info[MPMediaItemPropertyTitle] = model.data_title//歌名
-        info[MPMediaItemPropertyArtist] = model.data_channelTitle//作者
-        //        [info setObject:self.model.filename forKey:MPMediaItemPropertyAlbumTitle];//专辑名
-        info[MPMediaItemPropertyAlbumArtist] = model.data_channelTitle//专辑作者
-        info[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: UIImage.init(data: try! NSData.init(contentsOf: URL(string: model.data_artworkUrl!)!) as Data)!)//显示的图片
-        info[MPMediaItemPropertyPlaybackDuration] = model.data_durationInSeconds//总时长
-        info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0//播放速率
-        MPNowPlayingInfoCenter.default().nowPlayingInfo = info
-//        MPNowPlayingInfoCenter.default().playbackState = .playing
     }
     
     private func playMp3() {
@@ -1302,7 +1290,8 @@ extension MPPlayingBigView {
             return false
         }
         
-        return (true && BOOL_OPEN_MP3_FS)
+//        return (true && BOOL_OPEN_MP3_FS)
+        return true
     }
 }
 
@@ -1316,3 +1305,156 @@ extension MPPlayingBigView: GKDownloadManagerDelegate {
         }
     }
 }
+
+//    MARK: 设置锁屏信息显示
+extension MPPlayingBigView {
+    
+    func setLockScreenDisplay() {
+        ressetRemoteControl()
+        
+        let model = self.getCurrentSong()
+        
+        var info = Dictionary<String, Any>()
+        info[MPMediaItemPropertyTitle] = model.data_title//歌名
+        info[MPMediaItemPropertyArtist] = model.data_channelTitle//作者
+        //        [info setObject:self.model.filename forKey:MPMediaItemPropertyAlbumTitle];//专辑名
+        info[MPMediaItemPropertyAlbumArtist] = model.data_channelTitle//专辑作者
+        do {
+            if let url = URL(string: model.data_artworkUrl ?? "") {
+                if let img = UIImage(data: try Data.init(contentsOf: url)) {
+                    info[MPMediaItemPropertyArtwork] = MPMediaItemArtwork(image: img)//显示的图片
+                }
+            }
+        }catch {
+            print(error)
+        }
+        
+        info[MPMediaItemPropertyPlaybackDuration] = model.data_durationInSeconds//总时长
+        info[MPNowPlayingInfoPropertyPlaybackRate] = 1.0//播放速率
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+//        MPNowPlayingInfoCenter.default().playbackState = .playing
+        
+        lockRemoteControl()
+        // 设置后台播放：显示到系统AirPlay上显示
+        playingBackground()
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+//    override func remoteControlReceived(with event: UIEvent?) {
+//        NotificationCenter.default.post(name: NSNotification.Name.init("songRemoteControlNotification"), object: self, userInfo: ["eventSubtype" : event?.subtype])
+//    }
+    
+    func lockRemoteControl() {
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.previousTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+            self.mvPrev()
+            return MPRemoteCommandHandlerStatus.success
+        }
+        commandCenter.nextTrackCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+            self.mvNext()
+            return MPRemoteCommandHandlerStatus.success
+        }
+        commandCenter.pauseCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+            self.playDidClicked()
+            return MPRemoteCommandHandlerStatus.success
+        }
+        commandCenter.playCommand.addTarget { (event) -> MPRemoteCommandHandlerStatus in
+            self.playDidClicked()
+            return MPRemoteCommandHandlerStatus.success
+        }
+    }
+    
+    //    MARK: 后台播放
+    func playingBackground() {
+        let session = AVAudioSession.sharedInstance()
+        try? session.setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.allowAirPlay)
+        try? session.setActive(true)
+    }
+    
+    func ressetRemoteControl() {
+        
+        becomeFirstResponder()
+//        UIApplication.shared.beginReceivingRemoteControlEvents()
+        
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [:]
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = nil
+        let commandCenter = MPRemoteCommandCenter.shared()
+        commandCenter.previousTrackCommand.removeTarget(self)
+        commandCenter.nextTrackCommand.removeTarget(self)
+        commandCenter.pauseCommand.removeTarget(self)
+        commandCenter.playCommand.removeTarget(self)
+    }
+    
+    /*
+    /**/
+    //远程控制命令中心 iOS 7.1 之后  详情看官方文档：https://developer.apple.com/documentation/mediaplayer/mpremotecommandcenter
+    
+    MPRemoteCommandCenter *commandCenter = [MPRemoteCommandCenter sharedCommandCenter];
+    
+    //   MPFeedbackCommand对象反映了当前App所播放的反馈状态. MPRemoteCommandCenter对象提供feedback对象用于对媒体文件进行喜欢, 不喜欢, 标记的操作. 效果类似于网易云音乐锁屏时的效果
+    
+    //添加喜欢按钮
+    MPFeedbackCommand *likeCommand = commandCenter.likeCommand;
+    likeCommand.enabled = YES;
+    likeCommand.localizedTitle = @"喜欢";
+    [likeCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+    NSLog(@"喜欢");
+    return MPRemoteCommandHandlerStatusSuccess;
+    }];
+    //添加不喜欢按钮，假装是“上一首”
+    MPFeedbackCommand *dislikeCommand = commandCenter.dislikeCommand;
+    dislikeCommand.enabled = YES;
+    dislikeCommand.localizedTitle = @"上一首";
+    [dislikeCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+    NSLog(@"上一首");
+    return MPRemoteCommandHandlerStatusSuccess;
+    }];
+    //标记
+    MPFeedbackCommand *bookmarkCommand = commandCenter.bookmarkCommand;
+    bookmarkCommand.enabled = YES;
+    bookmarkCommand.localizedTitle = @"标记";
+    [bookmarkCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+    NSLog(@"标记");
+    return MPRemoteCommandHandlerStatusSuccess;
+    }];
+    
+    //    commandCenter.togglePlayPauseCommand 耳机线控的暂停/播放
+    __weak typeof(self) weakSelf = self;
+    [commandCenter.pauseCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+    [weakSelf.player pause];
+    return MPRemoteCommandHandlerStatusSuccess;
+    }];
+    [commandCenter.playCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+    [weakSelf.player play];
+    return MPRemoteCommandHandlerStatusSuccess;
+    }];
+    //    [commandCenter.previousTrackCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+    //        NSLog(@"上一首");
+    //        return MPRemoteCommandHandlerStatusSuccess;
+    //    }];
+    
+    [commandCenter.nextTrackCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+    NSLog(@"下一首");
+    return MPRemoteCommandHandlerStatusSuccess;
+    }];
+    
+    //快进
+    //    MPSkipIntervalCommand *skipBackwardIntervalCommand = commandCenter.skipForwardCommand;
+    //    skipBackwardIntervalCommand.preferredIntervals = @[@(54)];
+    //    skipBackwardIntervalCommand.enabled = YES;
+    //    [skipBackwardIntervalCommand addTarget:self action:@selector(skipBackwardEvent:)];
+    
+    //在控制台拖动进度条调节进度（仿QQ音乐的效果）
+    [commandCenter.changePlaybackPositionCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+    CMTime totlaTime = weakSelf.player.currentItem.duration;
+    MPChangePlaybackPositionCommandEvent * playbackPositionEvent = (MPChangePlaybackPositionCommandEvent *)event;
+    [weakSelf.player seekToTime:CMTimeMake(totlaTime.value*playbackPositionEvent.positionTime/CMTimeGetSeconds(totlaTime), totlaTime.timescale) completionHandler:^(BOOL finished) {
+    }];
+    return MPRemoteCommandHandlerStatusSuccess;
+    }];
+ */
+}
+
