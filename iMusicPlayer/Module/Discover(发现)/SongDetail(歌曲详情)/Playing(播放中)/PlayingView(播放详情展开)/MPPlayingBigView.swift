@@ -67,6 +67,8 @@ class MPPlayingBigView: BaseView {
 //            self.smallStyle()
         }
     }
+    @IBOutlet weak var xib_controlBgView: UIView!
+    @IBOutlet weak var xib_nextBgView: UIView!
     /// 大窗高度
     @IBOutlet weak var contentViewH: NSLayoutConstraint!
     /// 大窗口与小窗的距离
@@ -226,6 +228,7 @@ class MPPlayingBigView: BaseView {
 //                    let orientation = UIDeviceOrientation.landscapeRight.rawValue
 //                    UIDevice.current.setValue(0, forKey: "orientation")
 //                    UIDevice.current.setValue(orientation, forKey: "orientation")
+                    self.fullScreenStyle()
                 }
             }
         }
@@ -333,12 +336,17 @@ class MPPlayingBigView: BaseView {
             if type == 1 {
                 playMp3()
             }else {
-                playMv()
+//                DispatchQueue.global().async {
+//                    self.playMv()
+//                }
+                self.playMv()
             }
         }
         updateView(type: self.currentSouceType)
         
-        setLockScreenDisplay()
+        DispatchQueue.global().async {
+            self.setLockScreenDisplay()
+        }
     }
     
     private func loadingAnimate() {
@@ -364,6 +372,8 @@ class MPPlayingBigView: BaseView {
     }
     
     private func playMv() {
+        let startTime = CFAbsoluteTimeGetCurrent()
+        
         // 暂停MP3
         if streamer != nil {
             self.endPlayer()
@@ -371,6 +381,9 @@ class MPPlayingBigView: BaseView {
         playView.isHidden = false
         
         playView.load(withVideoId: self.getCurrentSong().data_originalId ?? "", playerVars: playerVars)
+        
+        let endTime = CFAbsoluteTimeGetCurrent()
+        debugPrint("\(#function)代码执行时长：%f 毫秒", (endTime - startTime)*1000)
     }
     
     private func updateView(type: Int) {
@@ -1081,6 +1094,18 @@ extension MPPlayingBigView {
             playBgView.sendSubviewToBack(playView)
         }
     }
+    
+    func fullScreenStyle() {
+//        playView.snp.remakeConstraints { (make) in
+//            make.left.right.top.bottom.equalTo(appDelegate.window!)
+//        }
+//        xib_controlBgView.isHidden = true
+//        xib_nextBgView.isHidden = true
+        
+        let js = playView.videoEmbedCode() ?? ""
+        QYTools.shared.Log(log: js)
+//        playView.webView?.stringByEvaluatingJavaScript(from: js)
+    }
 }
 
 // MARK: - 播放MP3
@@ -1310,6 +1335,9 @@ extension MPPlayingBigView: GKDownloadManagerDelegate {
 extension MPPlayingBigView {
     
     func setLockScreenDisplay() {
+        
+        let startTime = CFAbsoluteTimeGetCurrent()
+        
         ressetRemoteControl()
         
         let model = self.getCurrentSong()
@@ -1337,6 +1365,9 @@ extension MPPlayingBigView {
         lockRemoteControl()
         // 设置后台播放：显示到系统AirPlay上显示
         playingBackground()
+        
+        let endTime = CFAbsoluteTimeGetCurrent()
+        debugPrint("\(#function)代码执行时长：%f 毫秒", (endTime - startTime)*1000)
     }
     
     override var canBecomeFirstResponder: Bool {

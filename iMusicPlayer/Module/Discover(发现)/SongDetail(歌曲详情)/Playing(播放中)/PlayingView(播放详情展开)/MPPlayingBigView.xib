@@ -352,12 +352,14 @@
                 <outlet property="topViewH" destination="cHc-gX-3UU" id="gIn-fN-bg0"/>
                 <outlet property="xib_bgImage" destination="I3s-zU-vVE" id="kS0-h7-9J7"/>
                 <outlet property="xib_collect" destination="tej-Uh-iU5" id="2Cn-5K-vn5"/>
+                <outlet property="xib_controlBgView" destination="lZw-ZE-3yH" id="eV9-R3-Vb0"/>
                 <outlet property="xib_coverImage" destination="HjF-D5-D2g" id="xF5-wd-JgA"/>
                 <outlet property="xib_cycleMode" destination="8Zc-rA-hvB" id="QN4-Ee-KL3"/>
                 <outlet property="xib_desc" destination="8VB-EI-KFX" id="fax-mu-036"/>
                 <outlet property="xib_endTime" destination="zRP-YE-hBp" id="Ozw-zy-SKK"/>
                 <outlet property="xib_fullScreen" destination="WPw-fQ-7ZN" id="KGQ-La-Nqy"/>
                 <outlet property="xib_lrc" destination="tQJ-Vb-bek" id="KS4-uv-OzH"/>
+                <outlet property="xib_nextBgView" destination="ujd-4V-ElX" id="cPf-Uj-Swj"/>
                 <outlet property="xib_nextPlay" destination="wUt-yo-Pk4" id="VST-kT-xNg"/>
                 <outlet property="xib_nextSongName" destination="uWU-jY-X5q" id="fIA-01-C5b"/>
                 <outlet property="xib_orderMode" destination="uiL-VL-Kg8" id="8s4-zN-6fr"/>
