@@ -1118,10 +1118,17 @@ extension MPPlayingBigView {
             appDelegate.window?.addSubview(view)
 //            appDelegate.window?.bringSubviewToFront(view)
             view.add_BtnClickHandler({ (tag) in
-                self.playView.subviews.first?.bl_protrait(animated: true, animations: nil, complete: {
-                    QYTools.shared.Log(log: "完成")
-                    view.removeFromSuperview()
-                })
+//                self.playView.subviews.last?.bl_protrait(animated: true, animations: nil, complete: {
+//                    QYTools.shared.Log(log: "完成")
+//                    view.removeFromSuperview()
+//                })
+                
+                for item in appDelegate.window!.subviews {
+                    if let view = item as? UIWebView {
+                        view.bl_protrait(animated: true, animations: nil, complete: nil)
+                        break
+                    }
+                }
             })
             
             self.playView.setPlaybackQuality(YTPlaybackQuality.auto)
