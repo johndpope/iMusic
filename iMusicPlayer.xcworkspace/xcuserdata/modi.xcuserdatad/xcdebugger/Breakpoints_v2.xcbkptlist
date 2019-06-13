@@ -112,15 +112,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView.swift"
-            timestampString = "582023109.413146"
+            timestampString = "582115809.4061151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1297"
-            endingLineNumber = "1297"
+            startingLineNumber = "1330"
+            endingLineNumber = "1330"
             landmarkName = "promissionForMP3()"
             landmarkType = "7">
          </BreakpointContent>
@@ -132,13 +132,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iMusicPlayer/Module/Discover(&#x53d1;&#x73b0;)/SongDetail(&#x6b4c;&#x66f2;&#x8be6;&#x60c5;)/Playing(&#x64ad;&#x653e;&#x4e2d;)/PlayingView(&#x64ad;&#x653e;&#x8be6;&#x60c5;&#x5c55;&#x5f00;)/MPPlayingBigView.swift"
-            timestampString = "582023333.169219"
+            timestampString = "582115809.407225"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "993"
-            endingLineNumber = "993"
-            landmarkName = "playerView(_:didChangeTo:)"
+            startingLineNumber = "1121"
+            endingLineNumber = "1121"
+            landmarkName = "fullScreenStyle()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; () in closure #1 () -&gt; () in iMusicPlayer.MPPlayingBigView.fullScreenStyle() -&gt; ()"
+                  moduleName = "iMusicPlayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/modi/Documents/Modi/GitLab/iMusicPlayer/iMusicPlayer/Module/Discover(%E5%8F%91%E7%8E%B0)/SongDetail(%E6%AD%8C%E6%9B%B2%E8%AF%A6%E6%83%85)/Playing(%E6%92%AD%E6%94%BE%E4%B8%AD)/PlayingView(%E6%92%AD%E6%94%BE%E8%AF%A6%E6%83%85%E5%B1%95%E5%BC%80)/MPPlayingBigView.swift"
+                  timestampString = "582115809.9878269"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1121"
+                  endingLineNumber = "1121"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Int) -&gt; () in closure #1 () -&gt; () in iMusicPlayer.MPPlayingBigView.fullScreenStyle() -&gt; ()"
+                  moduleName = "iMusicPlayer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/modi/Documents/Modi/GitLab/iMusicPlayer/iMusicPlayer/Module/Discover(%E5%8F%91%E7%8E%B0)/SongDetail(%E6%AD%8C%E6%9B%B2%E8%AF%A6%E6%83%85)/Playing(%E6%92%AD%E6%94%BE%E4%B8%AD)/PlayingView(%E6%92%AD%E6%94%BE%E8%AF%A6%E6%83%85%E5%B1%95%E5%BC%80)/MPPlayingBigView.swift"
+                  timestampString = "582115809.99022"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "1122"
+                  endingLineNumber = "1122"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

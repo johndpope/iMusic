@@ -34,4 +34,9 @@
 #import "NSMutableArray+Category.h"
 #import "NSLayoutConstraint+Category.h"
 
+#import "BLSubstituteObject.h"
+#import "UIViewController+Landscape.h"
+#import "UIView+BLLandscape.h"
+#import "JRSwizzle.h"
+
 #endif /* MDCategory_h */

@@ -140,7 +140,7 @@ class MPPlayingBigView: BaseView {
 //        "showinfo": 0,
 //        "iv_load_policy": 3
 //    ]
-    private var playerVars: [String : Any] = [ "showinfo": "0", "modestbranding" : "1", "playsinline": "1", "controls": "0", "autohide": "1"]
+    private var playerVars: [String : Any] = [ "showinfo": "0", "modestbranding" : "1", "playsinline": "1", "controls": "0", "autohide": "1", "enablejsapi": "1"]
     
     /// 0: 顺序播放  1: 随机播放
     var currentPlayOrderMode: Int = 0 {
@@ -1102,9 +1102,42 @@ extension MPPlayingBigView {
 //        xib_controlBgView.isHidden = true
 //        xib_nextBgView.isHidden = true
         
-        let js = playView.videoEmbedCode() ?? ""
-        QYTools.shared.Log(log: js)
+//        playView.webView?.delegate = self
+        
+//        let js = "document.getElementById('player').style = 'background-color: red'"
+//        QYTools.shared.Log(log: js)
 //        playView.webView?.stringByEvaluatingJavaScript(from: js)
+        
+        self.playView.subviews.first?.bl_landscape(animated: true, animations: nil) {
+            QYTools.shared.Log(log: "完成")
+            let view = UIButton(title: "Done", backImage: nil, color: UIColor.white, image: "", size: 15)
+            view.backgroundColor = UIColor.clear
+            view.frame = CGRect(x: 0, y: 0, width: 50, height: 30)
+//            self.playView.subviews.first?.superview?.addSubview(view)
+//            self.playView.subviews.first?.superview?.bringSubviewToFront(view)
+            appDelegate.window?.addSubview(view)
+//            appDelegate.window?.bringSubviewToFront(view)
+            view.add_BtnClickHandler({ (tag) in
+                self.playView.subviews.first?.bl_protrait(animated: true, animations: nil, complete: {
+                    QYTools.shared.Log(log: "完成")
+                    view.removeFromSuperview()
+                })
+            })
+            
+            self.playView.setPlaybackQuality(YTPlaybackQuality.auto)
+        }
+    }
+}
+
+extension MPPlayingBigView: UIWebViewDelegate {
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        let js = "if(document.getElementsByTagName('player').length>0)document.getElementsByTagName('player').length;"
+        let rs: NSString = webView.stringByEvaluatingJavaScript(from: js)! as NSString
+        if (rs.length & rs.integerValue) != 0 {
+            self.bl_landscape(animated: true, animations: nil) {
+                QYTools.shared.Log(log: "完成")
+            }
+        }
     }
 }
 
